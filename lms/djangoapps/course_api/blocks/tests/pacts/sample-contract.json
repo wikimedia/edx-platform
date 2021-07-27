@@ -1,0 +1,43 @@
+{
+    "consumer": {
+      "name": "CONSUMER"
+    },
+    "provider": {
+      "name": "LMS"
+    },
+    "interactions": [
+      {
+        "description": "A test state",
+        "providerState": "A test state",
+        "request": {
+          "method": "get",
+          "path": "/api/mfe_context",
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        },
+        "response": {
+          "status": 200,
+          "headers": {
+          },
+          "body": {
+            "currentProvider": null,
+            "platformName": "édX",
+            "providers": [],
+            "secondaryProviders": [],
+            "finishAuthUrl": null,
+            "errorMessage": null,
+            "registerFormSubmitButtonText": "Create Account",
+            "syncLearnerProfileData": false,
+            "pipeline_user_details": {},
+            "countryCode": ""              
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "pactSpecification": {
+        "version": "2.0.0"
+      }
+    }
+  }
