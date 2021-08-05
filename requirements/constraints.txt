@@ -94,3 +94,9 @@ click<8.0.0
 
 # jsonfield2 will be replaced with jsonfield in https://openedx.atlassian.net/browse/BOM-1917.
 jsonfield2<3.1.0        # jsonfield2 3.1.0 drops support for python 3.5
+
+# This is the latest release of the Python-to-Neo4j driver that supports
+# Neo4j 3.2.2, which is what we currently deploy Coursegraph with.
+# Once Coursegraph is upgraded to a newer Neo4j version, this constraint
+# can be removed or loosened to allow newer py2neo versions.
+py2neo==4.3.0
