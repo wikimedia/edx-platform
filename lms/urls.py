@@ -678,6 +678,12 @@ urlpatterns += [
         'u/',
         include('openedx.features.learner_profile.urls'),
     ),
+
+    url(
+        r'^wikimedia_features/',
+        include(('openedx.features.wikimedia_features.urls',
+                 'openedx.features.wikimedia_features'), namespace='wikimedia_features')
+    ),
 ]
 
 if settings.FEATURES.get('ENABLE_TEAMS'):
