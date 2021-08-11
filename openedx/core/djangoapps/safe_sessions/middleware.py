@@ -278,7 +278,8 @@ class SafeSessionMiddleware(SessionMiddleware, MiddlewareMixin):
 
         Step 4. Once the session is retrieved, verify that the user
         bound in the safe_cookie_data matches the user attached to the
-        server's session information.
+        server's session information. Otherwise, reject the request
+        (bypass the view and return an error or redirect).
 
         Step 5. If all is successful, the now verified user_id is stored
         separately in the request object so it is available for another
@@ -307,12 +308,16 @@ class SafeSessionMiddleware(SessionMiddleware, MiddlewareMixin):
 
         if cookie_data_string and request.session.get(SESSION_KEY):
 
+            # Note to self: Checks right away whether session DB
+            # record and cookie agree on user.
             user_id = self.get_user_id_from_session(request)
             if safe_cookie_data.verify(user_id):  # Step 4
                 request.safe_cookie_verified_user_id = user_id  # Step 5
                 if LOG_REQUEST_USER_CHANGES:
                     log_request_user_changes(request)
             else:
+                # Return an error or redirect, and don't continue to
+                # the underlying view.
                 return self._on_user_authentication_failed(request)
 
     def process_response(self, request, response):
@@ -351,6 +356,13 @@ class SafeSessionMiddleware(SessionMiddleware, MiddlewareMixin):
                     # Use the user_id marked in the session instead of the
                     # one in the request in case the user is not set in the
                     # request, for example during Anonymous API access.
+                    #
+                    # TODO: Is this safe? It would erase any mismatch
+                    # between the request and session on subsequent
+                    # requests, so that subsequent requests in the
+                    # session don't provoke a warning. We should be
+                    # consistent about where the user ID is drawn
+                    # from.
                     self.update_with_safe_session_cookie(response.cookies, user_id_in_session)  # Step 3
 
             except SafeCookieError:
@@ -392,6 +404,11 @@ class SafeSessionMiddleware(SessionMiddleware, MiddlewareMixin):
             # The user at response time is expected to be None when the user
             # is logging out.  We won't log that.
             if request.safe_cookie_verified_user_id != request.user.id and request.user.id is not None:
+                # Note to self: Here, the user on the cookie does not
+                # match the user that ended up on the request, as seen
+                # at response time. This could either mean the
+                # request.user was initially set incorrectly, or that
+                # it changed some time after that.
                 log.warning(
                     (
                         "SafeCookieData user at request '{}' does not match user at response: '{}' "
@@ -404,6 +421,9 @@ class SafeSessionMiddleware(SessionMiddleware, MiddlewareMixin):
             # The user session at response time is expected to be None when the user
             # is logging out.  We won't log that.
             if request.safe_cookie_verified_user_id != userid_in_session and userid_in_session is not None:
+                # Note to self: Here, the *session's* user ID has
+                # changed. This probably only happens on a login or
+                # registration.
                 log.warning(
                     (
                         "SafeCookieData user at request '{}' does not match user in session: '{}' "
@@ -526,6 +546,8 @@ def log_request_user_changes(request):
     the `__setattr__` function to catch the attribute chages.
     """
     original_user = getattr(request, 'user', None)
+    # Note to self: Is it possible that user.id changes instead? Seems
+    # very unlikely, though.
 
     class SafeSessionRequestWrapper(request.__class__):
         """
