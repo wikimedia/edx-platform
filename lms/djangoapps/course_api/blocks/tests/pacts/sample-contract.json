@@ -1,43 +1,50 @@
 {
-    "consumer": {
-      "name": "CONSUMER"
-    },
-    "provider": {
-      "name": "LMS"
-    },
-    "interactions": [
-      {
-        "description": "A test state",
-        "providerState": "A test state",
-        "request": {
-          "method": "get",
-          "path": "/api/mfe_context",
-          "headers": {
-            "Content-Type": "application/json"
+  "consumer": {
+    "name": "frontend-app-learning"
+  },
+  "provider": {
+    "name": "lms"
+  },
+  "interactions": [
+    {
+      "description": "a request to get course blocks",
+      "providerState": "Blocks data exists for course_id edX/DemoX/course/Demo_Course",
+      "request": {
+        "method": "GET",
+        "path": "/api/courses/v2/blocks/",
+        "query": "course_id=edX%2FDemoX%2FDemo_Course&all_blocks=true"
+      },
+      "response": {
+        "status": 200,
+        "headers": {},
+        "body": {
+          "root": "i4x://edX/DemoX/course/Demo_Course",
+          "blocks": {
+            "i4x://edX/DemoX/course/Demo_Course": {
+              "id": "i4x://edX/DemoX/course/Demo_Course",
+              "block_id": "Demo_Course",
+              "lms_web_url": "http://localhost:50649/courses/edX/DemoX/Demo_Course/jump_to/i4x://edX/DemoX/course/Demo_Course",
+              "legacy_web_url": "http://localhost:50649/courses/edX/DemoX/Demo_Course/jump_to/i4x://edX/DemoX/course/Demo_Course?experience=legacy",
+              "student_view_url": "http://localhost:50649/xblock/i4x://edX/DemoX/course/Demo_Course",
+              "type": "course",
+              "display_name": "Demonstration Course"
+            }
           }
         },
-        "response": {
-          "status": 200,
-          "headers": {
+        "matchingRules": {
+          "$.body.root": {
+            "match": "type"
           },
-          "body": {
-            "currentProvider": null,
-            "platformName": "édX",
-            "providers": [],
-            "secondaryProviders": [],
-            "finishAuthUrl": null,
-            "errorMessage": null,
-            "registerFormSubmitButtonText": "Create Account",
-            "syncLearnerProfileData": false,
-            "pipeline_user_details": {},
-            "countryCode": ""              
+          "$.body.blocks": {
+            "match": "type"
           }
         }
       }
-    ],
-    "metadata": {
-      "pactSpecification": {
-        "version": "2.0.0"
-      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
     }
   }
+}

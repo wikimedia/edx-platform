@@ -39,8 +39,8 @@ urlpatterns = [
     ),
 ]
 
-if getattr(settings, 'TEST_ONLY_URLS', None):
-    from .tests.pacts.views  import provider_state
+if getattr(settings, 'PROVIDER_STATES_URL', None):
+    from .tests.pacts.views import provider_state
     urlpatterns.append(url(
         r'^pact/provider_states/$',
         provider_state,

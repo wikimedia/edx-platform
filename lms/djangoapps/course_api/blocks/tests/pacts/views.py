@@ -7,10 +7,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-def test_state():
-    print("\n========LIVE TEST STATE==========")
-    print("hello from test state!!")
-    print("=================================\n")
+
+class TestState:
+    def __init__(self):
+        pass
 
 
 @csrf_exempt
@@ -20,7 +20,7 @@ def provider_state(request):
     Provider state setup view needed by pact verifier.
     """
     state_setup_mapping = {
-        'Block data exists': test_state,
+        'Blocks data exists for course_id edX/DemoX/course/Demo_Course': TestState,
     }
     request_body = json.loads(request.body)
     state = request_body.get('state')
