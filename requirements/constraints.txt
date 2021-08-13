@@ -99,4 +99,9 @@ jsonfield2<3.1.0        # jsonfield2 3.1.0 drops support for python 3.5
 # Neo4j 3.2.2, which is what we currently deploy Coursegraph with.
 # Once Coursegraph is upgraded to a newer Neo4j version, this constraint
 # can be removed or loosened to allow newer py2neo versions.
-py2neo==4.3.0
+
+# At the time of writing this comment, we do not know whether py2neo>=2022
+# will support our currently-deployed Neo4j version (3.5).
+# Feel free to loosen this constraint if/when it is confirmed that a later
+# version of py2neo will work with Neo4j 3.5.
+py2neo<2022

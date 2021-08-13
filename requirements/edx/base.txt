@@ -105,6 +105,7 @@ certifi==2021.5.30
     # via
     #   -r requirements/edx/paver.txt
     #   elasticsearch
+    #   py2neo
     #   requests
 cffi==1.14.6
     # via cryptography
@@ -145,6 +146,7 @@ cryptography==3.4.7
     #   -r requirements/edx/base.in
     #   django-fernet-fields
     #   edx-enterprise
+    #   py2neo
     #   pyjwt
     #   social-auth-core
 cssutils==2.3.0
@@ -382,6 +384,8 @@ djangorestframework==3.12.4
     #   super-csv
 djangorestframework-xml==2.0.0
     # via edx-enterprise
+docker==5.0.0
+    # via py2neo
 docopt==0.6.2
     # via xmodule
 docutils==0.17.1
@@ -512,6 +516,8 @@ elasticsearch==7.13.4
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   edx-search
+english==2020.7.0
+    # via py2neo
 enmerkar==0.7.1
     # via enmerkar-underscore
 enmerkar-underscore==2.1.0
@@ -660,7 +666,9 @@ git+https://github.com/edx/MongoDBProxy.git@d92bafe9888d2940f647a7b2b2383b29c752
 mongoengine==0.23.1
     # via -r requirements/edx/base.in
 monotonic==1.6
-    # via analytics-python
+    # via
+    #   analytics-python
+    #   py2neo
 mpmath==1.2.1
     # via sympy
 multidict==5.1.0
@@ -669,6 +677,8 @@ multidict==5.1.0
     #   yarl
 mysqlclient==2.0.3
     # via -r requirements/edx/base.in
+neotime==1.7.4
+    # via py2neo
 newrelic==6.8.0.163
     # via
     #   -r requirements/edx/base.in
@@ -700,8 +710,11 @@ packaging==21.0
     # via
     #   bleach
     #   drf-yasg
+    #   py2neo
 pact-python==1.4.0
     # via edxval
+pansi==2020.7.3
+    # via py2neo
 path==16.2.0
     # via
     #   -r requirements/edx/paver.txt
@@ -728,11 +741,17 @@ pillow==8.3.1
     #   edx-organizations
 polib==1.1.1
     # via edx-i18n-tools
+prompt-toolkit==3.0.19
+    # via py2neo
 psutil==5.8.0
     # via
     #   -r requirements/edx/paver.txt
     #   edx-django-utils
     #   pact-python
+py2neo==2021.1.5
+    # via
+    #   -c requirements/edx/../constraints.txt
+    #   -r requirements/edx/base.in
 pycountry==20.7.3
     # via -r requirements/edx/base.in
 pycparser==2.20
@@ -746,7 +765,9 @@ pycryptodomex==3.10.1
 pydantic==1.8.2
     # via fastapi
 pygments==2.9.0
-    # via -r requirements/edx/base.in
+    # via
+    #   -r requirements/edx/base.in
+    #   py2neo
 pyjwkest==1.4.2
     # via
     #   -r requirements/edx/base.in
@@ -833,8 +854,10 @@ pytz==2021.1
     #   event-tracking
     #   fs
     #   icalendar
+    #   neotime
     #   olxcleaner
     #   ora2
+    #   py2neo
     #   tincan
     #   xblock
 pyuca==1.2
@@ -860,6 +883,7 @@ requests==2.26.0
     #   analytics-python
     #   coreapi
     #   django-oauth-toolkit
+    #   docker
     #   edx-analytics-data-api-client
     #   edx-bulk-grades
     #   edx-drf-extensions
@@ -929,14 +953,18 @@ six==1.16.0
     #   edx-i18n-tools
     #   edx-milestones
     #   edx-rbac
+    #   english
     #   event-tracking
     #   fs
     #   fs-s3fs
     #   html5lib
     #   isodate
     #   libsass
+    #   neotime
     #   pact-python
+    #   pansi
     #   paver
+    #   py2neo
     #   pyjwkest
     #   python-dateutil
     #   python-memcached
@@ -1021,6 +1049,7 @@ urllib3==1.26.6
     #   elasticsearch
     #   geoip2
     #   pact-python
+    #   py2neo
     #   requests
 user-util==1.0.0
     # via -r requirements/edx/base.in
@@ -1034,6 +1063,8 @@ voluptuous==0.12.1
     # via ora2
 watchdog==2.1.3
     # via -r requirements/edx/paver.txt
+wcwidth==0.2.5
+    # via prompt-toolkit
 web-fragments==1.1.0
     # via
     #   -r requirements/edx/base.in
@@ -1050,6 +1081,8 @@ webob==1.8.7
     # via
     #   xblock
     #   xmodule
+websocket-client==1.2.1
+    # via docker
 wrapt==1.11.2
     # via
     #   -c requirements/edx/../constraints.txt
