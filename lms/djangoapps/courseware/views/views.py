@@ -77,7 +77,7 @@ from lms.djangoapps.courseware.courses import (
 )
 from lms.djangoapps.courseware.date_summary import verified_upgrade_deadline_link
 from lms.djangoapps.courseware.exceptions import CourseAccessRedirect, Redirect
-from lms.djangoapps.courseware.masquerade import setup_masquerade
+from lms.djangoapps.courseware.masquerade import setup_masquerade, is_masquerading_as_specific_student
 from lms.djangoapps.courseware.model_data import FieldDataCache
 from lms.djangoapps.courseware.models import BaseStudentModuleHistory, StudentModule
 from lms.djangoapps.courseware.permissions import (  # lint-amnesty, pylint: disable=unused-import
@@ -1724,11 +1724,13 @@ def render_xblock(request, usage_key_string, check_if_enrolled=True):
         #  masquerading as learners would often be denied access, since course
         #  staff are generally not enrolled, and viewing a course generally
         #  requires enrollment.)
-        _course_masquerade, request.user = setup_masquerade(
+        _course_masquerade, masquerade_user = setup_masquerade(
             request,
             course_key,
             staff_access,
         )
+        masquerading_as_specific_student = is_masquerading_as_specific_student(request.user, course_key)
+        request.user = masquerade_user
 
         # get the block, which verifies whether the user has access to the block.
         recheck_access = request.GET.get('recheck_access') == '1'
@@ -1765,7 +1767,7 @@ def render_xblock(request, usage_key_string, check_if_enrolled=True):
         if ancestor_sequence_block:
             # If the SequenceModule feels that gating is necessary, redirect
             # there so we can have some kind of error message at any rate.
-            if ancestor_sequence_block.descendants_are_gated():
+            if ancestor_sequence_block.descendants_are_gated() and not masquerading_as_specific_student:
                 return redirect(
                     reverse(
                         'render_xblock',
