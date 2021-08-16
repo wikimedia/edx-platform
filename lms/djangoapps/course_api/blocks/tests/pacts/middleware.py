@@ -3,7 +3,7 @@ Contain the middleware logic needed during pact verification
 """
 from django.utils.deprecation import MiddlewareMixin
 
-from common.djangoapps.student.tests.factories import AdminFactory
+from common.djangoapps.student.tests.factories import UserFactory
 
 
 class AuthenticationMiddleware(MiddlewareMixin):
@@ -17,7 +17,7 @@ class AuthenticationMiddleware(MiddlewareMixin):
     """
     def __init__(self, get_response):
         super().__init__()
-        self.auth_user = AdminFactory.create(username='staff')
+        self.auth_user = UserFactory.create(username='Mock User')
         self.get_response = get_response
 
     def process_view(self, request, view_func, view_args, view_kwargs):  # pylint: disable=unused-argument

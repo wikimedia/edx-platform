@@ -8,95 +8,25 @@
   "interactions": [
     {
       "description": "a request to get course blocks",
-      "providerState": "Blocks data exists for course_id edX/DemoX/course/Demo_Course",
+      "providerState": "Blocks data exists for course_id course-v1:edX+DemoX+Demo_Course",
       "request": {
         "method": "GET",
         "path": "/api/courses/v2/blocks/",
-        "query": "course_id=edX%2FDemoX%2FDemo_Course&username=staff"
+        "query": "course_id=course-v1%3AedX%2BDemoX%2BDemo_Course&username=Mock+User&depth=3&requested_fields=children%2Ceffort_activities%2Ceffort_time%2Cshow_gated_sections%2Cgraded%2Cspecial_exam_info%2Chas_scheduled_content"
       },
       "response": {
         "status": 200,
-        "headers": {},
-        "body": {
-          "root": "i4x://edX/DemoX/course/Demo_Course",
-          "blocks": {
-            "i4x://edX/DemoX/course/Demo_Course": {
-              "id": "i4x://edX/DemoX/course/Demo_Course",
-              "block_id": "Demo_Course",
-              "lms_web_url": "http://localhost:50649/courses/edX/DemoX/Demo_Course/jump_to/i4x://edX/DemoX/course/Demo_Course",
-              "legacy_web_url": "http://localhost:50649/courses/edX/DemoX/Demo_Course/jump_to/i4x://edX/DemoX/course/Demo_Course?experience=legacy",
-              "student_view_url": "http://localhost:50649/xblock/i4x://edX/DemoX/course/Demo_Course",
-              "type": "course",
-              "display_name": "Demonstration Course"
-            }
-          }
+        "headers": {
         },
-        "matchingRules": {
-          "$.body.root": {
-            "match": "type"
-          },
-          "$.body.blocks": {
-            "match": "type"
-          }
-        }
-      }
-    },
-    {
-      "description": "a request to get course blocks",
-      "providerState": "Blocks data exists for course_id edX/DemoX/course/Demo_Course - Duplicate",
-      "request": {
-        "method": "GET",
-        "path": "/api/courses/v2/blocks/",
-        "query": "course_id=edX%2FDemoX%2FDemo_Course&username=staff"
-      },
-      "response": {
-        "status": 200,
-        "headers": {},
         "body": {
-          "root": "i4x://edX/DemoX/course/Demo_Course",
+          "root": "block-v1:edX+DemoX+Demo_Course+type@course+block@course",
           "blocks": {
-            "i4x://edX/DemoX/course/Demo_Course": {
-              "id": "i4x://edX/DemoX/course/Demo_Course",
-              "block_id": "Demo_Course",
-              "lms_web_url": "http://localhost:50649/courses/edX/DemoX/Demo_Course/jump_to/i4x://edX/DemoX/course/Demo_Course",
-              "legacy_web_url": "http://localhost:50649/courses/edX/DemoX/Demo_Course/jump_to/i4x://edX/DemoX/course/Demo_Course?experience=legacy",
-              "student_view_url": "http://localhost:50649/xblock/i4x://edX/DemoX/course/Demo_Course",
-              "type": "course",
-              "display_name": "Demonstration Course"
-            }
-          }
-        },
-        "matchingRules": {
-          "$.body.root": {
-            "match": "type"
-          },
-          "$.body.blocks": {
-            "match": "type"
-          }
-        }
-      }
-    },
-
-    {
-      "description": "a request to get all course blocks",
-      "providerState": "Blocks data exists for course_id edX/DemoY/course/Demo_Course",
-      "request": {
-        "method": "GET",
-        "path": "/api/courses/v2/blocks/",
-        "query": "course_id=edX%2FDemoY%2FDemo_Course&all_blocks=true"
-      },
-      "response": {
-        "status": 200,
-        "headers": {},
-        "body": {
-          "root": "i4x://edX/DemoY/course/Demo_Course",
-          "blocks": {
-            "i4x://edX/DemoY/course/Demo_Course": {
-              "id": "i4x://edX/DemoY/course/Demo_Course",
-              "block_id": "Demo_Course",
-              "lms_web_url": "http://localhost:50649/courses/edX/DemoY/Demo_Course/jump_to/i4x://edX/DemoY/course/Demo_Course",
-              "legacy_web_url": "http://localhost:50649/courses/edX/DemoY/Demo_Course/jump_to/i4x://edX/DemoY/course/Demo_Course?experience=legacy",
-              "student_view_url": "http://localhost:50649/xblock/i4x://edX/DemoY/course/Demo_Course",
+            "block-v1:edX+DemoX+Demo_Course+type@course+block@course": {
+              "id": "block-v1:edX+DemoX+Demo_Course+type@course+block@course",
+              "block_id": "course",
+              "lms_web_url": "/courses/course-v1:edX+DemoX+Demo_Course/jump_to/block-v1:edX+DemoX+Demo_Course+type@course+block@course",
+              "legacy_web_url": "/courses/course-v1:edX+DemoX+Demo_Course/jump_to/block-v1:edX+DemoX+Demo_Course+type@course+block@course?experience=legacy",
+              "student_view_url": "/xblock/block-v1:edX+DemoX+Demo_Course+type@course+block@course",
               "type": "course",
               "display_name": "Demonstration Course"
             }
