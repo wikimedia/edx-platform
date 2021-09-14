@@ -96,7 +96,7 @@ setup(
             "courseware_api = openedx.core.djangoapps.courseware_api.apps:CoursewareAPIConfig",
             "admin_dashboard = openedx.features.wikimedia_features.admin_dashboard.apps:AdminDashboardConfig",
             "messenger = openedx.features.wikimedia_features.messenger.apps:MessengerConfig",
-
+            "user_accounts = openedx.features.wikimedia_features.user_accounts.apps:UserAccountsConfig",
         ],
         "cms.djangoapp": [
             "announcements = openedx.features.announcements.apps:AnnouncementsConfig",
