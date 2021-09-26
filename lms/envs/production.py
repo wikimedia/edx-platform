@@ -1059,7 +1059,7 @@ CHROME_DISABLE_SUBFRAME_DIALOG_SUPPRESSION_TOKEN = ENV_TOKENS.get(
 ############## DRF overrides ##############
 REST_FRAMEWORK.update(ENV_TOKENS.get('REST_FRAMEWORK', {}))
 ################# Wikimedia Custom Settings ####################
-DEFAULT_LOGO = ENV_TOKENS.get('DEFAULT_LOGO', DEFAULT_LOGO)
+DEFAULT_EMAIL_LOGO_URL = ENV_TOKENS.get('DEFAULT_EMAIL_LOGO_URL', DEFAULT_EMAIL_LOGO_URL)
 
 # username that will be used as a request_user for email tasks.
 EMAIL_ADMIN = ENV_TOKENS.get('EMAIL_ADMIN', EMAIL_ADMIN)
