@@ -86,9 +86,6 @@ export default function Inbox({
                                             <span className="date">{renderDate(inbox.last_message_date)}</span>
                                             <span className="name">{inbox.with_user}</span>
                                         </div>
-                                        <div className="message">
-                                            {inbox.last_message.length > 30 ? `${inbox.last_message.substring(0, 30)}...` : inbox.last_message}
-                                        </div>
                                     </div>
                                     <span className="badge rounded-pill bg-danger unread-count">{inbox.unread_count ? inbox.unread_count : ''}</span>
                                 </li>
