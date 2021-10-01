@@ -6,7 +6,7 @@ from logging import getLogger
 from django.core.management.base import BaseCommand
 
 from openedx.features.wikimedia_features.messenger.models import Inbox, Message
-from openedx.features.wikimedia_features.messenger.task import send_unread_messages_email_task
+from openedx.features.wikimedia_features.messenger.tasks import send_unread_messages_email_task
 
 log = getLogger(__name__)
 

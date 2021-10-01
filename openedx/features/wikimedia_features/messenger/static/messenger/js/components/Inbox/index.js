@@ -32,7 +32,7 @@ export default function Inbox({
         <div className="chat-sidebar">
             <div className="chat-sidebar-header">
                 <div className="btn-box">
-                    <strong className="text">Chats</strong>
+                    <strong className="text">Inbox</strong>
                     <button className="btn btn-primary btn-lg start-new-msg-btn" data-toggle="modal" data-target="#messageModalCenter">
                         <span className="icon-plus">+</span>New Message
                     </button>
@@ -85,9 +85,6 @@ export default function Inbox({
                                         <div className="title">
                                             <span className="date">{renderDate(inbox.last_message_date)}</span>
                                             <span className="name">{inbox.with_user}</span>
-                                        </div>
-                                        <div className="message">
-                                            {inbox.last_message.length > 30 ? `${inbox.last_message.substring(0, 30)}...` : inbox.last_message}
                                         </div>
                                     </div>
                                     <span className="badge rounded-pill bg-danger unread-count">{inbox.unread_count ? inbox.unread_count : ''}</span>
