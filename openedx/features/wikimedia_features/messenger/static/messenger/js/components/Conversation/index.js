@@ -52,6 +52,7 @@ export default function Conversation({
                                         value={message}
                                         placeholder="Type your message..."
                                         onChange={handleInputChange}
+                                        autoFocus
                                     ></textarea>
                                     <div className="btn-box">
                                         <button
