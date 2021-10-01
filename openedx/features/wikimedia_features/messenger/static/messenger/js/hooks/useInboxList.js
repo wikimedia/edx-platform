@@ -15,8 +15,8 @@ export default function useInboxList(inboxPageNumber, setSelectedInboxUser, cont
             const inboxListData = (await client.get(`${context.INBOX_URL}?page=${pageNumber}&search=${searchInbox}`)).data;
             if (inboxListData) {
                 if (pageNumber == 1) {
-                    if (inboxListData.results.length) setSelectedInboxUser(inboxListData.results[0].with_user);
                     setInboxList(inboxListData.results);
+                    if (inboxListData.results.length) setSelectedInboxUser(inboxListData.results[0].with_user);
                 } else {
                     setInboxList((previousList) => [...previousList, ...inboxListData.results]);
                 }
@@ -38,10 +38,6 @@ export default function useInboxList(inboxPageNumber, setSelectedInboxUser, cont
           }, 3000)
           return () => clearTimeout(delayDebounceFetch)
     }, [searchInbox]);
-
-    useEffect(() => {
-        fetchInboxList(1);
-    }, []);
 
     useEffect(() => {
         if (inboxPageNumber > 1) fetchInboxList(inboxPageNumber)
