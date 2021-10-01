@@ -106,17 +106,26 @@ class InboxView(viewsets.ModelViewSet):
     search_fields = ['last_message__sender__username', 'last_message__receiver__username']
 
     def get_queryset(self):
-        qs = Inbox.user_inbox.find_all(self.request.user)
+        return Inbox.user_inbox.find_all(self.request.user)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
         # sort qs to show inbox with unread messages on top
-        return sorted(
-            qs,
+        queryset = sorted(
+            queryset,
             key=lambda x, user=self.request.user: x.unread_count if (x.unread_count and x.last_message.receiver==user) else 0,
             reverse=True
         )
 
-    def get_object(self, *args, **kwargs):
-        filter_kwargs = {self.lookup_field: self.kwargs[self.lookup_field]}
-        return get_object_or_404(Inbox.user_inbox.find_all(self.request.user), **filter_kwargs)
+        # rest is same as ListModelMixin list method
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class ConversationView(viewsets.ModelViewSet):
