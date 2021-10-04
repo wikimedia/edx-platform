@@ -605,6 +605,7 @@ if FEATURES.get('ENABLE_THIRD_PARTY_AUTH'):
         'common.djangoapps.third_party_auth.identityserver3.IdentityServer3',
         'common.djangoapps.third_party_auth.saml.SAMLAuthBackend',
         'common.djangoapps.third_party_auth.lti.LTIAuthBackend',
+        'openedx.features.wikimedia_features.auth_backend.WikimediaIdentityServer',
     ])
 
     AUTHENTICATION_BACKENDS = list(tmp_backends) + list(AUTHENTICATION_BACKENDS)
@@ -1023,3 +1024,9 @@ XBLOCK_MIXINS += tuple(XBLOCK_EXTRA_MIXINS)
 CHROME_DISABLE_SUBFRAME_DIALOG_SUPPRESSION_TOKEN = ENV_TOKENS.get(
     'CHROME_DISABLE_SUBFRAME_DIALOG_SUPPRESSION_TOKEN', CHROME_DISABLE_SUBFRAME_DIALOG_SUPPRESSION_TOKEN
 )
+
+################# Wikimedia Custom Settings ####################
+DEFAULT_EMAIL_LOGO_URL = ENV_TOKENS.get('DEFAULT_EMAIL_LOGO_URL', DEFAULT_EMAIL_LOGO_URL)
+
+# username that will be used as a request_user for email tasks.
+EMAIL_ADMIN = ENV_TOKENS.get('EMAIL_ADMIN', EMAIL_ADMIN)
