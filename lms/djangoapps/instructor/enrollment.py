@@ -447,6 +447,7 @@ def get_email_params(course, auto_enroll, secure=True, course_key=None, display_
         'contact_mailing_address': contact_mailing_address,
         'platform_name': platform_name,
         'site_configuration_values': configuration_helpers.get_current_site_configuration_values(),
+        'logo_url': configuration_helpers.get_value('DEFAULT_EMAIL_LOGO_URL', settings.DEFAULT_EMAIL_LOGO_URL),
     }
     return email_params
 
