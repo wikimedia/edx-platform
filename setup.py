@@ -106,7 +106,7 @@ setup(
             "course_apps = openedx.core.djangoapps.course_apps.apps:CourseAppsConfig",
             "admin_dashboard = openedx.features.wikimedia_features.admin_dashboard.apps:AdminDashboardConfig",
             "messenger = openedx.features.wikimedia_features.messenger.apps:MessengerConfig",
-
+            "wikimedia_general = openedx.features.wikimedia_features.wikimedia_general.apps:WikimediaGeneralConfig",
         ],
         "cms.djangoapp": [
             "announcements = openedx.features.announcements.apps:AnnouncementsConfig",
@@ -127,6 +127,7 @@ setup(
             "user_authn = openedx.core.djangoapps.user_authn.apps:UserAuthnConfig",
             "instructor = lms.djangoapps.instructor.apps:InstructorConfig",
             "course_apps = openedx.core.djangoapps.course_apps.apps:CourseAppsConfig",
+            "wikimedia_general = openedx.features.wikimedia_features.wikimedia_general.apps:WikimediaGeneralConfig",
         ],
         'openedx.learning_context': [
             'lib = openedx.core.djangoapps.content_libraries.library_context:LibraryContextImpl',
