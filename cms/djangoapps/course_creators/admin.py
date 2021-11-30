@@ -76,7 +76,7 @@ class CourseCreatorAdmin(admin.ModelAdmin):
     # Controls the order on the edit form (without this, read-only fields appear at the end).
     fieldsets = (
         (None, {
-            'fields': ['username', 'state', 'state_changed', 'note', 'all_organizations', 'organizations']
+            'fields': ['user', 'username', 'state', 'state_changed', 'note', 'all_organizations', 'organizations']
         }),
     )
     # Fields that filtering support
@@ -98,10 +98,10 @@ class CourseCreatorAdmin(admin.ModelAdmin):
     username.admin_order_field = 'user__username'
 
     def has_add_permission(self, request):
-        return False
+        return request.user.is_superuser
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        return request.user.is_superuser
 
     def has_change_permission(self, request, obj=None):
         return request.user.is_staff
