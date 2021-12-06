@@ -7,6 +7,7 @@ import hashlib
 import logging
 
 import django
+from django.conf import settings
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
@@ -102,7 +103,7 @@ def get_completion_badge(course_id, user):
         return None
     return BadgeClass.get_badge_class(
         slug=course_slug(course_id, mode),
-        issuing_component='',
+        issuing_component=settings.BADGR_ISSUER_SLUG,
         criteria=criteria(course_id),
         description=badge_description(course, mode),
         course_id=course_id,
