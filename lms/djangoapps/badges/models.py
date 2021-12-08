@@ -92,7 +92,7 @@ class BadgeClass(models.Model):
         if not course_id:
             course_id = CourseKeyField.Empty
         try:
-            return cls.objects.get(slug=slug, issuing_component=issuing_component, course_id=course_id)
+            return cls.objects.get(mode=mode, issuing_component=issuing_component, course_id=course_id)
         except cls.DoesNotExist:
             if not create:
                 return None
