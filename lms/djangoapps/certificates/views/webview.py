@@ -148,11 +148,11 @@ def _update_context_with_basic_info(context, course_id, platform_name, configura
     Updates context dictionary with basic info required before rendering simplest
     certificate templates.
     """
-    context['platform_name'] = platform_name
     context['course_id'] = course_id
 
     # Update the view context with the default ConfigurationModel settings
     context.update(configuration.get('default', {}))
+    context['platform_name'] = platform_name
 
     # Translators:  'All rights reserved' is a legal term used in copyrighting to protect published content
     reserved = _("All rights reserved")
