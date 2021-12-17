@@ -19,3 +19,278 @@
 // #SHAME
 // ------------------------------
 
+.layout-accomplishment {
+
+    &.certificate-verified {
+
+        .accomplishment-rendering {
+            background-image: none;
+            border: 0;
+        }
+    }
+
+    &.certificate-honor {
+        .accomplishment-rendering {
+            .accomplishment-signatories {
+                .signatory-signature {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .accomplishment-signatories {
+
+        .wrapper-signatories {
+            text-align: left;
+            margin: 0 0 1.8rem;
+        }
+
+        .signatory {
+            flex: 0 0 32%;
+            max-width: 32%;
+
+            .signatory-signature {
+                padding: 0;
+                display: block;
+                max-height: 5.45rem;
+                margin: 0.2rem 0 -0.5rem 0.6rem;
+            }
+        }
+    }
+}
+
+.accomplishment-wrapper {
+    display: flex;
+    width: 100%;
+    border: 1px solid #00a7e2;
+    background: #fff url("../images/certificate-bg.jpeg") 100% 0 no-repeat;
+    background-size: auto 100%;
+    padding: 2.9rem 0 0.6rem 3.9rem;
+}
+
+.accomplishment-rendering {
+
+    .layout-accomplishment & {
+        top: 10px;
+        border: 0;
+    }
+
+    .accomplishment-course,
+    .accomplishment-statement-lead {
+        margin: 0;
+    }
+
+    .accomplishment-course,
+    .accomplishment-statement,
+    .accomplishment-recipient,
+    .accomplishment-statement-lead {
+
+        .certificate & {
+            font-family: $font-family-sans;
+            letter-spacing: 0;
+            font-weight: normal;
+        }
+    }
+
+    .accomplishment-statement-lead {
+        margin-top: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    .accomplishment-statement,
+    .accomplishment-signatories {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .accomplishment-signatories {
+
+        .signatory-name,
+        .signatory-credentials {
+            text-align: left;
+        }
+
+        .signatory-name {
+            border-top: 1px solid #595959;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1;
+            margin: 0;
+            padding: 8px 0 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signatory-credentials {
+            font-size: 0.9rem;
+
+            .role {
+                font-size: 0.84rem;
+            }
+        }
+
+        .signatory-signature {
+            padding: 0;
+        }
+    }
+
+    .accomplishment-orgs-title {
+
+        .certificate & {
+            color: #000;
+        }
+    }
+
+    .accomplishment-type,
+    .accomplishment-statement {
+        text-align: left;
+    }
+
+    .accomplishment-recipient {
+        margin-bottom: 1.2rem;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 2.16rem;
+    }
+
+    .accomplishment-summary {
+        font-size: 1.04rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .accomplishment-course-name {
+        font-size: 1.24rem;
+        line-height: 1.1;
+        display: block;
+    }
+
+    .accomplishment-info {
+        font-size: 0.84rem;
+        line-height: 1.2;
+
+        p {
+            margin: 0;
+
+            a {
+                color: #000;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.date {
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.55rem 0;
+}
+
+.main-content {
+    flex: 0 0 66.7%;
+    max-width: 66.7%;
+}
+
+.side-area {
+    display: flex;
+    flex: 0 0 33.3%;
+    max-width: 33.3%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 0 1.5rem;
+    box-sizing: border-box;
+
+    .accomplishment-orgs-title {
+        margin-top: auto;
+        margin-bottom: -1.5rem;
+        padding: 0;
+        border: 0;
+        font-size: 1.5rem;
+        line-height: 1.1;
+    }
+
+    .organization-logo {
+        max-width: 8.4rem;
+        margin: auto 0 2rem;
+    }
+}
+
+.logo-box {
+    width: 22.6rem;
+    height: 6.9rem;
+
+    .logo {
+        height: 100%;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+    }
+}
+
+@media print {
+    .accomplishment-rendering {
+        padding: 0;
+
+        .accomplishment-recipient {
+            font-size: 1.9rem;
+        }
+
+        .accomplishment-course-name {
+            font-size: 1.1rem;
+            width: 100%;
+        }
+
+        .accomplishment-info {
+            font-size: 0.74rem;
+        }
+
+        .wrapper-statement-and-signatories {
+            border: 0;
+        }
+
+        .accomplishment-statement {
+            width: 100%;
+            max-width: 80%;
+        }
+    }
+
+    .side-area .organization-logo {
+        width: 5rem;
+    }
+
+    .main-content {
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+
+    .side-area {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+
+    .layout-accomplishment {
+
+        .accomplishment-signatories {
+
+            .signatory {
+
+                .signatory-signature {
+                    height: auto;
+                    width: 8rem;
+                }
+            }
+        }
+    }
+
+    .logo {
+        width: 20.5rem;
+        display: block;
+        height: auto;
+    }
+}

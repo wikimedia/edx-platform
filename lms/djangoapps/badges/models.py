@@ -56,7 +56,8 @@ class BadgeClass(models.Model):
     .. no_pii:
     """
     slug = models.SlugField(max_length=255, validators=[validate_lowercase])
-    issuing_component = models.SlugField(max_length=50, default='', blank=True, validators=[validate_lowercase])
+    badgr_server_slug = models.SlugField(max_length=255, default='', blank=True)
+    issuing_component = models.SlugField(max_length=50, default='', blank=True)
     display_name = models.CharField(max_length=255)
     course_id = CourseKeyField(max_length=255, blank=True, default=None)
     description = models.TextField()
@@ -86,13 +87,12 @@ class BadgeClass(models.Model):
         would need to be looked up without also being created were it missing.
         """
         slug = slug.lower()
-        issuing_component = issuing_component.lower()
         if course_id and not modulestore().get_course(course_id).issue_badges:
             raise CourseBadgesDisabledError("This course does not have badges enabled.")
         if not course_id:
             course_id = CourseKeyField.Empty
         try:
-            return cls.objects.get(slug=slug, issuing_component=issuing_component, course_id=course_id)
+            return cls.objects.get(mode=mode, issuing_component=issuing_component, course_id=course_id)
         except cls.DoesNotExist:
             if not create:
                 return None
@@ -136,7 +136,6 @@ class BadgeClass(models.Model):
         Slugs must always be lowercase.
         """
         self.slug = self.slug and self.slug.lower()
-        self.issuing_component = self.issuing_component and self.issuing_component.lower()
         super().save(**kwargs)
 
     class Meta:

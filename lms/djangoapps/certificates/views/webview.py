@@ -142,17 +142,20 @@ def _update_certificate_context(context, course, user_certificate, platform_name
         platform_name=platform_name,
     )
 
+    # Translators: This text fragment appears after the signatures (displayed in a small font) on the certificate
+    context['certificate_info'] = _("Certificate Info")
+
 
 def _update_context_with_basic_info(context, course_id, platform_name, configuration):
     """
     Updates context dictionary with basic info required before rendering simplest
     certificate templates.
     """
-    context['platform_name'] = platform_name
     context['course_id'] = course_id
 
     # Update the view context with the default ConfigurationModel settings
     context.update(configuration.get('default', {}))
+    context['platform_name'] = platform_name
 
     # Translators:  'All rights reserved' is a legal term used in copyrighting to protect published content
     reserved = _("All rights reserved")
