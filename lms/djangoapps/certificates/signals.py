@@ -33,6 +33,7 @@ from openedx.core.djangoapps.signals.signals import (
     COURSE_GRADE_NOW_PASSED,
     LEARNER_NOW_VERIFIED
 )
+from openedx.features.wikimedia_features.wikimedia_general.utils import is_course_graded
 
 log = logging.getLogger(__name__)
 
@@ -107,7 +108,8 @@ def _listen_for_failing_grade(sender, user, course_id, grade, **kwargs):  # pyli
 
     cert = GeneratedCertificate.certificate_for_student(user, course_id)
     if cert is not None:
-        if CertificateStatuses.is_passing_status(cert.status):
+        # [Wikimedia-Custom] Mark certificate state notpassing only if course has graded assignments.
+        if CertificateStatuses.is_passing_status(cert.status) and is_course_graded(course_id, user):
             cert.mark_notpassing(grade.percent)
             log.info('Certificate marked not passing for {user} : {course} via failing grade: {grade}'.format(
                 user=user.id,
