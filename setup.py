@@ -128,6 +128,7 @@ setup(
             "instructor = lms.djangoapps.instructor.apps:InstructorConfig",
             "course_apps = openedx.core.djangoapps.course_apps.apps:CourseAppsConfig",
             "wikimedia_general = openedx.features.wikimedia_features.wikimedia_general.apps:WikimediaGeneralConfig",
+            "meta_translations = openedx.features.wikimedia_features.meta_translations.apps:MetaTranslationsConfig",
         ],
         'openedx.learning_context': [
             'lib = openedx.core.djangoapps.content_libraries.library_context:LibraryContextImpl',
