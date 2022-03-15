@@ -117,6 +117,7 @@ setup(
             "user_authn = openedx.core.djangoapps.user_authn.apps:UserAuthnConfig",
             "instructor = lms.djangoapps.instructor.apps:InstructorConfig",
             "wikimedia_general = openedx.features.wikimedia_features.wikimedia_general.apps:WikimediaGeneralConfig",
+            "meta_translations = openedx.features.wikimedia_features.meta_translations.apps:MetaTranslationsConfig",
         ],
         'openedx.learning_context': [
             'lib = openedx.core.djangoapps.content_libraries.library_context:LibraryContextImpl',
