@@ -51,3 +51,15 @@ class WikiTranslation(models.Model):
         app_label = APP_LABEL
         verbose_name = "Wiki Meta Translations"
         unique_together = ('target_block', 'source_block_data')
+
+class CourseTranslation(models.Model):
+    """
+    Strores the relation of base course and translated course
+    """
+    course_id = CourseKeyField(max_length=255, db_index=True)
+    base_course_id = CourseKeyField(max_length=255, db_index=True)
+
+    class Meta:
+        app_label = APP_LABEL
+        verbose_name = "Course Translation"
+        unique_together = ('course_id', 'base_course_id')
