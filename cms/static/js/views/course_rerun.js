@@ -79,10 +79,21 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
         var onReady = function() {
             var $cancelButton = $('.rerun-course-cancel');
             var $courseRun = $('.rerun-course-run');
+            var $basicRerunTranslation = $('.field-radio');
+            var languageFilter = $('#field-course-language');
+
             $courseRun.focus().select();
             $('.rerun-course-save').on('click', saveRerunCourse);
             $cancelButton.bind('click', cancelRerunCourse);
             $('.cancel-button').bind('click', cancelRerunCourse);
+
+            $basicRerunTranslation.on('change', function () {
+                (this.id == 'basic-rerun') ?
+                    languageFilter.slideUp()
+                :
+                    languageFilter.slideDown()
+                ;
+            });
 
             CreateCourseUtils.configureHandlers();
         };
