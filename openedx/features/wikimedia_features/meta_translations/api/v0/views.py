@@ -2,14 +2,16 @@
 Views for MetaTranslation v0 API(s)
 """
 import json
+from lms.djangoapps.courseware.courses import get_course_by_id
 from opaque_keys.edx.keys import CourseKey
 from django.utils.translation import ugettext as _
+from openedx.features.wikimedia_features.meta_translations.api.v0.utils import get_courses_of_base_course, get_outline_course_to_sections
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 from cms.djangoapps.contentstore.outlines import get_outline_from_modulestore
 from xmodule.modulestore.django import modulestore
-from cms.djangoapps.contentstore.views.course import _course_outline_json
+from cms.djangoapps.contentstore.views.course import _course_outline_json, get_courses_accessible_to_user
 from opaque_keys.edx.keys import UsageKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
 from xmodule.video_module.transcripts_utils import get_video_transcript_content
@@ -17,53 +19,58 @@ from xmodule.video_module.transcripts_utils import get_video_transcript_content
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
     def get(self, request, *args, **kwargs):
-        course_id = kwargs.get('course_key_string')
+        course_id = kwargs.get('course_key')
+        base_course_id = kwargs.get('base_course_key')
+
         course_key = CourseKey.from_string(course_id)
-        outline, _ = get_outline_from_modulestore(course_key)
-        sections = []
-        for section in outline.sections:
-            section_data = {}
-            section_data['title'] = section.title
-            section_data['usage_key'] = str(section.usage_key)
-            section_data['children'] = []
-            for subsection in section.sequences:
-                subsection_data = {}
-                subsection_data['title'] = subsection.title
-                subsection_data['usage_key'] = str(subsection.usage_key)
-                section_data['children'].append(subsection_data)
-            sections.append(section_data)
-        return Response(json.dumps(sections), status=status.HTTP_200_OK)
+        base_course_key = CourseKey.from_string(base_course_id)
+
+        course = get_course_by_id(course_key)
+        base_course = get_course_by_id(base_course_key)
+
+        course_outline = get_outline_course_to_sections(course)
+        base_course_outline = get_outline_course_to_sections(base_course)
+
+        data = {
+            'course_lang': course.language,
+            'base_course_lang': base_course.language,
+            'course_outline': course_outline,
+            'base_course_outline': base_course_outline
+        }
+
+        return Response(json.dumps(data), status=status.HTTP_200_OK)
 
 class GetSubSectionContent(generics.RetrieveAPIView):
-    
-    def _get_video_subtitles(self, video_id, language):
-        data = get_video_transcript_content(video_id, language)
-        json_content = json.loads(data['content'].decode("utf-8"))
-        return json_content['text']
-
     def get(self, request, *args, **kwargs):
-        usage_key = kwargs.get('subsection_id')
-        block_location = UsageKey.from_string(usage_key)
-        units_children = modulestore().get_item(block_location).children
-        units = []
-        for unit_key in units_children:
-            unit = modulestore().get_item(unit_key)
-            unit_data = {}
-            unit_data['display_name'] = unit.display_name
-            unit_data['usage_key'] = str(unit_key)
-            unit_data['children'] = []
-            for component_key in unit.children:
-                component = modulestore().get_item(component_key)
-                component_data = {}
-                component_data['display_name'] = component.display_name
-                component_data['usage_key'] = str(component_key)
-                component_data['category'] = component.category
-                if component.category == 'video':
-                    component_data['data'] =  self._get_video_subtitles(component.edx_video_id, component.transcript_language)
-                else:
-                    component_data['data'] = component.data
-                unit_data['children'].append(component_data)
-            units.append(unit_data)
-        return Response(json.dumps(units), status=status.HTTP_200_OK)
+        usage_key = kwargs.get('subsection_key')
+        base_usage_key = kwargs.get('base_subsection_key')
 
+        block_location = UsageKey.from_string(usage_key)
+        base_block_location = UsageKey.from_string(base_usage_key)
+
+        subsection = modulestore().get_item(block_location)
+        base_subsection = modulestore().get_item(base_block_location)
+
+        units_data = get_outline_course_to_sections(subsection)
+        base_units_data = get_outline_course_to_sections(base_subsection)
+
+        data = {
+            'units_data': units_data,
+            'base_units_data': base_units_data,
+        }
+
+        return Response(json.dumps(data), status=status.HTTP_200_OK)
+
+class GetCoursesVersionInfo(generics.RetrieveAPIView):
+    def _course_version_format(self, courses_id):
+        return {
+            'course_id': str(courses_id),
+            'base_course_ids': get_courses_of_base_course(courses_id)
+        }
+    
+    def get(self, request, *args, **kwargs):
+        user_courses, _ = get_courses_accessible_to_user(request)
+        courses_ids = [course.id for course in user_courses]
+        data = [self._course_version_format(course_id) for course_id in courses_ids]
+        return Response(json.dumps(data), status=status.HTTP_200_OK)
         

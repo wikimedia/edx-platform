@@ -9,7 +9,7 @@ app_name = 'meta_translations'
 
 urlpatterns = [
     url(
-        r'^(?P<course_id>.+)$',
+        r'^$',
         render_translation_home,
         name='translations_home'
     ),
