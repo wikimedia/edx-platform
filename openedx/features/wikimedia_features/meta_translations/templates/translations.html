@@ -15,6 +15,10 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
     <link rel="stylesheet" type="text/css" href="/static/css/ReactToastify.css" />
 </%block>
 
+<%block name="header_extras">
+    <link rel="stylesheet" type="text/css" href="${static.url('css/studio-main-v1.css')}" />
+</%block>
+
 <%block name="content">
     <div id="root" class="container">
     </div>
@@ -22,8 +26,6 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
         var context = {
             "PLATFORM_NAME": "${platform_name | n, js_escaped_string}",
             "LOGIN_USER": "${login_user_username | n, js_escaped_string}",
-            "BASE_COURSE_ID": "${base_course_id | n, js_escaped_string}",
-            "COURSE_ID": "${course_id | n, js_escaped_string}"
         }
         new Translations(context);
     </%static:webpack>
