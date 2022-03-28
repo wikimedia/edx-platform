@@ -8,7 +8,7 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
             number: '.rerun-course-number',
             run: '.rerun-course-run',
             language: '.rerun-course-language',
-            rerun_type: '.rerun-type',
+            rerun_type: '.field-radio',
             save: '.rerun-course-save',
             errorWrapper: '.wrapper-error',
             errorMessage: '#course_rerun_error',
@@ -37,7 +37,7 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
             var number = $newCourseForm.find('.rerun-course-number').val();
             var run = $newCourseForm.find('.rerun-course-run').val();
             var language = $newCourseForm.find('.rerun-course-language').val();
-            var rerun_type = $newCourseForm.find('.rerun-type').val();
+            var rerun_type = $newCourseForm.find('.field-radio:checked').val();
 
             courseInfo = {
                 source_course_key: source_course_key,
@@ -45,9 +45,12 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
                 number: number,
                 display_name: display_name,
                 run: run,
-                language: language,
                 basic_rerun: rerun_type=="basic" ? true : false
             };
+
+            if (rerun_type != 'basic'){
+                courseInfo.language = language
+            }
 
             analytics.track('Reran a Course', courseInfo); // eslint-disable-line no-undef
             CreateCourseUtils.create(courseInfo, function(errorMessage) {
