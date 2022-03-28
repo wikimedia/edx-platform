@@ -7,6 +7,8 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
             org: '.rerun-course-org',
             number: '.rerun-course-number',
             run: '.rerun-course-run',
+            language: '.rerun-course-language',
+            rerun_type: '.rerun-type',
             save: '.rerun-course-save',
             errorWrapper: '.wrapper-error',
             errorMessage: '#course_rerun_error',
@@ -34,13 +36,17 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
             var org = $newCourseForm.find('.rerun-course-org').val();
             var number = $newCourseForm.find('.rerun-course-number').val();
             var run = $newCourseForm.find('.rerun-course-run').val();
+            var language = $newCourseForm.find('.rerun-course-language').val();
+            var rerun_type = $newCourseForm.find('.rerun-type').val();
 
             courseInfo = {
                 source_course_key: source_course_key,
                 org: org,
                 number: number,
                 display_name: display_name,
-                run: run
+                run: run,
+                language: language,
+                basic_rerun: rerun_type=="basic" ? true : false
             };
 
             analytics.track('Reran a Course', courseInfo); // eslint-disable-line no-undef
@@ -73,10 +79,21 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
         var onReady = function() {
             var $cancelButton = $('.rerun-course-cancel');
             var $courseRun = $('.rerun-course-run');
+            var $basicRerunTranslation = $('.field-radio');
+            var languageFilter = $('#field-course-language');
+
             $courseRun.focus().select();
             $('.rerun-course-save').on('click', saveRerunCourse);
             $cancelButton.bind('click', cancelRerunCourse);
             $('.cancel-button').bind('click', cancelRerunCourse);
+
+            $basicRerunTranslation.on('change', function () {
+                (this.id == 'basic-rerun') ?
+                    languageFilter.slideUp()
+                :
+                    languageFilter.slideDown()
+                ;
+            });
 
             CreateCourseUtils.configureHandlers();
         };

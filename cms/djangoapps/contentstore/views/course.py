@@ -29,6 +29,7 @@ from milestones import api as milestones_api
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 from opaque_keys.edx.locator import BlockUsageLocator
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from organizations.api import add_organization_course, ensure_organization
 from organizations.exceptions import InvalidOrganizationException
 
@@ -313,6 +314,7 @@ def course_rerun_handler(request, course_key_string):
         if request.method == 'GET':
             return render_to_response('course-create-rerun.html', {
                 'source_course_key': course_key,
+                'language_options': settings.ALL_LANGUAGES,
                 'display_name': course_module.display_name,
                 'user': request.user,
                 'course_creator_status': _get_course_creator_status(request.user),
@@ -552,6 +554,7 @@ def course_listing(request):
     in_process_course_actions = [format_in_process_course_view(uca) for uca in in_process_course_actions]
 
     return render_to_response('index.html', {
+        'language_options': settings.ALL_LANGUAGES,
         'courses': active_courses,
         'split_studio_home': split_library_view_on_dashboard(),
         'archived_courses': archived_courses,
@@ -853,6 +856,9 @@ def _create_or_rerun_course(request):
         raise PermissionDenied()
 
     try:
+        # meta-translation feature, to identify type of rerun
+        is_basic_rerun = request.json.get('basic_rerun')
+        language = request.json.get('language')
         org = request.json.get('org')
         course = request.json.get('number', request.json.get('course'))
         display_name = request.json.get('display_name')
@@ -871,6 +877,8 @@ def _create_or_rerun_course(request):
         fields = {'start': start}
         if display_name is not None:
             fields['display_name'] = display_name
+        if language is not None:
+            fields['language'] = language
 
         # Set a unique wiki_slug for newly created courses. To maintain active wiki_slugs for
         # existing xml courses this cannot be changed in CourseBlock.
@@ -884,6 +892,8 @@ def _create_or_rerun_course(request):
         if source_course_key:
             source_course_key = CourseKey.from_string(source_course_key)
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
+            if not is_basic_rerun:
+                CourseTranslation.set_course_translation(destination_course_key, source_course_key)            
             return JsonResponse({
                 'url': reverse_url('course_handler'),
                 'destination_course_key': str(destination_course_key)
@@ -944,8 +954,11 @@ def create_new_course_in_store(store, user, org, number, run, fields):
     """
 
     # Set default language from settings and enable web certs
+    if 'language' not in fields:
+        fields.update({
+            'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
+        })
     fields.update({
-        'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
         'cert_html_view_enabled': True,
     })
 
