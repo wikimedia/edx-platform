@@ -72,9 +72,19 @@ def get_outline_course_to_sections(course):
 def get_outline_subsections_to_component(sub_section):
     return get_outline_structured(sub_section)
 
+def get_course_version_object(course_key):
+    course = get_course_by_id(course_key)
+    version_obj = {
+        'id': str(course.course_id),
+        'title': course.display_name,
+        'language': course.language
+        }
+    return str(course.course_id), version_obj
+
 def get_courses_of_base_course(base_course_id):
     course_varsions = CourseTranslation.objects.filter(base_course_id = base_course_id)
-    return [str(course_version.course_id) for course_version in course_varsions]
+    translated_courses = [get_course_version_object(course_version.course_id) for course_version in course_varsions]
+    return dict(translated_courses)
 
 def mapping_blocks(course_id, base_course_id):
     course_key = CourseKeyField.from_string(course_id)
