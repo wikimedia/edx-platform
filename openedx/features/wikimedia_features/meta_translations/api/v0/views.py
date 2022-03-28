@@ -66,8 +66,8 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
     def _course_version_format(self, course_key):
         course = get_course_by_id(course_key)
         base_course_obj = {
-            'course_id': str(course.id),
-            'course_title': str(course.display_name),
+            'id': str(course.id),
+            'title': str(course.display_name),
             'language': course.language,
             'rerun': get_courses_of_base_course(course.id)
         }
