@@ -5,14 +5,13 @@ import json
 from lms.djangoapps.courseware.courses import get_course_by_id
 from opaque_keys.edx.keys import CourseKey
 from django.utils.translation import ugettext as _
-from openedx.features.wikimedia_features.meta_translations.api.v0.utils import get_courses_of_base_course, get_outline_course_to_sections
+from openedx.features.wikimedia_features.meta_translations.api.v0.utils import get_courses_of_base_course, get_outline_course_to_sections_testing, get_outline_subsections_to_component_testing
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
-from cms.djangoapps.contentstore.outlines import get_outline_from_modulestore
 from xmodule.modulestore.django import modulestore
-from cms.djangoapps.contentstore.views.course import _course_outline_json, get_courses_accessible_to_user
+from cms.djangoapps.contentstore.views.course import get_courses_accessible_to_user
 from opaque_keys.edx.keys import UsageKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
 from xmodule.video_module.transcripts_utils import get_video_transcript_content
@@ -29,8 +28,7 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
         course = get_course_by_id(course_key)
         base_course = get_course_by_id(base_course_key)
 
-        course_outline = get_outline_course_to_sections(course)
-        base_course_outline = get_outline_course_to_sections(base_course)
+        base_course_outline, course_outline = get_outline_course_to_sections_testing(base_course, course)
 
         data = {
             'course_lang': course.language,
@@ -52,8 +50,7 @@ class GetSubSectionContent(generics.RetrieveAPIView):
         subsection = modulestore().get_item(block_location)
         base_subsection = modulestore().get_item(base_block_location)
 
-        units_data = get_outline_course_to_sections(subsection)
-        base_units_data = get_outline_course_to_sections(base_subsection)
+        base_units_data, units_data = get_outline_subsections_to_component_testing(base_subsection, subsection)
 
         data = {
             'units_data': units_data,
