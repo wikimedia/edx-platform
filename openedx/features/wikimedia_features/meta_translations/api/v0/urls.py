@@ -14,19 +14,14 @@ urlpatterns = [
         GetTranslationOutlineStructure.as_view(),
         name='outline',
     ),
-    # url(
-    #     r'^outline$',
-    #     GetTranslationOutlineStructure.as_view(),
-    #     name='outline',
-    # ),
     url(
-        r'^subsection/(?P<subsection_key>.+)/(?P<base_subsection_key>.+)$',
+        r'^subsection/(?P<subsection_key>.*?)/(?P<base_subsection_key>.*?)$',
         GetSubSectionContent.as_view(),
         name='subsection',
     ),
     url(
         r'^versions$',
         GetCoursesVersionInfo.as_view(),
-        name='subsection',
+        name='versions',
     ),
 ]
