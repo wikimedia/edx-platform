@@ -26,6 +26,9 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
         var context = {
             "PLATFORM_NAME": "${platform_name | n, js_escaped_string}",
             "LOGIN_USER": "${login_user_username | n, js_escaped_string}",
+            "COURSES_URL": "api/v0/versions",
+            "COURSE_OUTLINE_URL": "api/v0/outline",
+            "LANGUAGES": "${language_options | n, js_escaped_string}"
         }
         new Translations(context);
     </%static:webpack>

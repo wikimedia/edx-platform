@@ -97,11 +97,11 @@ def get_outline_structured_with_keys_testing(base_block, block, depth=3):
 
     return base_data, data
 
-def get_outline_course_to_sections_testing(base_course, course):
-    return get_outline_structured_with_keys_testing(base_course, course, 2)
+def get_outline_course_to_units_testing(base_course, course):
+    return get_outline_structured_with_keys_testing(base_course, course, 3)
 
-def get_outline_subsections_to_component_testing(base_subsection, sub_section):
-    return get_outline_structured_with_keys_testing(base_subsection, sub_section)
+def get_outline_unit_to_components_testing(base_unit,unit):
+    return get_outline_structured_with_keys_testing(base_unit, unit)
 
 def get_outline_course_to_sections(course):
     return get_outline_structured(course, 2)

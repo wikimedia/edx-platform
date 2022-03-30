@@ -5,7 +5,7 @@ import json
 from lms.djangoapps.courseware.courses import get_course_by_id
 from opaque_keys.edx.keys import CourseKey
 from django.utils.translation import ugettext as _
-from openedx.features.wikimedia_features.meta_translations.api.v0.utils import get_courses_of_base_course, get_outline_course_to_sections_testing, get_outline_subsections_to_component_testing
+from openedx.features.wikimedia_features.meta_translations.api.v0.utils import get_courses_of_base_course, get_outline_course_to_units_testing, get_outline_unit_to_components_testing
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from rest_framework import generics
 from rest_framework import status
@@ -14,8 +14,6 @@ from xmodule.modulestore.django import modulestore
 from cms.djangoapps.contentstore.views.course import get_courses_accessible_to_user
 from opaque_keys.edx.keys import UsageKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
-from xmodule.video_module.transcripts_utils import get_video_transcript_content
-
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
     def get(self, request, *args, **kwargs):
@@ -28,21 +26,21 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
         course = get_course_by_id(course_key)
         base_course = get_course_by_id(base_course_key)
 
-        base_course_outline, course_outline = get_outline_course_to_sections_testing(base_course, course)
-
+        base_course_outline, course_outline = get_outline_course_to_units_testing(base_course, course)
+        base_key, key = list(base_course_outline.keys())[0], list(course_outline.keys())[0]
         data = {
             'course_lang': course.language,
             'base_course_lang': base_course.language,
-            'course_outline': course_outline,
-            'base_course_outline': base_course_outline
+            'course_outline': course_outline[key]['children'],
+            'base_course_outline': base_course_outline[base_key]['children']
         }
 
         return Response(json.dumps(data), status=status.HTTP_200_OK)
 
-class GetSubSectionContent(generics.RetrieveAPIView):
+class GetVerticalComponentContent(generics.RetrieveAPIView):
     def get(self, request, *args, **kwargs):
-        usage_key = kwargs.get('subsection_key')
-        base_usage_key = kwargs.get('base_subsection_key')
+        usage_key = kwargs.get('unit_key')
+        base_usage_key = kwargs.get('base_unit_key')
 
         block_location = UsageKey.from_string(usage_key)
         base_block_location = UsageKey.from_string(base_usage_key)
@@ -50,11 +48,12 @@ class GetSubSectionContent(generics.RetrieveAPIView):
         subsection = modulestore().get_item(block_location)
         base_subsection = modulestore().get_item(base_block_location)
 
-        base_units_data, units_data = get_outline_subsections_to_component_testing(base_subsection, subsection)
+        base_units_data, units_data = get_outline_unit_to_components_testing(base_subsection, subsection)
+        base_key, key = list(base_units_data.keys())[0], list(units_data.keys())[0]
 
         data = {
-            'units_data': units_data,
-            'base_units_data': base_units_data,
+            'components_data': units_data[key]['children'],
+            'base_components_data': base_units_data[base_key]['children'],
         }
 
         return Response(json.dumps(data), status=status.HTTP_200_OK)
