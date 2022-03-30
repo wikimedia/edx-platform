@@ -4,9 +4,9 @@
 define([
     'jquery', 'underscore', 'gettext', 'js/views/pages/base_page', 'js/views/utils/xblock_utils',
     'js/views/course_outline', 'common/js/components/utils/view_utils', 'common/js/components/views/feedback_alert',
-    'common/js/components/views/feedback_notification', 'js/views/course_highlights_enable'],
+    'common/js/components/views/feedback_notification', 'js/views/course_highlights_enable', 'js/views/course_blocks_mapping'],
     function($, _, gettext, BasePage, XBlockViewUtils, CourseOutlineView, ViewUtils, AlertView, NoteView,
-             CourseHighlightsEnableView
+             CourseHighlightsEnableView, CourseBlocksMappingView
     ) {
         'use strict';
         var expandedLocators, CourseOutlinePage;
@@ -89,6 +89,12 @@ define([
                     });
                     this.highlightsEnableView.render();
                 }
+
+                this.blocksMappingView = new CourseBlocksMappingView({
+                    el: this.$('.status-course-blocks-mapping'),
+                    model: this.model
+                });
+                this.blocksMappingView.render();
 
                 this.outlineView = new CourseOutlineView({
                     el: this.$('.outline'),
