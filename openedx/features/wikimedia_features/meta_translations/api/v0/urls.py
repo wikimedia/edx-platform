@@ -2,7 +2,7 @@
 Urls for Messenger v0 API(s)
 """
 from django.conf.urls import url
-from openedx.features.wikimedia_features.meta_translations.api.v0.views import GetCoursesVersionInfo, GetSubSectionContent, GetTranslationOutlineStructure
+from openedx.features.wikimedia_features.meta_translations.api.v0.views import GetCoursesVersionInfo, GetTranslationOutlineStructure, GetVerticalComponentContent
 
 
 app_name = 'translations_api_v0'
@@ -15,9 +15,9 @@ urlpatterns = [
         name='outline',
     ),
     url(
-        r'^subsection/(?P<subsection_key>.*?)/(?P<base_subsection_key>.*?)$',
-        GetSubSectionContent.as_view(),
-        name='subsection',
+        r'^components/(?P<unit_key>.*?)/(?P<base_unit_key>.*?)$',
+        GetVerticalComponentContent.as_view(),
+        name='components',
     ),
     url(
         r'^versions$',
