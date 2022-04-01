@@ -76,13 +76,13 @@ def get_outline_structured_with_keys(block, depth=3):
     return data
 
 def get_outline_structured_with_keys_testing(base_block, block, depth=3):
-    
+
     if depth == 0 or not hasattr(block, 'children'):
         random_key = get_random_string()
         base_data = { random_key: get_block_data(base_block) }
         data = { random_key: get_block_data(block) }
         return base_data, data
-    
+
     random_key = get_random_string()
     base_data = { random_key: get_block_data(base_block)}
     data = {  random_key: get_block_data(block) }
