@@ -2,112 +2,77 @@
 Helping functions to get data of a course
 """
 
-import json
 from lms.djangoapps.courseware.courses import get_course_by_id
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
-from xmodule.video_module.transcripts_utils import get_video_transcript_content
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation, WikiTranslation
 import string
 import random
+from opaque_keys.edx.keys import CourseKey
 
 def get_random_string(N=16):
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
 
-def get_html_components_data(block):
-    return {
-        "display_name": block.display_name,
-        "content": block.data
-    }
-
-def get_video_components_data(block):
-    data = get_video_transcript_content(block.edx_video_id, block.transcript_language)
-    json_content = json.loads(data['content'].decode("utf-8"))
-    return {
-        "display_name": block.display_name,
-        "transcript": json_content['text']
-    }
-
-def get_module_data(block):
-    return {
-        'display_name': block.display_name
-    }
-
-COMPONENTS_FUNCTION_MAPPING = {
-    'course': get_module_data,
-    'chapter': get_module_data,
-    'sequential': get_module_data,
-    'vertical': get_module_data,
-    'html': get_html_components_data,
-    'problem': get_html_components_data,
-    'video': get_video_components_data
-}
-
-def get_block_data(block):
-    return {
-        'usage_key': str(block.scope_ids.usage_id),
+def get_block_data_from_table(block, wiki_objects):
+    usage_key = str(block.scope_ids.usage_id)
+    block_fields = {}
+    base_block_fields = {}
+    wiki_objects = wiki_objects.filter(target_block__block_id=usage_key)
+    base_usage_key = ''
+    for obj in wiki_objects:
+        data_type = obj.source_block_data.data_type
+        block_fields[data_type] = "" if obj.translation==None else obj.translation
+        base_block_fields[data_type] = obj.source_block_data.data
+        base_usage_key = obj.source_block_data.course_block.block_id
+    
+    course_block_data = {
+        'usage_key': usage_key,
         'category': block.category,
-        'data': COMPONENTS_FUNCTION_MAPPING[block.category](block)
+        'data': block_fields
+    }
+    base_course_block_data = {
+        'usage_key': base_usage_key,
+        'category': block.category,
+        'data': base_block_fields
     }
 
-def get_outline_structured(block, depth=3):
-    if depth == 0 or not hasattr(block, 'children'):
-        return get_block_data(block)
-    data = get_block_data(block)
-    data['children'] = []
-    for child in block.get_children():
-        data['children'].append(get_outline_structured(child, depth - 1))
-    return data
+    return course_block_data, base_course_block_data
 
-def get_outline_unstructured(block, depth=3):
-    if depth == 0 or not hasattr(block, 'children'):
-        return [get_block_data(block)]
-    data = [get_block_data(block)]
-    for child in block.get_children():
-        data.extend(get_outline_unstructured(child, depth - 1))
-    return data
 
-def get_outline_structured_with_keys(block, depth=3):
-    if depth == 0 or not hasattr(block, 'children'):
-        return { get_random_string() : get_block_data(block) }
-    random_key = get_random_string()
-    data = {  random_key : get_block_data(block) }
-    data[random_key]['children'] = {}
-    for child in block.get_children():
-        data[random_key]['children'].update(get_outline_structured_with_keys(child, depth - 1))
-    return data
-
-def get_outline_structured_with_keys_testing(base_block, block, depth=3):
-
+def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
     if depth == 0 or not hasattr(block, 'children'):
         random_key = get_random_string()
-        base_data = { random_key: get_block_data(base_block) }
-        data = { random_key: get_block_data(block) }
-        return base_data, data
-
+        data, base_data = get_block_data_from_table(block, wiki_objects)
+        data_map = { random_key: data }
+        base_data_map = { random_key: base_data }
+        return data_map, base_data_map
+    
     random_key = get_random_string()
-    base_data = { random_key: get_block_data(base_block)}
-    data = {  random_key: get_block_data(block) }
+    data, base_data = get_block_data_from_table(block, wiki_objects)
+    data_map = { random_key: data }
+    base_data_map = { random_key: base_data }
 
-    data[random_key]['children'] = {}
-    base_data[random_key]['children'] = {}
+    data_map[random_key]['children'] = {}
+    base_data_map[random_key]['children'] = {}
 
-    for base_child, child in zip(base_block.get_children(), block.get_children()):
-        base_outline, outline = get_outline_structured_with_keys_testing(base_child, child, depth - 1)
-        base_data[random_key]['children'].update(base_outline)
-        data[random_key]['children'].update(outline)
+    for child in block.get_children():
+        course_outline, course_base_outline = get_recursive_blocks_data_from_table(child, wiki_objects, depth - 1)
+        data_map[random_key]['children'].update(course_outline)
+        base_data_map[random_key]['children'].update(course_base_outline)
+    return data_map, base_data_map
 
-    return base_data, data
+def get_course_outline(course_id, N=3):
+    wiki_objects = WikiTranslation.objects.filter(target_block__course_id=course_id)
+    course_key = CourseKey.from_string(course_id)
+    course = get_course_by_id(course_key)
+    course_data, base_course_data = get_recursive_blocks_data_from_table(course, wiki_objects, N)
+    return course_data, base_course_data
 
-def get_outline_course_to_units_testing(base_course, course):
-    return get_outline_structured_with_keys_testing(base_course, course, 3)
+def get_outline_course_to_units(course):
+    wiki_objects = WikiTranslation.objects.filter(target_block__course_id=course.course_id)
+    return get_recursive_blocks_data_from_table(course, wiki_objects, 3)
 
-def get_outline_unit_to_components_testing(base_unit,unit):
-    return get_outline_structured_with_keys_testing(base_unit, unit)
-
-def get_outline_course_to_sections(course):
-    return get_outline_structured(course, 2)
-
-def get_outline_subsections_to_component(sub_section):
-    return get_outline_structured(sub_section)
+def get_outline_unit_to_components(unit):
+    wiki_objects = WikiTranslation.objects.filter(target_block__course_id=unit.course_id)
+    return get_recursive_blocks_data_from_table(unit, wiki_objects)
 
 def get_course_version_object(course_key):
     course = get_course_by_id(course_key)

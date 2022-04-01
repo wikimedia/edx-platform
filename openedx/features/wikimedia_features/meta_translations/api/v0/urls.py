@@ -10,12 +10,12 @@ app_name = 'translations_api_v0'
 
 urlpatterns = [
     url(
-        r'^outline/(?P<course_key>.+)/(?P<base_course_key>.+)$',
+        r'^outline/(?P<course_key>.+)$',
         GetTranslationOutlineStructure.as_view(),
         name='outline',
     ),
     url(
-        r'^components/(?P<unit_key>.*?)/(?P<base_unit_key>.*?)$',
+        r'^components/(?P<unit_key>.*?)$',
         GetVerticalComponentContent.as_view(),
         name='components',
     ),

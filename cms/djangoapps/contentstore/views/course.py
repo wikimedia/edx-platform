@@ -30,7 +30,6 @@ from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 from opaque_keys.edx.locator import BlockUsageLocator
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
-from openedx.features.wikimedia_features.meta_translations.utils import set_course_translation
 from organizations.api import add_organization_course, ensure_organization
 from organizations.exceptions import InvalidOrganizationException
 
@@ -734,6 +733,7 @@ def course_index(request, course_key):
             'course_authoring_microfrontend_url': course_authoring_microfrontend_url,
             'advance_settings_url': reverse_course_url('advanced_settings_handler', course_module.id),
             'proctoring_errors': proctoring_errors,
+            'course_blocks_mapping_url': reverse("meta_translations:course_blocks_mapping")
         })
 
 
@@ -880,8 +880,6 @@ def _create_or_rerun_course(request):
             fields['display_name'] = display_name
         if language is not None:
             fields['language'] = language
-        if is_basic_rerun is None:
-            is_basic_rerun = True
 
         # Set a unique wiki_slug for newly created courses. To maintain active wiki_slugs for
         # existing xml courses this cannot be changed in CourseBlock.
@@ -896,7 +894,7 @@ def _create_or_rerun_course(request):
             source_course_key = CourseKey.from_string(source_course_key)
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
             if not is_basic_rerun:
-                set_course_translation(destination_course_key, source_course_key)            
+                CourseTranslation.set_course_translation(destination_course_key, source_course_key)
             return JsonResponse({
                 'url': reverse_url('course_handler'),
                 'destination_course_key': str(destination_course_key)
