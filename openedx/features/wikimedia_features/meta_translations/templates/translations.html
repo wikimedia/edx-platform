@@ -25,7 +25,7 @@
             "COURSES_URL": "api/v0/versions",
             "COURSE_OUTLINE_URL": "api/v0/outline",
             "COURSE_UNIT_URL": "api/v0/components",
-            "LANGUAGES": "${language_options | n, js_escaped_string}"
+            "LANGUAGES": ${language_options | n, dump_js_escaped_json}
         }
 
         new Translations(context);

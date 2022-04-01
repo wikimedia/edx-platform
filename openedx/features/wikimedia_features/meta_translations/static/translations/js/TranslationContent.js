@@ -64,20 +64,25 @@ function TranslationContent({ context }) {
         </div>
       </div>
       {
-        !isEmpty(courseOutline) && (
+          !isEmpty(courseOutline) && (
           <Fragment>
-            <div>
-              {
-                courseOutline.base_course_lang ?
-                context.LANGUAGES[courseOutline.base_course_lang]:
-                'English'
-              }
-              {
-                courseOutline.course_lang
-              }
-              {
-                JSON.stringify(context.LANGUAGES['aa'])
-              }
+            <div className='translation-languages'>
+              <div className='col'>
+                <strong>
+                  {
+                    courseOutline.base_course_lang ?
+                    context.LANGUAGES[courseOutline.base_course_lang]:
+                    'English'
+                  }
+                </strong>
+              </div>
+              <div className='col'>
+                <strong>
+                  {
+                    context.LANGUAGES[courseOutline.course_lang]
+                  }
+                </strong>
+              </div>
             </div>
             <Sections
               context={context}
