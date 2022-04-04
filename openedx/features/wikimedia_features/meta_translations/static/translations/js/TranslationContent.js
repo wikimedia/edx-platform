@@ -30,7 +30,7 @@ function TranslationContent({ context }) {
   const handleRerunCourseChange = (value) => {
     if(value) {
       setRerunCourse(value);
-      fetchCourseOutline(baseCourse, value, setCourseOutline, setLoading);
+      fetchCourseOutline(value, setCourseOutline, setLoading);
     } else {
       setRerunCourse({});
       setCourseOutline({});

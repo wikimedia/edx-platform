@@ -15,8 +15,8 @@ function Units (props) {
         Object.keys(baseCourseUnits).map((unit_id) => {
           const baseTitle = baseCourseUnits[unit_id].data.display_name;
           const rerunTitle = rerunCourseUnits[unit_id].data.display_name;
-          const rerunCourseUnitKey = baseCourseUnits[unit_id].usage_key;
-          const baseCourseUnitKey = rerunCourseUnits[unit_id].usage_key;
+          const baseCourseUnitKey = baseCourseUnits[unit_id].usage_key;
+          const rerunCourseUnitKey = rerunCourseUnits[unit_id].usage_key;
 
           return (
             <Accordion

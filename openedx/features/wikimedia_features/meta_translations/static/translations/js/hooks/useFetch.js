@@ -21,9 +21,9 @@ export default function useFetch(context) {
       })
     }
 
-    const fetchCourseOutline = (base_subsection_key, rerun_subsection_key, setCourseOutline, setLoading) => {
+    const fetchCourseOutline = (rerun_subsection_key, setCourseOutline, setLoading) => {
         setLoading(true);
-        client.get(`${context.COURSE_OUTLINE_URL}/${rerun_subsection_key}/${base_subsection_key}`)
+        client.get(`${context.COURSE_OUTLINE_URL}/${rerun_subsection_key}`)
         .then((res) => res.json())
         .then((res) => {
           setCourseOutline(JSON.parse(res))
@@ -38,11 +38,10 @@ export default function useFetch(context) {
       }
 
     const fetchCourseUnit = (props) => {
-      console.log(props);
-      const {baseCourseUnitKey, rerunCourseUnitKey, subsection_id, section_id, unit_id, setCourseOutline, setLoading, showSlide} = props;
+      const {rerunCourseUnitKey, subsection_id, section_id, unit_id, setCourseOutline, setLoading, showSlide} = props;
 
       setLoading(true);
-      client.get(`${context.COURSE_UNIT_URL}/${rerunCourseUnitKey}/${baseCourseUnitKey}`)
+      client.get(`${context.COURSE_UNIT_URL}/${rerunCourseUnitKey}`)
       .then((res) => res.json())
       .then((res) => {
         const { components_data: units, base_components_data: base_units } = JSON.parse(res);

@@ -42,8 +42,6 @@ function Unit (props) {
             </div>
           </div>
         </div>
-
-
           )
       })
 
