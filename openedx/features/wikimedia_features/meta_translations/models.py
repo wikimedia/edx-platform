@@ -77,6 +77,15 @@ class WikiTranslation(models.Model):
                 source_block_data=base_course_block_data,
             )
             log.info("Mapping has been created for data_type {}, value {}".format(key, value))
+        except CourseBlockData.MultipleObjectsReturned:
+            index = target_block.block_id.rindex("@")
+            reference_key =  target_block.block_id[index+1:]
+            base_course_block_data = base_course_blocks_data.get(course_block__block_id__endswith=reference_key, data_type=key, data=value)
+            WikiTranslation.objects.create(
+                target_block=target_block,
+                source_block_data=base_course_block_data,
+            )
+            log.info("Mapping has been created for data_type {}, value {}".format(key, value))
         except CourseBlockData.DoesNotExist:
             log.error("Error -> Unable to find source block mapping for key {}, value {} of course: {}".format(
                 key, value, six.text_type(target_block.course_id))
