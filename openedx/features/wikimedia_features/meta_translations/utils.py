@@ -45,7 +45,7 @@ def get_video_components_data(block):
     json_content = json.loads(data['content'].decode("utf-8"))
     return {
         "display_name": block.display_name,
-        "transcript": json_content['text']
+        "transcript": json.dumps(json_content['text'])
     }
 
 def get_module_data(block):
