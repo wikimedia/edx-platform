@@ -16,6 +16,9 @@ from opaque_keys.edx.keys import UsageKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
+    """
+    API to get course outline of a course and it's base course
+    """
     def get(self, request, *args, **kwargs):
         course_id = kwargs.get('course_key')
         course_key = CourseKey.from_string(course_id)
@@ -32,6 +35,9 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
         return Response(json.dumps(data), status=status.HTTP_200_OK)
 
 class GetVerticalComponentContent(generics.RetrieveAPIView):
+    """
+    API to get component data of a course and it's base course
+    """
     def get(self, request, *args, **kwargs):
         usage_key = kwargs.get('unit_key')
         block_location = UsageKey.from_string(usage_key)
@@ -49,6 +55,9 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
         return Response(json.dumps(data), status=status.HTTP_200_OK)
 
 class GetCoursesVersionInfo(generics.RetrieveAPIView):
+    """
+    API to get all user base course with their translated versions
+    """
     def _course_version_format(self, course_key):
         course = get_course_by_id(course_key)
         base_course_obj = {
