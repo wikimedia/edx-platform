@@ -27,7 +27,6 @@ class CourseBlockAdmin(admin.ModelAdmin):
 
         return data
 
-
 class CourseBlockDataAdmin(admin.ModelAdmin):
     """
     Admin config for clearesult credits offered by the courses.
@@ -36,15 +35,12 @@ class CourseBlockDataAdmin(admin.ModelAdmin):
     search_fields = ("course_block__block_id", "course_block__course_id", "data_type",)
     list_filter = ("course_block__block_type", "data_type",)
 
-
 class CourseTranslationAdmin(admin.ModelAdmin):
     """
     Admin config for clearesult credits offered by the courses.
     """
     list_display  = [f.name for f in CourseTranslation._meta.fields]
     search_fields = ("course_id", "base_course_id",)
-
-
 
 class WikiTranslationAdmin(admin.ModelAdmin):
     """
@@ -57,7 +53,6 @@ class WikiTranslationAdmin(admin.ModelAdmin):
     def translation(self, obj):
         if obj.translation:
             return obj.translation[:30]
-
 
 admin.site.register(CourseBlock, CourseBlockAdmin)
 admin.site.register(CourseBlockData, CourseBlockDataAdmin)

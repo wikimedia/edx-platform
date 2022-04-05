@@ -45,7 +45,6 @@ def course_blocks_mapping(request):
     else:
         return JsonResponse({'error':'Invalid request'},status=400)
 
-
 @login_required
 def render_translation_home(request):
     return render_to_response('translations.html', {
