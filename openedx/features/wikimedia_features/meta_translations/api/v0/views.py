@@ -69,4 +69,3 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
         data = [self._course_version_format(key) for key in base_course_keys]
         json_data = dict(data)
         return Response(json.dumps(json_data), status=status.HTTP_200_OK)
-        
