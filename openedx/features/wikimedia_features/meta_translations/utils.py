@@ -4,6 +4,8 @@ Files containes helping functions assosiated with meta_translations
 
 import json
 from logging import getLogger
+import os
+from common.lib.xmodule.xmodule.video_module.transcripts_utils import Transcript, convert_video_transcript
 
 from xmodule.modulestore.django import modulestore
 from xmodule.video_module.transcripts_utils import get_video_transcript_content
@@ -31,6 +33,16 @@ def get_html_components_data(block):
         "content": block.data
     }
 
+def get_json_transcript_data(file_name, content):
+    """
+    Return dict of subtitiles from content
+    """
+    if os.path.splitext(file_name) != Transcript.SJSON:
+        content = convert_video_transcript(file_name, content, Transcript.SJSON)['content']
+    if isinstance(content, str):
+        return json.loads(content)
+    return json.loads(content.decode("utf-8"))
+
 def get_video_components_data(block):
     """
     Extract data from video type xblock components
@@ -42,11 +54,11 @@ def get_video_components_data(block):
         dict of extracted data
     """
     data = get_video_transcript_content(block.edx_video_id, block.transcript_language)
-    json_content = json.loads(data['content'].decode("utf-8"))
-    return {
-        "display_name": block.display_name,
-        "transcript": json.dumps(json_content['text'])
-    }
+    video_context = { "display_name": block.display_name}
+    if data:
+        json_content = get_json_transcript_data(data['file_name'], data['content'])
+        video_context['transcript'] = json.dumps(json_content['text'])
+    return video_context
 
 def get_module_data(block):
     """
@@ -81,11 +93,13 @@ def get_block_data(block):
     Returns:
         dict of extracted data
     """
-    return {
-        'usage_key': str(block.scope_ids.usage_id),
-        'category': block.category,
-        'data': COMPONENTS_FUNCTION_MAPPING[block.category](block)
-    }
+    if block.category in COMPONENTS_FUNCTION_MAPPING:
+        return {
+            'usage_key': str(block.scope_ids.usage_id),
+            'category': block.category,
+            'data': COMPONENTS_FUNCTION_MAPPING[block.category](block)
+        }
+    return None
 
 def get_recursive_blocks_data(block, depth=3, structured=True):
     """
@@ -153,13 +167,15 @@ def get_recursive_blocks_data(block, depth=3, structured=True):
         if structured:
             return block_data
         else:
-            return [block_data]
+            return [block_data] if block_data != None else []
 
     if structured:
         data = get_block_data(block)
         data['children'] = []
         for child in block.get_children():
-            data['children'].append(get_recursive_blocks_data(child, depth - 1, structured))
+            block_data = get_recursive_blocks_data(child, depth - 1, structured)
+            if block_data:
+                data['children'].append(block_data)
     else:
         data = [get_block_data(block)]
         for child in block.get_children():
