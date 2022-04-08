@@ -3,12 +3,17 @@
 Meta Translations Models
 """
 import json
+import jsonfield
 import logging
 import six
+
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext_lazy as _
 from opaque_keys.edx.django.models import CourseKeyField
 
 log = logging.getLogger(__name__)
+User = get_user_model()
 APP_LABEL = 'meta_translations'
 
 
@@ -16,9 +21,17 @@ class CourseBlock(models.Model):
     """
     Store block_id(s) of base course blocks and translated reruns course blocks
     """
+
+    DIRECTION_CHOICES = (
+        ('D', _('Destination')),
+        ('S', _('Source')),
+    )
+
     block_id = models.CharField(max_length=255, unique=True)
     block_type = models.CharField(max_length=255)
     course_id = CourseKeyField(max_length=255, db_index=True)
+    direction_flag = models.CharField(blank=True, null=True, max_length=2, choices=DIRECTION_CHOICES)
+    lang = jsonfield.JSONField(default=json.dumps([]))
 
     @classmethod
     def create_course_block_from_dict(cls, block_data, course_id, create_block_data=True):
@@ -42,6 +55,8 @@ class CourseBlockData(models.Model):
     course_block = models.ForeignKey(CourseBlock, on_delete=models.CASCADE)
     data_type = models.CharField(max_length=255)
     data = models.TextField()
+    content_updated = models.BooleanField(default=False)
+    mapping_updated = models.BooleanField(default=False)
 
     def __str__(self):
         return "{} -> {}: {}".format(
@@ -63,10 +78,10 @@ class WikiTranslation(models.Model):
     target_block = models.ForeignKey(CourseBlock, on_delete=models.CASCADE)
     source_block_data = models.ForeignKey(CourseBlockData, on_delete=models.CASCADE)
     translation = models.TextField(null=True, blank=True)
-    sent = models.BooleanField(default=False)
     applied = models.BooleanField(default=False)
-    overwrite = models.BooleanField(default=False)
     last_fetched = models.DateTimeField(null=True, blank=True)
+    revision = models.IntegerField(null=True, blank=True)
+    approved_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     @classmethod
     def create_translation_mapping(cls, base_course_blocks_data, key, value, target_block):
