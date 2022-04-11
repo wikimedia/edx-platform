@@ -104,7 +104,7 @@ class CourseBlock(models.Model):
             self.save()
 
     def __str__(self):
-        return self.block_id
+        return str(self.block_id)
     class Meta:
         app_label = APP_LABEL
         verbose_name = "Course Block"
