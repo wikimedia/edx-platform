@@ -14,6 +14,8 @@ from opaque_keys.edx.keys import UsageKey
 from openedx.features.wikimedia_features.meta_translations.models import (
     CourseBlock, CourseBlockData, CourseTranslation, WikiTranslation
 )
+from lms.djangoapps.courseware.courses import get_course_by_id
+
 
 log = getLogger(__name__)
 
@@ -211,17 +213,18 @@ def map_base_course_block(existing_course_blocks, outline_block_dict, course_key
                     existing_data.data_type, existing_data.data, outline_block_data
                 ))
                 existing_data.data = outline_block_data
+                existing_data.content_updated = True
                 existing_data.save()
 
 
 def map_translated_course_block(existing_course_blocks, outline_block_dict, course_key, base_course_blocks_data):
     """
-    Map translated-course block -> Sync Course Outline block to CourseBLock table and crete Translation
-    Mapping entries by comparing data of base-course and translated course block.
+    Map translated-course block -> Sync Course Outline block to CourseBLock table and create Translation
+    mapping entries by comparing data of base-course and translated course block.
 
     - if block does not exist, create new course-block and translation mapping by comparing
       block-data with base-course data.
-    - if data exists, check for existing translation mapping and set overwrite True if user
+    - if data exists, check for existing translation mapping and update block flag to Source if user
       has changed data from front-end.
 
 
@@ -251,16 +254,16 @@ def map_translated_course_block(existing_course_blocks, outline_block_dict, cour
             else:
                 # if re-run outline data is neither equal to original string (source block data) nor equal to translated string
                 # check value of applied, if applied is also True that means user might have updated data from front-end.
-                if value != wiki_translation.translation and value != wiki_translation.source_block_data.data:
+                if  value != wiki_translation.translation and value != wiki_translation.source_block_data.data:
                     log.info("Mapping found, but data is not same as original and translated string for block {}".format(
                         json.dumps(outline_block_dict))
                     )
                     log.info("Source data: {}".format(value))
                     log.info("Translated data: {}".format(wiki_translation.translation))
                     if wiki_translation.applied:
-                        log.info("Setting overwrite True.")
-                        wiki_translation.overwrite = True
-                        wiki_translation.save()
+                        log.info("Content has been overwritten from front-end -> update flag to source if destination.")
+                        course = get_course_by_id(course_block.course_id)
+                        course_block.update_flag_to_source(course.language)
                     else:
                         # if applied is False, this means that latest translation is not applied yet.
                         log.info("Latest translation is not applied yet.")
@@ -296,9 +299,10 @@ def check_and_map_course_blocks(course_outline_data, course_key, base_course_key
         else:
             map_translated_course_block(existing_course_blocks, block, course_key, base_course_blocks_data)
 
-    # delete course-blocks that exist in db but have been deleted from course-outline.
-    existing_course_blocks_ids = [block.block_id for block in existing_course_blocks]
-    deleted_block_ids = set(existing_course_blocks_ids) - set(course_outline_blocks_ids)
-    log.info("Deleting course blocks that do not exist in course-outline {}.".format(deleted_block_ids))
-    for deleted_block_id in deleted_block_ids:
-        existing_course_blocks.get(block_id=deleted_block_id).delete()
+    if not is_base_course:
+        # delete course-blocks from translated course that exist in db but have been deleted from course-outline.
+        existing_course_blocks_ids = [block.block_id for block in existing_course_blocks]
+        deleted_block_ids = set(existing_course_blocks_ids) - set(course_outline_blocks_ids)
+        log.info("Deleting course blocks that do not exist in course-outline {}.".format(deleted_block_ids))
+        for deleted_block_id in deleted_block_ids:
+            existing_course_blocks.get(block_id=deleted_block_id).delete()

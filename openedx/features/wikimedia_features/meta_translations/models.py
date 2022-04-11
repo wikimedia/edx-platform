@@ -10,7 +10,9 @@ import six
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
-from opaque_keys.edx.django.models import CourseKeyField
+from opaque_keys.edx.django.models import CourseKeyField, UsageKeyField
+from lms.djangoapps.courseware.courses import get_course_by_id
+
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -22,24 +24,84 @@ class CourseBlock(models.Model):
     Store block_id(s) of base course blocks and translated reruns course blocks
     """
 
+    _Source = 'S'
+    _DESTINATION = 'D'
+
     DIRECTION_CHOICES = (
-        ('D', _('Destination')),
-        ('S', _('Source')),
+        (_DESTINATION, _('Destination')),
+        (_Source, _('Source')),
     )
 
-    block_id = models.CharField(max_length=255, unique=True)
+    block_id = UsageKeyField(max_length=255, unique=True, db_index=True)
     block_type = models.CharField(max_length=255)
     course_id = CourseKeyField(max_length=255, db_index=True)
-    direction_flag = models.CharField(blank=True, null=True, max_length=2, choices=DIRECTION_CHOICES)
+    direction_flag = models.CharField(blank=True, null=True, max_length=2, choices=DIRECTION_CHOICES, default=_Source)
     lang = jsonfield.JSONField(default=json.dumps([]))
 
     @classmethod
     def create_course_block_from_dict(cls, block_data, course_id, create_block_data=True):
-        created_block = cls.objects.create(block_id=block_data.get('usage_key'), block_type=block_data.get('category'), course_id=course_id)
+        """
+        Creates CourseBlock from data_dict. It will create CourseBlockData as well if create_block_data is True.
+        """
+        created_block = cls.objects.create(
+            block_id=block_data.get('usage_key'), block_type=block_data.get('category'), course_id=course_id
+        )
         if create_block_data:
             for key, value in block_data.get('data',{}).items():
                 CourseBlockData.objects.create(course_block=created_block, data_type=key, data=value)
+        else:
+            created_block.direction_flag = cls._DESTINATION
+            created_block.save()
         return created_block
+
+    def is_source(self):
+        """
+        Returns Boolean value indicating if block direction flag is Source or not
+        """
+        return self.direction_flag == _Source
+
+    def add_mapping_language(self, language):
+        """
+        Adds given language to block languages
+        """
+        existing_languages = json.loads(self.lang)
+        if language not in existing_languages:
+            existing_languages.append(language)
+            self.lang = json.dumps(existing_languages)
+            self.save()
+
+    def remove_mapping_language(self, language):
+        """
+        Removes given language from block languages
+        """
+        existing_languages = json.loads(self.lang)
+        if language in existing_languages:
+            existing_languages.remove(language)
+            self.lang = json.dumps(existing_languages)
+            self.save()
+
+    def get_source_block(self):
+        """
+        Returns mapped source course block.
+        """
+        existing_mappings = self.wikitranslation_set.all()
+        if existing_mappings:
+            return existing_mappings.first().source_block_data.course_block
+
+    def update_flag_to_source(self, target_course_language):
+        """
+        When block direction is updated from Destination to Source, language in linked source block will be
+        updated and mapping_updated will be set to true so that on next send_translation crone job, Meta
+        Server can be informed that translation of this block is not needed anymore.
+        """
+        if self.direction_flag != CourseBlock._Source:
+            source_block = self.get_source_block()
+            source_block.remove_mapping_language(target_course_language)
+            for data in source_block.courseblockdata_set.all():
+                data.mapping_updated = True
+                data.save()
+            self.direction_flag = CourseBlock._Source
+            self.save()
 
     def __str__(self):
         return self.block_id
@@ -86,30 +148,45 @@ class WikiTranslation(models.Model):
     @classmethod
     def create_translation_mapping(cls, base_course_blocks_data, key, value, target_block):
         try:
-            base_course_block_data = base_course_blocks_data.get(data_type=key, data=value)
-            WikiTranslation.objects.create(
-                target_block=target_block,
-                source_block_data=base_course_block_data,
-            )
-            log.info("Mapping has been created for data_type {}, value {}".format(key, value))
-        except CourseBlockData.MultipleObjectsReturned:
             index = target_block.block_id.rindex("@")
             reference_key =  target_block.block_id[index+1:]
-            base_course_block_data = base_course_blocks_data.get(course_block__block_id__endswith=reference_key, data_type=key, data=value)
+            # reference key is the alphanumeric key in block_id.
+            # target block and source block will contain same reference key if block is created through edX rerun.
+            base_course_block_data = base_course_blocks_data.get(
+                course_block__block_id__endswith=reference_key, data_type=key, data=value)
             WikiTranslation.objects.create(
                 target_block=target_block,
                 source_block_data=base_course_block_data,
             )
-            log.info("Mapping has been created for data_type {}, value {}".format(key, value))
+            log.info("Mapping has been created for data_type {}, value {} with reference key {}".format(
+                key, value, reference_key
+            ))
         except CourseBlockData.DoesNotExist:
-            log.error("Error -> Unable to find source block mapping for key {}, value {} of course: {}".format(
-                key, value, six.text_type(target_block.course_id))
-            )
+            log.info("Unable to create mapping with reference key {}. Try again with data comparison.".format(
+                reference_key
+            ))
+            try:
+                # For target blocks - added after rerun creation.
+                base_course_block_data = base_course_blocks_data.get(data_type=key, data=value)
+                WikiTranslation.objects.create(
+                    target_block=target_block,
+                    source_block_data=base_course_block_data,
+                )
+                log.info("Mapping has been created for data_type {}, value {}".format(key, value))
+
+            except CourseBlockData.MultipleObjectsReturned:
+                log.error("Error -> Unable to find source block mapping as multiple source blocks found"
+                          "in data comparison - data_type {}, value {}".format(key, value))
+            except CourseBlockData.DoesNotExist:
+                log.error("Error -> Unable to find source block mapping for key {}, value {} of course: {}".format(
+                    key, value, six.text_type(target_block.course_id))
+                )
 
     class Meta:
         app_label = APP_LABEL
         verbose_name = "Wiki Meta Translations"
         unique_together = ('target_block', 'source_block_data')
+
 
 class CourseTranslation(models.Model):
     """
