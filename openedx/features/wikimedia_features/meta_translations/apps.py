@@ -17,3 +17,6 @@ class MetaTranslationsConfig(AppConfig):
             }
         }
     }
+
+    def ready(self):
+        from . import signals  # pylint: disable=unused-import
