@@ -148,19 +148,22 @@ class WikiTranslation(models.Model):
     @classmethod
     def create_translation_mapping(cls, base_course_blocks_data, key, value, target_block):
         try:
-            index = target_block.block_id.rindex("@")
-            reference_key =  target_block.block_id[index+1:]
+            target_block_usage_key = target_block.block_id
+            reference_key = target_block_usage_key.block_id
             # reference key is the alphanumeric key in block_id.
             # target block and source block will contain same reference key if block is created through edX rerun.
-            base_course_block_data = base_course_blocks_data.get(
-                course_block__block_id__endswith=reference_key, data_type=key, data=value)
-            WikiTranslation.objects.create(
-                target_block=target_block,
-                source_block_data=base_course_block_data,
-            )
-            log.info("Mapping has been created for data_type {}, value {} with reference key {}".format(
-                key, value, reference_key
-            ))
+            if reference_key:
+                base_course_block_data = base_course_blocks_data.get(
+                    course_block__block_id__endswith=reference_key, data_type=key, data=value)
+                WikiTranslation.objects.create(
+                    target_block=target_block,
+                    source_block_data=base_course_block_data,
+                )
+                log.info("Mapping has been created for data_type {}, value {} with reference key {}".format(
+                    key, value, reference_key
+                ))
+            else:
+                raise CourseBlockData.DoesNotExist
         except CourseBlockData.DoesNotExist:
             log.info("Unable to create mapping with reference key {}. Try again with data comparison.".format(
                 reference_key
