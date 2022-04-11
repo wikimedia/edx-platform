@@ -101,7 +101,7 @@ def get_block_data(block):
             'category': block.category,
             'data': COMPONENTS_FUNCTION_MAPPING[block.category](block)
         }
-    return None
+    return {}
 
 def get_recursive_blocks_data(block, depth=3, structured=True):
     """
@@ -169,7 +169,7 @@ def get_recursive_blocks_data(block, depth=3, structured=True):
         if structured:
             return block_data
         else:
-            return [block_data] if block_data != None else []
+            return [block_data] if block_data else []
 
     if structured:
         data = get_block_data(block)
@@ -179,7 +179,8 @@ def get_recursive_blocks_data(block, depth=3, structured=True):
             if block_data:
                 data['children'].append(block_data)
     else:
-        data = [get_block_data(block)]
+        block_data = get_block_data(block)
+        data = [block_data] if block_data else []
         for child in block.get_children():
             data.extend(get_recursive_blocks_data(child, depth - 1, structured))
     return data
