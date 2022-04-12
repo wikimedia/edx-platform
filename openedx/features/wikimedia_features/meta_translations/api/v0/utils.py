@@ -54,8 +54,8 @@ def get_block_data_from_table(block, wiki_objects):
         block: course-outline block
         wiki-objects: filter-type WikiTranslation object
     Return:
-        block-data: dict(usage_key, category, 'data')
-        translated_block_data: dict(usage_key, category, 'data')
+        block-data: dict(usage_key, category, data_block_ids, data)
+        translated_block_data: dict(usage_key, category, data)
     """
     usage_key = str(block.scope_ids.usage_id)
     block_fields = {}
