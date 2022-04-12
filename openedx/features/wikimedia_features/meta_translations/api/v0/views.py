@@ -1,14 +1,16 @@
 """
 Views for MetaTranslation v0 API(s)
 """
-import json
 from lms.djangoapps.courseware.courses import get_course_by_id
 from opaque_keys.edx.keys import CourseKey
 from django.utils.translation import ugettext as _
-from openedx.features.wikimedia_features.meta_translations.api.v0.utils import get_courses_of_base_course, get_outline_course_to_units, get_outline_unit_to_components
+from openedx.features.wikimedia_features.meta_translations.api.v0.utils import (
+    get_courses_of_base_course, get_outline_course_to_units, get_outline_unit_to_components
+    )
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from rest_framework import generics
 from rest_framework import status
+from rest_framework import permissions
 from rest_framework.response import Response
 from xmodule.modulestore.django import modulestore
 from cms.djangoapps.contentstore.views.course import get_courses_accessible_to_user
@@ -19,6 +21,8 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
     """
     API to get course outline of a course and it's base course
     """
+    permission_classes = (permissions.IsAuthenticated,)
+
     def get(self, request, *args, **kwargs):
         course_id = kwargs.get('course_key')
         course_key = CourseKey.from_string(course_id)
@@ -32,12 +36,14 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
             'base_course_outline': base_course_outline[base_key]['children']
         }
 
-        return Response(json.dumps(data), status=status.HTTP_200_OK)
+        return Response(data, status=status.HTTP_200_OK)
 
 class GetVerticalComponentContent(generics.RetrieveAPIView):
     """
     API to get component data of a course and it's base course
     """
+    permission_classes = (permissions.IsAuthenticated,)
+
     def get(self, request, *args, **kwargs):
         usage_key = kwargs.get('unit_key')
         block_location = UsageKey.from_string(usage_key)
@@ -52,12 +58,14 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
             'base_components_data': base_unit_data[base_key]['children'],
         }
 
-        return Response(json.dumps(data), status=status.HTTP_200_OK)
+        return Response(data, status=status.HTTP_200_OK)
 
 class GetCoursesVersionInfo(generics.RetrieveAPIView):
     """
     API to get all user base course with their translated versions
     """
+    permission_classes = (permissions.IsAuthenticated,)
+    
     def _course_version_format(self, course_key):
         course = get_course_by_id(course_key)
         base_course_obj = {
@@ -77,4 +85,4 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
         base_course_keys = list(set(base_course_keys))
         data = [self._course_version_format(key) for key in base_course_keys]
         json_data = dict(data)
-        return Response(json.dumps(json_data), status=status.HTTP_200_OK)
+        return Response(json_data, status=status.HTTP_200_OK)

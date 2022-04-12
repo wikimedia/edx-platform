@@ -10,7 +10,7 @@ export default function useFetch(context) {
       client.get(context.COURSES_URL)
       .then((res) => res.json())
       .then((res) => {
-        setCourses(JSON.parse(res));
+        setCourses(res);
       })
       .catch((error) => {
         notification(toast.error, "Unable to load Courses.");
@@ -26,7 +26,7 @@ export default function useFetch(context) {
         client.get(`${context.COURSE_OUTLINE_URL}/${rerun_subsection_key}`)
         .then((res) => res.json())
         .then((res) => {
-          setCourseOutline(JSON.parse(res))
+          setCourseOutline(res)
         })
         .catch((error) => {
           notification(toast.error, "Unable to load Course Outline.");
@@ -44,7 +44,7 @@ export default function useFetch(context) {
       client.get(`${context.COURSE_UNIT_URL}/${rerunCourseUnitKey}`)
       .then((res) => res.json())
       .then((res) => {
-        const { components_data: units, base_components_data: base_units } = JSON.parse(res);
+        const { components_data: units, base_components_data: base_units } = res;
         setCourseOutline((prevState) => {
           const state = {...prevState}
           state
