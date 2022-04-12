@@ -62,7 +62,6 @@ def get_block_data_from_table(block, wiki_objects):
     base_block_fields = {}
     block_fields_ids = {}
     wiki_objects = wiki_objects.filter(target_block__block_id=usage_key)
-    status_fields = {}
     base_usage_key = ''
     for obj in wiki_objects:
         data_type = obj.source_block_data.data_type
