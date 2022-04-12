@@ -302,7 +302,7 @@ def check_and_map_course_blocks(course_outline_data, course_key, base_course_key
 
     if not is_base_course:
         # delete course-blocks from translated course that exist in db but have been deleted from course-outline.
-        existing_course_blocks_ids = [block.block_id for block in existing_course_blocks]
+        existing_course_blocks_ids = [str(block.block_id) for block in existing_course_blocks]
         deleted_block_ids = set(existing_course_blocks_ids) - set(course_outline_blocks_ids)
         log.info("Deleting course blocks that do not exist in course-outline {}.".format(deleted_block_ids))
         for deleted_block_id in deleted_block_ids:
