@@ -9,6 +9,8 @@ from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from xmodule.modulestore.django import modulestore
 from opaque_keys.edx.keys import CourseKey
+from django.conf import settings
+from common.djangoapps.edxmako.shortcuts import render_to_response
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation
@@ -42,3 +44,11 @@ def course_blocks_mapping(request):
         return JsonResponse({'success': 'Mapping has been processed successfully.'}, status=200)
     else:
         return JsonResponse({'error':'Invalid request'},status=400)
+
+@login_required
+def render_translation_home(request):
+    return render_to_response('translations.html', {
+        'uses_bootstrap': True,
+        'login_user_username': request.user.username,
+        'language_options': dict(settings.ALL_LANGUAGES),
+    })
