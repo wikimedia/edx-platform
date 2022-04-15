@@ -141,6 +141,7 @@ class WikiTranslation(models.Model):
     source_block_data = models.ForeignKey(CourseBlockData, on_delete=models.CASCADE)
     translation = models.TextField(null=True, blank=True)
     applied = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
     last_fetched = models.DateTimeField(null=True, blank=True)
     revision = models.IntegerField(null=True, blank=True)
     approved_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
