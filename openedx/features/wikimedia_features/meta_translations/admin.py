@@ -52,7 +52,7 @@ class WikiTranslationAdmin(admin.ModelAdmin):
     """
     list_display  = [f.name for f in WikiTranslation._meta.fields]
     search_fields = ("target_block__block_id", "target_block__course_id", "source_block_data__data_type",)
-    list_filter = ("target_block__block_type", "source_block_data__data_type", "applied",)
+    list_filter = ("target_block__block_type", "source_block_data__data_type", "applied", "approved",)
 
     def translation(self, obj):
         if obj.translation:
