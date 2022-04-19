@@ -208,6 +208,13 @@ class CourseTranslation(models.Model):
         base_course_id = str(source_key)
         cls.objects.create(course_id=course_id,base_course_id=base_course_id)
 
+    @classmethod
+    def get_base_courses_list(cls):
+        """
+        Returns list of course_id(s) that has translated rerun version
+        """
+        return cls.objects.all().values_list("base_course_id", flat=True).distinct()
+
     class Meta:
         app_label = APP_LABEL
         verbose_name = "Course Translation"
