@@ -23,13 +23,28 @@ log = getLogger(__name__)
 class Command(BaseCommand):
     """
     This command will check and send updated block strings to meta server for translations.
+
         $ ./manage.py cms sync_untranslated_strings_to_meta_from_edx
+        It will show all updated blocks that are ready to send.
+
+        $ ./manage.py cms sync_untranslated_strings_to_meta_from_edx --commit
+        It will send API calls of Wiki Meta to update message groups.
     """
     help = 'Command to send untranslated strings to Meta server for translation'
     _RESULT = {
         "updated_blocks_count": 0,
         "success_updated_pages_count": 0
     }
+
+    def add_arguments(self, parser):
+        """
+        Add --commit argument with default value False
+        """
+        parser.add_argument(
+            '--commit',
+            action='store_true',
+            help='Send API calls to Meta wiki',
+        )
 
     def _log_final_report(self):
         """
@@ -172,11 +187,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         data_list = self._get_request_data_list()
-        self._RESULT.update({"updated_blocks_count": len(data_list)})
+        if options.get('commit'):
+            self._RESULT.update({"updated_blocks_count": len(data_list)})
 
-        if data_list:
-            asyncio.run(self.async_update_data_on_wiki_meta(data_list))
+            if data_list:
+                asyncio.run(self.async_update_data_on_wiki_meta(data_list))
+            else:
+                log.info("No updated course blocks data found to send on Meta Wiki.")
+
+            self._log_final_report()
         else:
-            log.info("No updated course blocks data found to send on Meta Wiki.")
-
-        self._log_final_report()
+            log.info(json.dumps(data_list, indent=4))
