@@ -2,9 +2,11 @@
 Views for MetaTranslation v0 API(s)
 """
 
+
 from rest_framework import generics
 from rest_framework import status
 from rest_framework import permissions
+from rest_framework import viewsets
 from rest_framework.response import Response
 from xmodule.modulestore.django import modulestore
 from opaque_keys.edx.keys import UsageKey, CourseKey
@@ -16,7 +18,9 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.api.v0.utils import (
     get_courses_of_base_course, get_outline_course_to_units, get_outline_unit_to_components
     )
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
+from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import CourseBlockSerializer, WikiTranslationSerializer
+from openedx.features.wikimedia_features.meta_translations.api.v0.permissions import DestinationCourseOnly
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
     """
@@ -33,12 +37,24 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
                     "data":{
                         "display_name":"Problem 1",
                     }
+                    "status": {
+                        "applied": false,
+                        "approved": false,
+                        "last_fetched": null,
+                        "approved_by": edx
+                    },
                     children: {
                         "8KLKTTPX1ZUJI8KA": {
                             "usage_key":"block_component_usage_id",
                             "category":"vertical",
                             "data_block_ids: {
                                 "display_name": 2,
+                            },
+                            "status": {
+                                "applied": false,
+                                "approved": false,
+                                "last_fetched": null,
+                                "approved_by": edx
                             },
                             "data": {
                                 "display_name": "Section 1" 
@@ -118,6 +134,12 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
                         "display_name": 1,
                         "content": 10
                     },
+                    "status": {
+                        "applied": false,
+                        "approved": false,
+                        "last_fetched": null,
+                        "approved_by": edx
+                    },
                     "data":{
                         "display_name":"Problem 1",
                         "content":""
@@ -129,6 +151,12 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
                     "data_block_ids: {
                         "display_name": 1,
                         "content": 10
+                    },
+                    "status": {
+                        "applied": false,
+                        "approved": false,
+                        "last_fetched": null,
+                        "approved_by": edx
                     },
                     "data": {
                         "display_name":"Html Text",
@@ -222,3 +250,63 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
         data = [self._course_version_format(key) for key in base_course_keys]
         json_data = dict(data)
         return Response(json_data, status=status.HTTP_200_OK)
+
+class CourseBlockViewSet(viewsets.ModelViewSet):
+    """
+    Viewset to update Couse Block and Wiki Translations together
+    Hit this URL: /meta_translations/api/v0/<course_id>/translations/<block_id>/
+    GET API:
+        Response:
+        {
+            "block_id": "<block_id>",
+            "block_type": "chapter",
+            "course_id": "course-v1:Arbisoft+CS101+TranslatedRerun1",
+            "applied": true,
+            "wiki_translations": [
+                {
+                    "id": 245,
+                    "target_block": 303,
+                    "translation": null,
+                    "applied": true,
+                    "last_fetched": null,
+                    "revision": null,
+                    "approved_by": 3
+                }
+            ]
+        }
+    PUT API:
+        To only update the applied status of a block mentioned in url
+            Request:
+            {
+                applied = true,
+            }
+        To update applied status of block and their children
+            Request:
+            {
+                applied = true,
+                apply_all = true
+            }
+        To update translations of a block
+            Request:
+            {
+                applied = true,
+                wiki_translations: [
+                    {
+                        id: <data_block_id>,
+                        translation: 'new_translation'
+                    },
+                    {
+                        id: <data_block_id>,
+                        translation: 'new_translation'
+                    },
+                ]
+            }
+        Response of all put requests is same as the GET API
+    """
+    lookup_field = 'block_id'
+    serializer_class = CourseBlockSerializer
+    permission_classes = (permissions.IsAuthenticated, DestinationCourseOnly)
+
+    def get_queryset(self):
+        course_id = self.kwargs['course_key']
+        return CourseBlock.objects.filter(course_id=course_id)

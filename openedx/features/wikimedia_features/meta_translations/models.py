@@ -58,7 +58,7 @@ class CourseBlock(models.Model):
         """
         Returns Boolean value indicating if block direction flag is Source or not
         """
-        return self.direction_flag == _Source
+        return self.direction_flag == self._Source
 
     def add_mapping_language(self, language):
         """
@@ -146,6 +146,17 @@ class WikiTranslation(models.Model):
     revision = models.IntegerField(null=True, blank=True)
     approved_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
+    def status_info(self):
+        """
+        Returns translation status
+        """
+        return  {
+            'applied': self.applied,
+            'approved': self.approved,
+            'last_fetched': self.last_fetched,
+            'approved_by': self.approved_by.username if self.approved_by else self.approved_by,
+        }
+    
     @classmethod
     def create_translation_mapping(cls, base_course_blocks_data, key, value, target_block):
         try:
