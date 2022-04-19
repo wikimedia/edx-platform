@@ -60,6 +60,12 @@ def get_block_data_from_table(block, wiki_objects):
                 "display_name": 1,
                 "content": 10
             },
+            "status": {
+                "applied": false,
+                "approved": false,
+                "last_fetched": null,
+                "approved_by": null
+            },
             "data":{
                 "display_name":"Problem 1",
                 "content":"<problem>This is the problem....<problem>"
@@ -87,8 +93,10 @@ def get_block_data_from_table(block, wiki_objects):
         base_block_fields = {}
         block_fields_ids = {}
         wiki_objects = wiki_objects.filter(target_block__block_id=usage_key)
+        block_status = {}
         base_usage_key = ''
         for obj in wiki_objects:
+            block_status = obj.status_info()
             data_type = obj.source_block_data.data_type
             block_fields_ids[data_type] = obj.id
             block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.translation)
@@ -98,6 +106,7 @@ def get_block_data_from_table(block, wiki_objects):
         course_block_data = {
             'usage_key': usage_key,
             'category': block.category,
+            'status': block_status,
             'data_block_ids': block_fields_ids,
             'data': block_fields,
         }
@@ -121,6 +130,12 @@ def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
                     "display_name": 1,
                     "content": 10
                 },
+                "status": {
+                    "applied": false,
+                    "approved": false,
+                    "last_fetched": null,
+                    "approved_by": edx
+                },
                 "data":{
                     "display_name":"Problem 1",
                     "content":""
@@ -132,6 +147,12 @@ def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
                 "data_block_ids: {
                     "display_name": 1,
                     "content": 10
+                },
+                "status": {
+                    "applied": false,
+                    "approved": false,
+                    "last_fetched": null,
+                    "approved_by": edx
                 },
                 "data": {
                     "display_name":"Html Text",
