@@ -307,3 +307,11 @@ def check_and_map_course_blocks(course_outline_data, course_key, base_course_key
         log.info("Deleting course blocks that do not exist in course-outline {}.".format(deleted_block_ids))
         for deleted_block_id in deleted_block_ids:
             existing_course_blocks.get(block_id=deleted_block_id).delete()
+
+def get_children_block_ids(block_location):
+    """
+    Get children_ids from a current block_location
+    """
+    block = modulestore().get_item(block_location)
+    course_blocks = get_recursive_blocks_data(block, 4, structured=False)
+    return [UsageKey.from_string(course_block['usage_key']) for course_block in course_blocks]
