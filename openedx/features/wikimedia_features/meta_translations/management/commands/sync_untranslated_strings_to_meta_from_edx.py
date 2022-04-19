@@ -73,9 +73,9 @@ class Command(BaseCommand):
         }
         """
         request = {}
-        # title format is course_id/block_id/course_lang_code
+        # title format is course_id/course_lang_code/block_id
         request["title"] = "{}/{}/{}".format(
-            str(base_course), str(block.block_id), base_course_language
+            str(base_course), base_course_language, str(block.block_id)
         )
         request["@metadata"] = {
             "sourceLanguage": base_course_language,
@@ -156,10 +156,10 @@ class Command(BaseCommand):
         success_responses_count = 0
         for response in responses:
             if response.get("result", "").lower() == "success":
-                # title format is course_id/block_id/course_lang_code
+                # title format is course_id/course_lang_code/block_id
                 title =  response.get("title", "").split("/")
-                if len(title) > 2:
-                    block_id = UsageKey.from_string(title[1])
+                if len(title) >= 3:
+                    block_id = UsageKey.from_string(title[2])
                     CourseBlockData.objects.filter(course_block__block_id=block_id).update(
                         content_updated=False, mapping_updated=False
                     )
