@@ -5,7 +5,6 @@ Meta Translations Models
 import json
 import jsonfield
 import logging
-import six
 
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -144,7 +143,7 @@ class WikiTranslation(models.Model):
     approved = models.BooleanField(default=False)
     last_fetched = models.DateTimeField(null=True, blank=True)
     revision = models.IntegerField(null=True, blank=True)
-    approved_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    approved_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def status_info(self):
         """
@@ -156,7 +155,7 @@ class WikiTranslation(models.Model):
             'last_fetched': self.last_fetched,
             'approved_by': self.approved_by.username if self.approved_by else self.approved_by,
         }
-    
+
     @classmethod
     def create_translation_mapping(cls, base_course_blocks_data, key, value, target_block):
         try:
@@ -194,7 +193,7 @@ class WikiTranslation(models.Model):
                           "in data comparison - data_type {}, value {}".format(key, value))
             except CourseBlockData.DoesNotExist:
                 log.error("Error -> Unable to find source block mapping for key {}, value {} of course: {}".format(
-                    key, value, six.text_type(target_block.course_id))
+                    key, value, str(target_block.course_id))
                 )
 
     class Meta:

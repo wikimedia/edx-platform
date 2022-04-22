@@ -22,6 +22,8 @@ class WikiMetaClient(object):
                 'WIKI_META_BASE_API_URL', settings.WIKI_META_BASE_API_URL)
         self._CONTENT_MODEL = configuration_helpers.get_value(
                 'WIKI_META_CONTENT_MODEL', settings.WIKI_META_CONTENT_MODEL)
+        self._MCGROUP_PREFIX = configuration_helpers.get_value(
+                'WIKI_META_MCGROUP_PREFIX', settings.WIKI_META_MCGROUP_PREFIX)
 
         logger.info(
             "Create meta client with api_url: {}, content_model: {}".format(
@@ -29,7 +31,7 @@ class WikiMetaClient(object):
             )
         )
 
-        if not self._BASE_API_END_POINT or not self._CONTENT_MODEL:
+        if not self._BASE_API_END_POINT or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX :
             raise Exception("Missing WIKI Meta Configurations.")
 
 
@@ -73,7 +75,8 @@ class WikiMetaClient(object):
             "action": "query",
             "meta": "tokens",
             "type": "login",
-            "format": "json"
+            "format": "json",
+            "formatversion": 2
         }
         success, response_data = await self.handle_request(session.get, params=params, data=None)
         if success:
@@ -94,6 +97,7 @@ class WikiMetaClient(object):
            "lgpassword": "qtvu1dnlk8t635jla8e0b10rees3n07j",
            "lgtoken": token,
            "format": "json",
+           "formatversion": 2
         }
 
         success, data = await self.handle_request(session.post, params=None, data=post_data)
@@ -108,7 +112,8 @@ class WikiMetaClient(object):
         params = {
             "action": "query",
             "meta": "tokens",
-            "format": "json"
+            "format": "json",
+            "formatversion": 2
         }
 
         success, response_data = await self.handle_request(session.get, params=params, data=None)
@@ -137,3 +142,20 @@ class WikiMetaClient(object):
                         response_edit_dict.get('pageid')
             )
             return response_edit_dict
+
+
+    async def sync_translations(self, mcgroup, mclanguage, session):
+        logger.info("{}-{}".format(self._MCGROUP_PREFIX, mcgroup))
+        params = {
+            "action": "query",
+            "format": "json",
+            "list": "messagecollection",
+            "utf8": 1,
+            "formatversion": 2,
+            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, mcgroup),
+            "mclanguage": mclanguage,
+            "mcprop": "translation|properties",
+        }
+        success, response_data = await self.handle_request(session.get, params=params, data=None)
+        if success:
+            print(response_data)
