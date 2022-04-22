@@ -18,6 +18,7 @@ class MetaTranslationsConfig(AppConfig):
         PluginSettings.CONFIG: {
             ProjectType.CMS: {
                 SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: 'settings.common'},
+                SettingsType.PRODUCTION: {PluginSettings.RELATIVE_PATH: 'settings.production'},
             }
         }
     }

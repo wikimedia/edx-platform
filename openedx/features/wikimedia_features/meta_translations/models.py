@@ -58,13 +58,13 @@ class CourseBlock(models.Model):
         Add a new course data in a course block
         """
         return CourseBlockData.objects.create(course_block=self, data_type=data_type, data=data, parsed_keys=parsed_keys)
-        
+
     def is_source(self):
         """
         Returns Boolean value indicating if block direction flag is Source or not
         """
         return self.direction_flag == self._Source
-    
+
     def is_destination(self):
         """
         Returns Boolean value indicating if block direction flag is Destination or not
@@ -98,7 +98,7 @@ class CourseBlock(models.Model):
         existing_mappings = self.wikitranslation_set.all()
         if existing_mappings:
             return existing_mappings.first().source_block_data.course_block
-    
+
     def get_block_info(self):
         """
         Returns block info using mapped translations.
@@ -127,7 +127,7 @@ class CourseBlock(models.Model):
                 self.direction_flag = CourseBlock._Source
                 self.save()
                 return self
-    
+
     def update_flag_to_destination(self, target_course_language):
         """
         When block direction is updated from Source to Destination, language in linked source block will be
@@ -154,13 +154,13 @@ class CourseBlock(models.Model):
         for wikitranslation in existing_mappings:
             wikitranslation.applied = True
             wikitranslation.save()
-    
+
     def get_parsed_data(self, data_type, data):
         """
         Transform raw_data into parsed_data
         """
         if data_type in settings.DATA_TYPES_WITH_PARCED_KEYS and self.block_type in settings.TRANSFORMER_CLASS_MAPPING:
-            return json.dumps(settings.TRANSFORMER_CLASS_MAPPING[self.block_type]().raw_data_to_meta_data(data))
+            return settings.TRANSFORMER_CLASS_MAPPING[self.block_type]().raw_data_to_meta_data(data)
 
     def __str__(self):
         return str(self.block_id)
@@ -176,7 +176,7 @@ class CourseBlockData(models.Model):
     course_block = models.ForeignKey(CourseBlock, on_delete=models.CASCADE)
     data_type = models.CharField(max_length=255)
     data = models.TextField()
-    parsed_keys = jsonfield.JSONField(default=None)
+    parsed_keys = jsonfield.JSONField(default=None, blank=True)
     content_updated = models.BooleanField(default=False)
     mapping_updated = models.BooleanField(default=False)
 
