@@ -1,6 +1,7 @@
 """
 WikiTransformer classes
 """
+import re
 from lxml import etree
 from abc import ABC, abstractmethod
 
@@ -14,14 +15,14 @@ class WikiTransformer(ABC):
     def __init__(self, component_type=None, data_type=None):
         self.component_type = component_type
         self.data_type = data_type
-    
+
     @abstractmethod
     def validate_meta_data(self, data):
         """
         validate meta_data based on type of component
         """
         pass
-  
+
     @abstractmethod
     def raw_data_to_meta_data(self, raw_data):
         """
@@ -36,7 +37,7 @@ class WikiTransformer(ABC):
         Note: Go to problem transformer for more detail
         """
         pass
-  
+
     @abstractmethod
     def meta_data_to_raw_data(self, meta_data):
         """
@@ -72,7 +73,37 @@ class ProblemTransformer(WikiTransformer):
         if 'xml_data' not in data or 'encodings' not in data:
             raise Exception('xml_data and encodings are required in problem meta_data')
         return True
-  
+
+    def _convert_xpath_to_meta_key_format(self, path):
+        """
+        Converts xpath in specific key format as Meta server only allows '_', '.' and '-' for data keys.
+        xpath: string in xpath format /problem/choiceresponse/checkboxgroup/choice[1]
+        returns string in meta_key format i.e problem.choiceresponse.checkboxgroup.choice.1
+        """
+        converted_path = path.replace("/", ".")[1:]
+        while True:
+            match = re.search(r"\[\d\]", converted_path)
+            if not match:
+                break;
+            start, end = match.span()
+            converted_path = converted_path[:start] + "." + converted_path[end-2] + converted_path[end:]
+        return converted_path
+
+    def _convert_meta_key_format_to_xpath(self, key):
+        """
+        Converts meta key format to xpath.
+        key: string in meta_key format i.e problem.choiceresponse.checkboxgroup.choice.1
+        returns string in xpath format /problem/choiceresponse/checkboxgroup/choice[1]
+        """
+        converted_path = key
+        while True:
+            match = re.search(r"\.\d", converted_path)
+            if not match:
+                break;
+            start, end = match.span()
+            converted_path = converted_path[:start] + "[" + converted_path[end-1] + "]" + converted_path[end:]
+        return "/{}".format(converted_path.replace('.','/'))
+
     def raw_data_to_meta_data(self, raw_data):
         """
         Convert raw_data of problem (xml) to the meta_data of problem component (dict)
@@ -92,7 +123,7 @@ class ProblemTransformer(WikiTransformer):
                         '''
         Returns:
             meta_data: (dict) - xml encoding
-                sample => 
+                sample =>
                     {
                         'problem.multiplechoiceresponse.choicegroup.choice[1]': 'Sample text choice 1',
                         'problem.multiplechoiceresponse.choicegroup.choice[2]': 'Sample text choice 2',
@@ -107,9 +138,11 @@ class ProblemTransformer(WikiTransformer):
         data_dict = {}
         for e in problem.iter("*"):
             if e.text:
-                data_dict.update({tree.getpath(e).replace("/", ".")[1:]: e.text})
+                # have to convert xpath as Meta server only allows '_', '.' and '-' for data keys.
+                converted_xpath = self._convert_xpath_to_meta_key_format(tree.getpath(e))
+                data_dict.update({converted_xpath: e.text})
         return data_dict
-  
+
     def meta_data_to_raw_data(self, meta_data):
         """
         Convet meta_data of problem (dict) to the raw_data of problem (xml)
@@ -134,7 +167,7 @@ class ProblemTransformer(WikiTransformer):
                         'problem.multiplechoiceresponse.label': 'Updated text label',
                         'problem.multiplechoiceresponse.p': 'Updated text p'
                     }
-                    
+
                 }
         Returns:
             raw_data: (str) xml-string
@@ -157,7 +190,8 @@ class ProblemTransformer(WikiTransformer):
             parser = etree.XMLParser(remove_blank_text=True)
             problem = etree.XML(xml_data, parser=parser)
             for key, value in encodings.items():
-                element = problem.xpath("/{}".format(key.replace('.','/')))
+                xpath = self._convert_meta_key_format_to_xpath(key)
+                element = problem.xpath(xpath)
                 if element:
                     element[0].text = value
                 else:

@@ -8,6 +8,7 @@ from datetime import datetime
 from logging import getLogger
 
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from django.db.models import Q
 from opaque_keys.edx.keys import CourseKey, UsageKey
 from opaque_keys import InvalidKeyError
@@ -78,17 +79,23 @@ class Command(BaseCommand):
         request["title"] = "{}/{}/{}".format(
             str(base_course), base_course_language, str(block.block_id)
         )
-        request["@metadata"] = {
+        request.update({
             "sourceLanguage": base_course_language,
-            "priorityLanguages": json.loads(block.lang),
-            "allowOnlyPriorityLanguages": True,
-            "description": {
-                "base_course_block": str(block.block_id),
-                "base_course_block_type": json.dumps(
-                    [data.data_type for data in block.courseblockdata_set.all()]
-                )
-            }
-        }
+            "priorityLanguages": json.dumps(json.loads(block.lang)),
+        })
+
+        # TODO: Un-commnet following once metadata key is resolved on wikimedia side.
+        # request["@metadata"] = json.dumps({
+        #     "sourceLanguage": base_course_language,
+        #     "priorityLanguages": json.dumps(json.loads(block.lang)),
+        #     "allowOnlyPriorityLanguages": True,
+        #     "description": json.dumps({
+        #         "base_course_block": str(block.block_id),
+        #         "base_course_block_type": json.dumps(
+        #             [data.data_type for data in block.courseblockdata_set.all()]
+        #         )
+        #     })
+        # })
         return request
 
     def _get_request_data_list(self):
@@ -125,9 +132,12 @@ class Command(BaseCommand):
                     if updated_block_data.exists():
                         request_arguments = self._create_request_dict_for_block(base_course, block, base_course_language)
                         for data in updated_block_data:
-                            request_arguments.update({
-                                "{}_{}".format(str(block.block_id), data.data_type): data.data
-                            })
+                            if data.parsed_keys:
+                                request_arguments.update(data.parsed_keys)
+                            else:
+                                request_arguments.update({
+                                    data.data_type: data.data
+                                })
                         data_list.append(request_arguments)
         return data_list
 
@@ -137,10 +147,11 @@ class Command(BaseCommand):
         """
         tasks = []
         for component in data_list:
+            title = component.pop('title')
             tasks.append(
                 meta_client.create_update_message_group(
-                    component['title'],
-                    {"@metadata": component["@metadata"]},
+                    title,
+                    component,
                     session,
                     csrf_token,
                 )

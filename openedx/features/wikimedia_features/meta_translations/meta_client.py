@@ -41,6 +41,54 @@ class WikiMetaClient(object):
         )
 
 
+    def _process_fetched_response_data_list_to_dict(self, response_data):
+        """
+        Converts response message collections list to dictionary so that later on traversing will be easy.
+
+        Sample response data:
+        [
+            {
+                "key": "Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name",
+                "translation": "चेक बॉक्",
+                "properties": {
+                    "status": "translated",
+                    "last-translator-text": "wikimeta-translator-username",
+                    "last-translator-id": "wikimeta-translator-userid",
+                },
+                "title": "Translations:Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
+                "targetLanguage": "hi",
+                "primaryGroup": "messagebundle-Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
+            }
+            ...
+        ]
+
+        Returns converted dict:
+        {
+            "display_name": {
+                "key": "Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name",
+                "translation": "चेक बॉक्",
+                "properties": {
+                    "status": "translated",
+                    "last-translator-text": "wikimeta-translator-username",
+                    "last-translator-id": "wikimeta-translator-userid",
+                },
+                "title": "Translations:Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
+                "targetLanguage": "hi",
+                "primaryGroup": "messagebundle-Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
+            }
+        }
+        """
+        response_dict = {}
+        for response_translation_obj in response_data:
+            if response_translation_obj.get("key"):
+                try:
+                    key = response_translation_obj.get("key").split("/")[3]
+                    response_dict.update({key: response_translation_obj})
+                except:
+                    logger.error("Error - unable to process response data list to dict for key: {}.".format(key))
+        return response_dict
+
+
     async def parse_response(self, response):
         """
         Parses and return the response.
@@ -61,7 +109,7 @@ class WikiMetaClient(object):
             return True, data
 
         else:
-            logger.error("Meta API return response with status code: %s.", response.status_code)
+            logger.error("Meta API return response with status code: %s.", response.status)
             logger.error("Meta API return Error response: %s.", json.dumps(data))
             return False, data
 
@@ -70,7 +118,7 @@ class WikiMetaClient(object):
         """
         Handles all Meta API calls.
         """
-        logger.info("Sending Meta request.")
+        logger.info("Sending Meta request with data: {}, params: {}.".format(data, params))
         response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data)
         return await self.parse_response(response)
 
@@ -121,7 +169,6 @@ class WikiMetaClient(object):
             "format": "json",
             "formatversion": 2
         }
-
         success, response_data = await self.handle_request(session.get, params=params, data=None)
         if success:
             csrf_token = response_data.get('query', {}).get('tokens', {}).get('csrftoken', {})
@@ -148,3 +195,35 @@ class WikiMetaClient(object):
                         response_edit_dict.get('pageid')
             )
             return response_edit_dict
+
+
+    async def sync_translations(self, mcgroup, mclanguage, session):
+        logger.info("{}-{}".format(self._MCGROUP_PREFIX, mcgroup))
+        params = {
+            "action": "query",
+            "format": "json",
+            "list": "messagecollection",
+            "utf8": 1,
+            "formatversion": 2,
+            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, mcgroup[0].upper() + mcgroup[1:]),
+            "mclanguage": mclanguage,
+            "mcprop": "translation|properties",
+        }
+        success, response_data = await self.handle_request(session.get, params=params, data=None)
+        if success:
+            translation_state = response_data.get('query', {}).get('metadata', {}).get('state', "")
+
+            if translation_state == "ready":
+                response_data_dict = self._process_fetched_response_data_list_to_dict(
+                    response_data.get('query', {}).get('messagecollection', [])
+                )
+                # mcgroup will be in this format source_course_id/source_lang_code/source_block_key
+                return {
+                    'response_source_block': mcgroup.split("/")[2],
+                    'mclanguage': mclanguage,
+                    'response_data': response_data_dict
+                }
+            else:
+                logger.info("Translation state not ready as Meta server returned translation_state:{} for {}.".format(
+                    mcgroup
+                ))
