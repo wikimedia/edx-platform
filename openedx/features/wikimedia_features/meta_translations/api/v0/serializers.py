@@ -14,8 +14,8 @@ class WikiTranslationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
     class Meta:
         model = WikiTranslation
-        fields = ('id', 'target_block', 'translation', 'applied', 'last_fetched', 'revision', 'approved_by')
-        read_only_fields = ('id', 'target_block', 'last_fetched', 'revision', 'approved_by')
+        fields = ('id', 'target_block', 'translation', 'applied', 'last_fetched', 'revision', 'approved', 'approved_by')
+        read_only_fields = ('id', 'target_block', 'last_fetched', 'revision', 'applied' ,'approved_by')
 
 
 class CourseBlockSerializer(serializers.ModelSerializer):
@@ -24,28 +24,14 @@ class CourseBlockSerializer(serializers.ModelSerializer):
     """
     wiki_translations = WikiTranslationSerializer(source='wikitranslation_set', many=True, required=False)
     apply_all = serializers.BooleanField(required=False, write_only=True)
-    applied = serializers.BooleanField(required=True, write_only=True)
+    approved = serializers.BooleanField(required=True, write_only=True)
 
     def to_representation(self, value):
         """
-        Add applied field in block. True if all the translations are applied else false
+        Add approved field in block. True if all the translations are applied else false
         """
         data = super(CourseBlockSerializer, self).to_representation(value)
-        data['applied'] = all([translation['applied'] for translation in data['wiki_translations']])
-        return data
-
-    def to_internal_value(self, data):
-        """
-        If data cantains wiki_translations, add the applied field in all
-        """
-        if 'wiki_translations' in data:
-            translations_data = []
-            for translation in data['wiki_translations']:
-                new_trans = {}
-                new_trans.update(translation)
-                new_trans.update({'applied': data['applied']})
-                translations_data.append(new_trans)
-            data['wiki_translations'] = translations_data
+        data['approved'] = all([translation['approved'] for translation in data['wiki_translations']])
         return data
 
     def validate(self, data):
@@ -75,41 +61,41 @@ class CourseBlockSerializer(serializers.ModelSerializer):
         if instances_ids != data_ids:
             raise serializers.ValidationError("wiki_translations didn't matched with block translations")
     
-    def _update_translations(self, instances, validated_data):
+    def _get_user(self, approved, user):
         """
-        Update WikiTranslation instances with validated_
+        On approved True, return user otherwise None
         """
-    
-    def _update_translations_fields(self, instances, applied, user):
+        if approved:
+            return user
+        
+    def _update_translations_fields(self, instances, approved, user):
         """
-        Update WikiTranslation instances with applied and user fields
+        Update WikiTranslation instances with approved and user fields
         Note: It'll apply same fields to all the instances
         """
         for instance in instances:
-            if applied:
-                instance.applied = applied
-            if user:
-                instance.user = user
+            instance.approved = approved
+            instance.approved_by = self._get_user(approved, user)
             instance.save()
 
     def update(self, instance, validated_data):
         """
         Update method override
         if 'apply_all' is true
-            It applies 'applied' status to the block and their children
+            It applies 'approved' status to the block and their children
         if 'wiki_translations'
             First it validates translations in wiki_translations
-            Then it applies those translations to database
-        Otherwise It only update 'applied' status to current block wiki_translations
+            Then it approved those translations to database
+        Otherwise It only update 'approved' status to current block wiki_translations
         At last it calls the default update methord
         """
-        applied = validated_data.pop('applied')
+        approved = validated_data.pop('approved')
         user = self._user()
         if validated_data.get('apply_all'):
             validated_data.pop('apply_all')
             block_ids = get_children_block_ids(instance.block_id)
             wiki_translations = WikiTranslation.objects.filter(target_block__block_id__in=block_ids)
-            self._update_translations_fields(wiki_translations, applied, user)
+            self._update_translations_fields(wiki_translations, approved, user)
         else:
             wiki_translations = WikiTranslation.objects.filter(target_block=instance)
             if 'wiki_translations' in validated_data:
@@ -118,13 +104,13 @@ class CourseBlockSerializer(serializers.ModelSerializer):
                 for block_translation in block_translations:
                     id = block_translation.pop('id')
                     instance = wiki_translations.get(id=id)
-                    instance.approved_by = user
-                    instance.applied = block_translation['applied']
+                    instance.approved_by = self._get_user(approved, user)
+                    instance.approved = approved
                     if 'translation' in block_translation:
                         instance.translation = block_translation['translation']
                     instance.save()      
             else:
-                self._update_translations_fields(wiki_translations, applied, user)
+                self._update_translations_fields(wiki_translations, approved, user)
 
         return super(CourseBlockSerializer, self).update(instance, validated_data)
 
@@ -132,7 +118,7 @@ class CourseBlockSerializer(serializers.ModelSerializer):
         """
         Call default create method after removing extra fields.
         """
-        extra_fields = ['wiki_translations', 'apply_all', 'applied']
+        extra_fields = ['wiki_translations', 'apply_all', 'approved']
         for field in extra_fields:
             if field in validated_data:
                 validated_data.pop(field)
@@ -140,5 +126,5 @@ class CourseBlockSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = CourseBlock
-        fields = ('block_id', 'block_type', 'course_id', 'wiki_translations', 'apply_all', 'applied')
+        fields = ('block_id', 'block_type', 'course_id', 'wiki_translations', 'apply_all', 'approved')
         read_only_fields = ('block_id', 'block_type', 'course_id')
