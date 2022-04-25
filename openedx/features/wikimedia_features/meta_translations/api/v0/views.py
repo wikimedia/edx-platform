@@ -261,13 +261,14 @@ class CourseBlockViewSet(viewsets.ModelViewSet):
             "block_id": "<block_id>",
             "block_type": "chapter",
             "course_id": "course-v1:Arbisoft+CS101+TranslatedRerun1",
-            "applied": true,
+            "approved": true,
             "wiki_translations": [
                 {
                     "id": 245,
                     "target_block": 303,
                     "translation": null,
-                    "applied": true,
+                    "approved": true,
+                    "applied": false,
                     "last_fetched": null,
                     "revision": null,
                     "approved_by": 3
@@ -278,18 +279,18 @@ class CourseBlockViewSet(viewsets.ModelViewSet):
         To only update the applied status of a block mentioned in url
             Request:
             {
-                applied = true,
+                approved = true,
             }
         To update applied status of block and their children
             Request:
             {
-                applied = true,
+                approved = true,
                 apply_all = true
             }
         To update translations of a block
             Request:
             {
-                applied = true,
+                approved = true,
                 wiki_translations: [
                     {
                         id: <data_block_id>,
