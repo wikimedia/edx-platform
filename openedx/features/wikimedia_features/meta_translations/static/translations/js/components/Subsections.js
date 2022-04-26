@@ -16,18 +16,26 @@ function Subsections (props) {
           const baseTitle = baseCourseSubsections[subsection_id].data.display_name;
           const rerunTitle = rerunCourseSubsections[subsection_id].data.display_name;
 
+          const approveAll = Object.keys(rerunCourseSubsections[subsection_id].children).every(unit_id => !isEmpty(rerunCourseSubsections[subsection_id].children[unit_id].units))
+
           return (
             <Accordion
               addClass="sub-sections"
               key={subsection_id}
               baseTitle={baseTitle}
               rerunTitle={rerunTitle}
+              subsection_id={subsection_id}
+              usageKey={rerunCourseSubsections[subsection_id].usage_key}
+              approved={rerunCourseSubsections[subsection_id].status.approved}
+              approveAll={approveAll}
+              {...props}
             >
               <Units
                 key={subsection_id}
                 subsection_id={subsection_id}
                 baseCourseUnits={baseCourseSubsections[subsection_id].children}
                 rerunCourseUnits={rerunCourseSubsections[subsection_id].children}
+                rerunSubsectionKey={rerunCourseSubsections[subsection_id].usage_key}
                 {...props}
               />
             </Accordion>

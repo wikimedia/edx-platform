@@ -29,6 +29,9 @@ function Units (props) {
               baseContent={baseCourseUnits[unit_id].units}
               baseCourseUnitKey={baseCourseUnitKey}
               rerunCourseUnitKey={rerunCourseUnitKey}
+              usageKey={rerunCourseUnits[unit_id].usage_key}
+              approved={rerunCourseUnits[unit_id].status.approved}
+              approveAll={!isEmpty(baseCourseUnits[unit_id].units)}
               {...props}
             >
               {
