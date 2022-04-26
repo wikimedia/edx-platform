@@ -26,9 +26,13 @@ function Actions (props) {
 
   return (
     <div className="btn-box">
-      <span className={`btn approveAll ${!approveAll? 'not-visible': ''}`} title="Approve All" onClick={hanldeApproveAll}>
-        <i className="fa fa-list" aria-hidden="true"></i>
-      </span>
+      {
+        approveAll && (
+          <span className="btn approveAll" title="Approve All" onClick={hanldeApproveAll}>
+            <i className="fa fa-list" aria-hidden="true"></i>
+          </span>
+        )
+      }
       <span className={`btn approve ${approved? 'not-visible' : ''}`} title="Approve" onClick={hanldeApprove}>
         <i className="fa fa-check" aria-hidden="true"></i>
       </span>

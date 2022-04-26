@@ -5,7 +5,7 @@ import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass, approved, approveAll, usageKey, rerunCourseId } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass } = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const ref = useRef();
@@ -35,14 +35,14 @@ function Accordion (props) {
           <strong className='title'>{baseTitle}</strong>
         </div>
         <div className='col'>
-          <span className="fa fa-chevron-down"></span>
-          <strong className='title'>{rerunTitle}</strong>
+          {
+            rerunTitle && (
+              <span className="fa fa-chevron-down"></span>
+            )
+          }
+          <strong className='title'>{rerunTitle ? rerunTitle : '--'}</strong>
         </div>
         <Actions
-          approved={approved}
-          approveAll={approveAll}
-          usageKey={usageKey}
-          courseId={rerunCourseId}
           {...props}
         />
       </div>
