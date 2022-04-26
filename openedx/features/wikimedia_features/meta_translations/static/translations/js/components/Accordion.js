@@ -5,7 +5,7 @@ import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId } = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const ref = useRef();
@@ -43,6 +43,7 @@ function Accordion (props) {
           <strong className='title'>{rerunTitle ? rerunTitle : '--'}</strong>
         </div>
         <Actions
+          courseId={rerunCourseId}
           {...props}
         />
       </div>
