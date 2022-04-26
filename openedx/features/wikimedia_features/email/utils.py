@@ -1,21 +1,27 @@
+import markdown
 import json
 import logging
 
 from edx_ace import ace
+from edx_ace.utils import date
 from edx_ace.recipient import Recipient
 from django.conf import settings
 from django.urls import reverse
 from django.contrib.sites.models import Site
+from django.contrib.auth import get_user_model
 
+from lms.djangoapps.discussion.tasks import _get_thread_url
 from openedx.core.djangoapps.ace_common.template_context import get_base_template_context
 from openedx.core.lib.celery.task_utils import emulate_http_request
 from openedx.features.wikimedia_features.email import message_types
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 
 logger = logging.getLogger(__name__)
-
+User = get_user_model()
 
 MESSAGE_TYPES = {
   'pending_messages': message_types.PendingMessagesNotification,
+  'thread_mention': message_types.ThreadMentionNotification
 }
 
 
@@ -30,7 +36,7 @@ def send_ace_message(request_user, request_site, dest_email, context, message_cl
         ace.send(message)
 
 
-def send_notification(message_type, data, subject, dest_emails, request_user, current_site=None):
+def send_notification(message_type, data, subject, dest_emails, request_user=None, current_site=None):
     """
     Send an email
     Arguments:
@@ -44,6 +50,15 @@ def send_notification(message_type, data, subject, dest_emails, request_user, cu
     """
     if not current_site:
         current_site = Site.objects.all().first()
+
+    if not request_user:
+        try:
+            request_user = User.objects.get(username=settings.EMAIL_ADMIN)
+        except User.DoesNotExist:
+            logger.error(
+                "Unable to send email as Email Admin User with username: {} does not exist.".format(settings.EMAIL_ADMIN)
+            )
+            return
 
     data.update({'subject': subject})
 
@@ -84,8 +99,41 @@ def send_notification(message_type, data, subject, dest_emails, request_user, cu
 
     return return_value
 
+def update_context_with_thread(context, thread):
+    thread_author = User.objects.get(id=thread.user_id)
+    context.update({
+        'thread_id': thread.id,
+        'thread_title': thread.title,
+        'thread_body': markdown.markdown(thread.body),
+        'thread_commentable_id': thread.commentable_id,
+        'thread_author_id': thread_author.id,
+        'thread_username': thread_author.username,
+        'thread_created_at': thread.created_at
+    })
 
-def send_unread_messages_email(user, user_context, request_user):
+def update_context_with_comment(context, comment):
+    comment_author = User.objects.get(id=comment.user_id)
+    context.update({
+        'comment_id': comment.id,
+        'comment_body': markdown.markdown(comment.body),
+        'comment_author_id': comment_author.id,
+        'comment_username': comment_author.username,
+        'comment_created_at': comment.created_at
+    })
+
+def build_discussion_notification_context(context):
+    site = context['site']
+    message_context = get_base_template_context(site)
+    message_context.update(context)
+    message_context.update({
+        'site_id': site.id,
+        'post_link': _get_thread_url(context),
+        'course_name': CourseOverview.get_from_id(message_context.pop('course_id')).display_name
+    })
+    message_context.pop('site')
+    return message_context
+
+def send_unread_messages_email(user, user_context):
     subject = "Unread Messages"
     logger.info("Sending messenger pending msgs email to the users: {}".format(user))
     key = "pending_messages"
@@ -94,4 +142,14 @@ def send_unread_messages_email(user, user_context, request_user):
         name = user.first_name + " " + user.last_name
     data = {"name": name,}
     data.update(user_context)
-    send_notification(key, data, subject, [user.email], request_user)
+    send_notification(key, data, subject, [user.email])
+
+def send_thread_mention_email(receivers, context, is_thread=True):
+    logger.info("Sending thread mention email to users: {}".format(receivers))
+    key = "thread_mention"
+    subject_template = "{} mentioned you on the post."
+    if is_thread:
+        subject = subject_template.format(context.get("thread_username"))
+    else:
+        subject = subject_template.format(context.get("comment_username"))
+    send_notification(key, context, subject, receivers)
