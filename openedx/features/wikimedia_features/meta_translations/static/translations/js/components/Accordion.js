@@ -1,9 +1,11 @@
 import React, {useState, useRef} from "react";
+
 import useFetch from "../hooks/useFetch";
+import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId } = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const ref = useRef();
@@ -33,9 +35,17 @@ function Accordion (props) {
           <strong className='title'>{baseTitle}</strong>
         </div>
         <div className='col'>
-          <span className="fa fa-chevron-down"></span>
-          <strong className='title'>{rerunTitle}</strong>
+          {
+            rerunTitle && (
+              <span className="fa fa-chevron-down"></span>
+            )
+          }
+          <strong className='title'>{rerunTitle ? rerunTitle : '--'}</strong>
         </div>
+        <Actions
+          courseId={rerunCourseId}
+          {...props}
+        />
       </div>
       <div className="body" ref={ref}>
       { children }

@@ -79,7 +79,7 @@ function TranslationContent({ context }) {
               <div className='col'>
                 <strong>
                   {
-                    context.LANGUAGES[courseOutline.course_lang]
+                    context.LANGUAGES[rerunCourses[rerunCourse].language]
                   }
                 </strong>
               </div>
@@ -87,6 +87,7 @@ function TranslationContent({ context }) {
             <Sections
               context={context}
               setLoading={setLoading}
+              rerunCourseId={rerunCourse}
               courseOutline={courseOutline}
               setCourseOutline={setCourseOutline}
             />
