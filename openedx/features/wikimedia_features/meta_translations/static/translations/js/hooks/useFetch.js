@@ -8,9 +8,8 @@ export default function useFetch(context) {
     const fetchCourses = (setCourses, setLoading) => {
       setLoading(true);
       client.get(context.COURSES_URL)
-      .then((res) => res.json())
       .then((res) => {
-        setCourses(res);
+        setCourses(res.data);
       })
       .catch((error) => {
         notification(toast.error, "Unable to load Courses.");
@@ -24,9 +23,8 @@ export default function useFetch(context) {
     const fetchCourseOutline = (rerun_subsection_key, setCourseOutline, setLoading) => {
         setLoading(true);
         client.get(`${context.COURSE_OUTLINE_URL}/${rerun_subsection_key}`)
-        .then((res) => res.json())
         .then((res) => {
-          setCourseOutline(res)
+          setCourseOutline(res.data)
         })
         .catch((error) => {
           notification(toast.error, "Unable to load Course Outline.");
@@ -42,9 +40,8 @@ export default function useFetch(context) {
 
       setLoading(true);
       client.get(`${context.COURSE_UNIT_URL}/${rerunCourseUnitKey}`)
-      .then((res) => res.json())
       .then((res) => {
-        const { components_data: units, base_components_data: base_units } = res;
+        const { components_data: units, base_components_data: base_units } = res.data;
         setCourseOutline((prevState) => {
           const state = {...prevState}
           state

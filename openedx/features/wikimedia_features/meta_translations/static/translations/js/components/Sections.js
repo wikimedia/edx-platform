@@ -19,7 +19,11 @@ function Sections(props) {
               addClass="sections"
               key={section_id}
               baseTitle={baseTitle}
+              section_id={section_id}
               rerunTitle={rerunTitle}
+              usageKey={course_outline[section_id].usage_key}
+              approved={course_outline[section_id].status.approved}
+              {...props}
             >
               <Subsections
                 section_id={section_id}

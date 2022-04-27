@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import axios from 'axios';
 
 export default class HttpClient {
     constructor(defaultOptions = {}) {
@@ -8,18 +9,18 @@ export default class HttpClient {
         return _.merge(options, this._defaultOptions);
     }
     get(url, options = {}) {
-        return fetch(url, { method: "GET", ...this._getOptions(options) });
+        return axios.get(url, this._getOptions(options));
     }
     post(url, data, options = {}) {
-        return fetch(url, data, this._getOptions(options));
+        return axios.post(url, data, this._getOptions(options));
     }
     put(url, data, options = {}) {
-        return fetch(url, data, this._getOptions(options));
+        return axios.put(url, data, this._getOptions(options) );
     }
     patch(url, data, options = {}) {
-        return fetch(url, data, this._getOptions(options));
+        return axios.patch(url, data, this._getOptions(options));
     }
     delete(url, options = {}) {
-        return fetch(url, this._getOptions(options));
+        return axios.delete(url, this._getOptions(options));
     }
 }

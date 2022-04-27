@@ -2,10 +2,11 @@ import React from "react";
 import ReactHtmlParser from 'react-html-parser';
 
 import isEmpty from '../helpers/isEmptyObject';
+import Actions from "./Actions";
 
 function Unit (props) {
 
-  const {baseContent, rerunContent} = props;
+  const {baseContent, rerunContent, rerunCourseId} = props;
 
   const content = (data) => {
     if (data.transcript) {
@@ -23,25 +24,33 @@ function Unit (props) {
     {
       !isEmpty(baseContent) &&
       Object.keys(baseContent).map((content_id) => {
+
         return (
           <div className='translation-content' key={content_id}>
-          <div className='translation-title'>
-            <div className='col'>
-              <strong>{baseContent[content_id].data.display_name}</strong>
+            <div className='translation-title'>
+              <div className='col'>
+                <strong>{baseContent[content_id].data.display_name}</strong>
+              </div>
+              <div className='col'>
+                <strong>{rerunContent[content_id].data.display_name}</strong>
+              </div>
+              <Actions
+                usageKey={rerunContent[content_id].usage_key}
+                courseId={rerunCourseId}
+                approved={rerunContent[content_id].status.approved}
+                content_id={content_id}
+                {...props}
+              />
             </div>
-            <div className='col'>
-              <strong>{rerunContent[content_id].data.display_name}</strong>
+            <div className='translation-body'>
+              <div className='col'>
+                { content(baseContent[content_id].data) }
+              </div>
+              <div className='col'>
+                { content(rerunContent[content_id].data) }
+              </div>
             </div>
           </div>
-          <div className='translation-body'>
-            <div className='col'>
-              { content(baseContent[content_id].data) }
-            </div>
-            <div className='col'>
-              { content(rerunContent[content_id].data) }
-            </div>
-          </div>
-        </div>
           )
       })
 

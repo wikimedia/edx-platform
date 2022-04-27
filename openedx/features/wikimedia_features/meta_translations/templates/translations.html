@@ -12,7 +12,6 @@
 
 <%block name="header_extras">
     <link rel="stylesheet" type="text/css" href="${static.url('css/studio-main-v1.css')}" />
-    <link rel="stylesheet" type="text/css" href="${static.url('css/ReactToastify.css')}" />
 </%block>
 
 <%block name="content">
@@ -25,6 +24,7 @@
             "COURSES_URL": "api/v0/versions",
             "COURSE_OUTLINE_URL": "api/v0/outline",
             "COURSE_UNIT_URL": "api/v0/components",
+            "COURSE_APPROVE_URL": "api/v0",
             "LANGUAGES": ${language_options | n, dump_js_escaped_json}
         }
 

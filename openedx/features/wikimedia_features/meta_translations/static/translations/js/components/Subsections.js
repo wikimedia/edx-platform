@@ -22,12 +22,18 @@ function Subsections (props) {
               key={subsection_id}
               baseTitle={baseTitle}
               rerunTitle={rerunTitle}
+              subsection_id={subsection_id}
+              usageKey={rerunCourseSubsections[subsection_id].usage_key}
+              approved={rerunCourseSubsections[subsection_id].status.approved}
+              approveAll={true}
+              {...props}
             >
               <Units
                 key={subsection_id}
                 subsection_id={subsection_id}
                 baseCourseUnits={baseCourseSubsections[subsection_id].children}
                 rerunCourseUnits={rerunCourseSubsections[subsection_id].children}
+                rerunSubsectionKey={rerunCourseSubsections[subsection_id].usage_key}
                 {...props}
               />
             </Accordion>
