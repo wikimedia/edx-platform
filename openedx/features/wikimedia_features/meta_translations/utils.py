@@ -10,7 +10,7 @@ from opaque_keys.edx.keys import UsageKey
 
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 from openedx.features.wikimedia_features.meta_translations.models import (
-    CourseBlock, CourseBlockData, WikiTranslation
+    CourseBlock, CourseBlockData, CourseTranslation, WikiTranslation
 )
 from lms.djangoapps.courseware.courses import get_course_by_id
 
