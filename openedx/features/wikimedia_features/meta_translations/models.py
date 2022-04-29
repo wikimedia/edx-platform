@@ -59,6 +59,12 @@ class CourseBlock(models.Model):
         Returns Boolean value indicating if block direction flag is Source or not
         """
         return self.direction_flag == self._Source
+    
+    def is_destination(self):
+        """
+        Returns Boolean value indicating if block direction flag is Destination or not
+        """
+        return self.direction_flag == self._DESTINATION
 
     def add_mapping_language(self, language):
         """
@@ -87,6 +93,14 @@ class CourseBlock(models.Model):
         existing_mappings = self.wikitranslation_set.all()
         if existing_mappings:
             return existing_mappings.first().source_block_data.course_block
+    
+    def get_block_info(self):
+        """
+        Returns block info using mapped translations.
+        """
+        existing_mappings = self.wikitranslation_set.all()
+        if existing_mappings:
+            return existing_mappings.first().status_info()
 
     def update_flag_to_source(self, target_course_language):
         """
@@ -94,14 +108,34 @@ class CourseBlock(models.Model):
         updated and mapping_updated will be set to true so that on next send_translation crone job, Meta
         Server can be informed that translation of this block is not needed anymore.
         """
-        if self.direction_flag != CourseBlock._Source:
+        if self.is_destination():
             source_block = self.get_source_block()
-            source_block.remove_mapping_language(target_course_language)
-            for data in source_block.courseblockdata_set.all():
-                data.mapping_updated = True
-                data.save()
-            self.direction_flag = CourseBlock._Source
-            self.save()
+            if source_block:
+                source_block.remove_mapping_language(target_course_language)
+                for data in source_block.courseblockdata_set.all():
+                    data.mapping_updated = True
+                    data.save()
+                self.direction_flag = CourseBlock._Source
+                self.save()
+                return self
+    
+    def update_flag_to_destination(self, target_course_language):
+        """
+        When block direction is updated from Source to Destination, language in linked source block will be
+        updated and mapping_updated will be set to true so that on next send_translation crone job, Meta
+        Server can be informed that translation of this block is needed.
+        """
+        if self.is_source():
+            source_block = self.get_source_block()
+            if source_block:
+                source_block.add_mapping_language(target_course_language)
+                for data in source_block.courseblockdata_set.all():
+                    data.mapping_updated = True
+                    data.save()
+                self.direction_flag = CourseBlock._DESTINATION
+                self.save()
+                return self
+
 
     def __str__(self):
         return str(self.block_id)

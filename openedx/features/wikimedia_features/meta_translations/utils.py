@@ -315,3 +315,42 @@ def get_children_block_ids(block_location):
     block = modulestore().get_item(block_location)
     course_blocks = get_recursive_blocks_data(block, 4, structured=False)
     return [UsageKey.from_string(course_block['usage_key']) for course_block in course_blocks]
+
+def is_destination_block(block_id):
+    """
+    Get direction status
+    """
+    try:
+        course_block = CourseBlock.objects.get(block_id=block_id)
+        return course_block.is_destination()
+    except CourseBlock.DoesNotExist:
+        return False
+
+def is_destination_course(course_id):
+    """
+    Check if the course is destination course
+    """
+    return CourseTranslation.objects.filter(course_id=course_id).exists()
+
+def get_block_status(block_id):
+    """
+    Get data of course block
+    {
+        'mapped': True,
+        'applied': True,
+        'approved': True,
+        'approved_by': username,
+        'last_fetched': data,
+    }
+    """
+    block_status = {}
+    block_status['mapped'] = False
+    try:
+        course_block = CourseBlock.objects.get(block_id=block_id)
+        block_info = course_block.get_block_info()
+        if block_info:
+            block_status = block_info
+            block_status['mapped'] = True
+    except CourseBlock.DoesNotExist:
+        log.info('No CourseBlock found for block {}'.format(block_id))
+    return block_status

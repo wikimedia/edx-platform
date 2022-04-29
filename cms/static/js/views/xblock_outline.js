@@ -15,8 +15,8 @@
  */
 define(['jquery', 'underscore', 'gettext', 'js/views/baseview', 'common/js/components/utils/view_utils',
     'js/views/utils/xblock_utils', 'js/views/xblock_string_field_editor',
-    'edx-ui-toolkit/js/utils/string-utils', 'edx-ui-toolkit/js/utils/html-utils'],
-    function($, _, gettext, BaseView, ViewUtils, XBlockViewUtils, XBlockStringFieldEditor, StringUtils, HtmlUtils) {
+    'edx-ui-toolkit/js/utils/string-utils', 'edx-ui-toolkit/js/utils/html-utils', 'js/views/utils/wiki_utils'],
+    function($, _, gettext, BaseView, ViewUtils, XBlockViewUtils, XBlockStringFieldEditor, StringUtils, HtmlUtils, WikiUtils) {
         'use strict';
         var XBlockOutlineView = BaseView.extend({
             // takes XBlockInfo as a model
@@ -195,6 +195,7 @@ define(['jquery', 'underscore', 'gettext', 'js/views/baseview', 'common/js/compo
                 element.find('.delete-button').click(_.bind(this.handleDeleteEvent, this));
                 element.find('.duplicate-button').click(_.bind(this.handleDuplicateEvent, this));
                 element.find('.button-new').click(_.bind(this.handleAddEvent, this));
+                element.find('.checkbox-direction-button').click(_.bind(this.handleStatusChangeEvent, this));
             },
 
             shouldRenderChildren: function() {
@@ -337,6 +338,23 @@ define(['jquery', 'underscore', 'gettext', 'js/views/baseview', 'common/js/compo
                                 xblockType,
                                 xblockElement
                             );
+                        }
+                    });
+            },
+            
+            /**
+             * Direction Status event handler.
+             * Called when checkbox is updated
+             */
+            handleStatusChangeEvent: function(event) {
+                var self = this,
+                    xblockElement = $(event.currentTarget).closest('.outline-item');
+                event.preventDefault();
+                WikiUtils.updateDirectionStatus(xblockElement, self.model.get('destination_flag'))
+                    .done(function(data) {
+                        if ('success' in data) {
+                            self.model.set(data.destination_flag, true);
+                            self.refresh();
                         }
                     });
             },
