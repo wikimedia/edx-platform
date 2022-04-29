@@ -12,7 +12,7 @@ from django.conf import settings
 from common.djangoapps.edxmako.shortcuts import render_to_response
 
 from lms.djangoapps.courseware.courses import get_course_by_id
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation
 from openedx.features.wikimedia_features.meta_translations.utils import get_recursive_blocks_data, check_and_map_course_blocks
 
 log = getLogger(__name__)
