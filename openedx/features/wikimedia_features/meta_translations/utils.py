@@ -4,89 +4,20 @@ Files containes helping functions assosiated with meta_translations
 
 import json
 from logging import getLogger
-import os
-from common.lib.xmodule.xmodule.video_module.transcripts_utils import Transcript, convert_video_transcript
 
 from xmodule.modulestore.django import modulestore
-from xmodule.video_module.transcripts_utils import get_video_transcript_content
 from opaque_keys.edx.keys import UsageKey
 
+from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 from openedx.features.wikimedia_features.meta_translations.models import (
-    CourseBlock, CourseBlockData, CourseTranslation, WikiTranslation
+    CourseBlock, CourseBlockData, WikiTranslation
 )
 from lms.djangoapps.courseware.courses import get_course_by_id
 
 
 log = getLogger(__name__)
 
-
-def get_html_components_data(block):
-    """
-    Extract data from html type xblock componenets
-
-    Arguments:
-        block: html type course-outline block
-
-    Returns:
-        dict of extracted data
-    """
-    return {
-        "display_name": block.display_name,
-        "content": block.data
-    }
-
-def get_json_transcript_data(file_name, content):
-    """
-    Return dict of subtitiles from content
-    """
-    if os.path.splitext(file_name) != Transcript.SJSON:
-        content = convert_video_transcript(file_name, content, Transcript.SJSON)['content']
-    if isinstance(content, str):
-        return json.loads(content)
-    return json.loads(content.decode("utf-8"))
-
-def get_video_components_data(block):
-    """
-    Extract data from video type xblock components
-
-    Arguments:
-        block: video type course-outline block
-
-    Returns:
-        dict of extracted data
-    """
-    data = get_video_transcript_content(block.edx_video_id, block.transcript_language)
-    video_context = { "display_name": block.display_name}
-    if data:
-        json_content = get_json_transcript_data(data['file_name'], data['content'])
-        video_context['transcript'] = json.dumps(json_content['text'])
-    return video_context
-
-def get_module_data(block):
-    """
-    Extract required data from module type blocks i.e sections, subsection and units
-
-    Arguments:
-        block: module type course-outline block
-
-    Returns:
-        dict of extracted data
-    """
-    return {
-        'display_name': block.display_name
-    }
-
-COMPONENTS_FUNCTION_MAPPING = {
-    'course': get_module_data,
-    'chapter': get_module_data,
-    'sequential': get_module_data,
-    'vertical': get_module_data,
-    'html': get_html_components_data,
-    'problem': get_html_components_data,
-    'video': get_video_components_data
-}
-
-def get_block_data(block):
+def get_block_data(block, mapping):
     """
     Extract required data from course blocks
     Arguments:
@@ -95,15 +26,22 @@ def get_block_data(block):
     Returns:
         dict of extracted data
     """
-    if block.category in COMPONENTS_FUNCTION_MAPPING:
+    if block.category in COMPONENTS_CLASS_MAPPING:
+        
+        data = {}
+        if block.category == 'video':
+            data = COMPONENTS_CLASS_MAPPING[block.category](mapping=mapping).get(block)
+        else:
+            data = COMPONENTS_CLASS_MAPPING[block.category]().get(block)
+        
         return {
             'usage_key': str(block.scope_ids.usage_id),
             'category': block.category,
-            'data': COMPONENTS_FUNCTION_MAPPING[block.category](block)
+            'data': data
         }
     return {}
 
-def get_recursive_blocks_data(block, depth=3, structured=True):
+def get_recursive_blocks_data(block, depth=3, structured=True, mapping=False):
     """
     Retrieve data from blocks.
     if structured True:
@@ -160,29 +98,29 @@ def get_recursive_blocks_data(block, depth=3, structured=True):
         depth (int): blocks are tree structured where each block can have multiple children. Depth argument will
           control level of children that we want to traverse.
         structured (bool): if True it will return recursive dict of blocks data else it will return array of all blocks data
-
+        mapping (bool): if True it will returns video translations on base_course_language
     Returns:
         extracted data
     """
     if depth == 0 or not hasattr(block, 'children'):
-        block_data = get_block_data(block)
+        block_data = get_block_data(block, mapping)
         if structured:
             return block_data
         else:
             return [block_data] if block_data else []
 
     if structured:
-        data = get_block_data(block)
+        data = get_block_data(block, mapping)
         data['children'] = []
         for child in block.get_children():
-            block_data = get_recursive_blocks_data(child, depth - 1, structured)
+            block_data = get_recursive_blocks_data(child, depth - 1, structured, mapping)
             if block_data:
                 data['children'].append(block_data)
     else:
-        block_data = get_block_data(block)
+        block_data = get_block_data(block, mapping)
         data = [block_data] if block_data else []
         for child in block.get_children():
-            data.extend(get_recursive_blocks_data(child, depth - 1, structured))
+            data.extend(get_recursive_blocks_data(child, depth - 1, structured, mapping))
     return data
 
 
@@ -206,16 +144,22 @@ def map_base_course_block(existing_course_blocks, outline_block_dict, course_key
     else:
         existing_block_data = existing_block.courseblockdata_set.all()
 
-        # Update blocks data in db if any content is edited in course outline.
-        for existing_data in existing_block_data:
-            outline_block_data = outline_block_dict.get('data', {}).get(existing_data.data_type, "")
-            if existing_data.data != outline_block_data:
-                log.info("Update course block data of data_type: {} from {} to {}".format(
-                    existing_data.data_type, existing_data.data, outline_block_data
-                ))
-                existing_data.data = outline_block_data
-                existing_data.content_updated = True
-                existing_data.save()
+        for key, value in outline_block_dict.get('data', {}).items():
+            try:
+                existing_data = existing_block_data.get(data_type=key)
+                # Update block data in db if any content is edited in a course outline
+                if existing_data.data != value:
+                    log.info("Update course block data of data_type: {} from {} to {}".format(
+                        existing_data.data_type, existing_data.data, value
+                    ))
+                    existing_data.data = value
+                    existing_data.content_updated = True
+                    existing_data.save()
+            except CourseBlockData.DoesNotExist:
+                # Add block data in db if any content is added in a course outline
+                new_block_data = existing_block.add_course_data(data_type=key, data=value)
+                if new_block_data:
+                    log.info('\nFound new data, Add {} into the {}\n'.format(key, existing_block.block_id))
 
 
 def map_translated_course_block(existing_course_blocks, outline_block_dict, course_key, base_course_blocks_data):

@@ -11,8 +11,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from opaque_keys.edx.django.models import CourseKeyField, UsageKeyField
-from lms.djangoapps.courseware.courses import get_course_by_id
-
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -54,6 +52,12 @@ class CourseBlock(models.Model):
             created_block.save()
         return created_block
 
+    def add_course_data(self, data_type, data):
+        """
+        Add a new course data in a course block
+        """
+        return CourseBlockData.objects.create(course_block=self, data_type=data_type, data=data)
+        
     def is_source(self):
         """
         Returns Boolean value indicating if block direction flag is Source or not
@@ -102,6 +106,15 @@ class CourseBlock(models.Model):
                 data.save()
             self.direction_flag = CourseBlock._Source
             self.save()
+
+    def apply_all_translations(self):
+        """
+        Apply all translations available in WikiTransaltions for a block
+        """
+        existing_mappings = self.wikitranslation_set.all()
+        for wikitranslation in existing_mappings:
+            wikitranslation.applied = True
+            wikitranslation.save()
 
     def __str__(self):
         return str(self.block_id)

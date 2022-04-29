@@ -9,7 +9,7 @@ from opaque_keys.edx.keys import CourseKey
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation, WikiTranslation
-from openedx.features.wikimedia_features.meta_translations.utils import COMPONENTS_FUNCTION_MAPPING
+from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 
 
 def validate_string(data):
@@ -87,7 +87,7 @@ def get_block_data_from_table(block, wiki_objects):
         block_data: dict(usage_key, category, data_block_ids, data)
         translated_block_data: dict(usage_key, category, data)
     """
-    if block.category in COMPONENTS_FUNCTION_MAPPING:
+    if block.category in COMPONENTS_CLASS_MAPPING:
         usage_key = str(block.scope_ids.usage_id)
         block_fields = {}
         base_block_fields = {}
