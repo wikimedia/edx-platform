@@ -41,6 +41,7 @@ from openedx.core.djangoapps.bookmarks import api as bookmarks_api
 from openedx.core.lib.gating import api as gating_api
 from openedx.core.lib.xblock_utils import hash_resource, request_token, wrap_xblock, wrap_xblock_aside
 from openedx.core.toggles import ENTRANCE_EXAMS
+from openedx.features.wikimedia_features.meta_translations.utils import get_block_status, is_destination_block, is_destination_course
 from xmodule.course_module import DEFAULT_START_DATE
 from xmodule.library_tools import LibraryToolsService
 from xmodule.modulestore import EdxJSONEncoder, ModuleStoreEnum
@@ -1202,13 +1203,23 @@ def create_xblock_info(xblock, data=None, metadata=None, include_ancestor_info=F
             # Translators: This is the percent sign. It will be used to represent
             # a percent value out of 100, e.g. "58%" means "58/100".
             pct_sign=_('%'))
+    
+    is_destination_course_block = is_destination_course(xblock.course_id)
 
     xblock_info = {
         'id': str(xblock.location),
         'display_name': xblock.display_name_with_default,
         'category': xblock.category,
-        'has_children': xblock.has_children
+        'has_children': xblock.has_children,
+        'is_destination_course': is_destination_course_block
     }
+
+    # Add meta translation fields to the xBlockInfo in destination course only
+    # to show translatation switch and a status of the block
+    if is_destination_course_block:
+        xblock_info['meta_block_status'] = get_block_status(xblock.location)
+        xblock_info['destination_flag'] = is_destination_block(xblock.location)
+    
     if is_concise:
         if child_info and child_info.get('children', []):
             xblock_info['child_info'] = child_info

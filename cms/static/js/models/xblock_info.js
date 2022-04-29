@@ -14,6 +14,10 @@ function(Backbone, _, str, ModuleUtils) {
             category: null,
             data: null,
             metadata: null,
+            // Meta Translation variables
+            is_destination_course: null,
+            destination_flag: null,
+            meta_block_status: null,
             /**
              * The Studio URL for this xblock, or null if it doesn't have one.
              */
@@ -198,6 +202,18 @@ function(Backbone, _, str, ModuleUtils) {
         hasChildren: function() {
             var childInfo = this.get('child_info');
             return childInfo && childInfo.children.length > 0;
+        },
+
+        isDestinationBlock: function() {
+            return this.get('is_destination_course') && this.get('destination_flag');
+        },
+
+        isDestinationCourse: function() {
+            return this.get('is_destination_course');
+        },
+
+        isMapped: function() {
+            return this.get('is_destination_course') && this.get('meta_block_status')['mapped'];
         },
 
         isPublishable: function() {

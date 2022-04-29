@@ -52,3 +52,39 @@ def render_translation_home(request):
         'login_user_username': request.user.username,
         'language_options': dict(settings.ALL_LANGUAGES),
     })
+
+@login_required
+@require_http_methods(["POST"])
+def update_block_direction_flag(request):
+    """
+    Update Direction Flag in Course Block
+    Request:
+    {
+        locator: <course_block_key>,
+        destination_flag: <boolean>
+    }
+    """
+    if request.body:
+        block_fields_data = json.loads(request.body)
+        locator = block_fields_data['locator']
+        destination_flag = block_fields_data['destination_flag']
+        course_block = CourseBlock.objects.get(block_id=locator)
+        if (destination_flag and course_block.is_source()) or course_block.is_destination():
+            course = get_course_by_id(course_block.course_id)
+            
+            if destination_flag:
+                course_block = course_block.update_flag_to_destination(course.language)
+            else:
+                course_block = course_block.update_flag_to_source(course.language)
+            
+            if course_block:
+                response = {
+                    'success': 'Block status is updated',
+                    'destination_flag': course_block.is_destination(),
+                }
+                return JsonResponse(response, status=200)
+            
+            error_message = 'No Mapping found. Please click Mapping Button on outline page to update Mappings'
+            return JsonResponse({'error': error_message}, status=405)
+    
+    return JsonResponse({'error':'Invalid request'}, status=400)

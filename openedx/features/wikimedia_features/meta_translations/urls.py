@@ -3,7 +3,7 @@ Urls for Meta Translations
 """
 from django.conf.urls import include, url
 
-from  openedx.features.wikimedia_features.meta_translations.views import course_blocks_mapping, render_translation_home
+from  openedx.features.wikimedia_features.meta_translations.views import course_blocks_mapping, render_translation_home, update_block_direction_flag
 
 app_name = 'meta_translations'
 
@@ -12,6 +12,11 @@ urlpatterns = [
         r'^course_blocks_mapping/$',
         course_blocks_mapping,
         name='course_blocks_mapping'
+    ),
+    url(
+        r'^direction/$',
+        update_block_direction_flag,
+        name='direction_flag'
     ),
     url(
         r'^$',
