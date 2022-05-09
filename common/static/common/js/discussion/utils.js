@@ -342,7 +342,7 @@
                     div.setAttribute("class", "username-query");
                     $.each(response.results, function(index) {
                         var btn = document.createElement("button");
-                        btn.setAttribute("class", "username-btn");
+                        btn.setAttribute("class", "username-btn btn btn-outline-primary");
                         btn.setAttribute("value",  response.results[index].username + "/" + event.target.id);
                         btn.textContent = response.results[index].username
 
