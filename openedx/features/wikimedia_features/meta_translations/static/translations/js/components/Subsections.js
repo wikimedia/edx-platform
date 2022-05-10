@@ -25,6 +25,7 @@ function Subsections (props) {
               subsection_id={subsection_id}
               usageKey={rerunCourseSubsections[subsection_id].usage_key}
               approved={rerunCourseSubsections[subsection_id].status.approved}
+              destinationFlag={rerunCourseSubsections[subsection_id].status.destination_flag}
               approveAll={true}
               {...props}
             >

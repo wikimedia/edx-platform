@@ -5,7 +5,7 @@ import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag } = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const ref = useRef();
@@ -44,6 +44,10 @@ function Accordion (props) {
         </div>
         <Actions
           courseId={rerunCourseId}
+          enableApproveButton={(
+            destinationFlag &&
+            rerunTitle != ''
+          )}
           {...props}
         />
       </div>
