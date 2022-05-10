@@ -5,17 +5,30 @@ import useClient from "./useClient";
 export default function useUpdate(context) {
     const { client, notification } = useClient(context);
 
+    const isValidTranslations = (data) => {
+      if (data.transcript) {
+        return data.display_name !='' && data.transcript != []
+      }
+      return data.display_name != '' && data.content != ''
+    }
+
     const updateUnits = (currentUnit) => {
       let units = currentUnit.units;
-      currentUnit.status.approved = true;
+      if (currentUnit.status.destination_flag && currentUnit.data.display_name != ''){
+        currentUnit.status.approved = true;
+      }
       Object.keys(units).forEach(unit => {
-        units[unit].status.approved = true;
+        if (units[unit].status.destination_flag && isValidTranslations(currentUnit.data)){
+          units[unit].status.approved = true;
+        }
       })
     }
 
     const updateSubsections = (currentSubsection) => {
       let subsections = currentSubsection.children;
-      currentSubsection.status.approved = true;
+      if (currentSubsection.status.destination_flag && currentSubsection.data.display_name != '') {
+        currentSubsection.status.approved = true;
+      }
       Object.keys(subsections).forEach(subsection => {
         subsections[subsection].status.approved = true;
 

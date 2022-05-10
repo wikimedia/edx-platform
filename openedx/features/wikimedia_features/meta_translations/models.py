@@ -104,7 +104,11 @@ class CourseBlock(models.Model):
         """
         existing_mappings = self.wikitranslation_set.all()
         if existing_mappings:
-            return existing_mappings.first().status_info()
+            data = existing_mappings.first().status_info()
+            data['applied'] = all(existing_mappings.values_list("applied", flat=True))
+            data['approved'] = all(existing_mappings.values_list("approved", flat=True))
+            data['destination_flag'] = self.is_destination()
+            return data
 
     def update_flag_to_source(self, target_course_language):
         """

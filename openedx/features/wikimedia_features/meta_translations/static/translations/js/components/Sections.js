@@ -23,6 +23,7 @@ function Sections(props) {
               rerunTitle={rerunTitle}
               usageKey={course_outline[section_id].usage_key}
               approved={course_outline[section_id].status.approved}
+              destinationFlag={course_outline[section_id].status.destination_flag}
               {...props}
             >
               <Subsections

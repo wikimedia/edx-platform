@@ -31,6 +31,7 @@ function Units (props) {
               rerunCourseUnitKey={rerunCourseUnitKey}
               usageKey={rerunCourseUnits[unit_id].usage_key}
               approved={rerunCourseUnits[unit_id].status.approved}
+              destinationFlag={rerunCourseUnits[unit_id].status.destination_flag}
               approveAll={true}
               {...props}
             >

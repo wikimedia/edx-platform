@@ -8,6 +8,13 @@ function Unit (props) {
 
   const {baseContent, rerunContent, rerunCourseId} = props;
 
+  const isValidTranslations = (data) => {
+    if (data.transcript) {
+      return data.display_name !='' && data.transcript != []
+    }
+    return data.display_name != '' && data.content != ''
+  }
+
   const content = (data) => {
     if (data.transcript) {
       return (
@@ -39,6 +46,10 @@ function Unit (props) {
                 courseId={rerunCourseId}
                 approved={rerunContent[content_id].status.approved}
                 content_id={content_id}
+                enableApproveButton={(
+                    rerunContent[content_id].status.destination_flag &&
+                    isValidTranslations(rerunContent[content_id].data)
+                  )}
                 {...props}
               />
             </div>
