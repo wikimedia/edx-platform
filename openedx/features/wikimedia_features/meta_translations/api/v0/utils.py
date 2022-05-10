@@ -8,7 +8,7 @@ import random
 from opaque_keys.edx.keys import CourseKey
 
 from lms.djangoapps.courseware.courses import get_course_by_id
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation, WikiTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 
 
@@ -93,15 +93,16 @@ def get_block_data_from_table(block, wiki_objects):
         base_block_fields = {}
         block_fields_ids = {}
         wiki_objects = wiki_objects.filter(target_block__block_id=usage_key)
-        block_status = {}
         base_usage_key = ''
         for obj in wiki_objects:
-            block_status = obj.status_info()
             data_type = obj.source_block_data.data_type
             block_fields_ids[data_type] = obj.id
             block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.translation)
             base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.source_block_data.data)
             base_usage_key = str(obj.source_block_data.course_block.block_id)
+        
+        course_block = CourseBlock.objects.get(block_id=usage_key)
+        block_status = course_block.get_block_info()
         
         course_block_data = {
             'usage_key': usage_key,

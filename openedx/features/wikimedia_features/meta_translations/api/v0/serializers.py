@@ -95,6 +95,11 @@ class CourseBlockSerializer(serializers.ModelSerializer):
             validated_data.pop('apply_all')
             block_ids = get_children_block_ids(instance.block_id)
             wiki_translations = WikiTranslation.objects.filter(target_block__block_id__in=block_ids)
+            wiki_translations = wiki_translations.filter(
+                target_block__direction_flag=CourseBlock._DESTINATION,
+                translation__isnull=False,
+                applied=False,
+            )
             self._update_translations_fields(wiki_translations, approved, user)
         else:
             wiki_translations = WikiTranslation.objects.filter(target_block=instance)
