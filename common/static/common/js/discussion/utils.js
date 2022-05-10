@@ -352,6 +352,8 @@
                             var target = document.getElementById(input_id)
                             var index= target.value.lastIndexOf("@");
                             target.value = target.value.substring(0, index+1) + name;
+                            $(".wmd-panel.wmd-preview p").html(target.value);
+                            $(".username-query").hide();
                         })
                         div.appendChild(btn)
                     });
