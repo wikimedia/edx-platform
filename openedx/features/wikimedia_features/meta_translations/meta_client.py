@@ -22,15 +22,23 @@ class WikiMetaClient(object):
                 'WIKI_META_BASE_API_URL', settings.WIKI_META_BASE_API_URL)
         self._CONTENT_MODEL = configuration_helpers.get_value(
                 'WIKI_META_CONTENT_MODEL', settings.WIKI_META_CONTENT_MODEL)
+        self._MCGROUP_PREFIX = configuration_helpers.get_value(
+                'WIKI_META_MCGROUP_PREFIX', settings.WIKI_META_MCGROUP_PREFIX)
+
+        if not self._BASE_API_END_POINT or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX :
+            raise Exception("META CLIENT ERROR - Missing WIKI Meta Configurations.")
+
+        self._API_USERNAME = configuration_helpers.get_value(
+                'WIKI_META_API_USERNAME', settings.WIKI_META_API_USERNAME)
+        self._API_PASSWORD = configuration_helpers.get_value(
+                'WIKI_META_API_PASSWORD', settings.WIKI_META_API_PASSWORD)
+
+        if not self._API_USERNAME or not self._API_USERNAME:
+            raise Exception("META CLIENT ERROR - Missing WIKI Meta API Credentials.")
 
         logger.info(
-            "Create meta client with api_url: {}, content_model: {}".format(
-                self._BASE_API_END_POINT, self._CONTENT_MODEL
-            )
+            "Created meta client with api_url: {}".format(self._BASE_API_END_POINT)
         )
-
-        if not self._BASE_API_END_POINT or not self._CONTENT_MODEL:
-            raise Exception("Missing WIKI Meta Configurations.")
 
 
     async def parse_response(self, response):
@@ -73,7 +81,8 @@ class WikiMetaClient(object):
             "action": "query",
             "meta": "tokens",
             "type": "login",
-            "format": "json"
+            "format": "json",
+            "formatversion": 2
         }
         success, response_data = await self.handle_request(session.get, params=params, data=None)
         if success:
@@ -90,10 +99,11 @@ class WikiMetaClient(object):
         logger.info("Initiate Meta login request with generated login-token.")
         post_data = {
            "action": "login",
-           "lgname": "Testabcxyz123@lastlastbot",
-           "lgpassword": "qtvu1dnlk8t635jla8e0b10rees3n07j",
+           "lgname": self._API_USERNAME,
+           "lgpassword": self._API_PASSWORD,
            "lgtoken": token,
            "format": "json",
+           "formatversion": 2
         }
 
         success, data = await self.handle_request(session.post, params=None, data=post_data)
@@ -108,7 +118,8 @@ class WikiMetaClient(object):
         params = {
             "action": "query",
             "meta": "tokens",
-            "format": "json"
+            "format": "json",
+            "formatversion": 2
         }
 
         success, response_data = await self.handle_request(session.get, params=params, data=None)
@@ -123,7 +134,7 @@ class WikiMetaClient(object):
             "action": "edit",
             "format": "json",
             "title": title,
-            "text": text,
+            "text": json.dumps(text),
             "summary": summary,
             "contentmodel": self._CONTENT_MODEL,
             "token": csrf_token,

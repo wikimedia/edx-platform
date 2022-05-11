@@ -10,6 +10,7 @@ from logging import getLogger
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 from opaque_keys.edx.keys import CourseKey, UsageKey
+from opaque_keys import InvalidKeyError
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
@@ -155,11 +156,15 @@ class Command(BaseCommand):
         """
         success_responses_count = 0
         for response in responses:
-            if response.get("result", "").lower() == "success":
+            if response and response.get("result", "").lower() == "success":
                 # title format is course_id/course_lang_code/block_id
                 title =  response.get("title", "").split("/")
                 if len(title) >= 3:
-                    block_id = UsageKey.from_string(title[2])
+                    try:
+                        block_id = UsageKey.from_string(title[2])
+                    except InvalidKeyError:
+                        block_id = UsageKey.from_string(title[2].replace(" ", "_"))
+
                     CourseBlockData.objects.filter(course_block__block_id=block_id).update(
                         content_updated=False, mapping_updated=False
                     )
@@ -180,7 +185,6 @@ class Command(BaseCommand):
             meta_client = WikiMetaClient()
             await meta_client.login_request(session)
             csrf_token = await meta_client.fetch_csrf_token(session)
-
             tasks = self._get_tasks_to_updated_data_on_wiki_meta(data_list, meta_client, session, csrf_token)
             responses = await asyncio.gather(*tasks)
             self._reset_mapping_updated_and_content_updated(responses)
