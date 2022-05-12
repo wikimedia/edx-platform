@@ -349,9 +349,11 @@
 
                         btn.addEventListener("click", function(event) {
                             event.preventDefault();
-                            var [name, input_id]= event.target.value.split("/")
+                            var name, input_id, name_input_id_array;
+                            name_input_id_array = event.target.value.split("/");
+                            name = name_input_id_array[0], input_id = name_input_id_array[1];
                             var target = document.getElementById(input_id)
-                            var index= target.value.lastIndexOf("@");
+                            var index = target.value.lastIndexOf("@");
                             target.value = target.value.substring(0, index+1) + name;
                             $(".wmd-panel.wmd-preview p").html(target.value);
                             $(".username-query").hide();
