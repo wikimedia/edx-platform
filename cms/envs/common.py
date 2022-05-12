@@ -2417,5 +2417,8 @@ FAVICON_URL = None
 DEFAULT_EMAIL_LOGO_URL = 'https://edx-cdn.org/v3/default/logo.png'
 
 ################### Settings for wiki meta translations ##############
-WIKI_META_BASE_API_URL = "https://test.wikipedia.org/w/api.php"
-WIKI_META_CONTENT_MODEL = "wikitext" # use translate-messagebundle on Prod
+WIKI_META_BASE_API_URL = "https://language-mleb-master.wmcloud.org/api.php"
+WIKI_META_CONTENT_MODEL = "translate-messagebundle"
+WIKI_META_MCGROUP_PREFIX = "messagebundle"
+WIKI_META_API_USERNAME = ""
+WIKI_META_API_PASSWORD = ""
