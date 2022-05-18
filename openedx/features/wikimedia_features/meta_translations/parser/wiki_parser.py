@@ -14,6 +14,12 @@ class WikiParser(ABC):
     def __init__(self, component_type=None, data_type=None):
         self.component_type = component_type
         self.data_type = data_type
+    
+    @abstractmethod
+    def validate_meta_data(self, data):
+        """
+        validate meta_data based on type of component
+        """
   
     @abstractmethod
     def raw_data_to_meta_data(self, raw_data):
@@ -39,6 +45,14 @@ class ProblemParser(WikiParser):
     """
     def __init__(self):
         super().__init__(component_type='problem', data_type='xml')
+
+    def validate_meta_data(self, data):
+        """
+        data should have encodings and xml_data
+        """
+        if 'xml_data' not in data or 'encodings' not in data:
+            raise Exception('xml_data and encodings are required in problem meta_data')
+        return True
   
     def raw_data_to_meta_data(self, raw_data):
         """
@@ -65,14 +79,15 @@ class ProblemParser(WikiParser):
         Returns:
             raw_data: (str) xml-string
         """
-        xml_data = meta_data.get('xml_data')
-        encodings = meta_data.get('encodings')
-        parser = etree.XMLParser(remove_blank_text=True)
-        problem = etree.XML(xml_data, parser=parser)
-        for key, value in encodings.items():
-            element = problem.xpath("/{}".format(key.replace('.','/')))
-            if element:
-                element[0].text = value
-            else:
-                raise Exception('{} now found in xml_data'.format(key))
+        if self.validate_meta_data(meta_data):
+            xml_data = meta_data.get('xml_data')
+            encodings = meta_data.get('encodings')
+            parser = etree.XMLParser(remove_blank_text=True)
+            problem = etree.XML(xml_data, parser=parser)
+            for key, value in encodings.items():
+                element = problem.xpath("/{}".format(key.replace('.','/')))
+                if element:
+                    element[0].text = value
+                else:
+                    raise Exception('{} now found in xml_data'.format(key))
         return etree.tostring(problem)
