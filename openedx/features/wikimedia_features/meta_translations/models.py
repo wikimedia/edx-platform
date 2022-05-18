@@ -167,6 +167,7 @@ class CourseBlockData(models.Model):
     course_block = models.ForeignKey(CourseBlock, on_delete=models.CASCADE)
     data_type = models.CharField(max_length=255)
     data = models.TextField()
+    parsed_keys = jsonfield.JSONField(default=None)
     content_updated = models.BooleanField(default=False)
     mapping_updated = models.BooleanField(default=False)
 
