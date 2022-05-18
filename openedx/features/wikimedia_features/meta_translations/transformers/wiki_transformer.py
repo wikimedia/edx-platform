@@ -140,16 +140,18 @@ class ProblemTransformer(WikiTransformer):
                 }
         Returns:
             raw_data: (str) xml-string
-                <problem>
-                    <multiplechoiceresponse>
-                        <p>Updated text p</p>
-                        <label>Updated text label</label>
-                        <choicegroup type="MultipleChoice">
-                        <choice correct="true">Updated text choice 1</choice>
-                        <choice correct="false">Updated text choice 2</choice>
-                        </choicegroup>
-                    </multiplechoiceresponse>
-                </problem>
+                sample => ''''
+                            <problem>
+                                <multiplechoiceresponse>
+                                    <p>Updated text p</p>
+                                    <label>Updated text label</label>
+                                    <choicegroup type="MultipleChoice">
+                                    <choice correct="true">Updated text choice 1</choice>
+                                    <choice correct="false">Updated text choice 2</choice>
+                                    </choicegroup>
+                                </multiplechoiceresponse>
+                            </problem>
+                        ''''
         """
         if self.validate_meta_data(meta_data):
             xml_data = meta_data.get('xml_data')
