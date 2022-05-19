@@ -31,7 +31,7 @@ class CourseBlockDataAdmin(admin.ModelAdmin):
     """
     Admin config for clearesult credits offered by the courses.
     """
-    list_display  = ("course_block", "data_type", "data", "should_send",)
+    list_display  = ("course_block", "data_type", "data", "parsed_keys", "should_send",)
     search_fields = ("course_block__block_id", "course_block__course_id", "data_type")
 
     def should_send(self, obj):
