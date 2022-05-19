@@ -30,7 +30,7 @@ class WikiTransformer(ABC):
             raw_data: (any) initial format of data retrieved from edx block,
                 For Example, the problem is in XML string and video transcripts are in the list
         Returns:
-            meta_data: (dict) data after transforming raw_data. It differs from component to component
+            meta_data: (any) data after transforming raw_data. It differs from component to component
                 For Example, problem meta_data contains encodings; encoding is a key-value pair,
                 the key represents the position of text in XML and value represents text at that position
         Note: Go to problem transformer for more detail
@@ -91,15 +91,13 @@ class ProblemTransformer(WikiTransformer):
                             </problem>
                         '''
         Returns:
-            meta_data: (dict) { encodings (dict) }
+            meta_data: (dict) - xml encoding
                 sample => 
                     {
-                    'encodings': {
                         'problem.multiplechoiceresponse.choicegroup.choice[1]': 'Sample text choice 1',
                         'problem.multiplechoiceresponse.choicegroup.choice[2]': 'Sample text choice 2',
                         'problem.multiplechoiceresponse.label': 'Sample text label',
                         'problem.multiplechoiceresponse.p': 'Sample text p'
-                        }
                     }
 
         """
@@ -110,7 +108,7 @@ class ProblemTransformer(WikiTransformer):
         for e in problem.iter("*"):
             if e.text:
                 data_dict.update({tree.getpath(e).replace("/", ".")[1:]: e.text})
-        return { 'encodings': data_dict }
+        return data_dict
   
     def meta_data_to_raw_data(self, meta_data):
         """
@@ -165,3 +163,8 @@ class ProblemTransformer(WikiTransformer):
                 else:
                     raise Exception('{} not found in xml_data'.format(key))
         return etree.tostring(problem)
+
+TRANSFORMER_CLASS_MAPPING = {
+    # add custom transformers here
+    'problem': ProblemTransformer,
+}
