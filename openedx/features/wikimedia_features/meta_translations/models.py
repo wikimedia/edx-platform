@@ -9,6 +9,7 @@ import logging
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 from opaque_keys.edx.django.models import CourseKeyField, UsageKeyField
 
 log = logging.getLogger(__name__)
@@ -45,17 +46,18 @@ class CourseBlock(models.Model):
         )
         if create_block_data:
             for key, value in block_data.get('data',{}).items():
-                CourseBlockData.objects.create(course_block=created_block, data_type=key, data=value)
+                parsed_keys = created_block.get_parsed_data(key, value)
+                CourseBlockData.objects.create(course_block=created_block, data_type=key, data=value, parsed_keys=parsed_keys)
         else:
             created_block.direction_flag = cls._DESTINATION
             created_block.save()
         return created_block
 
-    def add_course_data(self, data_type, data):
+    def add_course_data(self, data_type, data, parsed_keys):
         """
         Add a new course data in a course block
         """
-        return CourseBlockData.objects.create(course_block=self, data_type=data_type, data=data)
+        return CourseBlockData.objects.create(course_block=self, data_type=data_type, data=data, parsed_keys=parsed_keys)
         
     def is_source(self):
         """
@@ -152,6 +154,13 @@ class CourseBlock(models.Model):
         for wikitranslation in existing_mappings:
             wikitranslation.applied = True
             wikitranslation.save()
+    
+    def get_parsed_data(self, data_type, data):
+        """
+        Transform raw_data into parsed_data
+        """
+        if data_type in settings.DATA_TYPES_WITH_PARCED_KEYS and self.block_type in settings.TRANSFORMER_CLASS_MAPPING:
+            return json.dumps(settings.TRANSFORMER_CLASS_MAPPING[self.block_type]().raw_data_to_meta_data(data))
 
     def __str__(self):
         return str(self.block_id)

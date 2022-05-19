@@ -152,12 +152,14 @@ def map_base_course_block(existing_course_blocks, outline_block_dict, course_key
                     log.info("Update course block data of data_type: {} from {} to {}".format(
                         existing_data.data_type, existing_data.data, value
                     ))
+                    existing_data.parsed_keys = existing_block.get_parsed_data(key, value)
                     existing_data.data = value
                     existing_data.content_updated = True
                     existing_data.save()
             except CourseBlockData.DoesNotExist:
                 # Add block data in db if any content is added in a course outline
-                new_block_data = existing_block.add_course_data(data_type=key, data=value)
+                parsed_keys = existing_block.get_parsed_data(key, value)
+                new_block_data = existing_block.add_course_data(data_type=key, data=value, parsed_keys=parsed_keys)
                 if new_block_data:
                     log.info('\nFound new data, Add {} into the {}\n'.format(key, existing_block.block_id))
 
