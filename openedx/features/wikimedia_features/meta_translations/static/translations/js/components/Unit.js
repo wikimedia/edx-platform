@@ -22,6 +22,13 @@ function Unit (props) {
           { data.transcript.map((trans, index) => <li key={index}>{trans}</li>) }
         </ul>
       );
+      }
+    else if (data.content && typeof data.content === 'object') {
+      return (
+        <ul>
+          { Object.entries(data.content).map(item => <li key={item[0]}>{item[1]}</li>) }
+        </ul>
+      );
     } else {
       return (ReactHtmlParser(data.content))
     }

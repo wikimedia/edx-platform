@@ -4,8 +4,9 @@ import json
 from logging import getLogger
 from abc import ABC, abstractmethod
 from webob import Request
+from django.conf import settings
 
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation, WikiTranslation
 from common.lib.xmodule.xmodule.video_module.transcripts_utils import (
         Transcript, convert_video_transcript, get_video_transcript_content
     )
@@ -81,6 +82,53 @@ class HtmlComponent(WikiComponent):
             block.display_name = data['display_name']
         if 'content' in data:
             block.data = data['content']
+        return modulestore().update_item(block, 'edx')
+    
+    def get(self, block):
+        """
+        Arguments:
+            block: module type course-outline block
+
+        Returns:
+            dict of extracted data
+        """
+        return {
+            "display_name": block.display_name,
+            "content": block.data
+        }
+
+class ProblemComponent(WikiComponent):
+    """
+    Handle Problem type blocks i.e checkbox, multiple choice etc
+    """
+    def __init__(self, mapping=False):
+        self.mapping = mapping
+        super().__init__()
+    
+    def update(self, block , data):
+        """
+        Update display_name and data of an xblock
+        Arguments:
+            block: module type course-outline block
+            data: dict of extracted data
+
+        Returns:
+            block: module type course-outline block (updated block)
+        """
+
+        if 'display_name' in data:
+            block.display_name = data['display_name']
+        if 'content' in data:
+            block_id = block.scope_ids.usage_id
+            translation = WikiTranslation.objects.get(target_block__block_id=block_id, source_block_data__data_type='content')
+            source_xml_data = translation.source_block_data.data
+            meta_data = {
+                'xml_data': source_xml_data,
+                'encodings': json.loads(data['content'])
+            }
+            updated_xml = settings.TRANSFORMER_CLASS_MAPPING[block.category]().meta_data_to_raw_data(meta_data)
+            block.data = updated_xml
+
         return modulestore().update_item(block, 'edx')
     
     def get(self, block):
@@ -213,6 +261,6 @@ COMPONENTS_CLASS_MAPPING = {
     'sequential': ModuleComponent,
     'vertical': ModuleComponent,
     'html': HtmlComponent,
-    'problem': HtmlComponent,
+    'problem': ProblemComponent,
     'video': VideoComponent
 }

@@ -6,6 +6,7 @@ import string
 import random
 
 from opaque_keys.edx.keys import CourseKey
+from django.conf import settings
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
@@ -97,8 +98,12 @@ def get_block_data_from_table(block, wiki_objects):
         for obj in wiki_objects:
             data_type = obj.source_block_data.data_type
             block_fields_ids[data_type] = obj.id
-            block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.translation)
-            base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.source_block_data.data)
+            if data_type in settings.DATA_TYPES_WITH_PARCED_KEYS and block.category in settings.TRANSFORMER_CLASS_MAPPING:
+                block_fields[data_type] = json.loads(obj.translation) if obj.translation else {}
+                base_block_fields[data_type] = json.loads(obj.source_block_data.parsed_keys)
+            else:
+                base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.source_block_data.data)
+                block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.translation)
             base_usage_key = str(obj.source_block_data.course_block.block_id)
         
         course_block = CourseBlock.objects.get(block_id=usage_key)
