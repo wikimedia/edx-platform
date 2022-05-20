@@ -257,6 +257,15 @@ class WikiTranslation(models.Model):
                     key, value, str(target_block.course_id))
                 )
 
+    @classmethod
+    def is_translation_contains_parsed_keys(cls, block_type, data_type):
+        """
+        Check the translation is parsed or not
+        """
+        if block_type in settings.TRANSFORMER_CLASS_MAPPING and data_type in settings.DATA_TYPES_WITH_PARCED_KEYS:
+            return True
+        return False
+
     class Meta:
         app_label = APP_LABEL
         verbose_name = "Wiki Meta Translations"

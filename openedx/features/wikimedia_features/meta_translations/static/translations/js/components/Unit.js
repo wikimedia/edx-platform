@@ -22,6 +22,13 @@ function Unit (props) {
           { data.transcript.map((trans, index) => <li key={index}>{trans}</li>) }
         </ul>
       );
+      }
+    else if (data.content && typeof data.content === 'object') {
+      return (
+        <ul>
+          { Object.entries(data.content).map(item => <li key={item[0]}>{item[1]}</li>) }
+        </ul>
+      );
     } else {
       return (ReactHtmlParser(data.content))
     }
@@ -48,7 +55,9 @@ function Unit (props) {
                 content_id={content_id}
                 enableApproveButton={(
                     rerunContent[content_id].status.destination_flag &&
-                    isValidTranslations(rerunContent[content_id].data)
+                    isValidTranslations(rerunContent[content_id].data) &&
+                    (!rerunContent[content_id].status.parsed_block || 
+                      rerunContent[content_id].status.is_fully_translated)
                   )}
                 {...props}
               />
