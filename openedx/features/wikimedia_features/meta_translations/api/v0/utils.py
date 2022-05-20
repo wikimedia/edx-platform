@@ -12,13 +12,15 @@ from openedx.features.wikimedia_features.meta_translations.models import CourseB
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 
 
-def validate_string(data):
+def validate_string(data, is_json = False):
     """
     Function that validates data of type display_name and content
     Returns:
         string: Empty if None else data
     """
-    if data == None:
+    if is_json:
+        return json.loads(data) if data else {}
+    elif data == None:
         return ''
     return data
 
@@ -32,7 +34,7 @@ def validate_list_data(data):
         return []
     return json.loads(data)
 
-BLOCK_DATA_TYPES_DATA = {
+BLOCK_DATA_TYPES_DATA_VALIDATIONS = {
     'content': validate_string,
     'display_name': validate_string,
     'transcript': validate_list_data,
@@ -47,6 +49,26 @@ def get_random_string(N=16):
                 Default length: 16
     """
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
+
+def validated_and_sort_translated_decodings(base_decodings, translated_decodings):
+    """
+    Validate and Sort Translated Decodings based on Base Decodings indexs
+    Arguments:
+        base_decodings: (dict) parsed decondings of base course block
+        translated_decodings: (dict) new transaltions from meta server
+    Returns:
+        is_valid: (bool) check base_decodings and translated_decodings contain same keys and valid translated data
+        sorted_translated_decodings: (dict) sorted dict based on base_decodings
+    """
+    sorted_translated_decodings = {}
+    is_valid = True
+    for key, value in base_decodings.items():
+        if not ((value == '' and translated_decodings['key'] == '') or translated_decodings[key]):
+            is_valid = False
+            sorted_translated_decodings[key] = ''
+        else:
+            sorted_translated_decodings[key] = translated_decodings[key]
+    return is_valid, sorted_translated_decodings
 
 def get_block_data_from_table(block, wiki_objects):
     """
@@ -94,16 +116,31 @@ def get_block_data_from_table(block, wiki_objects):
         block_fields_ids = {}
         wiki_objects = wiki_objects.filter(target_block__block_id=usage_key)
         base_usage_key = ''
+        parsed_status = { 'parsed_block': False }
         for obj in wiki_objects:
             data_type = obj.source_block_data.data_type
             block_fields_ids[data_type] = obj.id
-            block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.translation)
-            base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA[data_type](obj.source_block_data.data)
+            if WikiTranslation.is_translation_contains_parsed_keys(block.category, data_type):
+                base_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.parsed_keys)
+                base_decodings = base_decodings if base_decodings else {}
+                translated_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation, is_json = True)
+                parsed_status['parsed_block'] = True
+                parsed_status['is_fully_translated'] = True
+                is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
+                if not is_valid:
+                    parsed_status['is_fully_translated'] = False
+                base_block_fields[data_type] = base_decodings
+                block_fields[data_type] = translated_decodings
+            else:
+                base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.data)
+                block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation)
             base_usage_key = str(obj.source_block_data.course_block.block_id)
         
         course_block = CourseBlock.objects.get(block_id=usage_key)
         block_status = course_block.get_block_info()
-        
+        if block_status:
+            block_status.update(parsed_status)
+    
         course_block_data = {
             'usage_key': usage_key,
             'category': block.category,
