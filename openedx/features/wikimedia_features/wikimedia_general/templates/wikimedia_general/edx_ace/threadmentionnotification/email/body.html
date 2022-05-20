@@ -36,6 +36,11 @@
             {% block google_analytics_pixel %}
                 <img src="{{ ga_tracking_pixel_url }}" alt="" role="presentation" aria-hidden="true" style="display: block;"/>
             {% endblock %}
+
+            <p style="color: rgba(0,0,0,.75);">
+                {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+                <br />
+            </p>
         </td>
     </tr>
 </table>
