@@ -4,6 +4,7 @@ Helping functions used in meta translation apis
 import json
 import string
 import random
+from logging import getLogger
 
 from opaque_keys.edx.keys import CourseKey
 
@@ -11,6 +12,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 
+log = getLogger(__name__)
 
 def validate_string(data, is_json = False):
     """
@@ -70,7 +72,7 @@ def validated_and_sort_translated_decodings(base_decodings, translated_decodings
             sorted_translated_decodings[key] = translated_decodings[key]
     return is_valid, sorted_translated_decodings
 
-def get_block_data_from_table(block, wiki_objects):
+def get_block_data_from_table(block):
     """
     Function that return a data block of a course and it's base course.
     All the values are extracted from Meta Translations Tables
@@ -104,59 +106,63 @@ def get_block_data_from_table(block, wiki_objects):
     )
     Arguments:
         block: course-outline block
-        wiki-objects: filter-type WikiTranslation object
     Return:
         block_data: dict(usage_key, category, data_block_ids, data)
         translated_block_data: dict(usage_key, category, data)
     """
     if block.category in COMPONENTS_CLASS_MAPPING:
-        usage_key = str(block.scope_ids.usage_id)
-        block_fields = {}
-        base_block_fields = {}
-        block_fields_ids = {}
-        wiki_objects = wiki_objects.filter(target_block__block_id=usage_key)
-        base_usage_key = ''
-        parsed_status = { 'parsed_block': False }
-        for obj in wiki_objects:
-            data_type = obj.source_block_data.data_type
-            block_fields_ids[data_type] = obj.id
-            if WikiTranslation.is_translation_contains_parsed_keys(block.category, data_type):
-                base_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.parsed_keys)
-                base_decodings = base_decodings if base_decodings else {}
-                translated_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation, is_json = True)
-                parsed_status['parsed_block'] = True
-                parsed_status['is_fully_translated'] = True
-                is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
-                if not is_valid:
-                    parsed_status['is_fully_translated'] = False
-                base_block_fields[data_type] = base_decodings
-                block_fields[data_type] = translated_decodings
-            else:
-                base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.data)
-                block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation)
-            base_usage_key = str(obj.source_block_data.course_block.block_id)
+        try:
+            usage_key = str(block.scope_ids.usage_id)
+            course_block = CourseBlock.objects.get(block_id=usage_key)
+        except CourseBlock.DoesNotExist:
+            log.info("Mapping Missing -> Block {} is not added into the outline".format(usage_key))
+        else:
+            wiki_objects = course_block.wikitranslation_set.all()
+            block_fields = {}
+            base_block_fields = {}
+            block_fields_ids = {}
+            base_usage_key = ''
+            parsed_status = { 'parsed_block': False }
+            for obj in wiki_objects:
+                data_type = obj.source_block_data.data_type
+                block_fields_ids[data_type] = obj.id
+                if WikiTranslation.is_translation_contains_parsed_keys(block.category, data_type):
+                    base_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.parsed_keys)
+                    base_decodings = base_decodings if base_decodings else {}
+                    translated_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation, is_json = True)
+                    parsed_status['parsed_block'] = True
+                    parsed_status['is_fully_translated'] = True
+                    is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
+                    if not is_valid:
+                        parsed_status['is_fully_translated'] = False
+                    base_block_fields[data_type] = base_decodings
+                    block_fields[data_type] = translated_decodings
+                else:
+                    base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.data)
+                    block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation)
+                base_usage_key = str(obj.source_block_data.course_block.block_id)
+            
+            block_status = course_block.get_block_info()
+            if block_status:
+                block_status.update(parsed_status)
         
-        course_block = CourseBlock.objects.get(block_id=usage_key)
-        block_status = course_block.get_block_info()
-        if block_status:
-            block_status.update(parsed_status)
+            course_block_data = {
+                'usage_key': usage_key,
+                'category': block.category,
+                'status': block_status,
+                'data_block_ids': block_fields_ids,
+                'data': block_fields,
+            }
+            base_course_block_data = {
+                'usage_key': base_usage_key,
+                'category': block.category,
+                'data': base_block_fields
+            }
+            return course_block_data, base_course_block_data
     
-        course_block_data = {
-            'usage_key': usage_key,
-            'category': block.category,
-            'status': block_status,
-            'data_block_ids': block_fields_ids,
-            'data': block_fields,
-        }
-        base_course_block_data = {
-            'usage_key': base_usage_key,
-            'category': block.category,
-            'data': base_block_fields
-        }
-        return course_block_data, base_course_block_data
     return {}, {}
 
-def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
+def get_recursive_blocks_data_from_table(block, depth=4):
     """
     Retrieve data from blocks of course and base course with random identification key.
     {
@@ -220,7 +226,6 @@ def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
     }
     Arguments:
         block: course-outline block
-        wiki-objects: filter-type WikiTranslation object
     Return:
         course-outline: structured dict
         base-course-outline: structed dict
@@ -229,7 +234,7 @@ def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
     """
     if depth == 0 or not hasattr(block, 'children'):
         random_key = get_random_string()
-        data, base_data = get_block_data_from_table(block, wiki_objects)
+        data, base_data = get_block_data_from_table(block)
         data_map, base_data_map = {}, {}
         if data and base_data:
             data_map[random_key] = data
@@ -237,18 +242,20 @@ def get_recursive_blocks_data_from_table(block, wiki_objects, depth=4):
         return data_map, base_data_map
     
     random_key = get_random_string()
-    data, base_data = get_block_data_from_table(block, wiki_objects)
-    data_map = { random_key: data }
-    base_data_map = { random_key: base_data }
+    data, base_data = get_block_data_from_table(block)
+    if data and base_data:
+        data_map = { random_key: data }
+        base_data_map = { random_key: base_data }
 
-    data_map[random_key]['children'] = {}
-    base_data_map[random_key]['children'] = {}
+        data_map[random_key]['children'] = {}
+        base_data_map[random_key]['children'] = {}
 
-    for child in block.get_children():
-        course_outline, course_base_outline = get_recursive_blocks_data_from_table(child, wiki_objects, depth - 1)
-        data_map[random_key]['children'].update(course_outline)
-        base_data_map[random_key]['children'].update(course_base_outline)
-    return data_map, base_data_map
+        for child in block.get_children():
+            course_outline, course_base_outline = get_recursive_blocks_data_from_table(child, depth - 1)
+            data_map[random_key]['children'].update(course_outline)
+            base_data_map[random_key]['children'].update(course_base_outline)
+        return data_map, base_data_map
+    return {}, {}
 
 def get_course_outline(course_id, N=3):
     """
@@ -259,10 +266,9 @@ def get_course_outline(course_id, N=3):
     Return:
         dict: structured outline of a course based on depth
     """
-    wiki_objects = WikiTranslation.objects.filter(target_block__course_id=course_id)
     course_key = CourseKey.from_string(course_id)
     course = get_course_by_id(course_key)
-    course_data, base_course_data = get_recursive_blocks_data_from_table(course, wiki_objects, N)
+    course_data, base_course_data = get_recursive_blocks_data_from_table(course, N)
     return course_data, base_course_data
 
 def get_outline_course_to_units(course):
@@ -275,8 +281,7 @@ def get_outline_course_to_units(course):
         dict: course-outline
         dict: base course-outline
     """
-    wiki_objects = WikiTranslation.objects.filter(target_block__course_id=course.course_id)
-    return get_recursive_blocks_data_from_table(course, wiki_objects, 3)
+    return get_recursive_blocks_data_from_table(course, 3)
 
 def get_outline_unit_to_components(unit):
     """
@@ -288,8 +293,7 @@ def get_outline_unit_to_components(unit):
         dict: course-outline
         dict: base course-outline
     """
-    wiki_objects = WikiTranslation.objects.filter(target_block__course_id=unit.course_id)
-    return get_recursive_blocks_data_from_table(unit, wiki_objects)
+    return get_recursive_blocks_data_from_table(unit)
 
 def get_course_data_dict(course_key):
     """
