@@ -7,6 +7,7 @@ import jsonfield
 import logging
 
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -294,6 +295,14 @@ class CourseTranslation(models.Model):
         Returns list of course_id(s) that has translated rerun version
         """
         return cls.objects.all().values_list("base_course_id", flat=True).distinct()
+
+    @classmethod
+    def is_base_or_translated_course(cls, course_key):
+        """
+        Returns bool indicating if course is a base course or a translated version of some base course.
+        """
+        return cls.objects.filter(Q(course_id=course_key) | Q(base_course_id=course_key)).exists()
+
 
     class Meta:
         app_label = APP_LABEL

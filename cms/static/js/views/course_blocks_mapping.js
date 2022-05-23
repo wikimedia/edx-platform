@@ -45,8 +45,11 @@ define([
             },
 
             render: function() {
-                var html = this.template(this.model.attributes);
-                HtmlUtils.setHtml(this.$el, HtmlUtils.HTML(html));
+                if ($(".status-course-blocks-mapping").data().isTranslatedOrBaseFlag == 'True')
+                {
+                    var html = this.template(this.model.attributes);
+                    HtmlUtils.setHtml(this.$el, HtmlUtils.HTML(html));
+                }
                 return this;
             }
         });
