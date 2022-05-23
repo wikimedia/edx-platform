@@ -70,16 +70,18 @@ function TranslationContent({ context }) {
               <div className='col'>
                 <strong>
                   {
-                    courseOutline.base_course_lang ?
-                    context.LANGUAGES[courseOutline.base_course_lang]:
-                    'English'
+                    baseCourses[baseCourse].language ? 
+                    context.LANGUAGES[baseCourses[baseCourse].language] :
+                    'NA'
                   }
                 </strong>
               </div>
               <div className='col'>
                 <strong>
                   {
-                    context.LANGUAGES[rerunCourses[rerunCourse].language]
+                    rerunCourses[rerunCourse].language ? 
+                    context.LANGUAGES[rerunCourses[rerunCourse].language] :
+                    'NA'
                   }
                 </strong>
               </div>

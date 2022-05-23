@@ -113,10 +113,13 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
 
         course_outline, base_course_outline = get_outline_course_to_units(course)
 
-        key, base_key = list(course_outline.keys())[0], list(base_course_outline.keys())[0]
+        if course_outline and base_course_outline:
+            key, base_key = list(course_outline.keys())[0], list(base_course_outline.keys())[0]
+            course_outline, base_course_outline = course_outline[key]['children'], base_course_outline[base_key]['children']
+        
         data = {
-            'course_outline': course_outline[key]['children'],
-            'base_course_outline': base_course_outline[base_key]['children']
+            'course_outline': course_outline,
+            'base_course_outline': base_course_outline,
         }
 
         return Response(data, status=status.HTTP_200_OK)
@@ -193,11 +196,13 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
         unit = modulestore().get_item(block_location)
 
         unit_data, base_unit_data, = get_outline_unit_to_components(unit)
-        key, base_key = list(unit_data.keys())[0], list(base_unit_data.keys())[0]
+        if unit_data and base_unit_data:
+            key, base_key = list(unit_data.keys())[0], list(base_unit_data.keys())[0]
+            unit_data, base_unit_data = unit_data[key]['children'], base_unit_data[base_key]['children']
 
         data = {
-            'components_data': unit_data[key]['children'],
-            'base_components_data': base_unit_data[base_key]['children'],
+            'components_data': unit_data,
+            'base_components_data': base_unit_data,
         }
 
         return Response(data, status=status.HTTP_200_OK)
