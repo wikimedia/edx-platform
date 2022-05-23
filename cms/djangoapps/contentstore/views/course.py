@@ -74,6 +74,7 @@ from openedx.features.content_type_gating.models import ContentTypeGatingConfig
 from openedx.features.content_type_gating.partitions import CONTENT_TYPE_GATING_SCHEME
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock
@@ -733,7 +734,8 @@ def course_index(request, course_key):
             'course_authoring_microfrontend_url': course_authoring_microfrontend_url,
             'advance_settings_url': reverse_course_url('advanced_settings_handler', course_module.id),
             'proctoring_errors': proctoring_errors,
-            'course_blocks_mapping_url': reverse("meta_translations:course_blocks_mapping")
+            'course_blocks_mapping_url': reverse("meta_translations:course_blocks_mapping"),
+            'is_translated_or_base_course': CourseTranslation.is_base_or_translated_course(course_key)
         })
 
 

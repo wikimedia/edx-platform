@@ -225,5 +225,6 @@ class WikiMetaClient(object):
                 }
             else:
                 logger.info("Translation state not ready as Meta server returned translation_state:{} for {}.".format(
+                    translation_state,
                     mcgroup
                 ))

@@ -21,6 +21,16 @@ log = getLogger(__name__)
 @login_required
 @require_http_methods(["POST"])
 def course_blocks_mapping(request):
+    def map_base_course(base_course_key):
+        course = get_course_by_id(base_course_key)
+        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=False)
+        check_and_map_course_blocks(course_outline, base_course_key, None)
+
+    def map_translated_version(base_course_key, course_key):
+        course = get_course_by_id(course_key)
+        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=True)
+        check_and_map_course_blocks(course_outline, course_key, base_course_key)
+
     if request.body:
         course_outline_data = json.loads(request.body)
         course_key_string = course_outline_data["studio_url"].split('/')[2]
@@ -35,14 +45,17 @@ def course_blocks_mapping(request):
             base_course_key = translation_course_mapping.base_course_id
             log.info("Course is a translated re-run version of base course: {}".format(base_course_key))
         except CourseTranslation.DoesNotExist:
-            log.info("CourseTranslation object couldn't found - Course is not a translated re-run version.")
-        
-        # mappig=True if course in a translated re-run
-        mapping = True if base_course_key else False
-        course = get_course_by_id(course_key)
-        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=mapping)
-        
-        check_and_map_course_blocks(course_outline, course_key, base_course_key)
+            if CourseTranslation.objects.filter(base_course_id=course_key).exists():
+                log.info("Course is a base course for translated re-run version : {}".format(base_course_key))
+                map_base_course(course_key)
+            else:
+                msg = "Neither course is base course nor translated rerun version."
+                log.info("CourseTranslation object couldn't found.")
+                log.info(msg)
+                return JsonResponse({'error':'Invalid request'},status=400)
+        else:
+            map_base_course(base_course_key)
+            map_translated_version(base_course_key, course_key)
         return JsonResponse({'success': 'Mapping has been processed successfully.'}, status=200)
     else:
         return JsonResponse({'error':'Invalid request'},status=400)
@@ -73,20 +86,20 @@ def update_block_direction_flag(request):
         course_block = CourseBlock.objects.get(block_id=locator)
         if (destination_flag and course_block.is_source()) or course_block.is_destination():
             course = get_course_by_id(course_block.course_id)
-            
+
             if destination_flag:
                 course_block = course_block.update_flag_to_destination(course.language)
             else:
                 course_block = course_block.update_flag_to_source(course.language)
-            
+
             if course_block:
                 response = {
                     'success': 'Block status is updated',
                     'destination_flag': course_block.is_destination(),
                 }
                 return JsonResponse(response, status=200)
-            
+
             error_message = 'No Mapping found. Please click Mapping Button on outline page to update Mappings'
             return JsonResponse({'error': error_message}, status=405)
-    
+
     return JsonResponse({'error':'Invalid request'}, status=400)
