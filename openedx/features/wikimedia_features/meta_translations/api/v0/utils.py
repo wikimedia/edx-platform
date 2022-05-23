@@ -64,8 +64,8 @@ def validated_and_sort_translated_decodings(base_decodings, translated_decodings
     """
     sorted_translated_decodings = {}
     is_valid = True
-    for key, value in base_decodings.items():
-        if not ((value == '' and translated_decodings['key'] == '') or translated_decodings[key]):
+    for key in base_decodings.keys():
+        if translated_decodings.get(key) == None:
             is_valid = False
             sorted_translated_decodings[key] = ''
         else:
