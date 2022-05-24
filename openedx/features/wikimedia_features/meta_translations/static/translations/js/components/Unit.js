@@ -10,24 +10,24 @@ function Unit (props) {
 
   const isValidTranslations = (data) => {
     if (data.transcript) {
-      return data.display_name !='' && data.transcript != []
+      return data.display_name !='' && data.transcript != ''
     }
     return data.display_name != '' && data.content != ''
   }
 
   const content = (data) => {
-    if (data.transcript) {
+    if (data.transcript && typeof data.transcript === 'object') {
       return (
-        <ul>
-          { data.transcript.map((trans, index) => <li key={index}>{trans}</li>) }
-        </ul>
-      );
-      }
+        <ol>
+          { Object.entries(data.transcript).map(item => <li key={item[0]}>{item[1] ? item[1] : '--'}</li>) }
+        </ol>
+      )
+    }
     else if (data.content && typeof data.content === 'object') {
       return (
-        <ul>
-          { Object.entries(data.content).map(item => <li key={item[0]}>{item[1]}</li>) }
-        </ul>
+        <ol>
+          { Object.entries(data.content).map(item => <li key={item[0]}>{item[1] ? item[1] : '--'}</li>) }
+        </ol>
       );
     } else {
       return (ReactHtmlParser(data.content))
@@ -46,7 +46,7 @@ function Unit (props) {
                 <strong>{baseContent[content_id].data.display_name}</strong>
               </div>
               <div className='col'>
-                <strong>{rerunContent[content_id].data.display_name}</strong>
+                <strong>{rerunContent[content_id].data.display_name ? rerunContent[content_id].data.display_name: '--'}</strong>
               </div>
               <Actions
                 usageKey={rerunContent[content_id].usage_key}
