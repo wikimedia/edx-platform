@@ -1,6 +1,6 @@
 
 """Common settings for Meta Translations"""
-from openedx.features.wikimedia_features.meta_translations.transformers.wiki_transformer import ProblemTransformer
+from openedx.features.wikimedia_features.meta_translations.transformers.wiki_transformer import ProblemTransformer, VideoTranscriptTransformer
 
 def plugin_settings(settings):
     """
@@ -15,9 +15,10 @@ def plugin_settings(settings):
     )
 
     # settings for wiki_transformers
-    settings.DATA_TYPES_WITH_PARCED_KEYS = ['content']
+    settings.DATA_TYPES_WITH_PARCED_KEYS = ['content', 'transcript']
     settings.TRANSFORMER_CLASS_MAPPING = {
         'problem': ProblemTransformer,
+        'video': VideoTranscriptTransformer,
     }
 
     settings.WIKI_META_BASE_API_URL = "https://language-mleb-master.wmcloud.org/api.php"

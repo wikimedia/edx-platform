@@ -214,28 +214,31 @@ class VideoComponent(WikiComponent):
             block.display_name = data['display_name']
         if 'transcript' in data:
             course = get_course_by_id(block.course_id)
-            base_course_langauge = self._get_base_course_language(block.course_id)
-            if base_course_langauge:
-                video_data = get_video_transcript_content(block.edx_video_id, base_course_langauge)
-                if video_data:
-                    json_content = self._get_json_transcript_data(video_data['file_name'], video_data['content'])
-                    json_content['text'] = json.loads(data['transcript'])
+            block_id = block.scope_ids.usage_id
+            translation = WikiTranslation.objects.get(target_block__block_id=block_id, source_block_data__data_type='transcript')
+            json_content = json.loads(translation.source_block_data.data)
 
-                    sjson_content = json.dumps(json_content).encode('utf-8')
-                    SRT_content = Transcript.convert(sjson_content, Transcript.SJSON, Transcript.SRT)
+            meta_data = {
+                'start_points': json_content['start'],
+                'end_points': json_content['end'],
+                'encodings': json.loads(data['transcript'])
+            }
+            updated_transcript = settings.TRANSFORMER_CLASS_MAPPING[block.category]().meta_data_to_raw_data(meta_data)
+            json_content['text'] = updated_transcript
 
-                    language_code = course.language
-                    post_data = {
-                                "edx_video_id": block.edx_video_id,
-                                "language_code": language_code,
-                                "new_language_code": language_code,
-                                "file": ('translation-{}.srt'.format(language_code), SRT_content)
-                            }
+            sjson_content = json.dumps(json_content).encode('utf-8')
+            SRT_content = Transcript.convert(sjson_content, Transcript.SJSON, Transcript.SRT)
 
-                    request = Request.blank('/translation', POST=post_data)
-                    block.studio_transcript(request=request, dispatch="translation")
-                else:
-                    log.error('No Transcript found for languge code {}'.format(base_course_langauge))
+            language_code = course.language
+            post_data = {
+                        "edx_video_id": block.edx_video_id,
+                        "language_code": language_code,
+                        "new_language_code": language_code,
+                        "file": ('translation-{}.srt'.format(language_code), SRT_content)
+                    }
+
+            request = Request.blank('/translation', POST=post_data)
+            block.studio_transcript(request=request, dispatch="translation")
         
         return modulestore().update_item(block, 'edx')
     
@@ -252,7 +255,7 @@ class VideoComponent(WikiComponent):
         video_context = { "display_name": block.display_name}
         if data:
             json_content = self._get_json_transcript_data(data['file_name'], data['content'])
-            video_context['transcript'] = json.dumps(json_content['text'])
+            video_context['transcript'] = json.dumps(json_content)
         return video_context
 
 COMPONENTS_CLASS_MAPPING = {
