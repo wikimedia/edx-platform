@@ -39,7 +39,7 @@ def validate_list_data(data):
 BLOCK_DATA_TYPES_DATA_VALIDATIONS = {
     'content': validate_string,
     'display_name': validate_string,
-    'transcript': validate_list_data,
+    'transcript': validate_string,
 }
 
 def get_random_string(N=16):
