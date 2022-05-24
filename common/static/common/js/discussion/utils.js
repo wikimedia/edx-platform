@@ -331,7 +331,7 @@
             var index = content.lastIndexOf("@");
             var name = "";
             if (index != -1) {
-                name = content.substr(index + 1);
+                name = content.substr(index + 1).split(" ")[0];
                 $.ajax({
                     type: 'GET',
                     url: this.urlFor('user_search', name),
@@ -349,12 +349,12 @@
 
                         btn.addEventListener("click", function(event) {
                             event.preventDefault();
-                            var name, input_id, name_input_id_array;
+                            var username, input_id, name_input_id_array;
                             name_input_id_array = event.target.value.split("/");
-                            name = name_input_id_array[0], input_id = name_input_id_array[1];
+                            username = name_input_id_array[0], input_id = name_input_id_array[1];
                             var target = document.getElementById(input_id)
                             var index = target.value.lastIndexOf("@");
-                            target.value = target.value.substring(0, index+1) + name;
+                            target.value = target.value.substring(0, index+1) + username + target.value.substring(index+1+name.length, target.value.length);
                             $(".wmd-panel.wmd-preview p").html(target.value);
                             $(".username-query").hide();
                         })
