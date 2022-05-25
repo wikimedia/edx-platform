@@ -328,10 +328,14 @@
             // enable user to ping/mention other users using @usernames on discussion form
             $( ".username-query" ).remove();
             var content = event.target.value;
-            var index = content.lastIndexOf("@");
+            var cursor_position = event.target.selectionStart;
+            var index = content.substr(0, cursor_position).lastIndexOf("@");
             var name = "";
             if (index != -1) {
-                name = content.substr(index + 1).split(" ")[0];
+                name = content.substring(index+1, cursor_position);
+                if (name.includes(" ")) {
+                    return;
+                }
                 $.ajax({
                     type: 'GET',
                     url: this.urlFor('user_search', name),
@@ -353,7 +357,7 @@
                             name_input_id_array = event.target.value.split("/");
                             username = name_input_id_array[0], input_id = name_input_id_array[1];
                             var target = document.getElementById(input_id)
-                            var index = target.value.lastIndexOf("@");
+                            var index = target.value.substr(0, cursor_position).lastIndexOf("@");
                             target.value = target.value.substring(0, index+1) + username + target.value.substring(index+1+name.length, target.value.length);
                             $(".wmd-panel.wmd-preview p").html(target.value);
                             $(".username-query").hide();
