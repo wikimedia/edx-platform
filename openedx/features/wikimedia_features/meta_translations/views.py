@@ -77,3 +77,35 @@ def update_block_direction_flag(request):
             return JsonResponse({'error': error_message}, status=405)
 
     return JsonResponse({'error':'Invalid request'}, status=400)
+
+
+from django.core import management
+
+@login_required
+def course_blocks_send(request):
+    """
+    SEND MANAGEMENT COMMAND
+    """
+    commit = True if request.body == b'commit' else False
+    output = management.call_command('sync_untranslated_strings_to_meta_from_edx', commit=commit)
+    return JsonResponse({}, status=200)
+
+
+@login_required
+def course_blocks_fetch(request):
+    """
+    FETCH MANAGEMENT COMMAND
+    """
+    commit = True if request.body == b'commit' else False
+    output = management.call_command('sync_translated_strings_to_edx_from_meta', commit=commit)
+    return JsonResponse({}, status=200)
+
+
+@login_required
+def course_blocks_apply(request):
+    """
+    APPLY MANAGEMENT COMMAND
+    """
+    commit = True if request.body == b'commit' else False
+    output = management.call_command('map_wikitranslations_to_course_blocks', commit=commit)
+    return JsonResponse({}, status=200)

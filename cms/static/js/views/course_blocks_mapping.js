@@ -8,7 +8,9 @@ define([
         var CourseBlocksMappingView = Backbone.View.extend({
             events: {
                 'click button.status-course-blocks-mapping-value': 'handleMappingButtonPress',
-                'keypress button.status-course-blocks-mapping-value': 'handleMappingButtonPress'
+                'click button.TEST_SEND_TRANSLATIONS': 'handleTestTranslationsButtonPress',
+                'click button.TEST_FETCH_TRANSLATIONS': 'handleTestTranslationsButtonPress',
+                'click button.TEST_APPLY_TRANSLATIONS': 'handleTestTranslationsButtonPress'
             },
 
             initialize: function() {
@@ -20,6 +22,53 @@ define([
                     event.preventDefault();
                     this.blocksMappingXBlock();
                 }
+            },
+
+            handleTestTranslationsButtonPress: function(event) {
+                event.preventDefault();
+
+                var url, msg;
+                var commit = $("#argument").val()
+                var data_urls = $(".status-course-blocks-mapping").data()
+
+                if (event.target.id == "TEST_SEND_TRANSLATIONS")
+                {
+                    url = data_urls.blocksSendUrl;
+                    msg = "Sending Translations";
+                }
+                else if (event.target.id == "TEST_FETCH_TRANSLATIONS")
+                {
+                    url = data_urls.blocksFetchUrl;
+                    msg = "Fetching Translations";
+                }
+                else if (event.target.id == "TEST_APPLY_TRANSLATIONS")
+                {
+                    url = data_urls.blocksApplyUrl;
+                    msg = "Applying Translations";
+                }
+                else {
+                    alert("Error: Unable to understand function");
+                    return;
+                }
+
+                ViewUtils.runOperationShowingMessage(
+                    gettext(msg),
+                    function() {
+                        return $.ajax({
+                            url: url,
+                            type: 'POST',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            data: commit,
+                            beforeSend: function() {
+                                $("#"+ event.target.id).prop("disabled", true);
+                            },
+                            success: function(response) {
+                                $("#"+ event.target.id).prop("disabled", false);
+                            },
+                        });
+                    }
+                );
             },
 
             blocksMappingXBlock: function() {

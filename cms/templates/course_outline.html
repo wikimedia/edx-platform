@@ -234,7 +234,7 @@ from django.urls import reverse
                     </%static:studiofrontend>
                 </div>
                 <div class="status-highlights-enabled"></div>
-                <div data-blocks-mapping-url="${course_blocks_mapping_url}" data-is-translated-or-base-flag="${is_translated_or_base_course}" id="status-course-blocks-mapping" class="status-course-blocks-mapping"></div>
+                <div data-blocks-apply-url="${course_blocks_apply_url}" data-blocks-fetch-url="${course_blocks_fetch_url}" data-blocks-send-url="${course_blocks_send_url}" data-blocks-mapping-url="${course_blocks_mapping_url}" data-is-translated-or-base-flag="${is_translated_or_base_course}" id="status-course-blocks-mapping" class="status-course-blocks-mapping"></div>
             </div>
             <div class="wrapper-dnd"
               % if getattr(context_course, 'language'):

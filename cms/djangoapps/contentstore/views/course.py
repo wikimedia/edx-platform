@@ -736,6 +736,9 @@ def course_index(request, course_key):
             'advance_settings_url': reverse_course_url('advanced_settings_handler', course_module.id),
             'proctoring_errors': proctoring_errors,
             'course_blocks_mapping_url': reverse("meta_translations:course_blocks_mapping"),
+            'course_blocks_send_url': reverse("meta_translations:course_blocks_send"),
+            'course_blocks_fetch_url': reverse("meta_translations:course_blocks_fetch"),
+            'course_blocks_apply_url': reverse("meta_translations:course_blocks_apply"),
             'is_translated_or_base_course': CourseTranslation.is_base_or_translated_course(course_key)
         })
 
