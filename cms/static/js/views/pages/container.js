@@ -186,13 +186,22 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                     self = this,
                     modal = new EditXBlockModal(options);
                 event.preventDefault();
-
-                modal.edit(xblockElement, this.model, {
-                    readOnlyView: !this.options.canEdit,
-                    refresh: function() {
-                        self.refreshXBlock(xblockElement, false);
-                    }
-                });
+                var location = xblockElement.data('locator');
+                var checkBoxId = `${location}_checkboxTranslation`;
+                var operation = function(){
+                    modal.edit(xblockElement, self.model, {
+                        readOnlyView: !self.options.canEdit,
+                        refresh: function() {
+                            self.refreshXBlock(xblockElement, false);
+                        }
+                    });
+                };
+                if (document.getElementById(checkBoxId) && document.getElementById(checkBoxId).checked){
+                    WikiUtils.showWarningOnEdit(operation);
+                } else {
+                    operation();
+                }
+                
             },
 
             editVisibilitySettings: function(event) {
