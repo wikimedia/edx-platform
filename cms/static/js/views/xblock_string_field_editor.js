@@ -5,8 +5,9 @@
  * XBlock field's value if it has been changed. If the user presses Escape, then any changes will
  * be removed and the input hidden again.
  */
-define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/utils/html-utils'],
-    function(BaseView, XBlockViewUtils, HtmlUtils) {
+define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/utils/html-utils',
+        'js/views/utils/wiki_utils'],
+    function(BaseView, XBlockViewUtils, HtmlUtils, WikiUtils) {
         'use strict';
         var XBlockStringFieldEditor = BaseView.extend({
             events: {
@@ -79,11 +80,21 @@ define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/u
             },
 
             showInput: function(event) {
-                var input = this.getInput();
-                event.preventDefault();
-                event.stopPropagation();
-                this.$el.addClass('is-editing');
-                input.focus().select();
+                var self = this,
+                    isDestinationBlock = self.model.isDestinationBlock()
+                var operation = function(){
+                    var input = self.getInput();
+                    event.preventDefault();
+                    event.stopPropagation();
+                    self.$el.addClass('is-editing');
+                    input.focus().select();
+                }
+                if (isDestinationBlock){
+                    WikiUtils.showWarningOnEdit(operation)
+                } else {
+                    operation();
+                }
+                
             },
 
             hideInput: function() {
