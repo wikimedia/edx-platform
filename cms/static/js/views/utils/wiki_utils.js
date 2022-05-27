@@ -5,7 +5,7 @@
  'edx-ui-toolkit/js/utils/string-utils', 'js/utils/wiki_module'],
  function($, _, gettext, ViewUtils, StringUtils, WikiModuleUtils) {
      'use strict';
-     var updateDirectionStatus;
+     var updateDirectionStatus, showWarningOnEdit;
 
      /**
       * Update a specific xblock with new direction flag.
@@ -62,8 +62,24 @@
          
          return updateStatus.promise()
      };
+
+    showWarningOnEdit = function(operation) {
+        ViewUtils.confirmThenRunOperation(
+            StringUtils.interpolate(
+                gettext('Do you want to Edit?'),
+                true
+            ),
+            gettext('Please disable translations after an edit, otherwise edited component is overwritten by auto translations.'),
+            StringUtils.interpolate(
+                gettext('Yes, Start Editing'),
+                true
+            ),
+            operation
+        );
+    };
      
      return {
-         updateDirectionStatus: updateDirectionStatus
+         updateDirectionStatus: updateDirectionStatus,
+         showWarningOnEdit: showWarningOnEdit,
      };
  });
