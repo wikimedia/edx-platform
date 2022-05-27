@@ -17,14 +17,14 @@ class Command(BaseCommand):
     """
     This command will check and update wikitransaltions to database
 
-        $ ./manage.py cms map_wikitranslations_to_course_blocks
+        $ ./manage.py cms apply_approved_translations_to_course_blocks
         It will show all updated blocks that are ready for update.
 
-        $ ./manage.py cms map_wikitranslations_to_course_blocks --commit
-        It will apply all wikitranslations to course blocks, eventually it updates database.
+        $ ./manage.py cms apply_approved_translations_to_course_blocks --commit
+        It will apply approved wikitranslations to course blocks, eventually it updates database.
     """
     
-    help = 'Commad to update valid wikitranslations to edx course blocks'
+    help = 'Commad to update approved wikitranslations to edx course blocks'
     _RESULT = {
         "updated_blocks_count": 0,
         "success_updated_blocks_count": 0

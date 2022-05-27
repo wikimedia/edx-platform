@@ -9,6 +9,8 @@ function Actions (props) {
 
   const title = !enableApproveButton? 'No Translations': approved? 'Approved': 'Approve'
   
+  const showApproveAllButton = false
+
   const hanldeApprove = (e) => {
     e.stopPropagation();
     if (!approved && enableApproveButton){
@@ -30,7 +32,7 @@ function Actions (props) {
   return (
     <div className="btn-box">
       {
-        approveAll && (
+        showApproveAllButton && approveAll && (
           <span className="btn approveAll" title="Approve All" onClick={hanldeApproveAll}>
             <i className="fa fa-list" aria-hidden="true"></i>
           </span>

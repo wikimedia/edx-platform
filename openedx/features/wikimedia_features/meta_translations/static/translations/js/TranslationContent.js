@@ -39,6 +39,14 @@ function TranslationContent({ context }) {
 
   return (
     <div className="translations">
+      <div className="message">
+        {
+          isEmpty(baseCourses) &&
+          <p>
+            No Translated Course Found!
+          </p>
+        }
+      </div>
       <div className="translation-header">
         <div className="col">
         {
@@ -86,13 +94,23 @@ function TranslationContent({ context }) {
                 </strong>
               </div>
             </div>
-            <Sections
-              context={context}
-              setLoading={setLoading}
-              rerunCourseId={rerunCourse}
-              courseOutline={courseOutline}
-              setCourseOutline={setCourseOutline}
-            />
+            {
+              !isEmpty(courseOutline.base_course_outline) && 
+              <Sections
+                  context={context}
+                  setLoading={setLoading}
+                  rerunCourseId={rerunCourse}
+                  courseOutline={courseOutline}
+                  setCourseOutline={setCourseOutline}
+              />
+            }
+            {
+              isEmpty(courseOutline.base_course_outline) &&
+              <p class="message">
+                No Translations Found!, Please apply mapping.
+              </p>
+            }
+            
           </Fragment>
         )
       }
