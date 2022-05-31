@@ -107,5 +107,5 @@ def course_blocks_apply(request):
     APPLY MANAGEMENT COMMAND
     """
     commit = True if request.body == b'commit' else False
-    output = management.call_command('map_wikitranslations_to_course_blocks', commit=commit)
+    output = management.call_command('apply_approved_translations_to_course_blocks', commit=commit)
     return JsonResponse({}, status=200)
