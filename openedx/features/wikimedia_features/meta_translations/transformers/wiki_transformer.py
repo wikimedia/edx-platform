@@ -281,8 +281,8 @@ class VideoTranscriptTransformer(WikiTransformer):
         """
         transcript_data = json.loads(raw_data)
         meta_keys = self._convert_locations_to_meta_keys(transcript_data['start'], transcript_data['end'])
-
-        return dict(zip(meta_keys, transcript_data['text']))
+        transcript_text = [text_data if text_data else '....' for text_data in transcript_data['text']]
+        return dict(zip(meta_keys, transcript_text))
 
     def meta_data_to_raw_data(self, meta_data):
         """
