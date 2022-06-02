@@ -10,6 +10,7 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                events: {
                    'input input': 'updateModel',
                    'input textarea': 'updateModel',
+                   'change #is-destination-course': 'updateModel',
         // Leaving change in as fallback for older browsers
                    'change input': 'updateModel',
                    'change textarea': 'updateModel',
@@ -151,6 +152,12 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                        paceToggleTip.text(gettext('Course pacing cannot be changed once a course has started.'));
                    }
 
+                if (['true', true].includes(this.model.get('is_destination_course'))) {
+                    this.$('#' + this.fieldToSelectorMap.is_destination_course).attr('checked', this.model.get('is_destination_course'));
+                } else {
+                    this.$('#' + this.fieldToSelectorMap.is_destination_course).removeAttr('checked');
+                }
+
                    this.licenseView.render();
                    this.learning_info_view.render();
                    this.instructor_info_view.render();
@@ -183,7 +190,8 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    course_settings_learning_fields: 'course-settings-learning-fields',
                    add_course_learning_info: 'add-course-learning-info',
                    add_course_instructor_info: 'add-course-instructor-info',
-                   course_learning_info: 'course-learning-info'
+                   course_learning_info: 'course-learning-info',
+                   is_destination_course: 'is-destination-course'
                },
 
                addLearningFields: function() {
@@ -309,6 +317,9 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    case 'course-duration':
                    case 'course-description':
                    case 'course-short-description':
+                       this.setField(event);
+                       break;
+                   case 'is-destination-course':
                        this.setField(event);
                        break;
                    default: // Everything else is handled by datepickers and CodeMirror.

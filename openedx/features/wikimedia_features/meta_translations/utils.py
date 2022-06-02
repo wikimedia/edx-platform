@@ -27,13 +27,13 @@ def get_block_data(block, mapping):
         dict of extracted data
     """
     if block.category in COMPONENTS_CLASS_MAPPING:
-        
+
         data = {}
         if block.category == 'video':
             data = COMPONENTS_CLASS_MAPPING[block.category](mapping=mapping).get(block)
         else:
             data = COMPONENTS_CLASS_MAPPING[block.category]().get(block)
-        
+
         return {
             'usage_key': str(block.scope_ids.usage_id),
             'category': block.category,
@@ -274,7 +274,7 @@ def is_destination_block(block_id):
 
 def is_destination_course(course_id):
     """
-    Check if the course is destination course
+    Check if the course is destination course i.e course is translated rerun
     """
     return CourseTranslation.objects.filter(course_id=course_id).exists()
 
@@ -300,3 +300,18 @@ def get_block_status(block_id):
     except CourseBlock.DoesNotExist:
         log.info('No CourseBlock found for block {}'.format(block_id))
     return block_status
+
+def update_course_to_source(course_key):
+    try:
+        translation_link = CourseTranslation.objects.get(course_id=course_key)
+        log.info('Start converting course with id: {} to Source'.format(str(course_key)))
+        # update all underlying component's flag to source
+        course = get_course_by_id(course_key)
+        log.info('Check and update all underlying blocks to Source'.format(str(course_key)))
+        for course_block in CourseBlock.objects.filter(course_id=course_key):
+            course_block.update_flag_to_source(course.language)
+            log.info('Update course block with id: {} to Source'.format(str(course_key)))
+        translation_link.delete()
+        log.info('Course Flag with id: {} has been successfully updated to Source'.format(str(course_key)))
+    except CourseTranslation.DoesNotExist:
+        log.info('Course with id: {} is already a Source Course'.format(str(course_key)))

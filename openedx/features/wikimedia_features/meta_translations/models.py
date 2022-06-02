@@ -125,9 +125,9 @@ class CourseBlock(models.Model):
                 for data in source_block.courseblockdata_set.all():
                     data.mapping_updated = True
                     data.save()
-                self.direction_flag = CourseBlock._Source
-                self.save()
-                return self
+            self.direction_flag = CourseBlock._Source
+            self.save()
+            return self
 
     def update_flag_to_destination(self, target_course_language):
         """
