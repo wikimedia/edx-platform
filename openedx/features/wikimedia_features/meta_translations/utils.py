@@ -315,3 +315,38 @@ def update_course_to_source(course_key):
         log.info('Course Flag with id: {} has been successfully updated to Source'.format(str(course_key)))
     except CourseTranslation.DoesNotExist:
         log.info('Course with id: {} is already a Source Course'.format(str(course_key)))
+
+
+def course_blocks_mapping(course_key):
+    def map_base_course(base_course_key):
+        course = get_course_by_id(base_course_key)
+        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=False)
+        check_and_map_course_blocks(course_outline, base_course_key, None)
+
+    def map_translated_version(base_course_key, course_key):
+        course = get_course_by_id(course_key)
+        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=True)
+        check_and_map_course_blocks(course_outline, course_key, base_course_key)
+
+    base_course_key = None
+    log.info("Starting course blocks mapping on course_id: ".format(str(course_key)))
+
+    # check if course is translated re-run or base-course
+    try:
+        translation_course_mapping = CourseTranslation.objects.get(course_id=course_key)
+        base_course_key = translation_course_mapping.base_course_id
+        log.info("Course is a translated re-run version of base course: {}".format(base_course_key))
+    except CourseTranslation.DoesNotExist:
+        if CourseTranslation.objects.filter(base_course_id=course_key).exists():
+            log.info("Course is a base course for translated re-run version : {}".format(base_course_key))
+            map_base_course(course_key)
+            return True
+        else:
+            msg = "Neither course is base course nor translated rerun version."
+            log.info("CourseTranslation object couldn't found.")
+            log.info(msg)
+            return False
+    else:
+        map_base_course(base_course_key)
+        map_translated_version(base_course_key, course_key)
+        return True
