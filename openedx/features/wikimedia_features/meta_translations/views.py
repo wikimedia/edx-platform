@@ -12,51 +12,24 @@ from django.conf import settings
 from common.djangoapps.edxmako.shortcuts import render_to_response
 
 from lms.djangoapps.courseware.courses import get_course_by_id
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation
-from openedx.features.wikimedia_features.meta_translations.utils import get_recursive_blocks_data, check_and_map_course_blocks
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock
+from openedx.features.wikimedia_features.meta_translations.utils import course_blocks_mapping
 
 log = getLogger(__name__)
 
 
 @login_required
 @require_http_methods(["POST"])
-def course_blocks_mapping(request):
-    def map_base_course(base_course_key):
-        course = get_course_by_id(base_course_key)
-        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=False)
-        check_and_map_course_blocks(course_outline, base_course_key, None)
-
-    def map_translated_version(base_course_key, course_key):
-        course = get_course_by_id(course_key)
-        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=True)
-        check_and_map_course_blocks(course_outline, course_key, base_course_key)
-
+def course_blocks_mapping_view(request):
     if request.body:
         course_outline_data = json.loads(request.body)
         course_key_string = course_outline_data["studio_url"].split('/')[2]
         course_key = CourseKey.from_string(course_key_string)
 
-        base_course_key = None
-        log.info("Starting course blocks mapping on course_id: ".format(course_key_string))
-
-        # check if course is translated re-run or base-course
-        try:
-            translation_course_mapping = CourseTranslation.objects.get(course_id=course_key)
-            base_course_key = translation_course_mapping.base_course_id
-            log.info("Course is a translated re-run version of base course: {}".format(base_course_key))
-        except CourseTranslation.DoesNotExist:
-            if CourseTranslation.objects.filter(base_course_id=course_key).exists():
-                log.info("Course is a base course for translated re-run version : {}".format(base_course_key))
-                map_base_course(course_key)
-            else:
-                msg = "Neither course is base course nor translated rerun version."
-                log.info("CourseTranslation object couldn't found.")
-                log.info(msg)
-                return JsonResponse({'error':'Invalid request'},status=400)
+        if course_blocks_mapping(course_key):
+            return JsonResponse({'success': 'Mapping has been processed successfully.'}, status=200)
         else:
-            map_base_course(base_course_key)
-            map_translated_version(base_course_key, course_key)
-        return JsonResponse({'success': 'Mapping has been processed successfully.'}, status=200)
+            return JsonResponse({'error':'Invalid request'},status=400)
     else:
         return JsonResponse({'error':'Invalid request'},status=400)
 
