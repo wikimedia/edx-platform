@@ -5,7 +5,7 @@
  'edx-ui-toolkit/js/utils/string-utils', 'js/utils/wiki_module'],
  function($, _, gettext, ViewUtils, StringUtils, WikiModuleUtils) {
      'use strict';
-     var updateDirectionStatus, showWarningOnEdit;
+     var updateDirectionStatus, showWarningOnEdit, showMsgOnCourseFlagSettingUpdate;
 
      /**
       * Update a specific xblock with new direction flag.
@@ -31,7 +31,7 @@
                      return updateStatus.promise();
                  });
              }
-         
+
          if (destinationFlag){
              ViewUtils.confirmThenRunOperation(
                  StringUtils.interpolate(
@@ -59,7 +59,7 @@
                  operation
              );
          }
-         
+
          return updateStatus.promise()
      };
 
@@ -77,9 +77,25 @@
             operation
         );
     };
-     
+
+    showMsgOnCourseFlagSettingUpdate = function(operation) {
+        ViewUtils.confirmThenRunOperation(
+            StringUtils.interpolate(
+                gettext('Change can not be reverted.'),
+                true
+            ),
+            gettext('Are you sure you want to update flag as it will not be reverted again.'),
+            StringUtils.interpolate(
+                gettext('Yes, Update Flag'),
+                true
+            ),
+            operation
+        );
+    };
+
      return {
          updateDirectionStatus: updateDirectionStatus,
          showWarningOnEdit: showWarningOnEdit,
+         showMsgOnCourseFlagSettingUpdate: showMsgOnCourseFlagSettingUpdate
      };
  });

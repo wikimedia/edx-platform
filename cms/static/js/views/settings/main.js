@@ -1,15 +1,17 @@
 define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui', 'js/utils/date_utils',
     'js/models/uploads', 'js/views/uploads', 'js/views/license', 'js/models/license',
     'common/js/components/views/feedback_notification', 'jquery.timepicker', 'date', 'gettext',
-    'js/views/learning_info', 'js/views/instructor_info', 'edx-ui-toolkit/js/utils/string-utils'],
+    'js/views/learning_info', 'js/views/instructor_info', 'edx-ui-toolkit/js/utils/string-utils', 'js/views/utils/wiki_utils'],
        function(ValidatingView, CodeMirror, _, $, ui, DateUtils, FileUploadModel,
                 FileUploadDialog, LicenseView, LicenseModel, NotificationView,
-                timepicker, date, gettext, LearningInfoView, InstructorInfoView, StringUtils) {
+                timepicker, date, gettext, LearningInfoView, InstructorInfoView,
+                StringUtils, WikiUtils) {
            var DetailsView = ValidatingView.extend({
     // Model class is CMS.Models.Settings.CourseDetails
                events: {
                    'input input': 'updateModel',
                    'input textarea': 'updateModel',
+                   'change #is-destination-course': 'updateModel',
         // Leaving change in as fallback for older browsers
                    'change input': 'updateModel',
                    'change textarea': 'updateModel',
@@ -151,6 +153,12 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                        paceToggleTip.text(gettext('Course pacing cannot be changed once a course has started.'));
                    }
 
+                if (['true', true].includes(this.model.get('is_destination_course'))) {
+                    this.$('#' + this.fieldToSelectorMap.is_destination_course).attr('checked', this.model.get('is_destination_course'));
+                } else {
+                    this.$('#' + this.fieldToSelectorMap.is_destination_course).removeAttr('checked');
+                }
+
                    this.licenseView.render();
                    this.learning_info_view.render();
                    this.instructor_info_view.render();
@@ -183,7 +191,8 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    course_settings_learning_fields: 'course-settings-learning-fields',
                    add_course_learning_info: 'add-course-learning-info',
                    add_course_instructor_info: 'add-course-instructor-info',
-                   course_learning_info: 'course-learning-info'
+                   course_learning_info: 'course-learning-info',
+                   is_destination_course: 'is-destination-course'
                },
 
                addLearningFields: function() {
@@ -302,6 +311,9 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    case 'course-pace-instructor-paced':
                        this.model.set('self_paced', JSON.parse(event.currentTarget.value));
                        break;
+                   case 'is-destination-course':
+                       WikiUtils.showMsgOnCourseFlagSettingUpdate(_.bind(this.updateCourseFlag, this))
+                       break;
                    case 'course-language':
                    case 'course-effort':
                    case 'course-title':
@@ -314,6 +326,10 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                    default: // Everything else is handled by datepickers and CodeMirror.
                        break;
                    }
+               },
+               updateCourseFlag: function() {
+                    var updated_flag = $('#' + this.fieldToSelectorMap.is_destination_course).is(':checked').toString()
+                    this.model.set('is-destination-course', updated_flag);
                },
                updateImageField: function(event, image_field, selector) {
                    this.setField(event);
