@@ -147,9 +147,14 @@ def send_unread_messages_email(user, user_context):
 def send_thread_mention_email(receivers, context, is_thread=True):
     logger.info("Sending thread mention email to users: {}".format(receivers))
     key = "thread_mention"
-    subject_template = "{} mentioned you on the post."
+
     if is_thread:
-        subject = subject_template.format(context.get("thread_username"))
+        mentioned_by = context.get("thread_username")
     else:
-        subject = subject_template.format(context.get("comment_username"))
-    send_notification(key, context, subject, receivers)
+        mentioned_by = context.get("comment_username")
+
+    context.update({
+        "mentioned_by": mentioned_by,
+    })
+
+    send_notification(key, context, "", receivers)
