@@ -373,6 +373,21 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
           % endif
         </div>
 
+        <div class="group-settings course_flag">
+          <header>
+            <h2 class="title-2">${_('Course Direction Flag')}</h2>
+            <span class="tip">${_('Convert course to Source')}</span>
+          </header>
+          <div>
+              % if is_destination_course:
+                <input type="checkbox" id="is-destination-course">
+              % else:
+                <input type="checkbox" id="is-destination-course" disabled>
+                <span class="tip tip-stacked">${_("Option is disabled as course is not a translated re-run.")}</span>
+              % endif
+          </div>
+        </div>
+
         % if about_page_editable:
         <div class="group-settings course_details">
           <header>
