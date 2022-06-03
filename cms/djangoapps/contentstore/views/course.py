@@ -83,6 +83,7 @@ from xmodule.modulestore.django import modulestore
 from xmodule.modulestore.exceptions import DuplicateCourseError, ItemNotFoundError
 from xmodule.partitions.partitions import UserPartition
 from xmodule.tabs import CourseTab, CourseTabList, InvalidTabsException
+from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
 
 from ..course_group_config import (
     COHORT_SCHEME,
@@ -1185,6 +1186,7 @@ def settings_handler(request, course_key_string):  # lint-amnesty, pylint: disab
                 'enable_extended_course_details': enable_extended_course_details,
                 'upgrade_deadline': upgrade_deadline,
                 'course_authoring_microfrontend_url': course_authoring_microfrontend_url,
+                'is_destination_course': is_destination_course(course_key),
             }
             if is_prerequisite_courses_enabled():
                 courses, in_process_course_actions = get_courses_accessible_to_user(request)
@@ -1219,13 +1221,17 @@ def settings_handler(request, course_key_string):  # lint-amnesty, pylint: disab
         elif 'application/json' in request.META.get('HTTP_ACCEPT', ''):
             if request.method == 'GET':
                 course_details = CourseDetails.fetch(course_key)
-                return JsonResponse(
-                    course_details,
-                    # encoder serializes dates, old locations, and instances
-                    encoder=CourseSettingsEncoder
-                )
+                data = json.loads(CourseSettingsEncoder().encode(course_details))
+                data.update({
+                    'is_destination_course': is_destination_course(course_key),
+                })
+                return JsonResponse(data)
             # For every other possible method type submitted by the caller...
             else:
+                # check if course was destination course and now it's value is updated in json
+                if is_destination_course(course_key) and request.json.get('is_destination_course') in ['false', False]:
+                    update_course_to_source(course_key)
+
                 # if pre-requisite course feature is enabled set pre-requisite course
                 if is_prerequisite_courses_enabled():
                     prerequisite_course_keys = request.json.get('pre_requisite_courses', [])
