@@ -75,7 +75,11 @@ from openedx.features.content_type_gating.models import ContentTypeGatingConfig
 from openedx.features.content_type_gating.partitions import CONTENT_TYPE_GATING_SCHEME
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.features.wikimedia_features.meta_translations.utils import (
+    update_course_to_source,
+    is_destination_course,
+    course_blocks_mapping
+)
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import CourseBlock, DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock
@@ -84,7 +88,6 @@ from xmodule.modulestore.django import modulestore
 from xmodule.modulestore.exceptions import DuplicateCourseError, ItemNotFoundError
 from xmodule.partitions.partitions import UserPartition
 from xmodule.tabs import CourseTab, CourseTabList, InvalidTabsException
-from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
 
 from ..course_group_config import (
     COHORT_SCHEME,
@@ -848,7 +851,6 @@ def course_outline_initial_state(locator_to_show, course_structure):
         'expanded_locators': expanded_locators
     }
 
-
 @expect_json
 def _create_or_rerun_course(request):
     """
@@ -899,6 +901,7 @@ def _create_or_rerun_course(request):
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
             if not is_basic_rerun:
                 CourseTranslation.set_course_translation(destination_course_key, source_course_key)
+                course_blocks_mapping(destination_course_key)
             return JsonResponse({
                 'url': reverse_url('course_handler'),
                 'destination_course_key': str(destination_course_key)
