@@ -18,6 +18,7 @@ from opaque_keys.edx.locator import BundleDefinitionLocator
 from pysrt import SubRipFile, SubRipItem, SubRipTime
 from pysrt.srtexc import Error
 
+from openedx.core.djangoapps.models.course_details import CourseDetails
 from openedx.core.djangolib import blockstore_cache
 from openedx.core.lib import blockstore_api
 from xmodule.contentstore.content import StaticContent
@@ -797,6 +798,15 @@ class VideoTranscriptsMixin:
             transcripts (dict): A dict with all transcripts and a sub.
         """
         sub, other_lang = transcripts["sub"], transcripts["transcripts"]
+
+        # if video has transcript in course language then make that transcript default one.
+        try:
+            details = CourseDetails.fetch(self.course_id)
+            if details and details.language and details.language in other_lang:
+                return details.language
+        except:
+            pass
+
         if self.transcript_language in other_lang:
             transcript_language = self.transcript_language
         elif sub:
