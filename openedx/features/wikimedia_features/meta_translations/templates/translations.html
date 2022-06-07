@@ -25,7 +25,8 @@
             "COURSE_OUTLINE_URL": "api/v0/outline",
             "COURSE_UNIT_URL": "api/v0/components",
             "COURSE_APPROVE_URL": "api/v0",
-            "LANGUAGES": ${language_options | n, dump_js_escaped_json}
+            "LANGUAGES": ${language_options | n, dump_js_escaped_json},
+            "IS_ADMIN": "${is_admin}"
         }
 
         new Translations(context);
