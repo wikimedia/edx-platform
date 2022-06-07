@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { ToastContainer } from 'react-toastify';
+import Switch from "react-switch";
 
 import Select from "./components/Select";
 import useFetch from "./hooks/useFetch";
@@ -15,10 +16,11 @@ function TranslationContent({ context }) {
   const [courseOutline, setCourseOutline] = useState({});
   const [isLoading, setLoading] = useState(true);
   const { fetchCourses, fetchCourseOutline } = useFetch(context);
+  const [filterAdminCourses, setFilterAdminCourses] = useState(false);
 
   useEffect(() => {
-    fetchCourses(setBaseCourses, setLoading);
-  }, []);
+    fetchCourses(setBaseCourses, setLoading, filterAdminCourses);
+  }, [filterAdminCourses]);
 
   const handleBaseCourseChange = (value) => {
     setBaseCourse(value);
@@ -37,6 +39,23 @@ function TranslationContent({ context }) {
     }
   }
 
+  const handleAdminFilterCourses = (event) => {
+    setCourseOutline({});
+    setRerunCourses([]);
+    setFilterAdminCourses(!filterAdminCourses);
+  }
+
+  const renderAdminButton = () => {
+    if (context.IS_ADMIN == "True") {
+      return (
+      <label>
+        <span>Filter My Courses</span>
+        <Switch onChange={handleAdminFilterCourses} checked={filterAdminCourses} />
+      </label>
+      )
+    }
+  }
+
   return (
     <div className="translations">
       <div className="message">
@@ -47,6 +66,7 @@ function TranslationContent({ context }) {
           </p>
         }
       </div>
+      {renderAdminButton()}
       <div className="translation-header">
         <div className="col">
         {
@@ -78,7 +98,7 @@ function TranslationContent({ context }) {
               <div className='col'>
                 <strong>
                   {
-                    baseCourses[baseCourse].language ? 
+                    baseCourses[baseCourse].language ?
                     context.LANGUAGES[baseCourses[baseCourse].language] :
                     'NA'
                   }
@@ -87,7 +107,7 @@ function TranslationContent({ context }) {
               <div className='col'>
                 <strong>
                   {
-                    rerunCourses[rerunCourse].language ? 
+                    rerunCourses[rerunCourse].language ?
                     context.LANGUAGES[rerunCourses[rerunCourse].language] :
                     'NA'
                   }
@@ -95,7 +115,7 @@ function TranslationContent({ context }) {
               </div>
             </div>
             {
-              !isEmpty(courseOutline.base_course_outline) && 
+              !isEmpty(courseOutline.base_course_outline) &&
               <Sections
                   context={context}
                   setLoading={setLoading}
@@ -110,7 +130,7 @@ function TranslationContent({ context }) {
                 No Translations Found!, Please apply mapping.
               </p>
             }
-            
+
           </Fragment>
         )
       }

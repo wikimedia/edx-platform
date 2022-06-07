@@ -39,6 +39,7 @@ def render_translation_home(request):
         'uses_bootstrap': True,
         'login_user_username': request.user.username,
         'language_options': dict(settings.ALL_LANGUAGES),
+        'is_admin': request.user.is_superuser
     })
 
 @login_required

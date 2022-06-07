@@ -21,6 +21,7 @@ from openedx.features.wikimedia_features.meta_translations.api.v0.utils import (
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
 from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import CourseBlockSerializer, WikiTranslationSerializer
 from openedx.features.wikimedia_features.meta_translations.api.v0.permissions import DestinationCourseOnly
+from common.djangoapps.student.roles import CourseStaffRole
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
     """
@@ -57,7 +58,7 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
                                 "approved_by": edx
                             },
                             "data": {
-                                "display_name": "Section 1" 
+                                "display_name": "Section 1"
                             }
                             children: {
                                 "9LLKTTPX1ZUJI8KA" {
@@ -87,7 +88,7 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
                             "usage_key":"base_block_component_usage_id",
                             "category":"vertical",
                             "data": {
-                                "display_name": "Section 1" 
+                                "display_name": "Section 1"
                             }
                             children: {
                                 "9LLKTTPX1ZUJI8KA" {
@@ -116,7 +117,7 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
         if course_outline and base_course_outline:
             key, base_key = list(course_outline.keys())[0], list(base_course_outline.keys())[0]
             course_outline, base_course_outline = course_outline[key]['children'], base_course_outline[base_key]['children']
-        
+
         data = {
             'course_outline': course_outline,
             'base_course_outline': base_course_outline,
@@ -184,7 +185,7 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
                         "content":""
                     }
                 },
-            } 
+            }
         }
     """
     permission_classes = (permissions.IsAuthenticated,)
@@ -210,12 +211,14 @@ class GetVerticalComponentContent(generics.RetrieveAPIView):
 class GetCoursesVersionInfo(generics.RetrieveAPIView):
     """
     API to get ids of user courses with their translated versions
+
+    GET meta_translations/api/v0/versions
     Response:
     {
         {
-            "course_key_1" : {
-                "id": "course_key_1",
-                "title": "Introduction To Computing",
+            "base_course_key_1" : {
+                "id": "base_course_key_1,
+                "title": "Introduction To Computing (English base course)",
                 "language": "en",
                 "rerun": {
                     course_key_2: {
@@ -223,7 +226,7 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
                         "tilte": "Introduction To Computing(Urdu)",
                         "language": "ur",
                     },
-                    course_key_2: {
+                    course_key_3: {
                         "id": "course_key_3",
                         "tilte": "Introduction To Computing(French)",
                         "language": "fr",
@@ -232,9 +235,13 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
             }
         }
     }
+
+    For Superusers Only:
+        Optional parameter can be added to filter out own created courses instead of getting all courses.
+        GET meta_translations/api/v0/versions?admin_created_courses=true
     """
     permission_classes = (permissions.IsAuthenticated,)
-    
+
     def _course_version_format(self, course_key):
         course = get_course_by_id(course_key)
         base_course_obj = {
@@ -245,10 +252,35 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
         }
         return str(course.id), base_course_obj
 
+    def _get_course_ids_list(self, request, admin_created_courses=False):
+        """
+        if admin_created_courses is set -> return course ids only for courses created by admin.
+        otherwise -> return user accessible courses i.e
+            For admin users and staff users -> return all courses.
+            For normal users -> return user created courses + courses on which user is added in Course Team.
+        """
+        # courses accessible to users. For staff/superusers all courses will be returned.
+        user_courses, _ = get_courses_accessible_to_user(request)
+
+        # option only for superuser to filter out own created courses.
+        if request.user.is_superuser and admin_created_courses:
+            course_keys = []
+            for course in user_courses:
+                role = CourseStaffRole(course.id)
+                if role.has_user(request.user, check_user_activation=False):
+                    course_keys.append(course.id)
+        else:
+            course_keys = [course.id for course in user_courses]
+
+        return course_keys
+
 
     def get(self, request, *args, **kwargs):
-        user_courses, _ = get_courses_accessible_to_user(request)
-        course_keys = [course.id for course in user_courses]
+        admin_created_courses = False
+        if request.user.is_superuser:
+            admin_created_courses = self.request.GET.get('admin_created_courses', False)
+
+        course_keys = self._get_course_ids_list(request, str(admin_created_courses).upper()=='TRUE')
         translated_courses = CourseTranslation.objects.filter(base_course_id__in=course_keys)
         base_course_keys = [translated_course.base_course_id for translated_course in translated_courses]
         base_course_keys = list(set(base_course_keys))
