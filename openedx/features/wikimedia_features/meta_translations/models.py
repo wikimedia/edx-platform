@@ -18,6 +18,17 @@ User = get_user_model()
 APP_LABEL = 'meta_translations'
 
 
+class TranslationVersion(models.Model):
+    """
+    Store approved versions of a block to keep track of previous translations 
+    """
+    block_id = UsageKeyField(max_length=255)
+    date = models.DateTimeField(auto_now_add=True, blank=True)
+    data = jsonfield.JSONField(default={}, null=True, blank=True)
+    approved_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+
+    unique_together = ('block_id', 'date')
+
 class CourseBlock(models.Model):
     """
     Store block_id(s) of base course blocks and translated reruns course blocks
@@ -36,6 +47,8 @@ class CourseBlock(models.Model):
     course_id = CourseKeyField(max_length=255, db_index=True)
     direction_flag = models.CharField(blank=True, null=True, max_length=2, choices=DIRECTION_CHOICES, default=_Source)
     lang = jsonfield.JSONField(default=json.dumps([]))
+    applied_translation = models.BooleanField(default=False)
+    applied_version = models.ForeignKey(TranslationVersion, null=True, blank=True, on_delete=models.CASCADE)
 
     @classmethod
     def create_course_block_from_dict(cls, block_data, course_id, create_block_data=True):
@@ -107,7 +120,7 @@ class CourseBlock(models.Model):
         existing_mappings = self.wikitranslation_set.all()
         if existing_mappings:
             data = existing_mappings.first().status_info()
-            data['applied'] = all(existing_mappings.values_list("applied", flat=True))
+            data['applied'] = self.applied_translation
             data['approved'] = all(existing_mappings.values_list("approved", flat=True))
             data['destination_flag'] = self.is_destination()
             return data
@@ -146,22 +159,36 @@ class CourseBlock(models.Model):
                 self.save()
                 return self
 
-
-    def apply_all_translations(self):
-        """
-        Apply all translations available in WikiTransaltions for a block
-        """
-        existing_mappings = self.wikitranslation_set.all()
-        for wikitranslation in existing_mappings:
-            wikitranslation.applied = True
-            wikitranslation.save()
-
     def get_parsed_data(self, data_type, data):
         """
         Transform raw_data into parsed_data
         """
         if data_type in settings.DATA_TYPES_WITH_PARCED_KEYS and self.block_type in settings.TRANSFORMER_CLASS_MAPPING:
             return settings.TRANSFORMER_CLASS_MAPPING[self.block_type]().raw_data_to_meta_data(data)
+
+    def get_snapshot(self):
+        """
+        Returns all translated data for a block
+        {
+            display_name: "Problem 1",
+            content: '{"problem.optionresponse.p": "Edit this block",
+                       "problem.optionresponse.label": "Add the question text"}'
+        }
+        """
+        existing_mappings = self.wikitranslation_set.all()
+        snapshot = {}
+        for wikitranslation in existing_mappings:
+            snapshot[wikitranslation.source_block_data.data_type] = wikitranslation.translation
+        return snapshot
+
+    def create_translated_version(self, user):
+        """
+        Create a version of the snapshot
+        """
+        snapshot = self.get_snapshot()
+        version = TranslationVersion.objects.create(
+            block_id = self.block_id, data = snapshot, approved_by = user)
+        return version
 
     def __str__(self):
         return str(self.block_id)
@@ -193,7 +220,6 @@ class CourseBlockData(models.Model):
         verbose_name = "Course Block Data"
         unique_together = ('course_block', 'data_type')
 
-
 class WikiTranslation(models.Model):
     """
     Store translations fetched from wiki learn meta, will also manage mapping of source and target blocks.
@@ -201,10 +227,9 @@ class WikiTranslation(models.Model):
     target_block = models.ForeignKey(CourseBlock, on_delete=models.CASCADE)
     source_block_data = models.ForeignKey(CourseBlockData, on_delete=models.CASCADE)
     translation = models.TextField(null=True, blank=True)
-    applied = models.BooleanField(default=False)
     approved = models.BooleanField(default=False)
     last_fetched = models.DateTimeField(null=True, blank=True)
-    revision = models.IntegerField(null=True, blank=True)
+    fetched_commits = jsonfield.JSONField(null=True, blank=True)
     approved_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def status_info(self):
@@ -212,10 +237,9 @@ class WikiTranslation(models.Model):
         Returns translation status
         """
         return  {
-            'applied': self.applied,
             'approved': self.approved,
             'last_fetched': self.last_fetched,
-            'approved_by': self.approved_by.username if self.approved_by else self.approved_by,
+            'approved_by': self.approved_by.username if self.approved_by else self.approved_by
         }
 
     @classmethod
