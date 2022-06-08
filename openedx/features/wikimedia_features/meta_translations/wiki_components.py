@@ -50,7 +50,7 @@ class ModuleComponent(WikiComponent):
         if 'display_name' in data:
             block.display_name = data['display_name']
         return modulestore().update_item(block, 'edx')
-    
+
     def get(self, block):
         """
         Get display_name of an xblock
@@ -83,7 +83,7 @@ class HtmlComponent(WikiComponent):
         if 'content' in data:
             block.data = data['content']
         return modulestore().update_item(block, 'edx')
-    
+
     def get(self, block):
         """
         Arguments:
@@ -101,10 +101,6 @@ class ProblemComponent(WikiComponent):
     """
     Handle Problem type blocks i.e checkbox, multiple choice etc
     """
-    def __init__(self, mapping=False):
-        self.mapping = mapping
-        super().__init__()
-    
     def update(self, block , data):
         """
         Update display_name and data of an xblock
@@ -130,7 +126,7 @@ class ProblemComponent(WikiComponent):
             block.data = updated_xml
 
         return modulestore().update_item(block, 'edx')
-    
+
     def get(self, block):
         """
         Arguments:
@@ -147,29 +143,7 @@ class ProblemComponent(WikiComponent):
 class VideoComponent(WikiComponent):
     """
     Handle Video type blocks i.e video
-    Parameters:
-        mapping (bool): To change content of get function based on course type 
-                        (base_course, translated_course)
-    Use of mapping:
-        On calling video-component with mapping=False. It returns "video-transcripts"
-        in a course language. On a translated course, it retures empty transcript, because 
-        there is no transcript available in new langauge selected at time of translated return.
-        Mapping = False solves this problem. It fetchs the language of a base course and
-        returns translation in a base course language.
-        
-        More Explanation:
-        At time of creating rerun, in video component all the transcripts are copied from
-        base course to translated course. If we have English Transcript in a English course
-        that it's also copied in (Spanish translated course). So there is a English transcript
-        in video component of Spanish Course but no Spanish translation. We can then request
-        Wiki Meta Server to translate English translation to Spanish One (By click Mapping button).
-        When we get Spanish Translation from a Wiki Server. We will add a Spanish translations
-        in translated Spanish course only.
     """
-    def __init__(self, mapping=False):
-        self.mapping = mapping
-        super().__init__()
-
     def _get_base_course_language(self, course_id):
         """
         Returns langauge of a base course
@@ -179,17 +153,13 @@ class VideoComponent(WikiComponent):
             base_course = get_course_by_id(course_translation.base_course_id)
             return base_course.language
         except CourseTranslation.DoesNotExist:
-            log.error("Course {} is not a translated course".format(course_id))
-    
-    def _get_valid_language(self, course_id):
-        """
-        Returns a valid langauge based on value of mapping
-        """
-        if not self.mapping:
-            course = get_course_by_id(course_id)
-            return course.language
-        return self._get_base_course_language(course_id)
-    
+            if CourseTranslation.objects.filter(base_course_id=course_id).exists():
+                base_course = get_course_by_id(course_id)
+                return base_course.language
+            else:
+                log.error("Unable to get base course language for video component.")
+                log.error("Course {} is neither a translated course nor base course".format(course_id))
+
     def _get_json_transcript_data(self, file_name, content):
         """
         Return dict of subtitiles from content
@@ -239,18 +209,18 @@ class VideoComponent(WikiComponent):
 
             request = Request.blank('/translation', POST=post_data)
             block.studio_transcript(request=request, dispatch="translation")
-        
+
         return modulestore().update_item(block, 'edx')
-    
+
     def get(self, block):
-        """    
+        """
         Arguments:
             block: module type course-outline block
 
         Returns:
             dict of extracted data
         """
-        language = self._get_valid_language(block.course_id)
+        language = self._get_base_course_language(block.course_id)
         data = get_video_transcript_content(block.edx_video_id, language)
         video_context = { "display_name": block.display_name}
         if data:

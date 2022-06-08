@@ -17,7 +17,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 
 log = getLogger(__name__)
 
-def get_block_data(block, mapping):
+def get_block_data(block):
     """
     Extract required data from course blocks
     Arguments:
@@ -27,21 +27,15 @@ def get_block_data(block, mapping):
         dict of extracted data
     """
     if block.category in COMPONENTS_CLASS_MAPPING:
-
-        data = {}
-        if block.category == 'video':
-            data = COMPONENTS_CLASS_MAPPING[block.category](mapping=mapping).get(block)
-        else:
-            data = COMPONENTS_CLASS_MAPPING[block.category]().get(block)
-
+        data = COMPONENTS_CLASS_MAPPING[block.category]().get(block)
         return {
             'usage_key': str(block.scope_ids.usage_id),
             'category': block.category,
-            'data': data
+            'data': data or {}
         }
     return {}
 
-def get_recursive_blocks_data(block, depth=3, structured=True, mapping=False):
+def get_recursive_blocks_data(block, depth=3, structured=True):
     """
     Retrieve data from blocks.
     if structured True:
@@ -98,29 +92,28 @@ def get_recursive_blocks_data(block, depth=3, structured=True, mapping=False):
         depth (int): blocks are tree structured where each block can have multiple children. Depth argument will
           control level of children that we want to traverse.
         structured (bool): if True it will return recursive dict of blocks data else it will return array of all blocks data
-        mapping (bool): if True it will returns video translations on base_course_language
     Returns:
         extracted data
     """
     if depth == 0 or not hasattr(block, 'children'):
-        block_data = get_block_data(block, mapping)
+        block_data = get_block_data(block)
         if structured:
             return block_data
         else:
             return [block_data] if block_data else []
 
     if structured:
-        data = get_block_data(block, mapping)
+        data = get_block_data(block)
         data['children'] = []
         for child in block.get_children():
-            block_data = get_recursive_blocks_data(child, depth - 1, structured, mapping)
+            block_data = get_recursive_blocks_data(child, depth - 1, structured)
             if block_data:
                 data['children'].append(block_data)
     else:
-        block_data = get_block_data(block, mapping)
+        block_data = get_block_data(block)
         data = [block_data] if block_data else []
         for child in block.get_children():
-            data.extend(get_recursive_blocks_data(child, depth - 1, structured, mapping))
+            data.extend(get_recursive_blocks_data(child, depth - 1, structured))
     return data
 
 
@@ -330,13 +323,13 @@ def course_blocks_mapping(course_key):
     For Normal course or rerun: Log message and skip mapping call.
     """
     def map_base_course(base_course_key):
-        course = get_course_by_id(base_course_key)
-        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=False)
+        base_course = get_course_by_id(base_course_key)
+        course_outline = get_recursive_blocks_data(base_course, 4, structured=False)
         check_and_map_course_blocks(course_outline, base_course_key, None)
 
     def map_translated_version(base_course_key, course_key):
-        course = get_course_by_id(course_key)
-        course_outline = get_recursive_blocks_data(course, 4, structured=False, mapping=True)
+        translated_rerun_course = get_course_by_id(course_key)
+        course_outline = get_recursive_blocks_data(translated_rerun_course, 4, structured=False)
         check_and_map_course_blocks(course_outline, course_key, base_course_key)
 
     base_course_key = None
