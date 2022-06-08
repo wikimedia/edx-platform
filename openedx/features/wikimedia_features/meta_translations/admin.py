@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from openedx.features.wikimedia_features.meta_translations.models import (
-   CourseBlock, CourseBlockData, CourseTranslation, WikiTranslation
+   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation
 )
 
 
@@ -13,9 +13,9 @@ class CourseBlockAdmin(admin.ModelAdmin):
     """
     Admin config clearesult credit providers.
     """
-    list_display  = ("block_id", "block_type", "course_id", "direction_flag", "lang", "data",)
+    list_display  = ("block_id", "block_type", "course_id", "direction_flag", "lang", "data", "applied_translation", "applied_version")
     search_fields = ("block_id", "course_id",)
-    list_filter = ('block_type', 'direction_flag')
+    list_filter = ('block_type', 'direction_flag', 'applied_translation')
 
     def data(self, obj):
         data = {}
@@ -52,13 +52,21 @@ class WikiTranslationAdmin(admin.ModelAdmin):
     """
     list_display  = [f.name for f in WikiTranslation._meta.fields]
     search_fields = ("target_block__block_id", "target_block__course_id", "source_block_data__data_type",)
-    list_filter = ("target_block__block_type", "source_block_data__data_type", "applied", "approved",)
+    list_filter = ("target_block__block_type", "source_block_data__data_type", "approved",)
 
     def translation(self, obj):
         if obj.translation:
             return obj.translation[:30]
 
+class TranslationVersionAdmin(admin.ModelAdmin):
+    """
+    Admin config for clearesult credits offered by the courses.
+    """
+    list_display = [f.name for f in TranslationVersion._meta.fields]
+    search_fields = ("block_id", "date")
+
 admin.site.register(CourseBlock, CourseBlockAdmin)
 admin.site.register(CourseBlockData, CourseBlockDataAdmin)
 admin.site.register(CourseTranslation, CourseTranslationAdmin)
 admin.site.register(WikiTranslation, WikiTranslationAdmin)
+admin.site.register(TranslationVersion, TranslationVersionAdmin)
