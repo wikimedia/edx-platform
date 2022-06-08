@@ -2,10 +2,9 @@
 Serializers for Meta-Translations v0 API(s)
 """
 from django.utils.translation import ugettext as _
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, WikiTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, TranslationVersion, WikiTranslation
 from openedx.features.wikimedia_features.meta_translations.utils import get_children_block_ids
 from rest_framework import serializers
-
 
 class WikiTranslationSerializer(serializers.ModelSerializer):
     """
@@ -14,8 +13,8 @@ class WikiTranslationSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
     class Meta:
         model = WikiTranslation
-        fields = ('id', 'target_block', 'translation', 'applied', 'last_fetched', 'revision', 'approved', 'approved_by')
-        read_only_fields = ('id', 'target_block', 'last_fetched', 'revision', 'applied' ,'approved_by')
+        fields = ('id', 'target_block', 'translation', 'last_fetched', 'fetched_commits', 'approved', 'approved_by')
+        read_only_fields = ('id', 'target_block', 'last_fetched', 'fetched_commits', 'approved_by')
 
 
 class CourseBlockSerializer(serializers.ModelSerializer):
@@ -28,7 +27,7 @@ class CourseBlockSerializer(serializers.ModelSerializer):
 
     def to_representation(self, value):
         """
-        Add approved field in block. True if all the translations are applied else false
+        Add approved field in block. True if all the translations are approved else false
         """
         data = super(CourseBlockSerializer, self).to_representation(value)
         data['approved'] = all([translation['approved'] for translation in data['wiki_translations']])
@@ -97,8 +96,7 @@ class CourseBlockSerializer(serializers.ModelSerializer):
             wiki_translations = WikiTranslation.objects.filter(target_block__block_id__in=block_ids)
             wiki_translations = wiki_translations.filter(
                 target_block__direction_flag=CourseBlock._DESTINATION,
-                translation__isnull=False,
-                applied=False,
+                translation__isnull=False
             )
             self._update_translations_fields(wiki_translations, approved, user)
         else:
@@ -116,6 +114,9 @@ class CourseBlockSerializer(serializers.ModelSerializer):
                     instance.save()      
             else:
                 self._update_translations_fields(wiki_translations, approved, user)
+                version = instance.create_translated_version(user)
+                validated_data['applied_translation'] = False
+                validated_data['applied_version'] = version
 
         return super(CourseBlockSerializer, self).update(instance, validated_data)
 
@@ -131,5 +132,5 @@ class CourseBlockSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = CourseBlock
-        fields = ('block_id', 'block_type', 'course_id', 'wiki_translations', 'apply_all', 'approved')
+        fields = ('block_id', 'block_type', 'course_id', 'wiki_translations', 'apply_all', 'approved', 'applied_translation', 'applied_version')
         read_only_fields = ('block_id', 'block_type', 'course_id')
