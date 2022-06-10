@@ -13,7 +13,7 @@ from common.djangoapps.edxmako.shortcuts import render_to_response
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock
-from openedx.features.wikimedia_features.meta_translations.utils import course_blocks_mapping
+from openedx.features.wikimedia_features.meta_translations.mapping_utils import course_blocks_mapping
 
 log = getLogger(__name__)
 

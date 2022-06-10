@@ -74,11 +74,8 @@ from openedx.features.content_type_gating.models import ContentTypeGatingConfig
 from openedx.features.content_type_gating.partitions import CONTENT_TYPE_GATING_SCHEME
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
-from openedx.features.wikimedia_features.meta_translations.utils import (
-    update_course_to_source,
-    is_destination_course,
-    course_blocks_mapping
-)
+from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
+from openedx.features.wikimedia_features.meta_translations.mapping_utils import course_blocks_mapping
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock

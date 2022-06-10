@@ -20,7 +20,7 @@ APP_LABEL = 'meta_translations'
 
 class TranslationVersion(models.Model):
     """
-    Store approved versions of a block to keep track of previous translations 
+    Store approved versions of a block to keep track of previous translations
     """
     block_id = UsageKeyField(max_length=255)
     date = models.DateTimeField(auto_now_add=True, blank=True)
@@ -58,10 +58,12 @@ class CourseBlock(models.Model):
         created_block = cls.objects.create(
             block_id=block_data.get('usage_key'), block_type=block_data.get('category'), course_id=course_id
         )
+        # For base course blocks, create_block_datawill be True and Direction flag will be set to Default i.e Source.
         if create_block_data:
             for key, value in block_data.get('data',{}).items():
                 parsed_keys = created_block.get_parsed_data(key, value)
                 CourseBlockData.objects.create(course_block=created_block, data_type=key, data=value, parsed_keys=parsed_keys)
+        # For translated rerun blocks Direction flag will be set to Destination on first time creation but this flag can be updated later.
         else:
             created_block.direction_flag = cls._DESTINATION
             created_block.save()
