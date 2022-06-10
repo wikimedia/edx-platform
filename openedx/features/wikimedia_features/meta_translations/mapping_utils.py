@@ -117,8 +117,7 @@ def get_recursive_blocks_data(block, depth=3, structured=True):
 def map_base_course_block(existing_course_blocks, outline_block_dict, course_key):
     """
     Map base-course block -> Sync Course Outline block data to CourseBLock and CourseBLockData table
-    - if data does not exist, create new course-block and data entries.
-    - if data is updated in course outline, update data in relevant course-block.
+    - if data does not exist, create new course-blocks and data entries.
 
     Arguments:
         existing_course_blocks (CourseBlock): existing course-blocks in db for given course-key
@@ -142,10 +141,7 @@ def map_base_course_block(existing_course_blocks, outline_block_dict, course_key
                     log.info("Update course block data of data_type: {} from {} to {}".format(
                         existing_data.data_type, existing_data.data, value
                     ))
-                    existing_data.parsed_keys = existing_block.get_parsed_data(key, value)
-                    existing_data.data = value
-                    existing_data.content_updated = True
-                    existing_data.save()
+                    CourseBlockData.update_base_block_data(existing_block, key, value, existing_data)
             except CourseBlockData.DoesNotExist:
                 # Add block data in db if any content is added in a course outline
                 parsed_keys = existing_block.get_parsed_data(key, value)
@@ -161,9 +157,6 @@ def map_translated_course_block(existing_course_blocks, outline_block_dict, cour
 
     - if block does not exist, create new course-block and translation mapping by comparing
       block-data with base-course data.
-    - if data exists, check for existing translation mapping and update block flag to Source if user
-      has changed data from front-end.
-
 
     Arguments:
         existing_course_blocks (CourseBlock): existing course-blocks in db for given course-key
@@ -181,29 +174,13 @@ def map_translated_course_block(existing_course_blocks, outline_block_dict, cour
     else:
         for key, value in outline_block_dict.get("data", {}).items():
             try:
-                wiki_translation = WikiTranslation.objects.get(source_block_data__data_type=key, target_block=course_block)
+                WikiTranslation.objects.get(source_block_data__data_type=key, target_block=course_block)
             except WikiTranslation.DoesNotExist:
                 log.info("Re-run block exist but tranlsation mapping is not there fot block: {}".format(
                     json.dumps(outline_block_dict))
                 )
-                log.info("Trying to find mapping by comparing base course data.")
+                log.info("Try to create mapping by comparing base course data.")
                 WikiTranslation.create_translation_mapping(base_course_blocks_data, key, value, course_block)
-            else:
-                # if re-run outline data is neither equal to original string (source block data) nor equal to translated string
-                # check value of applied, if applied is also True that means user might have updated data from front-end.
-                if  value != wiki_translation.translation and value != wiki_translation.source_block_data.data:
-                    log.info("Mapping found, but data is not same as original and translated string for block {}".format(
-                        json.dumps(outline_block_dict))
-                    )
-                    log.info("Source data: {}".format(value))
-                    log.info("Translated data: {}".format(wiki_translation.translation))
-                    if wiki_translation.applied:
-                        log.info("Content has been overwritten from front-end -> update flag to source if destination.")
-                        course = get_course_by_id(course_block.course_id)
-                        course_block.update_flag_to_source(course.language)
-                    else:
-                        # if applied is False, this means that latest translation is not applied yet.
-                        log.info("Latest translation is not applied yet.")
 
 
 def check_and_map_course_blocks(course_outline_data, course_key, base_course_key=None):

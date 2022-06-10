@@ -112,6 +112,8 @@ def _is_library_component_limit_reached(usage_key):
     return total_children + 1 > settings.MAX_BLOCKS_PER_CONTENT_LIBRARY
 
 
+from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 @require_http_methods(("DELETE", "GET", "PUT", "POST", "PATCH"))
 @login_required
 @expect_json
@@ -195,10 +197,18 @@ def xblock_handler(request, usage_key_string=None):
         elif request.method == 'DELETE':
             _delete_item(usage_key, request.user)
             return JsonResponse()
-        else:  # Since we have a usage_key, we are updating an existing xblock.
+        else:
+            # Since we have a usage_key, we are updating an existing xblock.
+            xblock = _get_xblock(usage_key, request.user)
+
+            # For base courses, check if content is updated then set content_updated to True in related CourseBlockData
+            course_id = xblock.course_id
+            if CourseTranslation.is_base_course(course_id) and xblock.category in COMPONENTS_CLASS_MAPPING:
+                COMPONENTS_CLASS_MAPPING[xblock.category]().check_and_sync_base_block_data(xblock, request.json)
+
             return _save_xblock(
                 request.user,
-                _get_xblock(usage_key, request.user),
+                xblock,
                 data=request.json.get('data'),
                 children_strings=request.json.get('children'),
                 metadata=request.json.get('metadata'),
@@ -1203,7 +1213,7 @@ def create_xblock_info(xblock, data=None, metadata=None, include_ancestor_info=F
             # Translators: This is the percent sign. It will be used to represent
             # a percent value out of 100, e.g. "58%" means "58/100".
             pct_sign=_('%'))
-    
+
     is_destination_course_block = is_destination_course(xblock.course_id)
 
     xblock_info = {
@@ -1219,7 +1229,7 @@ def create_xblock_info(xblock, data=None, metadata=None, include_ancestor_info=F
     if is_destination_course_block:
         xblock_info['meta_block_status'] = get_block_status(xblock.location)
         xblock_info['destination_flag'] = is_destination_block(xblock.location)
-    
+
     if is_concise:
         if child_info and child_info.get('children', []):
             xblock_info['child_info'] = child_info
