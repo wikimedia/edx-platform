@@ -103,7 +103,31 @@ class Command(BaseCommand):
                     }
         return data_dict
 
-    def _update_translations(self, response_data, translations, target_language_code):
+    def _update_translations_in_db(self, translation_obj, updated_translation, updated_commits, source_block_data, target_lang_code):
+        translation_obj.translation = updated_translation
+        translation_obj.approved = False
+        translation_obj.approved_by = None
+        translation_obj.last_fetched = datetime.now()
+        translation_obj.fetched_commits = updated_commits
+        translation_obj.save()
+
+        translation_obj.target_block.applied = False
+        translation_obj.target_block.save()
+
+        log.info("Translations have been updated for block_id: {}, data_type: {}, target_language: {}".format(
+            str(translation_obj.target_block.block_id),
+            source_block_data.data_type,
+            target_lang_code
+        ))
+        self._UPDATED_TRANSLATIONS.append({
+            "target_block_id": str(translation_obj.target_block.block_id),
+            "source_block_data_type": source_block_data.data_type,
+            "target_language_code": target_lang_code,
+            "message": "Updated"
+        })
+
+
+    def _check_and_update_translations(self, response_data, wiki_translations, target_language_code):
         """
         Update WikiTranslations with fetched translated strings from meta-server
 
@@ -117,6 +141,8 @@ class Command(BaseCommand):
             "key": "Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name",
             "translation": "चेक बॉक्",
             "properties": {
+                "revision" : 1232323,
+                "reviewers": [4876]
                 "status": "translated",
                 "last-translator-text": "wikimeta-translator-username",
                 "last-translator-id": "wikimeta-translator-userid",
@@ -124,30 +150,69 @@ class Command(BaseCommand):
             "title": "Translations:Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
             "targetLanguage": "hi",
             "primaryGroup": "messagebundle-Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
-        }
+        },
+        ...
         """
-        for translation_obj in translations:
+        for translation_obj in wiki_translations:
             source_block_data = translation_obj.source_block_data
-            if source_block_data.parsed_keys:
-                translated_data = {}
-                for key, value in source_block_data.parsed_keys.items():
-                    translated_data.update({key: response_data.get(key, {}).get('translation')})
-                translated_data = json.dumps(translated_data)
+            if not translation_obj.translation or not translation_obj.last_fetched or not translation_obj.fetched_commits:
+                # No need to compare commits, save translations and commits in DB directly
+                fetched_commits = {}
+                if source_block_data.parsed_keys:
+                    translated_data = {}
+                    for key, value in source_block_data.parsed_keys.items():
+                        key_response = response_data.get(key, {})
+                        if key_response.get('properties', {}).get('status') == "translated":
+                            translated_data.update({key: key_response.get('translation')})
+                            fetched_commits.update({key: key_response.get('properties', {}).get('revision')})
+                    translated_data = json.dumps(translated_data)
+                else:
+                    key_response = response_data.get(source_block_data.data_type, {})
+                    if key_response.get('properties', {}).get('status') == "translated":
+                        translated_data = response_data.get(source_block_data.data_type, {}).get('translation')
+                        fetched_commits.update({source_block_data.data_type: key_response.get('properties', {}).get('revision')})
+                self._update_translations_in_db(
+                    translation_obj, translated_data, fetched_commits, source_block_data, target_language_code
+                )
+
             else:
-                translated_data = response_data.get(source_block_data.data_type, {}).get('translation')
-            translation_obj.translation = translated_data
-            translation_obj.last_fetched = datetime.now()
-            translation_obj.save()
-            log.info("Translations have been updated for block_id: {}, data_type: {}, target_language: {}".format(
-                str(translation_obj.target_block.block_id),
-                source_block_data.data_type,
-                target_language_code
-            ))
-            self._UPDATED_TRANSLATIONS.append({
-                "target_block_id": str(translation_obj.target_block.block_id),
-                "source_block_data_type": source_block_data.data_type,
-                "target_language_code": target_language_code
-            })
+                # Compare commits of tranlsations with existing db commits -> only update translations if commits are updated.
+                existing_translation = translation_obj.translation
+                existing_commits = translation_obj.fetched_commits
+                if source_block_data.parsed_keys:
+                    is_any_key_updated = False
+                    for key, value in source_block_data.parsed_keys.items():
+                        key_response = response_data.get(key, {})
+                        key_commit = key_response.get('properties', {}).get('revision')
+                        if key_response.get('properties', {}).get('status') == "translated" and not existing_commits.get(key) or (key_commit and key_commit != existing_commits.get(key)):
+                            existing_translation.update({key: key_response.get('translation')})
+                            existing_commits.update({key: key_commit})
+                            is_any_key_updated = True
+                else:
+                    is_any_key_updated = False
+                    key_response = response_data.get(source_block_data.data_type, {})
+                    key_commit = key_response.get('properties', {}).get('revision')
+                    source_block_data.data_type
+                    if key_response.get('properties', {}).get('status') == "translated" and not existing_commits.get(source_block_data.data_type) or (key_commit and key_commit != existing_commits.get(source_block_data.data_type)):
+                        existing_translation = key_response.get('translation')
+                        existing_commits.update({source_block_data.data_type: key_commit})
+                        is_any_key_updated = True
+
+                if is_any_key_updated:
+                    self._update_translations_in_db(
+                        translation_obj, existing_translation, existing_commits, source_block_data, target_language_code
+                    )
+                else:
+                    translation_obj.last_fetched = datetime.now()
+                    translation_obj.save()
+
+                    self._UPDATED_TRANSLATIONS.append({
+                        "target_block_id": str(translation_obj.target_block.block_id),
+                        "source_block_data_type": source_block_data.data_type,
+                        "target_language_code": target_language_code,
+                        "message": "Successfully fetched but commits are same"
+                    })
+
 
     def _update_response_translations_in_db(self, data_dict, responses):
         """
@@ -218,7 +283,7 @@ class Command(BaseCommand):
                 continue;
 
             translations = self._WIKI_TRANSLATIONS_OBJECTS.filter(target_block__block_id=target_block_id)
-            self._update_translations(response_data, translations, target_language_code)
+            self._check_and_update_translations(response_data, translations, target_language_code)
 
     def _get_tasks_to_fetch_data_from_wiki_meta(self, data_dict, meta_client, session):
         """
