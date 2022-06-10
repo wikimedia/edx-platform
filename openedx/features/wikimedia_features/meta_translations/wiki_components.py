@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 from webob import Request
 from django.conf import settings
 
-from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation, WikiTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation, WikiTranslation, CourseBlockData
 from common.lib.xmodule.xmodule.video_module.transcripts_utils import (
         Transcript, convert_video_transcript, get_video_transcript_content
     )
@@ -28,6 +28,13 @@ class WikiComponent(ABC):
 
     @abstractmethod
     def get(self, block):
+        """
+        Abstract method get. Required in all children
+        """
+        pass
+
+    @abstractmethod
+    def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
         """
         Abstract method get. Required in all children
         """
@@ -64,6 +71,19 @@ class ModuleComponent(WikiComponent):
             'display_name': block.display_name
         }
 
+    def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
+        """
+        if base_block display_name is updated then
+        - Sync updated data in db i.e CourseBlockData.
+        - Set content_update to True so that next meta server send call would send updated content.
+        - Reset all versions and translations.
+        """
+        display_name = updated_xblock_data.get('metadata', {}).get('display_name')
+        if display_name and display_name != xblock.display_name:
+            block_id = str(xblock.scope_ids.usage_id)
+            CourseBlockData.update_base_block_data(block_id, "display_name", display_name)
+
+
 class HtmlComponent(WikiComponent):
     """
     Handle HTML type blocks i.e problem and raw_html
@@ -96,6 +116,23 @@ class HtmlComponent(WikiComponent):
             "display_name": block.display_name,
             "content": block.data
         }
+
+    def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
+        """
+        if base_block display_name or html content is updated then
+        - Sync updated data in db i.e CourseBlockData.
+        - Set content_update to True so that next meta server send call would send updated content.
+        - Reset all versions and translations.
+        """
+        updated_display_name = updated_xblock_data.get('display_name')
+        if updated_display_name and updated_display_name != xblock.display_name:
+            block_id = str(xblock.scope_ids.usage_id)
+            CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
+
+        updated_xml_content = updated_xblock_data.get('data')
+        if updated_xml_content and updated_xml_content != xblock.data:
+            block_id = str(xblock.scope_ids.usage_id)
+            CourseBlockData.update_base_block_data(block_id, "content", updated_xml_content)
 
 class ProblemComponent(WikiComponent):
     """
@@ -139,6 +176,23 @@ class ProblemComponent(WikiComponent):
             "display_name": block.display_name,
             "content": block.data
         }
+
+    def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
+        """
+        if base_block display_name or problem xml content is updated then
+        - Sync updated data in db i.e CourseBlockData.
+        - Set content_update to True so that next meta server send call would send updated content.
+        - Reset all versions and translations.
+        """
+        updated_display_name = updated_xblock_data.get('display_name')
+        if updated_display_name and updated_display_name != xblock.display_name:
+            block_id = str(xblock.scope_ids.usage_id)
+            CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
+
+        updated_xml_content = updated_xblock_data.get('data')
+        if updated_xml_content and updated_xml_content != xblock.data:
+            block_id = str(xblock.scope_ids.usage_id)
+            CourseBlockData.update_base_block_data(block_id, "content", updated_xml_content)
 
 class VideoComponent(WikiComponent):
     """
@@ -227,6 +281,31 @@ class VideoComponent(WikiComponent):
             json_content = self._get_json_transcript_data(data['file_name'], data['content'])
             video_context['transcript'] = json.dumps(json_content)
         return video_context
+
+    def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
+        """
+        if base_block display_name or video transcript is updated then
+        - Sync updated data in db i.e CourseBlockData.
+        - Set content_update to True so that next meta server send call would send updated content.
+        - Reset all versions and translations.
+        """
+        block_id = str(xblock.scope_ids.usage_id)
+
+        updated_display_name = updated_xblock_data.get('metadata').get('display_name')
+        if updated_display_name and updated_display_name != xblock.display_name:
+            CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
+
+        # For transcript we do not get data in json so we'll compare transcript uploaded in xblock and transcript content
+        # saved in meta_translations db i.e CourseBlockData
+        current_video_data = self.get(xblock)
+        current_video_transcript = current_video_data.get("transcript")
+        if current_video_transcript:
+            try:
+                course_block_data = CourseBlockData.objects.get(course_block__block_id=block_id, data_type="transcript")
+                if current_video_transcript != course_block_data.data:
+                    CourseBlockData.update_base_block_data(block_id, "transcript", current_video_transcript, course_block_data)
+            except CourseBlockData.DoesNotExist:
+                pass
 
 COMPONENTS_CLASS_MAPPING = {
     'course': ModuleComponent,

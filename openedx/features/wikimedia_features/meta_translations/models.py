@@ -27,7 +27,9 @@ class TranslationVersion(models.Model):
     data = jsonfield.JSONField(default={}, null=True, blank=True)
     approved_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
-    unique_together = ('block_id', 'date')
+    class Meta:
+        app_label = APP_LABEL
+        unique_together = ('block_id', 'date')
 
 class CourseBlock(models.Model):
     """
@@ -180,7 +182,10 @@ class CourseBlock(models.Model):
         existing_mappings = self.wikitranslation_set.all()
         snapshot = {}
         for wikitranslation in existing_mappings:
-            snapshot[wikitranslation.source_block_data.data_type] = wikitranslation.translation
+            if wikitranslation.source_block_data.data_type in settings.DATA_TYPES_WITH_PARCED_KEYS and self.block_type in settings.TRANSFORMER_CLASS_MAPPING:
+                snapshot[wikitranslation.source_block_data.data_type] = json.loads(wikitranslation.translation)
+            else:
+                snapshot[wikitranslation.source_block_data.data_type] = wikitranslation.translation
         return snapshot
 
     def create_translated_version(self, user):
@@ -209,6 +214,27 @@ class CourseBlockData(models.Model):
     parsed_keys = jsonfield.JSONField(default=None, blank=True)
     content_updated = models.BooleanField(default=False)
     mapping_updated = models.BooleanField(default=False)
+
+    @classmethod
+    def update_base_block_data(cls, block_id, data_type, updated_data, course_block_data=None):
+        """
+        if base_block content is updated then
+        - Sync updated data in db i.e CourseBlockData.
+        - Set content_update to True so that next meta server send call would send updated content.
+        - Reset all versions and translations.
+        """
+        from openedx.features.wikimedia_features.meta_translations.utils import reset_fetched_translation_and_version_history
+        if not course_block_data:
+            try:
+                course_block_data = cls.objects.get(course_block__block_id=block_id, data_type=data_type)
+            except cls.DoesNotExist:
+                return
+
+        course_block_data.data = updated_data
+        course_block_data.parsed_keys = course_block_data.course_block.get_parsed_data(data_type, updated_data)
+        course_block_data.content_updated = True
+        course_block_data.save()
+        reset_fetched_translation_and_version_history(course_block_data)
 
     def __str__(self):
         return "{} -> {}: {}".format(
@@ -328,6 +354,13 @@ class CourseTranslation(models.Model):
         Returns bool indicating if course is a base course or a translated version of some base course.
         """
         return cls.objects.filter(Q(course_id=course_key) | Q(base_course_id=course_key)).exists()
+
+    @classmethod
+    def is_base_course(cls, course_id):
+        """
+        Check if the course is base course of any translated rerun
+        """
+        return CourseTranslation.objects.filter(base_course_id=course_id).exists()
 
 
     class Meta:
