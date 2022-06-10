@@ -8,7 +8,9 @@ from logging import getLogger
 from xmodule.modulestore.django import modulestore
 from opaque_keys.edx.keys import UsageKey
 
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation
+from openedx.features.wikimedia_features.meta_translations.models import (
+    CourseBlock, CourseTranslation, TranslationVersion, WikiTranslation
+)
 from openedx.features.wikimedia_features.meta_translations.mapping_utils import get_recursive_blocks_data
 from lms.djangoapps.courseware.courses import get_course_by_id
 
@@ -81,3 +83,20 @@ def update_course_to_source(course_key):
         log.info('Course Flag with id: {} has been successfully updated to Source'.format(str(course_key)))
     except CourseTranslation.DoesNotExist:
         log.info('Course with id: {} is already a Source Course'.format(str(course_key)))
+
+def reset_fetched_translation_and_version_history(base_course_block_data):
+    """
+    Reset translation and all versions from history
+    """
+    if base_course_block_data:
+        for wiki_tarnslation in WikiTranslation.objects.filter(source_block_data=base_course_block_data).select_related("target_block"):
+            wiki_tarnslation.translation = None
+            wiki_tarnslation.approved = False
+            wiki_tarnslation.save()
+
+            target_block = wiki_tarnslation.target_block
+            target_block.applied_version = None
+            target_block.applied_translation = False
+            target_block.save()
+
+            TranslationVersion.objects.filter(block_id=target_block.block_id).delete()
