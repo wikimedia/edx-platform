@@ -5,7 +5,7 @@ from django.conf.urls import include, url
 
 from  openedx.features.wikimedia_features.meta_translations.views import (
     course_blocks_mapping, render_translation_home, update_block_direction_flag,
-    course_blocks_send, course_blocks_fetch, course_blocks_apply
+    course_blocks_send, course_blocks_fetch, course_blocks_apply, course_blocks_mapping_view,
 )
 
 app_name = 'meta_translations'
