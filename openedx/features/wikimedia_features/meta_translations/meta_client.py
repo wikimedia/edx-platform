@@ -89,7 +89,7 @@ class WikiMetaClient(object):
         return response_dict
 
 
-    async def parse_response(self, response):
+    async def parse_response(self, params, data, response):
         """
         Parses and return the response.
         """
@@ -100,6 +100,7 @@ class WikiMetaClient(object):
             logger.error(response.text)
             data = None
 
+        logger.info("For Meta request with data: {}, params: {}.".format(data, params))
         if data is not None and response.status in [200, 201]:
             if data.get('error'):
                 logger.error("Meta API returned error code in response: %s.", json.dumps(data))
@@ -120,7 +121,7 @@ class WikiMetaClient(object):
         """
         logger.info("Sending Meta request with data: {}, params: {}.".format(data, params))
         response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data)
-        return await self.parse_response(response)
+        return await self.parse_response(params, data, response)
 
 
     async def fetch_login_token(self, session):
@@ -205,26 +206,23 @@ class WikiMetaClient(object):
             "list": "messagecollection",
             "utf8": 1,
             "formatversion": 2,
-            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, mcgroup[0].upper() + mcgroup[1:]),
+            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, (mcgroup[0].upper() + mcgroup[1:]).replace("_", " ")),
             "mclanguage": mclanguage,
             "mcprop": "translation|properties",
+            "mclimit": 5000
         }
         success, response_data = await self.handle_request(session.get, params=params, data=None)
         if success:
             translation_state = response_data.get('query', {}).get('metadata', {}).get('state', "")
+            logger.info("Translation_state:{} for {}.".format(translation_state, mcgroup))
 
-            if translation_state == "ready":
-                response_data_dict = self._process_fetched_response_data_list_to_dict(
-                    response_data.get('query', {}).get('messagecollection', [])
-                )
-                # mcgroup will be in this format source_course_id/source_lang_code/source_block_key
-                return {
-                    'response_source_block': mcgroup.split("/")[2],
-                    'mclanguage': mclanguage,
-                    'response_data': response_data_dict
-                }
-            else:
-                logger.info("Translation state not ready as Meta server returned translation_state:{} for {}.".format(
-                    translation_state,
-                    mcgroup
-                ))
+            response_data_dict = self._process_fetched_response_data_list_to_dict(
+                response_data.get('query', {}).get('messagecollection', [])
+            )
+
+            # mcgroup will be in this format source_course_id/source_lang_code/source_block_key
+            return {
+                'response_source_block': mcgroup.split("/")[2],
+                'mclanguage': mclanguage,
+                'response_data': response_data_dict
+            }
