@@ -18,8 +18,8 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.api.v0.utils import (
     get_courses_of_base_course, get_outline_course_to_units, get_outline_unit_to_components
     )
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
-from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import CourseBlockSerializer, WikiTranslationSerializer
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, TranslationVersion, WikiTranslation
+from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import CourseBlockTranslationSerializer, CourseBlockVersionSerializer, TranslationVersionSerializer
 from openedx.features.wikimedia_features.meta_translations.api.v0.permissions import DestinationCourseOnly
 from common.djangoapps.student.roles import CourseStaffRole
 
@@ -299,52 +299,58 @@ class CourseBlockViewSet(viewsets.ModelViewSet):
             "block_type": "chapter",
             "course_id": "course-v1:Arbisoft+CS101+TranslatedRerun1",
             "approved": true,
-            "wiki_translations": [
-                {
-                    "id": 245,
-                    "target_block": 303,
-                    "translation": null,
-                    "approved": true,
-                    "applied": false,
-                    "last_fetched": null,
-                    "revision": null,
-                    "approved_by": 3
-                }
-            ]
+            "applied": false,
+            "applied_version": 1,
+            "applied_version_date": 'Jun 10, 2022, 5:19 a.m',
         }
     PUT API:
-        To only update the applied status of a block mentioned in url
-            Request:
-            {
-                approved = true,
-            }
-        To update applied status of block and their children
-            Request:
-            {
-                approved = true,
-                apply_all = true
-            }
-        To update translations of a block
-            Request:
-            {
-                approved = true,
-                wiki_translations: [
-                    {
-                        id: <data_block_id>,
-                        translation: 'new_translation'
-                    },
-                    {
-                        id: <data_block_id>,
-                        translation: 'new_translation'
-                    },
-                ]
-            }
+        Request:
+        {
+            approved = true,
+        }
         Response of all put requests is same as the GET API
     """
     lookup_field = 'block_id'
-    serializer_class = CourseBlockSerializer
+    serializer_class = CourseBlockTranslationSerializer
     permission_classes = (permissions.IsAuthenticated, DestinationCourseOnly)
 
     def get_queryset(self):
         course_id = self.kwargs['course_key']
         return CourseBlock.objects.filter(course_id=course_id)
+
+class TranslatedVersionRetrieveAPIView(generics.RetrieveAPIView):
+    """
+    An API view to get data of a specific version
+    Hit this URL: /meta_translations/api/v0/translationd_version/<version_id>/
+    GET API:
+    {
+        block_id: "<block_id>",
+        date: "2022-06-10T04:06:30.131575Z",
+        data: {display_name: "Introduction"},
+        approved_by: 3,    
+    } 
+    """
+    serializer_class = TranslationVersionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = TranslationVersion.objects.all()
+
+class CouseBlockVersionUpdateView(generics.UpdateAPIView):
+    """
+    Serializer used to update transaltion version of a course block
+    Hit this URL: /meta_translations/api/v0/apply_translated_version/(?P<block_id>.*?)
+    PUT API:
+        Request Data:
+            {
+                version_id: 7
+            }
+        Response:
+            {
+                "block_id": "<block_id>",
+                "applied_translation": false,
+                "applied_version": 9
+            }
+    """
+    lookup_field = 'block_id'
+    serializer_class = CourseBlockVersionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = CourseBlock.objects.all()

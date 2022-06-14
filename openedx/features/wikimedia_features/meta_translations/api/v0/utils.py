@@ -120,12 +120,10 @@ def get_block_data_from_table(block):
             wiki_objects = course_block.wikitranslation_set.all()
             block_fields = {}
             base_block_fields = {}
-            block_fields_ids = {}
             base_usage_key = ''
             parsed_status = { 'parsed_block': False }
             for obj in wiki_objects:
                 data_type = obj.source_block_data.data_type
-                block_fields_ids[data_type] = obj.id
                 if WikiTranslation.is_translation_contains_parsed_keys(block.category, data_type):
                     base_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.parsed_keys)
                     base_decodings = base_decodings if base_decodings else {}
@@ -143,6 +141,7 @@ def get_block_data_from_table(block):
                 base_usage_key = str(obj.source_block_data.course_block.block_id)
             
             block_status = course_block.get_block_info()
+            version_status = course_block.get_translated_version_status()
             if block_status:
                 block_status.update(parsed_status)
         
@@ -150,7 +149,7 @@ def get_block_data_from_table(block):
                 'usage_key': usage_key,
                 'category': block.category,
                 'status': block_status,
-                'data_block_ids': block_fields_ids,
+                'version_status': version_status,
                 'data': block_fields,
             }
             base_course_block_data = {

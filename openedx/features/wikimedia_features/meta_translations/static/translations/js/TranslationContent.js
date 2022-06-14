@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Switch from "react-switch";
 
-import Select from "./components/Select";
+import Select from 'react-select';
 import useFetch from "./hooks/useFetch";
 import Spinner from './assets/spinner';
 import isEmpty from './helpers/isEmptyObject';
@@ -18,30 +18,35 @@ function TranslationContent({ context }) {
   const { fetchCourses, fetchCourseOutline } = useFetch(context);
   const [filterAdminCourses, setFilterAdminCourses] = useState(false);
 
+  const getOptionsFromObject = (object) => {
+    return Object.keys(object).map(course => ({label: object[course].title, value: object[course].id}));
+  }
+
   useEffect(() => {
     fetchCourses(setBaseCourses, setLoading, filterAdminCourses);
   }, [filterAdminCourses]);
 
-  const handleBaseCourseChange = (value) => {
-    setBaseCourse(value);
+  const handleBaseCourseChange = (option) => {
+    setBaseCourse(option.value);
     setRerunCourse('');
     setCourseOutline({});
-    setRerunCourses(value ? baseCourses[value].rerun : []);
+    setRerunCourses(option.value ?baseCourses[option.value].rerun : {});
   }
 
-  const handleRerunCourseChange = (value) => {
-    if(value) {
-      setRerunCourse(value);
-      fetchCourseOutline(value, setCourseOutline, setLoading);
+  const handleRerunCourseChange = (option) => {
+    if(option.value) {
+      setRerunCourse(option.value);
+      fetchCourseOutline(option.value, setCourseOutline, setLoading);
     } else {
-      setRerunCourse({});
+      setRerunCourse('');
       setCourseOutline({});
     }
   }
 
   const handleAdminFilterCourses = (event) => {
     setCourseOutline({});
-    setRerunCourses([]);
+    setRerunCourses({});
+    setRerunCourses({});
     setFilterAdminCourses(!filterAdminCourses);
   }
 
@@ -72,21 +77,19 @@ function TranslationContent({ context }) {
         {
           !isEmpty(baseCourses) &&
           <Select
-          label="Select Base Course"
-            value={baseCourse}
-            courses={baseCourses}
-            onSelectChange={handleBaseCourseChange}
+            placeholder= "Select Base Course"
+            onChange={handleBaseCourseChange}
+            options={getOptionsFromObject(baseCourses)}
           />
         }
         </div>
         <div className="col">
           {
           !isEmpty(rerunCourses) &&
-          <Select
-            label="Select Rerun Course"
-            value={rerunCourse}
-            courses={rerunCourses}
-            onSelectChange={handleRerunCourseChange}
+          <Select 
+            placeholder="Select Rerun Course"
+            onChange={handleRerunCourseChange}
+            options={getOptionsFromObject(rerunCourses)}
           />
         }
         </div>
@@ -126,7 +129,7 @@ function TranslationContent({ context }) {
             }
             {
               isEmpty(courseOutline.base_course_outline) &&
-              <p class="message">
+              <p className="message">
                 No Translations Found!, Please apply mapping.
               </p>
             }

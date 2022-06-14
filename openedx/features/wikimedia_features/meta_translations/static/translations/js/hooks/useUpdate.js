@@ -5,104 +5,48 @@ import useClient from "./useClient";
 export default function useUpdate(context) {
     const { client, notification } = useClient(context);
 
-    const isValidTranslations = (data) => {
-      if (data.transcript) {
-        return data.display_name !='' && data.transcript != []
-      }
-      return data.display_name != '' && data.content != ''
-    }
-
-    const updateUnits = (currentUnit) => {
-      let units = currentUnit.units;
-      if (currentUnit.status.destination_flag && currentUnit.data.display_name != ''){
-        currentUnit.status.approved = true;
-      }
-      Object.keys(units).forEach(unit => {
-        if (units[unit].status.destination_flag && isValidTranslations(currentUnit.data)){
-          units[unit].status.approved = true;
-        }
-      })
-    }
-
-    const updateSubsections = (currentSubsection) => {
-      let subsections = currentSubsection.children;
-      if (currentSubsection.status.destination_flag && currentSubsection.data.display_name != '') {
-        currentSubsection.status.approved = true;
-      }
-      Object.keys(subsections).forEach(subsection => {
-        subsections[subsection].status.approved = true;
-
-        if (subsections[subsection].units) {
-          updateUnits(subsections[subsection]);
-        }
-      })
-    }
-
     const approveCourseOutline = (props) => {
-      const {usageKey, courseId, options, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id} = props;
-
+      const {usageKey, courseId, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id} = props;
+      const options = {
+        approved: true,
+      }
       setLoading(true);
       client.put(`${context.COURSE_APPROVE_URL}/${courseId}/translations/${usageKey}/`, options)
       .then((res) => {
         setCourseOutline(prevState => {
           let courseOutline = {...prevState};
+          let contentLocation = null;
           if (content_id) {
-            courseOutline
+            contentLocation = courseOutline
             .course_outline[section_id]
             .children[subsection_id]
             .children[unit_id]
-            .units[content_id]
-            .status.approved = true;
+            .units[content_id];
           } else if (unit_id) {
-            courseOutline
-            .course_outline[section_id]
-            .children[subsection_id]
-            .children[unit_id]
-            .status.approved = true;
-          } else if (subsection_id) {
-            courseOutline
-            .course_outline[section_id]
-            .children[subsection_id]
-            .status.approved = true;
-          } else {
-            courseOutline
-            .course_outline[section_id]
-            .status.approved = true;
-          }
-          return courseOutline;
-        })
-      })
-      .catch((error) => {
-        notification(toast.error, "Unable to approve this time, Please try again later.");
-        console.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      })
-    }
-
-    const approveRecursiveCourseOutline = (props) => {
-      const {usageKey, courseId, options, setLoading, setCourseOutline, unit_id, subsection_id, section_id} = props;
-
-      setLoading(true);
-      client.put(`${context.COURSE_APPROVE_URL}/${courseId}/translations/${usageKey}/`, options)
-      .then((res) => {
-        setCourseOutline(prevState => {
-          let courseOutline = {...prevState};
-
-          if (unit_id) {
-            let currentUnit = courseOutline
+            contentLocation = courseOutline
             .course_outline[section_id]
             .children[subsection_id]
             .children[unit_id];
-            updateUnits(currentUnit);
+          } else if (subsection_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id];
           } else {
-            let currentSubsection = courseOutline.course_outline[section_id].children[subsection_id];
-            updateSubsections(currentSubsection);
+            contentLocation = courseOutline
+            .course_outline[section_id];
           }
-
+          contentLocation.version_status = {
+            applied: res.data.applied_translation,
+            applied_version: res.data.applied_version,
+            versions: [
+              ...contentLocation.version_status.versions,
+              res.data.latest_version
+            ]
+          }
+          contentLocation.status.approved = res.data.approved;
           return courseOutline;
         })
+        notification(toast.success, "Translation is Approved. Apply it to see changes on studio");
       })
       .catch((error) => {
         notification(toast.error, "Unable to approve this time, Please try again later.");
@@ -113,5 +57,135 @@ export default function useUpdate(context) {
       })
     }
 
-    return { approveCourseOutline, approveRecursiveCourseOutline };
+    const updateTranslation = (props) => {
+      const {setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, version_id} = props;
+      setLoading(true);
+      client.get(`${context.COURSE_VERSION_URL}/${version_id}/`)
+      .then((res) => {
+        setCourseOutline(prevState => {
+          let data = res.data.data
+          let courseOutline = {...prevState};
+          let contentLocation = null;
+          if (content_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id]
+            .children[unit_id]
+            .units[content_id];
+          } else if (unit_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id]
+            .children[unit_id];
+          } else if (subsection_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id];
+          } else {
+            contentLocation = courseOutline
+            .course_outline[section_id];
+          }
+          if (!('previousState' in contentLocation)){
+            contentLocation.previousState = {...contentLocation.data};
+          }
+          contentLocation.data = data;
+          return courseOutline;
+        })
+      })
+      .catch((error) => {
+        notification(toast.error, "Unable to fetch translation this time, Please try again later.");
+        console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      })
+
+
+    }
+
+    const updateTranslationToInitialState = (props) => {
+      const {setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id} = props;
+      setLoading(true);
+      setCourseOutline(prevState => {
+        let courseOutline = {...prevState};
+        let contentLocation = null;
+        if (content_id) {
+          contentLocation = courseOutline
+          .course_outline[section_id]
+          .children[subsection_id]
+          .children[unit_id]
+          .units[content_id];
+        } else if (unit_id) {
+          contentLocation = courseOutline
+          .course_outline[section_id]
+          .children[subsection_id]
+          .children[unit_id];
+        } else if (subsection_id) {
+          contentLocation = courseOutline
+          .course_outline[section_id]
+          .children[subsection_id];
+        } else {
+          contentLocation = courseOutline
+          .course_outline[section_id];
+        }
+        contentLocation.data = {...contentLocation.previousState};
+        return courseOutline;
+      });
+      setLoading(false);
+    }
+
+    const applyCourseVersion = (props) => {
+      const {usageKey, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, version_id} = props;
+      const options = {
+        applied_version: version_id,
+      }
+      setLoading(true);
+      client.put(`${context.COURSE_APPLY_URL}/${usageKey}/`, options)
+      .then((res) => {
+        setCourseOutline(prevState => {
+          let courseOutline = {...prevState};
+          let contentLocation = null;
+          if (content_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id]
+            .children[unit_id]
+            .units[content_id];
+          } else if (unit_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id]
+            .children[unit_id];
+          } else if (subsection_id) {
+            contentLocation = courseOutline
+            .course_outline[section_id]
+            .children[subsection_id];
+          } else {
+            contentLocation = courseOutline
+            .course_outline[section_id];
+          }
+          contentLocation.version_status = {
+            ...contentLocation.version_status,
+            applied: res.data.applied_translation,
+            applied_version: res.data.applied_version
+          };
+          return courseOutline;
+        })
+        notification(toast.success, "Congratulations, Translation is Applied to the Course block");
+      })
+      .catch((error) => {
+        notification(toast.error, "Unable to apply this time, Please try again later.");
+        console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      })
+    }
+
+    return { 
+      approveCourseOutline,
+      updateTranslation,
+      updateTranslationToInitialState,
+      applyCourseVersion
+    };
 }

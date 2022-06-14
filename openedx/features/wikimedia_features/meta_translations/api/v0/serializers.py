@@ -2,46 +2,28 @@
 Serializers for Meta-Translations v0 API(s)
 """
 from django.utils.translation import ugettext as _
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, TranslationVersion, WikiTranslation
-from openedx.features.wikimedia_features.meta_translations.utils import get_children_block_ids
+
+from common.lib.xmodule.xmodule.modulestore.django import modulestore
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, TranslationVersion
+from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 from rest_framework import serializers
 
-class WikiTranslationSerializer(serializers.ModelSerializer):
+class CourseBlockTranslationSerializer(serializers.ModelSerializer):
     """
-    Serializer for wikitranslation
+    Serializer for a courseblock
     """
-    id = serializers.IntegerField()
-    class Meta:
-        model = WikiTranslation
-        fields = ('id', 'target_block', 'translation', 'last_fetched', 'fetched_commits', 'approved', 'approved_by')
-        read_only_fields = ('id', 'target_block', 'last_fetched', 'fetched_commits', 'approved_by')
+    approved = serializers.BooleanField(required=False, write_only=True, default=True)
 
-
-class CourseBlockSerializer(serializers.ModelSerializer):
-    """
-    Serializer for courseblock
-    """
-    wiki_translations = WikiTranslationSerializer(source='wikitranslation_set', many=True, required=False)
-    apply_all = serializers.BooleanField(required=False, write_only=True)
-    approved = serializers.BooleanField(required=True, write_only=True)
-
-    def to_representation(self, value):
+    def to_representation(self, instance):
         """
         Add approved field in block. True if all the translations are approved else false
+        We also need latest version that is approved
         """
-        data = super(CourseBlockSerializer, self).to_representation(value)
-        data['approved'] = all([translation['approved'] for translation in data['wiki_translations']])
+        data = super(CourseBlockTranslationSerializer, self).to_representation(instance)
+        data['approved'] = instance.is_translations_approved()
+        data['latest_version'] = instance.get_latest_version()
         return data
 
-    def validate(self, data):
-        """
-        validations for serializer
-        """
-        if 'apply_all' in data and 'wiki_translations' in data:
-            if data['apply_all']:
-                raise serializers.ValidationError("apply_all can't be 'true' with wiki_translations argument")
-        return data
-    
     def _user(self):
         """
         Get user from request
@@ -50,23 +32,6 @@ class CourseBlockSerializer(serializers.ModelSerializer):
         if request:
             return request.user
     
-    def _validate_translations(self, instances, validated_data):
-        """
-        A custom validation that checks wiki_traslations and course block instances
-        wiki_translations must include all the instances of the block
-        """
-        instances_ids = set([instance.id for instance in instances])
-        data_ids = set([data['id'] for data in validated_data])
-        if instances_ids != data_ids:
-            raise serializers.ValidationError("wiki_translations didn't matched with block translations")
-    
-    def _get_user(self, approved, user):
-        """
-        On approved True, return user otherwise None
-        """
-        if approved:
-            return user
-        
     def _update_translations_fields(self, instances, approved, user):
         """
         Update WikiTranslation instances with approved and user fields
@@ -74,63 +39,75 @@ class CourseBlockSerializer(serializers.ModelSerializer):
         """
         for instance in instances:
             instance.approved = approved
-            instance.approved_by = self._get_user(approved, user)
+            instance.approved_by = user
             instance.save()
 
     def update(self, instance, validated_data):
         """
-        Update method override
-        if 'apply_all' is true
-            It applies 'approved' status to the block and their children
-        if 'wiki_translations'
-            First it validates translations in wiki_translations
-            Then it approved those translations to database
-        Otherwise It only update 'approved' status to current block wiki_translations
-        At last it calls the default update methord
+        Update the approve status of all wikitranslations belogs to a translated block, default value of approved is True
+        Create a version of a course and update applid_translation and applied_version fields of a block 
         """
-        approved = validated_data.pop('approved')
+        approved = validated_data.pop('approved', True)
         user = self._user()
-        if validated_data.get('apply_all'):
-            validated_data.pop('apply_all')
-            block_ids = get_children_block_ids(instance.block_id)
-            wiki_translations = WikiTranslation.objects.filter(target_block__block_id__in=block_ids)
-            wiki_translations = wiki_translations.filter(
-                target_block__direction_flag=CourseBlock._DESTINATION,
-                translation__isnull=False
-            )
-            self._update_translations_fields(wiki_translations, approved, user)
-        else:
-            wiki_translations = WikiTranslation.objects.filter(target_block=instance)
-            if 'wiki_translations' in validated_data:
-                block_translations = validated_data.pop('wiki_translations')
-                self._validate_translations(wiki_translations, block_translations)
-                for block_translation in block_translations:
-                    id = block_translation.pop('id')
-                    instance = wiki_translations.get(id=id)
-                    instance.approved_by = self._get_user(approved, user)
-                    instance.approved = approved
-                    if 'translation' in block_translation:
-                        instance.translation = block_translation['translation']
-                    instance.save()      
-            else:
-                self._update_translations_fields(wiki_translations, approved, user)
-                version = instance.create_translated_version(user)
-                validated_data['applied_translation'] = False
-                validated_data['applied_version'] = version
+        wiki_translations = instance.wikitranslation_set.all()
+        self._update_translations_fields(wiki_translations, approved, user)
+        if approved:
+            instance.create_translated_version(user)
+        
+        return super(CourseBlockTranslationSerializer, self).update(instance, validated_data)  
 
-        return super(CourseBlockSerializer, self).update(instance, validated_data)
-
-    def create(self, validated_data):
-        """
-        Call default create method after removing extra fields.
-        """
-        extra_fields = ['wiki_translations', 'apply_all', 'approved']
-        for field in extra_fields:
-            if field in validated_data:
-                validated_data.pop(field)
-        return super(CourseBlockSerializer, self).create(validated_data)
-    
     class Meta:
         model = CourseBlock
-        fields = ('block_id', 'block_type', 'course_id', 'wiki_translations', 'apply_all', 'approved', 'applied_translation', 'applied_version')
+        fields = ('block_id', 'block_type', 'course_id', 'approved', 'applied_translation', 'applied_version')
         read_only_fields = ('block_id', 'block_type', 'course_id')
+
+class TranslationVersionSerializer(serializers.ModelSerializer):
+    """
+    Serializer for Transaltion Version
+    """
+    class Meta:
+        model = TranslationVersion
+        fields = ('block_id', 'date', 'data', 'approved_by')
+    
+    def to_representation(self, value):
+        """
+        Returns content of a version, data will remain in json format
+        """
+        content = super(TranslationVersionSerializer, self).to_representation(value)
+        content['data'] = value.data
+        return content
+
+class CourseBlockVersionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseBlock
+        fields = ('block_id', 'applied_translation', 'applied_version')
+        read_only_fields = ('block_id', 'applied_translation')
+
+    def _validate_block_data(self, instance, version):
+        """
+        Validations to check that requested applied version is valid or not
+        """
+        if instance.applied_translation and instance.applied_version.id == version.id:
+            raise serializers.ValidationError({'applied_version': 'Version is already applied'})
+        elif instance.block_id != version.block_id:
+            raise serializers.ValidationError({'applied_version': 'Invalid applied version'})
+        return True
+
+    def update(self, instance, validated_data):
+        """
+        Update the version of a block
+        """
+        version = validated_data['applied_version']
+
+        if self._validate_block_data(instance, version):
+            data = version.data
+            block_location = version.block_id
+            block =  modulestore().get_item(block_location)
+            updated_block = COMPONENTS_CLASS_MAPPING[block_location.block_type]().update(block, data)
+            
+            if updated_block:
+                validated_data['applied_translation'] = True
+            else:
+                raise serializers.ValidationError("Version is no applied")
+        
+        return super(CourseBlockVersionSerializer, self).update(instance, validated_data)

@@ -5,7 +5,7 @@ import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag, versionStatus } = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const ref = useRef();
@@ -29,12 +29,12 @@ function Accordion (props) {
 
   return (
     <div className={`${addClass ? addClass: ''} ${isCollapsed ? 'collapsed': ''}`}>
-      <div className='header' onClick={hanldeClick}>
-        <div className='col'>
+      <div className='header'>
+        <div className='col' onClick={hanldeClick}>
           <span className="fa fa-chevron-down"></span>
           <strong className='title'>{baseTitle}</strong>
         </div>
-        <div className='col'>
+        <div className='col' onClick={hanldeClick}>
           {
             rerunTitle && (
               <span className="fa fa-chevron-down"></span>
@@ -44,6 +44,8 @@ function Accordion (props) {
         </div>
         <Actions
           courseId={rerunCourseId}
+          versionStatus={versionStatus}
+          destinationFlag={destinationFlag}
           enableApproveButton={(
             destinationFlag &&
             rerunTitle != ''
