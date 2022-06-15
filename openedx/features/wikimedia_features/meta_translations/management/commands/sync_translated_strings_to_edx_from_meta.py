@@ -165,16 +165,29 @@ class Command(BaseCommand):
                         if key_response.get('properties', {}).get('status') == "translated":
                             translated_data.update({key: key_response.get('translation')})
                             fetched_commits.update({key: key_response.get('properties', {}).get('revision')})
-                    translated_data = json.dumps(translated_data)
+                    if translated_data:
+                        translated_data = json.dumps(translated_data)
+                        self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code)
+                    else:
+                        self._UPDATED_TRANSLATIONS.append({
+                            "target_block_id": str(translation_obj.target_block.block_id),
+                            "source_block_data_type": source_block_data.data_type,
+                            "target_language_code": target_language_code,
+                            "message": "Successfully fetched but no key is translated"
+                        })
                 else:
                     key_response = response_data.get(source_block_data.data_type, {})
                     if key_response.get('properties', {}).get('status') == "translated":
                         translated_data = response_data.get(source_block_data.data_type, {}).get('translation')
                         fetched_commits.update({source_block_data.data_type: key_response.get('properties', {}).get('revision')})
-                self._update_translations_in_db(
-                    translation_obj, translated_data, fetched_commits, source_block_data, target_language_code
-                )
-
+                        self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code)
+                    else:
+                        self._UPDATED_TRANSLATIONS.append({
+                            "target_block_id": str(translation_obj.target_block.block_id),
+                            "source_block_data_type": source_block_data.data_type,
+                            "target_language_code": target_language_code,
+                            "message": "Successfully fetched but status is not translated"
+                        })
             else:
                 # Compare commits of tranlsations with existing db commits -> only update translations if commits are updated.
                 existing_translation = translation_obj.translation
