@@ -9,22 +9,24 @@ from django.utils.translation import ugettext as _
 from django.views.decorators.cache import cache_control
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
-
 from opaque_keys.edx.keys import CourseKey
-
 
 from lms.djangoapps.instructor import permissions
 from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.instructor.views.api import require_course_permission as course_permission
 from common.djangoapps.util.json_request import JsonResponse
 from openedx.features.wikimedia_features.admin_dashboard.admin_task.api_helper import AlreadyRunningError, QueueConnectionError, submit_task
-from openedx.features.wikimedia_features.admin_dashboard.tasks import task_average_calculate_grades_csv, task_progress_report_csv
+from openedx.features.wikimedia_features.admin_dashboard.tasks import (
+    task_average_calculate_grades_csv, task_progress_report_csv, task_course_version_report
+)
+from openedx.features.wikimedia_features.admin_dashboard.course_versions import task_helper
 
 log = logging.getLogger(__name__)
 TASK_LOG = logging.getLogger('edx.celery.task')
 
 SUCCESS_MESSAGE_TEMPLATE = _("The {report_type} report is being created. "
                              "To view the status of the report, see Pending Tasks below.")
+
 
 def require_course_permission(permission):
     """
@@ -46,7 +48,7 @@ def require_course_permission(permission):
                 else:
                     return HttpResponseForbidden()
             if course_permission:
-                return func(*args, **kwargs)             
+                return func(*args, **kwargs)
         return wrapped
     return decorator
 
@@ -113,6 +115,36 @@ def progress_report_csv(request, course_id):
     return JsonResponse({"status": success_status})
 
 
+@transaction.non_atomic_requests
+@require_POST
+@ensure_csrf_cookie
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+@require_course_permission(permissions.CAN_RESEARCH)
+@common_exceptions_400
+def course_version_report(request, course_id):
+    """
+    Handles request to generate CSV of base course versions info for all translated reruns.
+    """
+    report_type = request.POST.get('csv_type', 'course_versions')
+    if report_type == 'course_versions':
+        query_features = [
+            'course_id', 'course_title', 'course_language', 'version_type', 'total_active_enrolled',
+            'total_completion', 'completion_percent', 'average_grade', 'error_count'
+        ]
+        success_status = SUCCESS_MESSAGE_TEMPLATE.format(report_type="Versions Detailed Report")
+
+    else:
+        query_features = [
+            'total_courses', 'course_ids', 'course_languages', 'total_active_enrolled',
+            'total_completion', 'completion_percent', 'average_grade', 'error_count'
+        ]
+        success_status = SUCCESS_MESSAGE_TEMPLATE.format(report_type="Versions Aggregate Report")
+
+    submit_course_version_report(request, course_id, query_features, report_type)
+
+    return JsonResponse({"status": success_status})
+
+
 def submit_average_calculate_grades_csv(request, course_key):
     """
     AlreadyRunningError is raised if the course's grades are already being updated.
@@ -135,3 +167,17 @@ def submit_progress_report_csv(request, course_id):
     task_input = {}
     task_key = ""
     return submit_task(request, task_type, task_class, course_id, task_input, task_key)
+
+
+def submit_course_version_report(request, course_key,  features, task_type):
+    """
+    Submits a task to generate a CSV of translated versions report
+    """
+    task_class = task_course_version_report
+    task_input = {
+        'features': features,
+        'csv_type': task_type
+    }
+    task_key = ""
+
+    return submit_task(request, task_type, task_class, course_key, task_input, task_key)
