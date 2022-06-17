@@ -79,23 +79,12 @@ class Command(BaseCommand):
         request["title"] = "{}/{}/{}".format(
             str(base_course), base_course_language, str(block.block_id)
         )
-        request.update({
-            "sourceLanguage": base_course_language,
-            "priorityLanguages": json.dumps(json.loads(block.lang)),
-        })
 
-        # TODO: Un-commnet following once metadata key is resolved on wikimedia side.
-        # request["@metadata"] = json.dumps({
-        #     "sourceLanguage": base_course_language,
-        #     "priorityLanguages": json.dumps(json.loads(block.lang)),
-        #     "allowOnlyPriorityLanguages": True,
-        #     "description": json.dumps({
-        #         "base_course_block": str(block.block_id),
-        #         "base_course_block_type": json.dumps(
-        #             [data.data_type for data in block.courseblockdata_set.all()]
-        #         )
-        #     })
-        # })
+        request["@metadata"] = {
+            "sourceLanguage": base_course_language,
+            "priorityLanguages": json.loads(block.lang),
+            "allowOnlyPriorityLanguages": True,
+        }
         return request
 
     def _get_request_data_list(self):
