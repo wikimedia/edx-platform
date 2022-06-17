@@ -7,6 +7,7 @@ import jsonfield
 import logging
 import pytz
 
+from config_models.models import ConfigurationModel
 from django.utils import timezone
 from django.db import models
 from django.db.models import Q
@@ -19,6 +20,10 @@ log = logging.getLogger(__name__)
 User = get_user_model()
 APP_LABEL = 'meta_translations'
 
+
+class MetaApiButtonConfiguration(ConfigurationModel):
+    staff_show_api_buttons = models.BooleanField(default=False)
+    normal_users_show_api_buttons = models.BooleanField(default=False)
 
 class TranslationVersion(models.Model):
     """
