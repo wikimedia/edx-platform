@@ -1,11 +1,11 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 
 import useFetch from "../hooks/useFetch";
 import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag, versionStatus, expendOutline } = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const ref = useRef();
@@ -27,14 +27,27 @@ function Accordion (props) {
     setCollapsed(false);
   }
 
+  useEffect(()=>{
+    if (!units){
+      const isExpended = !!(expendOutline % 2)
+      if ((isExpended && isCollapsed) || (!isExpended && !isCollapsed)){
+        setCollapsed(!isExpended)
+        !isCollapsed ? slide.slideUp() : slide.slideDown()
+      }
+    } else {
+      setCollapsed(true)
+      slide.slideUp()
+    }
+  },[expendOutline])
+
   return (
     <div className={`${addClass ? addClass: ''} ${isCollapsed ? 'collapsed': ''}`}>
-      <div className='header' onClick={hanldeClick}>
-        <div className='col'>
+      <div className='header'>
+        <div className='col' onClick={hanldeClick}>
           <span className="fa fa-chevron-down"></span>
           <strong className='title'>{baseTitle}</strong>
         </div>
-        <div className='col'>
+        <div className='col' onClick={hanldeClick}>
           {
             rerunTitle && (
               <span className="fa fa-chevron-down"></span>
@@ -44,6 +57,8 @@ function Accordion (props) {
         </div>
         <Actions
           courseId={rerunCourseId}
+          versionStatus={versionStatus}
+          destinationFlag={destinationFlag}
           enableApproveButton={(
             destinationFlag &&
             rerunTitle != ''

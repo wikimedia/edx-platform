@@ -5,7 +5,9 @@ Meta Translations Models
 import json
 import jsonfield
 import logging
+import pytz
 
+from django.utils import timezone
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth import get_user_model
@@ -27,6 +29,15 @@ class TranslationVersion(models.Model):
     data = jsonfield.JSONField(default={}, null=True, blank=True)
     approved_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
+    def get_date(self):
+        """
+        Returns Formated local datetime i.e Jun 10, 2022, 5:19 a.m
+        """
+        date = self.date
+        utc = date.replace(tzinfo=pytz.UTC)
+        localtz = utc.astimezone(timezone.get_current_timezone())
+        return localtz.strftime('%b %d, %Y, %H:%M %P')
+    
     class Meta:
         app_label = APP_LABEL
         unique_together = ('block_id', 'date')
@@ -116,6 +127,13 @@ class CourseBlock(models.Model):
         existing_mappings = self.wikitranslation_set.all()
         if existing_mappings:
             return existing_mappings.first().source_block_data.course_block
+    
+    def is_translations_approved(self):
+        """
+        Return True if all wiki_transaltions are approved
+        """
+        existing_mappings = self.wikitranslation_set.all()
+        return all(existing_mappings.values_list("approved", flat=True))
 
     def get_block_info(self):
         """
@@ -197,6 +215,38 @@ class CourseBlock(models.Model):
             block_id = self.block_id, data = snapshot, approved_by = user)
         return version
 
+    def get_translated_version_status(self):
+        """
+        Returns version status
+        {
+            'applied': True,
+            'applied_version: 5,
+            'latest_version': 10,
+            'version' [
+                {id: 5, date: 'Jun 10, 2022, 5:19 a.m '},
+                {id: 10, date: 'Jun 15, 2022, 6:30 p.m '}
+            ]
+        }
+        """
+        versions = TranslationVersion.objects.filter(block_id=self.block_id)
+        version_info = {
+            'applied': self.applied_translation,
+            'applied_version': self.applied_version.id if self.applied_version else None,
+            'latest_version': versions.last().id if versions else None,
+            'versions': [{'id': version.id, 'date': version.get_date()} for version in versions]
+        }
+        return version_info
+    
+    def get_latest_version(self):
+        """
+        Returns the last approved version of a course block
+        """
+        version = TranslationVersion.objects.filter(block_id=self.block_id).last()
+        if version:
+            return {'id': version.id, 'date': version.get_date()}
+
+        return {}
+    
     def __str__(self):
         return str(self.block_id)
     class Meta:
