@@ -6,6 +6,7 @@ This will mostly involve searching by course_id or task_id and manually failing
 a task.
 
 """
+from completion.models import BlockCompletion
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -39,7 +40,7 @@ class AdminReportTaskAdmin(admin.ModelAdmin):  # lint-amnesty, pylint: disable=m
         'task_id', 'course_id', 'requester__email', 'requester__username'
     ]
     raw_id_fields = ['requester']  # avoid trying to make a select dropdown
-    
+
     def email(self, task):
         return task.requester.email
     email.admin_order_field = 'requester__email'
@@ -48,4 +49,12 @@ class AdminReportTaskAdmin(admin.ModelAdmin):  # lint-amnesty, pylint: disable=m
         return task.requester.username
     email.admin_order_field = 'requester__username'
 
+
+class BlockCompleteionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'context_key', 'block_key', 'block_type', 'completion', )
+    search_fields = ['user', 'context_key', 'block_key']
+    list_filter = ['block_type', 'completion']
+
+
 admin.site.register(AdminReportTask, AdminReportTaskAdmin)
+admin.site.register(BlockCompletion, BlockCompleteionAdmin)

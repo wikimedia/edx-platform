@@ -30,7 +30,9 @@ def require_user_permission():
                 return HttpResponseForbidden()
         return wrapped
     return decorator
- 
+
+import json
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 @login_required
 @require_user_permission()
 @ensure_csrf_cookie
@@ -47,10 +49,11 @@ def course_reports(request):
             'instructor': bool(has_access(request.user, 'instructor', courses_list[0])),
         }
         sections["key"] = section_data_download(course, access)
-        
+
     return render_to_response(
         "course_report/course-reports.html",
         {
+            'base_courses_list': json.dumps([str(course_id) for course_id in CourseTranslation.get_base_courses_list()]),
             'courses': courses_list,
             'section_data': sections,
         }
@@ -71,6 +74,7 @@ def section_data_download(course, access):
         ),
         'average_calculate_grades_csv_url': reverse('admin_dashboard:average_calculate_grades_csv', kwargs={'course_id': str(course_key)}),
         'progress_report_csv_url': reverse('admin_dashboard:progress_report_csv', kwargs={'course_id': str(course_key)}),
+        'course_version_report_url': reverse('admin_dashboard:course_version_report', kwargs={'course_id': str(course_key)}),
     }
     if not access.get('data_researcher'):
         section_data['is_hidden'] = True
