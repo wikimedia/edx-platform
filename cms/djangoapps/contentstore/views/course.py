@@ -76,6 +76,7 @@ from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBA
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
 from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
 from openedx.features.wikimedia_features.meta_translations.mapping_utils import course_blocks_mapping
+from openedx.features.wikimedia_features.meta_translations.models import MetaApiButtonConfiguration
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock
@@ -555,6 +556,13 @@ def course_listing(request):
     active_courses, archived_courses = _process_courses_list(courses_iter, in_process_course_actions, split_archived)
     in_process_course_actions = [format_in_process_course_view(uca) for uca in in_process_course_actions]
 
+    meta_api_config = MetaApiButtonConfiguration.current()
+    show_meta_api_buttons = False
+    if meta_api_config and meta_api_config.enabled:
+        if (request.user.is_staff and meta_api_config.staff_show_api_buttons) or meta_api_config.normal_users_show_api_buttons:
+            # user is staff and config for staff is set otherwise check if config for normal users is set
+            show_meta_api_buttons = True
+
     return render_to_response('index.html', {
         'language_options': settings.ALL_LANGUAGES,
         'courses': active_courses,
@@ -573,7 +581,9 @@ def course_listing(request):
         'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False),
         'allow_course_reruns': settings.FEATURES.get('ALLOW_COURSE_RERUNS', True),
         'optimization_enabled': optimization_enabled,
-        'active_tab': 'courses'
+        'active_tab': 'courses',
+        'course_blocks_send_fetch_url': reverse("meta_translations:course_blocks_api_send_fetch"),
+        'show_meta_api_buttons': show_meta_api_buttons
     })
 
 
