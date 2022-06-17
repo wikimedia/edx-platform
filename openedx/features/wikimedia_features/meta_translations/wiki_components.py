@@ -157,7 +157,7 @@ class ProblemComponent(WikiComponent):
             source_xml_data = translation.source_block_data.data
             meta_data = {
                 'xml_data': source_xml_data,
-                'encodings': json.loads(data['content'])
+                'encodings': data['content']
             }
             updated_xml = settings.TRANSFORMER_CLASS_MAPPING[block.category]().meta_data_to_raw_data(meta_data)
             block.data = updated_xml
@@ -245,7 +245,7 @@ class VideoComponent(WikiComponent):
             meta_data = {
                 'start_points': json_content['start'],
                 'end_points': json_content['end'],
-                'encodings': json.loads(data['transcript'])
+                'encodings': data['transcript']
             }
             updated_transcript = settings.TRANSFORMER_CLASS_MAPPING[block.category]().meta_data_to_raw_data(meta_data)
             json_content['text'] = updated_transcript

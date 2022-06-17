@@ -52,7 +52,9 @@ function Unit (props) {
                 usageKey={rerunContent[content_id].usage_key}
                 courseId={rerunCourseId}
                 approved={rerunContent[content_id].status.approved}
+                versionStatus={rerunContent[content_id].version_status}
                 content_id={content_id}
+                destinationFlag={rerunContent[content_id].status.destination_flag}
                 enableApproveButton={(
                     rerunContent[content_id].status.destination_flag &&
                     isValidTranslations(rerunContent[content_id].data) &&

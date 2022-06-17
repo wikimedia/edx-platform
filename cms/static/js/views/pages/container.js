@@ -196,7 +196,7 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                         }
                     });
                 };
-                if (document.getElementById(checkBoxId) && document.getElementById(checkBoxId).checked){
+                if (!options && document.getElementById(checkBoxId) && document.getElementById(checkBoxId).checked){
                     WikiUtils.showWarningOnEdit(operation);
                 } else {
                     operation();
