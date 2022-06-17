@@ -25,6 +25,10 @@ class MetaApiButtonConfiguration(ConfigurationModel):
     staff_show_api_buttons = models.BooleanField(default=False)
     normal_users_show_api_buttons = models.BooleanField(default=False)
 
+    class Meta:
+        app_label = APP_LABEL
+
+
 class TranslationVersion(models.Model):
     """
     Store approved versions of a block to keep track of previous translations
@@ -42,7 +46,7 @@ class TranslationVersion(models.Model):
         utc = date.replace(tzinfo=pytz.UTC)
         localtz = utc.astimezone(timezone.get_current_timezone())
         return localtz.strftime('%b %d, %Y, %H:%M %P')
-    
+
     class Meta:
         app_label = APP_LABEL
         unique_together = ('block_id', 'date')
@@ -132,7 +136,7 @@ class CourseBlock(models.Model):
         existing_mappings = self.wikitranslation_set.all()
         if existing_mappings:
             return existing_mappings.first().source_block_data.course_block
-    
+
     def is_translations_approved(self):
         """
         Return True if all wiki_transaltions are approved
@@ -241,7 +245,7 @@ class CourseBlock(models.Model):
             'versions': [{'id': version.id, 'date': version.get_date()} for version in versions]
         }
         return version_info
-    
+
     def get_latest_version(self):
         """
         Returns the last approved version of a course block
@@ -251,7 +255,7 @@ class CourseBlock(models.Model):
             return {'id': version.id, 'date': version.get_date()}
 
         return {}
-    
+
     def __str__(self):
         return str(self.block_id)
     class Meta:
@@ -333,8 +337,7 @@ class WikiTranslation(models.Model):
             # reference key is the alphanumeric key in block_id.
             # target block and source block will contain same reference key if block is created through edX rerun.
             if reference_key:
-                base_course_block_data = base_course_blocks_data.get(
-                    course_block__block_id__endswith=reference_key, data_type=key, data=value)
+                base_course_block_data = base_course_blocks_data.get(course_block__block_id__endswith=reference_key, data_type=key)
                 WikiTranslation.objects.create(
                     target_block=target_block,
                     source_block_data=base_course_block_data,
