@@ -4,10 +4,11 @@ Views for Meta Translations
 import json
 from logging import getLogger
 
+from django.core import management
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
-from opaque_keys.edx.keys import CourseKey
+from opaque_keys.edx.keys import CourseKey, UsageKey
 from django.conf import settings
 from common.djangoapps.edxmako.shortcuts import render_to_response
 
@@ -32,6 +33,33 @@ def course_blocks_mapping_view(request):
             return JsonResponse({'error':'Invalid request'},status=400)
     else:
         return JsonResponse({'error':'Invalid request'},status=400)
+
+
+@login_required
+@require_http_methods(["POST"])
+def course_blocks_api_send_fetch(request):
+    """
+    Trigers meta api send translations command on given course_id
+    """
+    if request.body:
+        params = json.loads(request.body)
+        action = params.get('action')
+        if action in ['send', 'fetch']:
+            if action == 'send':
+                output = management.call_command(
+                    'sync_untranslated_strings_to_meta_from_edx',
+                    commit=True)
+            else:
+                output = management.call_command(
+                    'sync_translated_strings_to_edx_from_meta',
+                    commit=True
+                )
+            return JsonResponse({'success': 'API command has been triggered successfully.'}, status=200)
+        else:
+            return JsonResponse({'error':'Invalid params in request.'},status=400)
+    else:
+        return JsonResponse({'error':'Invalid request'},status=400)
+
 
 @login_required
 def render_translation_home(request):

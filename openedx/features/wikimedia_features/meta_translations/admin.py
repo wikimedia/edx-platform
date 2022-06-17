@@ -1,11 +1,12 @@
 """
 Admin registration for Messenger.
 """
+from config_models.admin import ConfigurationModelAdmin
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from openedx.features.wikimedia_features.meta_translations.models import (
-   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation
+   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation, MetaApiButtonConfiguration
 )
 
 
@@ -65,8 +66,10 @@ class TranslationVersionAdmin(admin.ModelAdmin):
     list_display = [f.name for f in TranslationVersion._meta.fields]
     search_fields = ("block_id", "date")
 
+
 admin.site.register(CourseBlock, CourseBlockAdmin)
 admin.site.register(CourseBlockData, CourseBlockDataAdmin)
 admin.site.register(CourseTranslation, CourseTranslationAdmin)
 admin.site.register(WikiTranslation, WikiTranslationAdmin)
 admin.site.register(TranslationVersion, TranslationVersionAdmin)
+admin.site.register(MetaApiButtonConfiguration, ConfigurationModelAdmin)
