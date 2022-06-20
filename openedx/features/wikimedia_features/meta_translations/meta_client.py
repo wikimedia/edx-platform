@@ -89,7 +89,7 @@ class WikiMetaClient(object):
         return response_dict
 
 
-    async def parse_response(self, params, data, response):
+    async def parse_response(self, request_params, request_data, response):
         """
         Parses and return the response.
         """
@@ -100,7 +100,7 @@ class WikiMetaClient(object):
             logger.error(response.text)
             data = None
 
-        logger.info("For Meta request with data: {}, params: {}.".format(data, params))
+        logger.info("For Meta request with data: {}, params: {}.".format(request_data, request_params))
         if data is not None and response.status in [200, 201]:
             if data.get('error'):
                 logger.error("Meta API returned error code in response: %s.", json.dumps(data))
