@@ -27,6 +27,7 @@ function Subsections (props) {
               approved={rerunCourseSubsections[subsection_id].status.approved}
               versionStatus={rerunCourseSubsections[subsection_id].version_status}
               destinationFlag={rerunCourseSubsections[subsection_id].status.destination_flag}
+              isFullyTranslated={rerunCourseSubsections[subsection_id].status.is_fully_translated}
               {...props}
             >
               <Units

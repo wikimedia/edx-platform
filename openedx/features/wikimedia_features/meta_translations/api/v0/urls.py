@@ -4,7 +4,7 @@ Urls for Messenger v0 API(s)
 from django.conf.urls import url
 
 from openedx.features.wikimedia_features.meta_translations.api.v0.views import (
-    CourseBlockViewSet, CouseBlockVersionUpdateView, GetCoursesVersionInfo,
+    ApproveAPIView, CouseBlockVersionUpdateView, GetCoursesVersionInfo,
     GetTranslationOutlineStructure, GetVerticalComponentContent, TranslatedVersionRetrieveAPIView
 )
 
@@ -27,14 +27,9 @@ urlpatterns = [
         name='versions',
     ),
     url(
-        r'^(?P<course_key>.+)/translations/(?P<block_id>.*?)/$',
-        CourseBlockViewSet.as_view(
-            {
-                'get': 'retrieve',
-                'put': 'update',
-            },
-        ),
-        name='translations'
+         r'^approve_translations/$',
+        ApproveAPIView.as_view(),
+        name='approve-translations'
     ),
     url(
         r'^translated_versions/(?P<pk>\d+)/$',

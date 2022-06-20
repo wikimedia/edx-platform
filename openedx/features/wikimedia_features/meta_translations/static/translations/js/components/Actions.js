@@ -4,16 +4,13 @@ import useUpdate from '../hooks/useUpdate';
 
 function Actions (props) {
 
-  const { approved, versionStatus, enableApproveButton, destinationFlag, context } = props;
+  const { approved, versionStatus, enableApproveButton, destinationFlag, approveAll, setApproveAll, context } = props;
   const { applied, applied_version, versions } = versionStatus
 
   const { approveCourseOutline, updateTranslation,
-    updateTranslationToInitialState, applyCourseVersion } = useUpdate(context);
-  
-  
-  const [approveTrigger, setApproveTrigger] = React.useState(approved)
-  
-  const [buttonsVisibility, setButtonsVisibility] = React.useState({apply: false, approve: true})
+    updateTranslationToInitialState, applyCourseVersion, approveRecursiveCourseOutline } = useUpdate(context);
+    
+  const [buttonsVisibility, setButtonsVisibility] = React.useState({apply: false, approve: true, approveAll: false})
 
   const [selectedOption, setSelectedOption] = React.useState({value:-1, label: 'pending translation'})
   
@@ -26,6 +23,7 @@ function Actions (props) {
                         approved? 'Approved': 'Approve')
   
   const applyTitle = !enableApplyButton ? 'Applied' : applied_version==selectedOption.value ? 'Apply Now': 'Apply'
+  
   
   const updateOptionsFromVersion = () => {
     let newOptions = {
@@ -46,12 +44,15 @@ function Actions (props) {
   }
 
   useEffect(() => {
+    setButtonsVisibility((prevState)=> ({...prevState, approveAll: approveAll}));
+  }, [approveAll])
+
+  useEffect(() => {
     updateOptionsFromVersion(approved);
-    if (approveTrigger) {
+    if (approved) {
       let last_element = versions.slice(-1)[0]
       setSelectedOption({value: last_element.id, label: last_element.date});
-      setButtonsVisibility({apply: true, approve: false});
-      setApproveTrigger(false);
+      setButtonsVisibility((prevState)=> ({...prevState, apply: true, approve: false}));
       setEnableApplyButton(last_element.id != applied_version || !applied);
     } else {
       setEnableApplyButton(selectedOption.value != applied_version || !applied);
@@ -64,10 +65,10 @@ function Actions (props) {
       setEnableApplyButton(option.value != applied_version || !applied);
       if (option.value != -1 ){
         updateTranslation({version_id: option.value, ...props});
-        setButtonsVisibility({apply: true, approve: false});
+        setButtonsVisibility((prevState)=> ({...prevState, apply: true, approve: false}));
       } else {
         updateTranslationToInitialState({...props});
-        setButtonsVisibility({apply: false, approve: true});
+        setButtonsVisibility((prevState)=> ({...prevState, apply: false, approve: true}));
       }
     }
   };
@@ -83,8 +84,13 @@ function Actions (props) {
     e.stopPropagation();
     if (!approved && enableApproveButton){
         approveCourseOutline({...props});
-        setApproveTrigger(true);
     }
+  }
+
+  const handleApproveAll = (e) => {
+    e.stopPropagation();
+    approveRecursiveCourseOutline({...props});
+    setApproveAll(false);
   }
 
   return (
@@ -121,6 +127,13 @@ function Actions (props) {
         buttonsVisibility.approve && (
           <span className={`btn ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={hanldeApprove}>
             APPROVE
+          </span>
+        )
+      }
+      {
+        buttonsVisibility.approveAll && (
+          <span className={`btn ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
+            APPROVE ALL
           </span>
         )
       }
