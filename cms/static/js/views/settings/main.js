@@ -153,11 +153,11 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                        paceToggleTip.text(gettext('Course pacing cannot be changed once a course has started.'));
                    }
 
-                if (['true', true].includes(this.model.get('is_destination_course'))) {
-                    this.$('#' + this.fieldToSelectorMap.is_destination_course).attr('checked', this.model.get('is_destination_course'));
-                } else {
-                    this.$('#' + this.fieldToSelectorMap.is_destination_course).removeAttr('checked');
-                }
+                    if (['true', true].includes(this.model.get('is_destination_course'))) {
+                        this.$('#' + this.fieldToSelectorMap.is_destination_course).attr('checked', this.model.get('is_destination_course'));
+                    } else {
+                        this.$('#' + this.fieldToSelectorMap.is_destination_course).removeAttr('checked');
+                    }
 
                    this.licenseView.render();
                    this.learning_info_view.render();
@@ -329,7 +329,7 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                },
                updateCourseFlag: function() {
                     var updated_flag = $('#' + this.fieldToSelectorMap.is_destination_course).is(':checked').toString()
-                    this.model.set('is-destination-course', updated_flag);
+                    this.model.set('is_destination_course', updated_flag);
                },
                updateImageField: function(event, image_field, selector) {
                    this.setField(event);
