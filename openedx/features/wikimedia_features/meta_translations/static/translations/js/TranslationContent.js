@@ -146,7 +146,7 @@ function TranslationContent({ context }) {
             }
             {
               isEmpty(courseOutline.base_course_outline) &&
-              <p className="message meta-translations-message">
+              <p className="message">
                 No Translations Found!, Please apply mapping.
               </p>
             }
