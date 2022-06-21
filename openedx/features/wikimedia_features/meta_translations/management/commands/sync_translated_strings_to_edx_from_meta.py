@@ -4,12 +4,14 @@ Django admin command to send untranslated data to Meta Wiki.
 import asyncio
 import aiohttp
 import json
+import pytz
 from logging import getLogger
 from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 from opaque_keys.edx.keys import CourseKey, UsageKey
+from django.utils import timezone
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
@@ -33,8 +35,6 @@ class Command(BaseCommand):
     help = 'Command to sync/fetch updated translations from meta to edX'
 
     _UPDATED_TRANSLATIONS = []
-    _WIKI_TRANSLATIONS_OBJECTS = None
-
 
     def add_arguments(self, parser):
         """
@@ -57,6 +57,39 @@ class Command(BaseCommand):
         log.info("Request data dict: {}".format(json.dumps(request_data_dict, indent=4)))
         log.info("Updated Translations: {}".format(json.dumps(self._UPDATED_TRANSLATIONS, indent=4)))
 
+    def is_translated(self, wiki_translation_obj):
+        """
+        Returns boolean value indicating if object is translated or not.
+        """
+        if wiki_translation_obj.translation:
+            is_translated = True
+            if wiki_translation_obj.source_block_data.parsed_keys:
+                existing_translation = json.loads(wiki_translation_obj.translation)
+                for key, value in wiki_translation_obj.source_block_data.parsed_keys.items():
+                    if existing_translation.get(key) == None:
+                        is_translated = False
+                        break;
+            return is_translated
+        else:
+            return False
+
+    def _get_transation_objects_for_fetch_call(self):
+        """
+        Returns list of WikiTranslation objects for fetch call.
+        Translations fot Blocks will only be checked at meta server in following cases:
+        1. If blocks are not translated -> translations or last_fetched is None
+        2. If blocks are translated -> we'll only check for latest updates/commits of meta server
+           only if 3 days have been passed since last_fetched.
+        """
+        tranlsation_objects = []
+        comparison_date = (timezone.now() - timedelta(days=3)).date()
+        for obj in WikiTranslation.objects.all().select_related("target_block").select_related(
+            "source_block_data", "source_block_data__course_block"
+        ):
+            if not obj.last_fetched or not self.is_translated(obj) or obj.last_fetched.date() <=comparison_date:
+                tranlsation_objects.append(obj)
+        return tranlsation_objects
+
     def _get_request_data_dict(self):
         """
         Returns dict of data required to fetch updated translations from Wiki Meta.
@@ -74,17 +107,10 @@ class Command(BaseCommand):
             }
             ...
         }
-
         """
-        # Filter out all untranslated strings and check for latest updates for already translated strings.
-        comparison_date = (datetime.now() - timedelta(days=3)).date()
-        tranlsation_objects = WikiTranslation.objects.filter(
-            Q(translation=None) | Q(last_fetched=None) | Q(last_fetched__date__lte=comparison_date)
-        ).select_related("target_block").select_related("source_block_data", "source_block_data__course_block")
-        self._WIKI_TRANSLATIONS_OBJECTS = tranlsation_objects
-
+        translation_objects = self._get_transation_objects_for_fetch_call()
         data_dict = {}
-        for translation_obj in tranlsation_objects:
+        for translation_obj in translation_objects:
             source_block = translation_obj.source_block_data.course_block
             target_block = translation_obj.target_block
             source_block_key = str(source_block.block_id)
@@ -103,6 +129,17 @@ class Command(BaseCommand):
                     }
         return data_dict
 
+    def _update_result_list(self, target_block_id, source_block_data_type, target_lang, msg):
+        """
+        Update Final Result list i.e _UPDATED_TRANSLATIONS that will be used for final result logs
+        """
+        self._UPDATED_TRANSLATIONS.append({
+            "target_block_id": target_block_id,
+            "source_block_data_type": source_block_data_type,
+            "target_language_code": target_lang,
+            "message": msg
+        })
+
     def _update_translations_in_db(self, translation_obj, updated_translation, updated_commits, source_block_data, target_lang_code):
         translation_obj.translation = updated_translation
         translation_obj.approved = False
@@ -119,21 +156,17 @@ class Command(BaseCommand):
             source_block_data.data_type,
             target_lang_code
         ))
-        self._UPDATED_TRANSLATIONS.append({
-            "target_block_id": str(translation_obj.target_block.block_id),
-            "source_block_data_type": source_block_data.data_type,
-            "target_language_code": target_lang_code,
-            "message": "Updated"
-        })
+        self._update_result_list(
+            str(translation_obj.target_block.block_id), source_block_data.data_type, target_lang_code, "Updated"
+        )
 
-
-    def _check_and_update_translations(self, response_data, wiki_translations, target_language_code):
+    def _check_and_update_translations(self, response_data, target_block_id, target_language_code):
         """
         Update WikiTranslations with fetched translated strings from meta-server
 
         Arguments:
             response_data (Dict): contains translations
-            translations (WikiTranslation Queryset): Queryset that need to be updated
+            target_block_id (String): Blocks that need to be updated
             target_language_code (String): target block language.
 
         Sample response_data:
@@ -153,6 +186,9 @@ class Command(BaseCommand):
         },
         ...
         """
+        wiki_translations = WikiTranslation.objects.filter(
+            target_block__block_id=target_block_id
+        ).select_related("target_block").select_related("source_block_data", "source_block_data__course_block")
         for translation_obj in wiki_translations:
             source_block_data = translation_obj.source_block_data
             if not translation_obj.translation or not translation_obj.last_fetched or not translation_obj.fetched_commits:
@@ -169,12 +205,10 @@ class Command(BaseCommand):
                         translated_data = json.dumps(translated_data)
                         self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code)
                     else:
-                        self._UPDATED_TRANSLATIONS.append({
-                            "target_block_id": str(translation_obj.target_block.block_id),
-                            "source_block_data_type": source_block_data.data_type,
-                            "target_language_code": target_language_code,
-                            "message": "Successfully fetched but no key is translated"
-                        })
+                        self._update_result_list(
+                            str(translation_obj.target_block.block_id), source_block_data.data_type, target_language_code,
+                            "Successfully fetched but no key is translated"
+                        )
                 else:
                     key_response = response_data.get(source_block_data.data_type, {})
                     if key_response.get('properties', {}).get('status') == "translated":
@@ -182,17 +216,16 @@ class Command(BaseCommand):
                         fetched_commits.update({source_block_data.data_type: key_response.get('properties', {}).get('revision')})
                         self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code)
                     else:
-                        self._UPDATED_TRANSLATIONS.append({
-                            "target_block_id": str(translation_obj.target_block.block_id),
-                            "source_block_data_type": source_block_data.data_type,
-                            "target_language_code": target_language_code,
-                            "message": "Successfully fetched but status is not translated"
-                        })
+                        self._update_result_list(
+                            str(translation_obj.target_block.block_id), source_block_data.data_type, target_language_code,
+                            "Successfully fetched but status is not translated"
+                        )
             else:
                 # Compare commits of tranlsations with existing db commits -> only update translations if commits are updated.
                 existing_translation = translation_obj.translation
                 existing_commits = translation_obj.fetched_commits
                 if source_block_data.parsed_keys:
+                    existing_translation = json.loads(existing_translation)
                     is_any_key_updated = False
                     for key, value in source_block_data.parsed_keys.items():
                         key_response = response_data.get(key, {})
@@ -201,6 +234,7 @@ class Command(BaseCommand):
                             existing_translation.update({key: key_response.get('translation')})
                             existing_commits.update({key: key_commit})
                             is_any_key_updated = True
+                    existing_translation = json.dumps(existing_translation)
                 else:
                     is_any_key_updated = False
                     key_response = response_data.get(source_block_data.data_type, {})
@@ -218,14 +252,10 @@ class Command(BaseCommand):
                 else:
                     translation_obj.last_fetched = datetime.now()
                     translation_obj.save()
-
-                    self._UPDATED_TRANSLATIONS.append({
-                        "target_block_id": str(translation_obj.target_block.block_id),
-                        "source_block_data_type": source_block_data.data_type,
-                        "target_language_code": target_language_code,
-                        "message": "Successfully fetched but commits are same"
-                    })
-
+                    self._update_result_list(
+                        str(translation_obj.target_block.block_id), source_block_data.data_type, target_language_code,
+                        "Successfully fetched but commits are same"
+                    )
 
     def _update_response_translations_in_db(self, data_dict, responses):
         """
@@ -269,12 +299,7 @@ class Command(BaseCommand):
             }
         ]
         """
-        if not self._WIKI_TRANSLATIONS_OBJECTS:
-            comparison_date = (datetime.now() - timedelta(days=3)).date()
-            self._WIKI_TRANSLATIONS_OBJECTS = WikiTranslation.objects.filter(
-                Q(translation=None) | Q(last_fetched=None) | Q(last_fetched__date__lte=comparison_date)
-            ).select_related("target_block").select_related("source_block_data")
-
+        self._UPDATED_TRANSLATIONS = []
         for response in responses:
             if not response:
                 continue;
@@ -295,8 +320,7 @@ class Command(BaseCommand):
                 )
                 continue;
 
-            translations = self._WIKI_TRANSLATIONS_OBJECTS.filter(target_block__block_id=target_block_id)
-            self._check_and_update_translations(response_data, translations, target_language_code)
+            self._check_and_update_translations(response_data, target_block_id, target_language_code)
 
     def _get_tasks_to_fetch_data_from_wiki_meta(self, data_dict, meta_client, session):
         """
