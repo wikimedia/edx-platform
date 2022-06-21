@@ -5,9 +5,10 @@ import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag, versionStatus, expendOutline } = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag, isFullyTranslated,  versionStatus, expendOutline} = props
 
   const [isCollapsed, setCollapsed] = useState(true);
+  const [approveAll, setApproveAll] = useState(false);
   const ref = useRef();
   const slide = $(ref.current);
 
@@ -15,7 +16,7 @@ function Accordion (props) {
 
   const hanldeClick = () => {
     if (units && !baseContent) {
-      fetchCourseUnit({...props, showSlide});
+      fetchCourseUnit({...props, showSlide, setApproveAll});
     } else {
       setCollapsed(!isCollapsed);
       !isCollapsed ? slide.slideUp() : slide.slideDown()
@@ -61,8 +62,10 @@ function Accordion (props) {
           destinationFlag={destinationFlag}
           enableApproveButton={(
             destinationFlag &&
-            rerunTitle != ''
+            isFullyTranslated
           )}
+          approveAll = {approveAll}
+          setApproveAll = {setApproveAll}
           {...props}
         />
       </div>

@@ -8,13 +8,6 @@ function Unit (props) {
 
   const {baseContent, rerunContent, rerunCourseId} = props;
 
-  const isValidTranslations = (data) => {
-    if (data.transcript) {
-      return data.display_name !='' && data.transcript != ''
-    }
-    return data.display_name != '' && data.content != ''
-  }
-
   const content = (data) => {
     if (data.transcript && typeof data.transcript === 'object') {
       return (
@@ -55,11 +48,10 @@ function Unit (props) {
                 versionStatus={rerunContent[content_id].version_status}
                 content_id={content_id}
                 destinationFlag={rerunContent[content_id].status.destination_flag}
+                isFullyTranslated={rerunContent[content_id].status.is_fully_translated}
                 enableApproveButton={(
                     rerunContent[content_id].status.destination_flag &&
-                    isValidTranslations(rerunContent[content_id].data) &&
-                    (!rerunContent[content_id].status.parsed_block || 
-                      rerunContent[content_id].status.is_fully_translated)
+                    rerunContent[content_id].status.is_fully_translated
                   )}
                 {...props}
               />

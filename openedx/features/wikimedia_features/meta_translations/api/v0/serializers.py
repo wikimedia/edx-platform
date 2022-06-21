@@ -4,7 +4,7 @@ Serializers for Meta-Translations v0 API(s)
 from django.utils.translation import ugettext as _
 
 from openedx.features.wikimedia_features.meta_translations.api.v0.utils import update_edx_block_from_version
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, TranslationVersion
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, TranslationVersion, WikiTranslation
 from rest_framework import serializers
 
 class CourseBlockTranslationSerializer(serializers.ModelSerializer):
@@ -12,6 +12,15 @@ class CourseBlockTranslationSerializer(serializers.ModelSerializer):
     Serializer for a courseblock
     """
     approved = serializers.BooleanField(required=False, write_only=True, default=True)
+
+
+    def _validate_data(self, instance, data):
+        """
+        Check that the start is before the stop.
+        """
+        if instance.is_translations_approved() and data['approved']:
+            raise serializers.ValidationError("block {} is already approved".format(instance.block_id))
+        return data
 
     def to_representation(self, instance):
         """
@@ -46,16 +55,17 @@ class CourseBlockTranslationSerializer(serializers.ModelSerializer):
         Update the approve status of all wikitranslations belogs to a translated block, default value of approved is True
         Create a version of a course and update applid_translation and applied_version fields of a block 
         """
-        approved = validated_data.pop('approved', True)
-        user = self._user()
-        wiki_translations = instance.wikitranslation_set.all()
-        self._update_translations_fields(wiki_translations, approved, user)
-        if approved:
-            version = instance.create_translated_version(user)
-            updated_block = update_edx_block_from_version(version)
-            if updated_block:
-                validated_data['applied_translation'] = True
-                validated_data['applied_version'] = version
+        if self._validate_data(instance, validated_data):
+            approved = validated_data.pop('approved', True)
+            user = self._user()
+            wiki_translations = instance.wikitranslation_set.all()
+            self._update_translations_fields(wiki_translations, approved, user)
+            if approved:
+                version = instance.create_translated_version(user)
+                updated_block = update_edx_block_from_version(version)
+                if updated_block:
+                    validated_data['applied_translation'] = True
+                    validated_data['applied_version'] = version
             
         return super(CourseBlockTranslationSerializer, self).update(instance, validated_data)  
 

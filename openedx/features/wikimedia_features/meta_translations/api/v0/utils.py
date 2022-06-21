@@ -122,23 +122,22 @@ def get_block_data_from_table(block):
             block_fields = {}
             base_block_fields = {}
             base_usage_key = ''
-            parsed_status = { 'parsed_block': False }
+            parsed_status = { 'parsed_block': False, 'is_fully_translated': True}
             for obj in wiki_objects:
                 data_type = obj.source_block_data.data_type
                 if WikiTranslation.is_translation_contains_parsed_keys(block.category, data_type):
                     base_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.parsed_keys)
                     base_decodings = base_decodings if base_decodings else {}
                     translated_decodings = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation, is_json = True)
-                    parsed_status['parsed_block'] = True
-                    parsed_status['is_fully_translated'] = True
                     is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
-                    if not is_valid:
-                        parsed_status['is_fully_translated'] = False
+                    parsed_status['parsed_block'] = True
+                    parsed_status['is_fully_translated'] = parsed_status['is_fully_translated'] and is_valid
                     base_block_fields[data_type] = base_decodings
                     block_fields[data_type] = translated_decodings
                 else:
                     base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.data)
                     block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation)
+                    parsed_status['is_fully_translated'] = parsed_status['is_fully_translated'] and block_fields[data_type] != ''
                 base_usage_key = str(obj.source_block_data.course_block.block_id)
             
             block_status = course_block.get_block_info()
