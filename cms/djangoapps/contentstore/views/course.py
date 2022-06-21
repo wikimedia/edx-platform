@@ -76,7 +76,7 @@ from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBA
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
 from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
 from openedx.features.wikimedia_features.meta_translations.mapping_utils import course_blocks_mapping
-from openedx.features.wikimedia_features.meta_translations.models import MetaApiButtonConfiguration
+from openedx.features.wikimedia_features.meta_translations.models import MetaTranslationConfiguration
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock
@@ -556,10 +556,10 @@ def course_listing(request):
     active_courses, archived_courses = _process_courses_list(courses_iter, in_process_course_actions, split_archived)
     in_process_course_actions = [format_in_process_course_view(uca) for uca in in_process_course_actions]
 
-    meta_api_config = MetaApiButtonConfiguration.current()
+    meta_config = MetaTranslationConfiguration.current()
     show_meta_api_buttons = False
-    if meta_api_config and meta_api_config.enabled:
-        if (request.user.is_staff and meta_api_config.staff_show_api_buttons) or meta_api_config.normal_users_show_api_buttons:
+    if meta_config and meta_config.enabled:
+        if (request.user.is_staff and meta_config.staff_show_api_buttons) or meta_config.normal_users_show_api_buttons:
             # user is staff and config for staff is set otherwise check if config for normal users is set
             show_meta_api_buttons = True
 

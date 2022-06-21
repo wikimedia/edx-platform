@@ -21,9 +21,10 @@ User = get_user_model()
 APP_LABEL = 'meta_translations'
 
 
-class MetaApiButtonConfiguration(ConfigurationModel):
+class MetaTranslationConfiguration(ConfigurationModel):
     staff_show_api_buttons = models.BooleanField(default=False)
     normal_users_show_api_buttons = models.BooleanField(default=False)
+    days_settings_for_fetch_call = models.IntegerField(default=0, verbose_name=_("Days settings for next Fetch call"))
 
     class Meta:
         app_label = APP_LABEL

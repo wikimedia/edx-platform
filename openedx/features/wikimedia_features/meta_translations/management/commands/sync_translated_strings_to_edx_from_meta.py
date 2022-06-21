@@ -8,6 +8,7 @@ import pytz
 from logging import getLogger
 from datetime import datetime, timedelta
 
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db.models import Q
 from opaque_keys.edx.keys import CourseKey, UsageKey
@@ -15,7 +16,7 @@ from django.utils import timezone
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
-    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData
+    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaTranslationConfiguration
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 
@@ -82,7 +83,12 @@ class Command(BaseCommand):
            only if 3 days have been passed since last_fetched.
         """
         tranlsation_objects = []
-        comparison_date = (timezone.now() - timedelta(days=3)).date()
+        meta_config = MetaTranslationConfiguration.current()
+        days_settings = settings.FETCH_CALL_DAYS_CONFIG_DEFAULT
+        if meta_config and meta_config.enabled:
+            days_settings = meta_config.days_settings_for_fetch_call
+
+        comparison_date = (timezone.now() - timedelta(days=days_settings)).date()
         for obj in WikiTranslation.objects.all().select_related("target_block").select_related(
             "source_block_data", "source_block_data__course_block"
         ):

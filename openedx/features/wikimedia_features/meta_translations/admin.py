@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from openedx.features.wikimedia_features.meta_translations.models import (
-   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation, MetaApiButtonConfiguration
+   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation, MetaTranslationConfiguration
 )
 
 
@@ -72,4 +72,4 @@ admin.site.register(CourseBlockData, CourseBlockDataAdmin)
 admin.site.register(CourseTranslation, CourseTranslationAdmin)
 admin.site.register(WikiTranslation, WikiTranslationAdmin)
 admin.site.register(TranslationVersion, TranslationVersionAdmin)
-admin.site.register(MetaApiButtonConfiguration, ConfigurationModelAdmin)
+admin.site.register(MetaTranslationConfiguration, ConfigurationModelAdmin)
