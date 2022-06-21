@@ -320,7 +320,10 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                        this.setField(event);
                        this.updateCertificatesDisplayBehavior();
                    case 'is-destination-course':
-                       WikiUtils.showMsgOnCourseFlagSettingUpdate(_.bind(this.updateCourseFlag, this))
+                       WikiUtils.showMsgOnCourseFlagSettingUpdate(
+                           _.bind(this.updateCourseFlag, this),
+                           _.bind(this.revertView, this)
+                        )
                        break;
                    case 'course-language':
                    case 'course-effort':
