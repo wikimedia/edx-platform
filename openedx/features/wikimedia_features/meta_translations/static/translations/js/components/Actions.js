@@ -18,11 +18,13 @@ function Actions (props) {
 
   const [enableApplyButton, setEnableApplyButton] = React.useState(false)
 
-  const approveTitle = (!destinationFlag? 'Translation is Disabled':
-                        !enableApproveButton? 'Incomplete Translation': 
-                        approved? 'Approved': 'Approve')
+  const approveTitle = (!destinationFlag ? 'Translation is Disabled' :
+                        !enableApproveButton ? 'Incomplete Translation' : 
+                        approved ? 'Approved' : 'Approve')
   
-  const applyTitle = !enableApplyButton ? 'Applied' : applied_version==selectedOption.value ? 'Apply Now': 'Apply'
+  const applyTitle = (!destinationFlag ? 'Translation is Disabled' :
+                      !enableApplyButton ? 'Applied' :
+                      'Apply')
   
   
   const updateOptionsFromVersion = () => {
@@ -53,16 +55,16 @@ function Actions (props) {
       let last_element = versions.slice(-1)[0]
       setSelectedOption({value: last_element.id, label: last_element.date});
       setButtonsVisibility((prevState)=> ({...prevState, apply: true, approve: false}));
-      setEnableApplyButton(last_element.id != applied_version || !applied);
+      destinationFlag && setEnableApplyButton(last_element.id != applied_version || !applied);
     } else {
-      setEnableApplyButton(selectedOption.value != applied_version || !applied);
+      destinationFlag && setEnableApplyButton(selectedOption.value != applied_version || !applied);
     }
   }, [versions, applied, applied_version, approved]);
 
   const handleChange = (option) => {
-    if (option != selectedOption){
+    if (option.value != selectedOption.value){
       setSelectedOption(option);
-      setEnableApplyButton(option.value != applied_version || !applied);
+      destinationFlag && setEnableApplyButton(option.value != applied_version || !applied);
       if (option.value != -1 ){
         updateTranslation({version_id: option.value, ...props});
         setButtonsVisibility((prevState)=> ({...prevState, apply: true, approve: false}));
