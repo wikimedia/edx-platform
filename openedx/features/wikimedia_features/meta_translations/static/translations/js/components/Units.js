@@ -33,6 +33,7 @@ function Units (props) {
               approved={rerunCourseUnits[unit_id].status.approved}
               versionStatus={rerunCourseUnits[unit_id].version_status}
               destinationFlag={rerunCourseUnits[unit_id].status.destination_flag}
+              isFullyTranslated={rerunCourseUnits[unit_id].status.is_fully_translated}
               {...props}
             >
               {
