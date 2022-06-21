@@ -56,7 +56,7 @@ function TranslationContent({ context }) {
     if (context.IS_ADMIN == "True") {
       return (
       <label>
-        <span>Filter My Courses</span>
+        <span className="meta-translations-message">Filter My Courses</span>
         <Switch onChange={handleAdminFilterCourses} checked={filterAdminCourses} />
       </label>
       )
@@ -71,7 +71,7 @@ function TranslationContent({ context }) {
     <div className="translations">
       {
         isFetched && (
-          <div className="message">
+          <div className="message meta-translations-message">
             {
               isEmpty(baseCourses) &&
               <p>
@@ -98,7 +98,7 @@ function TranslationContent({ context }) {
         <div className="col">
           {
           !isEmpty(rerunCourses) &&
-          <Select 
+          <Select
             placeholder="Select Rerun Course"
             onChange={handleRerunCourseChange}
             options={getOptionsFromObject(rerunCourses)}
@@ -127,7 +127,7 @@ function TranslationContent({ context }) {
                     'NA'
                   }
                 </strong>
-                <button className='btn btn-primary' onClick={handleExpendOutline}>
+                <button className='btn btn-primary btn-translations' onClick={handleExpendOutline}>
                   {!!!(expendOutline%2) && 'Expand Outline'}
                   {!!(expendOutline%2) && 'Collapse Outline'}
                 </button>
@@ -146,7 +146,7 @@ function TranslationContent({ context }) {
             }
             {
               isEmpty(courseOutline.base_course_outline) &&
-              <p className="message">
+              <p className="message meta-translations-message">
                 No Translations Found!, Please apply mapping.
               </p>
             }
