@@ -78,7 +78,7 @@
         );
     };
 
-    showMsgOnCourseFlagSettingUpdate = function(operation) {
+    showMsgOnCourseFlagSettingUpdate = function(operation, onCancelCallback) {
         ViewUtils.confirmThenRunOperation(
             StringUtils.interpolate(
                 gettext('Change can not be reverted.'),
@@ -89,7 +89,8 @@
                 gettext('Yes, Update Flag'),
                 true
             ),
-            operation
+            operation,
+            onCancelCallback
         );
     };
 
