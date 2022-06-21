@@ -25,6 +25,7 @@ function Sections(props) {
               approved={course_outline[section_id].status.approved}
               versionStatus={course_outline[section_id].version_status}
               destinationFlag={course_outline[section_id].status.destination_flag}
+              isFullyTranslated={course_outline[section_id].status.is_fully_translated}
               {...props}
             >
               <Subsections

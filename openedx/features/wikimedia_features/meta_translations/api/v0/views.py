@@ -1,12 +1,9 @@
 """
 Views for MetaTranslation v0 API(s)
 """
-
-
 from rest_framework import generics
 from rest_framework import status
 from rest_framework import permissions
-from rest_framework import viewsets
 from rest_framework.response import Response
 from xmodule.modulestore.django import modulestore
 from opaque_keys.edx.keys import UsageKey, CourseKey
@@ -18,9 +15,8 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.api.v0.utils import (
     get_courses_of_base_course, get_outline_course_to_units, get_outline_unit_to_components
     )
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, TranslationVersion, WikiTranslation
+from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, TranslationVersion
 from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import CourseBlockTranslationSerializer, CourseBlockVersionSerializer, TranslationVersionSerializer
-from openedx.features.wikimedia_features.meta_translations.api.v0.permissions import DestinationCourseOnly
 from common.djangoapps.student.roles import CourseStaffRole
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
@@ -288,35 +284,58 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
         json_data = dict(data)
         return Response(json_data, status=status.HTTP_200_OK)
 
-class CourseBlockViewSet(viewsets.ModelViewSet):
+class ApproveAPIView(generics.UpdateAPIView):
     """
-    Viewset to update Couse Block and Wiki Translations together
-    Hit this URL: /meta_translations/api/v0/<course_id>/translations/<block_id>/
-    GET API:
-        Response:
-        {
-            "block_id": "<block_id>",
-            "block_type": "chapter",
-            "course_id": "course-v1:Arbisoft+CS101+TranslatedRerun1",
-            "approved": true,
-            "applied": false,
-            "applied_version": 1,
-            "applied_version_date": 'Jun 10, 2022, 5:19 a.m',
-        }
+    API to update Approve flag of wiki_translations
+    Hit this URL: /meta_translations/api/v0/approve_translations/
     PUT API:
         Request:
         {
-            approved = true,
+            block_ids = [
+                '<block_id_1>',
+                '<block_id_2>',
+            ],
         }
-        Response of all put requests is same as the GET API
+        Response:
+        {
+            <block_id_1> : {
+                "block_id": "<block_id_1>",
+                "block_type": "chapter",
+                "course_id": "<course_id>",
+                "approved": true,
+                "applied": true,
+                "applied_version": 1,
+                "applied_version_date": 'Jun 10, 2022, 5:19 a.m',
+            },
+            <block_id_2> : {
+                "block_id": "<block_id_1>",
+                "block_type": "sequential",
+                "course_id": "<course_id>",
+                "approved": true,
+                "applied": true,
+                "applied_version": 1,
+                "applied_version_date": 'Jun 10, 2022, 5:19 a.m',
+            }
+        }
+    
     """
-    lookup_field = 'block_id'
     serializer_class = CourseBlockTranslationSerializer
-    permission_classes = (permissions.IsAuthenticated, DestinationCourseOnly)
+    permission_classes = (permissions.IsAuthenticated,)
 
-    def get_queryset(self):
-        course_id = self.kwargs['course_key']
-        return CourseBlock.objects.filter(course_id=course_id)
+    def get_queryset(self, block_ids):
+        return CourseBlock.objects.filter(block_id__in=block_ids)
+
+    def update(self, request):
+        block_ids = request.data.get('block_ids', [])
+        blocks = self.get_queryset(block_ids)
+        json_data = {}
+        for block in blocks:
+            serializer = self.get_serializer(block, data={'approved': True})
+            serializer.is_valid(raise_exception=True)
+            self.perform_update(serializer)
+            data = serializer.data
+            json_data[data['block_id']] = data
+        return Response(json_data, status=status.HTTP_200_OK)
 
 class TranslatedVersionRetrieveAPIView(generics.RetrieveAPIView):
     """

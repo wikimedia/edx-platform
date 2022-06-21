@@ -17,12 +17,13 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 log = getLogger(__name__)
 
 
-def get_children_block_ids(block_location):
+def get_children_block_ids(block_id, depth=4):
     """
     Get children_ids from a current block_location
     """
+    block_location = UsageKey.from_string(block_id)
     block = modulestore().get_item(block_location)
-    course_blocks = get_recursive_blocks_data(block, 4, structured=False)
+    course_blocks = get_recursive_blocks_data(block, depth=depth, structured=False)
     return [UsageKey.from_string(course_block['usage_key']) for course_block in course_blocks]
 
 def is_destination_block(block_id):

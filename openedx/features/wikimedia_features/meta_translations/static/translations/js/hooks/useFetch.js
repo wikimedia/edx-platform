@@ -40,7 +40,7 @@ export default function useFetch(context) {
       }
 
     const fetchCourseUnit = (props) => {
-      const {rerunCourseUnitKey, subsection_id, section_id, unit_id, setCourseOutline, setLoading, showSlide} = props;
+      const {rerunCourseUnitKey, subsection_id, section_id, unit_id, setCourseOutline, setLoading, showSlide, setApproveAll} = props;
 
       setLoading(true);
       client.get(`${context.COURSE_UNIT_URL}/${rerunCourseUnitKey}`)
@@ -61,9 +61,17 @@ export default function useFetch(context) {
 
           return state
         });
+        return res.data.components_data
       })
-      .then(() => {
-        showSlide()
+      .then((units) => {
+        showSlide();
+        let check = Object.keys(units).some((unit_id)=>{
+          let component = units[unit_id]
+          if (!component.status.approved && component.status.destination_flag && component.status.is_fully_translated)
+            return true
+          return false
+        })
+        setApproveAll(check);
       })
       .catch((error) => {
         notification(toast.error, "Unable to load content.");
