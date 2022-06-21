@@ -312,7 +312,10 @@ define(['js/views/validation', 'codemirror', 'underscore', 'jquery', 'jquery.ui'
                        this.model.set('self_paced', JSON.parse(event.currentTarget.value));
                        break;
                    case 'is-destination-course':
-                       WikiUtils.showMsgOnCourseFlagSettingUpdate(_.bind(this.updateCourseFlag, this))
+                       WikiUtils.showMsgOnCourseFlagSettingUpdate(
+                           _.bind(this.updateCourseFlag, this),
+                           _.bind(this.revertView, this)
+                        )
                        break;
                    case 'course-language':
                    case 'course-effort':
