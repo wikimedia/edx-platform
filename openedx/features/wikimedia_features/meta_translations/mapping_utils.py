@@ -4,6 +4,8 @@ Files containe helping functions associated with blocks mapping between translat
 
 import json
 from logging import getLogger
+from lxml import etree
+from django.conf import settings
 
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 from openedx.features.wikimedia_features.meta_translations.models import (
@@ -13,6 +15,32 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 
 log = getLogger(__name__)
 
+def validated_problem_component(xml_str):
+    """
+    Validate the problem xml contains any tag under setting.ACCEPTED_PROBLEM_XML_TAGS
+    Arguments:
+        xml_str: (str) xml data
+    Returns:
+        bool: True/False
+    """
+    parser = etree.XMLParser(remove_blank_text=True)
+    problem = etree.XML(xml_str, parser=parser)
+    if problem.tag == 'problem':
+        if problem.getchildren():
+            for tag in settings.ACCEPTED_PROBLEM_XML_TAGS:
+                if problem.find(tag) is not None:
+                    return True
+        else:
+            return True
+    return False
+
+def check_block_data(block):
+    """
+    Check block data is valid for mapping or not
+    """
+    if block.category == 'problem':
+        return validated_problem_component(block.data)
+    return True
 
 def get_block_data(block):
     """
@@ -23,7 +51,7 @@ def get_block_data(block):
     Returns:
         dict of extracted data
     """
-    if block.category in COMPONENTS_CLASS_MAPPING:
+    if block.category in COMPONENTS_CLASS_MAPPING and check_block_data(block):
         data = COMPONENTS_CLASS_MAPPING[block.category]().get(block)
         return {
             'usage_key': str(block.scope_ids.usage_id),
