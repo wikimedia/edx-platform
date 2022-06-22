@@ -6,6 +6,7 @@ define(['domReady', 'jquery', 'underscore', 'js/utils/cancel_on_escape', 'js/vie
             name: '.new-course-name',
             org: '.new-course-org',
             number: '.new-course-number',
+            language : '.new-course-language',
             run: '.new-course-run',
             save: '.new-course-save',
             errorWrapper: '.create-course .wrap-error',
@@ -51,12 +52,14 @@ define(['domReady', 'jquery', 'underscore', 'js/utils/cancel_on_escape', 'js/vie
             var org = $newCourseForm.find('.new-course-org').val();
             var number = $newCourseForm.find('.new-course-number').val();
             var run = $newCourseForm.find('.new-course-run').val();
+            var language = $newCourseForm.find('.new-course-language').val();
 
             var course_info = {
                 org: org,
                 number: number,
                 display_name: display_name,
-                run: run
+                run: run,
+                language: language
             };
 
             analytics.track('Created a Course', course_info);
@@ -172,6 +175,45 @@ define(['domReady', 'jquery', 'underscore', 'js/utils/cancel_on_escape', 'js/vie
             };
         };
 
+        var handleTranslationsApiButtonPress = function(event) {
+            event.preventDefault();
+            var action, msg;
+            if (event.target.id == "meta-send-translations-api")
+            {
+                action = "send";
+                msg = "Sending Translations";
+            }
+            else if (event.target.id == "meta-fetch-translations-api")
+            {
+                action = "fetch";
+                msg = "Fetching Translations";
+            }
+            else {
+                alert("Error: Unable to understand function");
+                return;
+            }
+            ViewUtils.runOperationShowingMessage(
+                gettext(msg),
+                function() {
+                    return $.ajax({
+                        url: $("#" + event.target.id).data().blocksSendFetchUrl,
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            'action': action
+                        }),
+                        beforeSend: function() {
+                            $("#"+ event.target.id).prop("disabled", true);
+                        },
+                        success: function(response) {
+                            $("#"+ event.target.id).prop("disabled", false);
+                        },
+                    });
+                }
+            );
+        }
+
         var onReady = function() {
             var courseTabHref = $('#course-index-tabs .courses-tab a').attr('href');
             var libraryTabHref = $('#course-index-tabs .libraries-tab a').attr('href');
@@ -179,6 +221,8 @@ define(['domReady', 'jquery', 'underscore', 'js/utils/cancel_on_escape', 'js/vie
 
             $('.new-course-button').bind('click', addNewCourse);
             $('.new-library-button').bind('click', addNewLibrary);
+            $('.meta-fetch-translations-api').bind('click', handleTranslationsApiButtonPress )
+            $('.meta-send-translations-api').bind('click', handleTranslationsApiButtonPress )
 
             $('.dismiss-button').bind('click', ViewUtils.deleteNotificationHandler(function() {
                 ViewUtils.reload();

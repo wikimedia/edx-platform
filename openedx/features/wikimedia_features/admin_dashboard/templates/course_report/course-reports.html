@@ -103,11 +103,37 @@
             >${_("Generate")}</button>
           </td>
         </tr>
+        <tr class="course-version-report">
+          <td>
+            <span class="text">${_("Course Version Report (Detailed - Per Course)")}</span>
+          </td>
+          <td class="action">
+            <button
+              class="btn btn-primary"
+              disabled
+              name="course-version-report-detailed"
+              data-endpoint="${ section_data['key']['course_version_report_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="course-version-report">
+          <td>
+            <span class="text">${_("Course Version Report (Aggregate)")}</span>
+          </td>
+          <td class="action">
+            <button
+              class="btn btn-primary"
+              disabled
+              name="course-version-report-total"
+              data-endpoint="${ section_data['key']['course_version_report_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
         <tr class="multiple-course-report">
           <td>
             <span class="text">${_("Average grade report for multiple courses")}</span>
             <span class="info-text">${_("Different grading schemes can affect the comparison.")}</span>
-            
+
           </td>
           <td class="action">
             <button
@@ -143,11 +169,17 @@
         )}
       </div>
     </div>
+    <div style="display: none" id="base_courses_list">${ base_courses_list }</div>
   </div>
 % endif
 <%block name="head_extra">
     <link rel="stylesheet" type="text/css" href="/static/css/select2.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
 </%block>
+<script>
+  $(function(){
+      var base_courses_list = '${ base_courses_list |n, dump_js_escaped_json }';
+  });
+</script>
 <script type="text/javascript" src="${static.url('admin_dashboard/js/select2.min.js')}"></script>
 <script type="text/javascript" src="${static.url('admin_dashboard/js/course_reports.js')}"></script>

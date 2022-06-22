@@ -6,10 +6,10 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
     'common/js/components/utils/view_utils', 'js/views/container', 'js/views/xblock',
     'js/views/components/add_xblock', 'js/views/modals/edit_xblock', 'js/views/modals/move_xblock_modal',
     'js/models/xblock_info', 'js/views/xblock_string_field_editor', 'js/views/xblock_access_editor',
-    'js/views/pages/container_subviews', 'js/views/unit_outline', 'js/views/utils/xblock_utils'],
+    'js/views/pages/container_subviews', 'js/views/unit_outline', 'js/views/utils/xblock_utils', 'js/views/utils/wiki_utils'],
     function($, _, Backbone, gettext, BasePage, ViewUtils, ContainerView, XBlockView, AddXBlockComponent,
           EditXBlockModal, MoveXBlockModal, XBlockInfo, XBlockStringFieldEditor, XBlockAccessEditor,
-          ContainerSubviews, UnitOutlineView, XBlockUtils) {
+          ContainerSubviews, UnitOutlineView, XBlockUtils, WikiUtils) {
         'use strict';
         var XBlockContainerPage = BasePage.extend({
             // takes XBlockInfo as a model
@@ -20,7 +20,8 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                 'click .duplicate-button': 'duplicateXBlock',
                 'click .move-button': 'showMoveXBlockModal',
                 'click .delete-button': 'deleteXBlock',
-                'click .new-component-button': 'scrollToNewComponentButtons'
+                'click .new-component-button': 'scrollToNewComponentButtons',
+                'click .checkbox-direction-button': 'handleStatusChangeEvent'
             },
 
             options: {
@@ -185,13 +186,22 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                     self = this,
                     modal = new EditXBlockModal(options);
                 event.preventDefault();
-
-                modal.edit(xblockElement, this.model, {
-                    readOnlyView: !this.options.canEdit,
-                    refresh: function() {
-                        self.refreshXBlock(xblockElement, false);
-                    }
-                });
+                var location = xblockElement.data('locator');
+                var checkBoxId = `${location}_checkboxTranslation`;
+                var operation = function(){
+                    modal.edit(xblockElement, self.model, {
+                        readOnlyView: !self.options.canEdit,
+                        refresh: function() {
+                            self.refreshXBlock(xblockElement, false);
+                        }
+                    });
+                };
+                if (!options && document.getElementById(checkBoxId) && document.getElementById(checkBoxId).checked){
+                    WikiUtils.showWarningOnEdit(operation);
+                } else {
+                    operation();
+                }
+                
             },
 
             editVisibilitySettings: function(event) {
@@ -226,6 +236,26 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
             deleteXBlock: function(event) {
                 event.preventDefault();
                 this.deleteComponent(this.findXBlockElement(event.target));
+            },
+
+            /**
+             * Direction Status event handler.
+             * Called when checkbox is updated
+             */
+            handleStatusChangeEvent: function(event) {
+                var xblockElement = this.findXBlockElement(event.target);
+                event.preventDefault();
+                var location = xblockElement.data('locator');
+                var checkBoxId = `${location}_checkboxTranslation`;
+                var checkBoxValue = !document.getElementById(checkBoxId).checked;
+                WikiUtils.updateDirectionStatus(xblockElement, checkBoxValue)
+                    .done(function(data) {
+                        if ('success' in data) {
+                            document.getElementById(checkBoxId).checked = data.destination_flag;
+                            var title = data.destination_flag ? gettext('Disable Translations') : gettext('Enable Translations');
+                            $(document.getElementById(checkBoxId)).attr('data-tooltip', title);
+                        }   
+                    });
             },
 
             createPlaceholderElement: function() {
