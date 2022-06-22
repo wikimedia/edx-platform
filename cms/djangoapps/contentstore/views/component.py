@@ -25,6 +25,7 @@ from common.djangoapps.student.auth import has_course_author_access
 from common.djangoapps.xblock_django.api import authorable_xblocks, disabled_xblocks
 from common.djangoapps.xblock_django.models import XBlockStudioConfigurationFlag
 from openedx.core.lib.xblock_utils import get_aside_from_xblock, is_xblock_aside
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from xmodule.modulestore.django import modulestore
 from xmodule.modulestore.exceptions import ItemNotFoundError
 
@@ -201,7 +202,8 @@ def container_handler(request, usage_key_string):
                 'xblock_info': xblock_info,
                 'draft_preview_link': preview_lms_link,
                 'published_preview_link': lms_link,
-                'templates': CONTAINER_TEMPLATES
+                'templates': CONTAINER_TEMPLATES,
+                'is_translated_or_base_course': CourseTranslation.is_base_or_translated_course(course.id)
             })
     else:
         return HttpResponseBadRequest("Only supports HTML requests")

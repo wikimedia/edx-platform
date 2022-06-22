@@ -196,12 +196,15 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                         }
                     });
                 };
+                var isTranslatedOrBaseData = $("#python-context-var").data().isTranslatedOrBase;
                 if (!options && document.getElementById(checkBoxId) && document.getElementById(checkBoxId).checked){
-                    WikiUtils.showWarningOnEdit(operation);
+                    WikiUtils.showWarningOnTranslatedRerunEdit(operation);
+                } else if (isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
+                    WikiUtils.showWarningOnBaseCourseEdit(operation)
                 } else {
                     operation();
                 }
-                
+
             },
 
             editVisibilitySettings: function(event) {
@@ -254,7 +257,7 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                             document.getElementById(checkBoxId).checked = data.destination_flag;
                             var title = data.destination_flag ? gettext('Disable Translations') : gettext('Enable Translations');
                             $(document.getElementById(checkBoxId)).attr('data-tooltip', title);
-                        }   
+                        }
                     });
             },
 
