@@ -100,7 +100,7 @@ function Actions (props) {
   }
 
   return (
-    <div className="btn-box">
+    <div className="col buttons-col btn-box">
       {
         <Select
           className="options"
@@ -129,21 +129,21 @@ function Actions (props) {
       }
       {
         buttonsVisibility.apply && applyTitle!='Applied' && (
-          <span className={`btn-translations ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
+          <span className={`btn-translations btn-action ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
             APPLY
           </span>
         )
       }
       {
         buttonsVisibility.approve && (
-          <span className={`btn-translations ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={handleApprove}>
+          <span className={`btn-translations btn-action ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={handleApprove}>
             APPROVE
           </span>
         )
       }
       {
         buttonsVisibility.approveAll && (
-          <span className={`btn-translations ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
+          <span className={`btn-translations btn-action ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
             APPROVE ALL
           </span>
         )
