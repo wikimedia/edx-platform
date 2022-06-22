@@ -41,7 +41,9 @@ from openedx.core.djangoapps.bookmarks import api as bookmarks_api
 from openedx.core.lib.gating import api as gating_api
 from openedx.core.lib.xblock_utils import hash_resource, request_token, wrap_xblock, wrap_xblock_aside
 from openedx.core.toggles import ENTRANCE_EXAMS
-from openedx.features.wikimedia_features.meta_translations.utils import get_block_status, is_destination_block, is_destination_course
+from openedx.features.wikimedia_features.meta_translations.utils import (
+    get_block_status, is_destination_block, is_destination_course, handle_base_course_block_deletion
+)
 from xmodule.course_module import DEFAULT_START_DATE
 from xmodule.library_tools import LibraryToolsService
 from xmodule.modulestore import EdxJSONEncoder, ModuleStoreEnum
@@ -195,6 +197,8 @@ def xblock_handler(request, usage_key_string):
                 return HttpResponse(status=406)
 
         elif request.method == 'DELETE':
+            if CourseTranslation.is_base_course(str(usage_key.course_key)):
+                handle_base_course_block_deletion(usage_key)
             _delete_item(usage_key, request.user)
             return JsonResponse()
         else:

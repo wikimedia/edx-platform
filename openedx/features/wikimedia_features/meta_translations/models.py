@@ -72,6 +72,7 @@ class CourseBlock(models.Model):
     lang = jsonfield.JSONField(default=json.dumps([]))
     applied_translation = models.BooleanField(default=False)
     applied_version = models.ForeignKey(TranslationVersion, null=True, blank=True, on_delete=models.CASCADE)
+    deleted = models.BooleanField(default=False)
 
     @classmethod
     def create_course_block_from_dict(cls, block_data, course_id, create_block_data=True):
@@ -117,6 +118,7 @@ class CourseBlock(models.Model):
         existing_languages = json.loads(self.lang)
         if language not in existing_languages:
             existing_languages.append(language)
+            log.info("Target language: {} has been added to language list.".format(language))
             self.lang = json.dumps(existing_languages)
             self.save()
 
@@ -127,6 +129,7 @@ class CourseBlock(models.Model):
         existing_languages = json.loads(self.lang)
         if language in existing_languages:
             existing_languages.remove(language)
+            log.info("Target language: {} has been removed from language list.".format(language))
             self.lang = json.dumps(existing_languages)
             self.save()
 
@@ -164,32 +167,64 @@ class CourseBlock(models.Model):
         Server can be informed that translation of this block is not needed anymore.
         """
         if self.is_destination():
+            log.info("Update flag to Source for block with id: {}, type: {}".format(
+                self.block_id, self.block_type
+            ))
             source_block = self.get_source_block()
             if source_block:
+                log.info("Linked source block found: {} for target block: {}.".format(
+                    source_block.block_id, self.block_id
+                ))
                 source_block.remove_mapping_language(target_course_language)
+                log.info("Updated language list: {} for linked source block: {} where target block: {} and target language: {}.".format(
+                    source_block.lang, source_block.block_id, self.block_id, target_course_language
+                ))
                 for data in source_block.courseblockdata_set.all():
                     data.mapping_updated = True
                     data.save()
             self.direction_flag = CourseBlock._Source
             self.save()
+            log.info("Block with block_id {}, block_type {} has been updated to Source.".format(
+                self.block_id, self.block_type
+            ))
             return self
+        else:
+            log.info("Block with block_id {}, block_type {} is already a source block.".format(
+                self.block_id, self.block_type
+            ))
 
     def update_flag_to_destination(self, target_course_language):
         """
         When block direction is updated from Source to Destination, language in linked source block will be
         updated and mapping_updated will be set to true so that on next send_translation crone job, Meta
-        Server can be informed that translation of this block is needed.
+        Server can be informed that translation of this block is needed in this language as well.
         """
         if self.is_source():
+            log.info("Update flag to Destination for block with id: {}, type: {}".format(
+                self.block_id, self.block_type
+            ))
             source_block = self.get_source_block()
             if source_block:
+                log.info("Linked source block found: {} for target block: {}.".format(
+                    source_block.block_id, self.block_id
+                ))
                 source_block.add_mapping_language(target_course_language)
+                log.info("Updated language list: {} for linked source block: {} where target block: {} and target language: {}.".format(
+                    source_block.lang, source_block.block_id, self.block_id, target_course_language
+                ))
                 for data in source_block.courseblockdata_set.all():
                     data.mapping_updated = True
                     data.save()
                 self.direction_flag = CourseBlock._DESTINATION
                 self.save()
+                log.info("Block with block_id {}, block_type {} has been updated to Destination.".format(
+                    self.block_id, self.block_type
+                ))
                 return self
+        else:
+            log.info("Block with block_id {}, block_type {} is already a destination block.".format(
+                self.block_id, self.block_type
+            ))
 
     def get_parsed_data(self, data_type, data):
         """
@@ -339,6 +374,11 @@ class WikiTranslation(models.Model):
             # target block and source block will contain same reference key if block is created through edX rerun.
             if reference_key:
                 base_course_block_data = base_course_blocks_data.get(course_block__block_id__endswith=reference_key, data_type=key)
+                if base_course_block_data.course_block.deleted:
+                    log.info("Unable to create mapping for reference key {} as source block state is deleted.".format(
+                        key, value, reference_key
+                    ))
+                    return
                 WikiTranslation.objects.create(
                     target_block=target_block,
                     source_block_data=base_course_block_data,
@@ -355,6 +395,11 @@ class WikiTranslation(models.Model):
             try:
                 # For target blocks - added after rerun creation.
                 base_course_block_data = base_course_blocks_data.get(data_type=key, data=value)
+                if base_course_block_data.course_block.deleted:
+                    log.info("Unable to create mapping for key: {}, value:{} as source block state is deleted.".format(
+                        key, value
+                    ))
+                    return
                 WikiTranslation.objects.create(
                     target_block=target_block,
                     source_block_data=base_course_block_data,
