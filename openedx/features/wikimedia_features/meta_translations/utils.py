@@ -101,3 +101,45 @@ def reset_fetched_translation_and_version_history(base_course_block_data):
             target_block.save()
 
             TranslationVersion.objects.filter(block_id=target_block.block_id).delete()
+
+def handle_base_course_block_deletion(usage_key):
+    """
+    Arguments:
+        usage_key: deleted base course block.
+
+    For given source block and all of it's children:
+        - Disable translations for linked target blocks i.e update block direction flag to Source from Destination.
+        - Delete Mapping i.e delete WikiTranslation entries for source block.
+        - Set deleted flag to True on source CourseBlock
+
+    Note:
+        - We are setting deleted flag to True which will not allow any mapping creation in future i.e even
+        if user clicks on mapping button, mapping for target blocks linked with particular deleted source
+        blocks - won't be created.
+
+        - We are not deleting CourseBlocks and CourseBlocksData from db and just updating language list
+        and delete flag on CourseBlock because in next send call, meta server needs to be updated that
+        translations for this base course block is not needed any more.
+    """
+    block_id = str(usage_key)
+    children_ids = get_children_block_ids(block_id)
+    log.info("Children ids for deletion: {}".format(children_ids))
+    for child_block_id in children_ids:
+        try:
+            course_block = CourseBlock.objects.get(block_id=str(child_block_id))
+            log.info("----> Start processing deletion of source block with block_id {}, block_type {}".format(
+                course_block.block_id, course_block.block_type
+            ))
+            linked_target_blocks_mapping = WikiTranslation.objects.filter(source_block_data__course_block=course_block)
+            log.info("Number of linked blocks found: {}".format(len(linked_target_blocks_mapping)))
+            for mapping in linked_target_blocks_mapping:
+                target_block = mapping.target_block
+                target_language_code = get_course_by_id(target_block.course_id).language
+                target_block.update_flag_to_source(target_language_code)
+                mapping.delete()
+            course_block.refresh_from_db()
+            course_block.deleted = True
+            course_block.save()
+        except CourseBlock.DoesNotExist:
+            log.info("Unable to find course block with block_id {}".format(str(child_block_id)))
+            pass
