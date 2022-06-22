@@ -317,7 +317,7 @@ class VideoTranscriptTransformer(WikiTransformer):
             updated_locations = []
             for key in meta_keys:
                 if key in encodings:
-                    updated_locations.append(encodings[key])
+                    updated_locations.append(encodings[key].strip('\n'))
                 else:
                     raise Exception('{} not found in translated data'.format(key))
         
