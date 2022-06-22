@@ -246,7 +246,7 @@ class CourseBlock(models.Model):
         snapshot = {}
         for wikitranslation in existing_mappings:
             if wikitranslation.source_block_data.data_type in settings.DATA_TYPES_WITH_PARCED_KEYS and self.block_type in settings.TRANSFORMER_CLASS_MAPPING:
-                snapshot[wikitranslation.source_block_data.data_type] = json.loads(wikitranslation.translation)
+                snapshot[wikitranslation.source_block_data.data_type] = json.loads(wikitranslation.translation) if wikitranslation.translation else {}
             else:
                 snapshot[wikitranslation.source_block_data.data_type] = wikitranslation.translation
         return snapshot

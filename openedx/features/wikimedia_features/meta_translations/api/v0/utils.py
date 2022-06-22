@@ -115,10 +115,13 @@ def get_block_data_from_table(block):
         try:
             usage_key = str(block.scope_ids.usage_id)
             course_block = CourseBlock.objects.get(block_id=usage_key)
-        except CourseBlock.DoesNotExist:
-            log.info("Mapping Missing -> Block {} is not added into the outline".format(usage_key))
-        else:
             wiki_objects = course_block.wikitranslation_set.all()
+            if not wiki_objects:
+                log.info("Block Found - Mapping Missing -> Block {} is not added into the outline".format(usage_key))
+                return {}, {}
+        except CourseBlock.DoesNotExist:
+            log.info("Block Not Found - Mapping Missing -> Block {} is not added into the outline".format(usage_key))
+        else:
             block_fields = {}
             base_block_fields = {}
             base_usage_key = ''
