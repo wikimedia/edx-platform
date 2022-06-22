@@ -86,7 +86,7 @@ function Actions (props) {
     }
   }
 
-  const hanldeApprove = (e) => {
+  const handleApprove = (e) => {
     e.stopPropagation();
     if (!approved && enableApproveButton){
         approveCourseOutline({...props});
@@ -129,21 +129,21 @@ function Actions (props) {
       }
       {
         buttonsVisibility.apply && applyTitle!='Applied' && (
-          <span className={`btn btn-translations ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
+          <span className={`btn-translations ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
             APPLY
           </span>
         )
       }
       {
         buttonsVisibility.approve && (
-          <span className={`btn btn-translations ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={hanldeApprove}>
+          <span className={`btn-translations ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={handleApprove}>
             APPROVE
           </span>
         )
       }
       {
         buttonsVisibility.approveAll && (
-          <span className={`btn btn-translations ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
+          <span className={`btn-translations ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
             APPROVE ALL
           </span>
         )
