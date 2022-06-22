@@ -18,6 +18,8 @@ function Actions (props) {
 
   const [enableApplyButton, setEnableApplyButton] = React.useState(false)
 
+  const [applyTrigger, setApplyTrigger] = React.useState(false)
+
   const approveTitle = (!destinationFlag ? 'Translation is Disabled' :
                         !enableApproveButton ? 'Incomplete Translation' : 
                         approved ? 'Approved' : 'Approve')
@@ -51,13 +53,14 @@ function Actions (props) {
 
   useEffect(() => {
     updateOptionsFromVersion(approved);
-    if (approved) {
+    if (approved && !applyTrigger) {
       let last_element = versions.slice(-1)[0]
       setSelectedOption({value: last_element.id, label: last_element.date});
       setButtonsVisibility((prevState)=> ({...prevState, apply: true, approve: false}));
       destinationFlag && setEnableApplyButton(last_element.id != applied_version || !applied);
     } else {
       destinationFlag && setEnableApplyButton(selectedOption.value != applied_version || !applied);
+      setApplyTrigger(false);
     }
   }, [versions, applied, applied_version, approved]);
 
@@ -79,6 +82,7 @@ function Actions (props) {
     e.stopPropagation();
     if (enableApplyButton){
       applyCourseVersion({version_id: selectedOption.value, ...props});
+      setApplyTrigger(true);
     }
   }
 
