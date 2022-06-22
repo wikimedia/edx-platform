@@ -20,6 +20,13 @@ def plugin_settings(settings):
         'problem': ProblemTransformer,
         'video': VideoTranscriptTransformer,
     }
+    settings.ACCEPTED_PROBLEM_XML_TAGS = [
+      'choiceresponse',
+      'optionresponse',
+      'multiplechoiceresponse',
+      'numericalresponse',
+      'stringresponse',
+    ]
 
     settings.WIKI_META_BASE_API_URL = "https://language-mleb-master.wmcloud.org/api.php"
     settings.WIKI_META_CONTENT_MODEL = "translate-messagebundle"

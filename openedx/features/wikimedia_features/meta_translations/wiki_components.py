@@ -1,6 +1,7 @@
 import os
 import json
 
+from lxml import etree
 from logging import getLogger
 from abc import ABC, abstractmethod
 from webob import Request
@@ -112,10 +113,10 @@ class HtmlComponent(WikiComponent):
         Returns:
             dict of extracted data
         """
-        return {
-            "display_name": block.display_name,
-            "content": block.data
-        }
+        data = {'display_name': block.display_name}
+        if block.data:
+            data['content'] = block.data
+        return data
 
     def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
         """
@@ -172,10 +173,14 @@ class ProblemComponent(WikiComponent):
         Returns:
             dict of extracted data
         """
-        return {
-            "display_name": block.display_name,
-            "content": block.data
-        }
+        data = {'display_name': block.display_name}
+        if block.data:
+            parser = etree.XMLParser(remove_blank_text=True)
+            problem = etree.XML(block.data, parser=parser)
+            if problem.getchildren():
+                data['content'] = block.data
+                
+        return data
 
     def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
         """
