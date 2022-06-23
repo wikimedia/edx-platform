@@ -1197,6 +1197,7 @@ def settings_handler(request, course_key_string):  # lint-amnesty, pylint: disab
                 'upgrade_deadline': upgrade_deadline,
                 'course_authoring_microfrontend_url': course_authoring_microfrontend_url,
                 'is_destination_course': is_destination_course(course_key),
+                'is_mapped_course': bool(CourseTranslation.is_base_or_translated_course(course_key))
             }
             if is_prerequisite_courses_enabled():
                 courses, in_process_course_actions = get_courses_accessible_to_user(request)
