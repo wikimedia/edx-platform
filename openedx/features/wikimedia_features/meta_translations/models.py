@@ -455,9 +455,17 @@ class CourseTranslation(models.Model):
     @classmethod
     def is_base_or_translated_course(cls, course_key):
         """
-        Returns bool indicating if course is a base course or a translated version of some base course.
+        Returns string indicating if course is a base course or a translated version of some base course.
+        For base course -> returns "Base"
+        For translated rerun -> returns "Translated"
+        else returns None
         """
-        return cls.objects.filter(Q(course_id=course_key) | Q(base_course_id=course_key)).exists()
+        if cls.objects.filter(base_course_id=course_key).exists():
+            return "Base"
+        elif cls.objects.filter(course_id=course_key).exists():
+            return "Translated"
+        else:
+            return ""
 
     @classmethod
     def is_base_course(cls, course_id):
