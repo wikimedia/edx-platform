@@ -324,7 +324,8 @@ def course_rerun_handler(request, course_key_string):
                 'display_name': course_module.display_name,
                 'user': request.user,
                 'course_creator_status': _get_course_creator_status(request.user),
-                'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False)
+                'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False),
+                'is_translated_rerun': CourseTranslation.is_base_or_translated_course(course_key).upper() == "TRANSLATED"
             })
 
 
@@ -334,6 +335,7 @@ def course_rerun_handler(request, course_key_string):
 def course_search_index_handler(request, course_key_string):
     """
     The restful handler for course indexing.
+
     GET
         html: return status of indexing task
         json: return status of indexing task
@@ -867,7 +869,7 @@ def _create_or_rerun_course(request):
     """
     try:
         # meta-translation feature, to identify type of rerun
-        is_basic_rerun = request.json.get('basic_rerun')
+        is_translated_rerun = request.json.get('translated_rerun')
         language = request.json.get('language')
         org = request.json.get('org')
         course = request.json.get('number', request.json.get('course'))
@@ -879,12 +881,32 @@ def _create_or_rerun_course(request):
 
         if not has_course_creator_role:
             raise PermissionDenied()
+        source_course_key = request.json.get('source_course_key')
 
         # allow/disable unicode characters in course_id according to settings
         if not settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID'):
             if _has_non_ascii_characters(org) or _has_non_ascii_characters(course) or _has_non_ascii_characters(run):
                 return JsonResponse(
                     {'error': _('Special characters not allowed in organization, course number, and course run.')},
+                    status=400
+                )
+
+        if is_translated_rerun:
+            if not language:
+                return JsonResponse(
+                    {'error': _('Course Language is required field for Translated rerun.')},
+                    status=400
+                )
+            elif CourseTranslation.is_translated_rerun_exists_in_language(source_course_key, language):
+                return JsonResponse(
+                    {'error': _('Translated rerun for Source Course in selected language already exists.')},
+                    status=400
+                )
+
+            source_course_details = CourseDetails.fetch(CourseKey.from_string(source_course_key))
+            if not source_course_details or not source_course_details.source_course_language:
+                return JsonResponse(
+                    {'error': _('Translated rerun can not be created for the base course with no language. Please set base course language from settings.')},
                     status=400
                 )
 
@@ -902,11 +924,10 @@ def _create_or_rerun_course(request):
         definition_data = {'wiki_slug': wiki_slug}
         fields.update(definition_data)
 
-        source_course_key = request.json.get('source_course_key')
         if source_course_key:
             source_course_key = CourseKey.from_string(source_course_key)
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
-            if not is_basic_rerun:
+            if is_translated_rerun:
                 CourseTranslation.set_course_translation(destination_course_key, source_course_key)
                 course_blocks_mapping(destination_course_key)
             return JsonResponse({
