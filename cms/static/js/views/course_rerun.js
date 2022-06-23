@@ -45,10 +45,10 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
                 number: number,
                 display_name: display_name,
                 run: run,
-                basic_rerun: rerun_type=="basic" ? true : false
+                translated_rerun: rerun_type=="translated" ? true : false
             };
 
-            if (rerun_type != 'basic'){
+            if (rerun_type == 'translated'){
                 courseInfo.language = language
             }
 
@@ -97,7 +97,8 @@ define(['domReady', 'jquery', 'underscore', 'js/views/utils/create_course_utils'
                     languageFilter.slideDown()
                 ;
             });
-
+            $("#basic-rerun").prop("checked", true);
+            languageFilter.slideUp();
             CreateCourseUtils.configureHandlers();
         };
 
