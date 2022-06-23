@@ -5,7 +5,7 @@ import useClient from "./useClient";
 export default function useFetch(context) {
     const { client, notification } = useClient();
 
-    const fetchCourses = (setCourses, setLoading, only_admin_created_courses=false) => {
+    const fetchCourses = (setCourses, setLoading, setIsFetched, only_admin_created_courses=false) => {
       setLoading(true);
       let url = context.COURSES_URL
       if(only_admin_created_courses){
@@ -21,6 +21,7 @@ export default function useFetch(context) {
       })
       .finally(() => {
         setLoading(false);
+        setIsFetched(true);
       })
     }
 
