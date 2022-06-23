@@ -18,13 +18,14 @@ function TranslationContent({ context }) {
   const { fetchCourses, fetchCourseOutline } = useFetch(context);
   const [filterAdminCourses, setFilterAdminCourses] = useState(false);
   const [expendOutline, setExpendOutline] = useState(0);
+  const [isFetched, setIsFetched] = useState(false);
 
   const getOptionsFromObject = (object) => {
     return Object.keys(object).map(course => ({label: object[course].title, value: object[course].id}));
   }
 
   useEffect(() => {
-    fetchCourses(setBaseCourses, setLoading, filterAdminCourses);
+    fetchCourses(setBaseCourses, setLoading, setIsFetched, filterAdminCourses);
   }, [filterAdminCourses]);
 
   const handleBaseCourseChange = (option) => {
@@ -68,15 +69,21 @@ function TranslationContent({ context }) {
 
   return (
     <div className="translations">
-      <div className="message">
-        {
-          isEmpty(baseCourses) &&
-          <p>
-            No Translated Course Found!
-          </p>
-        }
-      </div>
-      {renderAdminButton()}
+      {
+        isFetched && (
+          <div className="message">
+            {
+              isEmpty(baseCourses) &&
+              <p>
+                No Translated Course Found!
+              </p>
+            }
+          </div>
+        )
+      }
+      {
+        isFetched && renderAdminButton()
+      }
       <div className="translation-header">
         <div className="col">
         {
