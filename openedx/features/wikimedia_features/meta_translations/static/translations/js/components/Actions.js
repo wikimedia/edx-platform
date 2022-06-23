@@ -123,7 +123,12 @@ function Actions (props) {
         />
       }
       {
-        buttonsVisibility.apply && (
+         buttonsVisibility.apply && applyTitle=='Applied' && (
+          <span class="badge badge-success">APPLIED</span>
+        )
+      }
+      {
+        buttonsVisibility.apply && applyTitle!='Applied' && (
           <span className={`btn ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
             APPLY
           </span>
