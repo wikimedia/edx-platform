@@ -93,7 +93,7 @@ define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/u
                 if (isDestinationBlock) {
                     WikiUtils.showWarningOnTranslatedRerunEdit(operation)
                 }
-                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.isTranslatedOrBase.toUpperCase() == 'BASE') {
+                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
                     WikiUtils.showWarningOnBaseCourseEdit(operation)
                 }
                 else {
