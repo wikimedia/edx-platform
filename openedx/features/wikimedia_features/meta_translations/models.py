@@ -15,6 +15,7 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from opaque_keys.edx.django.models import CourseKeyField, UsageKeyField
+from lms.djangoapps.courseware.courses import get_course_by_id
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -455,9 +456,17 @@ class CourseTranslation(models.Model):
     @classmethod
     def is_base_or_translated_course(cls, course_key):
         """
-        Returns bool indicating if course is a base course or a translated version of some base course.
+        Returns string indicating if course is a base course or a translated version of some base course.
+        For base course -> returns "Base"
+        For translated rerun -> returns "Translated"
+        else returns None
         """
-        return cls.objects.filter(Q(course_id=course_key) | Q(base_course_id=course_key)).exists()
+        if cls.objects.filter(base_course_id=course_key).exists():
+            return "Base"
+        elif cls.objects.filter(course_id=course_key).exists():
+            return "Translated"
+        else:
+            return ""
 
     @classmethod
     def is_base_course(cls, course_id):
@@ -466,6 +475,17 @@ class CourseTranslation(models.Model):
         """
         return CourseTranslation.objects.filter(base_course_id=course_id).exists()
 
+    @classmethod
+    def is_translated_rerun_exists_in_language(cls, base_course_id, language):
+        """
+        Returns boolean value indicating if translated rerun in language already exists for given base course id.
+        """
+        translated_reruns_linkage = CourseTranslation.objects.filter(base_course_id=base_course_id)
+        for linkage in translated_reruns_linkage:
+            translated_rerun_course = get_course_by_id(linkage.course_id)
+            if translated_rerun_course and translated_rerun_course.language==language:
+                return True
+        return False
 
     class Meta:
         app_label = APP_LABEL

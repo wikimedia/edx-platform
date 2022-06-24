@@ -45,7 +45,8 @@ define([
             },
 
             render: function() {
-                if ($(".status-course-blocks-mapping").data().isTranslatedOrBaseFlag == 'True')
+                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
+                if (isTranslatedOrBaseData && ['BASE', 'TRANSLATED'].includes(isTranslatedOrBaseData.toUpperCase()))
                 {
                     var html = this.template(this.model.attributes);
                     HtmlUtils.setHtml(this.$el, HtmlUtils.HTML(html));

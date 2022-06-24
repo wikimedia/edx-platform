@@ -9,11 +9,11 @@ function Actions (props) {
 
   const { approveCourseOutline, updateTranslation,
     updateTranslationToInitialState, applyCourseVersion, approveRecursiveCourseOutline } = useUpdate(context);
-    
+
   const [buttonsVisibility, setButtonsVisibility] = React.useState({apply: false, approve: true, approveAll: false})
 
   const [selectedOption, setSelectedOption] = React.useState({value:-1, label: 'pending translation'})
-  
+
   const [options, setOptions]  = React.useState({})
 
   const [enableApplyButton, setEnableApplyButton] = React.useState(false)
@@ -21,17 +21,17 @@ function Actions (props) {
   const [applyTrigger, setApplyTrigger] = React.useState(false)
 
   const approveTitle = (!destinationFlag ? 'Translation is Disabled' :
-                        !enableApproveButton ? 'Incomplete Translation' : 
+                        !enableApproveButton ? 'Incomplete Translation' :
                         approved ? 'Approved' : 'Approve')
-  
+
   const applyTitle = (!destinationFlag ? 'Translation is Disabled' :
                       !enableApplyButton ? 'Applied' :
                       'Apply')
-  
-  
+
+
   const updateOptionsFromVersion = () => {
     let newOptions = {
-      recent: approved ? []: [{value:-1, label: 'pending translation'}], 
+      recent: approved ? []: [{value:-1, label: 'pending translation'}],
       applied: [],
       other: []
     }
@@ -86,7 +86,7 @@ function Actions (props) {
     }
   }
 
-  const hanldeApprove = (e) => {
+  const handleApprove = (e) => {
     e.stopPropagation();
     if (!approved && enableApproveButton){
         approveCourseOutline({...props});
@@ -100,7 +100,7 @@ function Actions (props) {
   }
 
   return (
-    <div className="btn-box">
+    <div className="col buttons-col btn-box">
       {
         <Select
           className="options"
@@ -123,22 +123,27 @@ function Actions (props) {
         />
       }
       {
-        buttonsVisibility.apply && (
-          <span className={`btn ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
+         buttonsVisibility.apply && applyTitle=='Applied' && (
+          <span class="badge badge-success">APPLIED</span>
+        )
+      }
+      {
+        buttonsVisibility.apply && applyTitle!='Applied' && (
+          <span className={`btn-translations btn-action ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
             APPLY
           </span>
         )
       }
       {
         buttonsVisibility.approve && (
-          <span className={`btn ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={hanldeApprove}>
+          <span className={`btn-translations btn-action ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={handleApprove}>
             APPROVE
           </span>
         )
       }
       {
         buttonsVisibility.approveAll && (
-          <span className={`btn ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
+          <span className={`btn-translations btn-action ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
             APPROVE ALL
           </span>
         )
