@@ -20,7 +20,7 @@
 
 <%block name="header_extras">
 % for template_name in ["basic-modal", "modal-button", "upload-dialog", "license-selector", "course-settings-learning-fields", "course-instructor-details"]:
-  <script type="text/template" id="${template_name}-tpl">
+<script type="text/template" id="${template_name}-tpl" xmlns="http://www.w3.org/1999/html">
     <%static:include path="js/${template_name}.underscore" />
   </script>
 % endfor
@@ -326,10 +326,26 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
             <span class="tip">${_('Convert course to Source')}</span>
           </header>
           <div>
-              % if is_destination_course:
-                <input type="checkbox" id="is-destination-course">
-              % else:
-                <input type="checkbox" id="is-destination-course" disabled>
+
+              <%
+                is_disabled = "disabled" if not is_destination_course else ""
+                is_checked = "checked" if not is_destination_course else ""
+              %>
+
+              <label class="switch">
+                <input id="is-destination-course" type="checkbox" ${is_disabled} ${is_checked}>
+                  <span class="slider round">
+                      <svg height="100%" width="100%" viewBox="-2 -5 17 21" class="tick">
+                        <path d="M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0" fill="#fff" fill-rule="evenodd"></path>
+                      </svg>
+
+                      <svg viewBox="-2 -5 14 20" height="100%" width="100%" class="cross">
+                          <path d="M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12" fill="#fff" fill-rule="evenodd"></path>
+                      </svg>
+                  </span>
+              </label>
+
+              % if not is_destination_course:
                 <span class="tip tip-stacked">${_("Option is disabled as course is not a translated re-run.")}</span>
               % endif
           </div>
