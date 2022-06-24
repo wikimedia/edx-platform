@@ -196,7 +196,7 @@ define(['jquery', 'underscore', 'backbone', 'gettext', 'js/views/pages/base_page
                         }
                     });
                 };
-                var isTranslatedOrBaseData = $("#python-context-var").data().isTranslatedOrBase;
+                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
                 if (!options && document.getElementById(checkBoxId) && document.getElementById(checkBoxId).checked){
                     WikiUtils.showWarningOnTranslatedRerunEdit(operation);
                 } else if (isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
