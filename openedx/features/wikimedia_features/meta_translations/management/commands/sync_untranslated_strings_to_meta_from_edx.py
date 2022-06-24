@@ -115,12 +115,10 @@ class Command(BaseCommand):
             )
             for block in base_course_blocks:
                 if block.block_type != 'course':
-                    updated_block_data = block.courseblockdata_set.filter(
-                        Q(content_updated=True) | Q(mapping_updated=True)
-                    )
-                    if updated_block_data.exists():
+                    block_data = block.courseblockdata_set.all()
+                    if block_data.filter(Q(content_updated=True) | Q(mapping_updated=True)).exists():
                         request_arguments = self._create_request_dict_for_block(base_course, block, base_course_language)
-                        for data in updated_block_data:
+                        for data in block_data:
                             if data.parsed_keys:
                                 request_arguments.update(data.parsed_keys)
                             else:
