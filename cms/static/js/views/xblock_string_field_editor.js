@@ -89,11 +89,11 @@ define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/u
                     self.$el.addClass('is-editing');
                     input.focus().select();
                 }
-                var isTranslatedOrBaseData = $("#python-context-var").data().isTranslatedOrBase
+                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
                 if (isDestinationBlock) {
                     WikiUtils.showWarningOnTranslatedRerunEdit(operation)
                 }
-                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
+                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.isTranslatedOrBase.toUpperCase() == 'BASE') {
                     WikiUtils.showWarningOnBaseCourseEdit(operation)
                 }
                 else {

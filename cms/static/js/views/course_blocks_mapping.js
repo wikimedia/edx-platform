@@ -45,7 +45,7 @@ define([
             },
 
             render: function() {
-                var isTranslatedOrBaseData = $("#python-context-var").data().isTranslatedOrBase
+                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
                 if (isTranslatedOrBaseData && ['BASE', 'TRANSLATED'].includes(isTranslatedOrBaseData.toUpperCase()))
                 {
                     var html = this.template(this.model.attributes);
