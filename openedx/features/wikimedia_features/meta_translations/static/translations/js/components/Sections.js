@@ -21,6 +21,8 @@ function Sections(props) {
               baseTitle={baseTitle}
               section_id={section_id}
               rerunTitle={rerunTitle}
+              pageUrl={base_course_outline[section_id].links.page_url}
+              pageGroupUrl={course_outline[section_id].links.page_group_url}
               usageKey={course_outline[section_id].usage_key}
               approved={course_outline[section_id].status.approved}
               versionStatus={course_outline[section_id].version_status}

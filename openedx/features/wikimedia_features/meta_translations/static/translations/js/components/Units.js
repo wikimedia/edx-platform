@@ -29,6 +29,8 @@ function Units (props) {
               baseContent={baseCourseUnits[unit_id].units}
               baseCourseUnitKey={baseCourseUnitKey}
               rerunCourseUnitKey={rerunCourseUnitKey}
+              pageUrl={baseCourseUnits[unit_id].links.page_url}
+              pageGroupUrl={rerunCourseUnits[unit_id].links.page_group_url}
               usageKey={rerunCourseUnits[unit_id].usage_key}
               approved={rerunCourseUnits[unit_id].status.approved}
               versionStatus={rerunCourseUnits[unit_id].version_status}
