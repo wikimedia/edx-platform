@@ -63,33 +63,35 @@
          return updateStatus.promise()
      };
 
-    showWarningOnTranslatedRerunEdit = function(operation) {
+    showWarningOnTranslatedRerunEdit = function(operation, onCancelCallback=null) {
         ViewUtils.confirmThenRunOperation(
             StringUtils.interpolate(
-                gettext('Do you want to Edit?'),
+                gettext('Edit on Translated rerun?'),
                 true
             ),
             gettext('Please disable translations after an edit, otherwise edited component will be overwritten by auto next applied translations.'),
             StringUtils.interpolate(
-                gettext('Yes, Start Editing'),
+                gettext('Continue Editing'),
                 true
             ),
-            operation
+            operation,
+            onCancelCallback
         );
     };
 
-    showWarningOnBaseCourseEdit = function(operation) {
+    showWarningOnBaseCourseEdit = function(operation, onCancelCallback=null) {
         ViewUtils.confirmThenRunOperation(
             StringUtils.interpolate(
-                gettext('Edit on Base Course Block'),
+                gettext('Edit on Base Course Block?'),
                 true
             ),
             gettext('If you edit base block content all linked translated-rerun blocks translations will be lost and all previous version history will be deleted.'),
             StringUtils.interpolate(
-                gettext('Start Editing'),
+                gettext('Continue Editing'),
                 true
             ),
-            operation
+            operation,
+            onCancelCallback
         );
     };
 

@@ -15,8 +15,8 @@ class CourseBlockAdmin(admin.ModelAdmin):
     Admin config clearesult credit providers.
     """
     list_display  = (
-        "block_id", "block_type", "course_id", "direction_flag", "lang",
-        "data", "applied_translation", "applied_version", "deleted"
+        "block_id", "parent_id", "block_type", "course_id", "direction_flag", "lang",
+        "data", "applied_translation", "applied_version", "extra"
     )
     search_fields = ("block_id", "course_id",)
     list_filter = ('block_type', 'direction_flag', 'applied_translation', 'deleted')

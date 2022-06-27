@@ -80,25 +80,11 @@ define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/u
             },
 
             showInput: function(event) {
-                var self = this,
-                    isDestinationBlock = self.model.isDestinationBlock()
-                var operation = function(){
-                    var input = self.getInput();
-                    event.preventDefault();
-                    event.stopPropagation();
-                    self.$el.addClass('is-editing');
-                    input.focus().select();
-                }
-                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
-                if (isDestinationBlock) {
-                    WikiUtils.showWarningOnTranslatedRerunEdit(operation)
-                }
-                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
-                    WikiUtils.showWarningOnBaseCourseEdit(operation)
-                }
-                else {
-                    operation();
-                }
+                var input = this.getInput();
+                event.preventDefault();
+                event.stopPropagation();
+                this.$el.addClass('is-editing');
+                input.focus().select();
             },
 
             hideInput: function() {
@@ -121,15 +107,31 @@ define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/u
                 var self = this,
                     xblockInfo = this.model,
                     newValue = this.getInput().val().trim(),
-                    oldValue = xblockInfo.get(this.fieldName);
+                    oldValue = xblockInfo.get(this.fieldName),
+                    isDestinationBlock = this.model.isDestinationBlock();
                 // TODO: generalize this as not all xblock fields want to disallow empty strings...
                 if (newValue === '' || newValue === oldValue) {
                     this.cancelInput();
                     return;
                 }
-                return XBlockViewUtils.updateXBlockField(xblockInfo, this.fieldName, newValue).done(function() {
-                    self.refresh();
-                });
+                var operation = function() {
+                    XBlockViewUtils.updateXBlockField(xblockInfo, self.fieldName, newValue).done(function() {
+                        self.refresh();
+                    });
+                }
+                var cancelCallback = function() {
+                    self.cancelInput();
+                }
+                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
+                if (isDestinationBlock) {
+                    WikiUtils.showWarningOnTranslatedRerunEdit(operation, cancelCallback)
+                }
+                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
+                    WikiUtils.showWarningOnBaseCourseEdit(operation, cancelCallback)
+                }
+                else {
+                    operation();
+                }
             },
 
             handleKeyUp: function(event) {

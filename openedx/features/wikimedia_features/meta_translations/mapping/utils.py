@@ -55,6 +55,7 @@ def get_block_data(block):
         data = COMPONENTS_CLASS_MAPPING[block.category]().get(block)
         return {
             'usage_key': str(block.scope_ids.usage_id),
+            'parent_usage_key': str(block.parent) if block.parent else None,
             'category': block.category,
             'data': data or {}
         }
@@ -197,9 +198,11 @@ def map_translated_course_block(existing_course_blocks, outline_block_dict, cour
     except CourseBlock.DoesNotExist:
         # create block mapping in translation table by comparing data of base course blocks and re-run outline data .
         course_block = CourseBlock.create_course_block_from_dict(outline_block_dict, course_key, False)
+        parent_id = outline_block_dict.get('parent_usage_key')
         for key, value in outline_block_dict.get("data", {}).items():
-            WikiTranslation.create_translation_mapping(base_course_blocks_data, key, value, course_block)
+            WikiTranslation.create_translation_mapping(base_course_blocks_data, key, value, parent_id, course_block)
     else:
+        parent_id = outline_block_dict.get('parent_usage_key')
         for key, value in outline_block_dict.get("data", {}).items():
             try:
                 WikiTranslation.objects.get(source_block_data__data_type=key, target_block=course_block)
@@ -208,7 +211,7 @@ def map_translated_course_block(existing_course_blocks, outline_block_dict, cour
                     json.dumps(outline_block_dict))
                 )
                 log.info("Try to create mapping by comparing base course data.")
-                WikiTranslation.create_translation_mapping(base_course_blocks_data, key, value, course_block)
+                WikiTranslation.create_translation_mapping(base_course_blocks_data, key, value, parent_id, course_block)
 
 
 def check_and_map_course_blocks(course_outline_data, course_key, base_course_key=None):
@@ -229,7 +232,7 @@ def check_and_map_course_blocks(course_outline_data, course_key, base_course_key
     existing_course_blocks = CourseBlock.objects.filter(course_id=course_key)
 
     if base_course_key:
-        base_course_blocks_data = CourseBlockData.objects.filter(course_block__course_id=base_course_key)
+        base_course_blocks_data = CourseBlockData.objects.filter(course_block__course_id=base_course_key, course_block__deleted=False)
         is_base_course = False
 
     for block in course_outline_data:

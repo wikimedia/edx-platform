@@ -75,7 +75,7 @@ from openedx.features.content_type_gating.partitions import CONTENT_TYPE_GATING_
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
 from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
-from openedx.features.wikimedia_features.meta_translations.mapping_utils import course_blocks_mapping
+from openedx.features.wikimedia_features.meta_translations.mapping.utils import course_blocks_mapping
 from openedx.features.wikimedia_features.meta_translations.models import MetaTranslationConfiguration
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
@@ -903,7 +903,7 @@ def _create_or_rerun_course(request):
                 )
 
             source_course_details = CourseDetails.fetch(CourseKey.from_string(source_course_key))
-            if not source_course_details or not source_course_details.source_course_language:
+            if not source_course_details or not source_course_details.language:
                 return JsonResponse(
                     {'error': _('Translated rerun can not be created for the base course with no language. Please set base course language from settings.')},
                     status=400
