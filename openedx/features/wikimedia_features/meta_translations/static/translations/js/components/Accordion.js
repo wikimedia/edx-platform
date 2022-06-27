@@ -5,7 +5,7 @@ import Actions from "./Actions";
 
 function Accordion (props) {
 
-  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag, isFullyTranslated,  versionStatus, expendOutline} = props
+  const { baseTitle, rerunTitle, children, units, baseContent, addClass, rerunCourseId, destinationFlag, isFullyTranslated,  versionStatus, expendOutline, pageUrl, pageGroupUrl} = props
 
   const [isCollapsed, setCollapsed] = useState(true);
   const [approveAll, setApproveAll] = useState(false);
@@ -47,14 +47,24 @@ function Accordion (props) {
         <div className='col' onClick={hanldeClick}>
           <span className="fa fa-chevron-down"></span>
           <strong className='title'>{baseTitle}</strong>
-        </div>
-        <div className='col' onClick={hanldeClick}>
           {
-            rerunTitle && (
-              <span className="fa fa-chevron-down"></span>
+            pageUrl && (
+              <a className="btn" href={pageUrl} title='wiki content' target="_blank">
+                <i className="fa fa-external-link"></i>
+              </a>
             )
           }
+        </div>
+        <div className='col' onClick={hanldeClick}>
+          <span className="fa fa-chevron-down"></span>
           <strong className='title'>{rerunTitle ? rerunTitle : '--'}</strong>
+          {
+            pageGroupUrl && (
+              <a className="btn" href={pageGroupUrl} title='wiki translation' target="_blank">
+                <i className="fa fa-external-link"></i>
+              </a>
+            )
+          }
         </div>
         <Actions
           courseId={rerunCourseId}

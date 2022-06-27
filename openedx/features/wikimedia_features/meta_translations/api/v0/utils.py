@@ -9,6 +9,7 @@ from logging import getLogger
 from opaque_keys.edx.keys import CourseKey
 from common.lib.xmodule.xmodule.modulestore.django import modulestore
 from lms.djangoapps.courseware.courses import get_course_by_id
+from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
@@ -73,7 +74,7 @@ def validated_and_sort_translated_decodings(base_decodings, translated_decodings
             sorted_translated_decodings[key] = translated_decodings[key]
     return is_valid, sorted_translated_decodings
 
-def get_block_data_from_table(block):
+def get_block_data_from_table(block, meta_client, target_langauge):
     """
     Function that return a data block of a course and it's base course.
     All the values are extracted from Meta Translations Tables
@@ -107,6 +108,8 @@ def get_block_data_from_table(block):
     )
     Arguments:
         block: course-outline block
+        meta_client: MetaClient
+        target_langauge: target course language
     Return:
         block_data: dict(usage_key, category, data_block_ids, data)
         translated_block_data: dict(usage_key, category, data)
@@ -125,6 +128,7 @@ def get_block_data_from_table(block):
             block_fields = {}
             base_block_fields = {}
             base_usage_key = ''
+            course_extra_fields= {}
             parsed_status = { 'parsed_block': False, 'is_fully_translated': True}
             for obj in wiki_objects:
                 data_type = obj.source_block_data.data_type
@@ -141,22 +145,35 @@ def get_block_data_from_table(block):
                     base_block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.source_block_data.data)
                     block_fields[data_type] = BLOCK_DATA_TYPES_DATA_VALIDATIONS[data_type](obj.translation)
                     parsed_status['is_fully_translated'] = parsed_status['is_fully_translated'] and block_fields[data_type] != ''
-                base_usage_key = str(obj.source_block_data.course_block.block_id)
+                if not base_usage_key:
+                    base_usage_key = str(obj.source_block_data.course_block.block_id)
+                    course_extra_fields.update(obj.source_block_data.course_block.extra)
+            # extra meta server urls
+            page_url = None
+            page_group_url = None
+            if course_extra_fields:
+                meta_title = course_extra_fields.get('meta_page_title')
+                if meta_title:
+                    page_url = meta_client.get_page_redirect_url_for_title(meta_title)
+                    page_group_url = meta_client.get_expected_message_group_redirect_url(meta_title, target_langauge)
             
             block_status = course_block.get_block_info()
             version_status = course_block.get_translated_version_status()
             if block_status:
                 block_status.update(parsed_status)
-        
+
+            
             course_block_data = {
                 'usage_key': usage_key,
                 'category': block.category,
                 'status': block_status,
+                'links': {'page_group_url': page_group_url},
                 'version_status': version_status,
                 'data': block_fields,
             }
             base_course_block_data = {
                 'usage_key': base_usage_key,
+                'links': {'page_url': page_url},
                 'category': block.category,
                 'data': base_block_fields
             }
@@ -164,7 +181,7 @@ def get_block_data_from_table(block):
     
     return {}, {}
 
-def get_recursive_blocks_data_from_table(block, depth=4):
+def get_recursive_blocks_data_from_table(block, meta_client, language, depth=4):
     """
     Retrieve data from blocks of course and base course with random identification key.
     {
@@ -236,7 +253,7 @@ def get_recursive_blocks_data_from_table(block, depth=4):
     """
     if depth == 0 or not hasattr(block, 'children'):
         random_key = get_random_string()
-        data, base_data = get_block_data_from_table(block)
+        data, base_data = get_block_data_from_table(block, meta_client, language)
         data_map, base_data_map = {}, {}
         if data and base_data:
             data_map[random_key] = data
@@ -244,7 +261,7 @@ def get_recursive_blocks_data_from_table(block, depth=4):
         return data_map, base_data_map
     
     random_key = get_random_string()
-    data, base_data = get_block_data_from_table(block)
+    data, base_data = get_block_data_from_table(block, meta_client, language)
     if data and base_data:
         data_map = { random_key: data }
         base_data_map = { random_key: base_data }
@@ -253,7 +270,7 @@ def get_recursive_blocks_data_from_table(block, depth=4):
         base_data_map[random_key]['children'] = {}
 
         for child in block.get_children():
-            course_outline, course_base_outline = get_recursive_blocks_data_from_table(child, depth - 1)
+            course_outline, course_base_outline = get_recursive_blocks_data_from_table(child, meta_client, language, depth - 1)
             data_map[random_key]['children'].update(course_outline)
             base_data_map[random_key]['children'].update(course_base_outline)
         return data_map, base_data_map
@@ -270,7 +287,8 @@ def get_course_outline(course_id, N=3):
     """
     course_key = CourseKey.from_string(course_id)
     course = get_course_by_id(course_key)
-    course_data, base_course_data = get_recursive_blocks_data_from_table(course, N)
+    meta_client = WikiMetaClient()
+    course_data, base_course_data = get_recursive_blocks_data_from_table(course, meta_client, course.language, N)
     return course_data, base_course_data
 
 def get_outline_course_to_units(course):
@@ -283,7 +301,9 @@ def get_outline_course_to_units(course):
         dict: course-outline
         dict: base course-outline
     """
-    return get_recursive_blocks_data_from_table(course, 3)
+    language = course.language
+    meta_client = WikiMetaClient()
+    return get_recursive_blocks_data_from_table(course, meta_client, language, 3)
 
 def get_outline_unit_to_components(unit):
     """
@@ -295,7 +315,10 @@ def get_outline_unit_to_components(unit):
         dict: course-outline
         dict: base course-outline
     """
-    return get_recursive_blocks_data_from_table(unit)
+    course = get_course_by_id(unit.course_id)
+    language = course.language
+    meta_client = WikiMetaClient()
+    return get_recursive_blocks_data_from_table(unit, meta_client, language)
 
 def get_course_data_dict(course_key):
     """
