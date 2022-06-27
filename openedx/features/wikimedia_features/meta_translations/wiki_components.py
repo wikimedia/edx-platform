@@ -125,7 +125,7 @@ class HtmlComponent(WikiComponent):
         - Set content_update to True so that next meta server send call would send updated content.
         - Reset all versions and translations.
         """
-        updated_display_name = updated_xblock_data.get('display_name')
+        updated_display_name = updated_xblock_data.get('metadata', {}).get('display_name') or updated_xblock_data.get('display_name')
         if updated_display_name and updated_display_name != xblock.display_name:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
@@ -179,7 +179,7 @@ class ProblemComponent(WikiComponent):
             problem = etree.XML(block.data, parser=parser)
             if problem.getchildren():
                 data['content'] = block.data
-                
+
         return data
 
     def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
@@ -189,7 +189,7 @@ class ProblemComponent(WikiComponent):
         - Set content_update to True so that next meta server send call would send updated content.
         - Reset all versions and translations.
         """
-        updated_display_name = updated_xblock_data.get('display_name')
+        updated_display_name = updated_xblock_data.get('metadata', {}).get('display_name') or updated_xblock_data.get('display_name')
         if updated_display_name and updated_display_name != xblock.display_name:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
@@ -296,7 +296,7 @@ class VideoComponent(WikiComponent):
         """
         block_id = str(xblock.scope_ids.usage_id)
 
-        updated_display_name = updated_xblock_data.get('metadata').get('display_name')
+        updated_display_name = updated_xblock_data.get('metadata', {}).get('display_name') or updated_xblock_data.get('display_name')
         if updated_display_name and updated_display_name != xblock.display_name:
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
 
