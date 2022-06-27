@@ -14,7 +14,8 @@ from common.djangoapps.edxmako.shortcuts import render_to_response
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock
-from openedx.features.wikimedia_features.meta_translations.mapping_utils import course_blocks_mapping
+from openedx.features.wikimedia_features.meta_translations.mapping.utils import course_blocks_mapping
+from openedx.features.wikimedia_features.meta_translations.mapping.exceptions import MultipleObjectsFoundInMappingCreation
 
 log = getLogger(__name__)
 
@@ -27,10 +28,16 @@ def course_blocks_mapping_view(request):
         course_key_string = course_outline_data["studio_url"].split('/')[2]
         course_key = CourseKey.from_string(course_key_string)
 
-        if course_blocks_mapping(course_key):
-            return JsonResponse({'success': 'Mapping has been processed successfully.'}, status=200)
-        else:
-            return JsonResponse({'error':'Invalid request'},status=400)
+        try:
+            if course_blocks_mapping(course_key):
+                return JsonResponse({'success': 'Mapping has been processed successfully.'}, status=200)
+            else:
+                return JsonResponse({'error':'Invalid request'},status=400)
+        except MultipleObjectsFoundInMappingCreation as ex:
+            error_msg = ex.message
+            if ex.block_id:
+                error_msg = "Unable to process block_id: {}. {}".format(ex.block_id, ex.message)
+            return JsonResponse({'error': error_msg},status=400)
     else:
         return JsonResponse({'error':'Invalid request'},status=400)
 

@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from opaque_keys.edx.django.models import CourseKeyField, UsageKeyField
 from lms.djangoapps.courseware.courses import get_course_by_id
+from openedx.features.wikimedia_features.meta_translations.mapping.exceptions import MultipleObjectsFoundInMappingCreation
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -397,7 +398,7 @@ class WikiTranslation(models.Model):
             try:
                 # For target blocks - added after rerun creation.
                 # Check if the parent block is mapped, filter blocks based on parent_id and then compare data within those blocks
-                # Otherwise compare data throughout the course 
+                # Otherwise compare data throughout the course
                 parent_mapping = cls.objects.filter(target_block__block_id=parent_id).first()
                 base_course_block_data = None
                 if parent_mapping:
@@ -407,7 +408,7 @@ class WikiTranslation(models.Model):
                 else:
                     log.info("Couldn't found parent mapping. Try just data comparison")
                     base_course_block_data = base_course_blocks_data.get(data_type=key, data=value)
-                
+
                 if base_course_block_data.course_block.deleted:
                     log.info("Unable to create mapping for key: {}, value:{} as source block state is deleted.".format(
                         key, value
@@ -422,6 +423,11 @@ class WikiTranslation(models.Model):
             except CourseBlockData.MultipleObjectsReturned:
                 log.error("Error -> Unable to find source block mapping as multiple source blocks found"
                           "in data comparison - data_type {}, value {}".format(key, value))
+                ex_msg = "Multiple source blocks found in data comparison for block_type: {}, data_type: {}, value: {}".format(
+                    target_block.block_type, key, value
+                )
+                raise MultipleObjectsFoundInMappingCreation(ex_msg, str(target_block.block_id))
+
             except CourseBlockData.DoesNotExist:
                 log.error("Error -> Unable to find source block mapping for key {}, value {} of course: {}".format(
                     key, value, str(target_block.course_id))
