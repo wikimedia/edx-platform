@@ -67,10 +67,11 @@ class CourseBlock(models.Model):
     )
 
     block_id = UsageKeyField(max_length=255, unique=True, db_index=True)
+    parent_id = UsageKeyField(max_length=255, null=True)
     block_type = models.CharField(max_length=255)
     course_id = CourseKeyField(max_length=255, db_index=True)
     direction_flag = models.CharField(blank=True, null=True, max_length=2, choices=DIRECTION_CHOICES, default=_Source)
-    lang = jsonfield.JSONField(default=json.dumps([]))
+    lang = jsonfield.JSONField(default=json.dumps([]), blank=True)
     applied_translation = models.BooleanField(default=False)
     applied_version = models.ForeignKey(TranslationVersion, null=True, blank=True, on_delete=models.CASCADE)
     deleted = models.BooleanField(default=False)
@@ -81,7 +82,7 @@ class CourseBlock(models.Model):
         Creates CourseBlock from data_dict. It will create CourseBlockData as well if create_block_data is True.
         """
         created_block = cls.objects.create(
-            block_id=block_data.get('usage_key'), block_type=block_data.get('category'), course_id=course_id
+            block_id=block_data.get('usage_key'), parent_id=block_data.get('parent_usage_key'), block_type=block_data.get('category'), course_id=course_id
         )
         # For base course blocks, create_block_datawill be True and Direction flag will be set to Default i.e Source.
         if create_block_data:
@@ -367,7 +368,7 @@ class WikiTranslation(models.Model):
         }
 
     @classmethod
-    def create_translation_mapping(cls, base_course_blocks_data, key, value, target_block):
+    def create_translation_mapping(cls, base_course_blocks_data, key, value, parent_id, target_block):
         try:
             target_block_usage_key = target_block.block_id
             reference_key = target_block_usage_key.block_id
@@ -395,7 +396,18 @@ class WikiTranslation(models.Model):
             ))
             try:
                 # For target blocks - added after rerun creation.
-                base_course_block_data = base_course_blocks_data.get(data_type=key, data=value)
+                # Check if the parent block is mapped, filter blocks based on parent_id and then compare data within those blocks
+                # Otherwise compare data throughout the course 
+                parent_mapping = cls.objects.filter(target_block__block_id=parent_id).first()
+                base_course_block_data = None
+                if parent_mapping:
+                    log.info("Parent mapping found. Try compare data with along parent id")
+                    base_parent_id = parent_mapping.source_block_data.course_block.block_id
+                    base_course_block_data = base_course_blocks_data.get(course_block__parent_id=base_parent_id, data_type=key, data=value)
+                else:
+                    log.info("Couldn't found parent mapping. Try just data comparison")
+                    base_course_block_data = base_course_blocks_data.get(data_type=key, data=value)
+                
                 if base_course_block_data.course_block.deleted:
                     log.info("Unable to create mapping for key: {}, value:{} as source block state is deleted.".format(
                         key, value
