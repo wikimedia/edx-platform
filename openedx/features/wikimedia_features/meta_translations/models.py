@@ -76,6 +76,7 @@ class CourseBlock(models.Model):
     applied_translation = models.BooleanField(default=False)
     applied_version = models.ForeignKey(TranslationVersion, null=True, blank=True, on_delete=models.CASCADE)
     deleted = models.BooleanField(default=False)
+    extra = jsonfield.JSONField(default={}, null=True, blank=True)
 
     @classmethod
     def create_course_block_from_dict(cls, block_data, course_id, create_block_data=True):

@@ -156,19 +156,38 @@ class Command(BaseCommand):
         for response in responses:
             if response and response.get("result", "").lower() == "success":
                 # title format is course_id/course_lang_code/block_id
-                title =  response.get("title", "").split("/")
+
+                response_title =  response.get("title", "")
+                log.info("Processing success response with title: {}".format(response_title))
+                title = response_title.split("/")
                 if len(title) >= 3:
                     try:
                         block_id = UsageKey.from_string(title[2])
                     except InvalidKeyError:
                         block_id = UsageKey.from_string(title[2].replace(" ", "_"))
 
-                    CourseBlockData.objects.filter(course_block__block_id=block_id).update(
-                        content_updated=False, mapping_updated=False
-                    )
-                    success_responses_count += 1
+                    course_block_data_items = CourseBlockData.objects.filter(course_block__block_id=block_id)
+                    if course_block_data_items.exists():
+                        course_block_data_items.update(
+                            content_updated=False, mapping_updated=False
+                        )
+                        log.info("{} block data items for block: {} flags have been reset.".format(
+                            len(course_block_data_items), block_id, title
+                        ))
+                        success_responses_count += 1
+                        try:
+                            source_block = course_block_data_items.first().course_block
+                            extra_json = source_block.extra
+                            extra_json.update({
+                                "meta_page_title": response_title,
+                            })
+                            source_block.extra = extra_json
+                            source_block.save()
+                        except Exception as ex:
+                            log.error("Unable to set base URL for block: {} and title: {}.".format(block_id, response_title))
+                            log.error(ex)
                 else:
-                    log.error("Unable to extract updated block_id from Meta success response.")
+                    log.error("Unable to extract updated block_id from Meta success response for title: {}.".format(response_title))
 
                 self._RESULT.update({
                      "success_updated_pages_count": success_responses_count
