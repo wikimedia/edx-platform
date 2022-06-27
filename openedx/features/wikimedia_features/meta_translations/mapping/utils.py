@@ -232,7 +232,7 @@ def check_and_map_course_blocks(course_outline_data, course_key, base_course_key
     existing_course_blocks = CourseBlock.objects.filter(course_id=course_key)
 
     if base_course_key:
-        base_course_blocks_data = CourseBlockData.objects.filter(course_block__course_id=base_course_key)
+        base_course_blocks_data = CourseBlockData.objects.filter(course_block__course_id=base_course_key, course_block__deleted=False)
         is_base_course = False
 
     for block in course_outline_data:
