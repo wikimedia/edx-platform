@@ -34,7 +34,7 @@ class WikiMetaClient(object):
         self._API_PASSWORD = configuration_helpers.get_value(
                 'WIKI_META_API_PASSWORD', settings.WIKI_META_API_PASSWORD)
 
-        if not self._API_USERNAME or not self._API_USERNAME:
+        if not self._API_USERNAME or not self._API_PASSWORD:
             raise Exception("META CLIENT ERROR - Missing WIKI Meta API Credentials.")
 
         self._BASE_API_END_POINT = configuration_helpers.get_value(

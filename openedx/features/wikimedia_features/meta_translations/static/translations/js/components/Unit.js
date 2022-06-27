@@ -31,15 +31,31 @@ function Unit (props) {
     {
       !isEmpty(baseContent) &&
       Object.keys(baseContent).map((content_id) => {
-
+        const pageUrl = baseContent[content_id].links.page_url;
+        const pageGroupUrl = rerunContent[content_id].links.page_group_url;
         return (
           <div className='translation-content' key={content_id}>
             <div className='translation-title'>
               <div className='col'>
                 <strong>{baseContent[content_id].data.display_name}</strong>
+                {
+                  pageUrl && (
+                    <a className="btn" href={pageUrl} title='wiki content' target="_blank">
+                      <i className="fa fa-external-link"></i>
+                    </a>
+                  )
+                }
               </div>
               <div className='col'>
                 <strong>{rerunContent[content_id].data.display_name ? rerunContent[content_id].data.display_name: '--'}</strong>
+                {
+                  pageGroupUrl && (
+                    <a className="btn" href={pageGroupUrl} title='wiki translation' target="_blank">
+                      <i className="fa fa-external-link"></i>
+                    </a>
+                  )
+                }
+                
               </div>
               <Actions
                 usageKey={rerunContent[content_id].usage_key}

@@ -23,6 +23,8 @@ function Subsections (props) {
               baseTitle={baseTitle}
               rerunTitle={rerunTitle}
               subsection_id={subsection_id}
+              pageUrl={baseCourseSubsections[subsection_id].links.page_url}
+              pageGroupUrl={rerunCourseSubsections[subsection_id].links.page_group_url}
               usageKey={rerunCourseSubsections[subsection_id].usage_key}
               approved={rerunCourseSubsections[subsection_id].status.approved}
               versionStatus={rerunCourseSubsections[subsection_id].version_status}
