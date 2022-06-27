@@ -11,7 +11,7 @@ from opaque_keys.edx.keys import UsageKey
 from openedx.features.wikimedia_features.meta_translations.models import (
     CourseBlock, CourseTranslation, TranslationVersion, WikiTranslation
 )
-from openedx.features.wikimedia_features.meta_translations.mapping_utils import get_recursive_blocks_data
+from openedx.features.wikimedia_features.meta_translations.mapping.utils import get_recursive_blocks_data
 from lms.djangoapps.courseware.courses import get_course_by_id
 
 log = getLogger(__name__)
