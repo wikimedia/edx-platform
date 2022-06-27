@@ -904,7 +904,7 @@ def _create_or_rerun_course(request):
                 )
 
             source_course_details = CourseDetails.fetch(CourseKey.from_string(source_course_key))
-            if not source_course_details or not source_course_details.source_course_language:
+            if not source_course_details or not source_course_details.language:
                 return JsonResponse(
                     {'error': _('Translated rerun can not be created for the base course with no language. Please set base course language from settings.')},
                     status=400
