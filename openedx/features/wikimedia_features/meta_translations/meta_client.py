@@ -4,6 +4,7 @@ Client to handle WikiMetaClient requests.
 import json
 import logging
 import requests
+import urllib.parse
 from django.conf import settings
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
@@ -18,14 +19,14 @@ class WikiMetaClient(object):
         """
         Constructs a new instance of the Wiki Meta client.
         """
-        self._BASE_API_END_POINT = configuration_helpers.get_value(
-                'WIKI_META_BASE_API_URL', settings.WIKI_META_BASE_API_URL)
+        self._BASE_URL = configuration_helpers.get_value(
+                'WIKI_META_BASE_URL', settings.WIKI_META_BASE_URL)
         self._CONTENT_MODEL = configuration_helpers.get_value(
                 'WIKI_META_CONTENT_MODEL', settings.WIKI_META_CONTENT_MODEL)
         self._MCGROUP_PREFIX = configuration_helpers.get_value(
                 'WIKI_META_MCGROUP_PREFIX', settings.WIKI_META_MCGROUP_PREFIX)
 
-        if not self._BASE_API_END_POINT or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX :
+        if not self._BASE_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX :
             raise Exception("META CLIENT ERROR - Missing WIKI Meta Configurations.")
 
         self._API_USERNAME = configuration_helpers.get_value(
@@ -36,10 +37,36 @@ class WikiMetaClient(object):
         if not self._API_USERNAME or not self._API_USERNAME:
             raise Exception("META CLIENT ERROR - Missing WIKI Meta API Credentials.")
 
+        self._BASE_API_END_POINT = configuration_helpers.get_value(
+                'WIKI_META_BASE_API_END_POINT', "{}/api.php".format(self._BASE_URL))
+        self._BASE_REDIRECT_URL = configuration_helpers.get_value(
+                'WIKI_META_BASE_REDIRECT_URL', "{}/index.php".format(self._BASE_URL))
+
         logger.info(
-            "Created meta client with api_url: {}".format(self._BASE_API_END_POINT)
+            "Created meta client with base_url: {}, api_url:{}, redirect_url: {} ".format(
+                self._BASE_URL, self._BASE_API_END_POINT, self._BASE_REDIRECT_URL
+            )
         )
 
+    def get_page_redirect_url_for_title(self, title):
+        """
+        Returns page redirect url for given title.
+        On meta server send_call create pages with all course block data items i.e display_name and content. For created pages
+        Meta server creates message groups of translations.
+        Note: Successfull creation of pages do not imply successful creation of message groups.
+        """
+        if title:
+            return "{}/{}".format(self._BASE_REDIRECT_URL, title)
+
+    def get_expected_message_group_redirect_url(self, source_page_title, target_language):
+        """
+        Returns expected redirect url of meta server from where user can translate content.
+        Term "expected" is used as we are not sure if message groups for translation have been created or not.
+        """
+        url = "{}/Special:Translate?group={}-{}&language={}".format(
+            self._BASE_REDIRECT_URL, self._MCGROUP_PREFIX, urllib.parse.quote(source_page_title), target_language
+        )
+        return url
 
     def _process_fetched_response_data_list_to_dict(self, response_data):
         """
