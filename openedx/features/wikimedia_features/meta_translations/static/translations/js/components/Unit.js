@@ -46,31 +46,32 @@ function Unit (props) {
                   )
                 }
               </div>
-              <div className='col'>
-                <strong>{rerunContent[content_id].data.display_name ? rerunContent[content_id].data.display_name: '--'}</strong>
-                {
-                  pageGroupUrl && (
-                    <a className="btn" href={pageGroupUrl} title='wiki translation' target="_blank">
-                      <i className="fa fa-external-link"></i>
-                    </a>
-                  )
-                }
-                
+              <div className='col content-actions'>
+                <div className="content-bar">
+                  <strong>{rerunContent[content_id].data.display_name ? rerunContent[content_id].data.display_name: '--'}</strong>
+                  {
+                    pageGroupUrl && (
+                      <a className="btn" href={pageGroupUrl} title='wiki translation' target="_blank">
+                        <i className="fa fa-external-link"></i>
+                      </a>
+                    )
+                  }
+                </div>
+                <Actions
+                  usageKey={rerunContent[content_id].usage_key}
+                  courseId={rerunCourseId}
+                  approved={rerunContent[content_id].status.approved}
+                  versionStatus={rerunContent[content_id].version_status}
+                  content_id={content_id}
+                  destinationFlag={rerunContent[content_id].status.destination_flag}
+                  isFullyTranslated={rerunContent[content_id].status.is_fully_translated}
+                  enableApproveButton={(
+                      rerunContent[content_id].status.destination_flag &&
+                      rerunContent[content_id].status.is_fully_translated
+                    )}
+                  {...props}
+                />
               </div>
-              <Actions
-                usageKey={rerunContent[content_id].usage_key}
-                courseId={rerunCourseId}
-                approved={rerunContent[content_id].status.approved}
-                versionStatus={rerunContent[content_id].version_status}
-                content_id={content_id}
-                destinationFlag={rerunContent[content_id].status.destination_flag}
-                isFullyTranslated={rerunContent[content_id].status.is_fully_translated}
-                enableApproveButton={(
-                    rerunContent[content_id].status.destination_flag &&
-                    rerunContent[content_id].status.is_fully_translated
-                  )}
-                {...props}
-              />
             </div>
             <div className='translation-body'>
               <div className='col'>
