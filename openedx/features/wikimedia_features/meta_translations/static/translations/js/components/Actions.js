@@ -100,7 +100,7 @@ function Actions (props) {
   }
 
   return (
-    <div className="col buttons-col btn-box">
+    <div className="action-bar btn-box">
       {
         <Select
           className="options"
