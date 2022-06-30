@@ -5,12 +5,12 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.grades.api import CourseGradeFactory
 
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
-from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+
+
 
 def list_version_report_info_per_course(course_key):
     """
     Returns lists of versions detailed data and error data for a given base course
-
     versions_data: list of dict - required to generated detailed report of translated reruns for given base course.
         list will contain all translated reruns info along with base course info.
     error_data: list of dict - If grading error occurs during processing, those students data will be skiped from
@@ -46,11 +46,6 @@ def list_version_report_info_per_course(course_key):
         completion_count = 0
         request = RequestFactory().get(u'/')
         course = get_course_by_id(course_key)
-        try:
-            course_overview = CourseOverview.objects.get(id=course_key)
-        except CourseOverview.DoesNotExist:
-            course_overview = None
-
         for student, course_grade, error in CourseGradeFactory().iter(users=users, course_key=course_key):
             course_blocks = get_course_outline_block_tree(
                 request, str(course_key), student
@@ -71,15 +66,10 @@ def list_version_report_info_per_course(course_key):
                 sum_grade_percent += course_grade.percent
 
         average_grade = total_students_with_no_errors and (sum_grade_percent/total_students_with_no_errors)
-
-        # on local enviroment CourseOverview returns None for language so we have to check both course overview and
-        # course from modulestore. On Servers, CourseOverview works fine
-        course_language = (course_overview and course_overview.language) or (course and course.language)
-
         versions_data.append({
             'course_id': str(course_key),
-            'course_title': course_overview and course_overview.display_name,
-            'course_language': course_language,
+            'course_title': course.display_name,
+            'course_language': course.language,
             'version_type': course_type,
             'total_active_enrolled': total_enrollments,
             'total_completion': completion_count,
@@ -100,7 +90,6 @@ def list_version_report_info_per_course(course_key):
 def list_version_report_info_total(course_key):
     """
     Returns lists of versions aggregate data and error data for a given base course
-
     versions_data: list of dict - required to generated aggregated report of translated reruns for given base course.
         list will contain aggregate info for all translated reruns  along with base course.
     error_data: list of dict - If grading error occurs during processing, those students data will be skiped from
@@ -140,16 +129,8 @@ def list_version_report_info_total(course_key):
         report['total_courses'] += 1
         course_ids.append(str(course_key))
 
-        try:
-            course_overview = CourseOverview.objects.get(id=course_key)
-        except CourseOverview.DoesNotExist:
-            course_overview = None
-
-        # on local enviroment CourseOverview returns None for language so we have to check both course overview and
-        # course from modulestore. On Servers, CourseOverview works fine
-        course_language = (course_overview and course_overview.language) or get_course_by_id(course_key).language
-        if course_language:
-            course_languages.append(str(course_language))
+        course = get_course_by_id(course_key)
+        course_languages.append(str(course.language))
 
         enrollments = CourseEnrollment.objects.filter(course_id=course_key, is_active=True).order_by('created')
         users = [enrollment.user for enrollment in enrollments]
