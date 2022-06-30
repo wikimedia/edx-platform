@@ -453,6 +453,9 @@ class CourseTranslation(models.Model):
     """
     Strores the relation of base course and translated course
     """
+    _BASE_COURSE = 'BASE'
+    _TRANSLATED_COURSE = 'TRANSLATED'
+
     course_id = CourseKeyField(max_length=255, db_index=True)
     base_course_id = CourseKeyField(max_length=255, db_index=True)
 
@@ -481,9 +484,9 @@ class CourseTranslation(models.Model):
         else returns None
         """
         if cls.objects.filter(base_course_id=course_key).exists():
-            return "Base"
+            return CourseTranslation._BASE_COURSE
         elif cls.objects.filter(course_id=course_key).exists():
-            return "Translated"
+            return CourseTranslation._TRANSLATED_COURSE
         else:
             return ""
 

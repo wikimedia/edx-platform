@@ -18,6 +18,7 @@ function(Backbone, _, str, ModuleUtils) {
             is_destination_course: null,
             destination_flag: null,
             meta_block_status: null,
+            mapping_message: null,
             /**
              * The Studio URL for this xblock, or null if it doesn't have one.
              */

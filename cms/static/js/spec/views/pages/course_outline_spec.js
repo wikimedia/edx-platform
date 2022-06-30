@@ -210,6 +210,7 @@ describe('CourseOutlinePage', function() {
     createCourseOutlinePage = function(test, courseJSON, createOnly) {
         requests = AjaxHelpers.requests(test);
         model = new XBlockOutlineInfo(courseJSON, {parse: true});
+        debugger;
         outlinePage = new CourseOutlinePage({
             model: model,
             el: $('#content')
