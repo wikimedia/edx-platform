@@ -33,12 +33,6 @@ export function CourseOrLibraryListing(props) {
                     <span className="value">{item.run}</span>
                   </span>
                   }
-                  {
-                    item.translation_info && 
-                  <span className="badge badge-fit badge-info" title={`${item.translation_info}`}>
-                    {item.translation_info}
-                  </span>
-                  }
                   { item.can_edit === false &&
                   <span className="extra-metadata">{gettext('(Read-only)')}</span>
                   }
@@ -46,6 +40,13 @@ export function CourseOrLibraryListing(props) {
               </a>
               { item.lms_link && item.rerun_link &&
               <ul className="item-actions course-actions">
+                { item.translation_info &&
+                  <div className='course-badge'>
+                    <span className="badge badge-fit badge-info" title={`${item.translation_info}`}>
+                      {item.translation_info}
+                    </span>
+                  </div>
+                }
                 { allowReruns &&
                 <li className="action action-rerun">
                   <a
