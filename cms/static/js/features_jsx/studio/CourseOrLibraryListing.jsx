@@ -33,6 +33,12 @@ export function CourseOrLibraryListing(props) {
                     <span className="value">{item.run}</span>
                   </span>
                   }
+                  {
+                    item.translation_info && 
+                  <span className="badge badge-fit badge-info" title={`${item.translation_info}`}>
+                    {item.translation_info}
+                  </span>
+                  }
                   { item.can_edit === false &&
                   <span className="extra-metadata">{gettext('(Read-only)')}</span>
                   }
