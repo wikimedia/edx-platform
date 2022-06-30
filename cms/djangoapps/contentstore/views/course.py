@@ -930,6 +930,10 @@ def _create_or_rerun_course(request):
             if is_translated_rerun:
                 CourseTranslation.set_course_translation(destination_course_key, source_course_key)
                 course_blocks_mapping(destination_course_key)
+                course_module = modulestore().get_course(destination_course_key)
+                if course_module:
+                    course_module.language = language
+                    modulestore().update_item(course_module, request.user.id)
             return JsonResponse({
                 'url': reverse_url('course_handler'),
                 'destination_course_key': str(destination_course_key)
