@@ -11,7 +11,6 @@ from openedx.features.wikimedia_features.meta_translations.models import CourseT
 def list_version_report_info_per_course(course_key):
     """
     Returns lists of versions detailed data and error data for a given base course
-
     versions_data: list of dict - required to generated detailed report of translated reruns for given base course.
         list will contain all translated reruns info along with base course info.
     error_data: list of dict - If grading error occurs during processing, those students data will be skiped from
@@ -91,7 +90,6 @@ def list_version_report_info_per_course(course_key):
 def list_version_report_info_total(course_key):
     """
     Returns lists of versions aggregate data and error data for a given base course
-
     versions_data: list of dict - required to generated aggregated report of translated reruns for given base course.
         list will contain aggregate info for all translated reruns  along with base course.
     error_data: list of dict - If grading error occurs during processing, those students data will be skiped from

@@ -1234,6 +1234,15 @@ def create_xblock_info(xblock, data=None, metadata=None, include_ancestor_info=F
         xblock_info['meta_block_status'] = get_block_status(xblock.location)
         xblock_info['destination_flag'] = is_destination_block(xblock.location)
 
+    if xblock.category == 'course':
+        is_translated_or_base_course = CourseTranslation.is_base_or_translated_course(xblock.location.course_key)
+        mapping_message = ''
+        if is_translated_or_base_course == CourseTranslation._BASE_COURSE:
+            mapping_message = 'Base-Course'
+        elif is_translated_or_base_course == CourseTranslation._TRANSLATED_COURSE:
+            mapping_message = 'Translated-Course'
+        xblock_info['mapping_message'] = mapping_message
+
     if is_concise:
         if child_info and child_info.get('children', []):
             xblock_info['child_info'] = child_info

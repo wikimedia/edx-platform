@@ -75,7 +75,6 @@ from openedx.features.content_type_gating.partitions import CONTENT_TYPE_GATING_
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
 from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
-from openedx.features.wikimedia_features.meta_translations.mapping.utils import course_blocks_mapping
 from openedx.features.wikimedia_features.meta_translations.models import MetaTranslationConfiguration
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
@@ -800,7 +799,8 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
             'rerun_link': _get_rerun_link_for_item(course.id),
             'org': course.display_org_with_default,
             'number': course.display_number_with_default,
-            'run': course.location.run
+            'run': course.location.run,
+            'translation_info': _(CourseTranslation.is_base_or_translated_course(course.id)),
         }
 
     in_process_action_course_keys = {uca.course_key for uca in in_process_course_actions}
@@ -924,11 +924,9 @@ def _create_or_rerun_course(request):
         fields.update(definition_data)
 
         if source_course_key:
+            fields['is_translated_rerun'] = is_translated_rerun
             source_course_key = CourseKey.from_string(source_course_key)
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
-            if is_translated_rerun:
-                CourseTranslation.set_course_translation(destination_course_key, source_course_key)
-                course_blocks_mapping(destination_course_key)
             return JsonResponse({
                 'url': reverse_url('course_handler'),
                 'destination_course_key': str(destination_course_key)
