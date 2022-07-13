@@ -12,7 +12,7 @@ function Actions (props) {
 
   const [buttonsVisibility, setButtonsVisibility] = React.useState({apply: false, approve: true, approveAll: false})
 
-  const [selectedOption, setSelectedOption] = React.useState({value:-1, label: 'pending translation'})
+  const [selectedOption, setSelectedOption] = React.useState({value:-1, label: context.META_DATA.options_tags.pending})
 
   const [options, setOptions]  = React.useState({})
 
@@ -20,18 +20,18 @@ function Actions (props) {
 
   const [applyTrigger, setApplyTrigger] = React.useState(false)
 
-  const approveTitle = (!destinationFlag ? 'Translation is Disabled' :
-                        !enableApproveButton ? 'Incomplete Translation' :
-                        approved ? 'Approved' : 'Approve')
+  const approveTitle = (!destinationFlag ? context.META_DATA.approve_button.disabled :
+                        !enableApproveButton ? context.META_DATA.approve_button.incomplete :
+                        approved ? context.META_DATA.approve_button.approved : context.META_DATA.approve_button.approve)
 
-  const applyTitle = (!destinationFlag ? 'Translation is Disabled' :
-                      !enableApplyButton ? 'Applied' :
-                      'Apply')
+  const applyTitle = (!destinationFlag ? context.META_DATA.apply_button.disabled :
+                      !enableApplyButton ? context.META_DATA.apply_button.applied :
+                      context.META_DATA.apply_button.apply)
 
 
   const updateOptionsFromVersion = () => {
     let newOptions = {
-      recent: approved ? []: [{value:-1, label: 'pending translation'}],
+      recent: approved ? []: [{value:-1, label: context.META_DATA.options_tags.pending}],
       applied: [],
       other: []
     }
@@ -108,43 +108,45 @@ function Actions (props) {
           onChange={handleChange}
           options={[
             {
-              label: 'recent',
+              label: context.META_DATA.options_tags.recent,
               options: options.recent,
             },
             {
-              label: 'applied',
+              label: context.META_DATA.options_tags.applied,
               options: options.applied,
             },
             {
-              label: 'other',
+              label: context.META_DATA.options_tags.other,
               options: options.other,
             }
           ]}
         />
       }
       {
-         buttonsVisibility.apply && applyTitle=='Applied' && (
-          <span class="badge badge-success">APPLIED</span>
+         buttonsVisibility.apply && applyTitle==context.META_DATA.apply_button.applied && (
+          <span className="badge badge-success">
+            {context.META_DATA.applied_badge.label}
+          </span>
         )
       }
       {
-        buttonsVisibility.apply && applyTitle!='Applied' && (
+        buttonsVisibility.apply && applyTitle!=context.META_DATA.apply_button.applied && (
           <span className={`btn-translations btn-action ${!enableApplyButton? 'disabled': ''}`} title={applyTitle} onClick={handleApply}>
-            APPLY
+            {context.META_DATA.apply_button.label}
           </span>
         )
       }
       {
         buttonsVisibility.approve && (
           <span className={`btn-translations btn-action ${!enableApproveButton? 'disabled': ''}`} title={approveTitle} onClick={handleApprove}>
-            APPROVE
+            {context.META_DATA.approve_button.label}
           </span>
         )
       }
       {
         buttonsVisibility.approveAll && (
           <span className={`btn-translations btn-action ${!approveAll? 'disabled': ''}`} title={approveTitle} onClick={handleApproveAll}>
-            APPROVE ALL
+            {context.META_DATA.approve_all_button.label}
           </span>
         )
       }
