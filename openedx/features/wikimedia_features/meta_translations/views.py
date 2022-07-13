@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from opaque_keys.edx.keys import CourseKey, UsageKey
 from django.conf import settings
 from common.djangoapps.edxmako.shortcuts import render_to_response
+from django.utils.translation import ugettext_lazy as _
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock
@@ -70,10 +71,60 @@ def course_blocks_api_send_fetch(request):
 
 @login_required
 def render_translation_home(request):
+    meta_data = {
+        'expend_outline': _('Expend Outline'),
+        'collapse_outline': _('Collapse Outline'),
+        'select_base_course': _('Select Base Course'),
+        'select_rerun_course': _('Select Rerun Course'),
+        'messages': {
+                'course_error': _('No Translated Course Found!'),
+                'translation_error': _('No Translations Found!, Please apply mapping.')
+            },
+        'filter_my_courses': _('Filter My Courses'),
+        'approve_button': {
+            'label': _('APPROVE'),
+            'disabled': _('Translation is Disabled'),
+            'incomplete': _('Incomplete Translation'),
+            'approve': _('Approve'),
+            'approved': _('Approved'),
+            'error': _('Unable to approve this time, Please try again later.'),
+            'success': _("Congratulations! The translation is approved. It's also applied automatically to the Course Block")
+        },
+        'apply_button': {
+            'label': _('APPLY'),
+            'disabled': _('Translation is Disabled'),
+            'applied': _('Applied'),
+            'apply': _('Apply'),
+            'error': _('Unable to apply this time, Please try again later.'),
+            'success': _('Congratulations! The translation is applied to the Course Block')
+        },
+        'applied_badge': {
+            'label': _('APPLIED')
+        },
+        'approve_all_button': {
+            'label': _('APPROVE ALL'),
+            'not_found': _('No pending transaltions to be approved'),
+            'error': _('Unable to approve this time, Please try again later.'),
+            'success': _("Congratulations! Translations are approved. They're also applied automatically to the Course Blocks"),
+        },
+        'options_tags': {
+            'pending': _('pending translation'),
+            'recent': _('recent'),
+            'applied': _('applied'),
+            'other': _('other'),
+        },
+        'errors': {
+            'fetch_transaltion': _('Unable to fetch translation this time, Please try again later.'),
+            'fetch_courses': _('Unable to load Courses.'),
+            'fetch_outline': _('Unable to load Course Outline.'),
+            'fetch_content': _('Unable to load content.'),
+        }
+    }
     return render_to_response('translations.html', {
         'uses_bootstrap': True,
         'login_user_username': request.user.username,
         'language_options': dict(settings.ALL_LANGUAGES),
+        'meta_data': meta_data,
         'is_admin': request.user.is_superuser
     })
 

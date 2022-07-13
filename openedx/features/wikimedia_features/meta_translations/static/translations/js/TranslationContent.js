@@ -75,7 +75,7 @@ function TranslationContent({ context }) {
             {
               isEmpty(baseCourses) &&
               <p>
-                No Translated Course Found!
+                {context.META_DATA.messages.course_error}
               </p>
             }
           </div>
@@ -89,7 +89,7 @@ function TranslationContent({ context }) {
         {
           !isEmpty(baseCourses) &&
           <Select
-            placeholder= "Select Base Course"
+            placeholder= {context.META_DATA.select_base_course}
             onChange={handleBaseCourseChange}
             options={getOptionsFromObject(baseCourses)}
           />
@@ -99,7 +99,7 @@ function TranslationContent({ context }) {
           {
           !isEmpty(rerunCourses) &&
           <Select
-            placeholder="Select Rerun Course"
+            placeholder={context.META_DATA.select_rerun_course}
             onChange={handleRerunCourseChange}
             options={getOptionsFromObject(rerunCourses)}
           />
@@ -128,8 +128,8 @@ function TranslationContent({ context }) {
                   }
                 </strong>
                 <button className='btn btn-primary btn-translations' onClick={handleExpendOutline}>
-                  {!!!(expendOutline%2) && 'Expand Outline'}
-                  {!!(expendOutline%2) && 'Collapse Outline'}
+                  {!!!(expendOutline%2) && context.META_DATA.expend_outline}
+                  {!!(expendOutline%2) && context.META_DATA.collapse_outline}
                 </button>
               </div>
             </div>
@@ -147,7 +147,7 @@ function TranslationContent({ context }) {
             {
               isEmpty(courseOutline.base_course_outline) &&
               <p className="message">
-                No Translations Found!, Please apply mapping.
+                {context.META_DATA.messages.translation_error}
               </p>
             }
 
