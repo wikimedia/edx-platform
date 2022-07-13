@@ -81,7 +81,7 @@ export default function useUpdate(context) {
       let blockIds = geRecursiveBlockIds (courseOutline, unit_id, subsection_id, section_id)
       setLoading(true);
       if (!blockIds.length){
-        notification(toast.error, `No pending transaltions to be approved`);
+        notification(toast.error, context.META_DATA.approve_all_button.not_found);
         setLoading(false);
         return;
       }
@@ -109,14 +109,11 @@ export default function useUpdate(context) {
           approveRecursive(contentLocation, res.data)
           return outline;
         })
-        if (blockIds.length != 1)
-          notification(toast.success, `Congratulations! ${blockIds.length} translations are approved. They're also applied automatically to the Course Blocks`);
-        else
-          notification(toast.success, `Congratulations! ${blockIds.length} translation is approved. It's also applied automatically to the Course Block`);
+        notification(toast.success, context.META_DATA.approve_all_button.success);
       }
       )
       .catch((error) => {
-        notification(toast.error, "Unable to approve this time, Please try again later.");
+        notification(toast.error, context.META_DATA.approve_all_button.error);
         console.error(error);
       })
       .finally(() => {
@@ -157,10 +154,10 @@ export default function useUpdate(context) {
           on_approved(contentLocation, res.data)
           return courseOutline;
         })
-        notification(toast.success, "Congratulations! The translation is approved. It's also applied automatically to the Course Block");
+        notification(toast.success, context.META_DATA.approve_button.success);
       })
       .catch((error) => {
-        notification(toast.error, "Unable to approve this time, Please try again later.");
+        notification(toast.error, context.META_DATA.approve_button.error);
         console.error(error);
       })
       .finally(() => {
@@ -204,7 +201,7 @@ export default function useUpdate(context) {
         })
       })
       .catch((error) => {
-        notification(toast.error, "Unable to fetch translation this time, Please try again later.");
+        notification(toast.error, context.META_DATA.errors.fetch_transaltion);
         console.error(error);
       })
       .finally(() => {
@@ -282,10 +279,10 @@ export default function useUpdate(context) {
           };
           return courseOutline;
         })
-        notification(toast.success, "Congratulations! The translation is applied to the Course Block");
+        notification(toast.success, context.META_DATA.apply_button.success);
       })
       .catch((error) => {
-        notification(toast.error, "Unable to apply this time, Please try again later.");
+        notification(toast.error, context.META_DATA.apply_button.error);
         console.error(error);
       })
       .finally(() => {
