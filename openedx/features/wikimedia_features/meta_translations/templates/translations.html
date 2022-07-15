@@ -2,7 +2,7 @@
 <%namespace name='static' file='static_content.html'/>
 <%!
   from django.urls import reverse
-  from django.utils.translation import ugettext as _
+  from django.utils.translation import ugettext_lazy as _
   from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
 %>
 
@@ -28,6 +28,7 @@
             "COURSE_UNIT_URL": "api/v0/components",
             "COURSE_APPROVE_URL": "api/v0/approve_translations",
             "LANGUAGES": ${language_options | n, dump_js_escaped_json},
+            "META_DATA": ${meta_data | n, dump_js_escaped_json},
             "IS_ADMIN": "${is_admin}"
         }
 

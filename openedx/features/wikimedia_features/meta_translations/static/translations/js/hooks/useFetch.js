@@ -16,7 +16,7 @@ export default function useFetch(context) {
         setCourses(res.data);
       })
       .catch((error) => {
-        notification(toast.error, "Unable to load Courses.");
+        notification(toast.error, context.META_DATA.errors.fetch_courses);
         console.error(error);
       })
       .finally(() => {
@@ -32,7 +32,7 @@ export default function useFetch(context) {
           setCourseOutline(res.data)
         })
         .catch((error) => {
-          notification(toast.error, "Unable to load Course Outline.");
+          notification(toast.error, context.META_DATA.errors.fetch_outline);
           console.error(error);
         })
         .finally(() => {
@@ -75,7 +75,7 @@ export default function useFetch(context) {
         setApproveAll(check);
       })
       .catch((error) => {
-        notification(toast.error, "Unable to load content.");
+        notification(toast.error, context.META_DATA.errors.fetch_content);
         console.error(error);
       })
       .finally(() => {
