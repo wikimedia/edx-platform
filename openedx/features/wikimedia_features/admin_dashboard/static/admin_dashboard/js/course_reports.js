@@ -87,7 +87,7 @@
         });
     };
 
-    AjaxCall = function(url){
+    AjaxCall = function(url, data={}){
         $.ajaxSetup({
             headers: {
                 'X-CSRFToken': getCookie('csrftoken')
@@ -96,6 +96,7 @@
         $.ajax({
             type: 'POST',
             dataType: 'json',
+            data: data,
             url: url,
             error: function(error) {
                 if (error.responseText) {
@@ -129,7 +130,8 @@
         e.preventDefault();
         let list_of_single_course_elements = $('.single-course-report');
         let list_of_multiple_course_elements = $('.multiple-course-report');
-                    prev_data_download_len = 0;
+        let list_of_course_version_elements = $('.course-version-report');
+        prev_data_download_len = 0;
         if ($(this).val())
         {
             $('.btn-primary').attr('disabled', false);
@@ -137,6 +139,7 @@
                 course_name = $(this).val().toString();
                 list_of_single_course_elements.hide();
                 list_of_multiple_course_elements.show();
+                list_of_course_version_elements.hide()
                 if(report_for_single_courses == true)
                 {
                     $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
@@ -149,6 +152,15 @@
                 report_for_single_courses = null;
             }
             else {
+                var base_courses_list = JSON.parse(document.getElementById("base_courses_list").innerHTML)
+                list_of_course_version_elements.hide()
+                for (const [_, value] of Object.entries(base_courses_list)) {
+                    if(value == $(this).val()[0])
+                    {
+                        console.log("hello")
+                        list_of_course_version_elements.show();
+                    }
+                }
                 $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
                 course_name = $(this).val()[0];
                 report_for_single_courses = true;
@@ -161,6 +173,7 @@
         else {
             list_of_single_course_elements.show();
             list_of_multiple_course_elements.show();
+            list_of_course_version_elements.show();
             $('.btn-primary').attr('disabled', true);
             course_name = null;
             endpoint = null;
@@ -173,6 +186,8 @@
         let url_for_list_profiles_csv = '/courses/' + course_name + '/instructor/api/get_students_features' + '/csv';
         AjaxCall(url_for_list_profiles_csv);
     });
+
+
 
     $("[name='calculate-grades-csv']").click(function() {
         let url_for_calculate_grades = '/courses/' + course_name + '/instructor/api/calculate_grades_csv';
@@ -198,6 +213,16 @@
         let url_for_average_calculate_grades = '/admin_dashboard/average_calculate_grades_csv/' + course_name ;
         AjaxCall(url_for_average_calculate_grades);
         report_for_single_courses = false;
+    })
+
+    $("[name='course-version-report-detailed']").click(function() {
+        let url_for_course_version_report = '/admin_dashboard/course_version_report/' + course_name ;
+        AjaxCall(url_for_course_version_report);
+    })
+
+    $("[name='course-version-report-total']").click(function() {
+        let url_for_course_version_report = '/admin_dashboard/course_version_report/' + course_name ;
+        AjaxCall(url_for_course_version_report, {'csv_type': 'course_version_aggregate'});
     })
 
     $("[name='progress-report-csv']").click(function() {

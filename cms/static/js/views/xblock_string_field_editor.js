@@ -5,8 +5,9 @@
  * XBlock field's value if it has been changed. If the user presses Escape, then any changes will
  * be removed and the input hidden again.
  */
-define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/utils/html-utils'],
-    function(BaseView, XBlockViewUtils, HtmlUtils) {
+define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/utils/html-utils',
+        'js/views/utils/wiki_utils'],
+    function(BaseView, XBlockViewUtils, HtmlUtils, WikiUtils) {
         'use strict';
         var XBlockStringFieldEditor = BaseView.extend({
             events: {
@@ -106,15 +107,31 @@ define(['js/views/baseview', 'js/views/utils/xblock_utils', 'edx-ui-toolkit/js/u
                 var self = this,
                     xblockInfo = this.model,
                     newValue = this.getInput().val().trim(),
-                    oldValue = xblockInfo.get(this.fieldName);
+                    oldValue = xblockInfo.get(this.fieldName),
+                    isDestinationBlock = this.model.isDestinationBlock();
                 // TODO: generalize this as not all xblock fields want to disallow empty strings...
                 if (newValue === '' || newValue === oldValue) {
                     this.cancelInput();
                     return;
                 }
-                return XBlockViewUtils.updateXBlockField(xblockInfo, this.fieldName, newValue).done(function() {
-                    self.refresh();
-                });
+                var operation = function() {
+                    XBlockViewUtils.updateXBlockField(xblockInfo, self.fieldName, newValue).done(function() {
+                        self.refresh();
+                    });
+                }
+                var cancelCallback = function() {
+                    self.cancelInput();
+                }
+                var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
+                if (isDestinationBlock) {
+                    WikiUtils.showWarningOnTranslatedRerunEdit(operation, cancelCallback)
+                }
+                else if ( isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
+                    WikiUtils.showWarningOnBaseCourseEdit(operation, cancelCallback)
+                }
+                else {
+                    operation();
+                }
             },
 
             handleKeyUp: function(event) {

@@ -54,6 +54,8 @@ from common.djangoapps.util.monitoring import monitor_import_failure
 from openedx.core.djangoapps.content.learning_sequences.api import key_supports_outlines
 from openedx.core.djangoapps.embargo.models import CountryAccessRule, RestrictedCourse
 from openedx.core.lib.extract_tar import safetar_extractall
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.features.wikimedia_features.meta_translations.mapping.utils import course_blocks_mapping
 from xmodule.contentstore.django import contentstore
 from xmodule.course_module import CourseFields
 from xmodule.exceptions import SerializationError
@@ -110,6 +112,10 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
     source_course_key = CourseKey.from_string(source_course_key_string)
     destination_course_key = CourseKey.from_string(destination_course_key_string)
     try:
+        field_json = fields and json.loads(fields)
+        is_translated_rerun = field_json and field_json.get('is_translated_rerun', False)
+        language = field_json and field_json.get('language')
+
         # deserialize the payload
         fields = deserialize_fields(fields) if fields else None
 
@@ -145,6 +151,15 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
 
         org_data = ensure_organization(source_course_key.org)
         add_organization_course(org_data, destination_course_key)
+
+        if is_translated_rerun:
+            CourseTranslation.set_course_translation(destination_course_key, source_course_key)
+            course_blocks_mapping(destination_course_key)
+            if language:
+                course_module = modulestore().get_course(destination_course_key)
+                if course_module:
+                    course_module.language = language
+                    modulestore().update_item(course_module, user_id)
         return "succeeded"
 
     except DuplicateCourseError:
@@ -171,6 +186,7 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
 
 def deserialize_fields(json_fields):
     fields = json.loads(json_fields)
+    fields.pop("is_translated_rerun", False)
     for field_name, value in fields.items():
         fields[field_name] = getattr(CourseFields, field_name).from_json(value)
     return fields

@@ -41,6 +41,9 @@ from openedx.core.djangoapps.bookmarks import api as bookmarks_api
 from openedx.core.lib.gating import api as gating_api
 from openedx.core.lib.xblock_utils import hash_resource, request_token, wrap_xblock, wrap_xblock_aside
 from openedx.core.toggles import ENTRANCE_EXAMS
+from openedx.features.wikimedia_features.meta_translations.utils import (
+    get_block_status, is_destination_block, is_destination_course, handle_base_course_block_deletion
+)
 from xmodule.course_module import DEFAULT_START_DATE
 from xmodule.library_tools import LibraryToolsService
 from xmodule.modulestore import EdxJSONEncoder, ModuleStoreEnum
@@ -111,6 +114,8 @@ def _is_library_component_limit_reached(usage_key):
     return total_children + 1 > settings.MAX_BLOCKS_PER_CONTENT_LIBRARY
 
 
+from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 @require_http_methods(("DELETE", "GET", "PUT", "POST", "PATCH"))
 @login_required
 @expect_json
@@ -192,12 +197,22 @@ def xblock_handler(request, usage_key_string):
                 return HttpResponse(status=406)
 
         elif request.method == 'DELETE':
+            if CourseTranslation.is_base_course(str(usage_key.course_key)):
+                handle_base_course_block_deletion(usage_key)
             _delete_item(usage_key, request.user)
             return JsonResponse()
-        else:  # Since we have a usage_key, we are updating an existing xblock.
+        else:
+            # Since we have a usage_key, we are updating an existing xblock.
+            xblock = _get_xblock(usage_key, request.user)
+
+            # For base courses, check if content is updated then set content_updated to True in related CourseBlockData
+            course_id = xblock.course_id
+            if CourseTranslation.is_base_course(course_id) and xblock.category in COMPONENTS_CLASS_MAPPING:
+                COMPONENTS_CLASS_MAPPING[xblock.category]().check_and_sync_base_block_data(xblock, request.json)
+
             return _save_xblock(
                 request.user,
-                _get_xblock(usage_key, request.user),
+                xblock,
                 data=request.json.get('data'),
                 children_strings=request.json.get('children'),
                 metadata=request.json.get('metadata'),
@@ -1203,12 +1218,31 @@ def create_xblock_info(xblock, data=None, metadata=None, include_ancestor_info=F
             # a percent value out of 100, e.g. "58%" means "58/100".
             pct_sign=_('%'))
 
+    is_destination_course_block = is_destination_course(xblock.course_id)
+
     xblock_info = {
         'id': str(xblock.location),
         'display_name': xblock.display_name_with_default,
         'category': xblock.category,
-        'has_children': xblock.has_children
+        'has_children': xblock.has_children,
+        'is_destination_course': is_destination_course_block
     }
+
+    # Add meta translation fields to the xBlockInfo in destination course only
+    # to show translatation switch and a status of the block
+    if is_destination_course_block:
+        xblock_info['meta_block_status'] = get_block_status(xblock.location)
+        xblock_info['destination_flag'] = is_destination_block(xblock.location)
+
+    if xblock.category == 'course':
+        is_translated_or_base_course = CourseTranslation.is_base_or_translated_course(xblock.location.course_key)
+        mapping_message = ''
+        if is_translated_or_base_course == CourseTranslation._BASE_COURSE:
+            mapping_message = 'Base-Course'
+        elif is_translated_or_base_course == CourseTranslation._TRANSLATED_COURSE:
+            mapping_message = 'Translated-Course'
+        xblock_info['mapping_message'] = mapping_message
+
     if is_concise:
         if child_info and child_info.get('children', []):
             xblock_info['child_info'] = child_info

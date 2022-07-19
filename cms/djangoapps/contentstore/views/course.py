@@ -29,6 +29,7 @@ from milestones import api as milestones_api
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 from opaque_keys.edx.locator import BlockUsageLocator
+from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from organizations.api import add_organization_course, ensure_organization
 from organizations.exceptions import InvalidOrganizationException
 
@@ -73,6 +74,8 @@ from openedx.features.content_type_gating.models import ContentTypeGatingConfig
 from openedx.features.content_type_gating.partitions import CONTENT_TYPE_GATING_SCHEME
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
+from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
+from openedx.features.wikimedia_features.meta_translations.models import MetaTranslationConfiguration
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock
@@ -313,10 +316,12 @@ def course_rerun_handler(request, course_key_string):
         if request.method == 'GET':
             return render_to_response('course-create-rerun.html', {
                 'source_course_key': course_key,
+                'language_options': settings.ALL_LANGUAGES,
                 'display_name': course_module.display_name,
                 'user': request.user,
                 'course_creator_status': _get_course_creator_status(request.user),
-                'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False)
+                'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False),
+                'is_translated_rerun': CourseTranslation.is_base_or_translated_course(course_key).upper() == "TRANSLATED"
             })
 
 
@@ -326,6 +331,7 @@ def course_rerun_handler(request, course_key_string):
 def course_search_index_handler(request, course_key_string):
     """
     The restful handler for course indexing.
+
     GET
         html: return status of indexing task
         json: return status of indexing task
@@ -551,7 +557,15 @@ def course_listing(request):
     active_courses, archived_courses = _process_courses_list(courses_iter, in_process_course_actions, split_archived)
     in_process_course_actions = [format_in_process_course_view(uca) for uca in in_process_course_actions]
 
+    meta_config = MetaTranslationConfiguration.current()
+    show_meta_api_buttons = False
+    if meta_config and meta_config.enabled:
+        if (request.user.is_staff and meta_config.staff_show_api_buttons) or meta_config.normal_users_show_api_buttons:
+            # user is staff and config for staff is set otherwise check if config for normal users is set
+            show_meta_api_buttons = True
+
     return render_to_response('index.html', {
+        'language_options': settings.ALL_LANGUAGES,
         'courses': active_courses,
         'split_studio_home': split_library_view_on_dashboard(),
         'archived_courses': archived_courses,
@@ -568,7 +582,9 @@ def course_listing(request):
         'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False),
         'allow_course_reruns': settings.FEATURES.get('ALLOW_COURSE_RERUNS', True),
         'optimization_enabled': optimization_enabled,
-        'active_tab': 'courses'
+        'active_tab': 'courses',
+        'course_blocks_send_fetch_url': reverse("meta_translations:course_blocks_api_send_fetch"),
+        'show_meta_api_buttons': show_meta_api_buttons
     })
 
 
@@ -730,6 +746,8 @@ def course_index(request, course_key):
             'course_authoring_microfrontend_url': course_authoring_microfrontend_url,
             'advance_settings_url': reverse_course_url('advanced_settings_handler', course_module.id),
             'proctoring_errors': proctoring_errors,
+            'course_blocks_mapping_url': reverse("meta_translations:course_blocks_mapping"),
+            'is_translated_or_base_course': CourseTranslation.is_base_or_translated_course(course_key)
         })
 
 
@@ -781,7 +799,8 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
             'rerun_link': _get_rerun_link_for_item(course.id),
             'org': course.display_org_with_default,
             'number': course.display_number_with_default,
-            'run': course.location.run
+            'run': course.location.run,
+            'translation_info': _(CourseTranslation.is_base_or_translated_course(course.id)),
         }
 
     in_process_action_course_keys = {uca.course_key for uca in in_process_course_actions}
@@ -841,7 +860,6 @@ def course_outline_initial_state(locator_to_show, course_structure):
         'expanded_locators': expanded_locators
     }
 
-
 @expect_json
 def _create_or_rerun_course(request):
     """
@@ -853,12 +871,16 @@ def _create_or_rerun_course(request):
         raise PermissionDenied()
 
     try:
+        # meta-translation feature, to identify type of rerun
+        is_translated_rerun = request.json.get('translated_rerun')
+        language = request.json.get('language')
         org = request.json.get('org')
         course = request.json.get('number', request.json.get('course'))
         display_name = request.json.get('display_name')
         # force the start date for reruns and allow us to override start via the client
         start = request.json.get('start', CourseFields.start.default)
         run = request.json.get('run')
+        source_course_key = request.json.get('source_course_key')
 
         # allow/disable unicode characters in course_id according to settings
         if not settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID'):
@@ -868,9 +890,30 @@ def _create_or_rerun_course(request):
                     status=400
                 )
 
+        if is_translated_rerun:
+            if not language:
+                return JsonResponse(
+                    {'error': _('Course Language is required field for Translated rerun.')},
+                    status=400
+                )
+            elif CourseTranslation.is_translated_rerun_exists_in_language(source_course_key, language):
+                return JsonResponse(
+                    {'error': _('Translated rerun for Source Course in selected language already exists.')},
+                    status=400
+                )
+
+            source_course_details = CourseDetails.fetch(CourseKey.from_string(source_course_key))
+            if not source_course_details or not source_course_details.language:
+                return JsonResponse(
+                    {'error': _('Translated rerun can not be created for the base course with no language. Please set base course language from settings.')},
+                    status=400
+                )
+
         fields = {'start': start}
         if display_name is not None:
             fields['display_name'] = display_name
+        if language is not None:
+            fields['language'] = language
 
         # Set a unique wiki_slug for newly created courses. To maintain active wiki_slugs for
         # existing xml courses this cannot be changed in CourseBlock.
@@ -880,8 +923,8 @@ def _create_or_rerun_course(request):
         definition_data = {'wiki_slug': wiki_slug}
         fields.update(definition_data)
 
-        source_course_key = request.json.get('source_course_key')
         if source_course_key:
+            fields['is_translated_rerun'] = is_translated_rerun
             source_course_key = CourseKey.from_string(source_course_key)
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
             return JsonResponse({
@@ -944,8 +987,11 @@ def create_new_course_in_store(store, user, org, number, run, fields):
     """
 
     # Set default language from settings and enable web certs
+    if 'language' not in fields:
+        fields.update({
+            'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
+        })
     fields.update({
-        'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
         'cert_html_view_enabled': True,
     })
 
@@ -1169,6 +1215,8 @@ def settings_handler(request, course_key_string):  # lint-amnesty, pylint: disab
                 'enable_extended_course_details': enable_extended_course_details,
                 'upgrade_deadline': upgrade_deadline,
                 'course_authoring_microfrontend_url': course_authoring_microfrontend_url,
+                'is_destination_course': is_destination_course(course_key),
+                'is_mapped_course': bool(CourseTranslation.is_base_or_translated_course(course_key))
             }
             if is_prerequisite_courses_enabled():
                 courses, in_process_course_actions = get_courses_accessible_to_user(request)
@@ -1203,13 +1251,17 @@ def settings_handler(request, course_key_string):  # lint-amnesty, pylint: disab
         elif 'application/json' in request.META.get('HTTP_ACCEPT', ''):
             if request.method == 'GET':
                 course_details = CourseDetails.fetch(course_key)
-                return JsonResponse(
-                    course_details,
-                    # encoder serializes dates, old locations, and instances
-                    encoder=CourseSettingsEncoder
-                )
+                data = json.loads(CourseSettingsEncoder().encode(course_details))
+                data.update({
+                    'is_destination_course': is_destination_course(course_key),
+                })
+                return JsonResponse(data)
             # For every other possible method type submitted by the caller...
             else:
+                # check if course was destination course and now it's value is updated in json
+                if is_destination_course(course_key) and request.json.get('is_destination_course') in ['false', False]:
+                    update_course_to_source(course_key)
+
                 # if pre-requisite course feature is enabled set pre-requisite course
                 if is_prerequisite_courses_enabled():
                     prerequisite_course_keys = request.json.get('pre_requisite_courses', [])

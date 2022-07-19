@@ -21,6 +21,8 @@ class WikimediaIdentityServer(IdentityServer3):
         else:
             firstname = name
             lastname = ""
+        # Truncate the firstname to max 30 characters. User model doesn't accepts firstname above 30 characters.
+        firstname = firstname if len(firstname)<=30 else firstname[:30]
         return fullname, firstname, lastname
 
     def get_user_details(self, response):

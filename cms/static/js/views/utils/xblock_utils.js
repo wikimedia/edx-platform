@@ -149,6 +149,10 @@ define(['jquery', 'underscore', 'gettext', 'common/js/components/utils/view_util
                     true
                 );
 
+            var isTranslatedOrBaseData = $("#python-context-var").data() && $("#python-context-var").data().isTranslatedOrBase;
+            if (isTranslatedOrBaseData && isTranslatedOrBaseData.toUpperCase() == 'BASE') {
+                messageBody += ' ' + gettext('Note that any linked translated rerun blocks mapping will be lost.');   // eslint-disable-line max-len
+            }
             if (xblockInfo.get('is_prereq')) {
                 messageBody += ' ' + gettext('Any content that has listed this content as a prerequisite will also have access limitations removed.');   // eslint-disable-line max-len
                 ViewUtils.confirmThenRunOperation(

@@ -116,7 +116,8 @@
                 threads: '/courses/' + $$course_id + '/discussion/forum',
                 enable_notifications: '/notification_prefs/enable/',
                 disable_notifications: '/notification_prefs/disable/',
-                notifications_status: '/notification_prefs/status/'
+                notifications_status: '/notification_prefs/status/',
+                user_search: '/messenger/api/v0/user/?search=' + param
             }[name];
         };
 
@@ -323,6 +324,55 @@
             });
         };
 
+        DiscussionUtil.searchMentionedUsers = _.debounce(function(event) {
+            // enable user to ping/mention other users using @usernames on discussion form
+            $( ".username-query" ).remove();
+            var content = event.target.value;
+            var cursor_position = event.target.selectionStart;
+            var index = content.substr(0, cursor_position).lastIndexOf("@");
+            var name = "";
+            if (index != -1) {
+                name = content.substring(index+1, cursor_position);
+                if (name.includes(" ")) {
+                    return;
+                }
+                $.ajax({
+                    type: 'GET',
+                    url: this.urlFor('user_search', name),
+                    data: {},
+                }).done(function(response) {
+                    console.log(name)
+                    console.log(response.results)
+                    var div = document.createElement("div");
+                    div.setAttribute("class", "username-query");
+                    $.each(response.results, function(index) {
+                        var btn = document.createElement("button");
+                        btn.setAttribute("class", "username-btn btn btn-outline-primary");
+                        btn.setAttribute("value",  response.results[index].username + "/" + event.target.id);
+                        btn.textContent = response.results[index].username
+
+                        btn.addEventListener("click", function(event) {
+                            event.preventDefault();
+                            var username, input_id, name_input_id_array;
+                            name_input_id_array = event.target.value.split("/");
+                            username = name_input_id_array[0], input_id = name_input_id_array[1];
+                            var target = document.getElementById(input_id)
+                            var index = target.value.substr(0, cursor_position).lastIndexOf("@");
+                            target.value = target.value.substring(0, index+1) + username + target.value.substring(index+1+name.length, target.value.length);
+                            $(".wmd-panel.wmd-preview p").html(target.value);
+                            $(".username-query").hide();
+                        })
+                        div.appendChild(btn)
+                    });
+                    event.target.after(div)
+                }).fail(function(jqXHR, textStatus) {
+                   console.log("Error has been occurred in user search query.")
+                   console.log(textStatus)
+                });
+            }
+        }, 500);
+
+
         DiscussionUtil.makeWmdEditor = function($content, $local, cls_identifier) {
             var appended_id, editor, elem, id, imageUploadUrl, placeholder, _processor;
             elem = $local('.' + cls_identifier);
@@ -338,9 +388,12 @@
             };
             editor = Markdown.makeWmdEditor(elem, appended_id, imageUploadUrl, _processor(this));
             this.wmdEditors['' + cls_identifier + '-' + id] = editor;
+            var input = elem.find('#wmd-input' + appended_id);
+
             if (placeholder) {
-                elem.find('#wmd-input' + appended_id).attr('placeholder', placeholder);
+                input.attr('placeholder', placeholder);
             }
+            input[0].addEventListener('input', function(event) {DiscussionUtil.searchMentionedUsers(event)})
             return editor;
         };
 

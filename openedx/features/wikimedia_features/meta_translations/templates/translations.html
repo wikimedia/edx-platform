@@ -1,0 +1,37 @@
+<%inherit file="base.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+  from django.urls import reverse
+  from django.utils.translation import ugettext_lazy as _
+  from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
+%>
+
+<%def name="online_help_token()"><% return "home" %></%def>
+<%block name="title">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</%block>
+<%block name="bodyclass">is-signedin index view-dashboard</%block>
+
+<%block name="header_extras">
+    <link rel="stylesheet" type="text/css" href="${static.url('css/studio-main-v1.css')}" />
+</%block>
+
+<%block name="content">
+    <div id="root" class="container">
+    </div>
+    <%static:webpack entry="Translations">
+        var context = {
+            "PLATFORM_NAME": "${platform_name | n, js_escaped_string}",
+            "LOGIN_USER": "${login_user_username | n, js_escaped_string}",
+            "COURSES_URL": "api/v0/versions",
+            "COURSE_OUTLINE_URL": "api/v0/outline",
+            "COURSE_VERSION_URL": "api/v0/translated_versions",
+            "COURSE_APPLY_URL": "api/v0/apply_translated_version",
+            "COURSE_UNIT_URL": "api/v0/components",
+            "COURSE_APPROVE_URL": "api/v0/approve_translations",
+            "LANGUAGES": ${language_options | n, dump_js_escaped_json},
+            "META_DATA": ${meta_data | n, dump_js_escaped_json},
+            "IS_ADMIN": "${is_admin}"
+        }
+
+        new Translations(context);
+    </%static:webpack>
+</%block>

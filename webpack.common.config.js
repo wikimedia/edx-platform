@@ -117,7 +117,7 @@ module.exports = Merge.smart({
 
             // Wikimedia
             Messenger: './openedx/features/wikimedia_features/messenger/static/messenger/js/Messenger.js',
-
+            Translations: './openedx/features/wikimedia_features/meta_translations/static/translations/js/Translations.js',
             AnnouncementsView: './openedx/features/announcements/static/announcements/jsx/Announcements.jsx',
             CookiePolicyBanner: './common/static/js/src/CookiePolicyBanner.jsx',
 
@@ -360,6 +360,14 @@ module.exports = Merge.smart({
                                 modules: true
                             }
                         }
+                    ]
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        "style-loader",
+                        "css-loader",
+                        "sass-loader",
                     ]
                 }
             ]

@@ -40,6 +40,7 @@ from xmodule.studio_editable import has_author_view
 from xmodule.util.sandboxing import can_execute_unsafe_code, get_python_lib_zip
 from xmodule.util.xmodule_django import add_webpack_to_fragment
 from xmodule.x_module import AUTHOR_VIEW, PREVIEW_VIEWS, STUDENT_VIEW, ModuleSystem, XModule, XModuleDescriptor
+from openedx.features.wikimedia_features.meta_translations.utils import get_block_status, is_destination_block, is_destination_course
 
 from ..utils import get_visibility_partition_info
 from .access import get_user_role
@@ -300,6 +301,15 @@ def _studio_wrap_xblock(xblock, view, frag, context, display_name_only=False):
             'can_move': context.get('can_move', xblock.scope_ids.usage_id.context_key.is_course),
             'language': getattr(course, 'language', None)
         }
+
+        is_destination_course_block = is_destination_course(xblock.course_id)
+
+        # Add meta translation fields as a reper fields in destination course containers
+        # to show translatation switch and a status of the block on header
+        template_context['is_destination_course'] = is_destination_course_block
+        if is_destination_course_block:
+            template_context['meta_block_status'] = get_block_status(xblock.location)
+            template_context['destination_flag'] = is_destination_block(xblock.location)
 
         if isinstance(xblock, (XModule, XModuleDescriptor)):
             # Add the webpackified asset tags

@@ -4725,3 +4725,6 @@ CHROME_DISABLE_SUBFRAME_DIALOG_SUPPRESSION_TOKEN = 'ArNBN7d1AkvMhJTGWXlJ8td/AN4l
 
 # username that will be used as a request_user for email tasks.
 EMAIL_ADMIN = 'email_admin'
+
+#username configurations
+USERNAME_MAX_LENGTH = 150
