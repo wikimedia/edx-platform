@@ -1,0 +1,38 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='../static_content.html'/>
+
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<h1>Course: ${data.get('display_name')}</h1>
+% for section in data.get('children', []):
+  <h2>Section: ${section.get('display_name')}</h2>
+  <p>
+      <b>Link: </b>${section.get('lms_web_url')}
+      <b>Progress: </b>${section.get('progress', '50%')}
+  </p>
+  % for subsection in section.get('children', []):
+    <h3>-> Subsection: ${subsection.get('display_name')}</h3>
+    <ul>
+      <li><b>Link: </b>${subsection.get('lms_web_url')}</li>
+      <li><b>Assignment: </b>${subsection.get('format', 'Not graded')}</li>
+      <li><b>Progress: </b>${subsection.get('progress', '30%')}</li>
+      <li><b>Score: </b>${subsection.get('score')}</li>
+    </ul>
+    % for unit in subsection.get('children', []):
+      % for component in unit.get('children', []):
+          <h4>Component: ${component.get('display_name')}</h4>
+          <ul>
+            <li><b>Link: </b>${component.get('lms_web_url')}</li>
+            <li><b>Completion: </b>${component.get('completion')}</li>
+            <li><b>Score: </b>${component.get('score', '-')}</li>
+            <li><b>Attempted: </b>${component.get('attempted', '-')}</li>
+          </ul>
+      % endfor
+    % endfor
+  % endfor
+% endfor
