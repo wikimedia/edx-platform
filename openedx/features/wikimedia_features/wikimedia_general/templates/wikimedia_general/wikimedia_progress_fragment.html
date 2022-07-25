@@ -9,13 +9,6 @@ from django.utils.translation import ugettext as _
 %>
 <div class="progress-content page-content-container">
 
-  <header class="page-header has-secondary">
-    <div class="page-header-main">
-      <nav aria-label="Course Outline" class="sr-is-focusable" tabindex="-1">
-        <h2 class="hd hd-3 page-title">${data.get('display_name')}</h2>
-      </nav>
-    </div>
-  </header>
   <div class="page-content">
     <div class="page-content-main" id="main-progress">
       % for section in data.get('children', []):
@@ -26,9 +19,9 @@ from django.utils.translation import ugettext as _
             <div class="head-info">
               <ul>
                 <li>
-                  <span class="value">${section.get('progress', '50%')}</span>
+                  <span class="value">${section.get('progress', '0')}%</span>
                   <div class="progress">
-                    <div class="progress-bar bg-success" style="width: ${section.get('progress', '50%')};"></div>
+                    <div class="progress-bar bg-success" style="width: ${section.get('progress', '0')}%;"></div>
                   </div>
                   <strong class="title">Progress</strong>
                 </li>
@@ -45,9 +38,9 @@ from django.utils.translation import ugettext as _
                       <div class="head-info">
                         <ul>
                           <li>
-                            <span class="value">${subsection.get('progress', '30%')}</span>
+                            <span class="value">${subsection.get('progress', '0')}%</span>
                             <div class="progress">
-                              <div class="progress-bar bg-success" style="width: ${subsection.get('progress', '30%')}"></div>
+                              <div class="progress-bar bg-success" style="width: ${subsection.get('progress', '0')}%"></div>
                             </div>
                             <strong class="title">Progress</strong>
                           </li>
@@ -57,7 +50,7 @@ from django.utils.translation import ugettext as _
                           </li>
                           <li>
                             <span class="value">${subsection.get('score')}</span>
-                            <strong class="title">Score</strong>
+                            <strong class="title">${"Problem Score" if subsection.get('format') else "Practice Score"}</strong>
                           </li>
                         </ul>
                       </div>
@@ -75,18 +68,16 @@ from django.utils.translation import ugettext as _
                                 <thead>
                                   <tr class="table-primary">
                                     <th></th>
-                                    <th>Completion</th>
+                                    <th>Completed</th>
                                     <th>Score</th>
-                                    <th>Attempted</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   % for component in unit.get('children', []):
                                   <tr>
                                     <td><a href="${component.get('lms_web_url')}">${component.get('display_name')}</a></td>
-                                    <td>${component.get('completion')}</td>
+                                    <td>${"Yes" if component.get('complete') else "No"}</td>
                                     <td>${component.get('score', '-')}</td>
-                                    <td>${component.get('attempted', '-')}</td>
                                   </tr>
                                   % endfor
                                 </tbody>
