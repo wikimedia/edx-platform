@@ -277,7 +277,7 @@ class GetCoursesVersionInfo(generics.RetrieveAPIView):
             admin_created_courses = self.request.GET.get('admin_created_courses', False)
 
         course_keys = self._get_course_ids_list(request, str(admin_created_courses).upper()=='TRUE')
-        translated_courses = CourseTranslation.objects.filter(base_course_id__in=course_keys)
+        translated_courses = CourseTranslation.objects.filter(base_course_id__in=course_keys, outdated=False)
         base_course_keys = [translated_course.base_course_id for translated_course in translated_courses]
         base_course_keys = list(set(base_course_keys))
         data = [self._course_version_format(key) for key in base_course_keys]
