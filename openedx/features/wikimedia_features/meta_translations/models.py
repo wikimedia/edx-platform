@@ -456,8 +456,10 @@ class CourseTranslation(models.Model):
     _BASE_COURSE = 'BASE'
     _TRANSLATED_COURSE = 'TRANSLATED'
 
-    course_id = CourseKeyField(max_length=255, db_index=True)
+    course_id = CourseKeyField(max_length=255, db_index=True, null=True, blank=True)
     base_course_id = CourseKeyField(max_length=255, db_index=True)
+    outdated = models.BooleanField(default=False)
+    extra = jsonfield.JSONField(default={}, null=True, blank=True)
 
     @classmethod
     def set_course_translation(cls, course_key, source_key):
@@ -469,11 +471,13 @@ class CourseTranslation(models.Model):
         cls.objects.create(course_id=course_id,base_course_id=base_course_id)
 
     @classmethod
-    def get_base_courses_list(cls):
+    def get_base_courses_list(cls, outdated=False):
         """
         Returns list of course_id(s) that has translated rerun version
         """
-        return cls.objects.all().values_list("base_course_id", flat=True).distinct()
+        if outdated:
+            return cls.objects.all().values_list("base_course_id", flat=True).distinct()
+        return cls.objects.filter(outdated=outdated).values_list("base_course_id", flat=True).distinct()
 
     @classmethod
     def is_base_or_translated_course(cls, course_key):
@@ -508,6 +512,95 @@ class CourseTranslation(models.Model):
             if translated_rerun_course and translated_rerun_course.language==language:
                 return True
         return False
+    
+    @classmethod
+    def create_outdated_course(cls, course_id, base_course_language, translated_courses_ids):
+        """
+        Create a entry for a outdated course. The functions adds some fields i.e base_course_langauge,
+        deleted_reruns to extra attribute and set outdated to True. We use this information to update
+        the meta-server about deleted courses.
+        """
+        extra = {
+            'base_course_language': base_course_language,
+            'deleted_reruns': translated_courses_ids,
+        }
+        cls.objects.create(base_course_id=course_id, course_id=None, outdated=True, extra=extra)
+    
+    @classmethod
+    def is_outdated_course(cls, course_id):
+        """
+        Check the course is outdated or not
+        Returns CourseTranslation instance if course is outdated
+        """
+        try:
+            return cls.objects.get(base_course_id=course_id, outdated=True)
+        except cls.DoesNotExist:
+            return None
+    
+    @classmethod
+    def delete_base_course(cls, course_id):
+        """
+        Delete Mapping of a base course
+        We are not deleting the entries of CourseBlock and relavent CourseBlockData entries because 
+        we need this data to inform meta-server about deleted enties. We update the deleted flag
+        of course blocks to mark blocks as deleted and set mapping_updated=True to send the 
+        deleted information to a meta-server.
+        """
+        course_blocks = CourseBlock.objects.filter(course_id=course_id)
+        course_blocks_data = CourseBlockData.objects.filter(course_block__in=course_blocks)
+        course_blocks.update(lang=json.dumps([]), deleted=True)
+        course_blocks_data.update(mapping_updated=True)
+    
+    @classmethod
+    def delete_translated_course(cls, course_id, base_course_id):
+        """
+        Delete Mappings of the translated course
+        Delete the content of CourseBlock and relavent WikiTranslation and TranslationVersion entries.
+        It also updates the language field of base CourseBlock enties and set mapping_update=True to inform
+        meta-server about deleting a translated course blocks.
+        """
+        course_blocks = CourseBlock.objects.filter(course_id=course_id)
+        course_blocks_ids = course_blocks.values_list('block_id')
+        course_blocks.update(applied_translation=False, applied_version=None)
+        TranslationVersion.objects.filter(block_id__in=course_blocks_ids).delete()
+        WikiTranslation.objects.filter(target_block__block_id__in=course_blocks_ids).delete()
+        course = get_course_by_id(course_id)
+        language = course.language
+        base_blocks = CourseBlock.objects.filter(course_id=base_course_id)
+        for base_block in base_blocks:
+            base_block.remove_mapping_language(language)
+            base_block.courseblockdata_set.all().update(mapping_updated=True)
+        course_blocks.delete()
+    
+    @classmethod
+    def delete_base_or_translated_course(cls, course_id):
+        """
+        Delete Mappings of a Multilingual course
+        If course is a base course, delete mappings of relavent translated courses and add an outdated
+        entry in CourseTranslation table. 
+        If course is a translated course, delete mappings of that course and delete relavent linkage from
+        the CourseTranslation table.
+        """
+        course_status = cls.is_base_or_translated_course(course_id)
+        if course_status == cls._BASE_COURSE:
+            translated_courses = cls.objects.filter(base_course_id=course_id)
+            translated_courses_ids = translated_courses.values_list("course_id", flat=True)
+            for translated_course_id in translated_courses_ids:
+                cls.delete_translated_course(translated_course_id, course_id)
+            cls.delete_base_course(course_id)
+            translated_courses.delete()
+            base_course_language = get_course_by_id(course_id).language
+            translated_courses_ids = [str(id) for id in translated_courses_ids]
+            cls.create_outdated_course(course_id, base_course_language, translated_courses_ids)
+            log.info("Marked {} as outdated and deleted mappings of related translated courses: {}".format(course_id, translated_courses_ids))
+        elif course_status == cls._TRANSLATED_COURSE:
+            translatetd_course = cls.objects.get(course_id=course_id)
+            base_course_id = translatetd_course.base_course_id
+            cls.delete_translated_course(course_id, base_course_id)
+            cls.objects.get(course_id=course_id).delete()
+            log.info("Deleted Mapping of translated course: {}".format(course_id))
+        else:
+            log.info("Course {} is not a Mulilingual course".format(course_id))
 
     class Meta:
         app_label = APP_LABEL

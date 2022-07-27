@@ -106,10 +106,15 @@ class Command(BaseCommand):
             ...
         ]
         """
-        master_courses = CourseTranslation.get_base_courses_list()
+        master_courses = CourseTranslation.get_base_courses_list(outdated=True)
         data_list = []
         for base_course in master_courses:
-            base_course_language = get_course_by_id(base_course).language
+            outdated_translation = CourseTranslation.is_outdated_course(base_course)
+            base_course_language = None
+            if outdated_translation:
+                base_course_language = outdated_translation.extra['base_course_language']
+            else:
+                base_course_language = get_course_by_id(base_course).language
             base_course_blocks = CourseBlock.objects.prefetch_related("courseblockdata_set").filter(
                 course_id=base_course
             )
