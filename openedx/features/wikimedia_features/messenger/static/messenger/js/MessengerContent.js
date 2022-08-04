@@ -62,6 +62,7 @@ export default function MessengerContent({ context }) {
                     setDrawerShown = { setDrawerShown }
                     searchInbox = { searchInbox }
                     setSearchInbox = { setSearchInbox }
+                    META_DATA = {context.META_DATA}
                 />
                 <Conversation
                     createMessage = { createMessage }
@@ -71,6 +72,7 @@ export default function MessengerContent({ context }) {
                     lastMessageRef = { lastMessageRef }
                     selectedInboxUser = { selectedInboxUser }
                     loggedinUser = { loggedinUser }
+                    META_DATA = {context.META_DATA}
                 />
                 <div
                     className="chat-overlay"
@@ -79,6 +81,7 @@ export default function MessengerContent({ context }) {
             </div>
             <NewMessageModal
                 createGroupMessages = { createGroupMessages }
+                META_DATA = {context.META_DATA}
                 context = { context }
             />
             <ToastContainer />
