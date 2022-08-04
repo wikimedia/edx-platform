@@ -10,7 +10,8 @@ export default function Inbox({
     isDrawerShown,
     setDrawerShown,
     searchInbox,
-    setSearchInbox
+    setSearchInbox,
+    META_DATA,
 }) {
 
 
@@ -32,9 +33,9 @@ export default function Inbox({
         <div className="chat-sidebar">
             <div className="chat-sidebar-header">
                 <div className="btn-box">
-                    <strong className="text">Inbox</strong>
+                    <strong className="text">{META_DATA.inbox}</strong>
                     <button className="btn btn-primary btn-lg start-new-msg-btn" data-toggle="modal" data-target="#messageModalCenter">
-                        <span className="icon-plus">+</span>New Message
+                        <span className="icon-plus">+</span>{META_DATA.button_text.new_message}
                     </button>
                 </div>
                 <div className="search-box">
@@ -44,7 +45,7 @@ export default function Inbox({
                         value={searchInbox}
                         onChange={(e)=>setSearchInbox(e.target.value)}
                         className="search-field"
-                        placeholder="Search Users"
+                        placeholder={META_DATA.placeholder.search_users}
                     />
                     {
                         searchInbox && (

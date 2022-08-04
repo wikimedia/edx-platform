@@ -54,6 +54,8 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
             "USER_SEARCH_URL": "${reverse(
                 'messenger:messenger_api_v0:user_search'
             ) | n, js_escaped_string}",
+
+            "META_DATA": ${meta_data | n, dump_js_escaped_json},
         }
 
         new Messenger(context);

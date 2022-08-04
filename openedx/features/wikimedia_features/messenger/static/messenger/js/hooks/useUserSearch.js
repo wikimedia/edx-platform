@@ -19,7 +19,7 @@ export default function useUserSearch(context) {
                 }
             }
         } catch (ex) {
-            notification(toast.error, "Unable to search users.");
+            notification(toast.error, context.META_DATA.error.user_search);
             console.error(ex);
         }
     }
