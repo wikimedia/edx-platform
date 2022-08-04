@@ -35,7 +35,7 @@ export default function useSelectedInbox(messagesPageNumber, setMessagesPageNumb
             }
             setMessagesLoading(false);
         } catch (e) {
-            notification(toast.error, `Unable to load conversation of user: ${selectedInboxUser}.`);
+            notification(toast.error, `${context.META_DATA.error.user_conversation} ${selectedInboxUser}.`);
             console.error(e);
         }
     }

@@ -8,7 +8,8 @@ export default function Conversation({
     updateLastMessage,
     lastMessageRef,
     selectedInboxUser,
-    loggedinUser
+    loggedinUser,
+    META_DATA,
 }) {
 
     const [message, setMessage] = useState('');
@@ -32,7 +33,7 @@ export default function Conversation({
     return (
         <div className="chat-container">
             <div className="chat-header">
-                <h2>Inbox / {selectedInboxUser}&nbsp;</h2>
+                <h2>{META_DATA.indox} / {selectedInboxUser}&nbsp;</h2>
             </div>
             <div className="chat">
                 {
@@ -50,7 +51,7 @@ export default function Conversation({
                                     <textarea
                                         className="new-message-input"
                                         value={message}
-                                        placeholder="Type your message..."
+                                        placeholder={META_DATA.placeholder.type_message}
                                         onChange={handleInputChange}
                                         autoFocus
                                     ></textarea>
@@ -59,11 +60,11 @@ export default function Conversation({
                                             className="btn btn-primary"
                                             onClick={handleSendMessageBtnClick}
                                             disabled={!message.length}
-                                        >Send</button>
+                                        >{META_DATA.button_text.send}</button>
                                         <button
                                             className="btn btn-default"
                                             onClick={(e) => handleCancelReply(e)}
-                                        >Cancel</button>
+                                        >{META_DATA.button_text.close}</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +77,7 @@ export default function Conversation({
                             <button
                                 className="btn btn-default"
                                 onClick={(e) => setReplying(true)}
-                            >Reply</button>
+                            >{META_DATA.button.reply}</button>
                         </div>
                     )
                 }
