@@ -1,3 +1,5 @@
+import copy
+
 from opaque_keys.edx.keys import CourseKey
 from django.template.loader import render_to_string
 from web_fragments.fragment import Fragment
@@ -78,11 +80,19 @@ class WikimediaProgressFragmentView(EdxFragmentView):
                 'progress': progress,
                 'unit_count': unit_count,
             })
-
+        
+        useful_children = []
         for child in children:
-            self._update_context_with_score_and_progress(child, grade_dict)
-            progress += child.get('progress', 0) * child.get('unit_count', 0)
-            unit_count += child.get('unit_count', 0)
+            child_data = grade_dict.get(child.get('id'), None)
+            if child['type'] in ['course', 'chapter', 'vertical'] or child_data:
+                self._update_context_with_score_and_progress(child, grade_dict)
+                progress += child.get('progress', 0) * child.get('unit_count', 0)
+                unit_count += child.get('unit_count', 0)
+                useful_children.append(child)
+        
+        if useful_children:
+            children = useful_children
+            block['children'] = children
 
         if children and unit_count:
             block.update({
