@@ -36,6 +36,9 @@ from common.djangoapps.student.models import CourseEnrollment
   <%static:include path="dashboard/${template_name}.underscore" />
 </script>
 % endfor
+% if not len(errored_courses):
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61fcb9d4ac7367ae"></script>
+% endif
 </%block>
 
 <%block name="js_extra">
