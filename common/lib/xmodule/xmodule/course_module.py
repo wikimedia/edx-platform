@@ -1011,6 +1011,11 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         scope=Scope.settings,
     )
 
+    enable_score_tab_on_progress_page = Boolean(
+        display_name=_("Enable Score column on the Progress Page"),
+        help=_("Enter true or false. If true, students can see score tab on the progress page"),
+        scope=Scope.settings, default=False
+    )
     other_course_settings = Dict(
         display_name=_("Other Course Settings"),
         help=_(

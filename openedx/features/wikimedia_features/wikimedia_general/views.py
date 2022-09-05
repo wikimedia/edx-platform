@@ -102,9 +102,12 @@ class WikimediaProgressFragmentView(EdxFragmentView):
         """
         course_key = CourseKey.from_string(course_id)
         user = request.user
+        show_score_tab = False
 
         try:
-            course = get_course_with_access(request.user, 'load', course_key, check_if_enrolled=True)
+            course = get_course_with_access(request.user, 'load', course_key, check_if_enrolled=True)     
+            if hasattr(course, 'enable_score_tab_on_progress_page'):
+                show_score_tab = course.enable_score_tab_on_progress_page
             course_grade = CourseGradeFactory().read(user, course)
             grade_dict = self._get_grade_dict(course_grade)
         except Exception as err:
@@ -116,7 +119,10 @@ class WikimediaProgressFragmentView(EdxFragmentView):
         self._update_context_with_score_and_progress(course_outline_context, grade_dict)
         html = render_to_string(
             'wikimedia_general/wikimedia_progress_fragment.html',
-            {"data": course_outline_context}
+            {
+                "data": course_outline_context,
+                "show_score_tab": show_score_tab,
+            }
         )
 
         fragment = Fragment(html)
