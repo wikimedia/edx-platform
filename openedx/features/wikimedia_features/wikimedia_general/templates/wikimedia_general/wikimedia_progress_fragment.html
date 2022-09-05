@@ -48,10 +48,12 @@ from django.utils.translation import ugettext as _
                             <span class="value">${subsection.get('format', 'Not graded')}</span>
                             <strong class="title">Assignment</strong>
                           </li>
+                          % if show_score_tab:
                           <li>
                             <span class="value">${subsection.get('score')}</span>
                             <strong class="title">${"Problem Score" if subsection.get('format') else "Practice Score"}</strong>
                           </li>
+                          % endif
                         </ul>
                       </div>
                     </div>
@@ -69,7 +71,9 @@ from django.utils.translation import ugettext as _
                                   <tr class="table-primary">
                                     <th></th>
                                     <th>Completed</th>
+                                    % if show_score_tab:
                                     <th>Score</th>
+                                    % endif
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -77,7 +81,9 @@ from django.utils.translation import ugettext as _
                                   <tr>
                                     <td><a href="${component.get('lms_web_url')}">${component.get('display_name')}</a></td>
                                     <td>${"Yes" if component.get('complete') else "No"}</td>
+                                    % if show_score_tab:
                                     <td>${component.get('score', '-')}</td>
+                                    % endif
                                   </tr>
                                   % endfor
                                 </tbody>
