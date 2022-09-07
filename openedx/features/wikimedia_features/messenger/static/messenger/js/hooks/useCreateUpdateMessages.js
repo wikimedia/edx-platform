@@ -21,9 +21,9 @@ export default function useCreateUpdateMessages(
                 setReplying(false);
                 updateLastMessage(message);
             }
-            notification(toast.success, "Message has been sent.");
+            notification(toast.success, context.META_DATA.success.send_message);
         } catch (e) {
-            notification(toast.error, "Error in sending message. Please try again!");
+            notification(toast.error, context.META_DATA.error.send_message);
             console.error(e);
         }
     }
@@ -38,9 +38,9 @@ export default function useCreateUpdateMessages(
             updateInboxList(UpdatedInbox);
             updateOpenedConversation(message, users);
             setMessage("");
-            notification(toast.success, "Message(s) have been sent.");
+            notification(toast.success, context.META_DATA.success.send_messages);
         } catch (e) {
-            notification(toast.error, "Error in sending messages. Please try again!");
+            notification(toast.error, context.META_DATA.error.send_messages);
             console.error(e);
         }
     }
@@ -79,7 +79,7 @@ export default function useCreateUpdateMessages(
                 });
             }
         } catch (ex) {
-            notification(toast.error, "Error in marking messages read.");
+            notification(toast.error, context.META_DATA.error.read_messages);
             console.error(ex);
         }
     }
