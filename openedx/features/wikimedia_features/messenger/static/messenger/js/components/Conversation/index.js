@@ -77,7 +77,7 @@ export default function Conversation({
                             <button
                                 className="btn btn-default"
                                 onClick={(e) => setReplying(true)}
-                            >{META_DATA.button.reply}</button>
+                            >{META_DATA.button_text.reply}</button>
                         </div>
                     )
                 }
