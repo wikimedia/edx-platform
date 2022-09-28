@@ -25,6 +25,8 @@ class WikiMetaClient(object):
                 'WIKI_META_CONTENT_MODEL', settings.WIKI_META_CONTENT_MODEL)
         self._MCGROUP_PREFIX = configuration_helpers.get_value(
                 'WIKI_META_MCGROUP_PREFIX', settings.WIKI_META_MCGROUP_PREFIX)
+        self._COURSE_PREFIX = configuration_helpers.get_value(
+                'WIKI_META_COURSE_PREFIX', settings.WIKI_META_COURSE_PREFIX)
 
         if not self._BASE_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX :
             raise Exception("META CLIENT ERROR - Missing WIKI Meta Configurations.")
@@ -68,6 +70,19 @@ class WikiMetaClient(object):
         )
         return url
 
+    def _seprate_course_prefix_from_string(self, value):
+        """
+        Seprate course prifex from the string if exists
+        Arguments:
+            value: (str) [CoursePrefix]Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name
+        Returns:
+            (str) [CoursePrefix]
+            (str) Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name
+        """
+        if self._COURSE_PREFIX and value.startswith(self._COURSE_PREFIX):
+            return self._COURSE_PREFIX, value[len(self._COURSE_PREFIX):]
+        return "", value
+    
     def _process_fetched_response_data_list_to_dict(self, response_data):
         """
         Converts response message collections list to dictionary so that later on traversing will be easy.
@@ -75,16 +90,16 @@ class WikiMetaClient(object):
         Sample response data:
         [
             {
-                "key": "Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name",
+                "key": "[CoursePrefix]Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name",
                 "translation": "चेक बॉक्",
                 "properties": {
                     "status": "translated",
                     "last-translator-text": "wikimeta-translator-username",
                     "last-translator-id": "wikimeta-translator-userid",
                 },
-                "title": "Translations:Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
+                "title": "Translations:[CoursePrefix]Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
                 "targetLanguage": "hi",
-                "primaryGroup": "messagebundle-Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
+                "primaryGroup": "messagebundle-[CoursePrefix]Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
             }
             ...
         ]
@@ -99,20 +114,22 @@ class WikiMetaClient(object):
                     "last-translator-text": "wikimeta-translator-username",
                     "last-translator-id": "wikimeta-translator-userid",
                 },
-                "title": "Translations:Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
+                "title": "Translations:[CoursePrefix]Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name/hi",
                 "targetLanguage": "hi",
-                "primaryGroup": "messagebundle-Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
+                "primaryGroup": "messagebundle-[CoursePrefix]Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad",
             }
         }
         """
         response_dict = {}
         for response_translation_obj in response_data:
-            if response_translation_obj.get("key"):
+            key = response_translation_obj.get("key", None)
+            if key:
+                _, response_translation_obj['key'] = self._seprate_course_prefix_from_string(key)
                 try:
-                    key = response_translation_obj.get("key").split("/")[3]
-                    response_dict.update({key: response_translation_obj})
+                    block_key = response_translation_obj.get('key').split("/")[3]
+                    response_dict.update({block_key: response_translation_obj})
                 except:
-                    logger.error("Error - unable to process response data list to dict for key: {}.".format(key))
+                    logger.error("Error - unable to process response data list to dict for key: {}.".format(block_key))
         return response_dict
 
 
@@ -208,7 +225,7 @@ class WikiMetaClient(object):
         data = {
             "action": "edit",
             "format": "json",
-            "title": title,
+            "title": '{}{}'.format(self._COURSE_PREFIX, title),
             "text": json.dumps(text),
             "summary": summary,
             "contentmodel": self._CONTENT_MODEL,
@@ -218,6 +235,10 @@ class WikiMetaClient(object):
         success, response_data = await self.handle_request(session.post, params=None, data=data)
         if success:
             response_edit_dict = response_data.get("edit", {})
+            
+            # removes course prefix form response title and add title_prefix to the response
+            title = response_edit_dict.get('title')
+            response_edit_dict['title_prefix'], response_edit_dict['title'] = self._seprate_course_prefix_from_string(title)
             logger.info("Message group has been updated for component: %s and pageid: %s .",
                         response_edit_dict.get('title'),
                         response_edit_dict.get('pageid')
@@ -227,13 +248,15 @@ class WikiMetaClient(object):
 
     async def sync_translations(self, mcgroup, mclanguage, session):
         logger.info("{}-{}".format(self._MCGROUP_PREFIX, mcgroup))
+        update_mcgroup = self._COURSE_PREFIX + mcgroup.replace("_", " ")
+        update_mcgroup = update_mcgroup[0].upper() + update_mcgroup[1:]
         params = {
             "action": "query",
             "format": "json",
             "list": "messagecollection",
             "utf8": 1,
             "formatversion": 2,
-            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, (mcgroup[0].upper() + mcgroup[1:]).replace("_", " ")),
+            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, update_mcgroup),
             "mclanguage": mclanguage,
             "mcprop": "translation|properties",
             "mclimit": 5000

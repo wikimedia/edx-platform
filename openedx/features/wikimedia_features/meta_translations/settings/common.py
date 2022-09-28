@@ -31,6 +31,7 @@ def plugin_settings(settings):
     settings.WIKI_META_BASE_URL = "https://language-mleb-master.wmcloud.org"
     settings.WIKI_META_CONTENT_MODEL = "translate-messagebundle"
     settings.WIKI_META_MCGROUP_PREFIX = "messagebundle"
+    settings.WIKI_META_COURSE_PREFIX = ""
     settings.WIKI_META_API_USERNAME = ""
     settings.WIKI_META_API_PASSWORD = ""
     settings.FETCH_CALL_DAYS_CONFIG_DEFAULT = 3

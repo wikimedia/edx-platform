@@ -8,6 +8,7 @@ from logging import getLogger
 from xmodule.modulestore.django import modulestore
 from opaque_keys.edx.keys import UsageKey
 
+from openedx.core.djangoapps.models.course_details import CourseDetails
 from openedx.features.wikimedia_features.meta_translations.models import (
     CourseBlock, CourseTranslation, TranslationVersion, WikiTranslation
 )
@@ -143,3 +144,9 @@ def handle_base_course_block_deletion(usage_key):
         except CourseBlock.DoesNotExist:
             log.info("Unable to find course block with block_id {}".format(str(child_block_id)))
             pass
+
+def get_course_description_by_id(course_key):
+    """
+    Returns short course description of the course
+    """
+    return CourseDetails.fetch(course_key).short_description
