@@ -24,8 +24,10 @@ def render_messenger_home(request):
             'enter_message':  _('Enter Message ...'),
             'username': _('username'),
             'search_users': _('Search Users'),
+            'select': _('Select'),
         },
         'inbox': _('Inbox'),
+        'message': _('Message'),
         'new_message': _('New Message'),
         'users': _('Users'),
         'success': {
