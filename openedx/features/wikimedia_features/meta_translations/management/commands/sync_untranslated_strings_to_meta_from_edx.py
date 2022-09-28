@@ -18,6 +18,7 @@ from openedx.features.wikimedia_features.meta_translations.models import (
     WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
+from openedx.features.wikimedia_features.meta_translations.utils import get_course_description_by_id
 
 log = getLogger(__name__)
 
@@ -59,7 +60,7 @@ class Command(BaseCommand):
         log.info('Total number of updated blocks: {}'.format(self._RESULT.get("updated_blocks_count")))
         log.info('Total blocks updated successfully: {}'.format(self._RESULT.get("success_updated_pages_count")))
 
-    def _create_request_dict_for_block(self, base_course, block, base_course_language):
+    def _create_request_dict_for_block(self, base_course, block, base_course_language, base_course_name, base_course_description):
         """
         Returns request dict required for update pages API of Wiki Meta
         {
@@ -79,11 +80,15 @@ class Command(BaseCommand):
         request["title"] = "{}/{}/{}".format(
             str(base_course), base_course_language, str(block.block_id)
         )
+        description = '{} in {} - {}'.format(
+            block.block_type, base_course_name, base_course_description
+        )
 
         request["@metadata"] = {
             "sourceLanguage": base_course_language,
             "priorityLanguages": json.loads(block.lang),
             "allowOnlyPriorityLanguages": True,
+            "description": description
         }
         return request
 
@@ -111,10 +116,16 @@ class Command(BaseCommand):
         for base_course in master_courses:
             outdated_translation = CourseTranslation.is_outdated_course(base_course)
             base_course_language = None
+            base_course_name = None
+            base_course_description = None
             if outdated_translation:
                 base_course_language = outdated_translation.extra['base_course_language']
+                base_course_name = outdated_translation.extra.get('base_course_name', '')
+                base_course_description = outdated_translation.extra.get('base_course_description', '')
             else:
                 base_course_language = get_course_by_id(base_course).language
+                base_course_name = get_course_by_id(base_course).display_name
+                base_course_description = get_course_description_by_id(base_course)
             base_course_blocks = CourseBlock.objects.prefetch_related("courseblockdata_set").filter(
                 course_id=base_course
             )
@@ -122,7 +133,9 @@ class Command(BaseCommand):
                 if block.block_type != 'course':
                     block_data = block.courseblockdata_set.all()
                     if block_data.filter(Q(content_updated=True) | Q(mapping_updated=True)).exists():
-                        request_arguments = self._create_request_dict_for_block(base_course, block, base_course_language)
+                        request_arguments = self._create_request_dict_for_block(
+                            base_course, block, base_course_language, base_course_name, base_course_description
+                        )
                         for data in block_data:
                             if data.parsed_keys:
                                 request_arguments.update(data.parsed_keys)
@@ -163,6 +176,7 @@ class Command(BaseCommand):
                 # title format is course_id/course_lang_code/block_id
 
                 response_title =  response.get("title", "")
+                response_title_prefix = response.get("title_prefix", "")
                 log.info("Processing success response with title: {}".format(response_title))
                 title = response_title.split("/")
                 if len(title) >= 3:
@@ -184,7 +198,7 @@ class Command(BaseCommand):
                             source_block = course_block_data_items.first().course_block
                             extra_json = source_block.extra
                             extra_json.update({
-                                "meta_page_title": response_title,
+                                "meta_page_title": '{}{}'.format(response_title_prefix, response_title),
                             })
                             source_block.extra = extra_json
                             source_block.save()
