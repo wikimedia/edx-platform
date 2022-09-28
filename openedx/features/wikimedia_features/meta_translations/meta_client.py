@@ -27,8 +27,11 @@ class WikiMetaClient(object):
                 'WIKI_META_MCGROUP_PREFIX', settings.WIKI_META_MCGROUP_PREFIX)
         self._COURSE_PREFIX = configuration_helpers.get_value(
                 'WIKI_META_COURSE_PREFIX', settings.WIKI_META_COURSE_PREFIX)
-
-        if not self._BASE_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX :
+        
+        if not self._COURSE_PREFIX:
+            self._COURSE_PREFIX = ''
+        
+        if not self._BASE_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX:
             raise Exception("META CLIENT ERROR - Missing WIKI Meta Configurations.")
 
         self._API_USERNAME = configuration_helpers.get_value(
