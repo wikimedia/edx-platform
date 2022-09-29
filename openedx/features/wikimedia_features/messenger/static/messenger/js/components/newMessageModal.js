@@ -34,13 +34,14 @@ export default function NewMessageModal({createGroupMessages, META_DATA, context
                                 <label>{META_DATA.users}</label>
                                 <Multiselect
                                     options={newMessageUsers}
-                                    displayValue={META_DATA.placeholder.username}
+                                    displayValue="username"
                                     onSearch={(data)=>handleSearch(data)}
                                     selectedValues={newMessageSelectedUsers}
                                     onSelect={setNewMessageSelectedUsers}
+                                    placeholder={META_DATA.placeholder.select}
                                 />
                                 <div className="form-group">
-                                    <label htmlFor="group-message">Message</label>
+                                    <label htmlFor="group-message">{META_DATA.message}</label>
                                     <textarea
                                         className="form-control"
                                         id="group-message"
