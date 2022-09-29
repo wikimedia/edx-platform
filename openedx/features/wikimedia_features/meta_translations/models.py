@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from opaque_keys.edx.django.models import CourseKeyField, UsageKeyField
 from lms.djangoapps.courseware.courses import get_course_by_id
+from openedx.core.djangoapps.models.course_details import CourseDetails
 from openedx.features.wikimedia_features.meta_translations.mapping.exceptions import MultipleObjectsFoundInMappingCreation
 
 log = logging.getLogger(__name__)
@@ -514,7 +515,7 @@ class CourseTranslation(models.Model):
         return False
     
     @classmethod
-    def create_outdated_course(cls, course_id, base_course_language, translated_courses_ids):
+    def create_outdated_course(cls, course_id, base_course_name, base_course_language, base_course_description, translated_courses_ids):
         """
         Create a entry for a outdated course. The functions adds some fields i.e base_course_langauge,
         deleted_reruns to extra attribute and set outdated to True. We use this information to update
@@ -522,6 +523,8 @@ class CourseTranslation(models.Model):
         """
         extra = {
             'base_course_language': base_course_language,
+            'base_course_name': base_course_name,
+            'base_course_description': base_course_description,
             'deleted_reruns': translated_courses_ids,
         }
         cls.objects.create(base_course_id=course_id, course_id=None, outdated=True, extra=extra)
@@ -590,8 +593,12 @@ class CourseTranslation(models.Model):
             cls.delete_base_course(course_id)
             translated_courses.delete()
             base_course_language = get_course_by_id(course_id).language
+            base_course_name = get_course_by_id(course_id).display_name
+            base_course_description = CourseDetails.fetch(course_id).short_description
             translated_courses_ids = [str(id) for id in translated_courses_ids]
-            cls.create_outdated_course(course_id, base_course_language, translated_courses_ids)
+            cls.create_outdated_course(
+                course_id, base_course_name, base_course_language, base_course_description, translated_courses_ids
+            )
             log.info("Marked {} as outdated and deleted mappings of related translated courses: {}".format(course_id, translated_courses_ids))
         elif course_status == cls._TRANSLATED_COURSE:
             translatetd_course = cls.objects.get(course_id=course_id)

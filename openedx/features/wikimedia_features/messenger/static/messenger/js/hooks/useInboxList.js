@@ -25,7 +25,7 @@ export default function useInboxList(inboxPageNumber, setSelectedInboxUser, cont
             }
             setInboxLoading(false);
         } catch (e) {
-            notification(toast.error, "Unable to load conversations.");
+            notification(toast.error, context.META_DATA.error.load_conversation);
             console.error(e);
         }
     }
