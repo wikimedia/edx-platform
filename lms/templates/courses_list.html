@@ -7,14 +7,18 @@
 
     % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
       <section class="courses">
-        <ul class="courses-listing">
+        % if static.dir_rtl() == 'rtl':
+          <div class="courses-listing" dir="rtl">
+        % else:
+          <div class="courses-listing">
+        % endif
           ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
           %for course in courses[:homepage_course_max]:
-          <li class="courses-listing-item">
+          <div class="courses-listing-item">
               <%include file="course.html" args="course=course" />
-          </li>
+          </div>
         %endfor
-        </ul>
+        </div>
       </section>
     ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
       % if homepage_course_max and len(courses) > homepage_course_max:
@@ -23,6 +27,5 @@
       </div>
     % endif
     % endif
-
   </section>
 </section>

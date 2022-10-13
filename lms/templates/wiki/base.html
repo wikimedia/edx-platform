@@ -11,7 +11,12 @@
 {% block headextra %}
   {% stylesheet 'course' %}
   {% stylesheet 'style-course-vendor' %}
-  {% stylesheet 'style-course' %}
+  {% get_current_language_bidi as LANGUAGE_BIDI %}
+  {% if LANGUAGE_BIDI %}
+    {% stylesheet 'style-course-rtl' %}
+  {% else %}
+    {% stylesheet 'style-course' %}
+  {% endif %}
 
 	<link rel="stylesheet" type="text/css" href="{% static 'paragon/static/paragon.min.css' %}" />
 
