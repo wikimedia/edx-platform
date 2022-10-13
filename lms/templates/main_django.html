@@ -12,7 +12,14 @@
   {% endwith %}
 
   {% stylesheet 'style-vendor' %}
-  {% stylesheet 'style-main-v1' %}
+
+  {% get_current_language_bidi as LANGUAGE_BIDI %}
+  {% if LANGUAGE_BIDI %}
+    {% stylesheet 'style-main-v1-rtl' %}
+  {% else %}
+    {% stylesheet 'style-main-v1' %}
+  {% endif %}
+
 
   {% block main_vendor_js %}
   {% javascript 'main_vendor' %}
