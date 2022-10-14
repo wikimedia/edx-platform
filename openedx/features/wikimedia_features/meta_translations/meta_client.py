@@ -21,6 +21,8 @@ class WikiMetaClient(object):
         """
         self._BASE_URL = configuration_helpers.get_value(
                 'WIKI_META_BASE_URL', settings.WIKI_META_BASE_URL)
+        self._BASE_API_URL = configuration_helpers.get_value(
+                'WIKI_META_BASE_API_URL', settings.WIKI_META_BASE_API_URL)
         self._CONTENT_MODEL = configuration_helpers.get_value(
                 'WIKI_META_CONTENT_MODEL', settings.WIKI_META_CONTENT_MODEL)
         self._MCGROUP_PREFIX = configuration_helpers.get_value(
@@ -31,7 +33,7 @@ class WikiMetaClient(object):
         if not self._COURSE_PREFIX:
             self._COURSE_PREFIX = ''
         
-        if not self._BASE_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX:
+        if not self._BASE_URL or not self._BASE_API_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX:
             raise Exception("META CLIENT ERROR - Missing WIKI Meta Configurations.")
 
         self._API_USERNAME = configuration_helpers.get_value(
@@ -43,7 +45,7 @@ class WikiMetaClient(object):
             raise Exception("META CLIENT ERROR - Missing WIKI Meta API Credentials.")
 
         self._BASE_API_END_POINT = configuration_helpers.get_value(
-                'WIKI_META_BASE_API_END_POINT', "{}/api.php".format(self._BASE_URL))
+                'WIKI_META_BASE_API_END_POINT', "{}/api.php".format(self._BASE_API_URL))
         self._BASE_REDIRECT_URL = configuration_helpers.get_value(
                 'WIKI_META_BASE_REDIRECT_URL', "{}/index.php".format(self._BASE_URL))
 
