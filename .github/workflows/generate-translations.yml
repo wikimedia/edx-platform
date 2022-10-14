@@ -1,0 +1,150 @@
+name: Dispatch - Generate Transifex and Translatewiki translations
+
+on:
+  workflow_dispatch:
+    secrets:
+      THEME_ACCESS_TOKEN:
+        required: true
+      TX_TOKEN:
+        required: true
+
+jobs:
+  generate-translations:
+    name: Detect changed source and generate Transifex and Translatewiki translations
+    runs-on: ubuntu-18.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install OS requirements
+        run: |
+          sudo apt-get update --fix-missing && sudo apt-get -y install libxmlsec1-dev pkg-config gettext
+
+      - name: Install pip requirements
+        run: |
+          python3 -m pip install pip==20.0.2
+          python3 -m pip install setuptools==50.3.0
+          python3 -m pip install wheel==0.35.1
+          pip install --disable-pip-version-check --exists-action w -r requirements/edx/development.txt
+
+      - name: Clone edx-theme repo
+        id: clone-theme-repo
+        uses: actions/checkout@v3
+        with:
+          repository: wikimedia/wikilearn-edx-theme
+          path: ./themes
+          ref: develop
+          token: ${{ secrets.THEME_ACCESS_TOKEN }}
+
+      - name: Checkout master as feature branch does not exist
+        uses: actions/checkout@v3
+        with:
+          repository: wikimedia/wikilearn-edx-theme
+          path: ./themes
+          ref: master
+          token: ${{ secrets.THEME_ACCESS_TOKEN }}
+        if: steps.clone-theme-repo.outcome == 'failure'
+
+      - name: Pull latest translations from Transifex
+        id: pull-latest-translations-from-transifex
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        run: |
+          export NO_PREREQ_INSTALL='true'
+          export LMS_CFG=$(pwd)/lms/devstack.yml
+          export STUDIO_CFG=$(pwd)/cms/devstack.yml
+
+          python manage.py cms translatewiki pull_transifex_translations
+
+          unset LMS_CFG
+          unset STUDIO_CFG
+
+      - name: Generate translations for changed source
+        id: generate-new-translations
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        run: make extract_translations
+
+      - name: Merge all the translations
+        id: merge-translations-edx
+        run: |
+          export NO_PREREQ_INSTALL='true'
+          export LMS_CFG=$(pwd)/lms/devstack.yml
+          export STUDIO_CFG=$(pwd)/cms/devstack.yml
+
+          python manage.py cms translatewiki msgmerge
+
+          unset LMS_CFG
+          unset STUDIO_CFG
+      
+      - name: Merge translations from translatewiki
+        id: merge-translations-translatewiki
+        run: |
+          export NO_PREREQ_INSTALL='true'
+          export LMS_CFG=$(pwd)/lms/devstack.yml
+          export STUDIO_CFG=$(pwd)/cms/devstack.yml
+
+          python manage.py cms translatewiki update_from_translatewiki
+
+          unset LMS_CFG
+          unset STUDIO_CFG
+      
+      - name: Generate i18n files
+        id: generate-i18n-files
+        run: paver i18n_fastgenerate
+
+      - name: Compile JS translations
+        id: compile-js-i18n-files
+        run: |
+          export NO_PREREQ_INSTALL='true'
+          export LMS_CFG=$(pwd)/lms/devstack.yml
+          export STUDIO_CFG=$(pwd)/cms/devstack.yml
+
+          paver i18n_compilejs
+
+          unset LMS_CFG
+          unset STUDIO_CFG
+
+      - name: Genereate custom strings
+        id: generate-custom-strings
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        run: |
+          export NO_PREREQ_INSTALL='true'
+          export LMS_CFG=$(pwd)/lms/devstack.yml
+          export STUDIO_CFG=$(pwd)/cms/devstack.yml
+
+          python manage.py cms translatewiki generate_custom_strings
+
+          unset LMS_CFG
+          unset STUDIO_CFG
+      
+      - name: Create Pull Request and commit changed translation files
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          base: develop
+          branch: 'workflow/auto-generated-translations'
+          branch-suffix: timestamp
+          commit-message: 'Add changed translation files'
+          add-paths: |
+            conf/locale/**/LC_MESSAGES/wm-django.po
+            conf/locale/**/LC_MESSAGES/wm-djangojs.po
+            conf/locale/**/LC_MESSAGES/django.mo
+            conf/locale/**/LC_MESSAGES/django.po
+            conf/locale/**/LC_MESSAGES/djangojs.po
+            conf/locale/**/LC_MESSAGES/djangojs.mo
+            lms/static/js/i18n/**/djangojs.js
+            cms/static/js/i18n/**/djangojs.js
+          token: ${{ secrets.GITHUB_TOKEN }}
+          signoff: true
+          delete-branch: true
