@@ -21,6 +21,8 @@ class WikiMetaClient(object):
         """
         self._BASE_URL = configuration_helpers.get_value(
                 'WIKI_META_BASE_URL', settings.WIKI_META_BASE_URL)
+        self._BASE_API_URL = configuration_helpers.get_value(
+                'WIKI_META_BASE_API_URL', settings.WIKI_META_BASE_API_URL)
         self._CONTENT_MODEL = configuration_helpers.get_value(
                 'WIKI_META_CONTENT_MODEL', settings.WIKI_META_CONTENT_MODEL)
         self._MCGROUP_PREFIX = configuration_helpers.get_value(
@@ -31,7 +33,7 @@ class WikiMetaClient(object):
         if not self._COURSE_PREFIX:
             self._COURSE_PREFIX = ''
         
-        if not self._BASE_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX:
+        if not self._BASE_URL or not self._BASE_API_URL or not self._CONTENT_MODEL or not self._MCGROUP_PREFIX:
             raise Exception("META CLIENT ERROR - Missing WIKI Meta Configurations.")
 
         self._API_USERNAME = configuration_helpers.get_value(
@@ -43,9 +45,9 @@ class WikiMetaClient(object):
             raise Exception("META CLIENT ERROR - Missing WIKI Meta API Credentials.")
 
         self._BASE_API_END_POINT = configuration_helpers.get_value(
-                'WIKI_META_BASE_API_END_POINT', "{}/api.php".format(self._BASE_URL))
+                'WIKI_META_BASE_API_END_POINT', self._BASE_API_URL)
         self._BASE_REDIRECT_URL = configuration_helpers.get_value(
-                'WIKI_META_BASE_REDIRECT_URL', "{}/index.php".format(self._BASE_URL))
+                'WIKI_META_BASE_REDIRECT_URL', self._BASE_URL)
 
         logger.info(
             "Created meta client with base_url: {}, api_url:{}, redirect_url: {} ".format(
@@ -82,8 +84,11 @@ class WikiMetaClient(object):
             (str) [CoursePrefix]
             (str) Course-v1:edX+fresh1+fresh1/en/block-v1:edX+fresh1+fresh1+type@problem+block@9eefa6c9923346b1b746988401c638ad/display_name
         """
-        if self._COURSE_PREFIX and value.startswith(self._COURSE_PREFIX):
-            return self._COURSE_PREFIX, value[len(self._COURSE_PREFIX):]
+        if self._COURSE_PREFIX:
+            if value.startswith(self._COURSE_PREFIX):
+                return self._COURSE_PREFIX, value[len(self._COURSE_PREFIX):]
+            elif value.startswith(self._COURSE_PREFIX.replace('_', ' ')):
+                return self._COURSE_PREFIX.replace('_', ' '), value[len(self._COURSE_PREFIX):]
         return "", value
     
     def _process_fetched_response_data_list_to_dict(self, response_data):
@@ -251,7 +256,7 @@ class WikiMetaClient(object):
 
     async def sync_translations(self, mcgroup, mclanguage, session):
         logger.info("{}-{}".format(self._MCGROUP_PREFIX, mcgroup))
-        update_mcgroup = self._COURSE_PREFIX + mcgroup.replace("_", " ")
+        update_mcgroup = (self._COURSE_PREFIX + mcgroup).replace("_", " ")
         update_mcgroup = update_mcgroup[0].upper() + update_mcgroup[1:]
         params = {
             "action": "query",

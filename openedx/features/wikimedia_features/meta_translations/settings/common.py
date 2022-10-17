@@ -28,7 +28,8 @@ def plugin_settings(settings):
       'stringresponse',
     ]
 
-    settings.WIKI_META_BASE_URL = "https://language-mleb-master.wmcloud.org"
+    settings.WIKI_META_BASE_URL = "https://language-mleb-master.wmcloud.org/index.php"
+    settings.WIKI_META_BASE_API_URL = "https://language-mleb-master.wmcloud.org/api.php"
     settings.WIKI_META_CONTENT_MODEL = "translate-messagebundle"
     settings.WIKI_META_MCGROUP_PREFIX = "messagebundle"
     settings.WIKI_META_COURSE_PREFIX = ""
