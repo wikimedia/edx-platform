@@ -1,12 +1,6 @@
 name: Dispatch - Generate Transifex and Translatewiki translations
 
-on:
-  workflow_dispatch:
-    secrets:
-      THEME_ACCESS_TOKEN:
-        required: true
-      TX_TOKEN:
-        required: true
+on: workflow_dispatch
 
 jobs:
   generate-translations:
@@ -18,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: develop
+          ref: wm/localization
 
       - name: Set up python
         uses: actions/setup-python@v2
@@ -132,9 +126,8 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          base: develop
-          branch: 'workflow/auto-generated-translations'
-          branch-suffix: timestamp
+          base: master
+          branch: 'wm/localization'
           commit-message: 'Add changed translation files'
           add-paths: |
             conf/locale/**/LC_MESSAGES/wm-django.po
@@ -145,6 +138,15 @@ jobs:
             conf/locale/**/LC_MESSAGES/djangojs.mo
             lms/static/js/i18n/**/djangojs.js
             cms/static/js/i18n/**/djangojs.js
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
           signoff: true
-          delete-branch: true
+          delete-branch: false
+
+      - name: Auto Merge Changes
+        id: merge-changes
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
+        if: steps.cpr.outputs.pull-request-operation == 'created'
