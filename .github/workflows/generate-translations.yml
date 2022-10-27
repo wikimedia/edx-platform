@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: wm/localization
+          ref: master
 
       - name: Set up python
         uses: actions/setup-python@v2
@@ -30,6 +30,13 @@ jobs:
           python3 -m pip install wheel==0.35.1
           pip install --disable-pip-version-check --exists-action w -r requirements/edx/development.txt
 
+      - name: Pull translations from the localization branch
+        run: |
+          git fetch origin wm/localization
+          git checkout origin/wm/localization conf/locale/
+          git restore conf/locale/*.cfg
+          git restore conf/locale/*.yaml
+      
       - name: Clone edx-theme repo
         id: clone-theme-repo
         uses: actions/checkout@v3
@@ -127,7 +134,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           base: master
-          branch: 'wm/localization'
+          branch: 'gitflow/auto-generated-translations'
           commit-message: 'Add changed translation files'
           add-paths: |
             conf/locale/**/LC_MESSAGES/wm-django.po
@@ -140,7 +147,27 @@ jobs:
             cms/static/js/i18n/**/djangojs.js
           token: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
           signoff: true
-          delete-branch: false
+          delete-branch: true
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: wm/localization
+          token: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+
+      - name: Push translations to the localization branch
+        run: |
+          git fetch origin gitflow/auto-generated-translations
+          git checkout origin/gitflow/auto-generated-translations conf/locale/
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+      
+      - name: Commit to localization branch
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated Change
+          file_pattern: conf/locale/
+        if: steps.cpr.outputs.pull-request-operation == 'created'
 
       - name: Auto Merge Changes
         id: merge-changes
