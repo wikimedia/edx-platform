@@ -29,6 +29,8 @@ class WikiMetaClient(object):
                 'WIKI_META_MCGROUP_PREFIX', settings.WIKI_META_MCGROUP_PREFIX)
         self._COURSE_PREFIX = configuration_helpers.get_value(
                 'WIKI_META_COURSE_PREFIX', settings.WIKI_META_COURSE_PREFIX)
+        self._API_REQUEST_DELAY = configuration_helpers.get_value(
+                'WIKI_META_API_REQUEST_DELAY_IN_SECONDS', settings.WIKI_META_API_REQUEST_DELAY_IN_SECONDS)
         
         if not self._COURSE_PREFIX:
             self._COURSE_PREFIX = ''
