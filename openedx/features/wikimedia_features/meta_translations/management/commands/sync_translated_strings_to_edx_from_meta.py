@@ -346,6 +346,18 @@ class Command(BaseCommand):
                 )
         return tasks
 
+    async def _request_meta_tasks_in_parallel(self, tasks, limit=3):
+        """
+        Executes tasks in parallel in a sequential manner.
+        It devides tasks in sub-tasks with length equals to limit and call subtasks in parallel.
+        """
+        responses = []
+        for index in range(0, len(tasks), limit):
+            sub_tasks = tasks[index:index+limit]
+            sub_responses = await asyncio.gather(*sub_tasks)
+            responses.extend(sub_responses)
+        return responses
+
     async def async_fetch_data_from_wiki_meta(self, data_dict):
         """
         Async calls to fetch tramslations for course blocks.
@@ -354,7 +366,10 @@ class Command(BaseCommand):
         async with aiohttp.ClientSession() as session:
             meta_client = WikiMetaClient()
             tasks = self._get_tasks_to_fetch_data_from_wiki_meta(data_dict, meta_client, session)
-            responses = await asyncio.gather(*tasks)
+            responses = await self._request_meta_tasks_in_parallel(
+                tasks,
+                limit=meta_client._API_GET_REQUEST_STNC_LIMIT,
+            )
             self._update_response_translations_in_db(data_dict, responses)
 
     def handle(self, *args, **options):
