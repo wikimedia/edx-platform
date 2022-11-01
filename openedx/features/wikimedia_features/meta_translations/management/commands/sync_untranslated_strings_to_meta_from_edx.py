@@ -147,25 +147,39 @@ class Command(BaseCommand):
                         data_list.append(request_arguments)
         return data_list
 
-    async def _send_requests_to_meta_server(self, data_list, meta_client, session, csrf_token):
+    def _get_tasks_to_updated_data_on_wiki_meta(self, data_list, meta_client, session, csrf_token):
         """
-        Returns list of responses - call each request with some delay
-        delay can be configured by delay_in_sec parameter
+        Returns list of tasks - required for Async API calls of Meta Wiki to update message group pages.
+        """
+        tasks = []
+        for component in data_list:
+            title = component.pop('title')
+            tasks.append(
+                meta_client.create_update_message_group(
+                    title,
+                    component,
+                    session,
+                    csrf_token,
+                )
+            )
+        return tasks
+
+    async def _request_meta_tasks_in_sequential_with_delay(self, tasks, delay_in_sec=20):
+        """
+        Returns list of responses - call each task with some delay
         """
         responses = []
-        for index in range(len(data_list)):
-            title = data_list[index].pop('title')
-            response = await meta_client.create_update_message_group(
-                title,
-                data_list[index],
-                session,
-                csrf_token,
-            )
-            if index != len(data_list)-1:
-                log.info(f'Waiting for a next request -> sleep({meta_client._API_REQUEST_DELAY})')
-                time.sleep(meta_client._API_REQUEST_DELAY)
-            if response:
-                responses.append(response)
+        for index in range(len(tasks)):
+            start_time = time.time()
+            response = await tasks[index]
+            end_time = time.time()
+            execution_time = end_time - start_time
+            responses.append(response)
+            if  index != len(tasks)-1:
+                delay = delay_in_sec - execution_time
+                if delay > 0:
+                    log.info(f'Waiting for a next request -> sleep({round(delay,2)})')
+                    time.sleep(delay)
         return responses
 
     def _reset_mapping_updated_and_content_updated(self, responses):
@@ -226,7 +240,11 @@ class Command(BaseCommand):
             meta_client = WikiMetaClient()
             await meta_client.login_request(session)
             csrf_token = await meta_client.fetch_csrf_token(session)
-            responses = await self._send_requests_to_meta_server(data_list, meta_client, session, csrf_token)
+            tasks = self._get_tasks_to_updated_data_on_wiki_meta(data_list, meta_client, session, csrf_token)
+            responses = await self._request_meta_tasks_in_sequential_with_delay(
+                tasks,
+                delay_in_sec=meta_client._API_REQUEST_DELAY,
+            )
             self._reset_mapping_updated_and_content_updated(responses)
 
     def handle(self, *args, **options):
