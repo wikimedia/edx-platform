@@ -31,6 +31,8 @@ class WikiMetaClient(object):
                 'WIKI_META_COURSE_PREFIX', settings.WIKI_META_COURSE_PREFIX)
         self._API_REQUEST_DELAY = configuration_helpers.get_value(
                 'WIKI_META_API_REQUEST_DELAY_IN_SECONDS', settings.WIKI_META_API_REQUEST_DELAY_IN_SECONDS)
+        self._API_GET_REQUEST_STNC_LIMIT = configuration_helpers.get_value(
+                'WIKI_META_API_GET_REQUEST_SYNC_LIMIT', settings.WIKI_META_API_GET_REQUEST_SYNC_LIMIT)
         
         if not self._COURSE_PREFIX:
             self._COURSE_PREFIX = ''
