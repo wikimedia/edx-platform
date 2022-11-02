@@ -3,6 +3,7 @@ Django admin command to send untranslated data to Meta Wiki.
 """
 import asyncio
 import aiohttp
+import time
 import json
 from datetime import datetime
 from logging import getLogger
@@ -163,6 +164,24 @@ class Command(BaseCommand):
             )
         return tasks
 
+    async def _request_meta_tasks_in_sequential_with_delay(self, tasks, delay_in_sec=20):
+        """
+        Returns list of responses - call each task with some delay
+        """
+        responses = []
+        for index in range(len(tasks)):
+            start_time = time.time()
+            response = await tasks[index]
+            end_time = time.time()
+            execution_time = end_time - start_time
+            responses.append(response)
+            if  index != len(tasks)-1:
+                delay = delay_in_sec - execution_time
+                if delay > 0:
+                    log.info(f'Waiting for a next request -> sleep({round(delay,2)})')
+                    time.sleep(delay)
+        return responses
+
     def _reset_mapping_updated_and_content_updated(self, responses):
         """
         Reset mapping_updated and content_updated for all the blocks-data that have been successfully sent
@@ -222,7 +241,10 @@ class Command(BaseCommand):
             await meta_client.login_request(session)
             csrf_token = await meta_client.fetch_csrf_token(session)
             tasks = self._get_tasks_to_updated_data_on_wiki_meta(data_list, meta_client, session, csrf_token)
-            responses = await asyncio.gather(*tasks)
+            responses = await self._request_meta_tasks_in_sequential_with_delay(
+                tasks,
+                delay_in_sec=meta_client._API_REQUEST_DELAY,
+            )
             self._reset_mapping_updated_and_content_updated(responses)
 
     def handle(self, *args, **options):

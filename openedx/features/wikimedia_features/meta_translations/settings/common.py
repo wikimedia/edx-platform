@@ -35,4 +35,6 @@ def plugin_settings(settings):
     settings.WIKI_META_COURSE_PREFIX = ""
     settings.WIKI_META_API_USERNAME = ""
     settings.WIKI_META_API_PASSWORD = ""
+    settings.WIKI_META_API_REQUEST_DELAY_IN_SECONDS = 20
+    settings.WIKI_META_API_GET_REQUEST_SYNC_LIMIT = 3
     settings.FETCH_CALL_DAYS_CONFIG_DEFAULT = 3
