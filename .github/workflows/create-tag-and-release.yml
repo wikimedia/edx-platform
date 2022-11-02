@@ -1,0 +1,33 @@
+name: Create Tag and Release
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  tag-and-release:
+    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'gitflow/auto-generated-translations')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout to master branch
+      uses: actions/checkout@v3
+      with:
+        ref: 'master'
+    
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+    
+    - name: Create tag
+      id: create-tag
+      uses: rickstaa/action-create-tag@v1
+      with:
+        tag: release-${{ steps.date.outputs.date }}
+    
+    - name: Create Release
+      uses: ncipollo/release-action@v1.11.1
+      with:
+        tag: release-${{ steps.date.outputs.date }}
