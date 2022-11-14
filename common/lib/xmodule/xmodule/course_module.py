@@ -1003,6 +1003,19 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         help=_("Enter true or false. If true, students can see score tab on the progress page"),
         scope=Scope.settings, default=False
     )
+    
+    course_font_family = String(
+        display_name=_("Select Course Font Family"),
+        help=_(
+            """
+            Select course family in which you want to display your course.
+            Available options are "font-trebuchet" and "font-open-sans".
+            If value is invalid or empty the default font-family will be "Helvetica Neue".
+            """
+        ),
+        scope=Scope.settings, default='font-trebuchet'
+    )
+
     other_course_settings = Dict(
         display_name=_("Other Course Settings"),
         help=_(
