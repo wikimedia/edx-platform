@@ -25,7 +25,7 @@ relative_dates_flag_is_enabled = RELATIVE_DATES_FLAG.is_enabled(str(course_key))
 is_course_staff = bool(user and course and has_access(user, 'staff', course, course.id))
 dates_banner_displayed = False
 %>
-<main role="main" class="course-outline" id="main" tabindex="-1">
+<main role="main" class="course-outline ${course_font_family}" id="main" tabindex="-1">
     <%include file="/dates_banner.html" />
     % if course_sections is not None:
         <button class="btn btn-outline-primary pull-right"
