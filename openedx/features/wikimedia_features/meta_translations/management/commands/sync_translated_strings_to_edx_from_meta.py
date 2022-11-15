@@ -380,7 +380,7 @@ class Command(BaseCommand):
             tasks = self._get_tasks_to_fetch_data_from_wiki_meta(data_dict, meta_client, session)
             responses = await self._request_meta_tasks_in_parallel(
                 tasks,
-                limit=meta_client._API_GET_REQUEST_STNC_LIMIT,
+                limit=meta_client._API_GET_REQUEST_SYNC_LIMIT,
             )
             self._update_response_translations_in_db(data_dict, responses)
 
