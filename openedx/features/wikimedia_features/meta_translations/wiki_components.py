@@ -227,7 +227,7 @@ class ProblemComponent(WikiComponent):
         if updated_display_name and updated_display_name != xblock.display_name:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
-            updated_data['dispaly_name'] = updated_display_name
+            updated_data['display_name'] = updated_display_name
 
         updated_xml_content = updated_xblock_data.get('data')
         if updated_xml_content and updated_xml_content != xblock.data:
