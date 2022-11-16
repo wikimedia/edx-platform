@@ -155,7 +155,7 @@ class ProblemTransformer(WikiTransformer):
             if e.text:
                 # have to convert xpath as Meta server only allows '_', '.' and '-' for data keys.
                 converted_xpath = self._convert_xpath_to_meta_key_format(tree.getpath(e))
-                data_dict.update({converted_xpath: e.text})
+                data_dict.update({converted_xpath: e.text.strip()})
         return data_dict
 
     def meta_data_to_raw_data(self, meta_data):
