@@ -7,6 +7,8 @@ import json
 import pytz
 from logging import getLogger
 from datetime import datetime, timedelta
+from collections import Counter
+
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
@@ -81,6 +83,8 @@ class Command(BaseCommand):
         1. If blocks are not translated -> translations or last_fetched is None
         2. If blocks are translated -> we'll only check for latest updates/commits of meta server
            only if 3 days have been passed since last_fetched.
+        3. If base course block content is changed don't include those translations. We need to first send
+           updated content to Translatewiki
         """
         tranlsation_objects = []
         meta_config = MetaTranslationConfiguration.current()
@@ -92,7 +96,7 @@ class Command(BaseCommand):
         for obj in WikiTranslation.objects.all().select_related("target_block").select_related(
             "source_block_data", "source_block_data__course_block"
         ):
-            if not obj.last_fetched or not self.is_translated(obj) or obj.last_fetched.date() <=comparison_date:
+            if not obj.source_block_data.content_updated and (not obj.last_fetched or not self.is_translated(obj) or obj.last_fetched.date() <=comparison_date):
                 tranlsation_objects.append(obj)
         return tranlsation_objects
 
@@ -135,7 +139,7 @@ class Command(BaseCommand):
                     }
         return data_dict
 
-    def _update_result_list(self, target_block_id, source_block_data_type, target_lang, msg):
+    def _update_result_list(self, target_block_id, source_block_data_type, target_lang, msg, status):
         """
         Update Final Result list i.e _UPDATED_TRANSLATIONS that will be used for final result logs
         """
@@ -143,10 +147,11 @@ class Command(BaseCommand):
             "target_block_id": target_block_id,
             "source_block_data_type": source_block_data_type,
             "target_language_code": target_lang,
-            "message": msg
+            "message": msg,
+            "translate_wiki_status": dict(Counter(status)) if isinstance(status, list) else status
         })
 
-    def _update_translations_in_db(self, translation_obj, updated_translation, updated_commits, source_block_data, target_lang_code):
+    def _update_translations_in_db(self, translation_obj, updated_translation, updated_commits, source_block_data, target_lang_code, status):
         translation_obj.translation = updated_translation
         translation_obj.approved = False
         translation_obj.approved_by = None
@@ -163,7 +168,7 @@ class Command(BaseCommand):
             target_lang_code
         ))
         self._update_result_list(
-            str(translation_obj.target_block.block_id), source_block_data.data_type, target_lang_code, "Updated"
+            str(translation_obj.target_block.block_id), source_block_data.data_type, target_lang_code, "Updated", status
         )
 
     def _check_and_update_translations(self, response_data, target_block_id, target_language_code):
@@ -192,6 +197,7 @@ class Command(BaseCommand):
         },
         ...
         """
+        translated_status = set(['translated', 'proofread'])
         wiki_translations = WikiTranslation.objects.filter(
             target_block__block_id=target_block_id
         ).select_related("target_block").select_related("source_block_data", "source_block_data__course_block")
@@ -202,29 +208,32 @@ class Command(BaseCommand):
                 fetched_commits = {}
                 if source_block_data.parsed_keys:
                     translated_data = {}
+                    key_status = []
                     for key, value in source_block_data.parsed_keys.items():
                         key_response = response_data.get(key, {})
-                        if key_response.get('properties', {}).get('status') == "translated":
+                        if key_response.get('properties', {}).get('status') in translated_status:
                             translated_data.update({key: key_response.get('translation')})
                             fetched_commits.update({key: key_response.get('properties', {}).get('revision')})
+                        key_status.append(key_response.get('properties', {}).get('status'))
                     if translated_data:
                         translated_data = json.dumps(translated_data)
-                        self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code)
+                        self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code, key_status)
                     else:
                         self._update_result_list(
                             str(translation_obj.target_block.block_id), source_block_data.data_type, target_language_code,
-                            "Successfully fetched but no key is translated"
+                            "Successfully fetched but no key is translated or reviewed", key_status, 
                         )
                 else:
                     key_response = response_data.get(source_block_data.data_type, {})
-                    if key_response.get('properties', {}).get('status') == "translated":
+                    key_status = key_response.get('properties', {}).get('status')
+                    if key_status in translated_status:
                         translated_data = response_data.get(source_block_data.data_type, {}).get('translation')
                         fetched_commits.update({source_block_data.data_type: key_response.get('properties', {}).get('revision')})
-                        self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code)
+                        self._update_translations_in_db(translation_obj, translated_data, fetched_commits, source_block_data, target_language_code, key_status)
                     else:
                         self._update_result_list(
                             str(translation_obj.target_block.block_id), source_block_data.data_type, target_language_code,
-                            "Successfully fetched but status is not translated"
+                            "Successfully fetched but status is not translated or reviewed", key_status,
                         )
             else:
                 # Compare commits of tranlsations with existing db commits -> only update translations if commits are updated.
@@ -233,34 +242,37 @@ class Command(BaseCommand):
                 if source_block_data.parsed_keys:
                     existing_translation = json.loads(existing_translation)
                     is_any_key_updated = False
+                    key_status = []
                     for key, value in source_block_data.parsed_keys.items():
                         key_response = response_data.get(key, {})
                         key_commit = key_response.get('properties', {}).get('revision')
-                        if key_response.get('properties', {}).get('status') == "translated" and not existing_commits.get(key) or (key_commit and key_commit != existing_commits.get(key)):
+                        if key_response.get('properties', {}).get('status') in translated_status and not existing_commits.get(key) or (key_commit and key_commit != existing_commits.get(key)):
                             existing_translation.update({key: key_response.get('translation')})
                             existing_commits.update({key: key_commit})
                             is_any_key_updated = True
+                        key_status.append(key_response.get('properties', {}).get('status'))
                     existing_translation = json.dumps(existing_translation)
                 else:
                     is_any_key_updated = False
                     key_response = response_data.get(source_block_data.data_type, {})
                     key_commit = key_response.get('properties', {}).get('revision')
                     source_block_data.data_type
-                    if key_response.get('properties', {}).get('status') == "translated" and not existing_commits.get(source_block_data.data_type) or (key_commit and key_commit != existing_commits.get(source_block_data.data_type)):
+                    key_status = key_response.get('properties', {}).get('status')
+                    if key_status in translated_status and not existing_commits.get(source_block_data.data_type) or (key_commit and key_commit != existing_commits.get(source_block_data.data_type)):
                         existing_translation = key_response.get('translation')
                         existing_commits.update({source_block_data.data_type: key_commit})
                         is_any_key_updated = True
 
                 if is_any_key_updated:
                     self._update_translations_in_db(
-                        translation_obj, existing_translation, existing_commits, source_block_data, target_language_code
+                        translation_obj, existing_translation, existing_commits, source_block_data, target_language_code, key_status,
                     )
                 else:
                     translation_obj.last_fetched = datetime.now()
                     translation_obj.save()
                     self._update_result_list(
                         str(translation_obj.target_block.block_id), source_block_data.data_type, target_language_code,
-                        "Successfully fetched but commits are same"
+                        "Successfully fetched but commits are same", key_status,
                     )
 
     def _update_response_translations_in_db(self, data_dict, responses):
@@ -368,7 +380,7 @@ class Command(BaseCommand):
             tasks = self._get_tasks_to_fetch_data_from_wiki_meta(data_dict, meta_client, session)
             responses = await self._request_meta_tasks_in_parallel(
                 tasks,
-                limit=meta_client._API_GET_REQUEST_STNC_LIMIT,
+                limit=meta_client._API_GET_REQUEST_SYNC_LIMIT,
             )
             self._update_response_translations_in_db(data_dict, responses)
 

@@ -31,7 +31,7 @@ class WikiMetaClient(object):
                 'WIKI_META_COURSE_PREFIX', settings.WIKI_META_COURSE_PREFIX)
         self._API_REQUEST_DELAY = configuration_helpers.get_value(
                 'WIKI_META_API_REQUEST_DELAY_IN_SECONDS', settings.WIKI_META_API_REQUEST_DELAY_IN_SECONDS)
-        self._API_GET_REQUEST_STNC_LIMIT = configuration_helpers.get_value(
+        self._API_GET_REQUEST_SYNC_LIMIT = configuration_helpers.get_value(
                 'WIKI_META_API_GET_REQUEST_SYNC_LIMIT', settings.WIKI_META_API_GET_REQUEST_SYNC_LIMIT)
         
         if not self._COURSE_PREFIX:
@@ -260,15 +260,15 @@ class WikiMetaClient(object):
 
     async def sync_translations(self, mcgroup, mclanguage, session):
         logger.info("{}-{}".format(self._MCGROUP_PREFIX, mcgroup))
-        update_mcgroup = (self._COURSE_PREFIX + mcgroup).replace("_", " ")
-        update_mcgroup = update_mcgroup[0].upper() + update_mcgroup[1:]
+        updated_mcgroup = (self._COURSE_PREFIX + mcgroup).replace("_", " ")
+        updated_mcgroup = updated_mcgroup[0].upper() + updated_mcgroup[1:]
         params = {
             "action": "query",
             "format": "json",
             "list": "messagecollection",
             "utf8": 1,
             "formatversion": 2,
-            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, update_mcgroup),
+            "mcgroup": "{}-{}".format(self._MCGROUP_PREFIX, updated_mcgroup),
             "mclanguage": mclanguage,
             "mcprop": "translation|properties",
             "mclimit": 5000

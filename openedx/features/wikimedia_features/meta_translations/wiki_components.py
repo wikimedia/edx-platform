@@ -40,6 +40,30 @@ class WikiComponent(ABC):
         Abstract method get. Required in all children
         """
         pass
+    
+    def update_from_unparsed_data(self, xblock, data):
+        """
+        Update xblock from unparsed/raw data
+        """
+        if hasattr(xblock, 'display_name') and 'display_name' in data:
+            xblock.display_name = data['display_name']
+        if hasattr(xblock, 'data') and 'data' in data:
+            xblock.data = data['data']
+        
+        return modulestore().update_item(xblock, 'edx')
+    
+    def sync_base_block_data_to_translated_blocks(self, xblock, updated_data):
+        """
+        Update base course block content to translated blocks
+        """
+        related_blocks_keys = list(WikiTranslation.objects.filter(
+            source_block_data__course_block__block_id=xblock.scope_ids.usage_id,
+        ).select_related("target_block").values_list('target_block__block_id', flat=True).distinct())
+
+        for block_key in related_blocks_keys:
+            block = modulestore().get_item(block_key)
+            self.update_from_unparsed_data(block, updated_data)
+
 
 class ModuleComponent(WikiComponent):
     """
@@ -80,9 +104,13 @@ class ModuleComponent(WikiComponent):
         - Reset all versions and translations.
         """
         display_name = updated_xblock_data.get('metadata', {}).get('display_name')
+        updated_data = {}
         if display_name and display_name != xblock.display_name:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "display_name", display_name)
+            updated_data['display_name'] = display_name
+        
+        self.sync_base_block_data_to_translated_blocks(xblock, updated_data)
 
 
 class HtmlComponent(WikiComponent):
@@ -125,15 +153,20 @@ class HtmlComponent(WikiComponent):
         - Set content_update to True so that next meta server send call would send updated content.
         - Reset all versions and translations.
         """
+        updated_data = {}
         updated_display_name = updated_xblock_data.get('metadata', {}).get('display_name') or updated_xblock_data.get('display_name')
         if updated_display_name and updated_display_name != xblock.display_name:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
+            updated_data['display_name'] = updated_display_name
 
         updated_xml_content = updated_xblock_data.get('data')
         if updated_xml_content and updated_xml_content != xblock.data:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "content", updated_xml_content)
+            updated_data['data'] = updated_xml_content
+        
+        self.sync_base_block_data_to_translated_blocks(xblock, updated_data)
 
 class ProblemComponent(WikiComponent):
     """
@@ -189,15 +222,21 @@ class ProblemComponent(WikiComponent):
         - Set content_update to True so that next meta server send call would send updated content.
         - Reset all versions and translations.
         """
+        updated_data = {}
         updated_display_name = updated_xblock_data.get('metadata', {}).get('display_name') or updated_xblock_data.get('display_name')
         if updated_display_name and updated_display_name != xblock.display_name:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
+            updated_data['display_name'] = updated_display_name
 
         updated_xml_content = updated_xblock_data.get('data')
         if updated_xml_content and updated_xml_content != xblock.data:
             block_id = str(xblock.scope_ids.usage_id)
             CourseBlockData.update_base_block_data(block_id, "content", updated_xml_content)
+            updated_data['data'] = updated_xml_content
+        
+        self.sync_base_block_data_to_translated_blocks(xblock, updated_data)
+
 
 class VideoComponent(WikiComponent):
     """
@@ -287,6 +326,26 @@ class VideoComponent(WikiComponent):
             video_context['transcript'] = json.dumps(json_content)
         return video_context
 
+    def update_from_unparsed_data(self, xblock, data):
+        """
+        Update video component from raw data
+        - To update transcript of a video, send transcript and transcript_language in data dict
+        """
+        if 'transcript' in data and 'transcript_language' in data:
+            SRT_content = Transcript.convert(data['transcript'], Transcript.SJSON, Transcript.SRT)
+            language_code = data['transcript_language']
+            post_data = {
+                        "edx_video_id": xblock.edx_video_id,
+                        "language_code": language_code,
+                        "new_language_code": language_code,
+                        "file": ('translation-{}.srt'.format(language_code), SRT_content)
+                    }
+
+            request = Request.blank('/translation', POST=post_data)
+            xblock.studio_transcript(request=request, dispatch="translation")
+        
+        return super().update_from_unparsed_data(xblock, data)
+    
     def check_and_sync_base_block_data(self, xblock, updated_xblock_data):
         """
         if base_block display_name or video transcript is updated then
@@ -295,10 +354,12 @@ class VideoComponent(WikiComponent):
         - Reset all versions and translations.
         """
         block_id = str(xblock.scope_ids.usage_id)
-
+        
+        updated_data = {}
         updated_display_name = updated_xblock_data.get('metadata', {}).get('display_name') or updated_xblock_data.get('display_name')
         if updated_display_name and updated_display_name != xblock.display_name:
             CourseBlockData.update_base_block_data(block_id, "display_name", updated_display_name)
+            updated_data['display_name'] = updated_display_name
 
         # For transcript we do not get data in json so we'll compare transcript uploaded in xblock and transcript content
         # saved in meta_translations db i.e CourseBlockData
@@ -309,8 +370,13 @@ class VideoComponent(WikiComponent):
                 course_block_data = CourseBlockData.objects.get(course_block__block_id=block_id, data_type="transcript")
                 if current_video_transcript != course_block_data.data:
                     CourseBlockData.update_base_block_data(block_id, "transcript", current_video_transcript, course_block_data)
+                    language = self._get_base_course_language(xblock.course_id)
+                    updated_data['transcript'] = current_video_transcript
+                    updated_data['transcript_language'] = language
             except CourseBlockData.DoesNotExist:
                 pass
+        
+        self.sync_base_block_data_to_translated_blocks(xblock, updated_data)
 
 COMPONENTS_CLASS_MAPPING = {
     'course': ModuleComponent,

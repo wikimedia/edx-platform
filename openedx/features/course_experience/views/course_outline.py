@@ -88,6 +88,8 @@ class CourseOutlineFragmentView(EdxFragmentView):
             'gated_content': gated_content,
             'xblock_display_names': xblock_display_names,
             'self_paced': course.self_paced,
+            'course_font_family': course.course_font_family if course and hasattr(course, 'course_font_family') else '',
+
 
             # We're using this flag to prevent old self-paced dates from leaking out on courses not
             # managed by edx-when.
