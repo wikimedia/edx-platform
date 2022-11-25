@@ -21,6 +21,7 @@ from openedx.features.wikimedia_features.meta_translations.models import (
     WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaTranslationConfiguration
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
+from openedx.features.wikimedia_features.meta_translations.utils import is_block_translated
 
 log = getLogger(__name__)
 
@@ -38,6 +39,7 @@ class Command(BaseCommand):
     help = 'Command to sync/fetch updated translations from meta to edX'
 
     _UPDATED_TRANSLATIONS = []
+    _UPDATED_BLOCKS = set([])
 
     def add_arguments(self, parser):
         """
@@ -59,6 +61,7 @@ class Command(BaseCommand):
         ))
         log.info("Request data dict: {}".format(json.dumps(request_data_dict, indent=4)))
         log.info("Updated Translations: {}".format(json.dumps(self._UPDATED_TRANSLATIONS, indent=4)))
+        log.info("Updated Blocks: {}".format(self._UPDATED_BLOCKS))
 
     def is_translated(self, wiki_translation_obj):
         """
@@ -170,6 +173,7 @@ class Command(BaseCommand):
         self._update_result_list(
             str(translation_obj.target_block.block_id), source_block_data.data_type, target_lang_code, "Updated", status
         )
+        self._UPDATED_BLOCKS.add(str(translation_obj.target_block.block_id))
 
     def _check_and_update_translations(self, response_data, target_block_id, target_language_code):
         """
@@ -384,12 +388,31 @@ class Command(BaseCommand):
             )
             self._update_response_translations_in_db(data_dict, responses)
 
+    def update_transalted_status_of_updated_blocks(self):
+        """
+        Updates translated status of Updated blocks
+        """
+        if self._UPDATED_BLOCKS:
+            course_blocks = CourseBlock.objects.filter(block_id__in=list(self._UPDATED_BLOCKS))
+            for block in course_blocks:
+                is_translated = is_block_translated(block)
+                if block.translated != is_translated:
+                    block.translated = is_block_translated(block)
+                    block.save()
+                    
+                    log.info(
+                        "CourseBlock translated status have been updated for block_id {} translated: {}".format(
+                            block.block_id, is_translated,
+                        )
+                    )
+
     def handle(self, *args, **options):
         data_dict = self._get_request_data_dict()
 
         if options.get('commit'):
             if data_dict:
                 asyncio.run(self.async_fetch_data_from_wiki_meta(data_dict))
+                self.update_transalted_status_of_updated_blocks()
             else:
                 log.info("No Translations need to fetched/updated from Meta Wiki.")
 

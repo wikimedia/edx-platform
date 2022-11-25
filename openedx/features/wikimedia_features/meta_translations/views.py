@@ -163,3 +163,9 @@ def update_block_direction_flag(request):
             return JsonResponse({'error': error_message}, status=405)
 
     return JsonResponse({'error':'Invalid request'}, status=400)
+
+def render_discover_courses(request, course_key=None):
+    return render_to_response('discover_courses.html', {
+        'uses_bootstrap': True,
+        'language_options': dict(settings.ALL_LANGUAGES),
+    })

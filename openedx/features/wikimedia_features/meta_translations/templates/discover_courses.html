@@ -1,0 +1,38 @@
+<%inherit file="base.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+  from django.urls import reverse
+  from django.utils.translation import ugettext_lazy as _
+  from django.utils.translation import get_language_bidi
+  from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
+%>
+
+<%def name="online_help_token()"><% return "home" %></%def>
+<%block name="title">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</%block>
+<%block name="bodyclass">is-signedin index view-dashboard</%block>
+
+<%block name="header_extras">
+  % if get_language_bidi():
+    <link rel="stylesheet" type="text/css" href="${static.url('css/studio-main-v1-rtl.css')}" />
+  % else:
+    <link rel="stylesheet" type="text/css" href="${static.url('css/studio-main-v1.css')}" />
+  % endif
+</%block>
+
+<%block name="content">
+    <div id="root" class="container">
+    </div>
+    <%static:webpack entry="DiscoverCourses">
+        var context = {
+            "PLATFORM_NAME": "${platform_name | n, js_escaped_string}",
+            "LANGUAGES": ${language_options | n, dump_js_escaped_json},
+            "META_COURSES_URL": "${reverse(
+              'meta_translations:translations_api_v0:meta_courses'
+            ) | n, js_escaped_string}",
+            "META_COURSE_TRANSLATIONS_URL": "${reverse(
+              'meta_translations:translations_api_v0:meta_course_translations'
+            ) | n, js_escaped_string}",
+        }
+        new DiscoverCourses(context);
+    </%static:webpack>
+</%block>
