@@ -76,6 +76,7 @@ class CourseBlock(models.Model):
     lang = jsonfield.JSONField(default=json.dumps([]), blank=True)
     applied_translation = models.BooleanField(default=False)
     applied_version = models.ForeignKey(TranslationVersion, null=True, blank=True, on_delete=models.CASCADE)
+    translated = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
     extra = jsonfield.JSONField(default={}, null=True, blank=True)
 

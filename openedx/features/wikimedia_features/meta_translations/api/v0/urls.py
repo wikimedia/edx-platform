@@ -5,7 +5,8 @@ from django.conf.urls import url
 
 from openedx.features.wikimedia_features.meta_translations.api.v0.views import (
     ApproveAPIView, CouseBlockVersionUpdateView, GetCoursesVersionInfo,
-    GetTranslationOutlineStructure, GetVerticalComponentContent, TranslatedVersionRetrieveAPIView
+    GetTranslationOutlineStructure, GetVerticalComponentContent, TranslatedVersionRetrieveAPIView,
+    MetaCoursesListAPIView, MetaCoursesRetrieveAPIView, MetaCourseTranslationsAPIView,
 )
 
 app_name = 'translations_api_v0'
@@ -40,5 +41,20 @@ urlpatterns = [
         r'^apply_translated_version/(?P<block_id>.*?)/$',
         CouseBlockVersionUpdateView.as_view(),
         name='course_block_version'
+    ),
+    url(
+        r'^meta_courses/$',
+        MetaCoursesListAPIView.as_view(),
+        name='meta_courses'
+    ),
+    url(
+        r'^meta_courses/(?P<course_id>.+)$',
+        MetaCoursesRetrieveAPIView.as_view(),
+        name='meta_course'
+    ),
+    url(
+        r'^meta_course_translations/$',
+        MetaCourseTranslationsAPIView.as_view(),
+        name='meta_course_translations'
     ),
 ]

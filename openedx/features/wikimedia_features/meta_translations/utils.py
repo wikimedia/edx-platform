@@ -99,6 +99,7 @@ def reset_fetched_translation_and_version_history(base_course_block_data):
             target_block = wiki_tarnslation.target_block
             target_block.applied_version = None
             target_block.applied_translation = False
+            target_block.translated = False
             target_block.save()
 
             TranslationVersion.objects.filter(block_id=target_block.block_id).delete()
@@ -150,3 +151,69 @@ def get_course_description_by_id(course_key):
     Returns short course description of the course
     """
     return CourseDetails.fetch(course_key).short_description
+
+def validate_transaltions(data, is_json = False):
+    """
+    Function that validates data of type display_name and content
+    Returns:
+        string: Empty if None else data
+    """
+    if is_json:
+        return json.loads(data) if data else {}
+    elif data == None:
+        return ''
+    return data
+
+def validated_and_sort_translated_decodings(base_decodings, translated_decodings):
+    """
+    Validate and Sort Translated Decodings based on Base Decodings indexs
+    Arguments:
+        base_decodings: (dict) parsed decondings of base course block
+        translated_decodings: (dict) new transaltions from meta server
+    Returns:
+        is_valid: (bool) check base_decodings and translated_decodings contain same keys and valid translated data
+        sorted_translated_decodings: (dict) sorted dict based on base_decodings
+    """
+    sorted_translated_decodings = {}
+    is_valid = True
+    for key in base_decodings.keys():
+        if translated_decodings.get(key) == None:
+            is_valid = False
+            sorted_translated_decodings[key] = ''
+        else:
+            sorted_translated_decodings[key] = translated_decodings[key]
+    return is_valid, sorted_translated_decodings
+
+def is_block_translated(block):
+    """
+    Returns True if the course block is translated
+    """
+    wiki_translations = block.wikitranslation_set.all()
+    is_translated = bool(len(wiki_translations))
+    for obj in wiki_translations:
+        data_type = obj.source_block_data.data_type
+        if WikiTranslation.is_translation_contains_parsed_keys(block.block_type, data_type):
+            base_decodings = validate_transaltions(obj.source_block_data.parsed_keys)
+            base_decodings = base_decodings if base_decodings else {}
+            translated_decodings = validate_transaltions(obj.translation, is_json = True)
+            is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
+            is_translated = is_translated and is_valid
+        else:
+            translation = validate_transaltions(obj.translation)
+            is_translated = is_translated and translation != ''
+    return is_translated
+
+def update_course_transaltions():
+    """
+    Update translation status of translated courses
+    """
+    transalted_courses = CourseTranslation.objects.filter().values_list('course_id', flat=True)
+    course_blocks = CourseBlock.objects.filter(course_id__in=transalted_courses)
+    updated_blocks = 0
+    for block in course_blocks:
+        is_translated = is_block_translated(block)
+        if block.translated != is_translated:
+            block.translated = is_translated
+            updated_blocks+=1
+            block.save()
+    log.info('Updated Course Blocks: {}'.format(updated_blocks))
