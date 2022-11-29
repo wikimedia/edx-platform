@@ -18,7 +18,8 @@ from django.utils import timezone
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
-    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaTranslationConfiguration
+    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaTranslationConfiguration,
+    MetaCronJobInfo,
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 from openedx.features.wikimedia_features.meta_translations.utils import is_block_translated
@@ -405,7 +406,17 @@ class Command(BaseCommand):
                             block.block_id, is_translated,
                         )
                     )
-
+    
+    def update_info(self):
+        """
+        Adds entry to MetaCronJobInfo
+        """
+        try:
+            latest_info = MetaCronJobInfo.objects.latest('change_date')
+            MetaCronJobInfo.objects.create(fetched_date = datetime.now(), sent_date = latest_info.sent_date)
+        except MetaCronJobInfo.DoesNotExist:
+            MetaCronJobInfo.objects.create(fetched_date = datetime.now())
+            
     def handle(self, *args, **options):
         data_dict = self._get_request_data_dict()
 
@@ -416,6 +427,7 @@ class Command(BaseCommand):
             else:
                 log.info("No Translations need to fetched/updated from Meta Wiki.")
 
+            self.update_info()
             self._log_final_report(data_dict)
         else:
             log.info(json.dumps(data_dict, indent=4))

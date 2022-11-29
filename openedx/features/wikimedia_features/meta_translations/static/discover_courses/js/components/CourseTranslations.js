@@ -104,6 +104,9 @@ function CourseTranslations({ context }) {
                 <span className="title">{courseInfo.course_name}</span>
                 <div className="course-info">
                   <span className="badge">
+                    Last Updated: {courseInfo.last_fetched_in_hours ? `${Math.round(courseInfo.last_fetched_in_hours * 100)/100} Hrs Ago` : 'N/A'}
+                  </span>
+                  <span className="badge">
                     Translated: {translatedPercentage}%
                   </span>
                 </div>
