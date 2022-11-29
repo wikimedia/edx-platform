@@ -34,7 +34,7 @@ export default function useFetch(context) {
         data['course_lang'] = LANGUAGES[data['course_lang']]
         data['base_course_lang'] = LANGUAGES[data['base_course_lang']]
         setCourseInfo(data);
-        setTranslatedPerentage(Math.round((data['blocks_translated']/data['blocks_count'])*100));
+        setTranslatedPerentage(data['blocks_count'] ? Math.round(data['blocks_translated']/data['blocks_count']*100): 0);
       })
       .catch((error) => {
         notification(toast.error, META_DATA.errors.fetch_course);

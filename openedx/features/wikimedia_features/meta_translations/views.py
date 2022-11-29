@@ -176,6 +176,7 @@ def render_discover_courses(request, course_key=None):
         'serch_course_by_name': _('Search Course By Name'),
         'hrs_ago': _('Hrs Ago'),
         'not_applicable': _('N/A'),
+        'translated': _('Translated'),
         'badges': {
             'last_updated': _('Last Updated:'),
             'translated': _('Translated:'),
