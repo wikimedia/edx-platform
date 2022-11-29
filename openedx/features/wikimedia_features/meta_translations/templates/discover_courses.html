@@ -26,6 +26,7 @@
         var context = {
             "PLATFORM_NAME": "${platform_name | n, js_escaped_string}",
             "LANGUAGES": ${language_options | n, dump_js_escaped_json},
+            "META_DATA": ${meta_data | n, dump_js_escaped_json},
             "META_COURSES_URL": "${reverse(
               'meta_translations:translations_api_v0:meta_courses'
             ) | n, js_escaped_string}",
