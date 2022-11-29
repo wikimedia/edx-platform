@@ -7,7 +7,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.api.v0.utils import update_edx_block_from_version, validated_and_sort_translated_decodings
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 from openedx.features.wikimedia_features.meta_translations.models import (
-    CourseBlock, TranslationVersion, WikiTranslation, CourseTranslation, CourseBlockData,
+    CourseBlock, TranslationVersion, WikiTranslation, CourseTranslation, CourseBlockData, MetaCronJobInfo,
 )
 from openedx.features.wikimedia_features.meta_translations.utils import validate_transaltions
 from rest_framework import serializers
@@ -144,10 +144,13 @@ class MetaCoursesSerializer(serializers.ModelSerializer):
         Returns translated course info
         """
         content = super(MetaCoursesSerializer, self).to_representation(value)
-        blocks_count = CourseBlock.objects.filter(course_id=value.course_id, deleted=False).exclude(block_type='course').count()
-        blocks_translated = CourseBlock.objects.filter(course_id=value.course_id, deleted=False, translated=True).exclude(block_type='course').count()
+        blocks = CourseBlock.objects.filter(course_id=value.course_id, deleted=False, direction_flag=CourseBlock._DESTINATION).exclude(block_type='course')
+        blocks_count = blocks.count()
+        blocks_translated = blocks.filter(translated=True).count()
         translated_course = get_course_by_id(value.course_id)
         base_course = get_course_by_id(value.base_course_id)
+        last_sent_in_hours, last_fetched_in_hours = MetaCronJobInfo.get_updated_status()
+            
         content.update({
             'course_lang': translated_course.language,
             'course_name': translated_course.display_name,
@@ -155,6 +158,8 @@ class MetaCoursesSerializer(serializers.ModelSerializer):
             'base_course_name': base_course.display_name,
             'blocks_count': blocks_count,
             'blocks_translated': blocks_translated,
+            'last_sent_in_hours': last_sent_in_hours,
+            'last_fetched_in_hours': last_fetched_in_hours,
         })
         return content
 

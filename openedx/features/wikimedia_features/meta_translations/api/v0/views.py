@@ -471,4 +471,4 @@ class MetaCourseTranslationsAPIView(generics.ListAPIView):
         elif translations == 'untranslated':
             filters['translated'] = False
         
-        return CourseBlock.objects.filter(**filters)
+        return CourseBlock.objects.filter(deleted=False, direction_flag=CourseBlock._DESTINATION, **filters)
