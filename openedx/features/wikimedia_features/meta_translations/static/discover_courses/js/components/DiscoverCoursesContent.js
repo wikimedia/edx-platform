@@ -59,6 +59,7 @@ function DiscoverCoursesContent({ context }) {
                       <th>{META_DATA.translated_course_name}</th>
                       <th>{META_DATA.from_lang}</th>
                       <th>{META_DATA.to_lang}</th>
+                      <th>{META_DATA.translated}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -70,6 +71,7 @@ function DiscoverCoursesContent({ context }) {
                             <td>{val.course_name}</td>
                             <td>{LANGUAGES[val.base_course_lang]}</td>
                             <td>{LANGUAGES[val.course_lang]}</td>
+                            <td>{`${val.blocks_count ? Math.round((val.blocks_translated/val.blocks_count)*100) : 0}%`}</td>
                           </tr>
                         )
                       })
