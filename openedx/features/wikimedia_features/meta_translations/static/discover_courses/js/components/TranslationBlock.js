@@ -28,12 +28,12 @@ function TranslationBlock({ id, title, content, blockType, isTranslated, isParse
   return (
     <div id={id} className="translation-block">
       <div className="header">
-        <div className="header-title" onClick={onExpended}>
+        <div className="header-title">
           <span className="title">{title}</span>
           {
             content && <div className="title-buttons">
-              {isExpended && <span className="fa fa-chevron-down"></span>}
-              {!isExpended && <span className="fa fa-chevron-right"></span>}
+              {isExpended && <span className="btn fa fa-chevron-down" onClick={onExpended}></span>}
+              {!isExpended && <span className="btn fa fa-chevron-right" onClick={onExpended}></span>}
             </div>
           }
         </div>

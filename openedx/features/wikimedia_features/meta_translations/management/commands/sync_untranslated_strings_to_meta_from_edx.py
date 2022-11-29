@@ -16,7 +16,7 @@ from opaque_keys import InvalidKeyError
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
-    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData
+    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaCronJobInfo
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 from openedx.features.wikimedia_features.meta_translations.utils import get_course_description_by_id
@@ -247,6 +247,16 @@ class Command(BaseCommand):
             )
             self._reset_mapping_updated_and_content_updated(responses)
 
+    def update_info(self):
+        """
+        Adds entry to MetaCronJobInfo
+        """
+        try:
+            latest_info = MetaCronJobInfo.objects.latest('change_date')
+            MetaCronJobInfo.objects.create(sent_date = datetime.now(), fetched_date = latest_info.fetched_date)
+        except MetaCronJobInfo.DoesNotExist:
+            MetaCronJobInfo.objects.create(sent_date = datetime.now())
+    
     def handle(self, *args, **options):
         data_list = self._get_request_data_list()
         if options.get('commit'):
@@ -257,6 +267,7 @@ class Command(BaseCommand):
             else:
                 log.info("No updated course blocks data found to send on Meta Wiki.")
 
+            self.update_info()
             self._log_final_report()
         else:
             log.info(json.dumps(data_list, indent=4))
