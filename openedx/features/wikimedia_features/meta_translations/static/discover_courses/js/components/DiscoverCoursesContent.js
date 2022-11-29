@@ -7,7 +7,7 @@ import Spinner from '../assets/spinner';
 
 function DiscoverCoursesContent({ context }) {
   const history = useHistory();
-  const { LANGUAGES } = context
+  const { LANGUAGES, META_DATA } = context
   const { fetchCourses } = useFetch(context)
   const [all_courses, setAllCourses] = useState([]);
   const [courses, setCourses] = useState([]);
@@ -45,7 +45,7 @@ function DiscoverCoursesContent({ context }) {
               <div className="grid-header">
                 <input
                   type="text"
-                  placeholder="Search Course by Name"
+                  placeholder={META_DATA.serch_course_by_name}
                   value={searchCourse}
                   onChange={(e) => setSearchCourse(e.target.value)}
                   className="search-course-field"
@@ -55,10 +55,10 @@ function DiscoverCoursesContent({ context }) {
                 <table className="grid-courses">
                   <thead>
                     <tr>
-                      <th>Course Name</th>
-                      <th>Translated Course Name</th>
-                      <th>From Language</th>
-                      <th>To Language</th>
+                      <th>{META_DATA.course_name}</th>
+                      <th>{META_DATA.translated_course_name}</th>
+                      <th>{META_DATA.from_lang}</th>
+                      <th>{META_DATA.to_lang}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -78,17 +78,17 @@ function DiscoverCoursesContent({ context }) {
                 </table>
                 {
                   !courses.length && (
-                    <span>No course found</span>
+                    <span>{META_DATA.info.courses_not_found}</span>
                   )
                 }
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-header">
-                <span className="title">Filters</span>
+                <span className="title">{META_DATA.filter}</span>
               </div>
               <div className="filter-field multi-selector">
-                <label className="title">From Language</label>
+                <label className="title">{META_DATA.from_lang}</label>
                 <Select
                   className="options"
                   value={fromLanguge}
@@ -105,7 +105,7 @@ function DiscoverCoursesContent({ context }) {
                 />
               </div>
               <div className="filter-field multi-selector">
-                <label className="title">To Language</label>
+                <label className="title">{META_DATA.to_lang}</label>
                 <Select
                   className="options"
                   value={toLanguge}

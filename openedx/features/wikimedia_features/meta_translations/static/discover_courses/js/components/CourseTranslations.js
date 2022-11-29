@@ -7,6 +7,7 @@ import Spinner from '../assets/spinner';
 
 function CourseTranslations({ context }) {
   const { course_id } = useParams();
+  const { META_DATA } = context
   const { fetchCourseInfo, fetchCourseTranslations } = useFetch(context);
   const [maxPage, setMaxPage] = useState(1);
   const [page, setPage] = useState(1);
@@ -104,10 +105,10 @@ function CourseTranslations({ context }) {
                 <span className="title">{courseInfo.course_name}</span>
                 <div className="course-info">
                   <span className="badge">
-                    Last Updated: {courseInfo.last_fetched_in_hours ? `${Math.round(courseInfo.last_fetched_in_hours * 100)/100} Hrs Ago` : 'N/A'}
+                    {META_DATA.badges.last_updated} {courseInfo.last_fetched_in_hours ? `${Math.round(courseInfo.last_fetched_in_hours * 100)/100} ${META_DATA.hrs_ago}` : META_DATA.not_applicable}
                   </span>
                   <span className="badge">
-                    Translated: {translatedPercentage}%
+                    {META_DATA.badges.translated} {translatedPercentage}%
                   </span>
                 </div>
               </div>
@@ -127,7 +128,7 @@ function CourseTranslations({ context }) {
                   )
                 }
                 {
-                  !loading && !tranlations.length && <span>No course blocks found</span>
+                  !loading && !tranlations.length && <span>{META_DATA.info.blocks_not_found}</span>
                 }
                 {
                   loading && <Spinner />
@@ -135,61 +136,61 @@ function CourseTranslations({ context }) {
               </div>
               <div className="grid-actions">
                 {
-                  enableLoadMoreButton && !loading && <button className="btn btn-translations" onClick={onLoadMore}>Load More</button>
+                  enableLoadMoreButton && !loading && <button className="btn btn-translations" onClick={onLoadMore}>{META_DATA.buttons.load_more}</button>
                 }
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-header">
-                <span className="title">Filters</span>
+                <span className="title">{META_DATA.filters}</span>
               </div>
               <div className="filter-field">
-                <span className="title">From Language</span>
+                <span className="title">{META_DATA.from_lang}</span>
                 <div className="block">
                   <span>{courseInfo.base_course_lang}</span>
                 </div>
               </div>
               <div className="filter-field">
-                <span className="title">To Language</span>
+                <span className="title">{META_DATA.to_lang}</span>
                 <div className="block">
                   <span>{courseInfo.course_lang}</span>
                 </div>
               </div>
               <div className="filter-field">
-                <span className="title">Block Type</span>
+                <span className="title">{META_DATA.block_type}</span>
                 <div className="block">
                   <label className="block-checkbox">
                     <input type="checkbox" checked={blockFilters["section-title"]} onChange={() => handleBlockFilters("section-title")} />
-                    Section Header
+                    {META_DATA.blocks_filter.section_header}
                   </label>
                   <label className="block-checkbox">
                     <input type="checkbox" checked={blockFilters["video"]} onChange={() => handleBlockFilters("video")} />
-                    Video
+                    {META_DATA.blocks_filter.video}
                   </label>
                   <label className="block-checkbox">
                     <input type="checkbox" checked={blockFilters["html"]} onChange={() => handleBlockFilters("html")} />
-                    HTML
+                    {META_DATA.blocks_filter.html}
                   </label>
                   <label className="block-checkbox">
                     <input type="checkbox" checked={blockFilters["problem"]} onChange={() => handleBlockFilters("problem")} />
-                    Problem
+                    {META_DATA.blocks_filter.problem}
                   </label>
                 </div>
               </div>
               <div className="filter-field">
-                <span className="title">Translation</span>
+                <span className="title">{META_DATA.translation}</span>
                 <div className="block">
                   <label className="block-checkbox">
                     <input type="checkbox" checked={translationFilters["translated"]} onChange={() => handleTranslationFilters("translated")} />
-                    Translated
+                    {META_DATA.translation_filter.translated}
                   </label>
                   <label className="block-checkbox">
                     <input type="checkbox" checked={translationFilters["untranslated"]} onChange={() => handleTranslationFilters("untranslated")} />
-                    Untranslated
+                    {META_DATA.translation_filter.untranslated}
                   </label>
                 </div>
               </div>
-              <button className="btn btn-translations" onClick={onClickApply}>Apply</button>
+              <button className="btn btn-translations" onClick={onClickApply}>{META_DATA.buttons.apply}</button>
             </div>
           </div>
         )

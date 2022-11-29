@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import useClient from "./useClient";
 
 export default function useFetch(context) {
-  const { META_COURSE_TRANSLATIONS_URL, META_COURSES_URL, LANGUAGES } = context;
+  const { META_DATA, META_COURSE_TRANSLATIONS_URL, META_COURSES_URL, LANGUAGES } = context;
   const { client, notification } = useClient();
 
   const fetchCourseTranslations = (course_id, page, blockTypes, translationType, setTranslations, setLoading, setMaxPage, setEnableLoadMoreButton) => {
@@ -18,7 +18,7 @@ export default function useFetch(context) {
         }
       })
       .catch((error) => {
-        notification(toast.error, 'Error in fetching course strings');
+        notification(toast.error, META_DATA.errors.fetch_blocks);
         console.error(error);
       })
       .finally(() => {
@@ -37,7 +37,7 @@ export default function useFetch(context) {
         setTranslatedPerentage(Math.round((data['blocks_translated']/data['blocks_count'])*100));
       })
       .catch((error) => {
-        notification(toast.error, 'Error in fetching course info');
+        notification(toast.error, META_DATA.errors.fetch_course);
         console.error(error);
       })
       .finally(() => {
@@ -53,7 +53,7 @@ export default function useFetch(context) {
         setAllCourses(res.data);
       })
       .catch((error) => {
-        notification(toast.error, 'Error in fetching course info');
+        notification(toast.error, META_DATA.errors.fetch_courses);
         console.error(error);
       })
       .finally(() => {
