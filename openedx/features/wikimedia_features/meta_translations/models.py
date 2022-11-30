@@ -7,6 +7,7 @@ import jsonfield
 import logging
 import pytz
 
+from datetime import datetime, timezone
 from config_models.models import ConfigurationModel
 from django.utils import timezone
 from django.db import models
@@ -32,6 +33,35 @@ class MetaTranslationConfiguration(ConfigurationModel):
     class Meta:
         app_label = APP_LABEL
 
+class MetaCronJobInfo(models.Model):
+    """
+    Store dates of meta_translations cron jobs
+    """
+    change_date = models.DateTimeField(auto_now_add=True)
+    sent_date = models.DateTimeField(null=True)
+    fetched_date = models.DateTimeField(null=True)
+
+    @classmethod
+    def get_updated_status(cls):
+        """
+        Return the difference of current time with latest sent and fetch calls 
+        """
+        current_date = datetime.now(timezone.utc)
+        sent_hours = None
+        fetched_hours = None
+        try:
+            latest_info = cls.objects.latest('change_date')
+            if latest_info.sent_date:
+                sent_hours = (current_date - latest_info.sent_date).total_seconds()/3600
+            if latest_info.fetched_date:
+                fetched_hours = (current_date - latest_info.fetched_date).total_seconds()/3600
+        except MetaCronJobInfo.DoesNotExist:
+            pass
+        return sent_hours, fetched_hours
+
+    class Meta:
+        app_label = APP_LABEL
+        verbose_name = "Cron Job Info"
 
 class TranslationVersion(models.Model):
     """
@@ -76,6 +106,7 @@ class CourseBlock(models.Model):
     lang = jsonfield.JSONField(default=json.dumps([]), blank=True)
     applied_translation = models.BooleanField(default=False)
     applied_version = models.ForeignKey(TranslationVersion, null=True, blank=True, on_delete=models.CASCADE)
+    translated = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
     extra = jsonfield.JSONField(default={}, null=True, blank=True)
 

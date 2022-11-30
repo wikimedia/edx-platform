@@ -3,9 +3,15 @@ Serializers for Meta-Translations v0 API(s)
 """
 from django.utils.translation import ugettext as _
 
-from openedx.features.wikimedia_features.meta_translations.api.v0.utils import update_edx_block_from_version
-from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, TranslationVersion, WikiTranslation
+from lms.djangoapps.courseware.courses import get_course_by_id
+from openedx.features.wikimedia_features.meta_translations.api.v0.utils import update_edx_block_from_version, validated_and_sort_translated_decodings
+from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
+from openedx.features.wikimedia_features.meta_translations.models import (
+    CourseBlock, TranslationVersion, WikiTranslation, CourseTranslation, CourseBlockData, MetaCronJobInfo,
+)
+from openedx.features.wikimedia_features.meta_translations.utils import validate_transaltions
 from rest_framework import serializers
+
 
 class CourseBlockTranslationSerializer(serializers.ModelSerializer):
     """
@@ -91,6 +97,9 @@ class TranslationVersionSerializer(serializers.ModelSerializer):
         return content
 
 class CourseBlockVersionSerializer(serializers.ModelSerializer):
+    """
+    Serializer for course block versions
+    """
     class Meta:
         model = CourseBlock
         fields = ('block_id', 'applied_translation', 'applied_version')
@@ -120,3 +129,79 @@ class CourseBlockVersionSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Version is no applied")
         
         return super(CourseBlockVersionSerializer, self).update(instance, validated_data)
+
+class MetaCoursesSerializer(serializers.ModelSerializer):
+    """
+    Serializer for a translated courses
+    """
+    class Meta:
+        model = CourseTranslation
+        fields = ('course_id', 'base_course_id', 'outdated')
+        read_only_fields = ('course_id', 'base_course_id', 'outdated')
+    
+    def to_representation(self, value):
+        """
+        Returns translated course info
+        """
+        content = super(MetaCoursesSerializer, self).to_representation(value)
+        blocks = CourseBlock.objects.filter(course_id=value.course_id, deleted=False, direction_flag=CourseBlock._DESTINATION).exclude(block_type='course')
+        blocks_count = blocks.count()
+        blocks_translated = blocks.filter(translated=True).count()
+        translated_course = get_course_by_id(value.course_id)
+        base_course = get_course_by_id(value.base_course_id)
+        last_sent_in_hours, last_fetched_in_hours = MetaCronJobInfo.get_updated_status()
+            
+        content.update({
+            'course_lang': translated_course.language,
+            'course_name': translated_course.display_name,
+            'base_course_lang': base_course.language,
+            'base_course_name': base_course.display_name,
+            'blocks_count': blocks_count,
+            'blocks_translated': blocks_translated,
+            'last_sent_in_hours': last_sent_in_hours,
+            'last_fetched_in_hours': last_fetched_in_hours,
+        })
+        return content
+
+class MetaCourseTranslationSerializer(serializers.ModelSerializer):
+    """
+    Serializer for a translated course blocks
+    """
+    class Meta:
+        model = CourseBlock
+        fields = ('block_id', 'block_type', 'translated')
+
+    def to_representation(self, value):
+        """
+        Returns course block info
+        """
+        content = super(MetaCourseTranslationSerializer, self).to_representation(value)
+        wiki_translations = value.wikitranslation_set.all()
+        is_parsed_block = False
+        base_block_extra_fields= {}
+        base_data = {}
+        for obj in wiki_translations:
+            data_type = obj.source_block_data.data_type
+            if WikiTranslation.is_translation_contains_parsed_keys(value.block_type, data_type):
+                base_decodings = validate_transaltions(obj.source_block_data.parsed_keys)
+                base_decodings = base_decodings if base_decodings else {}
+                is_parsed_block = True
+                base_data["content"] = base_decodings
+            else:
+                base_data[data_type] = validate_transaltions(obj.source_block_data.data)
+            if not base_block_extra_fields:
+                base_block_extra_fields = obj.source_block_data.course_block.extra
+        
+        page_group_url = ''
+        if base_block_extra_fields:
+            meta_title = base_block_extra_fields.get('meta_page_title')
+            if meta_title:
+                course = get_course_by_id(value.course_id)
+                page_group_url = WikiMetaClient().get_expected_message_group_redirect_url(meta_title, course.language)     
+        
+        content.update({
+            'base_data': base_data,
+            'is_parsed_block': is_parsed_block,
+            'group_url': page_group_url,
+        })
+        return content

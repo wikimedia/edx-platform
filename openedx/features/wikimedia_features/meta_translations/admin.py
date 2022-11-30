@@ -6,7 +6,8 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from openedx.features.wikimedia_features.meta_translations.models import (
-   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation, MetaTranslationConfiguration
+   CourseBlock, CourseBlockData, CourseTranslation, TranslationVersion, WikiTranslation, MetaTranslationConfiguration,
+   MetaCronJobInfo,
 )
 
 
@@ -16,7 +17,7 @@ class CourseBlockAdmin(admin.ModelAdmin):
     """
     list_display  = (
         "block_id", "parent_id", "block_type", "course_id", "direction_flag", "lang",
-        "data", "applied_translation", "applied_version", "extra"
+        "data", "translated", "applied_translation", "applied_version", "extra"
     )
     search_fields = ("block_id", "course_id",)
     list_filter = ('block_type', 'direction_flag', 'applied_translation', 'deleted')
@@ -69,6 +70,11 @@ class TranslationVersionAdmin(admin.ModelAdmin):
     list_display = [f.name for f in TranslationVersion._meta.fields]
     search_fields = ("block_id", "date")
 
+class MetaCronJobInfoAdmin(admin.ModelAdmin):
+    """
+    Admin config to view meta course info
+    """
+    list_display = [f.name for f in MetaCronJobInfo._meta.fields]
 
 admin.site.register(CourseBlock, CourseBlockAdmin)
 admin.site.register(CourseBlockData, CourseBlockDataAdmin)
@@ -76,3 +82,4 @@ admin.site.register(CourseTranslation, CourseTranslationAdmin)
 admin.site.register(WikiTranslation, WikiTranslationAdmin)
 admin.site.register(TranslationVersion, TranslationVersionAdmin)
 admin.site.register(MetaTranslationConfiguration, ConfigurationModelAdmin)
+admin.site.register(MetaCronJobInfo, MetaCronJobInfoAdmin)

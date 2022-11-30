@@ -163,3 +163,50 @@ def update_block_direction_flag(request):
             return JsonResponse({'error': error_message}, status=405)
 
     return JsonResponse({'error':'Invalid request'}, status=400)
+
+def render_discover_courses(request, course_key=None):
+    meta_data = {
+        'filters': _('Filters'),
+        'from_lang': _('From Language'),
+        'to_lang': _('To Language'),
+        'block_type': _('Block Type'),
+        'translation': _('Translation'),
+        'course_name': _('Course Name'),
+        'translated_course_name': _('Translated Course Name'),
+        'serch_course_by_name': _('Search Course By Name'),
+        'hrs_ago': _('Hrs Ago'),
+        'not_applicable': _('N/A'),
+        'translated': _('Translated'),
+        'badges': {
+            'last_updated': _('Last Updated:'),
+            'translated': _('Translated:'),
+        },
+        'info': {
+            'blocks_not_found': _('No course blocks found'),
+            'courses_not_found': _('No courses found')
+        },
+        'buttons': {
+            'load_more': _('Load More'),
+            'apply': _('Apply'),
+        },
+        'blocks_filter': {
+            'section_header': _('Section Header'),
+            'html': _('HTML'),
+            'video': _('Video'),
+            'problem': _('Problem'),
+        },
+        'translation_filter': {
+            'translated': _('Translated'),
+            'untranslated': _('Untranslated'),
+        },
+        'errors': {
+            'fetch_blocks': _('Unable to load course blocks'),
+            'fetch_course': _('Unable to load a course'),
+            'fetch_courses': _('Unable to load courses'),
+        }
+    }
+    return render_to_response('discover_courses.html', {
+        'uses_bootstrap': True,
+        'language_options': dict(settings.ALL_LANGUAGES),
+        'meta_data': meta_data,
+    })

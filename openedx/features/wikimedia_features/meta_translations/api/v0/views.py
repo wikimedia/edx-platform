@@ -1,9 +1,7 @@
 """
 Views for MetaTranslation v0 API(s)
 """
-from rest_framework import generics
-from rest_framework import status
-from rest_framework import permissions
+from rest_framework import generics, status, permissions, pagination
 from rest_framework.response import Response
 from xmodule.modulestore.django import modulestore
 from opaque_keys.edx.keys import UsageKey, CourseKey
@@ -16,7 +14,10 @@ from openedx.features.wikimedia_features.meta_translations.api.v0.utils import (
     get_courses_of_base_course, get_outline_course_to_units, get_outline_unit_to_components
     )
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, TranslationVersion
-from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import CourseBlockTranslationSerializer, CourseBlockVersionSerializer, TranslationVersionSerializer
+from openedx.features.wikimedia_features.meta_translations.api.v0.serializers import (
+    CourseBlockTranslationSerializer, CourseBlockVersionSerializer, MetaCourseTranslationSerializer,
+    TranslationVersionSerializer, MetaCoursesSerializer,
+)
 from common.djangoapps.student.roles import CourseStaffRole
 
 class GetTranslationOutlineStructure(generics.RetrieveAPIView):
@@ -373,3 +374,101 @@ class CouseBlockVersionUpdateView(generics.UpdateAPIView):
     serializer_class = CourseBlockVersionSerializer
     permission_classes = [permissions.IsAuthenticated]
     queryset = CourseBlock.objects.all()
+
+class MetaCoursesListAPIView(generics.ListAPIView):
+    """
+    An API view to retreive transalted courses and their base course
+    Hit this URL: http://localhost:18010/meta_translations/api/v0/meta_courses
+    GET API:
+        Response:
+            [
+                {
+                    "course_id": "<course_id>",
+                    "base_course_id": "<base_course_id>",
+                    "outdated": false,
+                    "course_lang": "fr",
+                    "course_name": "Testing Course Translated",
+                    "base_course_lang": "en",
+                    "base_course_name": "Testing Course"
+                },
+                ...
+            ]
+    """
+    pagination_class = None
+    serializer_class = MetaCoursesSerializer
+    queryset = CourseTranslation.objects.filter(outdated=False)
+
+class MetaCoursesRetrieveAPIView(generics.RetrieveAPIView):
+    """
+    An API view to retreive transalted course and their base course
+    Hit this URL: http://localhost:18010/meta_translations/api/v0/meta_courses/<course_id>
+    GET API:
+        Response:
+            {
+                "course_id": "<course_id>",
+                "base_course_id": "<base_course_id>",
+                "outdated": false,
+                "course_lang": "fr",
+                "course_name": "Testing Course Translated",
+                "base_course_lang": "en",
+                "base_course_name": "Testing Course"
+            },
+    """
+    lookup_field = 'course_id'
+    serializer_class = MetaCoursesSerializer
+    queryset = CourseTranslation.objects.filter(outdated=False)
+
+class MetaCourseTranslationsAPIView(generics.ListAPIView):
+    """
+    An API view to get data of course blocks with wiki translations
+    Hit this URL: meta_translations/api/v0/meta_course_translations?course_id=(?P<block_id>.*?)
+    GET API:
+        Response:
+            {
+                "next": null,
+                "previous": null,
+                "count": 2,
+                "num_pages": 1,
+                "current_page": 1,
+                "start": 0,
+                "data": [
+                    {
+                        "block_id": "<block_id>",
+                        "block_type": "chapter",
+                        "base_data": {
+                            "display_name": "Introduction"
+                        },
+                        "is_translated": true,
+                        "is_parsed_block": false,
+                        "group_url": "<redirect_url_to_meta_server>"
+                    },
+                    ...
+                ]
+            }
+    """
+    serializer_class = MetaCourseTranslationSerializer
+
+    def get_queryset(self):
+        """
+        Filter course blocks
+        Query Parameters:
+            course_id: filter by course_id
+            block_types: filter by block_types i.e "chapter+sequential+vertical+html+video"
+            translations: filter by translated flag i.e ('all', 'translated', 'untranslated')
+        """
+        filters = {}
+        course_id = self.request.GET.get('course_id', None)
+        if course_id:
+            filters['course_id'] = course_id.replace(' ', '+')
+        
+        block_types = self.request.GET.get('block_types', 'all')
+        if block_types != 'all':
+            filters['block_type__in'] = block_types.split()
+        
+        translations = self.request.GET.get('translations', 'all')
+        if translations == 'translated':
+            filters['translated'] = True
+        elif translations == 'untranslated':
+            filters['translated'] = False
+        
+        return CourseBlock.objects.filter(deleted=False, direction_flag=CourseBlock._DESTINATION, **filters)
