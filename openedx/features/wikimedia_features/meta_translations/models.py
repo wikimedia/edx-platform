@@ -179,7 +179,7 @@ class CourseBlock(models.Model):
 
     def is_translations_approved(self):
         """
-        Return True if all wiki_transaltions are approved
+        Return True if all wiki_translations are approved
         """
         existing_mappings = self.wikitranslation_set.all()
         return all(existing_mappings.values_list("approved", flat=True))

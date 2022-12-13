@@ -74,7 +74,7 @@ class Command(BaseCommand):
     
     def _update_blocks_data_to_database(self, translated_course_blocks):
         """
-        Transport all available transaltions to edx database
+        Transport all available translations to edx database
         Update applied status of course blocks
         Arguments:
             translated_course_blocks: QuerySet(CourseBlock)
@@ -104,7 +104,7 @@ class Command(BaseCommand):
             if translated_course_blocks:
                 self._update_blocks_data_to_database(translated_course_blocks)
             else:
-                log.info('No Transaltions found to update')
+                log.info('No translations found to update')
             self._log_final_report()
         else:
             blocks_data = self._get_json_data_from_translated_blocks(translated_course_blocks)

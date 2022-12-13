@@ -13,7 +13,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 from openedx.features.wikimedia_features.meta_translations.models import CourseBlock, CourseTranslation, WikiTranslation
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
-from openedx.features.wikimedia_features.meta_translations.utils import validated_and_sort_translated_decodings, validate_transaltions
+from openedx.features.wikimedia_features.meta_translations.utils import validated_and_sort_translated_decodings, validate_translations
 
 log = getLogger(__name__)
 
@@ -86,17 +86,17 @@ def get_block_data_from_table(block, meta_client, target_langauge):
             for obj in wiki_objects:
                 data_type = obj.source_block_data.data_type
                 if WikiTranslation.is_translation_contains_parsed_keys(block.category, data_type):
-                    base_decodings = validate_transaltions(obj.source_block_data.parsed_keys)
+                    base_decodings = validate_translations(obj.source_block_data.parsed_keys)
                     base_decodings = base_decodings if base_decodings else {}
-                    translated_decodings = validate_transaltions(obj.translation, is_json = True)
+                    translated_decodings = validate_translations(obj.translation, is_json = True)
                     is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
                     parsed_status['parsed_block'] = True
                     parsed_status['is_fully_translated'] = parsed_status['is_fully_translated'] and is_valid
                     base_block_fields[data_type] = base_decodings
                     block_fields[data_type] = translated_decodings
                 else:
-                    base_block_fields[data_type] = validate_transaltions(obj.source_block_data.data)
-                    block_fields[data_type] = validate_transaltions(obj.translation)
+                    base_block_fields[data_type] = validate_translations(obj.source_block_data.data)
+                    block_fields[data_type] = validate_translations(obj.translation)
                     parsed_status['is_fully_translated'] = parsed_status['is_fully_translated'] and block_fields[data_type] != ''
                 if not base_usage_key:
                     base_usage_key = str(obj.source_block_data.course_block.block_id)
