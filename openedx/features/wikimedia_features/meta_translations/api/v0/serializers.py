@@ -9,7 +9,7 @@ from openedx.features.wikimedia_features.meta_translations.meta_client import Wi
 from openedx.features.wikimedia_features.meta_translations.models import (
     CourseBlock, TranslationVersion, WikiTranslation, CourseTranslation, CourseBlockData, MetaCronJobInfo,
 )
-from openedx.features.wikimedia_features.meta_translations.utils import validate_transaltions
+from openedx.features.wikimedia_features.meta_translations.utils import validate_translations
 from rest_framework import serializers
 
 
@@ -183,12 +183,12 @@ class MetaCourseTranslationSerializer(serializers.ModelSerializer):
         for obj in wiki_translations:
             data_type = obj.source_block_data.data_type
             if WikiTranslation.is_translation_contains_parsed_keys(value.block_type, data_type):
-                base_decodings = validate_transaltions(obj.source_block_data.parsed_keys)
+                base_decodings = validate_translations(obj.source_block_data.parsed_keys)
                 base_decodings = base_decodings if base_decodings else {}
                 is_parsed_block = True
                 base_data["content"] = base_decodings
             else:
-                base_data[data_type] = validate_transaltions(obj.source_block_data.data)
+                base_data[data_type] = validate_translations(obj.source_block_data.data)
             if not base_block_extra_fields:
                 base_block_extra_fields = obj.source_block_data.course_block.extra
         

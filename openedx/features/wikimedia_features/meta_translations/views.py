@@ -103,7 +103,7 @@ def render_translation_home(request):
         },
         'approve_all_button': {
             'label': _('APPROVE ALL'),
-            'not_found': _('No pending transaltions to be approved'),
+            'not_found': _('No pending translations to be approved'),
             'error': _('Unable to approve this time, Please try again later.'),
             'success': _("Congratulations! Translations are approved. They're also applied automatically to the Course Blocks"),
         },

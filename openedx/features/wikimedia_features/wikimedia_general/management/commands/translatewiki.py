@@ -150,7 +150,7 @@ class Command(BaseCommand):
 
     def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
         """
-        Merge base language transaltions with other languages
+        Merge base language translations with other languages
         Arguments:
             locales: (list) list of languages i.e ['ar', 'en', 'fr']
             staged_files: (list) files to copy i.e ['wiki.po', 'wikijs.po']
@@ -177,7 +177,7 @@ class Command(BaseCommand):
     
     def update_translations_from_transifex(self, locales, staged_files, base_lang='en'):
         """
-        Merge base language transaltions with other languages
+        Merge base language translations with other languages
         Arguments:
             locales: (list) list of languages i.e ['ar', 'en', 'fr']
             staged_files: (list) files to copy i.e ['wiki.po', 'wikijs.po']
@@ -199,7 +199,7 @@ class Command(BaseCommand):
 
             self._move_files_from_src_to_dest(edx_dir, wm_dir, staged_files)
             
-            log.info(f'Pulling {lang} transaltions from Transifex')
+            log.info(f'Pulling {lang} translations from Transifex')
             execute(f'tx pull --mode=reviewed -l {lang}')
             
             log.info(f'Merging Transifex {lang} files to platform {lang} files')
@@ -236,7 +236,7 @@ class Command(BaseCommand):
 
     def generate_custom_strings(self, target_files, locales, base_lang='en', prefix='wm'):
         """
-        Merge base language transaltions with other languages
+        Merge base language translations with other languages
         Arguments:
             target_files: (list) target files i.e ['django.po', 'djangojs.po']
             locales: (list) list of languages i.e ['ar', 'en', 'fr']
@@ -255,7 +255,7 @@ class Command(BaseCommand):
 
         self._move_files_from_src_to_dest(edx_dir, wm_dir, target_files)
         
-        log.info(f'Pulling {base_lang} transaltions from Transifex')
+        log.info(f'Pulling {base_lang} translations from Transifex')
         execute(f'tx pull --mode=reviewed -l {base_lang}')
         output_files = []
         for filename in target_files:
