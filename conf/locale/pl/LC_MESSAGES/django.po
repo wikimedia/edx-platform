@@ -12,6 +12,7 @@
 # escapeplan4 <escapeplan4@gmail.com>, 2017
 # escapeplan4 <escapeplan4@gmail.com>, 2014
 # - - <feefcka@o2.pl>, 2016
+# Filip Jankowski, 2022
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2015-2018
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2014
 # Hrehory <grzegorz.gwardys@gmail.com>, 2015-2016
@@ -64,6 +65,7 @@
 # rodzajowo <a.dubrawska@gmail.com>, 2014
 # Aleks Ada, 2022
 # Bartłomiej Kuszel <bartlomiej.kuszel@gmail.com>, 2015
+# Filip Jankowski, 2022
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2015-2018
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2014
 # Hrehory <grzegorz.gwardys@gmail.com>, 2015-2016
@@ -172,7 +174,13 @@ msgid "Discussion"
 msgstr "Dyskusja"
 
 #: cms/djangoapps/contentstore/views/component.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "HTML"
+msgstr ""
+
+#: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Problem"
 msgstr ""
 
@@ -3600,6 +3608,19 @@ msgid ""
 "page"
 msgstr ""
 
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Select Course Font Family"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\" and \"font-open-sans\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
 #: cms/templates/certificates.html cms/templates/group_configurations.html
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html
@@ -4593,6 +4614,7 @@ msgstr "Strona główna"
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Kurs"
 
@@ -8760,6 +8782,7 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
 #: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Pomiń do głównej zawartości"
@@ -9283,6 +9306,7 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
@@ -9550,6 +9574,7 @@ msgstr ""
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Zakładki"
 
@@ -12223,10 +12248,6 @@ msgid "{platform_name} Support Levels:"
 msgstr "Poziomy wsparcia {platform_name}:"
 
 #: cms/djangoapps/contentstore/views/component.py
-msgid "HTML"
-msgstr ""
-
-#: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
 msgstr ""
 
@@ -12850,13 +12871,6 @@ msgid "Proctored Exam Settings"
 msgstr ""
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
-#: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Course Name"
-msgstr "Nazwa kursu"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
@@ -13200,6 +13214,7 @@ msgid "Search Your Courses"
 msgstr "Przeszukaj swoje kursy"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "Wyczyść wyszukiwanie"
 
@@ -15834,11 +15849,13 @@ msgstr "Doprecyzuj wyszukiwanie"
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "Treści szkoleniowe kursu {course_number}"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Narzędzia kursu"
 
@@ -15854,14 +15871,17 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Przeszukaj kurs"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Ten kurs nie zawiera żadnej treści"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -15871,6 +15891,7 @@ msgstr ""
 "{required_score}% na egzaminie. Twój obecny wynik to {current_score}%."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "Twój wynik to {current_score}%. Zdałeś egzamin wstępny."
 

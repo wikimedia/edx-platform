@@ -281,12 +281,19 @@ msgid "Discussion"
 msgstr "المناقشة"
 
 #: cms/djangoapps/contentstore/views/component.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "HTML"
+msgstr ""
+
+#: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Problem"
 msgstr "المسألة"
 
 #: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 #: lms/templates/video.html
 msgid "Video"
 msgstr "فيديو"
@@ -3775,6 +3782,19 @@ msgid ""
 "page"
 msgstr ""
 
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Select Course Font Family"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\" and \"font-open-sans\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
 #: common/lib/xmodule/xmodule/course_module.py cms/templates/certificates.html
 #: cms/templates/group_configurations.html cms/templates/settings.html
 #: cms/templates/settings_advanced.html cms/templates/settings_graders.html
@@ -4773,6 +4793,7 @@ msgstr "الصفحة الرئيسية"
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "المساق "
 
@@ -9076,6 +9097,7 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
 #: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "الانتقال إلى المحتوى الرئيسي"
@@ -9608,6 +9630,7 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
@@ -9878,6 +9901,7 @@ msgstr "'%s' ليس نطاقًا صحيحًا."
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "الإشارات المرجعية"
 
@@ -12976,10 +13000,6 @@ msgid "{platform_name} Support Levels:"
 msgstr "مستويات دعم {platform_name}:"
 
 #: cms/djangoapps/contentstore/views/component.py
-msgid "HTML"
-msgstr ""
-
-#: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
 msgstr "ردود مفتوحة "
 
@@ -13586,13 +13606,6 @@ msgid "Loading"
 msgstr "جاري التحميل"
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
-#: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Course Name"
-msgstr "اسم المساق"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
@@ -13946,6 +13959,7 @@ msgid "Search Your Courses"
 msgstr "ابحث في مساقاتك"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "حذف البحث"
 
@@ -16731,11 +16745,13 @@ msgstr "خصِّص بحثك"
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "محتويات المساق {course_number}"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "خدمات المساق"
 
@@ -16753,14 +16769,17 @@ msgstr ""
 "ممكن."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "البحث في المساق"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "لم يُضاف أي محتوى إلى هذا المساق بعد"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16770,6 +16789,7 @@ msgstr ""
 " هذا الامتحان. نتيجتك الحالية هي {current_score}%."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "علامتك هي {current_score}%. لقد نجحت في اختبار الدخول."
 

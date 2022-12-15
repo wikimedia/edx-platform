@@ -299,12 +299,19 @@ msgid "Discussion"
 msgstr "Discusión"
 
 #: cms/djangoapps/contentstore/views/component.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "HTML"
+msgstr ""
+
+#: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Problem"
 msgstr "Problemas"
 
 #: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 #: lms/templates/video.html
 msgid "Video"
 msgstr "Video"
@@ -3823,6 +3830,19 @@ msgid ""
 "page"
 msgstr ""
 
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Select Course Font Family"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\" and \"font-open-sans\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
 #: common/lib/xmodule/xmodule/course_module.py cms/templates/certificates.html
 #: cms/templates/group_configurations.html cms/templates/settings.html
 #: cms/templates/settings_advanced.html cms/templates/settings_graders.html
@@ -4862,6 +4882,7 @@ msgstr "Inicio"
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Curso"
 
@@ -9199,6 +9220,7 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
 #: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Ir al contenido principal"
@@ -9744,6 +9766,7 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
@@ -10017,6 +10040,7 @@ msgstr "'%s' no es un alcance válido."
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Marcadores"
 
@@ -12925,10 +12949,6 @@ msgid "{platform_name} Support Levels:"
 msgstr "{platform_name} Niveles de Soporte:"
 
 #: cms/djangoapps/contentstore/views/component.py
-msgid "HTML"
-msgstr ""
-
-#: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
 msgstr "Respuesta Abierta"
 
@@ -13556,13 +13576,6 @@ msgid "Loading"
 msgstr "Cargando"
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
-#: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Course Name"
-msgstr "Nombre del curso"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
@@ -13897,6 +13910,7 @@ msgid "Search Your Courses"
 msgstr "Busca en tus cursos"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "Reiniciar búsqueda"
 
@@ -16763,11 +16777,13 @@ msgstr "Refinar su búsqueda"
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "Material del curso {course_number}"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Utilidades de curso"
 
@@ -16785,14 +16801,17 @@ msgstr ""
 "trabajando para solucionarlo lo antes posible."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Buscar cursos"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Todavía no se ha añadido contenido en este curso"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16802,6 +16821,7 @@ msgstr ""
 "más en este examen. Tu puntaje actual es {current_score}%."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "Tu puntaje es {current_score}%. Has pasado el examen de acceso."
 
@@ -25720,6 +25740,18 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ "Un certificado {cert_type} también indica que la identidad del alumno ha "
 #~ "sido verificada y es válida."
 
+#~ msgid "Practice Exam"
+#~ msgstr "Examen de practica"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "Examen supervisado"
+
+#~ msgid "Timed Exam"
+#~ msgstr "Examen cronometrado"
+
+#~ msgid "Exam"
+#~ msgstr "Examen"
+
 #~ msgid ""
 #~ "\n"
 #~ "                            There’s still time to reach your goal\n"
@@ -26668,6 +26700,14 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 
 #~ msgid "Public Access"
 #~ msgstr "Acceso público"
+
+#~ msgid "Add a specific thumbnail for learners to see before playing the video."
+#~ msgstr ""
+#~ "Agregue una miniatura específica para que los alumnos la vean antes de "
+#~ "reproducir el video."
+
+#~ msgid "Thumbnail"
+#~ msgstr "Imagen miniatura"
 
 #~ msgid ""
 #~ "Number of course outline regenerations successfully requested: {regenerates}"
