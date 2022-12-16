@@ -166,6 +166,7 @@ def update_block_direction_flag(request):
 
 def render_discover_courses(request, course_key=None):
     meta_data = {
+        'courses_available_for_translation': _('Courses available for translation'),
         'filters': _('Filters'),
         'from_lang': _('From Language'),
         'to_lang': _('To Language'),

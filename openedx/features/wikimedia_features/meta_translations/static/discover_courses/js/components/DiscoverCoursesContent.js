@@ -42,6 +42,7 @@ function DiscoverCoursesContent({ context }) {
         !loading && (
           <div className="content">
             <div className="grid-block">
+              <h1 className="page-title">{META_DATA.courses_available_for_translation}</h1>
               <div className="grid-header">
                 <input
                   type="text"
@@ -87,7 +88,7 @@ function DiscoverCoursesContent({ context }) {
             </div>
             <div className="filter-block">
               <div className="filter-header">
-                <span className="title">{META_DATA.filter}</span>
+                <span className="title">{META_DATA.filters}</span>
               </div>
               <div className="filter-field multi-selector">
                 <label className="title">{META_DATA.from_lang}</label>
