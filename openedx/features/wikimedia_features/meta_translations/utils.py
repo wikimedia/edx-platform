@@ -152,7 +152,7 @@ def get_course_description_by_id(course_key):
     """
     return CourseDetails.fetch(course_key).short_description
 
-def validate_transaltions(data, is_json = False):
+def validate_translations(data, is_json = False):
     """
     Function that validates data of type display_name and content
     Returns:
@@ -169,7 +169,7 @@ def validated_and_sort_translated_decodings(base_decodings, translated_decodings
     Validate and Sort Translated Decodings based on Base Decodings indexs
     Arguments:
         base_decodings: (dict) parsed decondings of base course block
-        translated_decodings: (dict) new transaltions from meta server
+        translated_decodings: (dict) new translations from meta server
     Returns:
         is_valid: (bool) check base_decodings and translated_decodings contain same keys and valid translated data
         sorted_translated_decodings: (dict) sorted dict based on base_decodings
@@ -193,17 +193,17 @@ def is_block_translated(block):
     for obj in wiki_translations:
         data_type = obj.source_block_data.data_type
         if WikiTranslation.is_translation_contains_parsed_keys(block.block_type, data_type):
-            base_decodings = validate_transaltions(obj.source_block_data.parsed_keys)
+            base_decodings = validate_translations(obj.source_block_data.parsed_keys)
             base_decodings = base_decodings if base_decodings else {}
-            translated_decodings = validate_transaltions(obj.translation, is_json = True)
+            translated_decodings = validate_translations(obj.translation, is_json = True)
             is_valid, translated_decodings = validated_and_sort_translated_decodings(base_decodings, translated_decodings)
             is_translated = is_translated and is_valid
         else:
-            translation = validate_transaltions(obj.translation)
+            translation = validate_translations(obj.translation)
             is_translated = is_translated and translation != ''
     return is_translated
 
-def update_course_transaltions():
+def update_course_translations():
     """
     Update translation status of translated courses
     """
