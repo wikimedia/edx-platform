@@ -13,6 +13,7 @@
 # gianmarco <gianmarco.bonavolonta@tlc.uniroma3.it>, 2014
 # Giorgio Attorresi <attorresi.giorgio@gmail.com>, 2014
 # de446acfe3933e9efb9fb802ff0b00c1_8cdef0a, 2014
+# Ilaria Botti <ilabotti@gmail.com>, 2021-2022
 # mZakk <ingmazk@gmail.com>, 2014
 # Jessica Amoruso <jessica.amoruso123@gmail.com>, 2021
 # Juan Camilo Montoya Franco <juan.montoya@edunext.co>, 2017
@@ -22,6 +23,7 @@
 # Monica Maria Crapanzano <m.crapanzano@estartup.it>, 2013
 # Monica Maria Crapanzano <m.crapanzano@estartup.it>, 2013
 # marcore <mrc.re@tiscali.it>, 2015
+# Ned Batchelder <ned@edx.org>, 2022
 # Nicola Cois <nicolacois@hotmail.com>, 2014
 # Pietro Lombardo <pietrolombardo1979@gmail.com>, 2014-2015
 # Stefania Trabucchi <stefania.trabucchi@abstract-technology.de>, 2021
@@ -59,6 +61,7 @@
 # Giorgio Attorresi <attorresi.giorgio@gmail.com>, 2014
 # de446acfe3933e9efb9fb802ff0b00c1_8cdef0a, 2014
 # GT <gt@2gtrad.com>, 2014
+# Ilaria Botti <ilabotti@gmail.com>, 2022
 # 1a9dfdd8031024850de476b3ae8c1409_e7121ec, 2014
 # Jessica Amoruso <jessica.amoruso123@gmail.com>, 2021
 # kathjal, 2013
@@ -132,7 +135,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "Generated-By: Babel 2.8.0\n"
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -225,7 +228,7 @@ msgstr "Video ID"
 #. yet reached the point in its processing by the servers where its
 #. duration is determined.
 #: cms/djangoapps/contentstore/views/videos.py
-#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: openedx/core/djangoapps/api_admin/models.py
 msgid "Pending"
 msgstr "In attesa"
 
@@ -273,15 +276,15 @@ msgstr ""
 
 #: common/djangoapps/course_modes/helpers.py
 msgid "Your verification is pending"
-msgstr "Verificazione in attesa"
+msgstr ""
 
 #: common/djangoapps/course_modes/helpers.py
 msgid "Verified: Pending Verification"
-msgstr "Verificato/a : verificazione in attesa"
+msgstr ""
 
 #: common/djangoapps/course_modes/helpers.py
 msgid "ID verification pending"
-msgstr "Verifica dell'identità in sospeso"
+msgstr ""
 
 #: common/djangoapps/course_modes/helpers.py
 msgid "You're enrolled as a verified student"
@@ -303,8 +306,6 @@ msgstr "Sei iscritto in qualità di studente con codice d'onore"
 #: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/static_templates/honor.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "Codice d'Onore"
 
@@ -398,6 +399,7 @@ msgstr ""
 msgid "{currency_symbol}{price}"
 msgstr "{currency_symbol}{price}"
 
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: This refers to the cost of the course. In this case, the
 #. course costs nothing so it is free.
 #: common/djangoapps/course_modes/models.py
@@ -1955,14 +1957,8 @@ msgstr ""
 #. answers.
 #. Translators: Separator used in StringResponse to display multiple answers.
 #. Example: "Answer: Answer_1 or Answer_2 or Answer_3".
-#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
-#. Translators: this is the last choice of a number of choices of how to log
-#. in
-#. to the site.
 #: common/lib/capa/capa/responsetypes.py
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "o"
 
@@ -2434,7 +2430,7 @@ msgstr "Risposta corretta"
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/stanford-style/lms/templates/register-shib.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Submit"
 msgstr "Invia"
 
@@ -3085,7 +3081,7 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 msgid "Course Handouts"
-msgstr "Materiali del Corso"
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
@@ -3457,7 +3453,7 @@ msgstr ""
 "media. Gli URL devono essere specificati completamente. Ad esempio: "
 "http://www.edx.org/course/Introduction-to-MOOCs-ITM001"
 
-#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
+#: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Language"
 msgstr "Lingua del corso"
 
@@ -3807,7 +3803,6 @@ msgid "Any Type"
 msgstr "Qualunque tipo"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
-#: cms/templates/widgets/header.html
 msgid "Library"
 msgstr "Libreria"
 
@@ -4171,7 +4166,7 @@ msgstr ""
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 #: common/lib/xmodule/xmodule/seq_module.py lms/templates/ccx/schedule.html
 msgid "Due Date"
-msgstr "Data finale"
+msgstr "Data di consegna"
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 msgid "Enter the default date by which problems are due."
@@ -4332,9 +4327,6 @@ msgstr ""
 " errore, contattare moocsupport@mathworks.com"
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
 msgid "Group Configurations"
 msgstr "Configurazioni del gruppo"
 
@@ -4727,6 +4719,9 @@ msgstr "Home"
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Corso"
 
@@ -5168,8 +5163,9 @@ msgstr "Sblocca account"
 #. interface (a menu or piece of UI that takes the full focus of the screen)
 #: common/templates/admin/student/loginfailures/change_form_template.html
 #: lms/templates/wiki/edit.html lms/templates/wiki/history.html
-#: lms/templates/wiki/includes/cheatsheet.html lms/templates/ccx/schedule.html
-#: lms/templates/dashboard.html
+#: lms/templates/wiki/includes/cheatsheet.html
+#: openedx/features/wikimedia_features/messenger/views.py
+#: lms/templates/ccx/schedule.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/forgot_password_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/add_coupon_modal.html
@@ -5178,12 +5174,12 @@ msgstr "Sblocca account"
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
+#: lms/templates/signup_modal.html
 msgid "Close"
 msgstr "Chiudi"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -5220,6 +5216,7 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr "Divertiti apprendendo con %(platform_name)s."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -5243,6 +5240,7 @@ msgstr ""
 "questo indirizzo email."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -5377,7 +5375,6 @@ msgstr ""
 
 #: common/templates/student/edx_ace/emailchangeconfirmation/email/body.html
 #: common/templates/student/edx_ace/emailchangeconfirmation/email/body.txt
-#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
 msgid ""
 "We keep a log of old e-mails, so if this request was unintentional, we can "
 "investigate."
@@ -5697,19 +5694,14 @@ msgstr "Effettua corsi online gratuiti su edX.org"
 #: lms/djangoapps/branding/api.py
 #, python-brace-format
 msgid ""
-"© {org_name}.  All rights reserved except where noted.  edX, Open edX and "
-"their respective logos are registered trademarks of edX Inc."
+"\\u00A9 {org_name}.  All rights reserved except where noted.  edX, Open edX "
+"and their respective logos are registered trademarks of edX Inc."
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Open edX' is a trademark, please keep this untranslated.
 #. See http://openedx.org for more information.
-#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
-#. Translators: 'Open edX' is a brand, please keep this untranslated. See
-#. http://openedx.org for more information.
-#: lms/djangoapps/branding/api.py cms/templates/widgets/footer.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
+#: lms/djangoapps/branding/api.py
 msgid "Powered by Open edX"
 msgstr "Powered by Open edX"
 
@@ -5717,9 +5709,7 @@ msgstr "Powered by Open edX"
 msgid "Blog"
 msgstr "Blog"
 
-#: lms/djangoapps/branding/api.py cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
+#: lms/djangoapps/branding/api.py
 msgid "Contact Us"
 msgstr "Contattaci"
 
@@ -5738,9 +5728,7 @@ msgstr "Dona"
 
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "About"
 msgstr "Chi siamo"
 
@@ -5750,24 +5738,18 @@ msgid "{platform_name} for Business"
 msgstr "{platform_name} for business"
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/contact.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "Contatti"
 
 #: lms/djangoapps/branding/api.py
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Careers"
 msgstr "Carriere"
 
-#: lms/djangoapps/branding/api.py themes/red-theme/lms/templates/footer.html
+#: lms/djangoapps/branding/api.py
 msgid "News"
 msgstr "News"
 
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
 msgid "Terms of Service & Honor Code"
 msgstr "Termini di Servizio e Codice di comportamento"
 
@@ -5777,10 +5759,7 @@ msgstr "Termini di Servizio e Codice di comportamento"
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "Privacy Policy"
 msgstr "Informativa sulla privacy"
 
@@ -5794,9 +5773,6 @@ msgstr "Politica di accessibilità"
 #: lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "Termini di Servizio"
 
@@ -5878,6 +5854,7 @@ msgstr "rigenerato"
 #. messages as {action}.
 #: lms/djangoapps/certificates/models.py
 #: lms/djangoapps/instructor_task/tasks.py
+#: openedx/features/wikimedia_features/admin_dashboard/tasks.py
 msgid "generated"
 msgstr "generati"
 
@@ -6127,7 +6104,6 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr "Tutti i diritti riservati"
 
@@ -6649,7 +6625,6 @@ msgstr ""
 "{time_remaining_string} a partire da ora. Sarà anche possibile visualizzare "
 "i propri certificati su {learner_profile_link}."
 
-#: lms/djangoapps/courseware/date_summary.py
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "Learner Profile"
 msgstr "Profilo studente"
@@ -6979,7 +6954,6 @@ msgstr "{sign_in_link} o {register_link}."
 #: openedx/features/course_experience/views/course_home_messages.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "Accedi"
 
@@ -7131,6 +7105,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
 msgstr "Visualizza discussione"
 
@@ -7203,6 +7179,7 @@ msgid "Your Platform Insights"
 msgstr "Informazioni sulla tua piattaforma"
 
 #: lms/djangoapps/instructor/views/api.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
 #, python-brace-format
 msgid ""
 "The {report_type} report is being created. To view the status of the report,"
@@ -7330,6 +7307,7 @@ msgstr "L'utente richiedente non ha accesso al corso."
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "problem responses"
 msgstr "risposte al problema"
 
@@ -7355,6 +7333,7 @@ msgstr "Data esecuzione report"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "enrolled learner profile"
 msgstr "profilo studente iscritto"
 
@@ -7405,7 +7384,6 @@ msgstr "Anno Di Nascita"
 #: lms/djangoapps/instructor/views/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "Sesso"
 
@@ -7414,7 +7392,6 @@ msgid "Level of Education"
 msgstr "Titolo di studio"
 
 #: lms/djangoapps/instructor/views/api.py
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Mailing Address"
 msgstr "Indirizzo Postale"
 
@@ -7458,18 +7435,17 @@ msgstr "Team"
 #: openedx/core/djangoapps/user_api/accounts/settings_views.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "Città"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "Paese"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "enrollment"
 msgstr "iscrizione"
 
@@ -7486,11 +7462,13 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "survey"
 msgstr "sondaggio"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "proctored exam results"
 msgstr "risultato degli esami supervisionati"
 
@@ -7644,6 +7622,7 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "ORA data"
 msgstr "Dati ORA"
 
@@ -7657,11 +7636,14 @@ msgstr "L'archivio allegati è in fase di creazione."
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "grade"
 msgstr "voto"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "problem grade"
 msgstr "voto del problema"
 
@@ -7880,8 +7862,7 @@ msgid "Special Exams"
 msgstr "Esami speciali"
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
-#: lms/djangoapps/support/views/index.py cms/templates/certificates.html
-#: cms/templates/export.html cms/templates/widgets/header.html
+#: lms/djangoapps/support/views/index.py
 msgid "Certificates"
 msgstr "Certificati"
 
@@ -8025,18 +8006,22 @@ msgid "Due date extensions for {0} {1} ({2})"
 msgstr "Estensioni dalla data di scadenza per {0} {1} ({2})"
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "Requested task is already running"
 msgstr "L'attività richiesta è già in esecuzione"
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "Error occured. Please try again later."
 msgstr "Si è verificato un errore. Si prega di riprovare più tardi."
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "detailed enrollment"
 msgstr "iscrizione dettagliata"
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 #, python-brace-format
 msgid ""
 "The {report_type} report is being created. To view the status of the report,"
@@ -8066,6 +8051,7 @@ msgstr ""
 "del punteggio."
 
 #: lms/djangoapps/instructor_task/models.py
+#: openedx/features/wikimedia_features/admin_dashboard/models.py
 msgid "An error has occurred. Task was not created."
 msgstr "Si è verificato un errore. L'attività non è stata creata."
 
@@ -8109,6 +8095,7 @@ msgstr "inviato via email"
 #. Translators: This is a past-tense verb that is inserted into task progress
 #. messages as {action}.
 #: lms/djangoapps/instructor_task/tasks.py
+#: openedx/features/wikimedia_features/admin_dashboard/tasks.py
 msgid "graded"
 msgstr "valutato"
 
@@ -8324,7 +8311,7 @@ msgstr " (su un totale di {total})"
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "Programmi"
 
@@ -8499,7 +8486,9 @@ msgid "Find information related to a learner's program enrollments"
 msgstr ""
 "Trova informazioni associate alle iscrizioni programma di uno studente"
 
-#: lms/djangoapps/support/views/manage_user.py lms/templates/tracking_log.html
+#: lms/djangoapps/support/views/manage_user.py
+#: openedx/features/wikimedia_features/messenger/views.py
+#: lms/templates/tracking_log.html
 msgid "username"
 msgstr "nome utente"
 
@@ -8715,6 +8704,10 @@ msgstr "Nessun profilo trovato per l'utente"
 #, python-brace-format
 msgid "Name must be at least {min_length} character long."
 msgstr "Il nome deve avere una lunghezza di almeno {min_length} carattere."
+
+#: lms/djangoapps/verify_student/views.py
+msgid "Image data is in an unsupported format."
+msgstr "I dati dell'immagine sono in un formato non supportato."
 
 #: lms/djangoapps/verify_student/views.py
 msgid "Image data is in an unsupported format."
@@ -9179,6 +9172,8 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
+#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Passa al contenuto principale"
 
@@ -9462,8 +9457,6 @@ msgstr "Anteprima Wiki"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "Finestra aperta"
 
@@ -9836,7 +9829,7 @@ msgid "ACE Common"
 msgstr "ACE Comune"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr "Passare alla Home page %(platform_name)s "
@@ -9848,42 +9841,42 @@ msgid "Sign In"
 msgstr "Accedi"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr "%(platform_name)s su LinkedIn"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr "%(platform_name)s su Twitter"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr "%(platform_name)s su Facebook"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr "%(platform_name)s su Google Plus"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr "%(platform_name)s su Reddit"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr "Scarica l'app iOS da Apple Store"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr "Scarica l'app Android da Google Play Store"
 
@@ -9892,6 +9885,7 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr "Annulla la sottoscrizione da queste email."
 
@@ -9968,6 +9962,11 @@ msgid "Denied"
 msgstr "Negato"
 
 #: openedx/core/djangoapps/api_admin/models.py
+msgid "Denied"
+msgstr "Negato"
+
+#: openedx/core/djangoapps/api_admin/models.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Approved"
 msgstr "Approvato"
 
@@ -10002,6 +10001,7 @@ msgstr "'%s' non è un ambito valido."
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Segnalibri"
 
@@ -10163,8 +10163,6 @@ msgstr ""
 "HarvardX+CS50)."
 
 #: openedx/core/djangoapps/config_model_utils/models.py
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
 msgid "Course Run"
 msgstr "Edizione del corso "
 
@@ -10689,6 +10687,52 @@ msgstr ""
 msgid ""
 "Encourage participation and engagement in your course with discussions."
 msgstr ""
+"Elenco separato da virgole di provider da consentire, ad esempio: {choices}"
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid "Allow List"
+msgstr "Elenco consentiti"
+
+#: openedx/core/djangoapps/discussions/models.py
+#, python-brace-format
+msgid "Comma-separated list of providers to deny, eg: {choices}"
+msgstr ""
+"Elenco separato da virgole di provider da negare, ad esempio: {choices}"
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid "Deny List"
+msgstr "Elenco negati"
+
+#. Translators: A key specifying a course, library, program,
+#. website, or some other collection of content where learning
+#. happens.
+#: openedx/core/djangoapps/discussions/models.py
+msgid "Learning Context Key"
+msgstr "Chiave contesto di apprendimento"
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid ""
+"If disabled, the discussions in the associated learning context/course will "
+"be disabled."
+msgstr ""
+"Se questa funzione è disabilitata, le discussioni nel contesto/corso di "
+"apprendimento associato verranno disabilitate."
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid "The LTI configuration data for this context/provider."
+msgstr "I dati di configurazione LTI per questo contesto/provider."
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid "The plugin configuration data for this context/provider."
+msgstr "I dati di configurazione plugin per questo contesto/provider."
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid "Discussion provider"
+msgstr "Provider di discussione"
+
+#: openedx/core/djangoapps/discussions/models.py
+msgid "The discussion tool/provider's id"
+msgstr "L'ID del provider/strumento di discussione"
 
 #: openedx/core/djangoapps/django_comment_common/models.py
 msgid "Administrator"
@@ -11118,7 +11162,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr "Inizia a imparare ora"
 
@@ -11163,7 +11206,6 @@ msgstr ""
 "l'upgrade entro %(user_schedule_upgrade_deadline_time)s."
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/upgradereminder/email/body.html
-#: lms/templates/dates_banner.html
 msgid "Upgrade now"
 msgstr "Esegui upgrade ora"
 
@@ -11482,6 +11524,7 @@ msgstr "Successo"
 
 #: openedx/core/djangoapps/user_api/admin.py
 #: lms/templates/staff_problem_info.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Actions"
 msgstr "Azioni"
 
@@ -11685,8 +11728,7 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
-#: themes/stanford-style/lms/templates/register-form.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Register"
 msgstr "Registrazione"
 
@@ -11912,8 +11954,6 @@ msgstr "Questo nome verrà utilizzato su tutti i certificati conseguiti."
 #. meant to hold the user's public username.
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "Nome utente pubblico"
 
@@ -12018,9 +12058,6 @@ msgid "{header_open}{title}{header_close}"
 msgstr "{header_open}{title}{header_close}"
 
 #: openedx/core/djangoapps/util/user_messages.py
-#: cms/templates/course_outline.html cms/templates/index.html
-#: openedx/features/course_experience/templates/course_experience/latest-update-fragment.html
-#: openedx/features/course_experience/templates/course_experience/welcome-message-fragment.html
 msgid "Dismiss"
 msgstr "Chiudi"
 
@@ -12326,6 +12363,7 @@ msgstr "Scadenze reimpostate correttamente."
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "Aggiornamenti"
 
@@ -12511,7 +12549,6 @@ msgid "Continue"
 msgstr "Continua"
 
 #: openedx/features/personalized_learner_schedules/call_to_action.py
-#: lms/templates/dates_banner.html
 msgid "Shift due dates"
 msgstr "Sposta date di scadenza"
 
@@ -12556,6 +12593,84 @@ msgstr ""
 #: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Our mailing address is"
 msgstr "Il nostro indirizzo email è"
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s mentioned you on post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#, python-format
+msgid ""
+"%(comment_username)s mentioned you in the comment on post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(mentioned_by)s mentioned you on the post."
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Copyright "
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid " All rights reserved"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
+#, python-format
+msgid ""
+"You're almost there! Use the link below to activate your account to access "
+"engaging, high-quality %(platform_name)s courses. "
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
+msgid ""
+"Note that you will not be able to log back into your account until you have "
+"activated it."
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
+#, python-format
+msgid ""
+"This email was automatically sent from %(platform_name)s because someone "
+"attempted to create an account using this email address."
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
+#, python-format
+msgid ""
+"This email message was automatically sent from %(platform_name)s because "
+"someone attempted to create an account using this email address."
+msgstr ""
+
+#: lms/templates/courseware/course_about.html
+msgid "Course is full"
+msgstr "Corso al completo"
+
+#: cms/templates/edit-tabs.html
+msgid "Custom pages"
+msgstr "Pagine personalizzate "
+
+#: lms/templates/courseware/course_about.html
+#: lms/templates/dashboard/_dashboard_course_resume.html
+msgid "View Course"
+msgstr "Vedi il Corso"
+
+#: cms/templates/index.html lms/templates/courseware/courses.html
+#: lms/templates/header/navbar-authenticated.html
+#: lms/templates/header/navbar-not-authenticated.html
+#: lms/templates/navigation/bootstrap/navbar-authenticated.html
+#: lms/templates/navigation/navbar-authenticated.html
+#: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+msgid "Courses"
+msgstr "Corsi"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -12826,6 +12941,15 @@ msgstr ""
 #: cms/djangoapps/contentstore/rest_api/v0/views/tabs.py
 msgid "Change the visibility of tabs in a course."
 msgstr ""
+"Si è verificato un Errore sconosciuto durante la fase di decompressione."
+
+#: cms/djangoapps/contentstore/tasks.py
+msgid "Unsafe tar file. Aborting import."
+msgstr "File tar non sicuro. Interruzione dell'importazione."
+
+#: cms/djangoapps/contentstore/tasks.py
+msgid "Unknown error while importing course."
+msgstr "Errore sconosciuto durante l'importazione del corso."
 
 #: cms/djangoapps/contentstore/utils.py cms/templates/visibility_editor.html
 msgid "Deleted Group"
@@ -13524,6 +13648,7 @@ msgstr "Pagina non trovata"
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "Contenuto"
 
@@ -13554,6 +13679,8 @@ msgstr "Nome Corso"
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "Numero del Corso"
 
@@ -13574,16 +13701,19 @@ msgstr "Errore:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "Organizzazione:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "Numero Corso"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "Edizione del corso:"
 
@@ -13614,6 +13744,7 @@ msgstr "Requisiti"
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "Dettagli"
 
@@ -13638,7 +13769,6 @@ msgid "Reset"
 msgstr "Azzera"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "Legale"
 
@@ -13656,11 +13786,14 @@ msgstr ""
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "Seleziona lingua"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "Account"
 
@@ -13669,7 +13802,8 @@ msgstr "Account"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Aiuto"
@@ -13732,6 +13866,7 @@ msgstr "nome"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "Esci"
 
@@ -13888,14 +14023,17 @@ msgid "You do not have access to this dependency module."
 msgstr "Non di dispone di accesso a questo modulo di dipendenza."
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "STUDIA ANCORA"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
-msgstr "Inizi"
+msgstr "Inizia"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "Inizia: {date}"
 
@@ -13905,19 +14043,19 @@ msgstr "Vedi tutti i corsi"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard"
 msgstr "I miei corsi"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr "risultati correttamente popolati, "
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr "Fare clic per caricare tutti i corsi a cui si è iscritti "
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "Nessuna iscrizione ai corsi. "
 
@@ -13925,7 +14063,7 @@ msgstr "Nessuna iscrizione ai corsi. "
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Explore courses"
 msgstr "Esplora corsi"
 
@@ -13934,16 +14072,16 @@ msgstr "Esplora corsi"
 msgid "Activate your account!"
 msgstr "Attiva il tuo account!"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "Errori di caricamento del corso"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "Cerca i tuoi corsi"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "Cancella ricerca"
 
@@ -13974,11 +14112,11 @@ msgstr ""
 msgid "Email Settings for {course_number}"
 msgstr "Impostazioni Email per {course_number}"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "Ricevi le mail del corso"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "Salva le Impostazioni"
 
@@ -13987,8 +14125,6 @@ msgstr "Salva le Impostazioni"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "Annulla iscrizione"
 
@@ -14165,6 +14301,7 @@ msgid "External Authentication failed"
 msgstr "Autenticazione Esterna fallita"
 
 #: lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr "logo organizzazione"
 
@@ -14186,8 +14323,6 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "Informazioni Richieste"
 
@@ -14238,7 +14373,7 @@ msgstr ""
 "disponibile nella {link_start}pagina di avanzamento{link_end}. "
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search for a course"
 msgstr "Cerca un corso"
 
@@ -14505,8 +14640,6 @@ msgstr ""
 "privacy."
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -14596,7 +14729,6 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr "{start_li}Benvenuto{end_li} {name}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "Inserisci il nome utente pubblico:"
 
@@ -14613,19 +14745,14 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "Obiettivi di registrazione a {platform_name}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "Accetto i {link_start}Termini di Servizio{link_end}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "Accetto il {link_start}Codice d'Onore{link_end}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "Crea il Mio Account"
 
@@ -14801,6 +14928,7 @@ msgstr ""
 "alternativa,{undo_link_start}è possibile re-iscriversi{link_end}."
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "Bacheca per:"
 
@@ -14814,6 +14942,7 @@ msgstr "Ulteriori opzioni"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr "Ulteriori opzioni"
 
@@ -15986,7 +16115,6 @@ msgstr "Affissi"
 #: lms/templates/calculator/toggle_calculator.html
 msgid "Percent sign (%) and metric affixes (d, c, m, u, n, p, k, M, G, T)"
 msgstr ""
-"Segno di percentuale (%) e affissi metrici (d, c, m, u, n, p, k, M, G, T)"
 
 #. Translators: This refers to basic mathematical functions such as "square
 #. root"
@@ -16264,7 +16392,6 @@ msgid "Download student grades"
 msgstr "Scarica le valutazioni dello studente"
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "Stampa o condividi il tuo certificato:"
 
@@ -16278,7 +16405,6 @@ msgstr "Pubblica su Facebook"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "Condividi su Twitter"
 
@@ -16287,7 +16413,6 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "Pubblica questo risultato tramite tweet. Finestra a comparsa. "
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "Aggiungi al profilo LinkedIn"
 
@@ -16308,8 +16433,16 @@ msgid "Noted by"
 msgstr "Annotato da "
 
 #: lms/templates/certificates/_accomplishment-rendering.html
-msgid "Supported by the following organizations"
-msgstr "Sostenuto dalle seguenti organizzazioni"
+msgid "Noted by"
+msgstr "Annotato da "
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Certificate of"
+msgstr ""
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Achievement"
+msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
@@ -16393,41 +16526,32 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr "Consegui la traccia verificata "
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "Consegui un Certificato Verificato"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr "Iscriviti a {course_name} | Scegli la tua traccia "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr ""
 "Spiacente, s è verificato un errore durante il tentativo di iscrizione"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr "Ottieni credito formativo con la traccia verificata "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "Ottenere crediti formativi con un certificato verificato"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -16440,12 +16564,10 @@ msgstr ""
 "carriera o rafforzare le tue applicazioni scolastiche. "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr "Benefici della traccia verificata "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -16454,7 +16576,6 @@ msgstr ""
 "aver completato con successo il corso"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
@@ -16464,7 +16585,6 @@ msgstr ""
 "appreso. "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
@@ -16473,19 +16593,16 @@ msgstr ""
 " e compiti valutati. "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "Vantaggi di un Certificato Verificato"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -16494,14 +16611,12 @@ msgstr ""
 "dell'istituzione firmato dal docente"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -16513,7 +16628,6 @@ msgstr ""
 "scolastiche."
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -16522,14 +16636,12 @@ msgstr ""
 "dell'istituzione firmato dal docente"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
@@ -16538,12 +16650,10 @@ msgstr ""
 "corso"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "Segui Questo Corso"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
@@ -16552,12 +16662,10 @@ msgstr ""
 "materiali, le attività, i test ed i forum del corso. "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "Segui questo corso (nessun certificato) "
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -16568,7 +16676,6 @@ msgstr ""
 "valutati o accesso illimitato al corso. {b_end}"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -16579,7 +16686,6 @@ msgstr ""
 "valutati. {b_end}"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -16590,7 +16696,6 @@ msgstr ""
 "illimitato al corso. {b_end}"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -16691,8 +16796,9 @@ msgstr "{span_start}sezione corrente{span_end}"
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
-msgstr "data {date}"
+msgstr "consegna {date}"
 
 #: lms/templates/courseware/accordion.html
 msgid "{section_format} due {{date}}"
@@ -16772,7 +16878,6 @@ msgid "enroll"
 msgstr "iscriversi"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "Condividi con i tuoi amici!"
 
@@ -16789,7 +16894,6 @@ msgid "Take a course with {platform} online"
 msgstr "Scegli un corso su {platform} online"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "Pubblica tramite tweet che sei iscritto a questo corso "
 
@@ -16799,12 +16903,12 @@ msgstr ""
 "Invia un messaggio Facebook per indicare che sei iscritto a questo corso "
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr ""
 "Invia una email a qualcuno per informare che sei iscritto a questo corso"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr "posizione corrente "
 
@@ -16812,10 +16916,13 @@ msgstr "posizione corrente "
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "desidera attenzione"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "Materiale del corso"
 
@@ -16842,11 +16949,13 @@ msgstr "Affina la ricerca"
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} Materiale didattico"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Programmi di utilità del corso "
 
@@ -16864,14 +16973,17 @@ msgstr ""
 "per ripristinarlo appena possibile. "
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Ricerca corso"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Nessun contenuto è stato aggiunto a questo corso"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16882,6 +16994,7 @@ msgstr ""
 "corrente è {current_score}%."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "Il tuo voto è {current_score}%. Hai superato l'esame di ammissione."
 
@@ -16936,11 +17049,11 @@ msgstr "pagina successiva "
 
 #: lms/templates/courseware/info.html
 msgid "{course_number} Course Info"
-msgstr "informazioni sul corso {course_number} "
+msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid "You are not enrolled yet"
-msgstr "Non sei ancora iscritto"
+msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid ""
@@ -16961,13 +17074,12 @@ msgstr "Benvenuto in {course_title}!"
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "Riprendi corso "
 
 #: lms/templates/courseware/info.html
 msgid "View Updates in Studio"
-msgstr "Visualizza gli aggiornamenti in Studio"
+msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid "Course Updates and News"
@@ -17103,10 +17215,12 @@ msgid "Starts on {}"
 msgstr "Inizia il {}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "Progresso {course_number}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "Visualizza valutazione in Studio "
 
@@ -17115,10 +17229,12 @@ msgid "Course Progress for '{username}' ({email})"
 msgstr "Avanzamento del corso per '{username}' ({email})"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Visualizza il certificato"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "Apri in una nuova finestra del browser "
 
@@ -17132,14 +17248,17 @@ msgid "Request Certificate"
 msgstr "Richiesta certificato"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "Requisiti per i crediti del corso "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr "{student_name}, non sei più idoneo per il credito in questo corso. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -17148,51 +17267,63 @@ msgstr ""
 "{a_start}Vai alla tua dashboard{a_end} per acquistare il credito del corso. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr ""
 "{student_name}, i requisiti per il credito non sono acnora soddisfatti. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "Informazioni sui requisiti del credito del corso "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "display_name"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "Verifica inoltrata "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "Verifica non riuscita "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "Verifica rifiutata "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr "Completata entro il {date}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "In arrivo"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "Meno"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "Dettagli per ciascun capitolo "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{earned} di {total} punti possibili"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
@@ -17200,34 +17331,42 @@ msgstr ""
 "Punteggio esame 0. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr "La valutazione della sezione è stata sovrascritta. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "Punteggi problema: "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "Punteggi pratica: "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr "I punteggi del problema sono nascosti fino alla data di scadenza. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr "I punteggi della pratica sono nascosti fino alla data di scadenza. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr "I punteggi del problema sono nascosti. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr "I punteggi della pratica sono nascosti. "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "Nessun punteggio del problema in questa sezione "
 
@@ -17397,7 +17536,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "This link will open/download a PDF document"
-msgstr "Questo link aprirà/scaricherà un documento PDF"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "Download my {cert_name_short}"
@@ -17408,8 +17547,6 @@ msgid ""
 "This link will open/download a PDF document of your verified "
 "{cert_name_long}."
 msgstr ""
-"Questo link consente di aprire/scaricare un documento PDF contenente il tuo "
-"{cert_name_long} verificato."
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "Complete our course feedback survey"
@@ -17515,7 +17652,6 @@ msgid "Share {course_name} on Facebook"
 msgstr "Condividi {course_name} su Facebook"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "Condividi su Facebook"
 
@@ -18436,9 +18572,6 @@ msgstr "Grazie, "
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
-#: themes/stanford-style/lms/templates/embargo/default_courseware.html
-#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
-#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "Questo corso non è disponibile nel tuo paese "
 
@@ -18575,6 +18708,7 @@ msgid "{platform_name} Home Page"
 msgstr "Home page {platform_name} "
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr "Menu Opzioni "
 
@@ -18587,7 +18721,6 @@ msgstr ""
 "supportato. Si consiglia di utilizzare {chrome_link} o {ff_link}."
 
 #: lms/templates/header/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr "Scopri tutti i corsi"
 
@@ -18596,29 +18729,34 @@ msgid "{name} Dashboard"
 msgstr "Dashboard {name} "
 
 #: lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr "Link supplementari "
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "How it Works"
 msgstr "Come Funziona"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "Scuole"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr "Riprendi l'ultimo corso "
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "Profilo"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "Cronologia Ordini"
 
@@ -18913,6 +19051,8 @@ msgstr ""
 " Report di seguito. "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 msgid "Reports"
 msgstr "Rapporti"
 
@@ -19091,6 +19231,7 @@ msgstr "Report disponibili per il download"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "The reports listed below are available for download, identified by UTC date "
 "and time of generation."
@@ -19112,6 +19253,7 @@ msgstr ""
 "giorno. "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
 "secure, you cannot save or email these links for direct access. Copies of "
@@ -20225,7 +20367,6 @@ msgstr ""
 "studenti attualmente iscritti. "
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "I miei corsi"
 
@@ -20532,12 +20673,10 @@ msgstr ""
 "attualmente possibile consentire l'accesso a questo corso. "
 
 #: lms/templates/static_templates/faq.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "FAQ"
 
 #: lms/templates/static_templates/jobs.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "Offerte di lavoro"
 
@@ -20911,6 +21050,12 @@ msgstr ""
 "dell'istituzione e firme degli istruttori per il corso. "
 
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+msgid ""
+"Sample verified certificate with your name, the course title, the logo of "
+"the institution and the signatures of the instructors for this course."
+msgstr ""
+
+#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 msgid "Upgrade ({price})"
 msgstr "Upgrade ({price})"
 
@@ -21016,7 +21161,7 @@ msgstr "Mostra altro "
 
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
 msgid "Search Results"
-msgstr "Risultati della ricerca"
+msgstr ""
 
 #. Translators: this section lists all the third-party authentication
 #. providers
@@ -21061,7 +21206,6 @@ msgid "You haven't earned any certificates yet."
 msgstr "Non è stato ottenuto ancora alcun certificato. "
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "Esplora nuovi corsi "
 
@@ -21082,10 +21226,86 @@ msgstr "Crea il tuo profilo per personalizzare l'identità in {platform_name}."
 msgid "An error occurred. Try loading the page again."
 msgstr "Si è verificato un errore. Provare a ricaricare la pagina. "
 
-#: themes/edx.org/cms/templates/widgets/sock.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "List profile information for enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Grade report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Anonymized student ID's"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Problem Grade report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Progress report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course Version Report (Detailed - Per Course)"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course Version Report (Aggregate)"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Average grade report for multiple courses"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Different grading schemes can affect the comparison."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Average Grade Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Reports Available for Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger.html
+msgid "Messenger - {platform_name}"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Base Course ID"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "The Base Course ID"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Basic re-run"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a copy of a course, It should be considered as a new course"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Translated Course re-run"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a copy of a course for translation into a new language"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 msgid ""
-"Access Course Staff Support on the Partner Portal to submit or review "
-"support tickets"
+"Identify the course language here. You can request for translation after "
+"creating a course"
 msgstr ""
 "Accedi al supporto per lo staff del corso sul portale del partner per "
 "inoltrare o esaminare i ticket di supporto "
@@ -21094,10 +21314,8 @@ msgstr ""
 msgid "edX Partner Portal"
 msgstr "Portale Partner edX "
 
-#: themes/edx.org/lms/templates/dashboard.html
-msgid ""
-"Browse recently launched courses and see what's new in your favorite "
-"subjects."
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
+msgid "Course Grade for '{username}' ({email})"
 msgstr ""
 "Sfoglia i corsi avviati recentemente e scopri le novità nelle tue materie "
 "preferite. "
@@ -21698,20 +21916,6 @@ msgstr "Sposta"
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "Cancella questo componente"
-
-#: cms/templates/component.html cms/templates/edit-tabs.html
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Drag to reorder"
-msgstr "Sposta e riordina"
-
-#: cms/templates/container.html cms/templates/course-create-rerun.html
-#: cms/templates/course_info.html cms/templates/course_outline.html
-#: cms/templates/edit-tabs.html cms/templates/index.html
-#: cms/templates/library.html cms/templates/manage_users.html
-#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
-#: cms/templates/videos_index.html
-msgid "Page Actions"
-msgstr "Azioni Pagina"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -22609,10 +22813,6 @@ msgstr "Scopri di più sull'esportazione di un corso "
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "Esporta il Corso in Git"
-
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr "Esporta in Git"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -24195,9 +24395,8 @@ msgstr "Fornire informazioni utili sul corso "
 
 #: cms/templates/settings.html
 msgid ""
-"Identify the course language here. This is used to assist users find courses"
-" that are taught in a specific language. It is also used to localize the "
-"'From:' field in bulk emails."
+"The option is disabled because the course is mapped as a base course or a "
+"translated course."
 msgstr ""
 "Identificare qui la lingua del corso. Questa opzione viene utilizzata per "
 "aiutare gli utenti a trovare i corsi in una lingua specifica. Viene "

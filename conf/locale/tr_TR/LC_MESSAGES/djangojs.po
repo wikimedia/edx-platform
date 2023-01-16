@@ -11,6 +11,7 @@
 # baris <brscvs@gmail.com>, 2013
 # Burak Özalp <realburq@gmail.com>, 2013
 # Burak Özalp <realburq@gmail.com>, 2013
+# Dilek E, 2022
 # Emrah Emirtekin <eemirtekin@gmail.com>, 2014-2015
 # emreusta <emreusta7@gmail.com>, 2014
 # Erdoğan Şahin, 2016
@@ -165,6 +166,7 @@ msgstr "Kaydediliyor"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Sil"
 
@@ -2150,13 +2152,13 @@ msgstr "görsel atlandı"
 #: common/static/common/js/discussion/views/discussion_content_view.js
 msgid "there is currently {numVotes} vote"
 msgid_plural "there are currently {numVotes} votes"
-msgstr[0] ""
+msgstr[0] "şu an {numVotes} oy mevcut"
 msgstr[1] "şu an {numVotes} oy mevcut"
 
 #: common/static/common/js/discussion/views/discussion_content_view.js
 msgid "{numVotes} Vote"
 msgid_plural "{numVotes} Votes"
-msgstr[0] ""
+msgstr[0] "{numVotes} Oy"
 msgstr[1] "{numVotes} Oy"
 
 #: common/static/common/js/discussion/views/discussion_content_view.js
@@ -2304,13 +2306,13 @@ msgstr "Daha fazla cevap yüklenemedi. Sayfayı yenileyin ve tekrar deneyin."
 #: common/static/common/js/discussion/views/discussion_thread_view.js
 msgid "{numResponses} other response"
 msgid_plural "{numResponses} other responses"
-msgstr[0] ""
+msgstr[0] "{numResponses} cevap daha var"
 msgstr[1] "{numResponses} cevap daha var"
 
 #: common/static/common/js/discussion/views/discussion_thread_view.js
 msgid "{numResponses} response"
 msgid_plural "{numResponses} responses"
-msgstr[0] ""
+msgstr[0] "{numResponses} cevap"
 msgstr[1] "{numResponses} cevap"
 
 #: common/static/common/js/discussion/views/discussion_thread_view.js
@@ -2320,7 +2322,7 @@ msgstr "Bütün cevapları gösteriyor"
 #: common/static/common/js/discussion/views/discussion_thread_view.js
 msgid "Showing first response"
 msgid_plural "Showing first {numResponses} responses"
-msgstr[0] ""
+msgstr[0] "İlk {numResponses} cevap gösteriliyor"
 msgstr[1] "İlk {numResponses} cevap gösteriliyor"
 
 #: common/static/common/js/discussion/views/discussion_thread_view.js
@@ -2917,7 +2919,7 @@ msgstr "Onayla"
 
 #: lms/djangoapps/teams/static/teams/js/views/team_profile_header_actions.js
 msgid "You already belong to another team in this team set."
-msgstr ""
+msgstr "Bu takım yapılandırmasında şu an başka bir takıma ait görünüyorsunuz."
 
 #: lms/djangoapps/teams/static/teams/js/views/team_profile_header_actions.js
 msgid "This team is full."
@@ -3032,6 +3034,8 @@ msgid ""
 "See all teams you belong to and all public teams in your course, organized "
 "by topic."
 msgstr ""
+"Ait olduğunuz tüm takımları ve dersinizdeki tüm açık takımları, konuya göre "
+"düzenlenmiş olarak görün."
 
 #: lms/djangoapps/teams/static/teams/js/views/teams_tab.js
 msgid "See all teams you belong to."
@@ -3168,7 +3172,7 @@ msgstr "Lütfen geçerli bir URL belirtin."
 #: lms/static/js/Markdown.Editor.js
 msgid "%(errorCount)s error found in form."
 msgid_plural "%(errorCount)s errors found in form."
-msgstr[0] ""
+msgstr[0] "Formda %(errorCount)s hata bulundu."
 msgstr[1] "Formda %(errorCount)s hata bulundu."
 
 #: lms/static/js/Markdown.Editor.js
@@ -3637,7 +3641,7 @@ msgstr "sonraki sayfa"
 #, javascript-format
 msgid "Viewing %s course"
 msgid_plural "Viewing %s courses"
-msgstr[0] ""
+msgstr[0] "%s ders görüntüleniyor"
 msgstr[1] "%s ders görüntüleniyor"
 
 #: lms/static/js/discovery/views/search_form.js
@@ -3681,7 +3685,7 @@ msgstr ""
 
 #: lms/static/js/discussions_management/views/discussions.js
 msgid "Cohorts"
-msgstr "Topluluklar"
+msgstr "Kohortlar"
 
 #: lms/static/js/discussions_management/views/discussions.js
 msgid ""
@@ -3689,10 +3693,10 @@ msgid ""
 "of cohort, see the same discussion topics, but within divided topics, only "
 "members of the same cohort see and respond to each others’ posts. "
 msgstr ""
-"Tartışmaları bölmek için toplulukları kullan. Topluluklarına bağlı "
+"Tartışmaları bölmek için kohortları kullanın. Üyesi oldukları kohorta bağlı "
 "olmaksızın tüm öğrenciler aynı tartışma başlıklarını görür; bölünmüş "
-"başlıklarda ise sadece aynı topluluğun üyeleri birbirini görüp, bir diğerine"
-" cevap verebilir."
+"başlıklarda ise sadece aynı kohortun üyeleri birbirini görüp, bir diğerine "
+"cevap verebilir."
 
 #: lms/static/js/discussions_management/views/discussions.js
 msgid "Discussion topics in the course are not divided."
@@ -3704,7 +3708,7 @@ msgstr "Bölünmüş tartışma başlıkları kayıtlanma yolu bazında bölünm
 
 #: lms/static/js/discussions_management/views/discussions.js
 msgid "Any divided discussion topics are divided based on cohort."
-msgstr "Bölünmüş tartışma başlıkları topluluk bazında bölünmüştür."
+msgstr "Bölünmüş tartışma başlıkları kohort bazında bölünmüştür."
 
 #: lms/static/js/discussions_management/views/discussions.js
 msgid "Your changes have been saved. {details}"
@@ -3817,7 +3821,7 @@ msgstr "Seçili sekme"
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "Saved cohort"
-msgstr "Kaydedilen topluluk"
+msgstr "Kaydedilen kohort"
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "Error adding learners."
@@ -3830,20 +3834,20 @@ msgstr "Bir kullanıcı adı veya e-posta giriniz."
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "{numUsersAdded} learner has been added to this cohort. "
 msgid_plural "{numUsersAdded} learners have been added to this cohort. "
-msgstr[0] "Bu topluluğa {numUsersAdded} öğrenci eklendi."
-msgstr[1] "Bu topluluğa {numUsersAdded} öğrenci eklendi."
+msgstr[0] "Bu kohorta {numUsersAdded} öğrenci eklendi."
+msgstr[1] "Bu kohorta {numUsersAdded} öğrenci eklendi."
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "{numMoved} learner was moved from {prevCohort}"
 msgid_plural "{numMoved} learners were moved from {prevCohort}"
-msgstr[0] "{prevCohort} topluluğundan {numMoved} öğrenci çıkarıldı"
-msgstr[1] "{prevCohort} topluluğundan {numMoved} öğrenci çıkarıldı"
+msgstr[0] "{prevCohort} kohortundan {numMoved} öğrenci çıkarıldı"
+msgstr[1] "{prevCohort} kohortundan {numMoved} öğrenci çıkarıldı"
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "{numPresent} learner was already in the cohort"
 msgid_plural "{numPresent} learners were already in the cohort"
-msgstr[0] "{numPresent} öğrenci zaten toplulukta"
-msgstr[1] "{numPresent} öğrenci zaten topluluktaydı"
+msgstr[0] "{numPresent} öğrenci zaten kohortta"
+msgstr[1] "{numPresent} öğrenci zaten kohorttaydı"
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "{email}"
@@ -3857,11 +3861,11 @@ msgid_plural ""
 "{numPreassigned} learners were pre-assigned for this cohort. These learners "
 "will automatically be added to the cohort when they enroll in the course."
 msgstr[0] ""
-"{numPreassigned} öğrenci bu topluluğa önceden atanmış. Bu öğrenci derse "
-"kaydolduğunda otomatik olarak topluluğa eklenecek."
+"{numPreassigned} öğrenci bu kohorta önceden atanmış. Bu öğrenci derse "
+"kaydolduğunda otomatik olarak kohorta eklenecek."
 msgstr[1] ""
-"{numPreassigned} öğrenci bu topluluğa önceden atanmış. Bu öğrenciler derse "
-"kaydolduklarında otomatik olarak topluluğa eklenecekler."
+"{numPreassigned} öğrenci bu kohorta önceden atanmış. Bu öğrenciler derse "
+"kaydolduklarında otomatik olarak kohorta eklenecekler."
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "Unknown username: {user}"
@@ -3875,7 +3879,7 @@ msgstr "Geçersiz e-posta adresi: {email}"
 msgid "There was an error when trying to add learners:"
 msgid_plural "{numErrors} learners could not be added to this cohort:"
 msgstr[0] "Öğrencileri eklemeye çalışırken bir hata gerçekleşti:"
-msgstr[1] "{numErrors} öğrenci bu topluluğa eklenemedi:"
+msgstr[1] "{numErrors} öğrenci bu kohorta eklenemedi:"
 
 #: lms/static/js/groups/views/cohort_editor.js
 msgid "View all errors"
@@ -3883,7 +3887,7 @@ msgstr "Tüm hataları gör"
 
 #: lms/static/js/groups/views/cohort_form.js
 msgid "You must specify a name for the cohort"
-msgstr "Topluluk için bir isim belirtmelisiniz"
+msgstr "Kohort için bir isim belirtmelisiniz"
 
 #: lms/static/js/groups/views/cohort_form.js
 msgid "You did not select a content group"
@@ -3903,24 +3907,24 @@ msgstr "Topluluk eklenemiyor"
 
 #: lms/static/js/groups/views/cohorts.js
 msgid "You currently have no cohorts configured"
-msgstr "Mevcut yapılandırılmış topluluğunuz yok"
+msgstr "Mevcut yapılandırılmış kohortunuz yok"
 
 #: lms/static/js/groups/views/cohorts.js
 #: lms/templates/instructor/instructor_dashboard_2/cohorts.underscore
 msgid "Add Cohort"
-msgstr "Topluluk ekle"
+msgstr "Kohort Ekle"
 
 #: lms/static/js/groups/views/cohorts.js
 msgid ""
 "The {cohortGroupName} cohort has been created. You can manually add students"
 " to this cohort below."
 msgstr ""
-"{cohortGroupName} topluluğu oluşturuldu. Aşağıdaki gruba el ile öğrenci "
+"{cohortGroupName} kohortu oluşturuldu. Aşağıdaki bu kohorta elle öğrenci "
 "ekleyebilirsiniz."
 
 #: lms/static/js/groups/views/cohorts.js
 msgid "Assign students to cohorts by uploading a CSV file."
-msgstr "CSV dosyasını yükleyerek topluluğa öğrencileri ata."
+msgstr "Bir CSV dosyası yükleyerek öğrencileri kohortlara atayın."
 
 #: lms/static/js/groups/views/cohorts.js
 msgid "Choose a .csv file"
@@ -3941,11 +3945,11 @@ msgstr "'{file}' dosyanız yüklendi. İşlenmesi için birkaç dakika bekleyini
 
 #: lms/static/js/groups/views/course_cohort_settings_notification.js
 msgid "Cohorts Enabled"
-msgstr "Topluluklar Etkin"
+msgstr "Kohortlar Etkin"
 
 #: lms/static/js/groups/views/course_cohort_settings_notification.js
 msgid "Cohorts Disabled"
-msgstr "Topluluklar Devre Dışı"
+msgstr "Kohortlar Devre Dışı"
 
 #: lms/static/js/groups/views/verified_track_settings_notification.js
 msgid ""
@@ -4332,7 +4336,7 @@ msgstr "Bu derse kayıt olan tüm öğrenciler"
 
 #: lms/static/js/instructor_dashboard/send_email.js
 msgid "All learners in the {cohort_name} cohort"
-msgstr "{cohort_name} topluluğundaki tüm öğrenciler"
+msgstr "{cohort_name} kohortundaki tüm öğrenciler"
 
 #: lms/static/js/instructor_dashboard/send_email.js
 msgid "All learners in the {track_name} track"
@@ -4421,11 +4425,16 @@ msgid ""
 " '<%- student_id %>'. Make sure that the problem and student identifiers are"
 " complete and correct."
 msgstr ""
+"Problem '<%- problem_id %>' ve öğrenci '<%- student_id %>' için problem "
+"denemeleri sıfırlanırken hata oluştu. Problemin ve öğrenci "
+"tanımlayıcılarının eksiksiz ve doğru olduğundan emin olun."
 
 #: lms/static/js/instructor_dashboard/student_admin.js
 msgid ""
 "Delete student '<%- student_id %>'s state on problem '<%- problem_id %>'?"
 msgstr ""
+"'<%- student_id %>' öğrencisinin '<%- problem_id %>' sorunundaki durumu "
+"silinsin mi?"
 
 #: lms/static/js/instructor_dashboard/student_admin.js
 msgid ""
@@ -4433,6 +4442,9 @@ msgid ""
 " %>'. Make sure that the problem and student identifiers are complete and "
 "correct."
 msgstr ""
+"'<%- student_id %>' öğrencisinin '<%- problem_id %>'  problemindeki durumu "
+"silinirken hata oluştu. Problemin ve öğrenci tanımlayıcılarının eksiksiz ve "
+"doğru olduğundan emin olun."
 
 #: lms/static/js/instructor_dashboard/student_admin.js
 msgid "Module state successfully deleted."
@@ -4444,6 +4456,9 @@ msgid ""
 "student_id %>'. Make sure that the problem and student identifiers are "
 "complete and correct."
 msgstr ""
+"'<%- problem_id %>' problemi ve '<%- student_id %>' öğrencisi için görev "
+"geçmişi alınırken hata oluştu. Problemin ve öğrenci tanımlayıcılarının "
+"eksiksiz ve doğru olduğundan emin olun."
 
 #: lms/static/js/instructor_dashboard/student_admin.js
 msgid "Entrance exam attempts is being reset for student '{student_id}'."
@@ -4853,7 +4868,7 @@ msgstr "{user} için problem puanı başarıyla geçersiz kılındı"
 
 #: lms/static/js/staff_debug_actions.js
 msgid "Could not override problem score for {user}."
-msgstr ""
+msgstr "{user} kullanıcısının problem puanı geçersizleştirilemedi."
 
 #: lms/static/js/student_account/components/PasswordResetConfirmation.jsx
 msgid "Enter and confirm your new password."
@@ -4909,7 +4924,6 @@ msgstr ""
 #: lms/static/js/student_account/components/StudentAccountDeletion.jsx
 msgid "Before proceeding, please {htmlStart}activate your account{htmlEnd}."
 msgstr ""
-"İlerlemeden önce, lütfen {htmlStart}hesabınızı etkinleştirin{htmlEnd}."
 
 #: lms/static/js/student_account/components/StudentAccountDeletion.jsx
 msgid ""
@@ -5656,32 +5670,28 @@ msgstr "Bu sayfaya yer imi koy"
 
 #: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
 msgid "Thank you for setting your course goal to {goal}!"
-msgstr "Ders hedefinizi {goal} olarak belirlediğiniz için teşekkür ederiz!"
+msgstr ""
 
 #: openedx/features/course_experience/static/course_experience/js/CourseHome.js
 msgid "You have successfully updated your goal."
-msgstr "Hedefinizi başarıyla güncellediniz."
+msgstr ""
 
 #: openedx/features/course_experience/static/course_experience/js/CourseHome.js
 msgid "There was an error updating your goal."
-msgstr "Hedefinizi güncellerken bir hata gerçekleşti."
+msgstr ""
 
-#: openedx/features/course_experience/static/course_experience/js/CourseOutline.js
 #: lms/templates/ccx/schedule.underscore
 msgid "Expand All"
 msgstr "Tümünü Aç"
 
-#: openedx/features/course_experience/static/course_experience/js/CourseOutline.js
 #: lms/templates/ccx/schedule.underscore
 msgid "Collapse All"
 msgstr "Tümünü Kapa"
 
-#: openedx/features/course_experience/static/course_experience/js/WelcomeMessage.js
 #: lms/templates/courseware/proctored-exam-status.underscore
 msgid "Show More"
 msgstr "Daha Fazla Göster"
 
-#: openedx/features/course_experience/static/course_experience/js/WelcomeMessage.js
 #: lms/templates/courseware/proctored-exam-status.underscore
 msgid "Show Less"
 msgstr "Daha Az Göster"
@@ -6005,7 +6015,7 @@ msgstr "Dersi Yeniden Çalıştır"
 #: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 #: cms/templates/js/show-textbook.underscore
 msgid "View Live"
-msgstr "Canlı Görüntüle"
+msgstr "Canlıda Görüntüle"
 
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
@@ -6301,6 +6311,10 @@ msgstr "Ekleniyor"
 
 #: cms/static/js/views/container.js
 msgid "{startTag}{requestToken}{endTag}{selector}"
+msgstr ""
+
+#: cms/static/js/views/course_blocks_mapping.js
+msgid "Mapping Blocks"
 msgstr ""
 
 #: cms/static/js/views/course_info_update.js
@@ -6618,8 +6632,6 @@ msgstr ""
 "mı?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Yayınla"
 
@@ -6737,6 +6749,14 @@ msgstr "Tarih eklendi"
 #: cms/static/js/views/pages/container.js
 msgid "Editing access for: {title}"
 msgstr "{title} için erişim düzenleniyor"
+
+#: cms/static/js/views/pages/container.js
+msgid "Disable Translations"
+msgstr ""
+
+#: cms/static/js/views/pages/container.js
+msgid "Enable Translations"
+msgstr ""
 
 #: cms/static/js/views/pages/container_subviews.js
 msgid "Publishing"
@@ -7005,6 +7025,70 @@ msgstr "Taşımayı geri al"
 msgid "Take me to the new location"
 msgstr "Beni yeni konuma götür"
 
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Updating"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Disable Translations for this block?"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Block data would not be sent to server for translations"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Yes, Disable Translations"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Enable Translations for this block?"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Block data would be sent to server for translations"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Yes, Enable Translations"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Edit on Translated rerun?"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid ""
+"Please disable translations after an edit, otherwise edited component will "
+"be overwritten by auto next applied translations."
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Continue Editing"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Edit on Base Course Block?"
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid ""
+"If you edit base block content all linked translated-rerun blocks "
+"translations will be lost and all previous version history will be deleted."
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Change can not be reverted."
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Are you sure you want to update flag as it will not be reverted again."
+msgstr ""
+
+#: cms/static/js/views/utils/wiki_utils.js
+msgid "Yes, Update Flag"
+msgstr ""
+
 #: cms/static/js/views/utils/xblock_utils.js
 msgid "Duplicating"
 msgstr "Kopyası Çıkarılıyor"
@@ -7020,6 +7104,10 @@ msgstr "Taşınıyor"
 #: cms/static/js/views/utils/xblock_utils.js
 msgid "Deleting this {xblock_type} is permanent and cannot be undone."
 msgstr "Bu {xblock_type} türünü silmek kalıcıdır ve geri alınamaz."
+
+#: cms/static/js/views/utils/xblock_utils.js
+msgid "Note that any linked translated rerun blocks mapping will be lost."
+msgstr ""
 
 #: cms/static/js/views/utils/xblock_utils.js
 msgid ""
@@ -7335,6 +7423,7 @@ msgstr "Eylemler"
 #: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Planlanmamış"
 
@@ -7575,7 +7664,7 @@ msgstr "bu iletiyi takip et"
 
 #: common/static/common/templates/discussion/templates.underscore
 msgid "post anonymously"
-msgstr "isimsiz olarak ileti yolla"
+msgstr ""
 
 #: common/static/common/templates/discussion/templates.underscore
 msgid "post anonymously to classmates"
@@ -7781,7 +7870,7 @@ msgstr "Durum"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Download URL"
-msgstr "İndirme Bağlantısı"
+msgstr ""
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Grade"
@@ -7793,11 +7882,11 @@ msgstr "Son Güncelleme"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Download the user's certificate"
-msgstr "Kullanıcının sertifikasını indir"
+msgstr ""
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Not available"
-msgstr "Kullanılabilir değil"
+msgstr ""
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Regenerate"
@@ -8769,8 +8858,6 @@ msgid ""
 "To complete the program, you must earn a verified certificate for each "
 "course."
 msgstr ""
-"Programı tamamlamak için, tüm derslerde onaylı sertifikaya hak "
-"kazanmalısınız."
 
 #: lms/templates/learner_dashboard/program_details_tab_view.underscore
 #: lms/templates/learner_dashboard/program_details_view.underscore
@@ -10100,6 +10187,14 @@ msgstr ""
 msgid "Copy Component Location"
 msgstr "Bileşen Konumunu Kopyala"
 
+#: cms/templates/js/course-blocks-mapping.underscore
+msgid "Course Blocks mapping"
+msgstr ""
+
+#: cms/templates/js/course-blocks-mapping.underscore
+msgid "Map blocks"
+msgstr ""
+
 #: cms/templates/js/course-highlights-enable.underscore
 msgid "Course Highlight Emails"
 msgstr "Ders Vurgulama E-postaları"
@@ -10176,131 +10271,6 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "Fotoğraf Yükle"
-
-#: cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr "Ön gereklilik: %(prereq_display_name)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Contains staff only content"
-msgstr "Sadece personele özel içerikleri içerir"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr "Canlı yayın içeriğindeki yayımlanmamış değişiklikler"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr "Yayımlanmamış üniteler yayına konmayacak"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to content that will release in the future"
-msgstr "İçeriğin yayımlanmamış değişiklikleri ilerde yayınlanacaktır."
-
-#: cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr "Bu üniteye erişim şu gruplara açıktır: {selectedGroupsLabel}"
-
-#: cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr ""
-"Bu ünitedeki bazı içeriklere erişim, belirli öğrenci gruplarına kısıtlıdır"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr "Puanlanmamış"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr "Test Sürüşü Sınavı"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr "Gözetmenli Sınavı Uygula"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr "Gözetmenli Sınav"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr "Zamanlanmış Sınav"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr "%(xblock_type)s Daralt/Genişlet"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr "Görünen Ad"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr "Gözetmen Ayarları"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr "Yapılandırma"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Duplicate"
-msgstr "Kopyasını Çıkar"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Drag to reorder"
-msgstr "Tekrar düzenlemek için sürükle"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Release Status:"
-msgstr "Yayın Durumu:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "Released:"
-msgstr "Yayınlandı:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-msgid "Scheduled:"
-msgstr "Planlandı:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-msgid "Section Highlights"
-msgstr "Bölüm Renkli Vurgulamaları"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Graded as:"
-msgstr "Şöyle notlandırılmış:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Due:"
-msgstr "Son gün:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr "Altbölüm ders bitiş tarihinden sonra gizlenecek"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr "Altbölüm şu tarihten sonra gizlenecek"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "You haven't added any content to this course yet."
-msgstr "Henüz bir ders içeriği eklenmedi."
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Click to add a new %(xblock_type)s"
-msgstr "Yeni bir %(xblock_type)s eklemek için tıklayınız"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -10496,7 +10466,7 @@ msgstr "Bölüm Verisi"
 
 #: cms/templates/js/edit-chapter.underscore
 msgid "path/to/introductionToCookieBaking-CH{order}.pdf"
-msgstr ""
+msgstr "adres/yolu/KekPişirmeyeGiriş-TR{order}.pdf"
 
 #: cms/templates/js/edit-chapter.underscore
 msgid "upload a PDF file or provide the path to a Studio asset file"
@@ -10950,16 +10920,12 @@ msgid ""
 "incorrect, nor the score received, until after the course end date has "
 "passed."
 msgstr ""
-"Öğrenciler değerlendirmedeki cevaplarının doğru ya da yanlış olup "
-"olmadığını, hatta aldıkları notu dersin bitiş tarihine dek göremezler."
 
 #: cms/templates/js/show-correctness-editor.underscore
 msgid ""
 "If the course does not have an end date, learners always see their scores "
 "when they submit answers to assessments."
 msgstr ""
-"Bir dersin son tarihi yoksa, öğrenciler cevaplarını değerlendirmeye "
-"gönderdiğinde notlarını görürler."
 
 #: cms/templates/js/show-correctness-editor.underscore
 msgid ""
@@ -11156,7 +11122,7 @@ msgstr ""
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Proctored"
-msgstr "Gözetmenli"
+msgstr "Gözetimli"
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid ""
@@ -11164,8 +11130,6 @@ msgid ""
 "exam. The videos are then reviewed to ensure that learners follow all "
 "examination rules."
 msgstr ""
-"Gözetmenli sınavlar zaman sınırlıdır ve sınav süresince öğrencileri videoya "
-"kaydeder. Bu videolar öğrencilerin sınav kurallarına uymalarını belgeler."
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Onboarding"
@@ -11185,14 +11149,14 @@ msgstr ""
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Practice Proctored"
-msgstr "Gözetmenli Uygula"
+msgstr "Gözetimli Alıştırma"
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid ""
 "Use a practice proctored exam to introduce learners to the proctoring tools "
 "and processes. Results of a practice exam do not affect a learner's grade."
 msgstr ""
-"Öğrencilere gözetmenlik araçlarını ve işleyişini tanıtmak için gözetmenli "
+"Öğrencilere gözetim araçlarını ve işleyişini tanıtmak için gözetimli "
 "alıştırma sınavını kullanın. Alıştırma sınavının sonuçları öğrencinin notuna"
 " etki etmez."
 
@@ -11222,15 +11186,15 @@ msgid ""
 "before the learners start the exam, along with the {linkStart}general "
 "proctored exam rules{linkEnd}."
 msgstr ""
-"Tüm kural ya da kural istisnalarını detaylandır ki, gözetmen inceleme kurulu"
-" videolara göz atarken şüphe bırakmayacak şekilde uygulayabilsin. Örneğin, "
+"Tüm kural ya da kural istisnalarını detaylandır ki, gözetim inceleme kurulu "
+"videolara göz atarken şüphe bırakmayacak şekilde uygulayabilsin. Örneğin, "
 "hesap makinesine izin verildiğini belirtebilirsiniz. Belirlenen bu kurallar "
-"{linkStart}genel gözetmenli sınav kuralları{linkEnd} ile birlikte "
-"öğrencilere sınav başlamadan önce görünür olacak."
+"{linkStart}genel gözetimli sınav kuralları{linkEnd} ile birlikte öğrencilere"
+" sınav başlamadan önce görünür olacak."
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "General Proctored Exam Rules"
-msgstr "Genel Gözetmenli Sınav Kuralları"
+msgstr "Genel Gözetimli Sınav Kuralları"
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid ""
@@ -11239,8 +11203,8 @@ msgid ""
 "calculators are allowed. These specified rules are visible to learners "
 "before the learners start the exam."
 msgstr ""
-"Tüm kural ya da kural istisnalarını detaylandır ki, gözetmen inceleme kurulu"
-" videolara göz atarken şüphe bırakmayacak şekilde uygulayabilsin. Örneğin, "
+"Tüm kural ya da kural istisnalarını detaylandır ki, gözetim inceleme kurulu "
+"videolara göz atarken şüphe bırakmayacak şekilde uygulayabilsin. Örneğin, "
 "hesap makinesine izin verildiğini belirtebilirsiniz. Belirlenen kurallar "
 "öğrencilere sınav başlamadan önce görünür olacak."
 
@@ -11533,3 +11497,241 @@ msgstr ""
 #: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore
 msgid "Use Current Transcript"
 msgstr "Mevcut Altyazıyı Kullan"
+
+#~ msgid ""
+#~ "You have been logged out of your account. Click Okay to log in again now. "
+#~ "Click Cancel to stay on this page (you must log in again to save your work)."
+#~ msgstr ""
+#~ "Hesabınızdan çıktınız. Tekrar giriş yapmak için Tamam'a tıklayın. İptal'e "
+#~ "tıklayarak bu sayfada kalabilirsiniz (Çalışmanızı kaydetmek için tekrar "
+#~ "giriş yapmanız gerekiyor)."
+
+#~ msgid "Student Removed from certificate allowlist successfully."
+#~ msgstr "Öğrenci sertifika güvenilir listesinden başarıyla Kaldırıldı."
+
+#~ msgid ""
+#~ "Could not find Certificate Exception in the allowlist. Please refresh the "
+#~ "page and try again"
+#~ msgstr ""
+#~ "İzinli listesinde Sertifika İstisnası bulunamadı. Lütfen sayfayı yenileyin "
+#~ "ve tekrar deneyin"
+
+#~ msgid " learners were successfully added to exception list"
+#~ msgstr " öğrenciler istisna listesine başarıyla eklendi"
+
+#~ msgid " learner was successfully added to the exception list"
+#~ msgstr " öğrenci istisna listesine başarıyla eklendi"
+
+#~ msgid ""
+#~ " records are not in the correct format and have not been added to the "
+#~ "exception list"
+#~ msgstr " kayıtlar doğru formatta değil ve istisna listesine eklenmemişler"
+
+#~ msgid ""
+#~ " record is not in the correct format and has not been added to the exception"
+#~ " list"
+#~ msgstr " kayıt doğru formatta değil ve istisna listesine eklenmemiş"
+
+#~ msgid ""
+#~ " learner accounts cannot be found and have not been added to the exception "
+#~ "list"
+#~ msgstr " öğrenci hesapları bulunamıyor ve istisna listesine eklenmemişler"
+
+#~ msgid ""
+#~ " learner account cannot be found and has not been added to the exception "
+#~ "list"
+#~ msgstr " öğrenci hesabı bulunamıyor ve istisna listesine eklenmemiş"
+
+#~ msgid " learners already appear on the exception list in this course"
+#~ msgstr " öğrenciler zaten bu dersin istisna listesinde görünüyor"
+
+#~ msgid " learner already appears on the exception list in this course"
+#~ msgstr " öğrenci zaten bu dersin istisna listesinde görünüyor"
+
+#~ msgid ""
+#~ " learners are not enrolled in this course and have not added to the "
+#~ "exception list"
+#~ msgstr " öğrenciler derse kayıtlı değil ve istisna listesine eklenmemişler"
+
+#~ msgid ""
+#~ " learner is not enrolled in this course and has not been added to the "
+#~ "exception list"
+#~ msgstr " öğrenci bu derse kayıtlı değil ve istisna listesine eklenmemiş"
+
+#~ msgid ""
+#~ " learners have an active certificate invalidation in this course and have "
+#~ "not been added to the exception list"
+#~ msgstr ""
+#~ " öğrencilerin bu derste etkin bir sertifika geçersizliği var ve istisna "
+#~ "listesine eklenmemişler"
+
+#~ msgid ""
+#~ " learner has an active certificate invalidation in this course and has not "
+#~ "been added to the exception list"
+#~ msgstr ""
+#~ " öğrencinin bu derste etkin bir sertifika geçersizliği var ve istisna "
+#~ "listesine eklenmemiş"
+
+#~ msgid "Cohort assignment not allowed: {email_or_username}"
+#~ msgstr "Kohort atamasına izin verilmiyor: {email_or_username}"
+
+#~ msgid ""
+#~ "To access the courses available to you through {enterpriseName}, visit the "
+#~ "{enterpriseName} dashboard."
+#~ msgstr ""
+#~ "{enterpriseName} aracılığıyla size sunulan derslere erişmek için, "
+#~ "{enterpriseName} panelini ziyaret ediniz."
+
+#~ msgid "Go to dashboard"
+#~ msgstr "Ana panele git"
+
+#~ msgid "Recommendations for you"
+#~ msgstr "Sizin için tavsiyeler"
+
+#~ msgid "loading"
+#~ msgstr "yükleniyor"
+
+#~ msgid ""
+#~ "Browse recently launched courses and see what's new in your favorite "
+#~ "subjects."
+#~ msgstr ""
+#~ "Yeni açılmış dersleri tarayın ve favori konularınız içinde yeni ne var "
+#~ "görüntüleyin."
+
+#~ msgid "Explore courses"
+#~ msgstr "Dersleri keşfet"
+
+#~ msgid "More opportunities for you"
+#~ msgstr "Sizin için daha fazla fırsat"
+
+#~ msgid " to learn"
+#~ msgstr " öğrenmeye dair"
+
+#~ msgid ""
+#~ "We've added 500+ learning opportunities to create one of the world's most "
+#~ "comprehensive free-to-degree online learning platforms."
+#~ msgstr ""
+#~ "Dünyanın en kapsamlı ücretsiz çevrimiçi öğrenme platformlarından birini "
+#~ "oluşturmak için 500'den fazla öğrenme fırsatı ekledik."
+
+#~ msgid "Before proceeding, please {htmlStart}{emailMsg}{htmlEnd}."
+#~ msgstr "İlerlemeden önce, lütfen {htmlStart}{emailMsg}{htmlEnd}."
+
+#~ msgid ""
+#~ "An answer option has been left blank. Please review and edit the component."
+#~ msgstr ""
+#~ "Cevap seçeneği boş bırakılmış. Lütfen gözden geçirin ve bileşeni düzenleyin."
+
+#~ msgid "Prerequisite: %(prereq_display_name)s"
+#~ msgstr "Ön gereklilik: %(prereq_display_name)s"
+
+#~ msgid "Contains staff only content"
+#~ msgstr "Sadece personele özel içerikleri içerir"
+
+#~ msgid "Unpublished changes to live content"
+#~ msgstr "Canlı yayın içeriğindeki yayımlanmamış değişiklikler"
+
+#~ msgid "Unpublished units will not be released"
+#~ msgstr "Yayımlanmamış üniteler yayına konmayacak"
+
+#~ msgid "Unpublished changes to content that will release in the future"
+#~ msgstr "İçeriğin yayımlanmamış değişiklikleri ilerde yayınlanacaktır."
+
+#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+#~ msgstr "Bu üniteye erişim şu gruplara açıktır: {selectedGroupsLabel}"
+
+#~ msgid ""
+#~ "Access to some content in this unit is restricted to specific groups of "
+#~ "learners"
+#~ msgstr ""
+#~ "Bu ünitedeki bazı içeriklere erişim, belirli öğrenci gruplarına kısıtlıdır"
+
+#~ msgid "Ungraded"
+#~ msgstr "Puanlanmamış"
+
+#~ msgid "Onboarding Exam"
+#~ msgstr "Test Sürüşü Sınavı"
+
+#~ msgid "Practice proctored Exam"
+#~ msgstr "Gözetimli Sınav Alıştırması"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "Gözetimli Sınav"
+
+#~ msgid "Timed Exam"
+#~ msgstr "Zamanlanmış Sınav"
+
+#~ msgid "Collapse/Expand this %(xblock_type)s"
+#~ msgstr "%(xblock_type)s Daralt/Genişlet"
+
+#~ msgid "Display Name"
+#~ msgstr "Görünen Ad"
+
+#~ msgid "Proctoring Settings"
+#~ msgstr "Gözetim Ayarları"
+
+#~ msgid "Configure"
+#~ msgstr "Yapılandırma"
+
+#~ msgid "Duplicate"
+#~ msgstr "Kopyasını Çıkar"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "Tekrar düzenlemek için sürükle"
+
+#~ msgid "Release Status:"
+#~ msgstr "Yayın Durumu:"
+
+#~ msgid "Released:"
+#~ msgstr "Yayınlandı:"
+
+#~ msgid "Scheduled:"
+#~ msgstr "Planlandı:"
+
+#~ msgid "Section Highlights"
+#~ msgstr "Bölüm Renkli Vurgulamaları"
+
+#~ msgid "Graded as:"
+#~ msgstr "Şöyle notlandırılmış:"
+
+#~ msgid "Due:"
+#~ msgstr "Son gün:"
+
+#~ msgid "Subsection is hidden after course end date"
+#~ msgstr "Altbölüm ders bitiş tarihinden sonra gizlenecek"
+
+#~ msgid "Subsection is hidden after due date"
+#~ msgstr "Altbölüm şu tarihten sonra gizlenecek"
+
+#~ msgid "You haven't added any content to this course yet."
+#~ msgstr "Henüz bir ders içeriği eklenmedi."
+
+#~ msgid "Click to add a new %(xblock_type)s"
+#~ msgstr "Yeni bir %(xblock_type)s eklemek için tıklayınız"
+
+#~ msgid "Enable discussion"
+#~ msgstr "Tartışmayı genişlet"
+
+#~ msgid "Due in:"
+#~ msgstr "Tamamlanma:"
+
+#~ msgid ""
+#~ "This subsection was released to learners as a proctored exam, but was "
+#~ "reverted back to a basic or timed exam. You may not configure it as a "
+#~ "proctored exam now. Contact edX Support for assistance."
+#~ msgstr ""
+#~ "Bu alt bölüm öğrencilere gözetimli bir sınav olarak yayınlandı, ancak basit "
+#~ "ya da zamanlanmış sınav ayarlarına geri döndürüldü. Artık bunu bir gözetimli"
+#~ " sınav olarak yapılandıramazsınız. Yardım için edX Destek ile iletişime "
+#~ "geçin. "
+
+#~ msgid ""
+#~ "This proctored exam has been released to learners. You may not convert it to"
+#~ " another type of special exam. You may revert this subsection back to being "
+#~ "a basic exam by selecting 'None', or a timed exam, but you will NOT be able "
+#~ "to configure it as a proctored exam in the future."
+#~ msgstr ""
+#~ "Bu gözetimli sınav öğrencilere sunulmuştur. Başka bir tür özel sınava "
+#~ "dönüştüremezsiniz. \"None\" ayarını seçerek bu alt bölümü basit ya da "
+#~ "zamanlanmış sınav haline geri döndürebilirsiniz, ancak ileride bunu "
+#~ "gözetimli bir sınav olarak yapılandıramazsınız. "

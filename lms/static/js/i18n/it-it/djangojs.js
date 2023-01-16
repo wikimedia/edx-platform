@@ -6,7 +6,7 @@
 
   
   django.pluralidx = function(n) {
-    var v=(n != 1);
+    var v=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;
     if (typeof(v) == 'boolean') {
       return v ? 1 : 0;
     } else {
@@ -162,7 +162,44 @@
     "%(programName)s Home Page.": "Home page di %(programName)s . ",
     "%(sel)s of %(cnt)s selected": [
       "%(sel)s di %(cnt)s selezionato",
-      "%(sel)s di %(cnt)s selezionati"
+      "%(sel)s di %(cnt)s selezionati",
+      ""
+    ],
+    "%(type)s Component Template Menu": "Menu template componenti %(type)s ",
+    "%(value)s hour": [
+      "%(value)s ora",
+      "%(value)s ore",
+      "%(value)s ore"
+    ],
+    "%(value)s minute": [
+      "%(value)s minuto",
+      "%(value)s minuti",
+      "%(value)s minuti"
+    ],
+    "%(value)s second": [
+      "%(value)s secondo",
+      "%(value)s secondi",
+      "%(value)s secondi"
+    ],
+    "%d day": [
+      "%d giorno",
+      "%d giorni",
+      "%d giorni"
+    ],
+    "%d minute": [
+      "%d minuto",
+      "%d minuti",
+      "%d minuti"
+    ],
+    "%d month": [
+      "%d mese",
+      "%d mesi",
+      "%d mesi"
+    ],
+    "%d year": [
+      "%d anno",
+      "%d anni",
+      "%d anni"
     ],
     "%(type)s Component Template Menu": "Menu template componenti %(type)s ",
     "%(value)s hour": [
@@ -1290,11 +1327,13 @@
     "Note: Learners can be in only one cohort. Adding learners to this group overrides any previous group assignment.": "Nota: gli studenti possono essere presenti in una sola coorte. L'aggiunta di studenti a questo gruppo sovrascrive qualsiasi precedente assegnazione a gruppi.",
     "Note: You are %s hour ahead of server time.": [
       "Nota: Sei %s ora in anticipo rispetto al server.",
-      "Nota: Sei %s ore in anticipo rispetto al server."
+      "Nota: Sei %s ore in anticipo rispetto al server.",
+      ""
     ],
     "Note: You are %s hour behind server time.": [
       "Nota: Sei %s ora in ritardo rispetto al server.",
-      "Nota: Sei %s ore in ritardo rispetto al server."
+      "Nota: Sei %s ore in ritardo rispetto al server.",
+      ""
     ],
     "Noted in:": "Annotato in:",
     "Notes": "Note",
@@ -2215,7 +2254,8 @@
     "View {span_start} {team_name} {span_end}": "Visualizza {span_start} {team_name} {span_end}",
     "Viewing %s course": [
       "Vedi %s corsi",
-      "Vedi %s coursi"
+      "Vedi %s coursi",
+      "Vedi %s corsi"
     ],
     "Visibility": "Visibilit\u00e0",
     "Visible to": "Visibile a ",
@@ -2508,6 +2548,7 @@
     "the more quickly and helpfully we can respond!": "rispondere nel modo pi\u00f9 veloce e utile possibile. ",
     "there is currently {numVotes} vote": [
       "attualmente \u00e8 presente {numVotes} voto",
+      "attualmente sono presenti {numVotes} voti",
       "attualmente sono presenti {numVotes} voti"
     ],
     "title_word_{uniqueId}": "title_word_{uniqueId}",
@@ -2562,6 +2603,7 @@
     ],
     "{numResponses} other response": [
       "{numResponses} altra risposta",
+      "{numResponses} altre risposte",
       "{numResponses} altre risposte"
     ],
     "{numResponses} response": [
@@ -2574,6 +2616,7 @@
     ],
     "{numVotes} Vote": [
       "{numVotes} Voto",
+      "{numVotes} Voti",
       "{numVotes} Voti"
     ],
     "{num_of_hours} hour": "{num_of_hours} ora",

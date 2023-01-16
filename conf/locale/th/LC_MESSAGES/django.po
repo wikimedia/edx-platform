@@ -19,6 +19,8 @@
 # Phondanai Khanti <phondanai@gmail.com>, 2016
 # Pornchai TummarATTAnanonT <yantaku@gmail.com>, 2015
 # Pornchai TummarATTAnanonT <yantaku@gmail.com>, 2015
+# Prakai Nadee <prakai.na@gmail.com>, 2022
+# Prakai Nadee <prakai.na@gmail.com>, 2021-2022
 # Sitdhibong Laokok <sitdhibong@gmail.com>, 2015
 # Theeranuch Sirikojakorn <totallyp3@gmail.com>, 2015
 # #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
@@ -35,6 +37,7 @@
 # Noppachai Eiamwasant <noporo@hotmail.com>, 2015
 # peemmaruj <peemmaruj@gmail.com>, 2014
 # peemmaruj <peemmaruj@gmail.com>, 2014
+# Prakai Nadee <prakai.na@gmail.com>, 2021
 # Sanyapong Kridakarn <sanyapong@kelanggreen.com>, 2016
 # Sitdhibong Laokok <sitdhibong@gmail.com>, 2015
 # #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
@@ -58,9 +61,12 @@
 # Pichai Sivawat <tingtong003tomy@gmail.com>, 2015
 # Pornchai TummarATTAnanonT <yantaku@gmail.com>, 2016
 # Pornchai TummarATTAnanonT <yantaku@gmail.com>, 2016
+# Prakai Nadee <prakai.na@gmail.com>, 2022
+# Prakai Nadee <prakai.na@gmail.com>, 2021-2022
 # Punsarn <translator@punsarn.asia>, 2019
 # Sitdhibong Laokok <sitdhibong@gmail.com>, 2015,2017
 # Sorathan Chaturapruek <tummykung@gmail.com>, 2014
+# Summer Wiphatsumrit, 2023
 # Theeranuch Sirikojakorn <totallyp3@gmail.com>, 2015
 # Sorathan Chaturapruek <tummykung@gmail.com>, 2014
 # #-#-#-#-#  mako-studio.po (edx-platform)  #-#-#-#-#
@@ -79,6 +85,7 @@
 # Noppachai Eiamwasant <noporo@hotmail.com>, 2015
 # Pornchai TummarATTAnanonT <yantaku@gmail.com>, 2015
 # Pornchai TummarATTAnanonT <yantaku@gmail.com>, 2015
+# Prakai Nadee <prakai.na@gmail.com>, 2021
 # Schmitt Dhammachote <hyde.139@gmail.com>, 2015
 # Sitdhibong Laokok <sitdhibong@gmail.com>, 2015-2016
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
@@ -134,15 +141,19 @@ msgid "Discussion"
 msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
-#: openedx/core/djangoapps/content_libraries/constants.py
-msgid "Problem"
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "HTML"
 msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Problem"
+msgstr ""
+
 #: lms/templates/video.html
 msgid "Video"
-msgstr ""
+msgstr "วีดีโอ"
 
 #: cms/djangoapps/contentstore/views/component.py
 #: common/lib/xmodule/xmodule/video_module/video_module.py
@@ -203,6 +214,7 @@ msgstr ""
 #. duration is determined.
 #: cms/djangoapps/contentstore/views/videos.py
 #: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Pending"
 msgstr ""
 
@@ -274,8 +286,6 @@ msgid "You're enrolled as an honor code student"
 msgstr ""
 
 #: lms/templates/static_templates/honor.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "เกียรติคุณ"
 
@@ -1703,12 +1713,7 @@ msgid ""
 "There was a problem with the staff answer to this problem: empty boundary."
 msgstr ""
 
-#. Translators: this is the last choice of a number of choices of how to log
-#. in
-#. to the site.
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "หรือ"
 
@@ -2669,10 +2674,11 @@ msgid ""
 "the page."
 msgstr ""
 
+#: common/lib/xmodule/xmodule/course_module.py
 #: lms/templates/courseware/info.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 msgid "Course Handouts"
-msgstr "เอกสารหลักสูตร"
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
@@ -2969,10 +2975,6 @@ msgid ""
 "http://www.edx.org/course/Introduction-to-MOOCs-ITM001"
 msgstr ""
 
-#: cms/templates/settings.html
-msgid "Course Language"
-msgstr "ภาษาหลักสูตร"
-
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Specify the language of your course."
 msgstr ""
@@ -3142,6 +3144,29 @@ msgid ""
 "course will be messaged to learners at their scheduled time."
 msgstr ""
 
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Enable Score column on the Progress Page"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"Enter true or false. If true, students can see score tab on the progress "
+"page"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Select Course Font Family"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\" and \"font-open-sans\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
 #: cms/templates/certificates.html cms/templates/group_configurations.html
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html
@@ -3252,10 +3277,6 @@ msgstr ""
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Any Type"
 msgstr ""
-
-#: cms/templates/widgets/header.html
-msgid "Library"
-msgstr "ห้องสมุด"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Select the library from which you want to draw content."
@@ -3676,12 +3697,6 @@ msgid ""
 "moocsupport@mathworks.com"
 msgstr ""
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Group Configurations"
-msgstr "การกำหนดค่ากลุ่ม"
-
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 msgid ""
 "Enter the configurations that govern how students are grouped together."
@@ -4001,6 +4016,9 @@ msgstr ""
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "หลักสูตร"
 
@@ -4011,9 +4029,12 @@ msgstr ""
 #: common/lib/xmodule/xmodule/templates/library-sourced-block-studio-view.html
 #: lms/templates/oauth2_provider/authorize.html
 #: openedx/core/djangoapps/user_api/admin.py
+#: openedx/features/wikimedia_features/messenger/views.py
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/manage_users.html cms/templates/manage_users_lib.html
 #: cms/templates/videos_index_pagination.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Cancel"
 msgstr ""
 
@@ -4359,8 +4380,9 @@ msgstr ""
 #. interface (a menu or piece of UI that takes the full focus of the screen)
 #: common/templates/admin/student/loginfailures/change_form_template.html
 #: lms/templates/wiki/edit.html lms/templates/wiki/history.html
-#: lms/templates/wiki/includes/cheatsheet.html lms/templates/ccx/schedule.html
-#: lms/templates/dashboard.html
+#: lms/templates/wiki/includes/cheatsheet.html
+#: openedx/features/wikimedia_features/messenger/views.py
+#: lms/templates/ccx/schedule.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/forgot_password_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/add_coupon_modal.html
@@ -4369,12 +4391,12 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
+#: lms/templates/signup_modal.html
 msgid "Close"
 msgstr "ปิด"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -4405,6 +4427,7 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -4422,6 +4445,7 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -4535,12 +4559,136 @@ msgid ""
 "at:"
 msgstr ""
 
-#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+#, python-format
 msgid ""
-"We keep a log of old e-mails, so if this request was unintentional, we can "
-"investigate."
+"\n"
+"                    Proctoring requirements for %(course_name)s\n"
+"                "
 msgstr ""
-"เราได้บันทึกด้วยอีเมล์เก่า หากคำขอนี้นั้นไม่ได้ตั้งใจ เราสามารถตรวจสอบให้ได้"
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+#, python-format
+msgid ""
+"\n"
+"                    Hello %(full_name)s,\n"
+"                "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+#, python-format
+msgid ""
+"\n"
+"                    You are enrolled in %(course_name)s at %(platform_name)s. This course contains proctored exams.\n"
+"                "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+#, python-format
+msgid ""
+"\n"
+"                    Proctored exams are timed exams that you take while proctoring software monitors your computer's desktop, webcam video, and audio. Your course uses %(proctoring_provider)s software for proctoring.\n"
+"                "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+msgid ""
+"\n"
+"                    Carefully review the system requirements as well as the steps to take a proctored exam in order to ensure that you are prepared.\n"
+"                "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+msgid ""
+"\n"
+"                Proctoring Instructions and Requirements\n"
+"            "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+msgid ""
+"\n"
+"                    Before taking a graded proctored exam, you must have approved ID verification photos. \n"
+"                "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+msgid ""
+"\n"
+"                        You can submit ID verification photos here.\n"
+"                    "
+msgstr ""
+
+#: lms/templates/emails/failed_verification_email.txt
+#: lms/templates/emails/order_confirmation_email.txt
+#: lms/templates/emails/passed_verification_email.txt
+#: lms/templates/emails/photo_submission_confirmation.txt
+msgid "Thank you,"
+msgstr "ขอบคุณ"
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.html
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#: lms/templates/verify_student/edx_ace/verificationapproved/email/body.html
+#: lms/templates/verify_student/edx_ace/verificationapproved/email/body.txt
+#: lms/templates/verify_student/edx_ace/verificationexpiry/email/body.html
+#: lms/templates/verify_student/edx_ace/verificationexpiry/email/body.txt
+#: lms/templates/verify_student/edx_ace/verificationsubmitted/email/body.html
+#: lms/templates/verify_student/edx_ace/verificationsubmitted/email/body.txt
+#, python-format
+msgid "The %(platform_name)s Team "
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#, python-format
+msgid "Hello %(full_name)s"
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#, python-format
+msgid ""
+"You are enrolled in %(course_name)s at %(platform_name)s. This course "
+"contains proctored exams."
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#, python-format
+msgid ""
+"Proctored exams are timed exams that you take while proctoring software "
+"monitors your computer's desktop, webcam video, and audio. Your course uses "
+"%(proctoring_provider)s software for proctoring."
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+msgid ""
+"Carefully review the system requirements as well as the steps to take a "
+"proctored exam in order to ensure that you are prepared."
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#, python-format
+msgid ""
+"To view proctoring instructions and requirements, please visit: "
+"%(proctoring_requirements_url)s"
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#, python-format
+msgid ""
+"Before taking a graded proctored exam, you must have approved ID "
+"verification photos. You can submit ID verification photos here: "
+"%(id_verification_url)s"
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/body.txt
+#, python-format
+msgid ""
+"This email was automatically sent from %(platform_name)s to %(full_name)s."
+msgstr ""
+
+#: common/templates/student/edx_ace/proctoringrequirements/email/subject.txt
+#, python-format
+msgid "Proctoring requirements for %(course_name)s"
+msgstr ""
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -4783,27 +4931,13 @@ msgstr ""
 #: lms/djangoapps/branding/api.py
 #, python-brace-format
 msgid ""
-"© {org_name}.  All rights reserved except where noted.  edX, Open edX and "
-"their respective logos are registered trademarks of edX Inc."
+"\\u00A9 {org_name}.  All rights reserved except where noted.  edX, Open edX "
+"and their respective logos are registered trademarks of edX Inc."
 msgstr ""
-
-#. Translators: 'Open edX' is a brand, please keep this untranslated. See
-#. http://openedx.org for more information.
-#: cms/templates/widgets/footer.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
-msgid "Powered by Open edX"
-msgstr "โดย Open edX"
 
 #: lms/templates/static_templates/blog.html
 msgid "Blog"
 msgstr "บล็อก "
-
-#: lms/djangoapps/branding/api.py cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
-msgid "Contact Us"
-msgstr ""
 
 #: lms/djangoapps/branding/api.py
 msgid "Help Center"
@@ -4818,9 +4952,7 @@ msgid "Donate"
 msgstr "บริจาค"
 
 #: lms/templates/footer.html lms/templates/static_templates/about.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "About"
 msgstr "เกี่ยวกับ"
 
@@ -4830,33 +4962,16 @@ msgid "{platform_name} for Business"
 msgstr ""
 
 #: lms/templates/static_templates/contact.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "ติดต่อ"
 
-#: lms/djangoapps/branding/api.py
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
-msgid "Careers"
-msgstr ""
-
-#: themes/red-theme/lms/templates/footer.html
-msgid "News"
-msgstr "ข่าวสาร"
-
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
 msgid "Terms of Service & Honor Code"
 msgstr ""
 
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
 
@@ -4865,9 +4980,6 @@ msgid "Accessibility Policy"
 msgstr ""
 
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "เงื่อนไขการให้บริการ"
 
@@ -4943,6 +5055,7 @@ msgstr ""
 #. messages as {action}.
 #: lms/djangoapps/certificates/models.py
 #: lms/djangoapps/instructor_task/tasks.py
+#: openedx/features/wikimedia_features/admin_dashboard/tasks.py
 msgid "generated"
 msgstr ""
 
@@ -5152,11 +5265,16 @@ msgid ""
 "awarded for course activities that {platform_name} students complete."
 msgstr ""
 
+#. Translators: This text fragment appears after the signatures (displayed in
+#. a small font) on the certificate
+#: lms/djangoapps/certificates/views/webview.py
+msgid "Certificate Info"
+msgstr ""
+
 #. Translators:  'All rights reserved' is a legal term used in copyrighting to
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr ""
 
@@ -5693,12 +5811,11 @@ msgstr ""
 msgid "Upgrade ({upgrade_price})"
 msgstr ""
 
-#: lms/djangoapps/courseware/date_summary.py
 #: cms/templates/group_configurations.html
 #: lms/templates/courseware/program_marketing.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 msgid "Learn More"
-msgstr ""
+msgstr "เรียนรู้เพิ่มเติม"
 
 #: lms/djangoapps/courseware/date_summary.py
 msgid "Retry Verification"
@@ -5911,7 +6028,6 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "เข้าสู่ระบบ"
 
@@ -6045,6 +6161,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
 msgstr ""
 
@@ -6110,6 +6228,7 @@ msgid "Your Platform Insights"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
 #, python-brace-format
 msgid ""
 "The {report_type} report is being created. To view the status of the report,"
@@ -6211,6 +6330,7 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "problem responses"
 msgstr ""
 
@@ -6236,6 +6356,7 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "enrolled learner profile"
 msgstr ""
 
@@ -6266,17 +6387,12 @@ msgid "Birth Year"
 msgstr ""
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "เพศ"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Level of Education"
 msgstr ""
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Mailing Address"
-msgstr "ที่อยู่อีเมล"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Goals"
@@ -6312,17 +6428,16 @@ msgid "Team"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "เมือง"
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "ประเทศ"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "enrollment"
 msgstr ""
 
@@ -6336,11 +6451,13 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "survey"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "proctored exam results"
 msgstr ""
 
@@ -6484,6 +6601,7 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "ORA data"
 msgstr ""
 
@@ -6497,11 +6615,14 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "grade"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "problem grade"
 msgstr ""
 
@@ -6672,11 +6793,6 @@ msgstr ""
 msgid "Special Exams"
 msgstr ""
 
-#: cms/templates/certificates.html cms/templates/export.html
-#: cms/templates/widgets/header.html
-msgid "Certificates"
-msgstr "ใบรับรอง"
-
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
 msgid "Please Enter the numeric value for the course price"
 msgstr ""
@@ -6805,18 +6921,22 @@ msgid "Due date extensions for {0} {1} ({2})"
 msgstr ""
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "Requested task is already running"
 msgstr ""
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "Error occured. Please try again later."
 msgstr ""
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 msgid "detailed enrollment"
 msgstr ""
 
 #: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
 #, python-brace-format
 msgid ""
 "The {report_type} report is being created. To view the status of the report,"
@@ -6841,6 +6961,7 @@ msgid "Not all problems in entrance exam support re-scoring."
 msgstr ""
 
 #: lms/djangoapps/instructor_task/models.py
+#: openedx/features/wikimedia_features/admin_dashboard/models.py
 msgid "An error has occurred. Task was not created."
 msgstr ""
 
@@ -6884,6 +7005,7 @@ msgstr ""
 #. Translators: This is a past-tense verb that is inserted into task progress
 #. messages as {action}.
 #: lms/djangoapps/instructor_task/tasks.py
+#: openedx/features/wikimedia_features/admin_dashboard/tasks.py
 msgid "graded"
 msgstr ""
 
@@ -7081,19 +7203,17 @@ msgstr ""
 msgid " (out of {total})"
 msgstr ""
 
-#: lms/djangoapps/learner_dashboard/programs.py
 #: lms/templates/header/navbar-authenticated.html
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
-msgstr ""
+msgstr "โปรแกรม"
 
-#: lms/djangoapps/learner_dashboard/programs.py
 #: lms/templates/learner_dashboard/program_details.html
 msgid "Program Details"
-msgstr ""
+msgstr "รายละเอียดโปรแกรม"
 
 #: lms/djangoapps/lms_xblock/mixin.py
 msgid ""
@@ -7190,10 +7310,9 @@ msgstr "การลงทะเบียน"
 msgid "View and update learner enrollments."
 msgstr ""
 
-#: lms/djangoapps/support/views/index.py
 #: lms/templates/support/manage_user.html
 msgid "Manage User"
-msgstr ""
+msgstr "จัดการผู้ใช้งาน"
 
 #: lms/djangoapps/support/views/index.py
 msgid "Disable User Account"
@@ -7839,6 +7958,8 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
+#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "ข้ามไปที่เนื้อหาหลัก"
 
@@ -8025,7 +8146,6 @@ msgstr "ลบบทความ"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 msgid "Delete"
 msgstr "ลบ"
 
@@ -8064,6 +8184,7 @@ msgstr "คุณกำลังลบบทความ กรุณายื�
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Edit"
 msgstr "แก้ไข"
 
@@ -8086,8 +8207,6 @@ msgstr "ตัวอย่างวิกิ"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "เปิดหน้าต่าง"
 
@@ -8334,8 +8453,8 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search"
 msgstr "ค้นหา"
 
@@ -8415,54 +8534,56 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign In"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -8471,6 +8592,7 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -8535,11 +8657,8 @@ msgid ""
 "Comma-separated list of usernames which will be able to view this catalog."
 msgstr ""
 
-#: cms/templates/index.html
-msgid "Denied"
-msgstr "ปฏิเสธ"
-
 #: openedx/core/djangoapps/api_admin/models.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Approved"
 msgstr ""
 
@@ -8567,13 +8686,11 @@ msgstr ""
 msgid "'%s' is not a valid scope."
 msgstr ""
 
-#: openedx/core/djangoapps/bookmarks/apps.py
-#: openedx/features/course_bookmarks/plugins.py
-#: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
-msgstr ""
+msgstr "บุ๊คมาร์ค"
 
 #: openedx/core/djangoapps/bookmarks/views.py
 msgid "An error has occurred. Please try again."
@@ -8699,11 +8816,6 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-msgid "Course Run"
-msgstr "เปิดการทำงานหลักสูตร"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -9537,7 +9649,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -9851,6 +9962,7 @@ msgid "Success"
 msgstr "สำเร็จ"
 
 #: lms/templates/staff_problem_info.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Actions"
 msgstr "การกระทำ"
 
@@ -10023,8 +10135,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
-#: themes/stanford-style/lms/templates/register-form.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Register"
 msgstr "ลงทะเบียน"
 
@@ -10225,8 +10336,6 @@ msgid "This name will be used on any certificates that you earn."
 msgstr ""
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "ชื่อบัญชีที่แสดง"
 
@@ -10320,6 +10429,7 @@ msgstr ""
 #: cms/templates/course_outline.html cms/templates/index.html
 #: openedx/features/course_experience/templates/course_experience/latest-update-fragment.html
 #: openedx/features/course_experience/templates/course_experience/welcome-message-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Dismiss"
 msgstr ""
 
@@ -10579,12 +10689,12 @@ msgstr ""
 msgid "Deadlines successfully reset."
 msgstr ""
 
-#: openedx/features/course_experience/plugins.py
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
-msgstr ""
+msgstr "อัปเดต"
 
 #: openedx/features/course_experience/views/course_home_messages.py
 #, python-brace-format
@@ -11120,8 +11230,8 @@ msgid "{platform_name} Support Levels:"
 msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
-msgid "HTML"
-msgstr "HTML"
+msgid "Open Response"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
@@ -11150,6 +11260,21 @@ msgid ""
 msgstr ""
 "ตัวอักษรพิเศษไม่ได้รับอนุญาตให้ใช้ในการระบุชื่อสถาบัน "
 "รหัสหลักสูตรและหลักสูตรที่เปิด"
+
+#: cms/djangoapps/contentstore/views/course.py
+msgid "Course Language is required field for Translated rerun."
+msgstr ""
+
+#: cms/djangoapps/contentstore/views/course.py
+msgid ""
+"Translated rerun for Source Course in selected language already exists."
+msgstr ""
+
+#: cms/djangoapps/contentstore/views/course.py
+msgid ""
+"Translated rerun can not be created for the base course with no language. "
+"Please set base course language from settings."
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
@@ -11677,19 +11802,26 @@ msgstr "ไม่พบหน้าที่ต้องการเปิด"
 msgid "Page not found"
 msgstr "ไม่พบหน้าที่ต้องการเปิด"
 
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Files & Uploads"
+msgstr ""
+
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
-msgstr ""
+msgstr "เนื้อหา"
 
 #: cms/templates/certificates.html cms/templates/group_configurations.html
 #: cms/templates/manage_users.html cms/templates/manage_users_lib.html
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Settings"
 msgstr "การตั้งค่าต่างๆ "
 
@@ -11703,6 +11835,23 @@ msgstr "การตั้งค่าต่างๆ "
 msgid "Loading"
 msgstr "กำลังโหลด"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr ""
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr ""
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
 msgid "Course Name"
@@ -11710,8 +11859,18 @@ msgstr "ชื่อหลักสูตร"
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "หมายเลขหลักสูตร"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
 
 #: cms/templates/course_outline.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
@@ -11729,17 +11888,68 @@ msgid "Error:"
 msgstr "ผิดพลาด:"
 
 #: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The name of the organization sponsoring the course. {strong_start}Note: The "
+"organization name is part of the course URL.{strong_end} This cannot be "
+"changed, but you can set a different display name in Advanced Settings "
+"later."
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The unique number that identifies your course within your organization. "
+"{strong_start}Note: This is part of your course URL, so no spaces or special"
+" characters are allowed and it cannot be changed.{strong_end}"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The term in which your course will run. {strong_start}Note: This is part of "
+"your course URL, so no spaces or special characters are allowed and it "
+"cannot be changed.{strong_end}"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The unique code that identifies this library. {strong_start}Note: This is "
+"part of your library URL, so no spaces or special characters are "
+"allowed.{strong_end} This cannot be changed."
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "For example, MITx"
+msgstr ""
+
+#: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "องค์กร:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "หมายเลขหลักสูตร:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr ""
 
@@ -11753,29 +11963,61 @@ msgstr ""
 msgid "Courses"
 msgstr "หลักสูตร"
 
-#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "example: username@domain.com"
-msgstr "ตัวอย่าง: username@domain.com"
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Archived Courses"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Thanks for signing up, {name}!"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Almost there! In order to complete your sign up we need you to verify your "
+"email address ({email}). An activation message and next steps should be "
+"waiting for you there."
+msgstr ""
+
+#: cms/templates/settings.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
-msgstr ""
+msgstr "อาจารย์ผู้สอน"
 
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 msgid "Requirements"
 msgstr "ความต้องการ"
 
 #: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "รายละเอียด"
 
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "View"
 msgstr "ดู"
 
@@ -11792,27 +12034,30 @@ msgid "Reset"
 msgstr "รีเซ็ท"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "ถูกกฏหมาย"
 
-#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
-#. not translate any of these trademarks and company names.
-#: cms/templates/widgets/footer.html
-#: themes/red-theme/lms/templates/footer.html
-msgid ""
-"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-"{link_start}edX Inc.{link_end}"
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Publisher"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Language preference"
 msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
-msgstr ""
+msgstr "เลือกภาษา"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "บัญชี"
 
@@ -11821,69 +12066,21 @@ msgstr "บัญชี"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "ช่วยเหลือ"
-
-#: cms/templates/widgets/sock.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Looking for help with {studio_name}?"
-msgstr ""
-
-#: cms/templates/widgets/sock.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Hide {studio_name} Help"
-msgstr ""
-
-#: cms/templates/widgets/sock.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "{studio_name} Documentation"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Access documentation on http://docs.edx.org"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "edX Documentation"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Enroll in edX101"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Enroll in StudioX"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "Send an email to {email}"
-msgstr ""
 
 #: cms/templates/widgets/tabs-aggregator.html
 #: lms/templates/courseware/static_tab.html
 #: lms/templates/courseware/tab-view.html
 msgid "name"
-msgstr ""
+msgstr "ชื่อ"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "ออกจากระบบ"
 
@@ -11893,15 +12090,15 @@ msgstr ""
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Feedback Form"
-msgstr ""
+msgstr "แบบฟอร์มรับข้อเสนอแนะ"
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Email: {email}"
-msgstr ""
+msgstr "อีเมล: {email}"
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Full Name: {realname}"
-msgstr ""
+msgstr "ชื่อและนามสกุล: {realname}"
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Inquiry Type: {inquiry_type}"
@@ -11909,7 +12106,7 @@ msgstr ""
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Message: {message}"
-msgstr ""
+msgstr "ข้อความ: {message}"
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Tags: {tags}"
@@ -11917,7 +12114,7 @@ msgstr ""
 
 #: common/templates/emails/contact_us_feedback_email_body.txt
 msgid "Additional Info:"
-msgstr ""
+msgstr "ข้อมูลเพิ่มเติม:"
 
 #: common/templates/emails/contact_us_feedback_email_subject.txt
 msgid "Feedback from user"
@@ -12028,14 +12225,17 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "เรียนรู้เพิ่มเติม"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "เริ่ม"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr ""
 
@@ -12045,19 +12245,19 @@ msgstr "ดูหลักสูตรทั้งหมด"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard"
 msgstr "แดชบอร์ด"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr ""
 
@@ -12065,7 +12265,7 @@ msgstr ""
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Explore courses"
 msgstr ""
 
@@ -12074,16 +12274,16 @@ msgstr ""
 msgid "Activate your account!"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "หลักสูตรทำการโหลดผิดพลาด"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "ค้นหาหลักสูตรของคุณ"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "ล้างการค้นหา"
 
@@ -12091,9 +12291,9 @@ msgstr "ล้างการค้นหา"
 msgid "Skip to list of announcements"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Account Status Info"
-msgstr "ข้อมูลสถานะของบัญชี"
+msgstr ""
 
 #: lms/templates/dashboard.html
 msgid "Activate your account so you can log back in"
@@ -12114,11 +12314,11 @@ msgstr ""
 msgid "Email Settings for {course_number}"
 msgstr "ตั้งค่าอีเมลสำหรับ {course_number}"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "รับอีเมลหลักสูตร"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "บันทึกการตั้งค่า"
 
@@ -12127,8 +12327,6 @@ msgstr "บันทึกการตั้งค่า"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "ยกเลิกการลงทะเบียน"
 
@@ -12237,7 +12435,7 @@ msgstr ""
 #: lms/templates/courseware/course_about.html lms/templates/enroll_staff.html
 msgctxt "self"
 msgid "Enroll"
-msgstr ""
+msgstr "ลงทะเบียน"
 
 #: lms/templates/enroll_staff.html
 msgid "Don't enroll"
@@ -12276,8 +12474,13 @@ msgid "External Authentication failed"
 msgstr "การตรวจสอบภายนอกล้มเหลว"
 
 #: lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
-msgstr ""
+msgstr "ตราสัญลักษณ์ขององค์กร"
+
+#: lms/templates/forgot_password_modal.html
+msgid "Password Reset"
+msgstr "เปลี่ยนรหัสผ่าน"
 
 #: lms/templates/forgot_password_modal.html
 msgid "Password Reset"
@@ -12296,8 +12499,6 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "ข้อมูลที่จำเป็น"
 
@@ -12340,7 +12541,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search for a course"
 msgstr "ค้นหาหลักสูตร"
 
@@ -12548,7 +12749,7 @@ msgstr "คำใบ้"
 
 #: lms/templates/problem.html
 msgid "Save your answer"
-msgstr ""
+msgstr "บันทึกคำตอบ"
 
 #: lms/templates/problem.html
 msgid "Reset your answer"
@@ -12556,7 +12757,7 @@ msgstr ""
 
 #: lms/templates/problem.html
 msgid "Show answer"
-msgstr ""
+msgstr "แสดงคำตอบ"
 
 #: lms/templates/problem.html
 msgid "You have used {num_used} of {num_total} attempt"
@@ -12595,8 +12796,6 @@ msgstr ""
 "ที่เก็บไว้และข้อมูลที่ใช้งานนั้นควบคุมโดยเงื่อนไขการให้บริการและนโยบายความเป็นส่วนตัว"
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "อีเมล"
 
@@ -12619,7 +12818,7 @@ msgstr ""
 
 #: lms/templates/secondary_email_change_failed.html
 msgid "Secondary e-mail change failed"
-msgstr ""
+msgstr "การเปลี่ยนอีเมลสำรองล้มเหลว"
 
 #: lms/templates/secondary_email_change_failed.html
 msgid "We were unable to activate your secondary email {secondary_email}"
@@ -12637,19 +12836,19 @@ msgstr ""
 
 #: lms/templates/seq_module.html
 msgid "Important!"
-msgstr ""
+msgstr "สำคัญ!"
 
 #. Translators: A button for showing the Previous Unit
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Previous"
-msgstr ""
+msgstr "ก่อนหน้า"
 
 #. Translators: A button for showing the Next Unit
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Next"
-msgstr ""
+msgstr "ถัดไป"
 
 #: lms/templates/seq_module.html
 msgid "Sequence"
@@ -12659,7 +12858,7 @@ msgstr ""
 #: lms/templates/vert_module.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
 msgid "Completed"
-msgstr ""
+msgstr "เสร็จสิ้น"
 
 #: lms/templates/signup_modal.html
 msgid "Sign Up for {platform_name}"
@@ -12682,7 +12881,6 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr ""
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "ระบุชื่อที่ต้องการแสดง"
 
@@ -12699,19 +12897,14 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "เป้าหมายในการลงทะเบียนสำหรับ {platform_name}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "ฉันยอมรับ  {link_start} เงื่อนไขการให้บริการ {link_end}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "ฉันยอมรับ {link_start}เกียรติคุณ{link_end}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "สร้างบัญชีของฉัน"
 
@@ -12886,21 +13079,23 @@ msgstr ""
 "เพื่อรับการอีเมล์อีกครั้ง"
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "แดชบอร์ดสำหรับ:"
 
 #: lms/templates/user_dropdown.html
 msgid "Usermenu"
-msgstr ""
+msgstr "เมนูสำหรับผู้ใช้"
 
 #: lms/templates/user_dropdown.html
 msgid "More options"
-msgstr ""
+msgstr "ตัวเลือกเพิ่มเติม"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
-msgstr ""
+msgstr "ตัวเลือกเพิ่มเติม"
 
 #: lms/templates/using.html
 msgid "Using the system"
@@ -12974,11 +13169,11 @@ msgstr ""
 
 #: lms/templates/video.html
 msgid "Transcripts"
-msgstr ""
+msgstr "ใบรับรองผลการเรียน"
 
 #: lms/templates/video.html
 msgid "Download {file}"
-msgstr ""
+msgstr "ดาวน์โหลด {file}"
 
 #: lms/templates/video.html
 msgid "Download transcript"
@@ -12986,7 +13181,7 @@ msgstr "ดาวน์โหลดบันทึก"
 
 #: lms/templates/video.html
 msgid "Handouts"
-msgstr ""
+msgstr "เอกสารประกอบคำบรรยาย"
 
 #: lms/templates/video.html
 msgid "Download Handout"
@@ -13550,20 +13745,20 @@ msgstr ""
 
 #: lms/templates/api_admin/catalogs/edit.html
 msgid "Edit {catalog_name}"
-msgstr ""
+msgstr "แก้ไข {catalog_name}"
 
 #: lms/templates/api_admin/catalogs/edit.html
 #: lms/templates/api_admin/catalogs/list.html
 msgid "Download CSV"
-msgstr ""
+msgstr "ดาวน์โหลด CSV "
 
 #: lms/templates/api_admin/catalogs/edit.html
 msgid "Delete this catalog"
-msgstr ""
+msgstr "ลบแคตตาล็อกนี้"
 
 #: lms/templates/api_admin/catalogs/edit.html
 msgid "Update Catalog"
-msgstr ""
+msgstr "อัปเดตแคตตาล็อก"
 
 #: lms/templates/api_admin/catalogs/list.html
 msgid "Catalogs for {username}"
@@ -13571,23 +13766,23 @@ msgstr ""
 
 #: lms/templates/api_admin/catalogs/list.html
 msgid "Create new catalog:"
-msgstr ""
+msgstr "สร้างแคตตาล็อกใหม่"
 
 #: lms/templates/api_admin/catalogs/list.html
 msgid "Create Catalog"
-msgstr ""
+msgstr "สร้างแคตตาล็อก"
 
 #: lms/templates/api_admin/catalogs/search.html
 msgid "Catalog search"
-msgstr ""
+msgstr "ค้นหาแคตตาล็อก"
 
 #: lms/templates/api_admin/catalogs/search.html
 msgid "Catalog Search"
-msgstr ""
+msgstr "ค้นหาแคตตาล็อก"
 
 #: lms/templates/api_admin/catalogs/search.html
 msgid "Enter a username to view catalogs belonging to that user."
-msgstr ""
+msgstr "ระบุชื่อผู้ใช้ เพื่อดูแคตตาล็อกของผู้ใช้นั้น"
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 #: lms/templates/bulk_email/unsubscribe_success.html
@@ -13748,7 +13943,6 @@ msgstr "สิ่งที่เพิ่มเข้าไป"
 #: lms/templates/calculator/toggle_calculator.html
 msgid "Percent sign (%) and metric affixes (d, c, m, u, n, p, k, M, G, T)"
 msgstr ""
-"สัญลักษณ์แทนเปอร์เซ็นต์ (%) และหน่วยวัด (d, c, m, u, n, p, k, M, G, T)"
 
 #. Translators: This refers to basic mathematical functions such as "square
 #. root"
@@ -13788,7 +13982,7 @@ msgstr "คำนวณ"
 
 #: lms/templates/calculator/toggle_calculator.html
 msgid "Result"
-msgstr ""
+msgstr "ผลลัพธ์"
 
 #: lms/templates/ccx/coach_dashboard.html
 msgid "CCX Coach Dashboard"
@@ -13818,7 +14012,7 @@ msgstr "เกรดของผู้เรียน"
 
 #: lms/templates/ccx/coach_dashboard.html
 msgid "Please enter a valid CCX name."
-msgstr ""
+msgstr "กรุณาระบุชื่อ CCX ที่ถูกต้อง"
 
 #: lms/templates/ccx/enrollment.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
@@ -13878,7 +14072,7 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
 msgctxt "someone"
 msgid "Enroll"
-msgstr ""
+msgstr "ลงทะเบียน"
 
 #: lms/templates/ccx/enrollment.html
 msgid "Student List Management"
@@ -13932,7 +14126,7 @@ msgstr "รูปแบบเวลา ชั่วโมงสองหลั�
 
 #: lms/templates/ccx/schedule.html
 msgid "Time"
-msgstr ""
+msgstr "เวลา"
 
 #: lms/templates/ccx/schedule.html
 msgid "Set date"
@@ -13962,7 +14156,7 @@ msgstr "รูปแบบวันที่ ปีสี่หลัก.เด�
 
 #: lms/templates/ccx/schedule.html
 msgid "yyyy-mm-dd"
-msgstr ""
+msgstr "yyyy-mm-dd"
 
 #. Translators: This explains to people using a screen reader how to interpret
 #. the format of HH:MM
@@ -13972,7 +14166,7 @@ msgstr "รูปแบบเวลาเริ่มต้น ชั่วโ�
 
 #: lms/templates/ccx/schedule.html
 msgid "time"
-msgstr ""
+msgstr "เวลา"
 
 #: lms/templates/ccx/schedule.html
 msgid "(Optional)"
@@ -14005,7 +14199,6 @@ msgid "Download student grades"
 msgstr "ดาวน์โหลดเกรดของผู้เรียน"
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "ปริ้นท์หรือแบ่งปันประกาศนียบัตร"
 
@@ -14019,7 +14212,6 @@ msgstr "โพสต์บน Facebook"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "แชร์บน Twitter"
 
@@ -14028,7 +14220,6 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "ทวีตความสำเร็จนี้ เปิดหน้าต่างใหม่"
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "เพิ่มไปยังประวัติของ LinkedIn"
 
@@ -14045,16 +14236,24 @@ msgid "{platform_name} Home"
 msgstr "{platform_name} หน้าหลัก"
 
 #: lms/templates/certificates/_accomplishment-rendering.html
+msgid "has successfully completed"
+msgstr ""
+
+#: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Noted by"
 msgstr "ถูกบันทึกโดย"
 
 #: lms/templates/certificates/_accomplishment-rendering.html
-msgid "Supported by the following organizations"
-msgstr "สนับสนุนโดยองค์กรดังต่อไปนี้"
+msgid "Certificate of"
+msgstr ""
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Achievement"
+msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
-msgstr ""
+msgstr "มอบให้แก่:"
 
 #: lms/templates/certificates/_edx-accomplishment-print-help.html
 msgid ""
@@ -14125,40 +14324,31 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "ติดตามตรวจสอบใบรับรองแล้ว"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "ขออภัย เกิดข้อผิดพลาดขึ้นขณะกำลังลงทะเบียน"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "ติดตามหน่วยกิตที่ได้รับการรับรอง"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -14167,12 +14357,10 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -14181,33 +14369,28 @@ msgstr ""
 "ได้รับหน่วยกิตทางวิชาการหลังจากจบหลักสูตรนี้สำเร็จ"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "ประโยชน์ของใบรับรอง"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -14216,14 +14399,12 @@ msgstr ""
 "ได้รับการรับรองจากอาจารย์ผู้สอนที่เซ็นสัญญากับสัญลักษณ์ของสถาบัน"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -14233,7 +14414,6 @@ msgstr ""
 "ใช้ข้อมูลประจำตัวที่มีคุณค่าเพื่อความก้าวหน้าในงานของคุณและก้าวหน้าในอาชีพของคุณหรือเน้นใบรับรองของคุณในการสมัครโรงเรียน"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -14242,14 +14422,12 @@ msgstr ""
 "ได้รับการรับรองจากอาจารย์ผู้สอนที่เซ็นสัญญากับโลโก้ของสถาบัน"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
@@ -14258,24 +14436,20 @@ msgstr ""
 "{b_end}ให้ตัวเองเป็นแรงจูงใจเพิ่มเติมในการสำเร็จหลักสูตร"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "ตรวจสอบหลักสูตรนี้"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -14283,7 +14457,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -14291,7 +14464,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -14299,7 +14471,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -14396,6 +14567,7 @@ msgstr ""
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "กำหนดส่ง {date}"
 
@@ -14418,7 +14590,6 @@ msgstr "คุณได้ลงทะเบียนเข้าเรียน
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "ดูหลักสูตร"
 
@@ -14436,7 +14607,7 @@ msgstr "ปิดการลงทะเบียนแล้ว"
 
 #: lms/templates/courseware/course_about.html
 msgid "Enroll Now"
-msgstr ""
+msgstr "ลงทะเบียนเดี๋ยวนี้"
 
 #: lms/templates/courseware/course_about.html
 msgid "View About Page in studio"
@@ -14474,16 +14645,15 @@ msgstr "ข้อมูลเพิ่มเติม"
 #: lms/templates/courseware/course_about.html
 msgctxt "self"
 msgid "enroll"
-msgstr ""
+msgstr "ลงทะเบียน"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "แบ่งปันให้เพื่อนและครอบครัว"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
 msgid "I just enrolled in {number} {title} through {account}: {url}"
-msgstr "ฉันเพิ่งลงทะเบียนสำหรับ {number} {title}  ผ่าน {account}: {url}"
+msgstr ""
 
 #: lms/templates/courseware/course_about_sidebar_header.html
 msgid "I just enrolled in {number} {title} through {platform} {url}"
@@ -14494,7 +14664,6 @@ msgid "Take a course with {platform} online"
 msgstr "เรียนหลักสูตรด้วย  {platform} ออนไลน์"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "ทวีตว่าคุณได้ทำการลงทะเบียนหลักสูตรนี้แล้ว"
 
@@ -14503,22 +14672,25 @@ msgid "Post a Facebook message to say you've enrolled in this course"
 msgstr "โพสต์ข้อความบนเฟซบุคเพื่อบอกว่าคุณลงทะเบียนหลักสูตรนี้แล้ว"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr "ส่งอีเมล์ไปบอกใครสักคนว่าคุณได้ลงทะเบียนเรียบร้อยแล้ว"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
-msgstr ""
+msgstr "ที่อยู่ปัจจุบัน"
 
 #. Translators: 'needs attention' is an alternative string for the
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "โปรดอ่าน"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "เนื้อหาหลักสูตร"
 
@@ -14528,7 +14700,7 @@ msgstr "ซ่อน"
 
 #: lms/templates/courseware/course_updates.html
 msgid "Show"
-msgstr ""
+msgstr "แสดง"
 
 #: lms/templates/courseware/course_updates.html
 msgid "Show Earlier Course Updates"
@@ -14545,11 +14717,13 @@ msgstr "ปรับปรุงการค้นหาของคุณ"
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "บทเรียน {course_number}"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "หลักสูตร"
 
@@ -14565,14 +14739,17 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "ค้นหาหลักสูตร"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "ไม่มีเนื้อหาที่เพิ่มเข้ามาในหลักสูตรนี้"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -14580,6 +14757,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "คะแนนของคุณคือ {current_score}% คุณสอบผ่านการสอบเข้า"
 
@@ -14630,15 +14808,15 @@ msgstr ""
 
 #: lms/templates/courseware/gradebook.html
 msgid "next page"
-msgstr ""
+msgstr "หน้าถัดไป"
 
 #: lms/templates/courseware/info.html
 msgid "{course_number} Course Info"
-msgstr "{course_number} รายละเอียดหลักสูตร"
+msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid "You are not enrolled yet"
-msgstr "คุณยังไม่ได้ลงทะเบียน"
+msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid ""
@@ -14657,13 +14835,12 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
-msgstr ""
+msgstr "เรียนต่อจากเดิม"
 
 #: lms/templates/courseware/info.html
 msgid "View Updates in Studio"
-msgstr "ดูอัพเดทในสตูดิโอ"
+msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid "Course Updates and News"
@@ -14671,7 +14848,7 @@ msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid "Handout Navigation"
-msgstr "การนำทางเอกสาร"
+msgstr ""
 
 #: lms/templates/courseware/info.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
@@ -14692,7 +14869,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Original Price"
-msgstr ""
+msgstr "ราคาเดิม"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "${oldPrice}"
@@ -14700,7 +14877,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Discounted Price"
-msgstr ""
+msgstr "ลดราคา"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "${newPrice}"
@@ -14716,7 +14893,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Play"
-msgstr ""
+msgstr "เล่น"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "YouTube Video"
@@ -14728,11 +14905,11 @@ msgstr "ดูหลักสูตร"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Meet the Instructors"
-msgstr ""
+msgstr "พบอาจารย์ผู้สอน"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "คำถามที่พบบ่อย"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Job Outlook"
@@ -14744,11 +14921,11 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "What You'll Learn"
-msgstr ""
+msgstr "สิ่งที่คุณจะได้เรียนรู้"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Average Length"
-msgstr ""
+msgstr "ความยาวโดยเฉลี่ย"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "{weeks_to_complete} weeks per course"
@@ -14766,7 +14943,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Number of Courses"
-msgstr ""
+msgstr "จำนวนคอร์ส"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "{number_of_courses} courses in program"
@@ -14774,7 +14951,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Price (USD)"
-msgstr ""
+msgstr "ราคา (USD)"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "${newPrice}{htmlEnd} for entire program"
@@ -14794,13 +14971,15 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Starts on {}"
-msgstr ""
+msgstr "เริ่มเมื่อ {}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number} ความคืบหน้า"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "ดูเกรดในสตูดิโอ"
 
@@ -14809,11 +14988,18 @@ msgid "Course Progress for '{username}' ({email})"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "แสดงใบรับรอง"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
+msgstr "เปิดในหน้าต่างใหม่"
+
+#: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
+msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
@@ -14826,97 +15012,120 @@ msgid "Request Certificate"
 msgstr "การร้องขอใบรับรอง"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "ข้อกำหนดสำหรับหน่วยกิตของหลักสูตร"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr "{student_name}, คุณจะไม่มีสิทธิ์ได้รับหน่วยกิตในหลักสูตรนี้อีกต่อไป"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr "{student_name}, คุณยังไม่ผ่านข้อกำหนดสำหรับหน่วยกิต"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "ข้อมูลเกี่ยวกับข้อกำหนดหน่วยกิตของหลักสูตร"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "ชื่อที่แสดง"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "ส่งการตรวจสอบแล้ว"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "การตรวจสอบล้มเหลว"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "ปฏิเสธการตรวจสอบ"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "กำลังจะเกิดขึ้น"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "น้อยลง"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{earned} ของ{total} คะแนนที่เป็นไปได้"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "คะแนนปัญหา:"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "คะแนนแบบฝึกหัด :"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "ไม่มีคะแนนปัญหาในส่วนนี้"
 
@@ -15068,7 +15277,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "This link will open/download a PDF document"
-msgstr "ลิงค์นี้จะเปิด/ดาวน์โหลด เป็น เอกสาร PDF"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "Download my {cert_name_short}"
@@ -15078,7 +15287,7 @@ msgstr ""
 msgid ""
 "This link will open/download a PDF document of your verified "
 "{cert_name_long}."
-msgstr "ลิงค์นี้จะเปิด/ดาวน์โหลด เอกสาร PDF {cert_name_long} ที่ตรวจสอบแล้ว"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "Complete our course feedback survey"
@@ -15098,9 +15307,6 @@ msgid ""
 "{cert_name_long} was generated, we could not grant you a verified "
 "{cert_name_short}. An honor code {cert_name_short} has been granted instead."
 msgstr ""
-"เนื่องจากเราไม่ได้รับการตั้งค่าที่ถูกต้องของการตรวจสอบรูปภาพของคุณ "
-"เมื่อ{cert_name_long} ของคุณถูกสร้างขึ้นมา เราไม่สามารถให้คุณตรวจสอบ "
-"{cert_name_short} และ เกียรติคุณ  {cert_name_short} จะถูกแทนที่"
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "You are not eligible for a certificate."
@@ -15116,7 +15322,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Course details"
-msgstr ""
+msgstr "รายละเอียดคอร์ส"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "{course_number} {course_name} Home Page"
@@ -15136,19 +15342,19 @@ msgstr "เร็วๆ นี้"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Ended - {date}"
-msgstr ""
+msgstr "สิ้นสุด - {date}"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Started - {date}"
-msgstr ""
+msgstr "เริ่มเมื่อ - {date}"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Starts - {date}"
-msgstr ""
+msgstr "เริ่ม - {date}"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "for {course_display_name}"
-msgstr ""
+msgstr "สำหรับ {course_display_name}"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You must select a session by {expiration_date} to access the course."
@@ -15173,23 +15379,24 @@ msgstr ""
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "I'm taking {course_name} online with {facebook_brand}. Check it out!"
 msgstr ""
+"ฉันกำลังเรียน {course_name} ออนไลน์ กับ  {facebook_brand} ดูเพิ่มเติม!"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Share {course_name} on Facebook"
-msgstr ""
+msgstr "แชร์ {course_name} ไปยัง Facebook"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "แบ่งปันบน Facebook"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "I'm taking {course_name} online with {twitter_brand}. Check it out!"
 msgstr ""
+"ฉันกำลังเรียนวิชา {course_name} ออนไลน์ กับ {twitter_brand} ดูเพิ่มเติม!"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Share {course_name} on Twitter"
-msgstr ""
+msgstr "แชร์ {course_name} ไปยัง Twitter"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Course options for"
@@ -15217,7 +15424,7 @@ msgstr "ดูหลักสูตรที่เก็บไว้"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Related Programs"
-msgstr ""
+msgstr "โปรแกรมที่เกี่ยวข้อง"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "To earn a certificate, you must verify your ID"
@@ -15226,19 +15433,19 @@ msgstr ""
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You only have {days} day left to verify for this course."
 msgid_plural "You only have {days} days left to verify for this course."
-msgstr[0] "คุณมีเวลาเพียง {days} วันเพื่อที่จะตรวจสอบหลักสูตรนี้"
+msgstr[0] ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Almost there!"
-msgstr "เกือบจะถึง"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You still need to verify for this course."
-msgstr "คุณต้องทำการตรวจสอบหลักสูตรอีกครั้ง"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Verify Now"
-msgstr "ทำการตรวจสอบเดี๋ยวนี้:"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You have submitted your verification information."
@@ -15331,7 +15538,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_credit_info.html
 msgid "View Details"
-msgstr ""
+msgstr "ดูรายละเอียด"
 
 #. Translators: link_to_provider_site is a link to an external webpage. The
 #. text of the link will be the name of a credit provider, such as 'State
@@ -15368,7 +15575,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_show_consent.html
 msgid "Consent to share your data"
-msgstr ""
+msgstr "ยินยอมให้แชร์ข้อมูลของคุณ"
 
 #: lms/templates/dashboard/_dashboard_show_consent.html
 msgid ""
@@ -15399,7 +15606,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_status_verification.html
 msgid "Resubmit Verification"
-msgstr "ส่งใบตรวจสอบข้อมูลอีกครั้ง"
+msgstr ""
 
 #: lms/templates/dashboard/_dashboard_status_verification.html
 msgid "Current ID Verification Status: Pending"
@@ -15471,19 +15678,19 @@ msgstr ""
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 msgid "Price is too high for me"
-msgstr ""
+msgstr "ราคาสูงเกินไปสำหรับฉัน"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 msgid "I was not satisfied with my experience taking the courses"
-msgstr ""
+msgstr "ฉันไม่พอใจกับประสบการณ์ที่ได้รับจากการเรียน"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 msgid "Content of the courses was too difficult"
-msgstr ""
+msgstr "เนื้อหาของคอร์สยากเกินไป"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 msgid "I did not have enough time to complete the courses"
-msgstr ""
+msgstr "ฉันมีเวลาไม่พอที่จะเรียนให้จบคอร์ส"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 msgid "The content was not available when I wanted to start"
@@ -15496,31 +15703,31 @@ msgstr ""
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 #: lms/templates/dashboard/_reason_survey.html
 msgid "Thank you for sharing your reasons for unenrolling."
-msgstr ""
+msgstr "ขอบคุณที่แบ่งปันเหตุผลที่ยกเลิกลงทะเบียนเรียนของคุณ"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 #: lms/templates/dashboard/_reason_survey.html
 msgid "You are unenrolled from"
-msgstr ""
+msgstr "คุณได้ยกเลิกการลงทะเบียนเรียนจาก"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 #: lms/templates/dashboard/_reason_survey.html
 msgid "Return To Dashboard"
-msgstr ""
+msgstr "กลับไปที่แดชบอร์ด"
 
 #: lms/templates/dashboard/_entitlement_reason_survey.html
 #: lms/templates/dashboard/_reason_survey.html
 msgid "Browse Courses"
-msgstr ""
+msgstr "เรียกดูรายวิชา"
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid ""
 "We're sorry to see you go! Please share your main reason for unenrolling."
-msgstr ""
+msgstr "ขออภัยในความไม่สะดวก! โปรดระบุเหตุผลที่คุณยกเลิกการลงทะเบียน"
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "I just wanted to browse the material"
-msgstr ""
+msgstr "ฉันแค่ต้องการดูเอกสารประกอบการเรียน"
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "This won't help me reach my goals"
@@ -15528,7 +15735,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "I don't have the time"
-msgstr ""
+msgstr "ฉันไม่มีเวลา"
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "I don't have the academic or language prerequisites"
@@ -15536,11 +15743,11 @@ msgstr ""
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "I don't have enough support"
-msgstr ""
+msgstr "ฉันไม่ได้รับการสนับสนุนที่เพียงพอ"
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "I am not happy with the quality of the content"
-msgstr ""
+msgstr "ฉันไม่พอใจในคุณภาพของเนื้อหา"
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "The course material was too hard"
@@ -15556,7 +15763,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "Other"
-msgstr ""
+msgstr "อื่นๆ"
 
 #: lms/templates/debug/run_python_form.html
 msgid "Results:"
@@ -15564,7 +15771,7 @@ msgstr "ผลลัพธ์:"
 
 #: lms/templates/discussion/_discussion_inline.html
 msgid "Topic:"
-msgstr ""
+msgstr "หัวข้อ:"
 
 #: lms/templates/discussion/_discussion_inline.html
 msgid "Show Discussion"
@@ -15607,12 +15814,12 @@ msgstr "กรอง:"
 #. Translators: This is a menu option for showing all forum threads unfiltered
 #: lms/templates/discussion/_thread_list_template.html
 msgid "Show all posts"
-msgstr ""
+msgstr "แสดงโพสต์ทั้งหมด"
 
 #. Translators: This is a menu option for showing only unread forum threads
 #: lms/templates/discussion/_thread_list_template.html
 msgid "Unread posts"
-msgstr ""
+msgstr "โพสต์ที่ยังไม่อ่าน"
 
 #. Translators: This is a menu option for showing only unanswered forum
 #. question threads
@@ -15889,7 +16096,7 @@ msgstr ""
 
 #: lms/templates/emails/failed_verification_email.txt
 msgid "The photo of you:"
-msgstr ""
+msgstr "ภาพของคุณ:"
 
 #: lms/templates/emails/failed_verification_email.txt
 msgid "The photo of your ID:"
@@ -15897,7 +16104,7 @@ msgstr ""
 
 #: lms/templates/emails/failed_verification_email.txt
 msgid "Other Reasons:"
-msgstr ""
+msgstr "เหตุผลอื่นๆ:"
 
 #: lms/templates/emails/failed_verification_email.txt
 msgid "Resubmit Verification: {reverify_url}"
@@ -16022,9 +16229,6 @@ msgstr "ขอบคุณ"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
-#: themes/stanford-style/lms/templates/embargo/default_courseware.html
-#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
-#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "หลักสูตรนี้ไม่เปิดสอนในประเทศของคุณ"
 
@@ -16072,7 +16276,7 @@ msgstr ""
 #. Translators: This string will not be used in Open edX installations.
 #: lms/templates/financial-assistance/financial-assistance.html
 msgid "Dear edX Learner,"
-msgstr ""
+msgstr "สวัสดีผู้เรียน edX,"
 
 #. Translators: This string will not be used in Open edX installations.
 #: lms/templates/financial-assistance/financial-assistance.html
@@ -16123,11 +16327,11 @@ msgstr ""
 
 #: lms/templates/financial-assistance/financial-assistance.html
 msgid "Back to Student FAQs"
-msgstr ""
+msgstr "กลับสู่คำถามที่ถามบ่อยของนักเรียน"
 
 #: lms/templates/financial-assistance/financial-assistance.html
 msgid "Apply for Financial Assistance"
-msgstr ""
+msgstr "สมัครเพื่อขอความช่วยเหลือทางการเงิน"
 
 #: lms/templates/header/brand.html
 #: lms/templates/header/navbar-logo-header.html
@@ -16137,8 +16341,9 @@ msgid "{platform_name} Home Page"
 msgstr ""
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
-msgstr ""
+msgstr "เมนูทางเลือก"
 
 #: lms/templates/header/header.html lms/templates/navigation/navigation.html
 msgid ""
@@ -16147,7 +16352,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/header/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr ""
 
@@ -16156,29 +16360,34 @@ msgid "{name} Dashboard"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
-msgstr ""
+msgstr "ลิงก์เสริม"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "How it Works"
 msgstr "วิธีการทำงาน"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "โรงเรียน"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
-msgstr ""
+msgstr "โปรไฟล์"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "ประวัติที่ผ่านมา"
 
@@ -16381,7 +16590,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 msgid "Master's"
-msgstr ""
+msgstr "ปริญญาโท"
 
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 msgid "Basic Course Information"
@@ -16401,7 +16610,7 @@ msgstr "วันสิ้นสุดการเรียน:"
 
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 msgid "No end date set"
-msgstr ""
+msgstr "ไม่มีการกำหนดวันที่สิ้นสุด"
 
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 msgid "Has the course started?"
@@ -16453,6 +16662,8 @@ msgid ""
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 msgid "Reports"
 msgstr "รายงาน"
 
@@ -16613,6 +16824,7 @@ msgstr "รายงานพร้อมให้ดาวน์โหลด"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "The reports listed below are available for download, identified by UTC date "
 "and time of generation."
@@ -16630,6 +16842,7 @@ msgstr ""
 "โดยรายงานจะถูกสร้างขึ้นหลายครั้งต่อวัน"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
 "secure, you cannot save or email these links for direct access. Copies of "
@@ -16767,7 +16980,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/extensions.html
 msgid "Reason for reset"
-msgstr ""
+msgstr "เหตุผลในการตั้งค่าใหม่"
 
 #: lms/templates/instructor/instructor_dashboard_2/extensions.html
 msgid "Reset due date for student"
@@ -16947,10 +17160,6 @@ msgid ""
 "name, and country. Please include one student per row and do not include any"
 " headers, footers, or blank lines."
 msgstr ""
-"เพื่อที่จะลงทะเบียนและสมัครหลักสูตรนี้, เลือกไฟล์ CSVที่มีรูปแบบดังนี้: "
-"อีเมล์, ชื่อผู้ใช้, ชื่อ, และประเทศ "
-"กรุณาใส่ชื่อนักเรียนเพียงแค่ชื่อเดียวในแต่ละแถวและไม่ต้องใส่หัวเรื่อง "
-"หรือเว้นว่างไว้"
 
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
 msgid "Upload a CSV for bulk enrollment"
@@ -17179,7 +17388,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/send_email.html
 msgid "All Learners"
-msgstr ""
+msgstr "ผู้เรียนทั้งหมด"
 
 #: lms/templates/instructor/instructor_dashboard_2/send_email.html
 msgid "Cohort: "
@@ -17353,7 +17562,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Example"
-msgstr ""
+msgstr "ตัวอย่าง"
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Problem location"
@@ -17591,7 +17800,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "หลักสูตรของฉัน"
 
@@ -17876,12 +18084,10 @@ msgid ""
 msgstr ""
 
 #: lms/templates/static_templates/faq.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "FAQ"
 
 #: lms/templates/static_templates/jobs.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "ตำแหน่งงาน"
 
@@ -17964,7 +18170,7 @@ msgstr ""
 
 #: lms/templates/support/feature_based_enrollments.html
 msgid "No results found"
-msgstr ""
+msgstr "ไม่พบผลลัพธ์"
 
 #: lms/templates/support/manage_user.html
 msgid "Student Support: Manage User"
@@ -18132,11 +18338,11 @@ msgstr ""
 
 #: lms/templates/widgets/cookie-consent.html
 msgid "Got it!"
-msgstr ""
+msgstr "เข้าใจแล้ว!"
 
 #: lms/templates/widgets/cookie-consent.html
 msgid "Learn more"
-msgstr ""
+msgstr "เรียนรู้เพิ่มเติม"
 
 #: lms/templates/wiki/includes/article_menu.html
 msgid "{span_start}(active){span_end}"
@@ -18164,11 +18370,11 @@ msgstr ""
 
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 msgid "Language Code"
-msgstr ""
+msgstr "รหัสภาษา"
 
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 msgid "e.g. en for English"
-msgstr ""
+msgstr "ตัวอย่างเช่น en สำหรับ English"
 
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
 msgid "Preview Theme"
@@ -18250,7 +18456,7 @@ msgstr ""
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Why upgrade?"
-msgstr ""
+msgstr "ทำไมต้องอัปเกรด?"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Official proof of completion"
@@ -18375,7 +18581,6 @@ msgid "You haven't earned any certificates yet."
 msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr ""
 
@@ -18385,7 +18590,7 @@ msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "My Profile"
-msgstr ""
+msgstr "โปรไฟล์ของฉัน"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid ""
@@ -18394,38 +18599,113 @@ msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
+msgstr "เกิดข้อผิดพลาด กรุณารีเฟรซหน้านี้ใหม่อีกครั้ง"
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Report Name"
 msgstr ""
 
-#: themes/edx.org/cms/templates/widgets/sock.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "List profile information for enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Grade report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Anonymized student ID's"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Problem Grade report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Progress report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course Version Report (Detailed - Per Course)"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course Version Report (Aggregate)"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Average grade report for multiple courses"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Different grading schemes can affect the comparison."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Average Grade Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Reports Available for Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger.html
+msgid "Messenger - {platform_name}"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Base Course ID"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "The Base Course ID"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Basic re-run"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a copy of a course, It should be considered as a new course"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Translated Course re-run"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a copy of a course for translation into a new language"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 msgid ""
-"Access Course Staff Support on the Partner Portal to submit or review "
-"support tickets"
+"Identify the course language here. You can request for translation after "
+"creating a course"
 msgstr ""
 
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "edX Partner Portal"
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Translations"
 msgstr ""
 
-#: themes/edx.org/lms/templates/dashboard.html
-msgid ""
-"Browse recently launched courses and see what's new in your favorite "
-"subjects."
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
+msgid "Course Grade for '{username}' ({email})"
 msgstr ""
 
-#: themes/edx.org/lms/templates/dashboard.html
-msgid "Take advantage of free coaching!"
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
+msgid "Edly Privacy Policy"
 msgstr ""
 
-#: themes/edx.org/lms/templates/dashboard.html
-msgid "Get Started"
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+msgid "Catalog"
 msgstr ""
 
-#: themes/edx.org/lms/templates/footer.html
-msgid "Page Footer"
-msgstr "ส่วนท้ายของหน้า"
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "edX Home Page"
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+msgid "Sysadmin"
 msgstr ""
 
 #: themes/edx.org/lms/templates/footer.html
@@ -18821,10 +19101,6 @@ msgstr ""
 msgid "Studio Accessibility Policy"
 msgstr ""
 
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
-
 #: cms/templates/certificates.html
 msgid "Course Certificates"
 msgstr "เอกสารรับรองหลักสูตรการเรียน"
@@ -18903,70 +19179,13 @@ msgstr "เรียนรู้เพิ่มเติมเกี่ยวก
 msgid "Details & Schedule"
 msgstr ""
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Grading"
-msgstr "การให้คะแนน"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/manage_users.html cms/templates/settings.html
-#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
-#: cms/templates/widgets/header.html
-msgid "Course Team"
-msgstr "ทีมพัฒนาหลักสูตร"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Advanced Settings"
-msgstr "การตั้งค่าขั้นสูง"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr ""
-
-#: cms/templates/checklists.html cms/templates/widgets/header.html
-msgid "Checklists"
-msgstr ""
-
-#: cms/templates/checklists.html cms/templates/export.html
-#: cms/templates/export_git.html cms/templates/import.html
-#: cms/templates/widgets/header.html
-msgid "Tools"
-msgstr "เครื่องมือ"
-
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Duplicate"
-msgstr "ทำซ้ำ"
-
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "ทำซ้ำส่วนประกอบนี้"
 
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Move"
-msgstr ""
-
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "ลบส่วนประกอบนี้"
-
-#: cms/templates/component.html cms/templates/edit-tabs.html
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Drag to reorder"
-msgstr "ลากเพื่อจัดลำดับใหม่"
-
-#: cms/templates/container.html cms/templates/course-create-rerun.html
-#: cms/templates/course_info.html cms/templates/course_outline.html
-#: cms/templates/edit-tabs.html cms/templates/index.html
-#: cms/templates/library.html cms/templates/manage_users.html
-#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
-#: cms/templates/videos_index.html
-msgid "Page Actions"
-msgstr "หน้าที่ทำการ"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -19048,152 +19267,6 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a Course Rerun of:"
-msgstr "สร้างหลักสูตรซ้ำ:"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a re-run of a course"
-msgstr "สร้างการทำงานซ้ำของหลักสูตร"
-
-#: cms/templates/course-create-rerun.html
-msgid "You are creating a re-run from:"
-msgstr "คุณกำลังสร้างหลักสูตรซ้ำจาก:"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Provide identifying information for this re-run of the course. The original "
-"course is not affected in any way by a re-run."
-msgstr ""
-"ให้ข้อมูลเพิ่มเติมเกี่ยวกับการทำงานซ้ำของหลักสูตร "
-"หลักสูตรซ้ำนี้จะไม่ส่งผลกระทบใดๆ ต่อหลักสูตรดั้งเดิม"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Note: Together, the organization, course number, and course run must "
-"uniquely identify this new course instance."
-msgstr ""
-"หมายเหตุ: ทั้งโครงสร้าง หมายเลขหลักสูตร และ หลักสูตรใช้งาน "
-"ต้องยืนยันหลักสูตรใหม่ทันที"
-
-#: cms/templates/course-create-rerun.html
-msgid "Required Information to Create a re-run of a course"
-msgstr "ข้อมูลที่จำเป็นต้องใช้ในการสร้างการสอนซ้ำของหลักสูตร"
-
-#. Translators: This is an example name for a new course, seen when
-#. filling out the form to create a new course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. Introduction to Computer Science"
-msgstr "ตัวอย่างเช่น วิทยาการคอมพิวเตอร์เบื้องต้น"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The public display name for the new course. (This name is often the same as "
-"the original course name.)"
-msgstr ""
-"ชื่อหลักสูตรใหม่ที่ต้องการแสดง (ส่วนใหญ่แล้ว "
-"ชื่อนี้จะเป็นชื่อเดียวกับชื่อรายวิชาเดิม)"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-msgid "Organization"
-msgstr "หน่วยงาน"
-
-#. Translators: This is an example for the name of the organization sponsoring
-#. a course, seen when filling out the form to create a new course. The
-#. organization name cannot contain spaces.
-#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
-#. when user put no data into this field.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. UniversityX or OrganizationX"
-msgstr "ยกตัวอย่างเช่น  มหาวิทยาลัยX หรือ องค์กรX"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The name of the organization sponsoring the new course. (This name is often "
-"the same as the original organization name.)"
-msgstr ""
-"ชื่อของหน่วยงานที่สนับสนุนการจัดทำหลักสูตรใหม่ (ส่วนใหญ่แล้ว "
-"จะเป็นชื่อเดียวกับชื่อหน่วยงานเดิม)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Note: No spaces or special characters are allowed."
-msgstr "หมายเหตุ: ไม่อนุญาตให้มีช่องว่างหรืออักขระพิเศษ"
-
-#. Translators: This is an example for the number used to identify a course,
-#. seen when filling out the form to create a new course. The number here is
-#. short for "Computer Science 101". It can contain letters but cannot contain
-#. spaces.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. CS101"
-msgstr "ตัวอย่างเช่น CS101"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The unique number that identifies the new course within the organization.  "
-"(This number will be the same as the original course number and cannot be "
-"changed.)"
-msgstr ""
-
-#. Translators: This is an example for the "run" used to identify different
-#. instances of a course, seen when filling out the form to create a new
-#. course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. 2014_T1"
-msgstr "ตัวอย่างเช่น 2014_T1"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The term in which the new course will run. (This value is often different "
-"than the original course run value.)"
-msgstr ""
-"ภาคการศึกษาที่หลักสูตรใหม่จะทำงาน (ส่วนใหญ่แล้ว "
-"ค่านี้มักจะแตกต่างกันกว่าค่าของหลักสูตรเดิม)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create Re-run"
-msgstr "สร้างการทำงานซ้ำ"
-
-#: cms/templates/course-create-rerun.html
-msgid "When will my course re-run start?"
-msgstr "หลักสูตรของฉันจะเริ่มต้นการสอนซ้ำเมื่อใด?"
-
-#: cms/templates/course-create-rerun.html
-msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-msgstr ""
-"หลักสูตรใหม่ถูกตั้งค่าให้เริ่มต้นในวันที่ 1 มกราคม 2030 เวลาเที่ยงคืน (UTC)"
-
-#: cms/templates/course-create-rerun.html
-msgid "What transfers from the original course?"
-msgstr "มีส่วนใดที่ถูกโอนย้ายมาจากหลักสูตรเดิม?"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The new course has the same course outline and content as the original "
-"course. All problems, videos, announcements, and other files are duplicated "
-"to the new course."
-msgstr ""
-"หลักสูตรใหม่มีโครงร่างและเนื้อหาเดียวกับหลักสูตรเดิม ปัญหา วิดีโอ ประกาศ "
-"และไฟล์อื่นๆ ทั้งหมดจะถูกทำสำเนาไปยังรายวิชาใหม่"
-
-#: cms/templates/course-create-rerun.html
-msgid "What does not transfer from the original course?"
-msgstr "มีส่วนใดที่ไม่ถูกโอนย้ายมาจากหลักสูตรเดิม?"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"You are the only member of the new course's staff. No students are enrolled "
-"in the course, and there is no student data. There is no content in the "
-"discussion topics or wiki."
-msgstr ""
-"คุณเป็นเพียงสมาชิกของกลุ่มเจ้าหน้าที่ของหลักสูตรใหม่ "
-"ยังไม่มีนักศึกษาลงทะเบียนในหลักสูตรนี้ และยังไม่มีข้อมูลใดๆ ของนักศึกษา "
-"ไม่มีเนื้อหาในหัวข้อกระทู้หรือวิกิ"
-
-#: cms/templates/course-create-rerun.html
-msgid "Learn more about Course Re-runs"
-msgstr "เรียนรู้เพิ่มเติมเกี่ยวกับการสอนซ้ำของหลักสูตร"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -19392,13 +19465,6 @@ msgstr ""
 msgid "Learn more about content visibility settings"
 msgstr ""
 
-#. Translators: Pages refer to the tabs that appear in the top navigation of
-#. each course.
-#: cms/templates/edit-tabs.html cms/templates/export.html
-#: cms/templates/widgets/header.html
-msgid "Pages"
-msgstr "หน้า"
-
 #: cms/templates/edit-tabs.html
 msgid "New Page"
 msgstr "เพิ่มหน้าใหม่"
@@ -19415,15 +19481,15 @@ msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "Show this page"
-msgstr "แสดงหน้านี้"
+msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "Show/hide page"
-msgstr "แสดง/ซ่อน หน้า"
+msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "This page cannot be reordered"
-msgstr "ไม่สามารถจัดลำดับหน้านี้ใหม่ได้"
+msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "You can add additional custom pages to your course."
@@ -19435,7 +19501,7 @@ msgstr "เพิ่มหน้าใหม่"
 
 #: cms/templates/edit-tabs.html
 msgid "What are pages?"
-msgstr "หน้าเพจคืออะไร"
+msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -19450,21 +19516,16 @@ msgid ""
 "course content. For example, you can create pages for the grading policy, "
 "course slides, and a course calendar. "
 msgstr ""
-"คุณสามารถสร้างหรือแก้ไขหน้าเพจที่ปรับแต่งเองเพื่อนำเสนอเนื้อหาหลักสูตรเพิ่มเติมให้แก่นักเรียนได้"
-" ตัวอย่างเช่น คุณสามารถสร้างหน้าเพจเกี่ยวกับนโยบายการให้คะแนน "
-"เอกสารนำเสนอของรายวิชา หรือปฏิทินของรายวิชาได้"
 
 #: cms/templates/edit-tabs.html
 msgid "How do pages look to students in my course?"
-msgstr "ผู้เรียนเห็นเพจในหลักสูตรของฉันเป็นอย่างไร?"
+msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Students see the default and custom pages at the top of your course and use "
 "these links to navigate."
 msgstr ""
-"นักเรียนจะดูหน้าเพจตามค่าเริ่มต้นและหน้าเพจที่ปรับแต่งเองซึ่งปรากฏที่บริเวณส่วนบนสุดของรายวิชา"
-" และใช้ลิงค์เหล่านั้นเพื่อนำทางไปยังส่วนต่างๆ"
 
 #: cms/templates/edit-tabs.html
 msgid "See an example"
@@ -19472,7 +19533,7 @@ msgstr "ดูตัวอย่าง"
 
 #: cms/templates/edit-tabs.html
 msgid "Pages in Your Course"
-msgstr "หน้าเพจในหลักสูตรของคุณ"
+msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "Preview of Pages in your course"
@@ -19791,10 +19852,6 @@ msgstr "เรียนรู้เพิ่มเติมเกี่ยวก
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "ส่งออกหลักสูตรไปยัง Git"
-
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr "ส่งออกไปยัง Git"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -20404,381 +20461,6 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "เรียนรู้เพิ่มเติมเกี่ยวกับการนำเข้าหลักสูตร"
 
-#: cms/templates/index.html cms/templates/widgets/user_dropdown.html
-msgid "{studio_name} Home"
-msgstr "หน้าแรก {studio_name}"
-
-#: cms/templates/index.html
-msgid "New Course"
-msgstr "หลักสูตรใหม่"
-
-#: cms/templates/index.html
-msgid "Email staff to create course"
-msgstr "ส่งอีเมล์ไปหาเจ้าหน้าที่เพื่อสร้างหลักสูตร"
-
-#: cms/templates/index.html
-msgid "New Library"
-msgstr "ห้องสมุดใหม่"
-
-#: cms/templates/index.html
-msgid "Please correct the highlighted fields below."
-msgstr "กรุณาแก้ไขช่องที่ไฮไลท์ไว้"
-
-#: cms/templates/index.html
-msgid "Create a New Course"
-msgstr "สร้างหลักสูตรใหม่"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Course"
-msgstr "ข้อมูลที่จำเป็นในการสร้างหลักสูตรใหม่"
-
-#: cms/templates/index.html
-msgid ""
-"The public display name for your course. This cannot be changed, but you can"
-" set a different display name in Advanced Settings later."
-msgstr ""
-"ชื่อที่แสดงต่อสาธาธารณะสำหรับหลักสูตรคุณ จะไม่สามารถเปลี่ยนแปลงได้แล้ว "
-"แต่คุณสามารถตั้งค่าใช้ชื่อแสดงอื่นได้ภายหลังที่ตั้งค่าขั้นสูง"
-
-#: cms/templates/index.html
-msgid ""
-"The name of the organization sponsoring the course. {strong_start}Note: The "
-"organization name is part of the course URL.{strong_end} This cannot be "
-"changed, but you can set a different display name in Advanced Settings "
-"later."
-msgstr ""
-
-#: cms/templates/index.html
-msgid ""
-"The unique number that identifies your course within your organization. "
-"{strong_start}Note: This is part of your course URL, so no spaces or special"
-" characters are allowed and it cannot be changed.{strong_end}"
-msgstr ""
-
-#: cms/templates/index.html
-msgid ""
-"The term in which your course will run. {strong_start}Note: This is part of "
-"your course URL, so no spaces or special characters are allowed and it "
-"cannot be changed.{strong_end}"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Create"
-msgstr "สร้าง"
-
-#: cms/templates/index.html
-msgid "Create a New Library"
-msgstr "สร้างห้องสมุดใหม่"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Library"
-msgstr "ข้อมูลที่จำเป็นในการสร้างห้องสมุดใหม่"
-
-#: cms/templates/index.html
-msgid "Library Name"
-msgstr "ชื่อห้องสมุด"
-
-#. Translators: This is an example name for a new content library, seen when
-#. filling out the form to create a new library.
-#. (A library is a collection of content or problems.)
-#: cms/templates/index.html
-msgid "e.g. Computer Science Problems"
-msgstr "เช่น ปัญหาวิชาวิทยาศาสตร์คอมพิวเตอร์"
-
-#: cms/templates/index.html
-msgid "The public display name for your library."
-msgstr "ชื่อแสดงต่อสาธารณะของห้องสมุดของคุณ"
-
-#: cms/templates/index.html
-msgid "The public organization name for your library."
-msgstr "ชื่อองค์กรสารธารณะของห้องสมุดของคุณ"
-
-#: cms/templates/index.html
-msgid "This cannot be changed."
-msgstr "ไม่สามารถเปลี่ยนแปลงได้"
-
-#: cms/templates/index.html
-msgid "Library Code"
-msgstr "โค้ดห้องสมุด"
-
-#. Translators: This is an example for the "code" used to identify a library,
-#. seen when filling out the form to create a new library. This example is
-#. short
-#. for "Computer Science Problems". The example number may contain letters
-#. but must not contain spaces.
-#: cms/templates/index.html
-msgid "e.g. CSPROB"
-msgstr "เช่น CSPROB"
-
-#: cms/templates/index.html
-msgid ""
-"The unique code that identifies this library. {strong_start}Note: This is "
-"part of your library URL, so no spaces or special characters are "
-"allowed.{strong_end} This cannot be changed."
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Organization and Library Settings"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Show all courses in organization:"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "For example, MITx"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Courses Being Processed"
-msgstr "หลักสูตรการกำลังถูกประมวลผล"
-
-#: cms/templates/index.html
-msgid "This course run is currently being created."
-msgstr "หลักสูตรนี้ทำงานอยู่ในขณะนี้ถูกสร้างขึ้น"
-
-#. Translators: This is a status message, used to inform the user of
-#. what the system is doing. This status means that the user has
-#. requested to re-run an existing course, and the system is currently
-#. in the process of duplicating and configuring the existing course
-#. so that it can be re-run.
-#: cms/templates/index.html
-msgid "Configuring as re-run"
-msgstr "การกำหนดค่าเป็นทำงานอีกครั้ง"
-
-#: cms/templates/index.html
-msgid ""
-"The new course will be added to your course list in 5-10 minutes. Return to "
-"this page or {link_start}refresh it{link_end} to update the course list. The"
-" new course will need some manual configuration."
-msgstr ""
-"หลักสูตรจะถูกเพิ่มในรายการหลักสูตรคุณใน5-10นาที "
-"กลับไปที่เพจหรือ{link_start}รีเฟรช{link_end}เพื่ออัพเดทรายการหลักสูตรใหม่ "
-"หลักสูตรต้องการกำหนดค่าด้วยตนเอง"
-
-#. Translators: This is a status message for the course re-runs feature.
-#. When a course admin indicates that a course should be re-run, the system
-#. needs to process the request and prepare the new course. The status of
-#. the process will follow this text.
-#: cms/templates/index.html
-msgid "This re-run processing status:"
-msgstr "สถานะการกระบวนการการสอนซ้ำนี้"
-
-#: cms/templates/index.html
-msgid "Configuration Error"
-msgstr "การกำหนดค่าล้มเหลว"
-
-#: cms/templates/index.html
-msgid ""
-"A system error occurred while your course was being processed. Please go to "
-"the original course to try the re-run again, or contact your PM for "
-"assistance."
-msgstr ""
-"ระบบผิดพลาดขณะหลักสูตรอยู่ในกระบวนการ "
-"กรุณากลับไปที่หลักสูตรแรกเริ่มเพื่มทำใหม่อีกครั้งหรือติดต่อโดยข้อความส่วนตัวเพื่อขอความช่วยเหลือ"
-
-#: cms/templates/index.html
-msgid "Archived Courses"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Libraries"
-msgstr "ห้องสมุด"
-
-#: cms/templates/index.html
-msgid "Are you staff on an existing {studio_name} course?"
-msgstr "คุณเป็นเจ้าหน้าที่ในหลักสูตร{studio_name} ?"
-
-#: cms/templates/index.html
-msgid ""
-"The course creator must give you access to the course. Contact the course "
-"creator or administrator for the course you are helping to author."
-msgstr ""
-"ผู้สร้างหลักสูตรจะนำคุณเข้าสู่หลักสูตร "
-"ติดต่อผู้สร้างหลักสูตรหรือผู้ดูแลระบบสำหรับหลักสูตรที่คุณกำลังช่วยเขียน"
-
-#: cms/templates/index.html
-msgid "Create Your First Course"
-msgstr "สร้างหลักสูตรแรก"
-
-#: cms/templates/index.html
-msgid "Your new course is just a click away!"
-msgstr "สร้างหลักสูตรใหม่ของคุณเพียงไม่กี่คลิก!"
-
-#: cms/templates/index.html
-msgid "Becoming a Course Creator in {studio_name}"
-msgstr "เป็นผู้เขียนหลักสูตรใน{studio_name}"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team will evaluate your request and provide you feedback within 24 hours "
-"during the work week."
-msgstr ""
-"{studio_name}เป็นเจ้าภาพแก้ปัญหาให้กับคู่ค้าของเรา "
-"xConsortiumและผู้เข้าร่วมที่ถูกเลือก "
-"หลักสูตรที่คุณเป็นสมาชิกในทีมปรากฏด้านบนสำหรับการแก้ไข "
-"ในขณะที่สิทธิพิเศษของผู้เขียนหลักสูตรได้รับจาก{platform_name} "
-"ทีมงานของเราจะประเมินตามคำขอของคุณและจะตอบกลับคุณภายใน 24 "
-"ชั่วโมงในช่วงสัปดาห์การทำงาน"
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status:"
-msgstr "สถานะคำร้องของผู้เขียนหลักสูตร:"
-
-#: cms/templates/index.html
-msgid "Request the Ability to Create Courses"
-msgstr "การร้องขอความสามารถในการสร้างหลักสูตร"
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status"
-msgstr "สถานะคำร้องของผู้เขียนหลักสูตร"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is has completed evaluating your request."
-msgstr ""
-"{studio_name}เป็นเจ้าภาพแก้ปัญหาให้กับคู่ค้าของเรา "
-"xConsortiumและผู้เข้าร่วมที่ถูกเลือก "
-"หลักสูตรที่คุณเป็นสมาชิกในทีมปรากฏด้านบนสำหรับการแก้ไข "
-"ในขณะที่สิทธิพิเศษของผู้เขียนหลักสูตรได้รับจาก{platform_name}  "
-"ในขณะนี้ทีมงานของเราเสร็จสิ้นการพิจารณาคำร้องคุณ"
-
-#: cms/templates/index.html
-msgid "Your Course Creator request is:"
-msgstr "คำร้องของผู้เขียนหลักสูตรคือ:"
-
-#: cms/templates/index.html
-msgid ""
-"Your request did not meet the criteria/guidelines specified by "
-"{platform_name} Staff."
-msgstr "คำขอร้องคุณไม่ผ่านเกณฑ์/ข้อแนะนำกำหนดโดยเจ้าหน้าที่ {platform_name}"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is currently  evaluating your request."
-msgstr ""
-"{studio_name}เป็นเจ้าภาพแก้ปัญหาให้กับคู่ค้าของเรา "
-"xConsortiumและผู้เข้าร่วมที่ถูกเลือก "
-"หลักสูตรที่คุณเป็นสมาชิกในทีมปรากฏด้านบนสำหรับการแก้ไข "
-"ในขณะที่สิทธิพิเศษของผู้เขียนหลักสูตรได้รับจาก{platform_name}  "
-"ในขณะนี้ทีมงานของเรากำลังพิจารณาคำร้องคุณ"
-
-#: cms/templates/index.html
-msgid ""
-"Your request is currently being reviewed by {platform_name} staff and should"
-" be updated shortly."
-msgstr ""
-"คำร้องของคุณกำลังได้รับการพิจารณาจากเจ้าหน้าที่{platform_name}และจะอัพเดทในไม่ช้า"
-
-#: cms/templates/index.html
-msgid "Were you expecting to see a particular library here?"
-msgstr "คุณคาดหวังที่จะชมห้องสมุดโดยเฉพาะที่นี่หรือไม่?"
-
-#: cms/templates/index.html
-msgid ""
-"The library creator must give you access to the library. Contact the library"
-" creator or administrator for the library you are helping to author."
-msgstr ""
-"ผู้สร้างห้องสมุดจะนำคุณเข้าสู่ห้องสมุด "
-"ติดต่อผู้สร้างห้องสมุดหรือผู้ดูแลระบบสำหรับห้องสมุดที่คุณกำลังช่วยเขียน"
-
-#: cms/templates/index.html
-msgid "Create Your First Library"
-msgstr "สร้างห้องสมุดแรก"
-
-#: cms/templates/index.html
-msgid ""
-"Libraries hold a pool of components that can be re-used across multiple "
-"courses. Create your first library with the click of a button!"
-msgstr ""
-"ห้องสมุดมีส่วนประกอบที่สามารถนำกลับมาใช้ใหม่กับหลายหลักสูตร "
-"สร้างห้องสมุดครั้งแรกของคุณคลิก!"
-
-#: cms/templates/index.html
-msgid "New to {studio_name}?"
-msgstr "ใหม่สำหรับ {studio_name}?"
-
-#: cms/templates/index.html
-msgid ""
-"Click Help in the upper-right corner to get more information about the "
-"{studio_name} page you are viewing. You can also use the links at the bottom"
-" of the page to access our continually updated documentation and other "
-"{studio_name} resources."
-msgstr ""
-"คลิกปุ่มช่วยเหลือที่มุมขวาบนเพื่อรับข้อมูลเพิ่มเติมเกี่ยวกับหน้า "
-"{studio_name} ที่คุณกำลังชม "
-"คุณยังสามารถใช้ลิงค์ที่ด้านล่างของหน้าในการเข้าถึงเอกสารและแหล่งข้อมูล "
-"{studio_name} อื่นๆของเราที่อัพเดตอย่างต่อเนื่อง"
-
-#: cms/templates/index.html
-msgid "Getting Started with {studio_name}"
-msgstr "เริ่มต้นกับ {studio_name}"
-
-#: cms/templates/index.html
-msgid "Can I create courses in {studio_name}?"
-msgstr "ฉันสามารถสร้างหลักสูตรใน{studio_name}ได้ไหม?"
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must {link_start}contact "
-"{platform_name} staff to help you create a course{link_end}."
-msgstr ""
-"เพื่อสร้างหลักสูตรใน{studio_name} "
-"คุณต้อง{link_start}ติดต่อเจ้าหน้าที่{platform_name}เพื่อช่วยเหลือคุณสร้างหลักสูตร{link_end}"
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must have course creator "
-"privileges to create your own course."
-msgstr ""
-"เพื่อสร้างหลักสูตรใน{studio_name} "
-"คุณต้องมีสิทธิพิเศษที่จะสร้างหลักสูตรของคุณเอง"
-
-#: cms/templates/index.html
-msgid ""
-"Your request to author courses in {studio_name} has been denied. Please "
-"{link_start}contact {platform_name} Staff with further questions{link_end}."
-msgstr ""
-"การร้องขอไปยังผู้เขียนหลักสูตรของคุณใน{studio_name}ถูกปฏิเสธ "
-"กรุณา{link_start}ติดต่อเจ้าหน้าที่{platform_name}ถ้ามีคำถามเพิ่มเติม{link_end}."
-
-#: cms/templates/index.html
-msgid "Thanks for signing up, {name}!"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "We need to verify your email address"
-msgstr "เราต้องการยืนยันที่อยู่อีเมล์ของคุณ"
-
-#: cms/templates/index.html
-msgid ""
-"Almost there! In order to complete your sign up we need you to verify your "
-"email address ({email}). An activation message and next steps should be "
-"waiting for you there."
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Need help?"
-msgstr "ต้องกาารความช่วยเหลือ?"
-
-#: cms/templates/index.html
-msgid ""
-"Please check your Junk or Spam folders in case our email isn't in your "
-"INBOX. Still can't find the verification email? Request help via the link "
-"below."
-msgstr ""
-"กรุณาตรวจแฟ้มอีเมล์ขยะหรือสแปมในกรณีที่ไม่มีอีเมล์ของเราในกล่องจดหมาย "
-"หากยังไมพบอีเมล์ยืนยัน ขอความช่วยเหลือผ่านทางลิงค์ด้านล่าง"
-
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "เนื้อหาห้องสมุด"
@@ -20919,10 +20601,6 @@ msgstr ""
 msgid "Library User Access"
 msgstr "เข้าถึงของผู้ใช้ห้องสมุด"
 
-#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
-msgid "User Access"
-msgstr "การเข้าถึงผู้ใช้"
-
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "สิทธิ์การเข้าถึงห้องสมุดนี้"
@@ -20984,10 +20662,6 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr ""
-
-#: cms/templates/settings.html cms/templates/widgets/header.html
-msgid "Schedule & Details"
-msgstr "ตารางเรียน & รายละเอียด"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -21239,6 +20913,18 @@ msgid "Upgrade Deadline Time"
 msgstr ""
 
 #: cms/templates/settings.html
+msgid "Course Direction Flag"
+msgstr ""
+
+#: cms/templates/settings.html
+msgid "Convert course to Source"
+msgstr ""
+
+#: cms/templates/settings.html
+msgid "Option is disabled as course is not a translated re-run."
+msgstr ""
+
+#: cms/templates/settings.html
 msgid "Course Details"
 msgstr "รายละเอียดหลักสูตร"
 
@@ -21248,9 +20934,8 @@ msgstr "ให้ข้อมูลที่เป็นประโยชน์
 
 #: cms/templates/settings.html
 msgid ""
-"Identify the course language here. This is used to assist users find courses"
-" that are taught in a specific language. It is also used to localize the "
-"'From:' field in bulk emails."
+"The option is disabled because the course is mapped as a base course or a "
+"translated course."
 msgstr ""
 
 #: cms/templates/settings.html
@@ -21753,10 +21438,6 @@ msgstr ""
 msgid "Learn more about textbooks"
 msgstr "เรียนรู้เพิ่มเติมเกี่ยวกับหนังสือเรียน"
 
-#: cms/templates/videos_index.html cms/templates/widgets/header.html
-msgid "Video Uploads"
-msgstr "อัพโหลดวิดีโอ"
-
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
 msgstr ""
@@ -22026,49 +21707,13 @@ msgstr ""
 msgid "LMS"
 msgstr ""
 
-#: cms/templates/widgets/header.html
-msgid "Current Course:"
-msgstr "หลักสูตรปัจจุบัน"
-
-#: cms/templates/widgets/header.html
-msgid "Course Navigation"
-msgstr "แนะนำหลักสูตร"
-
-#: cms/templates/widgets/header.html
-msgid "Outline"
-msgstr "เค้าโครงหลักสูตร"
-
-#: cms/templates/widgets/header.html
-msgid "Publisher"
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
 msgstr ""
-
-#: cms/templates/widgets/header.html
-msgid "Import"
-msgstr "นำเข้า"
-
-#: cms/templates/widgets/header.html
-msgid "Export"
-msgstr "ส่งออก"
-
-#: cms/templates/widgets/header.html
-msgid "Current Library:"
-msgstr "คลังห้องสมุดปัจจุบัน:"
-
-#: cms/templates/widgets/header.html
-msgid "Language preference"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-msgid "Account Navigation"
-msgstr "แนะนำบัญชี"
-
-#: cms/templates/widgets/header.html
-msgid "Contextual Online Help"
-msgstr "เนื้อหาความช่วยเหลือออนไลน์"
-
-#: cms/templates/widgets/header.html
-msgid "Sign Up"
-msgstr "ลงทะเบียน"
 
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
@@ -22122,6 +21767,26 @@ msgstr ""
 msgid "Label"
 msgstr "ป้าย"
 
+#: cms/templates/widgets/sock.html
+msgid "Looking for help with {studio_name}?"
+msgstr ""
+
+#: cms/templates/widgets/sock.html
+msgid "Hide {studio_name} Help"
+msgstr ""
+
+#: cms/templates/widgets/sock.html
+msgid "{studio_name} Documentation"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+msgid "Access documentation on http://docs.edx.org"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+msgid "edX Documentation"
+msgstr ""
+
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "เข้าถึงOpen edX Portal"
@@ -22129,6 +21794,26 @@ msgstr "เข้าถึงOpen edX Portal"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "Open edX Portal"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in edX101: Overview of Creating an edX Course"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in edX101"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in StudioX: Creating a Course with edX Studio"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in StudioX"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+msgid "Send an email to {email}"
+msgstr ""
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -23298,3 +22983,645 @@ msgstr ""
 #: edx_proctoring_proctortrack/backends/proctortrack_rest.py
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
+
+#~ msgid "Free"
+#~ msgstr "ฟรี"
+
+#~ msgid "Course Language"
+#~ msgstr "ภาษาหลักสูตร"
+
+#~ msgid "Library"
+#~ msgstr "ห้องสมุด"
+
+#~ msgid "Group Configurations"
+#~ msgstr "การกำหนดค่ากลุ่ม"
+
+#~ msgid ""
+#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
+#~ "investigate."
+#~ msgstr ""
+#~ "เราได้บันทึกด้วยอีเมล์เก่า หากคำขอนี้นั้นไม่ได้ตั้งใจ เราสามารถตรวจสอบให้ได้"
+
+#~ msgid "Powered by Open edX"
+#~ msgstr "โดย Open edX"
+
+#~ msgid "Contact Us"
+#~ msgstr "ติดต่อเรา"
+
+#~ msgid "Careers"
+#~ msgstr "อาชีพ"
+
+#~ msgid "News"
+#~ msgstr "ข่าวสาร"
+
+#~ msgid "Textbooks"
+#~ msgstr "ตำราเรียน"
+
+#~ msgid "Mailing Address"
+#~ msgstr "ที่อยู่อีเมล"
+
+#~ msgid "Certificates"
+#~ msgstr "ใบรับรอง"
+
+#~ msgid "Upgrade Now"
+#~ msgstr "อัพเกรดตอนนี้"
+
+#~ msgid "Denied"
+#~ msgstr "ปฏิเสธ"
+
+#~ msgid "Course Run"
+#~ msgstr "เปิดการทำงานหลักสูตร"
+
+#~ msgid "Grading"
+#~ msgstr "การให้คะแนน"
+
+#~ msgid "Course Team"
+#~ msgstr "ทีมพัฒนาหลักสูตร"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "การตั้งค่าขั้นสูง"
+
+#~ msgid "Tools"
+#~ msgstr "เครื่องมือ"
+
+#~ msgid "Duplicate"
+#~ msgstr "ทำซ้ำ"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "ลากเพื่อจัดลำดับใหม่"
+
+#~ msgid "Page Actions"
+#~ msgstr "หน้าที่ทำการ"
+
+#~ msgid "Create a Course Rerun of:"
+#~ msgstr "สร้างหลักสูตรซ้ำ:"
+
+#~ msgid "Create a re-run of a course"
+#~ msgstr "สร้างการทำงานซ้ำของหลักสูตร"
+
+#~ msgid "You are creating a re-run from:"
+#~ msgstr "คุณกำลังสร้างหลักสูตรซ้ำจาก:"
+
+#~ msgid ""
+#~ "Provide identifying information for this re-run of the course. The original "
+#~ "course is not affected in any way by a re-run."
+#~ msgstr ""
+#~ "ให้ข้อมูลเพิ่มเติมเกี่ยวกับการทำงานซ้ำของหลักสูตร "
+#~ "หลักสูตรซ้ำนี้จะไม่ส่งผลกระทบใดๆ ต่อหลักสูตรดั้งเดิม"
+
+#~ msgid ""
+#~ "Note: Together, the organization, course number, and course run must "
+#~ "uniquely identify this new course instance."
+#~ msgstr ""
+#~ "หมายเหตุ: ทั้งโครงสร้าง หมายเลขหลักสูตร และ หลักสูตรใช้งาน "
+#~ "ต้องยืนยันหลักสูตรใหม่ทันที"
+
+#~ msgid "Required Information to Create a re-run of a course"
+#~ msgstr "ข้อมูลที่จำเป็นต้องใช้ในการสร้างการสอนซ้ำของหลักสูตร"
+
+#~ msgid "e.g. Introduction to Computer Science"
+#~ msgstr "ตัวอย่างเช่น วิทยาการคอมพิวเตอร์เบื้องต้น"
+
+#~ msgid ""
+#~ "The public display name for the new course. (This name is often the same as "
+#~ "the original course name.)"
+#~ msgstr ""
+#~ "ชื่อหลักสูตรใหม่ที่ต้องการแสดง (ส่วนใหญ่แล้ว "
+#~ "ชื่อนี้จะเป็นชื่อเดียวกับชื่อรายวิชาเดิม)"
+
+#~ msgid "Organization"
+#~ msgstr "หน่วยงาน"
+
+#~ msgid "e.g. UniversityX or OrganizationX"
+#~ msgstr "ยกตัวอย่างเช่น  มหาวิทยาลัยX หรือ องค์กรX"
+
+#~ msgid ""
+#~ "The name of the organization sponsoring the new course. (This name is often "
+#~ "the same as the original organization name.)"
+#~ msgstr ""
+#~ "ชื่อของหน่วยงานที่สนับสนุนการจัดทำหลักสูตรใหม่ (ส่วนใหญ่แล้ว "
+#~ "จะเป็นชื่อเดียวกับชื่อหน่วยงานเดิม)"
+
+#~ msgid "Note: No spaces or special characters are allowed."
+#~ msgstr "หมายเหตุ: ไม่อนุญาตให้มีช่องว่างหรืออักขระพิเศษ"
+
+#~ msgid "e.g. CS101"
+#~ msgstr "ตัวอย่างเช่น CS101"
+
+#~ msgid "e.g. 2014_T1"
+#~ msgstr "ตัวอย่างเช่น 2014_T1"
+
+#~ msgid ""
+#~ "The term in which the new course will run. (This value is often different "
+#~ "than the original course run value.)"
+#~ msgstr ""
+#~ "ภาคการศึกษาที่หลักสูตรใหม่จะทำงาน (ส่วนใหญ่แล้ว "
+#~ "ค่านี้มักจะแตกต่างกันกว่าค่าของหลักสูตรเดิม)"
+
+#~ msgid "Create Re-run"
+#~ msgstr "สร้างการทำงานซ้ำ"
+
+#~ msgid "When will my course re-run start?"
+#~ msgstr "หลักสูตรของฉันจะเริ่มต้นการสอนซ้ำเมื่อใด?"
+
+#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+#~ msgstr ""
+#~ "หลักสูตรใหม่ถูกตั้งค่าให้เริ่มต้นในวันที่ 1 มกราคม 2030 เวลาเที่ยงคืน (UTC)"
+
+#~ msgid "What transfers from the original course?"
+#~ msgstr "มีส่วนใดที่ถูกโอนย้ายมาจากหลักสูตรเดิม?"
+
+#~ msgid ""
+#~ "The new course has the same course outline and content as the original "
+#~ "course. All problems, videos, announcements, and other files are duplicated "
+#~ "to the new course."
+#~ msgstr ""
+#~ "หลักสูตรใหม่มีโครงร่างและเนื้อหาเดียวกับหลักสูตรเดิม ปัญหา วิดีโอ ประกาศ "
+#~ "และไฟล์อื่นๆ ทั้งหมดจะถูกทำสำเนาไปยังรายวิชาใหม่"
+
+#~ msgid "What does not transfer from the original course?"
+#~ msgstr "มีส่วนใดที่ไม่ถูกโอนย้ายมาจากหลักสูตรเดิม?"
+
+#~ msgid ""
+#~ "You are the only member of the new course's staff. No students are enrolled "
+#~ "in the course, and there is no student data. There is no content in the "
+#~ "discussion topics or wiki."
+#~ msgstr ""
+#~ "คุณเป็นเพียงสมาชิกของกลุ่มเจ้าหน้าที่ของหลักสูตรใหม่ "
+#~ "ยังไม่มีนักศึกษาลงทะเบียนในหลักสูตรนี้ และยังไม่มีข้อมูลใดๆ ของนักศึกษา "
+#~ "ไม่มีเนื้อหาในหัวข้อกระทู้หรือวิกิ"
+
+#~ msgid "Learn more about Course Re-runs"
+#~ msgstr "เรียนรู้เพิ่มเติมเกี่ยวกับการสอนซ้ำของหลักสูตร"
+
+#~ msgid "Pages"
+#~ msgstr "หน้า"
+
+#~ msgid "Export to Git"
+#~ msgstr "ส่งออกไปยัง Git"
+
+#~ msgid "{studio_name} Home"
+#~ msgstr "หน้าแรก {studio_name}"
+
+#~ msgid "New Course"
+#~ msgstr "หลักสูตรใหม่"
+
+#~ msgid "Email staff to create course"
+#~ msgstr "ส่งอีเมล์ไปหาเจ้าหน้าที่เพื่อสร้างหลักสูตร"
+
+#~ msgid "New Library"
+#~ msgstr "ห้องสมุดใหม่"
+
+#~ msgid "Please correct the highlighted fields below."
+#~ msgstr "กรุณาแก้ไขช่องที่ไฮไลท์ไว้"
+
+#~ msgid "Create a New Course"
+#~ msgstr "สร้างหลักสูตรใหม่"
+
+#~ msgid "Required Information to Create a New Course"
+#~ msgstr "ข้อมูลที่จำเป็นในการสร้างหลักสูตรใหม่"
+
+#~ msgid ""
+#~ "The public display name for your course. This cannot be changed, but you can"
+#~ " set a different display name in Advanced Settings later."
+#~ msgstr ""
+#~ "ชื่อที่แสดงต่อสาธาธารณะสำหรับหลักสูตรคุณ จะไม่สามารถเปลี่ยนแปลงได้แล้ว "
+#~ "แต่คุณสามารถตั้งค่าใช้ชื่อแสดงอื่นได้ภายหลังที่ตั้งค่าขั้นสูง"
+
+#~ msgid "Create"
+#~ msgstr "สร้าง"
+
+#~ msgid "Create a New Library"
+#~ msgstr "สร้างห้องสมุดใหม่"
+
+#~ msgid "Required Information to Create a New Library"
+#~ msgstr "ข้อมูลที่จำเป็นในการสร้างห้องสมุดใหม่"
+
+#~ msgid "Library Name"
+#~ msgstr "ชื่อห้องสมุด"
+
+#~ msgid "e.g. Computer Science Problems"
+#~ msgstr "เช่น ปัญหาวิชาวิทยาศาสตร์คอมพิวเตอร์"
+
+#~ msgid "The public display name for your library."
+#~ msgstr "ชื่อแสดงต่อสาธารณะของห้องสมุดของคุณ"
+
+#~ msgid "The public organization name for your library."
+#~ msgstr "ชื่อองค์กรสารธารณะของห้องสมุดของคุณ"
+
+#~ msgid "This cannot be changed."
+#~ msgstr "ไม่สามารถเปลี่ยนแปลงได้"
+
+#~ msgid "Library Code"
+#~ msgstr "โค้ดห้องสมุด"
+
+#~ msgid "e.g. CSPROB"
+#~ msgstr "เช่น CSPROB"
+
+#~ msgid "Courses Being Processed"
+#~ msgstr "หลักสูตรการกำลังถูกประมวลผล"
+
+#~ msgid "This course run is currently being created."
+#~ msgstr "หลักสูตรนี้ทำงานอยู่ในขณะนี้ถูกสร้างขึ้น"
+
+#~ msgid "Configuring as re-run"
+#~ msgstr "การกำหนดค่าเป็นทำงานอีกครั้ง"
+
+#~ msgid ""
+#~ "The new course will be added to your course list in 5-10 minutes. Return to "
+#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
+#~ " new course will need some manual configuration."
+#~ msgstr ""
+#~ "หลักสูตรจะถูกเพิ่มในรายการหลักสูตรคุณใน5-10นาที "
+#~ "กลับไปที่เพจหรือ{link_start}รีเฟรช{link_end}เพื่ออัพเดทรายการหลักสูตรใหม่ "
+#~ "หลักสูตรต้องการกำหนดค่าด้วยตนเอง"
+
+#~ msgid "This re-run processing status:"
+#~ msgstr "สถานะการกระบวนการการสอนซ้ำนี้"
+
+#~ msgid "Configuration Error"
+#~ msgstr "การกำหนดค่าล้มเหลว"
+
+#~ msgid ""
+#~ "A system error occurred while your course was being processed. Please go to "
+#~ "the original course to try the re-run again, or contact your PM for "
+#~ "assistance."
+#~ msgstr ""
+#~ "ระบบผิดพลาดขณะหลักสูตรอยู่ในกระบวนการ "
+#~ "กรุณากลับไปที่หลักสูตรแรกเริ่มเพื่มทำใหม่อีกครั้งหรือติดต่อโดยข้อความส่วนตัวเพื่อขอความช่วยเหลือ"
+
+#~ msgid "Libraries"
+#~ msgstr "ห้องสมุด"
+
+#~ msgid "Are you staff on an existing {studio_name} course?"
+#~ msgstr "คุณเป็นเจ้าหน้าที่ในหลักสูตร{studio_name} ?"
+
+#~ msgid ""
+#~ "The course creator must give you access to the course. Contact the course "
+#~ "creator or administrator for the course you are helping to author."
+#~ msgstr ""
+#~ "ผู้สร้างหลักสูตรจะนำคุณเข้าสู่หลักสูตร "
+#~ "ติดต่อผู้สร้างหลักสูตรหรือผู้ดูแลระบบสำหรับหลักสูตรที่คุณกำลังช่วยเขียน"
+
+#~ msgid "Create Your First Course"
+#~ msgstr "สร้างหลักสูตรแรก"
+
+#~ msgid "Your new course is just a click away!"
+#~ msgstr "สร้างหลักสูตรใหม่ของคุณเพียงไม่กี่คลิก!"
+
+#~ msgid "Becoming a Course Creator in {studio_name}"
+#~ msgstr "เป็นผู้เขียนหลักสูตรใน{studio_name}"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team will evaluate your request and provide you feedback within 24 hours "
+#~ "during the work week."
+#~ msgstr ""
+#~ "{studio_name}เป็นเจ้าภาพแก้ปัญหาให้กับคู่ค้าของเรา "
+#~ "xConsortiumและผู้เข้าร่วมที่ถูกเลือก "
+#~ "หลักสูตรที่คุณเป็นสมาชิกในทีมปรากฏด้านบนสำหรับการแก้ไข "
+#~ "ในขณะที่สิทธิพิเศษของผู้เขียนหลักสูตรได้รับจาก{platform_name} "
+#~ "ทีมงานของเราจะประเมินตามคำขอของคุณและจะตอบกลับคุณภายใน 24 "
+#~ "ชั่วโมงในช่วงสัปดาห์การทำงาน"
+
+#~ msgid "Your Course Creator Request Status:"
+#~ msgstr "สถานะคำร้องของผู้เขียนหลักสูตร:"
+
+#~ msgid "Request the Ability to Create Courses"
+#~ msgstr "การร้องขอความสามารถในการสร้างหลักสูตร"
+
+#~ msgid "Your Course Creator Request Status"
+#~ msgstr "สถานะคำร้องของผู้เขียนหลักสูตร"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is has completed evaluating your request."
+#~ msgstr ""
+#~ "{studio_name}เป็นเจ้าภาพแก้ปัญหาให้กับคู่ค้าของเรา "
+#~ "xConsortiumและผู้เข้าร่วมที่ถูกเลือก "
+#~ "หลักสูตรที่คุณเป็นสมาชิกในทีมปรากฏด้านบนสำหรับการแก้ไข "
+#~ "ในขณะที่สิทธิพิเศษของผู้เขียนหลักสูตรได้รับจาก{platform_name}  "
+#~ "ในขณะนี้ทีมงานของเราเสร็จสิ้นการพิจารณาคำร้องคุณ"
+
+#~ msgid "Your Course Creator request is:"
+#~ msgstr "คำร้องของผู้เขียนหลักสูตรคือ:"
+
+#~ msgid ""
+#~ "Your request did not meet the criteria/guidelines specified by "
+#~ "{platform_name} Staff."
+#~ msgstr "คำขอร้องคุณไม่ผ่านเกณฑ์/ข้อแนะนำกำหนดโดยเจ้าหน้าที่ {platform_name}"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is currently  evaluating your request."
+#~ msgstr ""
+#~ "{studio_name}เป็นเจ้าภาพแก้ปัญหาให้กับคู่ค้าของเรา "
+#~ "xConsortiumและผู้เข้าร่วมที่ถูกเลือก "
+#~ "หลักสูตรที่คุณเป็นสมาชิกในทีมปรากฏด้านบนสำหรับการแก้ไข "
+#~ "ในขณะที่สิทธิพิเศษของผู้เขียนหลักสูตรได้รับจาก{platform_name}  "
+#~ "ในขณะนี้ทีมงานของเรากำลังพิจารณาคำร้องคุณ"
+
+#~ msgid ""
+#~ "Your request is currently being reviewed by {platform_name} staff and should"
+#~ " be updated shortly."
+#~ msgstr ""
+#~ "คำร้องของคุณกำลังได้รับการพิจารณาจากเจ้าหน้าที่{platform_name}และจะอัพเดทในไม่ช้า"
+
+#~ msgid "Were you expecting to see a particular library here?"
+#~ msgstr "คุณคาดหวังที่จะชมห้องสมุดโดยเฉพาะที่นี่หรือไม่?"
+
+#~ msgid ""
+#~ "The library creator must give you access to the library. Contact the library"
+#~ " creator or administrator for the library you are helping to author."
+#~ msgstr ""
+#~ "ผู้สร้างห้องสมุดจะนำคุณเข้าสู่ห้องสมุด "
+#~ "ติดต่อผู้สร้างห้องสมุดหรือผู้ดูแลระบบสำหรับห้องสมุดที่คุณกำลังช่วยเขียน"
+
+#~ msgid "Create Your First Library"
+#~ msgstr "สร้างห้องสมุดแรก"
+
+#~ msgid ""
+#~ "Libraries hold a pool of components that can be re-used across multiple "
+#~ "courses. Create your first library with the click of a button!"
+#~ msgstr ""
+#~ "ห้องสมุดมีส่วนประกอบที่สามารถนำกลับมาใช้ใหม่กับหลายหลักสูตร "
+#~ "สร้างห้องสมุดครั้งแรกของคุณคลิก!"
+
+#~ msgid "New to {studio_name}?"
+#~ msgstr "ใหม่สำหรับ {studio_name}?"
+
+#~ msgid ""
+#~ "Click Help in the upper-right corner to get more information about the "
+#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
+#~ " of the page to access our continually updated documentation and other "
+#~ "{studio_name} resources."
+#~ msgstr ""
+#~ "คลิกปุ่มช่วยเหลือที่มุมขวาบนเพื่อรับข้อมูลเพิ่มเติมเกี่ยวกับหน้า "
+#~ "{studio_name} ที่คุณกำลังชม "
+#~ "คุณยังสามารถใช้ลิงค์ที่ด้านล่างของหน้าในการเข้าถึงเอกสารและแหล่งข้อมูล "
+#~ "{studio_name} อื่นๆของเราที่อัพเดตอย่างต่อเนื่อง"
+
+#~ msgid "Getting Started with {studio_name}"
+#~ msgstr "เริ่มต้นกับ {studio_name}"
+
+#~ msgid "Can I create courses in {studio_name}?"
+#~ msgstr "ฉันสามารถสร้างหลักสูตรใน{studio_name}ได้ไหม?"
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must {link_start}contact "
+#~ "{platform_name} staff to help you create a course{link_end}."
+#~ msgstr ""
+#~ "เพื่อสร้างหลักสูตรใน{studio_name} "
+#~ "คุณต้อง{link_start}ติดต่อเจ้าหน้าที่{platform_name}เพื่อช่วยเหลือคุณสร้างหลักสูตร{link_end}"
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must have course creator "
+#~ "privileges to create your own course."
+#~ msgstr ""
+#~ "เพื่อสร้างหลักสูตรใน{studio_name} "
+#~ "คุณต้องมีสิทธิพิเศษที่จะสร้างหลักสูตรของคุณเอง"
+
+#~ msgid ""
+#~ "Your request to author courses in {studio_name} has been denied. Please "
+#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
+#~ msgstr ""
+#~ "การร้องขอไปยังผู้เขียนหลักสูตรของคุณใน{studio_name}ถูกปฏิเสธ "
+#~ "กรุณา{link_start}ติดต่อเจ้าหน้าที่{platform_name}ถ้ามีคำถามเพิ่มเติม{link_end}."
+
+#~ msgid "We need to verify your email address"
+#~ msgstr "เราต้องการยืนยันที่อยู่อีเมล์ของคุณ"
+
+#~ msgid "Need help?"
+#~ msgstr "ต้องกาารความช่วยเหลือ?"
+
+#~ msgid ""
+#~ "Please check your Junk or Spam folders in case our email isn't in your "
+#~ "INBOX. Still can't find the verification email? Request help via the link "
+#~ "below."
+#~ msgstr ""
+#~ "กรุณาตรวจแฟ้มอีเมล์ขยะหรือสแปมในกรณีที่ไม่มีอีเมล์ของเราในกล่องจดหมาย "
+#~ "หากยังไมพบอีเมล์ยืนยัน ขอความช่วยเหลือผ่านทางลิงค์ด้านล่าง"
+
+#~ msgid "User Access"
+#~ msgstr "การเข้าถึงผู้ใช้"
+
+#~ msgid "Schedule & Details"
+#~ msgstr "ตารางเรียน & รายละเอียด"
+
+#~ msgid "Expand or Collapse"
+#~ msgstr "ขยายเพิ่มหรือยุบทิ้ง"
+
+#~ msgid "This block contains multiple components."
+#~ msgstr "บล็อกนี้มีเนื้อหาหลายส่วนประกอบ"
+
+#~ msgid "Video Uploads"
+#~ msgstr "อัพโหลดวิดีโอ"
+
+#~ msgid "Current Course:"
+#~ msgstr "หลักสูตรปัจจุบัน"
+
+#~ msgid "Course Navigation"
+#~ msgstr "แนะนำหลักสูตร"
+
+#~ msgid "Outline"
+#~ msgstr "เค้าโครงหลักสูตร"
+
+#~ msgid "Import"
+#~ msgstr "นำเข้า"
+
+#~ msgid "Export"
+#~ msgstr "ส่งออก"
+
+#~ msgid "Current Library:"
+#~ msgstr "คลังห้องสมุดปัจจุบัน:"
+
+#~ msgid "Account Navigation"
+#~ msgstr "แนะนำบัญชี"
+
+#~ msgid "Contextual Online Help"
+#~ msgstr "เนื้อหาความช่วยเหลือออนไลน์"
+
+#~ msgid "Sign Up"
+#~ msgstr "ลงทะเบียน"
+
+#~ msgid "example: username@domain.com"
+#~ msgstr "ตัวอย่าง: username@domain.com"
+
+#~ msgid "Supported by the following organizations"
+#~ msgstr "สนับสนุนโดยองค์กรดังต่อไปนี้"
+
+#~ msgid "Show more"
+#~ msgstr "แสดงเพิ่มเติม"
+
+#~ msgid "View grades"
+#~ msgstr "แสดงคะแนน"
+
+#~ msgid "Upgrade"
+#~ msgstr "อัพเกรด"
+
+#~ msgid "Hello {full_name},"
+#~ msgstr "สวัสดี {full_name},"
+
+#~ msgid "Register for free"
+#~ msgstr "ลงทะเบียนเรียนฟรี"
+
+#~ msgid ""
+#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+#~ "Code{honor_link_end}"
+#~ msgstr ""
+#~ "{tos_link_start}เงื่อนไขการบริการ{tos_link_end} และ "
+#~ "{honor_link_start}เกียรติคุณ{honor_link_end}"
+
+#~ msgid "Copyright"
+#~ msgstr "ลิขสิทธิ์"
+
+#~ msgid "For anyone, anywhere, anytime"
+#~ msgstr "สำหรับทุกคน ทุกที่ ทุกเวลา"
+
+#~ msgid ""
+#~ "We're sorry, but this version of your browser is not supported. Try again "
+#~ "using a different browser or a newer version of your browser."
+#~ msgstr ""
+#~ "ขออภัย แต่รุ่นเบราว์เซอร์ของคุณไม่สนับสนุน "
+#~ "ลองอีกครั้งโดยใช้เบราว์เซอร์ที่แตกต่างกันหรือรุ่นที่ใหม่กว่าของเบราว์เซอร์ของคุณ"
+
+#~ msgid "The following errors occurred while processing your registration:"
+#~ msgstr "ข้อผิดพลาดต่อไปนี้เกิดขึ้นในขณะประมวลผลการลงทะเบียนของคุณ"
+
+#~ msgid "Sign up with {provider_name}"
+#~ msgstr "ลงทะเบียนด้วย  {provider_name}"
+
+#~ msgid "Create your own {platform_name} account below"
+#~ msgstr "ลงทะเบียนเพื่อสร้างบัญชี{platform_name} ของคุณ   "
+
+#~ msgid ""
+#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
+#~ "asterisk (*)</strong>."
+#~ msgstr ""
+#~ "ช่องที่จำเป็นต้องระบุจะมี <strong "
+#~ "class=\"indicator\">อักษรตัวหนาและเครื่องหมายดอกจัน (*)</strong>"
+
+#~ msgid "You've successfully signed in with {selected_provider}."
+#~ msgstr "เข้าสู่ระบบสำเร็จด้วย  {selected_provider}."
+
+#~ msgid ""
+#~ "We just need a little more information before you start learning with "
+#~ "{platform_name}."
+#~ msgstr "เราต้องการข้อมูลเล็กน้อยก่อนที่จะเริ่มเรียนกับ {platform_name}."
+
+#~ msgid "Please complete the following fields to register for an account. "
+#~ msgstr "กรุณากรอกรายละเอียดให้ครบถ้วนเพื่อการลงทะเบียนของบัญชีใหม่"
+
+#~ msgid "example: Jane Doe"
+#~ msgstr "ตัวอย่าง: Jane Doe"
+
+#~ msgid "example: JaneDoe"
+#~ msgstr "ตัวอย่าง: JaneDoe"
+
+#~ msgid "Will be shown in any discussions or forums you participate in"
+#~ msgstr "จะแสดงการสนทนาหรือฟอรั่มที่คุณเข้าร่วม"
+
+#~ msgid "cannot be changed later"
+#~ msgstr "ไม่สามารถเปลี่ยนภายหลังได้"
+
+#~ msgid "Welcome {username}"
+#~ msgstr "ยินดีต้อนรับ {username}"
+
+#~ msgid "Enter a Public Display Name:"
+#~ msgstr "เลือกชื่อที่ต้องการแสดง :"
+
+#~ msgid "Public Display Name"
+#~ msgstr "ชื่อที่แสดง"
+
+#~ msgid "Additional Personal Information"
+#~ msgstr "ข้อมูลส่วนตัวเพิ่มเติม"
+
+#~ msgid "example: New York"
+#~ msgstr "ตัวอย่าง : New York"
+
+#~ msgid "Highest Level of Education Completed"
+#~ msgstr "ระดับการศึกษาสูงสุด"
+
+#~ msgid "Year of Birth"
+#~ msgstr "ปีที่เกิด"
+
+#~ msgid "Please share with us your reasons for registering with {platform_name}"
+#~ msgstr "กรุณาบอกเหตุผลในการลงทะเบียนกับ {platform_name}"
+
+#~ msgid "Account Acknowledgements"
+#~ msgstr "การรับรองบัญชี "
+
+#~ msgid "Preferences for {platform_name}"
+#~ msgstr "การตั้งค่าของ  {platform_name}"
+
+#~ msgid "Update my {platform_name} Account"
+#~ msgstr "อัพเดทบัญชี  {platform_name} ของฉัน"
+
+#~ msgid "Processing your account information"
+#~ msgstr "กำลังประมวลข้อมูลของคุณ"
+
+#~ msgid "Welcome {username}!  Please set your preferences below"
+#~ msgstr "ยินดีต้อนรับ  {username} กรุณาตั้งค่าการแสดงผลด้านล่าง"
+
+#~ msgid "Update My Account"
+#~ msgstr "อัพเดทบัญชีของฉัน"
+
+#~ msgid "Registration Help"
+#~ msgstr "ช่วยเหลือการลงทะเบียน"
+
+#~ msgid "Already registered?"
+#~ msgstr "ลงทะเบียนแล้ว?"
+
+#~ msgid "Log in"
+#~ msgstr "เข้าสู่ระบบ"
+
+#~ msgid "Next Steps"
+#~ msgstr "ขั้นตอนถัดไป"
+
+#~ msgid ""
+#~ "You will receive an activation email.  You must click on the activation link"
+#~ " to complete the process.  Don't see the email?  Check your spam folder and "
+#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+#~ "able to receive email from your courses."
+#~ msgstr ""
+#~ "คุณจะได้รับอีเมล์ยืนยันการใช้งาน "
+#~ "คุณต้องคลิกที่ลิงก์เพื่อเปิดใช้งานเพื่อเสร็จสิ้นกระบวนการ หากไม่พบอีเมล์? "
+#~ "ตรวจสอบโฟลเดอร์อีเมล์ขยะจาก class.stanford.edu และเลือกว่า 'ไม่สแปม' "
+#~ "คุณจะสามารถรับอีเมล์หลักสูตรของคุณ"
+
+#~ msgid "Need Help?"
+#~ msgstr "ต้องกาารความช่วยเหลือ?"
+
+#~ msgid "Need help in registering with {platform_name}?"
+#~ msgstr "ต้องการความช่วยเหลือในการลงทะเบียนกับ {platform_name} ?"
+
+#~ msgid "View our FAQs for answers to commonly asked questions."
+#~ msgstr "ดู FAQs สำหรับคำถามที่พบบ่อย"
+
+#~ msgid ""
+#~ "Once registered, most questions can be answered in the course specific "
+#~ "discussion forums or through the FAQs."
+#~ msgstr ""
+#~ "เมื่อลงทะเบียนแล้ว "
+#~ "คำถามส่วนใหญ่จะสามาถหาคำตอบได้ในฟอลั่มสนทนาเฉพาะของหลักสูตรหรือผ่านคำถามที่พบบ่อย"
+
+#~ msgid ""
+#~ "We received a request to change the e-mail associated with your "
+#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
+#~ " please confirm your new e-mail address by visiting:"
+#~ msgstr ""
+#~ "เราได้รับคำขอเปลี่ยนอีเมล์ที่เกี่ยวข้องของคุณ {platform_name} "
+#~ "บัญชีของคุณจาก{old_email} เป็น {new_email}.  "
+#~ "ถ้าถูกต้องแล้วกรุณายืนยันอีเมลใหม่ของคุณที่ :"
+
+#~ msgid "Put your Terms of Service here!"
+#~ msgstr "เพิ่มเงื่อนไขการให้บริการที่นี่!"
+
+#~ msgid "Put your Privacy Policy here!"
+#~ msgstr "เพิ่มนโยบายความเป็นส่วนตัวที่นี่!"
