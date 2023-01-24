@@ -56,6 +56,7 @@ from openedx.core.djangoapps.discussions.config.waffle_utils import legacy_discu
 from openedx.core.djangoapps.django_comment_common.models import FORUM_ROLE_ADMINISTRATOR, CourseDiscussionSettings
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.verified_track_content.models import VerifiedTrackCohortedCourse
+from openedx.features.course_experience.url_helpers import get_courseware_url
 from openedx.core.djangolib.markup import HTML, Text
 from openedx.core.lib.courses import get_course_by_id
 from openedx.core.lib.url_utils import quote_slashes
@@ -731,6 +732,7 @@ def _section_open_response_assessment(request, course, openassessment_blocks, ac
             'parent_name': parents[block_parent_id].display_name,
             'staff_assessment': 'staff-assessment' in block.assessment_steps,
             'peer_assessment': 'peer-assessment' in block.assessment_steps,
+            'url_courseware': get_courseware_url(block.location, request=request),
             'url_base': reverse('xblock_view', args=[course.id, block.location, 'student_view']),
             'url_grade_available_responses': reverse('xblock_view', args=[course.id, block.location,
                                                                           'grade_available_responses_view']),
