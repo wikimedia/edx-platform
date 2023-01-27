@@ -74,6 +74,8 @@ def render_translation_home(request):
     meta_data = {
         'expend_outline': _('Expend Outline'),
         'collapse_outline': _('Collapse Outline'),
+        'outline': _('outline'),
+        'course_name': _('course name'),
         'select_base_course': _('Select Base Course'),
         'select_rerun_course': _('Select Rerun Course'),
         'messages': {
@@ -195,6 +197,7 @@ def render_discover_courses(request, course_key=None):
             'html': _('HTML'),
             'video': _('Video'),
             'problem': _('Problem'),
+            'course_name': _('Course Name'),
         },
         'translation_filter': {
             'translated': _('Translated'),
