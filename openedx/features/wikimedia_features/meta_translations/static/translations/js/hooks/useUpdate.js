@@ -122,7 +122,7 @@ export default function useUpdate(context) {
     }
 
     const approveCourseOutline = (props) => {
-      const {usageKey, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id} = props;
+      const {usageKey, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, is_course_info} = props;
       const options = {
         block_ids : [usageKey]
       }
@@ -132,7 +132,9 @@ export default function useUpdate(context) {
         setCourseOutline(prevState => {
           let courseOutline = {...prevState};
           let contentLocation = null;
-          if (content_id) {
+          if (is_course_info) {
+            contentLocation = courseOutline.course_info;
+          } else if (content_id) {
             contentLocation = courseOutline
             .course_outline[section_id]
             .children[subsection_id]
@@ -166,7 +168,7 @@ export default function useUpdate(context) {
     }
 
     const updateTranslation = (props) => {
-      const {setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, version_id} = props;
+      const {setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, version_id, is_course_info} = props;
       setLoading(true);
       client.get(`${context.COURSE_VERSION_URL}/${version_id}/`)
       .then((res) => {
@@ -174,7 +176,9 @@ export default function useUpdate(context) {
           let data = res.data.data
           let courseOutline = {...prevState};
           let contentLocation = null;
-          if (content_id) {
+          if (is_course_info) {
+            contentLocation = courseOutline.course_info;
+          } else if (content_id) {
             contentLocation = courseOutline
             .course_outline[section_id]
             .children[subsection_id]
@@ -207,17 +211,17 @@ export default function useUpdate(context) {
       .finally(() => {
         setLoading(false);
       })
-
-
     }
 
     const updateTranslationToInitialState = (props) => {
-      const {setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id} = props;
+      const {setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, is_course_info} = props;
       setLoading(true);
       setCourseOutline(prevState => {
         let courseOutline = {...prevState};
         let contentLocation = null;
-        if (content_id) {
+        if (is_course_info) {
+          contentLocation = courseOutline.course_info;
+        } else if (content_id) {
           contentLocation = courseOutline
           .course_outline[section_id]
           .children[subsection_id]
@@ -243,7 +247,7 @@ export default function useUpdate(context) {
     }
 
     const applyCourseVersion = (props) => {
-      const {usageKey, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, version_id} = props;
+      const {usageKey, setLoading, setCourseOutline, content_id, unit_id, subsection_id, section_id, version_id, is_course_info} = props;
       const options = {
         applied_version: version_id,
       }
@@ -253,7 +257,9 @@ export default function useUpdate(context) {
         setCourseOutline(prevState => {
           let courseOutline = {...prevState};
           let contentLocation = null;
-          if (content_id) {
+          if (is_course_info) {
+            contentLocation = courseOutline.course_info;
+          } else if (content_id) {
             contentLocation = courseOutline
             .course_outline[section_id]
             .children[subsection_id]
