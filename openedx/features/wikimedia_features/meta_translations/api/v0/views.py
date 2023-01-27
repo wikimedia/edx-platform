@@ -1,6 +1,8 @@
 """
 Views for MetaTranslation v0 API(s)
 """
+import copy
+
 from rest_framework import generics, status, permissions, pagination
 from rest_framework.response import Response
 from xmodule.modulestore.django import modulestore
@@ -25,6 +27,22 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
     API to get course outline of a course and it's base course
     Response:
         {
+            "course_info": {
+                "usage_key":"course key",
+                "category":"course",
+                "data_block_ids: {
+                    "display_name": 1,
+                },
+                "data":{
+                    "display_name":"Course Name",
+                }
+                "status": {
+                    "applied": false,
+                    "approved": false,
+                    "last_fetched": null,
+                    "approved_by": edx
+                },
+            },
             "course_outline": {
                 "7VLKTTPX1ZUJI8KA":{
                     "usage_key":"block_component_usage_id",
@@ -73,6 +91,13 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
                     }
                 }
             },
+            "base_course_inf": {
+                "usage_key":"base_course key",
+                "category":"course",
+                "data":{
+                    "display_name":"Base Course Name",
+                }
+            }
             "base_course_outline": {
                 "7VLKTTPX1ZUJI8KA":{
                     "usage_key":"base_block_component_usage_id",
@@ -113,9 +138,13 @@ class GetTranslationOutlineStructure(generics.RetrieveAPIView):
 
         if course_outline and base_course_outline:
             key, base_key = list(course_outline.keys())[0], list(base_course_outline.keys())[0]
+            course_info, base_course_info = copy.deepcopy(course_outline[key]), copy.deepcopy(base_course_outline[key])
+            course_info['children'], base_course_info['children'] = [], []
             course_outline, base_course_outline = course_outline[key]['children'], base_course_outline[base_key]['children']
 
         data = {
+            'course_info': course_info,
+            'base_course_info': base_course_info,
             'course_outline': course_outline,
             'base_course_outline': base_course_outline,
         }
