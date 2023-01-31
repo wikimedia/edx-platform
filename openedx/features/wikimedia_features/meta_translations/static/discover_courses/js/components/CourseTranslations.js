@@ -24,6 +24,7 @@ function CourseTranslations({ context }) {
     'section-title': true,
     'html': true,
     'problem': true,
+    'course': true,
   })
   const [translationFilters, setTranslationFilters] = useState({
     'translated': true,
@@ -67,6 +68,7 @@ function CourseTranslations({ context }) {
     blockFilters['html'] && accepted_blocks.push('html')
     blockFilters['problem'] && accepted_blocks.push('problem')
     blockFilters['video'] && accepted_blocks.push('video')
+    blockFilters['course'] && accepted_blocks.push('course')
     return accepted_blocks.join('+')
   }
 
@@ -159,6 +161,10 @@ function CourseTranslations({ context }) {
               <div className="filter-field">
                 <span className="title">{META_DATA.block_type}</span>
                 <div className="block">
+                  <label className="block-checkbox">
+                    <input type="checkbox" checked={blockFilters["course"]} onChange={() => handleBlockFilters("course")} />
+                    {META_DATA.blocks_filter.course_name}
+                  </label>
                   <label className="block-checkbox">
                     <input type="checkbox" checked={blockFilters["section-title"]} onChange={() => handleBlockFilters("section-title")} />
                     {META_DATA.blocks_filter.section_header}

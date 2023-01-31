@@ -131,20 +131,19 @@ class Command(BaseCommand):
                 course_id=base_course
             )
             for block in base_course_blocks:
-                if block.block_type != 'course':
-                    block_data = block.courseblockdata_set.all()
-                    if block_data.filter(Q(content_updated=True) | Q(mapping_updated=True)).exists():
-                        request_arguments = self._create_request_dict_for_block(
-                            base_course, block, base_course_language, base_course_name, base_course_description
-                        )
-                        for data in block_data:
-                            if data.parsed_keys:
-                                request_arguments.update(data.parsed_keys)
-                            else:
-                                request_arguments.update({
-                                    data.data_type: data.data
-                                })
-                        data_list.append(request_arguments)
+                block_data = block.courseblockdata_set.all()
+                if block_data.filter(Q(content_updated=True) | Q(mapping_updated=True)).exists():
+                    request_arguments = self._create_request_dict_for_block(
+                        base_course, block, base_course_language, base_course_name, base_course_description
+                    )
+                    for data in block_data:
+                        if data.parsed_keys:
+                            request_arguments.update(data.parsed_keys)
+                        else:
+                            request_arguments.update({
+                                data.data_type: data.data
+                            })
+                    data_list.append(request_arguments)
         return data_list
 
     def _get_tasks_to_updated_data_on_wiki_meta(self, data_list, meta_client, session, csrf_token):
