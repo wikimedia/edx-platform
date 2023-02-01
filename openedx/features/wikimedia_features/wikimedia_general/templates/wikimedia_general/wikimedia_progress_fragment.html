@@ -80,7 +80,7 @@ from django.utils.translation import ugettext as _
                                   % for component in unit.get('children', []):
                                   <tr>
                                     <td><a href="${component.get('lms_web_url')}">${component.get('display_name')}</a></td>
-                                    <td>${"Yes" if component.get('complete') else "No"}</td>
+                                    <td>${"Yes" if component.get('complete', True) else "No"}</td>
                                     % if show_score_tab:
                                     <td>${component.get('score', '-')}</td>
                                     % endif
