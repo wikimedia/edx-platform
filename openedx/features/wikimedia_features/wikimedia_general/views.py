@@ -67,7 +67,8 @@ class WikimediaProgressFragmentView(EdxFragmentView):
         unit_count = 0
         children = block.get('children', [])
         if not len(children):
-            if block.get('complete'):
+            # Blocks that don't contain 'complete' status are not required. Therefore consider them as completed
+            if block.get('complete', True):
                 progress = 100
 
             # handle case of empty sections/subsections/units
