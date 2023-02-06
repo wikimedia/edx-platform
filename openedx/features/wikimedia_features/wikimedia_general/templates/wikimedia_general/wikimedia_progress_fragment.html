@@ -23,7 +23,7 @@ from django.utils.translation import ugettext as _
                   <div class="progress">
                     <div class="progress-bar bg-success" style="width: ${section.get('progress', '0')}%;"></div>
                   </div>
-                  <strong class="title">Progress</strong>
+                  <strong class="title">${_('Progress')}</strong>
                 </li>
               </ul>
             </div>
@@ -42,16 +42,16 @@ from django.utils.translation import ugettext as _
                             <div class="progress">
                               <div class="progress-bar bg-success" style="width: ${subsection.get('progress', '0')}%"></div>
                             </div>
-                            <strong class="title">Progress</strong>
+                            <strong class="title">${_('Progress')}</strong>
                           </li>
                           <li>
-                            <span class="value">${subsection.get('format', 'Not graded')}</span>
-                            <strong class="title">Assignment</strong>
+                            <span class="value">${subsection.get('format', _('Not graded'))}</span>
+                            <strong class="title">${_('Assignment')}</strong>
                           </li>
                           % if show_score_tab:
                           <li>
                             <span class="value">${subsection.get('score')}</span>
-                            <strong class="title">${"Problem Score" if subsection.get('format') else "Practice Score"}</strong>
+                            <strong class="title">${_('Problem Score') if subsection.get('format') else _('Practice Score')}</strong>
                           </li>
                           % endif
                         </ul>
@@ -70,9 +70,9 @@ from django.utils.translation import ugettext as _
                                 <thead>
                                   <tr class="table-primary">
                                     <th></th>
-                                    <th>Completed</th>
+                                    <th>${_('Completed')}</th>
                                     % if show_score_tab:
-                                    <th>Score</th>
+                                    <th>${_('Score')}</th>
                                     % endif
                                   </tr>
                                 </thead>
@@ -80,7 +80,11 @@ from django.utils.translation import ugettext as _
                                   % for component in unit.get('children', []):
                                   <tr>
                                     <td><a href="${component.get('lms_web_url')}">${component.get('display_name')}</a></td>
-                                    <td>${"Yes" if component.get('complete', True) else "No"}</td>
+                                    % if component.get('is_excluded_block'):
+                                      <td>${_('N/A')}</td>
+                                    % else:
+                                      <td>${_('Yes') if component.get('complete') else _('No')}</td>
+                                    % endif
                                     % if show_score_tab:
                                     <td>${component.get('score', '-')}</td>
                                     % endif
