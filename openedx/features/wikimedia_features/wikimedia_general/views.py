@@ -67,6 +67,10 @@ class WikimediaProgressFragmentView(EdxFragmentView):
         unit_count = 0
         children = block.get('children', [])
         if not len(children):
+            # Mark Excluded xblocks as completed
+            if block.get('type') in ['discussion']:
+                block.update({'complete': True, 'is_excluded_block': True})
+            
             if block.get('complete'):
                 progress = 100
 
@@ -81,8 +85,9 @@ class WikimediaProgressFragmentView(EdxFragmentView):
 
         for child in children:
             self._update_context_with_score_and_progress(child, grade_dict)
-            progress += child.get('progress', 0) * child.get('unit_count', 0)
-            unit_count += child.get('unit_count', 0)
+            if not child.get('is_excluded_block', False):
+                progress += child.get('progress', 0) * child.get('unit_count', 0)
+                unit_count += child.get('unit_count', 0)
 
         if children and unit_count:
             block.update({
