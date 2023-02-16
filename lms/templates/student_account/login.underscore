@@ -72,7 +72,7 @@
                             <img class="icon-image" src="<%- provider.iconImage %>" alt="<%- provider.name %> icon" />
                         <% } %>
                     </div>
-                    <span aria-hidden="true"><%- provider.name %></span>
+                    <span aria-hidden="true"><%- _.sprintf( gettext("%(providerName)s account"), {providerName: provider.name} ) %></span>
                     <span class="sr"><%- _.sprintf( gettext("Sign in with %(providerName)s"), {providerName: provider.name} ) %></span>
                 </button>
             <% }
