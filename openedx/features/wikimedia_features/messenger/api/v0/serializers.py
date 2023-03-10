@@ -32,7 +32,7 @@ class BulkMessageSerializer(serializers.Serializer):
 
     def validate_receivers(self, receivers):
         if not receivers:
-            raise serializers.ValidationError(_('receiver list can not empty.'))
+            raise serializers.ValidationError(_('recipient list can not be empty.'))
         users = [validate_username(username) for username in receivers]
         return users
 
