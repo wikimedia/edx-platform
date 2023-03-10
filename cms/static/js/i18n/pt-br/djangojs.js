@@ -6,7 +6,7 @@
 
   
   django.pluralidx = function(n) {
-    var v=(n > 1);
+    var v=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;
     if (typeof(v) == 'boolean') {
       return v ? 1 : 0;
     } else {
@@ -20,22 +20,21 @@
   django.catalog = django.catalog || {};
   
   var newcatalog = {
-    " learner does not exist in LMS and not added to the exception list": "aluno n\u00e3o existe no LMS e n\u00e3o est\u00e1 adicionado na lista de exce\u00e7\u00e3o",
-    " learner is successfully added to the exception list": "aluno \u00e9 adicionado com sucesso na lista de exce\u00e7\u00e3o",
-    " learners are successfully added to exception list": "alunos s\u00e3o adicionados com sucesso na lista de exce\u00e7\u00e3o",
     "%(cohort_name)s (%(user_count)s)": "%(cohort_name)s (%(user_count)s)",
     "%(field)s can only contain up to %(count)d characters.": "%(field)s pode conter somente at\u00e9 %(count)d caracteres.",
     "%(field)s must have at least %(count)d characters.": "%(field)s deve ter no m\u00ednimo %(count)d caracteres.",
     "%(new_item_message)s": "%(new_item_message)s",
     "%(sel)s of %(cnt)s selected": [
       "%(sel)s de %(cnt)s selecionado",
-      "%(sel)s de %(cnt)s selecionados"
+      "%(sel)s de %(cnt)s selecionados",
+      ""
     ],
     "%(type)s Component Template Menu": "%(type)s Menu de Modelos de Componentes",
     "(Add signatories for a certificate)": "(Adicionar assinaturas para um certificado)",
     "(Required Field)": "(Campo Obrigat\u00f3rio)",
     "(contains %(student_count)s student)": [
       "(cont\u00e9m %(student_count)s aluno)",
+      "(cont\u00e9m %(student_count)s alunos)",
       "(cont\u00e9m %(student_count)s alunos)"
     ],
     "- Sortable": "- Classific\u00e1veis",
@@ -183,7 +182,6 @@
     "Clear Value": "Limpar Valor",
     "Clear search": "Limpar pesquisa",
     "Clear search results": "Limpar resultados da pesquisa",
-    "Click to add a new %(xblock_type)s": "Clique para adicionar um novo %(xblock_type)s",
     "Click to change": "Clique para alterar",
     "Click to choose all %s at once.": "Clique para escolher todos os %s de uma s\u00f3 vez",
     "Click to edit": "Clique para editar",
@@ -196,13 +194,10 @@
     "Cohorts Disabled": "Agrupamento desabilitado",
     "Cohorts Enabled": "Agrupamento habilitado",
     "Collapse All": "Retrair Tudo",
-    "Collapse/Expand this %(xblock_type)s": "Reduzir/Expandir este %(xblock_type)s",
     "Common Problem Types": "Tipos Comuns de Problemas",
-    "Configure": "Configurar",
     "Confirm": "Confirmar",
     "Confirm Timed Transcript": "Confirmar Transcri\u00e7\u00e3o Sincronizada",
     "Congratulations! You are now verified on %(platformName)s!": "Parab\u00e9ns! Voc\u00ea foi verificado em %(platformName)s!",
-    "Contains staff only content": "Possui conte\u00fado vis\u00edvel apenas para a equipe",
     "Content Group ID": "ID de Grupo de Conte\u00fado",
     "Content Group Name": "Nome do Grupo de Conte\u00fado",
     "Content-Specific Discussion Topics": "T\u00f3picos de discuss\u00e3o de Conte\u00fado Espec\u00edfico",
@@ -263,7 +258,6 @@
     "Deprecated": "Obsoleto",
     "Description of the certificate": "Descri\u00e7\u00e3o do certificado",
     "Discard Changes": "Descartar altera\u00e7\u00f5es",
-    "Display Name": "Exibir Nome",
     "Do you want to allow this student ('{student_id}') to skip the entrance exam?": "Voc\u00ea deseja permitir que o estudante ('{student_id}') pule o teste de admiss\u00e3o?",
     "Do you want to replace the edX transcript with the YouTube transcript?": "Voc\u00ea quer substituir a transcri\u00e7\u00e3o do edX pela do YouTube?",
     "Does the name on your ID match your account name: %(fullName)s?": "O nome de sua identifica\u00e7\u00e3o correspondo ao nome de sua conta: %(fullName)s?",
@@ -273,18 +267,14 @@
     "Double-check that your webcam is connected and working to continue.": "Certifique-se de que a sua webcam esteja conectada e funcionando para continuar.",
     "Download": "Baixar",
     "Download Transcript for Editing": "Baixar Transcri\u00e7\u00e3o para Edi\u00e7\u00e3o",
-    "Download URL": "Baixar URL ",
     "Download available encodings (.csv)": "Baixe os encodings dispon\u00edveis (.csv)",
-    "Download the user's certificate": "Baixar certificado do usu\u00e1rio",
     "Draft (Never published)": "Rascunho (Nunca publicado)",
     "Draft (Unpublished changes)": "Rascunho (altera\u00e7\u00f5es n\u00e3o publicadas)",
-    "Drag to reorder": "Arraste para reordenar",
     "Drop target image": "Soltar a imagem de destino",
     "Due Date": "Prazo de Entrega",
     "Due Date:": "Data de Vencimento",
     "Due Time in UTC:": "Data limite em UTC",
     "Due date cannot be before start date.": "Data de entrega n\u00e3o pode ser anterior \u00e0 data de in\u00edcio.",
-    "Due:": "Prazo final:",
     "Duration (sec)": "Dura\u00e7\u00e3o (segundos)",
     "EdX doesn't have a timed transcript for this video in Studio, but we found a transcript on YouTube. You can import the YouTube transcript or upload your own .srt transcript file.": "EdX n\u00e3o possui uma transcri\u00e7\u00e3o cronometrada para este v\u00eddeo no Studio, mas encontramos uma transcri\u00e7\u00e3o no YouTube. Voc\u00ea pode importar a transcri\u00e7\u00e3o presente no YouTube ou realizar o upload do seu pr\u00f3prio arquivo .srt .",
     "EdX doesn\\'t have a timed transcript for this video. Please upload an .srt file.": "O EdX n\u00e3o possui uma transcri\u00e7\u00e3o sincronizada para este v\u00eddeo. Por favor, fa\u00e7a o envio de um arquivo .srt",
@@ -341,7 +331,6 @@
     "Error listing task history for this student and problem.": "Houve um erro ao listar o hist\u00f3rico de tarefas para este aluno e problema.",
     "Error removing user": "Erro ao remover usu\u00e1rio",
     "Error resetting entrance exam attempts for student '{student_id}'. Make sure student identifier is correct.": "Erro ao zerar o n\u00famero de tentativas do Exame de Admiss\u00e3o para o aluno '{student_id}'. Tenha certeza que a identifica\u00e7\u00e3o do aluno est\u00e1 correta.",
-    "Error resetting problem attempts for problem '<%= problem_id %>' and student '<%- student_id %>'. Make sure that the problem and student identifiers are complete and correct.": "Houve um erro ao zerar as tentativas do problema '<%= problem_id %>' para o aluno  '<%- student_id %>'. Certifique-se que o identificador do problema e do aluno estejam corretos.",
     "Error retrieving grading configuration.": "Erro ao recuperar a configura\u00e7\u00e3o para a avalia\u00e7\u00e3o.",
     "Error sending email.": "Erro ao enviar o e-mail.",
     "Error starting a task to override score for problem '<%- problem_id %>' for student '<%- student_id %>'. Make sure that the the score and the problem and student identifiers are complete and correct.": "Erro ao iniciar uma tarefa para substituir a pontua\u00e7\u00e3o do problema '<%- problem_id %>' para aluno '<%- student_id %>'. Certifique-se de que a pontua\u00e7\u00e3o e o problema e os identificadores dos alunos estejam completos e corretos.",
@@ -379,7 +368,6 @@
     "Grace period must be specified in HH:MM format.": "O prazo de toler\u00e2ncia deve ser especificado no formato HH:MM. ",
     "Grade": "Nota",
     "Grade as:": "Avaliar como:",
-    "Graded as:": "Avaliado como:",
     "Grading": "Avaliando",
     "Group %s": "Grupo %s",
     "Group A": "Grupo A",
@@ -511,24 +499,24 @@
     "No content-specific discussion topics exist.": "N\u00e3o h\u00e1 t\u00f3picos de discuss\u00e3o de conte\u00fado espec\u00edficos",
     "No description available": "Sem descri\u00e7\u00e3o dispon\u00edvel",
     "No results": "Sem resultados",
-    "No results found for \"%(query_string)s\". Please try searching again.": "Nenhum resultado foi encontrado para \"%(query_string)s\". Tente novamente.",
     "No tasks currently running.": "N\u00e3o h\u00e1 nenhuma tarefa em andamento",
     "None": "Nenhum",
     "Noon": "Meio-dia",
     "Not Graded": "N\u00e3o avaliado",
     "Not Selected": "N\u00e3o selecionado",
     "Not able to set passing grade to less than %(minimum_grade_cutoff)s%.": "N\u00e3o foi poss\u00edvel definir nota de aprova\u00e7\u00e3o menor que %(minimum_grade_cutoff)s%.",
-    "Not available": "N\u00e3o Dispon\u00edvel",
     "Not in Use": "N\u00e3o utilizado",
     "Not selected": "N\u00e3o selecionado",
     "Note": "Anota\u00e7\u00e3o",
     "Note: You are %s hour ahead of server time.": [
       "Nota: Voc\u00ea est\u00e1 %s hora \u00e0 frente do hor\u00e1rio do servidor.",
-      "Nota: Voc\u00ea est\u00e1 %s horas \u00e0 frente do hor\u00e1rio do servidor."
+      "Nota: Voc\u00ea est\u00e1 %s horas \u00e0 frente do hor\u00e1rio do servidor.",
+      ""
     ],
     "Note: You are %s hour behind server time.": [
       "Nota: Voc\u00ea est\u00e1 %s hora atr\u00e1s do tempo do servidor.",
-      "Nota: Voc\u00ea est\u00e1 %s horas atr\u00e1s do hor\u00e1rio do servidor."
+      "Nota: Voc\u00ea est\u00e1 %s horas atr\u00e1s do hor\u00e1rio do servidor.",
+      ""
     ],
     "Noted in:": "Anota\u00e7\u00e3o feita em:",
     "Notes": "Anota\u00e7\u00f5es",
@@ -585,7 +573,6 @@
     "Please verify that your webcam is connected and that you have allowed your browser to access it.": "Verifique se a sua webcam est\u00e1 conectada e se o seu navegador tem permiss\u00e3o para acess\u00e1-la.",
     "Post": "Enviar",
     "Practice Proctored": "Pr\u00e1tica supervisionada",
-    "Practice proctored Exam": "Exame Pr\u00e1tico Supervisionado",
     "Preferred Language": "Idioma de prefer\u00eancia",
     "Prevent students from generating certificates in this course?": "Evitar que os estudantes possam gerar certificados deste curso?",
     "Preview": "Pr\u00e9-visualizar",
@@ -596,8 +583,6 @@
     "Previously published": "Publicado anteriormente",
     "Processing Re-run Request": "Processando Requisi\u00e7\u00e3o de Reprise",
     "Proctored": "Supervisionado",
-    "Proctored Exam": "Exame supervisionado",
-    "Proctored exams are timed and they record video of each learner taking the exam. The videos are then reviewed to ensure that learners follow all examination rules.": "Exames supervisionados s\u00e3o cronometrados e eles gravam um v\u00eddeo de cada aluno fazendo a prova. Os v\u00eddeos s\u00e3o ent\u00e3o revisados para garantir que os alunos sigam as regras do exame.",
     "Professional Education": "Educa\u00e7\u00e3o Profissional",
     "Professional Education Verified Certificate": "Certificado verificado de profissional de educa\u00e7\u00e3o",
     "Promote another member to Admin to remove your admin rights": "Promova outro membro a Administrador para remover seus direitos de administrador",
@@ -618,10 +603,8 @@
     "Register with Institution/Campus Credentials": "Cadastrar com Credenciais de Institui\u00e7\u00e3o/Campus",
     "Release Date and Time": "Data e Hor\u00e1rio de Lan\u00e7amento",
     "Release Date:": "Data de Lan\u00e7amento",
-    "Release Status:": "Status do lan\u00e7amento:",
     "Release Time in UTC:": "Hora do lan\u00e7amento em UTC",
     "Release:": "Lan\u00e7amento:",
-    "Released:": "Lan\u00e7ado:",
     "Removal is in progress. To avoid errors, stay on this page until the process is complete.": "A remo\u00e7\u00e3o est\u00e1 em andamento. Para evitar erros, aguarde na p\u00e1gina enquanto o processo \u00e9 finalizado.",
     "Remove": "Remover",
     "Remove all": "Remover todos",
@@ -655,7 +638,6 @@
     "Saving": "Salvando",
     "Saving your email preference": "Salvando o email de sua prefer\u00eancia",
     "Saving...": "Salvando...",
-    "Scheduled:": "Agendado:",
     "Search": "Busca",
     "Search Results": "Resultados da pesquisa",
     "Search teams": "Buscar equipes",
@@ -856,14 +838,10 @@
     "Undo (Ctrl+Z)": "Desfazer (Ctrl+Z)",
     "Undo Changes": "Desfazer altera\u00e7\u00f5es",
     "Unexpected server error.": "Ocorreu um erro de servidor inesperado.",
-    "Ungraded": "N\u00e3o corrigido",
     "Unit": "Unidade",
     "Unknown": "Desconhecido",
     "Unlinking": "Desvinculando",
     "Unnamed Option": "Op\u00e7\u00e3o Sem Nome",
-    "Unpublished changes to content that will release in the future": "Altera\u00e7\u00f5es de conte\u00fado n\u00e3o publicadas que ser\u00e3o liberadas no futuro",
-    "Unpublished changes to live content": "Altera\u00e7\u00f5es de conte\u00fado ao vivo n\u00e3o publicadas ",
-    "Unpublished units will not be released": "Unidades n\u00e3o publicadas n\u00e3o ser\u00e3o lan\u00e7adas",
     "Unscheduled": "N\u00e3o agendado",
     "Update": "Atualizar",
     "Update team.": "Atualizar equipe.",
@@ -917,6 +895,7 @@
     "View all errors": "Visualizar todos os erros",
     "Viewing %s course": [
       "Visualizando %s curso",
+      "Visualizando %s cursos",
       "Visualizando %s cursos"
     ],
     "Visible to Staff Only": "Vis\u00edvel apenas para os funcion\u00e1rios",
@@ -966,7 +945,6 @@
     "You have set your language to {beta_language}, which is currently not fully translated. You can help us translate this language fully by joining the Transifex community and adding translations from English for learners that speak {beta_language}.": "Voc\u00ea configurou seu idioma para {beta_language}, que atualmente n\u00e3o est\u00e1 todo traduzido. Voc\u00ea pode nos ajudar a traduzir este idioma integralmente se juntando \u00e0 comunidade Transifex e adicionar tradu\u00e7\u00f5es do ingl\u00eas para alunos que falam {beta_language}",
     "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost.": "Voc\u00ea tem altera\u00e7\u00f5es n\u00e3o salvas em campos edit\u00e1veis individuais. Se voc\u00ea executar uma a\u00e7\u00e3o suas altera\u00e7\u00f5es n\u00e3o salvas ser\u00e3o perdidas.",
     "You haven't added any assets to this course yet.": "Voc\u00ea n\u00e3o adicionou nenhum ativo a este curso ainda",
-    "You haven't added any content to this course yet.": "Voc\u00ea ainda n\u00e3o adicionou nenhum conte\u00fado a este curso.",
     "You haven't added any textbooks to this course yet.": "Voc\u00ea ainda n\u00e3o adicionou nenhum livro-texto a este curso.",
     "You must enter a valid email address in order to add a new team member": "Voc\u00ea deve escrever um endere\u00e7o de e-mail v\u00e1lido para adicionar um novo membro do grupo",
     "You must provide a learner name.": "Voc\u00ea deve fornecer o nome do aluno.",

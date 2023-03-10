@@ -1,6 +1,6 @@
 # #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 # edX translation file.
-# Copyright (C) 2022 EdX
+# Copyright (C) 2023 EdX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -12,6 +12,7 @@
 # escapeplan4 <escapeplan4@gmail.com>, 2017
 # escapeplan4 <escapeplan4@gmail.com>, 2014
 # - - <feefcka@o2.pl>, 2016
+# Filip Jankowski, 2022
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2015-2018
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2014
 # Hrehory <grzegorz.gwardys@gmail.com>, 2015-2016
@@ -41,7 +42,7 @@
 # Dyfeomorfizm <ximixd@gmail.com>, 2014
 # #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
 # edX translation file.
-# Copyright (C) 2022 EdX
+# Copyright (C) 2023 EdX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -57,7 +58,7 @@
 # ajafo <transifex@ajafo.com>, 2014
 # #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2022 edX
+# Copyright (C) 2023 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -65,6 +66,7 @@
 # rodzajowo <a.dubrawska@gmail.com>, 2014
 # Aleks Ada, 2022
 # Bartłomiej Kuszel <bartlomiej.kuszel@gmail.com>, 2015
+# Filip Jankowski, 2022
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2015-2018
 # Maciej Kolankowski <maciej@eduprojekt.org>, 2014
 # Hrehory <grzegorz.gwardys@gmail.com>, 2015-2016
@@ -92,7 +94,7 @@
 # ajafo <transifex@ajafo.com>, 2014
 # #-#-#-#-#  mako-studio.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2022 edX
+# Copyright (C) 2023 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -117,7 +119,7 @@
 # Jaroslaw Lukawski <sekretariat@kmti.uz.zgora.pl>, 2014
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2022 edX
+# Copyright (C) 2023 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -136,9 +138,9 @@
 # Zuzia Basińska, 2022
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2022 edX
+# Copyright (C) 2023 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2022.
+# EdX Team <info@edx.org>, 2023.
 #
 # Translators:
 # Waheed Ahmed <waheed@edx.org>, 2019
@@ -148,7 +150,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2022-10-31 00:42+0000\n"
+"POT-Creation-Date: 2023-02-01 05:38+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Marcin Miłek, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/open-edx/teams/6205/pl/)\n"
@@ -172,7 +174,13 @@ msgid "Discussion"
 msgstr "Dyskusja"
 
 #: cms/djangoapps/contentstore/views/component.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "HTML"
+msgstr ""
+
+#: cms/djangoapps/contentstore/views/component.py
 #: openedx/core/djangoapps/content_libraries/constants.py
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Problem"
 msgstr ""
 
@@ -2665,9 +2673,6 @@ msgid ""
 " Copy the component location ID of a component from its Settings dialog in "
 "Studio."
 msgstr ""
-"Identyfikatory lokalizacji elementów używanych do określenia czy treść tego "
-"zależnego modułu jest wyświetlana studentowi. Skopiuj identyfikator "
-"lokalizacji elementu z jego ustawień w Studio."
 
 #: common/lib/xmodule/xmodule/conditional_module.py
 msgid "Conditional Attribute"
@@ -2678,8 +2683,6 @@ msgid ""
 "The attribute of the source components that determines whether a learner is "
 "shown the content of this conditional module."
 msgstr ""
-"Atrybut elementów źródłowych określających czy treść tego zależnego modułu "
-"jest wyświetlana studentowi."
 
 #: common/lib/xmodule/xmodule/conditional_module.py
 msgid "Conditional Value"
@@ -2690,8 +2693,6 @@ msgid ""
 "The value that the conditional attribute of the source components must match"
 " before a learner is shown the content of this conditional module."
 msgstr ""
-"Wartość, z którą musi się zgadzać atrybut zależności elementów źródłowych, "
-"zanim treść tego zależnego modułu zostanie wyświetlona studentowi."
 
 #: common/lib/xmodule/xmodule/conditional_module.py
 msgid "Blocked Content Message"
@@ -2705,11 +2706,6 @@ msgid ""
 "your message to give learners a direct link to required units. For example, "
 "'You must complete {link} before you can access this unit'."
 msgstr ""
-"Wiadomość wyświetlana studentom w przypadku niespełnienia wszystkich "
-"warunków niezbędnych do wyświetlenia treści zależnego modułu. Zawrzyj {link}"
-" w treści twojej wiadomości, aby dostarczyć studentom bezpośrednie odnośniki"
-" do wymaganych ekranów. Na przykład, 'Przed przystąpieniem do tej lekcji "
-"musisz ukończyć {link}'."
 
 #: common/lib/xmodule/xmodule/conditional_module.py
 #, python-brace-format
@@ -3690,6 +3686,19 @@ msgid ""
 "page"
 msgstr ""
 
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Select Course Font Family"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\" and \"font-open-sans\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
 #: cms/templates/certificates.html cms/templates/group_configurations.html
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html
@@ -4462,8 +4471,6 @@ msgid ""
 "Tag this course module as an Entrance Exam. Note, you must enable Entrance "
 "Exams for this course setting to take effect."
 msgstr ""
-"Oznacz ten moduł kursu jako Egzamin Wstępny. Zauważ, że aby ta opcja "
-"zadziałała, musisz aktywować egzaminy wstępne dla tego kursu."
 
 #: common/lib/xmodule/xmodule/seq_module.py
 msgid "Is Time Limited"
@@ -4679,6 +4686,7 @@ msgstr "Strona główna"
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Kurs"
 
@@ -8736,6 +8744,7 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
 #: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Pomiń do głównej zawartości"
@@ -9258,6 +9267,7 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
@@ -9524,6 +9534,7 @@ msgstr ""
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Zakładki"
 
@@ -11867,6 +11878,14 @@ msgid "Collapse Outline"
 msgstr ""
 
 #: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "outline"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "course name"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Select Base Course"
 msgstr ""
 
@@ -11980,6 +11999,97 @@ msgstr ""
 
 #: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Unable to load content."
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Courses available for translation"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Filters"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "From Language"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "To Language"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Block Type"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translation"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: lms/templates/support/feature_based_enrollments.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Course Name"
+msgstr "Nazwa kursu"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translated Course Name"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Search Course By Name"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Hrs Ago"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "N/A"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translated"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Last Updated:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translated:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No course blocks found"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No courses found"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Load More"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Section Header"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Untranslated"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load course blocks"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load a course"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load courses"
 msgstr ""
 
 #: openedx/features/wikimedia_features/wikimedia_general/tab.py
@@ -12320,10 +12430,6 @@ msgstr "Odmówiono dostępu: nieudana autoryzacja użytkownika {user}"
 #, python-brace-format
 msgid "{platform_name} Support Levels:"
 msgstr "Poziomy wsparcia {platform_name}:"
-
-#: cms/djangoapps/contentstore/views/component.py
-msgid "HTML"
-msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
@@ -12925,13 +13031,6 @@ msgid "Proctored Exam Settings"
 msgstr ""
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
-#: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Course Name"
-msgstr "Nazwa kursu"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
@@ -13214,7 +13313,7 @@ msgstr "Dodaj tę stronę do zakładek"
 
 #: lms/templates/conditional_module.html
 msgid "You do not have access to this dependency module."
-msgstr "Nie posiadasz dostępu do tego modułu."
+msgstr ""
 
 #: lms/templates/course.html
 #: themes/edx-platform/wikilearn/lms/templates/course.html
@@ -13275,6 +13374,7 @@ msgid "Search Your Courses"
 msgstr "Przeszukaj swoje kursy"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "Wyczyść wyszukiwanie"
 
@@ -15822,11 +15922,13 @@ msgstr "Doprecyzuj wyszukiwanie"
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "Treści szkoleniowe kursu {course_number}"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Narzędzia kursu"
 
@@ -15842,14 +15944,17 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Przeszukaj kurs"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Ten kurs nie zawiera żadnej treści"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -15859,6 +15964,7 @@ msgstr ""
 "{required_score}% na egzaminie. Twój obecny wynik to {current_score}%."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "Twój wynik to {current_score}%. Zdałeś egzamin wstępny."
 
