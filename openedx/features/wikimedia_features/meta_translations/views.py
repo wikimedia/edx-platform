@@ -72,7 +72,7 @@ def course_blocks_api_send_fetch(request):
 @login_required
 def render_translation_home(request):
     meta_data = {
-        'expend_outline': _('Expend Outline'),
+        'expend_outline': _('Expand Outline'),
         'collapse_outline': _('Collapse Outline'),
         'outline': _('outline'),
         'course_name': _('course name'),
