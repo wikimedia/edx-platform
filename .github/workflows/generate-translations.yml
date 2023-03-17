@@ -21,7 +21,14 @@ jobs:
 
       - name: Install OS requirements
         run: |
-          sudo apt-get update --fix-missing && sudo apt-get -y install libxmlsec1-dev pkg-config gettext
+          sudo apt-get update --fix-missing
+          sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl gettext
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+      
+      - name: Check TX Version
+        run: |
+          export PATH="$PWD:$PATH"
+          tx --version
 
       - name: Install pip requirements
         run: |
@@ -52,7 +59,9 @@ jobs:
         id: pull-latest-translations-from-transifex
         env:
           TX_TOKEN: ${{ secrets.TX_TOKEN }}
+          TX_HOSTNAME: https://rest.api.transifex.com
         run: |
+          export PATH="$PWD:$PATH"
           export NO_PREREQ_INSTALL='true'
           export LMS_CFG=$(pwd)/lms/devstack.yml
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
@@ -80,7 +89,7 @@ jobs:
           unset LMS_CFG
           unset STUDIO_CFG
       
-      - name: Merge translations from translatewiki
+      - name: Merge translations from translatewiki & manual files
         id: merge-translations-translatewiki
         run: |
           export NO_PREREQ_INSTALL='true'
@@ -88,6 +97,7 @@ jobs:
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
 
           python manage.py cms translatewiki update_from_translatewiki
+          python manage.py cms translatewiki update_from_manual
 
           unset LMS_CFG
           unset STUDIO_CFG
@@ -112,7 +122,9 @@ jobs:
         id: generate-custom-strings
         env:
           TX_TOKEN: ${{ secrets.TX_TOKEN }}
+          TX_HOSTNAME: https://rest.api.transifex.com
         run: |
+          export PATH="$PWD:$PATH"
           export NO_PREREQ_INSTALL='true'
           export LMS_CFG=$(pwd)/lms/devstack.yml
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
