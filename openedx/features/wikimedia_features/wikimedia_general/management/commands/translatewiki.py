@@ -35,6 +35,7 @@ class Command(BaseCommand):
                 'update_translations',
                 'generate_custom_strings',
                 'update_from_translatewiki',
+                'update_from_manual',
             ],
             help='Send translations to Edx Database',
         )
@@ -216,7 +217,7 @@ class Command(BaseCommand):
         
         log.info(f'{locales} are updated with Transifex Translations')
 
-    def update_translations_from_translatewiki(self, locals, merge_scheme):
+    def update_translations_from_schema(self, locals, merge_scheme):
         """
         Merge translations of Translatewiki with Transifex
         """
@@ -226,13 +227,16 @@ class Command(BaseCommand):
         for lang in locals:
             edx_dir = f'{edx_translation_path}/{lang}/LC_MESSAGES'
             for source_file, files in merge_scheme.items():
-                for filename in files:
-                    log.info(f'Updating {edx_dir}/{filename} from {edx_dir}/{source_file}')
-                    command = pomerge_command.format(
-                        from_path=f'{edx_dir}/{source_file}',
-                        to_path=f'{edx_dir}/{filename}',
-                    )
-                    execute(command)
+                if os.path.exists(f'{edx_dir}/{source_file}'):
+                    for filename in files:
+                        log.info(f'Updating {edx_dir}/{filename} from {edx_dir}/{source_file}')
+                        command = pomerge_command.format(
+                            from_path=f'{edx_dir}/{source_file}',
+                            to_path=f'{edx_dir}/{filename}',
+                        )
+                        execute(command)
+                else:
+                    log.info(f'Unable to find source path: {edx_dir}/{source_file}')
 
     def generate_custom_strings(self, target_files, locales, base_lang='en', prefix='wm'):
         """
@@ -318,4 +322,7 @@ class Command(BaseCommand):
             self.generate_custom_strings(targated_files, locales)
         elif options['action'] == 'update_from_translatewiki':
             scheme = {f'wm-{key}': val for key, val in merge_scheme.items()}
-            self.update_translations_from_translatewiki(locales, scheme)
+            self.update_translations_from_schema(locales, scheme)
+        elif options['action'] == 'update_from_manual':
+            scheme = {f'manual.po': staged_files}
+            self.update_translations_from_schema(locales, scheme)
