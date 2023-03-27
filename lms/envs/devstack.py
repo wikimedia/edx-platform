@@ -189,9 +189,9 @@ COURSE_DISCOVERY_MEANINGS = {
     'language': LANGUAGE_MAP,
 }
 
-FEATURES['ENABLE_COURSE_DISCOVERY'] = False
+FEATURES['ENABLE_COURSE_DISCOVERY'] = True
 # Setting for overriding default filtering facets for Course discovery
-# COURSE_DISCOVERY_FILTERS = ["org", "language", "modes"]
+COURSE_DISCOVERY_FILTERS = ["org", "language", "modes"]
 FEATURES['COURSES_ARE_BROWSEABLE'] = True
 HOMEPAGE_COURSE_MAX = 9
 
@@ -432,3 +432,11 @@ FEATURES['ENABLE_PREREQUISITE_COURSES'] = True
 # Used in edx-proctoring for ID generation in lieu of SECRET_KEY - dummy value
 # (ref MST-637)
 PROCTORING_USER_OBFUSCATION_KEY = '85920908f28904ed733fe576320db18cabd7b6cd'
+
+ELASTIC_SEARCH_CONFIG = [
+    {
+        'host': 'edx.devstack.elasticsearch7',
+        'port': 9200,
+        'use_ssl': False,
+    }
+]
