@@ -1009,7 +1009,7 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         help=_(
             """
             Select course family in which you want to display your course.
-            Available options are "font-trebuchet" and "font-open-sans".
+            Available options are "font-trebuchet", "font-open-sans", "font-montserrat", and "font-source-sans-pro".
             If value is invalid or empty the default font-family will be "Helvetica Neue".
             """
         ),
