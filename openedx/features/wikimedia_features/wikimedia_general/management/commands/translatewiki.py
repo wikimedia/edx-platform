@@ -147,7 +147,7 @@ class Command(BaseCommand):
         log.info('Pulling Reviewed Translations from Transifex')
         locales = list(set(locales) - set([base_lang]))
         langs = ','.join(locales)
-        execute(f'tx pull --mode=proofread -l {langs}')
+        execute(f'tx pull --mode=reviewed -l {langs}')
 
     def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
         """
