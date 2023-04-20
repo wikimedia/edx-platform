@@ -361,7 +361,6 @@
     "Cancel upload": "Annuler l'envoi",
     "Cannot delete when in use by a unit": "Ne peut \u00eatre supprim\u00e9 lorsqu'il est en cours d'utilisation dans une unit\u00e9",
     "Cannot delete when in use by an experiment": "Ne peut \u00eatre supprim\u00e9 lorsqu'il est en cours d'utilisation par une exp\u00e9rience",
-    "Cannot drop more <%- types %> assignments than are assigned.": "Impossible de supprimer plus d'affectations de <%- types %> que ce qui est attribu\u00e9.",
     "Cannot join instructor managed team": "Impossible de rejoindre l'\u00e9quipe dirig\u00e9e par un instructeur",
     "Caption": "L\u00e9gende",
     "Caution: The last published version of this unit is live. By publishing changes you will change the student experience.": "Attention: la derni\u00e8re version publi\u00e9e de cette unit\u00e9 est active. En publiant des modifications vous allez changer l'exp\u00e9rience des \u00e9tudiants.",
