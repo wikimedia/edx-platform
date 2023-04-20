@@ -13,7 +13,7 @@ from i18n.execute import execute
 
 from django.core.management.base import BaseCommand
 from logging import getLogger
-from polib import pofile, POFile, POEntry
+from polib import pofile, POFile
 
 log = getLogger(__name__)
 
@@ -38,6 +38,7 @@ class Command(BaseCommand):
                 'generate_custom_strings',
                 'update_from_translatewiki',
                 'update_from_manual',
+                'update_from_lilac',
                 'remove_bad_msgstr',
             ],
             help='Send translations to Edx Database',
@@ -143,6 +144,7 @@ class Command(BaseCommand):
 
     def reset_pofile(self, file_path, output_file):
         """
+        Removes msgstr from pofile
         """
         _, poids = self._get_msgids_from_po_file(file_path)
         pomsgs = pofile(output_file)
@@ -150,6 +152,36 @@ class Command(BaseCommand):
             if entry.msgid in poids:
                 entry.msgstr = ""
         pomsgs.save()
+    
+    def rename_version_files_and_remove_errors(self, locales):
+        """
+        Rename version files and remove fuzzy msgstrs
+        """
+        lilac_files = ['django.po.new', 'djangojs.po.new']
+        edx_translation_path = self.EDX_TRANSLATION_PATH
+        for lang in locales:
+            for filename in lilac_files:
+                path = f'{edx_translation_path}/{lang}/LC_MESSAGES'
+                if os.path.exists(f'{path}/{filename}'):
+                    new_filename = f'lilac-{filename.replace(".new", "")}'
+                    execute(f'mv -v {path}/{filename} {path}/{new_filename}')
+                    self.remove_bad_msgstr(f'{path}/{new_filename}')
+    
+    def process_version_files(self, locales, base_lang='en'):
+        """
+        Fetch version files from the transifex, remove errors, and rename the files to version-<filename>
+        """
+        log.info('Updating the confg file')
+        execute(f'mv -v .tx/config .tx/config-edx; mv -v .tx/config-lilac .tx/config;')
+        
+        log.info('Pulling Version Translations from Transifex')
+        locales = list(set(locales) - set([base_lang]))
+        langs = ','.join(locales)
+        
+        execute(f'tx pull --keep-new-files --mode=onlytranslated -l {langs} -d')
+        execute(f'mv -v .tx/config .tx/config-lilac; mv -v .tx/config-edx .tx/config;')
+
+        self.rename_version_files_and_remove_errors(locales)
 
     def pull_translation_from_transifex(self, locales, base_lang='en'):
         """
@@ -160,9 +192,13 @@ class Command(BaseCommand):
         log.info('Pulling Reviewed Translations from Transifex')
         locales = list(set(locales) - set([base_lang]))
         langs = ','.join(locales)
-        execute(f'tx pull -f --mode=onlytranslated -l {langs}')
+        execute(f'tx pull --mode=reviewed -l {langs}')
+        self.process_version_files(locales, base_lang)
 
-    def get_line_number_from_output(self, output):
+    def _get_line_number_from_output(self, output):
+        """
+        Extract line number from the error message
+        """
         output_mappings = {}
         pattern = r"(conf/locale/)(.+)(:\d+)"
         
@@ -178,6 +214,9 @@ class Command(BaseCommand):
         return output_mappings
     
     def _get_paragraph(self, line_numbers, paragraphs):
+        """
+        Get paragraph based on line_numbers in a file
+        """
         fuzzy_paragraphs = []
         for line_number in  line_numbers:
             for start_line, paragraph in paragraphs:
@@ -186,6 +225,9 @@ class Command(BaseCommand):
         return fuzzy_paragraphs
 
     def get_paragraphs_from_lines(self, file_path, line_numbers):
+        """
+        Remove fuzzy msgstr from the file
+        """
         paragraphs = []
         with open(file_path, 'r') as file:
             # read the contents of the file
@@ -212,47 +254,29 @@ class Command(BaseCommand):
             self.reset_pofile(temp_path, file_path)
             execute(f'rm {temp_path}')
 
-    def remove_bad_msgstr(self, filename):
+    def remove_bad_msgstr(self, filename=None):
         """
+        Execute the command and remove fuzzy msgstrs
         """
-        # cmd = f'msgfmt --check-format {filename}'
-        cmd = f'django-admin.py compilemessages'
+        if filename:
+            cmd = f'msgfmt --check-format {filename}'
+        else:
+            cmd = f'django-admin.py compilemessages'
         result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # check for errors
         if result.returncode != 0:
-            # an error occurred, print the error message
-            error_msg = result.stderr.decode('utf-8')
-            files_mapping = self.get_line_number_from_output(error_msg)
-            import pdb; pdb.set_trace();
+            try: 
+                error_msg = result.stderr.decode('utf-8')
+            except UnicodeDecodeError:
+                error_msg = result.stderr.decode('latin-1')
+            
+            files_mapping = self._get_line_number_from_output(error_msg)
             for file_path, line_numbers in files_mapping.items():
                 self.get_paragraphs_from_lines(file_path, line_numbers)
         else:
             # no error, print the command output
             print(result.stdout.decode('utf-8'))
 
-
-    def msgmerge(self, locales, translation_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
-        """
-        Merge base language translations with other languages
-        Arguments:
-            locales: (list) list of languages i.e ['ar', 'en', 'fr']
-            staged_files: (list) files to copy i.e ['wiki.po', 'wikijs.po']
-            base_lang: (str) base language of edx-platform
-            generate_po_file_if_not_exist: (bool) if True and destination path doesn't exist, it will create empty po file
-            output_file_mapping: (dict) used to generate metadata when creatring new .po file
-        """
-        msgcat_command = 'msgcat {to} {source} -o {to}'
-        locales = list(set(locales) - set([base_lang]))
-        edx_translation_path = self.EDX_TRANSLATION_PATH
-        for lang in locales:
-            base_path = f'{edx_translation_path}/{lang}/LC_MESSAGES'
-            for filename in translation_files:
-                from_file = f'{base_path}/wm-{filename}'
-                to_file = f'{base_path}/{filename}'
-                command = msgcat_command.format(to=to_file, source=from_file)
-                execute(command)
-
-    def msgmergeold(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
+    def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
         """
         Merge base language translations with other languages
         Arguments:
@@ -320,11 +344,14 @@ class Command(BaseCommand):
         
         log.info(f'{locales} are updated with Transifex Translations')
 
-    def update_translations_from_schema(self, locals, merge_scheme):
+    def update_translations_from_schema(self, locals, merge_scheme, override=True):
         """
         Merge translations of Translatewiki with Transifex
         """
         pomerge_command = 'pomerge --from {from_path} --to {to_path}'
+        if not override:
+            pomerge_command = 'pomerge --from {from_path} --to {to_path} --no-overwrite'
+
         edx_translation_path = self.EDX_TRANSLATION_PATH
 
         for lang in locals:
@@ -418,9 +445,9 @@ class Command(BaseCommand):
         if options['action'] == 'pull_transifex_translations':
             self.pull_translation_from_transifex(locales)
         elif options['action'] == 'msgmerge':
-            self.msgmerge(locales, targated_files)
+            self.msgmerge(locales, staged_files)
         elif options['action'] == 'remove_bad_msgstr':
-            self.remove_bad_msgstr('conf/locale/ca/LC_MESSAGES/django.po')
+            self.remove_bad_msgstr()
         elif options['action'] == 'update_translations':
             self.update_translations_from_transifex(locales, staged_files)
         elif options['action'] == 'generate_custom_strings':
@@ -428,6 +455,9 @@ class Command(BaseCommand):
         elif options['action'] == 'update_from_translatewiki':
             scheme = {f'wm-{key}': val for key, val in merge_scheme.items()}
             self.update_translations_from_schema(locales, scheme)
+        elif options['action'] == 'update_from_lilac':
+            scheme = {f'lilac-{key}': val for key, val in merge_scheme.items()}
+            self.update_translations_from_schema(locales, scheme, False)
         elif options['action'] == 'update_from_manual':
             scheme = {f'manual.po': staged_files}
             self.update_translations_from_schema(locales, scheme)
