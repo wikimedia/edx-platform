@@ -18,7 +18,7 @@ from openedx.core.djangolib.markup import HTML, Text
       <p>
       ${_('The page that you were looking for was not found.')}
       ${Text(_('Go back to the {homepage}.')).format(
-        homepage=HTML('<a href="/">homepage</a>'),
+        homepage=HTML(_('<a href="/">homepage</a>')),
       )}
       </p>
     </article>

@@ -3,9 +3,11 @@ Django admin command to automate localization flow using
 Translatewiki and Transifex
 """
 import os
+import re
 import yaml
 import shutil
 from datetime import datetime
+import subprocess
 
 from i18n.execute import execute
 
@@ -36,6 +38,7 @@ class Command(BaseCommand):
                 'generate_custom_strings',
                 'update_from_translatewiki',
                 'update_from_manual',
+                'remove_bad_msgstr',
             ],
             help='Send translations to Edx Database',
         )
@@ -138,6 +141,16 @@ class Command(BaseCommand):
                 po.append(entry)
             po.save(output_file)
 
+    def reset_pofile(self, file_path, output_file):
+        """
+        """
+        _, poids = self._get_msgids_from_po_file(file_path)
+        pomsgs = pofile(output_file)
+        for entry in pomsgs:
+            if entry.msgid in poids:
+                entry.msgstr = ""
+        pomsgs.save()
+
     def pull_translation_from_transifex(self, locales, base_lang='en'):
         """
         Pull latest translations from Transifex
@@ -147,9 +160,99 @@ class Command(BaseCommand):
         log.info('Pulling Reviewed Translations from Transifex')
         locales = list(set(locales) - set([base_lang]))
         langs = ','.join(locales)
-        execute(f'tx pull --mode=proofread -l {langs}')
+        execute(f'tx pull -f --mode=onlytranslated -l {langs}')
 
-    def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
+    def get_line_number_from_output(self, output):
+        output_mappings = {}
+        pattern = r"(conf/locale/)(.+)(:\d+)"
+        
+        for output_line in output.split('\n'):
+            match = re.search(pattern, output_line)
+            if match:
+                # Extract the matched substring
+                file_name, line_number = match.group(1) + match.group(2), int(match.group(3)[1:])
+                if file_name in output_mappings:
+                    output_mappings[file_name].append(line_number)
+                else:
+                    output_mappings[file_name] = [line_number]
+        return output_mappings
+    
+    def _get_paragraph(self, line_numbers, paragraphs):
+        fuzzy_paragraphs = []
+        for line_number in  line_numbers:
+            for start_line, paragraph in paragraphs:
+                if start_line <= line_number <= start_line + paragraph.count('\n'):
+                    fuzzy_paragraphs.append(paragraph.strip())
+        return fuzzy_paragraphs
+
+    def get_paragraphs_from_lines(self, file_path, line_numbers):
+        paragraphs = []
+        with open(file_path, 'r') as file:
+            # read the contents of the file
+            file_contents = file.read()
+            current_paragraph = ''
+            current_line_number = 1
+            for line_number, line in enumerate(file_contents.splitlines()):
+                if line.strip() == '':
+                    if current_paragraph:
+                        paragraphs.append((current_line_number, current_paragraph.strip()))
+                        current_paragraph = ''
+                    current_line_number = line_number + 2
+                else:
+                    current_paragraph += line + '\n'
+            if current_paragraph:
+                paragraphs.append((current_line_number, current_paragraph.strip()))
+            
+            fuzzy_paragraphs = self._get_paragraph(line_numbers, paragraphs)
+            
+            dir_path, file_name = os.path.split(file_path)
+            temp_path = os.path.join(dir_path, f'temp-{file_name}')
+            with open(temp_path, 'w+') as temp_file:
+                temp_file.write("\n\n".join(fuzzy_paragraphs))
+            self.reset_pofile(temp_path, file_path)
+            execute(f'rm {temp_path}')
+
+    def remove_bad_msgstr(self, filename):
+        """
+        """
+        # cmd = f'msgfmt --check-format {filename}'
+        cmd = f'django-admin.py compilemessages'
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # check for errors
+        if result.returncode != 0:
+            # an error occurred, print the error message
+            error_msg = result.stderr.decode('utf-8')
+            files_mapping = self.get_line_number_from_output(error_msg)
+            import pdb; pdb.set_trace();
+            for file_path, line_numbers in files_mapping.items():
+                self.get_paragraphs_from_lines(file_path, line_numbers)
+        else:
+            # no error, print the command output
+            print(result.stdout.decode('utf-8'))
+
+
+    def msgmerge(self, locales, translation_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
+        """
+        Merge base language translations with other languages
+        Arguments:
+            locales: (list) list of languages i.e ['ar', 'en', 'fr']
+            staged_files: (list) files to copy i.e ['wiki.po', 'wikijs.po']
+            base_lang: (str) base language of edx-platform
+            generate_po_file_if_not_exist: (bool) if True and destination path doesn't exist, it will create empty po file
+            output_file_mapping: (dict) used to generate metadata when creatring new .po file
+        """
+        msgcat_command = 'msgcat {to} {source} -o {to}'
+        locales = list(set(locales) - set([base_lang]))
+        edx_translation_path = self.EDX_TRANSLATION_PATH
+        for lang in locales:
+            base_path = f'{edx_translation_path}/{lang}/LC_MESSAGES'
+            for filename in translation_files:
+                from_file = f'{base_path}/wm-{filename}'
+                to_file = f'{base_path}/{filename}'
+                command = msgcat_command.format(to=to_file, source=from_file)
+                execute(command)
+
+    def msgmergeold(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
         """
         Merge base language translations with other languages
         Arguments:
@@ -315,7 +418,9 @@ class Command(BaseCommand):
         if options['action'] == 'pull_transifex_translations':
             self.pull_translation_from_transifex(locales)
         elif options['action'] == 'msgmerge':
-            self.msgmerge(locales, staged_files)
+            self.msgmerge(locales, targated_files)
+        elif options['action'] == 'remove_bad_msgstr':
+            self.remove_bad_msgstr('conf/locale/ca/LC_MESSAGES/django.po')
         elif options['action'] == 'update_translations':
             self.update_translations_from_transifex(locales, staged_files)
         elif options['action'] == 'generate_custom_strings':

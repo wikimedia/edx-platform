@@ -54,8 +54,20 @@ jobs:
           ref: master
           token: ${{ secrets.THEME_ACCESS_TOKEN }}
         if: steps.clone-theme-repo.outcome == 'failure'
+      
+      - name: Generate translations for changed source
+        id: generate-new-translations
+        env:
+          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+        run: make extract_translations
+      
+      - name: Delete qqq folder and generate i18n files
+        id: generate-i18n-en-files
+        run: |
+          rm -r conf/locale/qqq
+          paver i18n_fastgenerate
 
-      - name: Pull latest translations from Transifex
+      - name: Pull latest translations from Transifex and Remove errors
         id: pull-latest-translations-from-transifex
         env:
           TX_TOKEN: ${{ secrets.TX_TOKEN }}
@@ -67,17 +79,12 @@ jobs:
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
 
           python manage.py cms translatewiki pull_transifex_translations
+          python manage.py cms translatewiki remove_bad_msgstr
 
           unset LMS_CFG
           unset STUDIO_CFG
 
-      - name: Generate translations for changed source
-        id: generate-new-translations
-        env:
-          TX_TOKEN: ${{ secrets.TX_TOKEN }}
-        run: make extract_translations
-
-      - name: Merge all the translations
+      - name: Merge custom transaltions with other files
         id: merge-translations-edx
         run: |
           export NO_PREREQ_INSTALL='true'
@@ -85,19 +92,6 @@ jobs:
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
 
           python manage.py cms translatewiki msgmerge
-
-          unset LMS_CFG
-          unset STUDIO_CFG
-      
-      - name: Merge translations from translatewiki & manual files
-        id: merge-translations-translatewiki
-        run: |
-          export NO_PREREQ_INSTALL='true'
-          export LMS_CFG=$(pwd)/lms/devstack.yml
-          export STUDIO_CFG=$(pwd)/cms/devstack.yml
-
-          python manage.py cms translatewiki update_from_translatewiki
-          python manage.py cms translatewiki update_from_manual
 
           unset LMS_CFG
           unset STUDIO_CFG
