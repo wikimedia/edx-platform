@@ -3,15 +3,17 @@ Django admin command to automate localization flow using
 Translatewiki and Transifex
 """
 import os
+import re
 import yaml
 import shutil
 from datetime import datetime
+import subprocess
 
 from i18n.execute import execute
 
 from django.core.management.base import BaseCommand
 from logging import getLogger
-from polib import pofile, POFile, POEntry
+from polib import pofile, POFile
 
 log = getLogger(__name__)
 
@@ -36,6 +38,8 @@ class Command(BaseCommand):
                 'generate_custom_strings',
                 'update_from_translatewiki',
                 'update_from_manual',
+                'update_from_lilac',
+                'remove_bad_msgstr',
             ],
             help='Send translations to Edx Database',
         )
@@ -138,6 +142,47 @@ class Command(BaseCommand):
                 po.append(entry)
             po.save(output_file)
 
+    def reset_pofile(self, file_path, output_file):
+        """
+        Removes msgstr from pofile
+        """
+        _, poids = self._get_msgids_from_po_file(file_path)
+        pomsgs = pofile(output_file)
+        for entry in pomsgs:
+            if entry.msgid in poids:
+                entry.msgstr = ""
+        pomsgs.save()
+    
+    def rename_version_files_and_remove_errors(self, locales):
+        """
+        Rename version files and remove fuzzy msgstrs
+        """
+        lilac_files = ['django.po.new', 'djangojs.po.new']
+        edx_translation_path = self.EDX_TRANSLATION_PATH
+        for lang in locales:
+            for filename in lilac_files:
+                path = f'{edx_translation_path}/{lang}/LC_MESSAGES'
+                if os.path.exists(f'{path}/{filename}'):
+                    new_filename = f'lilac-{filename.replace(".new", "")}'
+                    execute(f'mv -v {path}/{filename} {path}/{new_filename}')
+                    self.remove_bad_msgstr(f'{path}/{new_filename}')
+    
+    def process_version_files(self, locales, base_lang='en'):
+        """
+        Fetch version files from the transifex, remove errors, and rename the files to version-<filename>
+        """
+        log.info('Updating the confg file')
+        execute(f'mv -v .tx/config .tx/config-edx; mv -v .tx/config-lilac .tx/config;')
+        
+        log.info('Pulling Version Translations from Transifex')
+        locales = list(set(locales) - set([base_lang]))
+        langs = ','.join(locales)
+        
+        execute(f'tx pull --keep-new-files --mode=reviewed -l {langs} -d')
+        execute(f'mv -v .tx/config .tx/config-lilac; mv -v .tx/config-edx .tx/config;')
+
+        self.rename_version_files_and_remove_errors(locales)
+
     def pull_translation_from_transifex(self, locales, base_lang='en'):
         """
         Pull latest translations from Transifex
@@ -148,6 +193,85 @@ class Command(BaseCommand):
         locales = list(set(locales) - set([base_lang]))
         langs = ','.join(locales)
         execute(f'tx pull --mode=reviewed -l {langs}')
+        self.process_version_files(locales, base_lang)
+
+    def _get_line_number_from_output(self, output):
+        """
+        Extract line number from the error message
+        """
+        output_mappings = {}
+        pattern = r"(conf/locale/)(.+)(:\d+)"
+        
+        for output_line in output.split('\n'):
+            match = re.search(pattern, output_line)
+            if match:
+                # Extract the matched substring
+                file_name, line_number = match.group(1) + match.group(2), int(match.group(3)[1:])
+                if file_name in output_mappings:
+                    output_mappings[file_name].append(line_number)
+                else:
+                    output_mappings[file_name] = [line_number]
+        return output_mappings
+    
+    def _get_paragraph(self, line_numbers, paragraphs):
+        """
+        Get paragraph based on line_numbers in a file
+        """
+        fuzzy_paragraphs = []
+        for line_number in  line_numbers:
+            for start_line, paragraph in paragraphs:
+                if start_line <= line_number <= start_line + paragraph.count('\n'):
+                    fuzzy_paragraphs.append(paragraph.strip())
+        return fuzzy_paragraphs
+
+    def get_paragraphs_from_lines(self, file_path, line_numbers):
+        """
+        Remove fuzzy msgstr from the file
+        """
+        paragraphs = []
+        with open(file_path, 'r') as file:
+            # read the contents of the file
+            file_contents = file.read()
+            current_paragraph = ''
+            current_line_number = 1
+            for line_number, line in enumerate(file_contents.splitlines()):
+                if line.strip() == '':
+                    if current_paragraph:
+                        paragraphs.append((current_line_number, current_paragraph.strip()))
+                        current_paragraph = ''
+                    current_line_number = line_number + 2
+                else:
+                    current_paragraph += line + '\n'
+            if current_paragraph:
+                paragraphs.append((current_line_number, current_paragraph.strip()))
+            
+            fuzzy_paragraphs = self._get_paragraph(line_numbers, paragraphs)
+            
+            dir_path, file_name = os.path.split(file_path)
+            temp_path = os.path.join(dir_path, f'temp-{file_name}')
+            with open(temp_path, 'w+') as temp_file:
+                temp_file.write("\n\n".join(fuzzy_paragraphs))
+            self.reset_pofile(temp_path, file_path)
+            execute(f'rm {temp_path}')
+
+    def remove_bad_msgstr(self, filename=None):
+        """
+        Execute the command and remove fuzzy msgstrs
+        """
+        if filename:
+            cmd = f'msgfmt --check-format {filename}'
+        else:
+            cmd = f'django-admin.py compilemessages'
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if result.returncode != 0:
+            try: 
+                error_msg = result.stderr.decode('utf-8')
+            except UnicodeDecodeError:
+                error_msg = result.stderr.decode('latin-1')
+            
+            files_mapping = self._get_line_number_from_output(error_msg)
+            for file_path, line_numbers in files_mapping.items():
+                self.get_paragraphs_from_lines(file_path, line_numbers)
 
     def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
         """
@@ -217,11 +341,14 @@ class Command(BaseCommand):
         
         log.info(f'{locales} are updated with Transifex Translations')
 
-    def update_translations_from_schema(self, locals, merge_scheme):
+    def update_translations_from_schema(self, locals, merge_scheme, override=True):
         """
         Merge translations of Translatewiki with Transifex
         """
         pomerge_command = 'pomerge --from {from_path} --to {to_path}'
+        if not override:
+            pomerge_command = 'pomerge --from {from_path} --to {to_path} --no-overwrite'
+
         edx_translation_path = self.EDX_TRANSLATION_PATH
 
         for lang in locals:
@@ -316,6 +443,8 @@ class Command(BaseCommand):
             self.pull_translation_from_transifex(locales)
         elif options['action'] == 'msgmerge':
             self.msgmerge(locales, staged_files)
+        elif options['action'] == 'remove_bad_msgstr':
+            self.remove_bad_msgstr()
         elif options['action'] == 'update_translations':
             self.update_translations_from_transifex(locales, staged_files)
         elif options['action'] == 'generate_custom_strings':
@@ -323,6 +452,9 @@ class Command(BaseCommand):
         elif options['action'] == 'update_from_translatewiki':
             scheme = {f'wm-{key}': val for key, val in merge_scheme.items()}
             self.update_translations_from_schema(locales, scheme)
+        elif options['action'] == 'update_from_lilac':
+            scheme = {f'lilac-{key}': val for key, val in merge_scheme.items()}
+            self.update_translations_from_schema(locales, scheme, False)
         elif options['action'] == 'update_from_manual':
             scheme = {f'manual.po': staged_files}
             self.update_translations_from_schema(locales, scheme)
