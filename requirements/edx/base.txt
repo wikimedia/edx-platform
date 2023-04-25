@@ -685,8 +685,6 @@ openedx-calc==2.0.1
     # via -r requirements/edx/base.in
 openedx-events==0.6.0
     # via -r requirements/edx/base.in
-ora2==3.7.2
-    # via -r requirements/edx/base.in
 packaging==21.0
     # via
     #   bleach
@@ -1071,6 +1069,12 @@ xss-utils==0.3.0
     # via -r requirements/edx/base.in
 yarl==1.7.0
     # via aiohttp
+
+# Custom Requirements
+asyncio                             # Used in the meta-transaltions
+edx-sysadmin                        # External requirements
+pomerge                             # Used in the localization feature
+git+https://github.com/wikimedia/edx-ora2.git@wm-v1.0#egg=ora2
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
