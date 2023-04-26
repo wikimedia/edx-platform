@@ -1,10 +1,10 @@
 """
 Django admin command to send untranslated data to Meta Wiki.
 """
+import os
 import asyncio
 import aiohttp
 import json
-import pytz
 from logging import getLogger
 from datetime import datetime, timedelta
 from collections import Counter
@@ -12,20 +12,18 @@ from collections import Counter
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.db.models import Q
-from opaque_keys.edx.keys import CourseKey, UsageKey
 from django.utils import timezone
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
-    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaTranslationConfiguration,
+    WikiTranslation, CourseBlock, MetaTranslationConfiguration,
     MetaCronJobInfo,
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 from openedx.features.wikimedia_features.meta_translations.utils import is_block_translated
 
 log = getLogger(__name__)
-
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 class Command(BaseCommand):
     """
