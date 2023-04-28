@@ -103,7 +103,7 @@ class ProgressTab(EnrolledTab):
     The course progress view.
     """
     type = 'progress'
-    title = gettext_noop('Progress')
+    title = gettext_noop('Score')
     priority = 40
     view_name = 'progress'
     is_hideable = True
