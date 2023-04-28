@@ -8,7 +8,7 @@ from xmodule.tabs import TabFragmentViewMixin
 
 class WikimediaProgressTab(TabFragmentViewMixin, EnrolledTab):
     type = 'wikimedia_progress_tab'
-    title = ugettext_noop('Wiki Progress')
+    title = ugettext_noop('Progress')
     priority = None
     fragment_view_name = 'openedx.features.wikimedia_features.wikimedia_general.views.WikimediaProgressFragmentView'
     is_hideable = False
