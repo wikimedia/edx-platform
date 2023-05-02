@@ -17,6 +17,7 @@ from polib import pofile, POFile
 
 log = getLogger(__name__)
 
+
 class Command(BaseCommand):
     """
     Localization commands
@@ -38,7 +39,7 @@ class Command(BaseCommand):
                 'generate_custom_strings',
                 'update_from_translatewiki',
                 'update_from_manual',
-                'update_from_lilac',
+                'update_from_version',
                 'remove_bad_msgstr',
             ],
             help='Send translations to Edx Database',
@@ -59,7 +60,7 @@ class Command(BaseCommand):
             file_path = f'{dir}/{filename}'
             if not os.path.exists(dir):
                 raise ValueError(f"Tranlatewiki: file doesn't exist: {file_path}")
-    
+
     def _move_files_from_src_to_dest(self, src_dir, dest_dir, files, delete_src_dir_if_empty=False):
         """
         More files from source directory to destination directory
@@ -73,17 +74,17 @@ class Command(BaseCommand):
         if not os.path.exists(dest_dir):
             log.info(f'Creating a directory : {dest_dir}')
             os.mkdir(dest_dir)
-        
+
         log.info(f'Moving files from {src_dir} to {dest_dir}')
         for filename in files:
             soure_file = f'{src_dir}/{filename}'
             output_file = f'{dest_dir}/{filename}'
             shutil.move(soure_file, output_file)
-        
+
         if delete_src_dir_if_empty and not len(os.listdir(src_dir)):
             log.info(f'Deleting source directory {src_dir}')
             os.rmdir(src_dir)
-    
+
     def _get_metadata_from_po_file(self, path):
         """
         Returns metadata of po file
@@ -152,34 +153,34 @@ class Command(BaseCommand):
             if entry.msgid in poids:
                 entry.msgstr = ""
         pomsgs.save()
-    
+
     def rename_version_files_and_remove_errors(self, locales):
         """
         Rename version files and remove fuzzy msgstrs
         """
-        lilac_files = ['django.po.new', 'djangojs.po.new']
+        version_files = ['django.po.new', 'djangojs.po.new']
         edx_translation_path = self.EDX_TRANSLATION_PATH
         for lang in locales:
-            for filename in lilac_files:
+            for filename in version_files:
                 path = f'{edx_translation_path}/{lang}/LC_MESSAGES'
                 if os.path.exists(f'{path}/{filename}'):
-                    new_filename = f'lilac-{filename.replace(".new", "")}'
+                    new_filename = f'version-{filename.replace(".new", "")}'
                     execute(f'mv -v {path}/{filename} {path}/{new_filename}')
                     self.remove_bad_msgstr(f'{path}/{new_filename}')
-    
+
     def process_version_files(self, locales, base_lang='en'):
         """
         Fetch version files from the transifex, remove errors, and rename the files to version-<filename>
         """
         log.info('Updating the confg file')
-        execute(f'mv -v .tx/config .tx/config-edx; mv -v .tx/config-lilac .tx/config;')
-        
+        execute('mv -v .tx/config .tx/config-edx; mv -v .tx/config-version .tx/config;')
+
         log.info('Pulling Version Translations from Transifex')
         locales = list(set(locales) - set([base_lang]))
         langs = ','.join(locales)
-        
+
         execute(f'tx pull --keep-new-files --mode=reviewed -l {langs} -d')
-        execute(f'mv -v .tx/config .tx/config-lilac; mv -v .tx/config-edx .tx/config;')
+        execute('mv -v .tx/config .tx/config-version; mv -v .tx/config-edx .tx/config;')
 
         self.rename_version_files_and_remove_errors(locales)
 
@@ -201,7 +202,7 @@ class Command(BaseCommand):
         """
         output_mappings = {}
         pattern = r"(conf/locale/)(.+)(:\d+)"
-        
+
         for output_line in output.split('\n'):
             match = re.search(pattern, output_line)
             if match:
@@ -212,13 +213,13 @@ class Command(BaseCommand):
                 else:
                     output_mappings[file_name] = [line_number]
         return output_mappings
-    
+
     def _get_paragraph(self, line_numbers, paragraphs):
         """
         Get paragraph based on line_numbers in a file
         """
         fuzzy_paragraphs = []
-        for line_number in  line_numbers:
+        for line_number in line_numbers:
             for start_line, paragraph in paragraphs:
                 if start_line <= line_number <= start_line + paragraph.count('\n'):
                     fuzzy_paragraphs.append(paragraph.strip())
@@ -244,9 +245,9 @@ class Command(BaseCommand):
                     current_paragraph += line + '\n'
             if current_paragraph:
                 paragraphs.append((current_line_number, current_paragraph.strip()))
-            
+
             fuzzy_paragraphs = self._get_paragraph(line_numbers, paragraphs)
-            
+
             dir_path, file_name = os.path.split(file_path)
             temp_path = os.path.join(dir_path, f'temp-{file_name}')
             with open(temp_path, 'w+') as temp_file:
@@ -261,19 +262,19 @@ class Command(BaseCommand):
         if filename:
             cmd = f'msgfmt --check-format {filename}'
         else:
-            cmd = f'django-admin.py compilemessages'
+            cmd = 'django-admin.py compilemessages'
         result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if result.returncode != 0:
-            try: 
+            try:
                 error_msg = result.stderr.decode('utf-8')
             except UnicodeDecodeError:
                 error_msg = result.stderr.decode('latin-1')
-            
+
             files_mapping = self._get_line_number_from_output(error_msg)
             for file_path, line_numbers in files_mapping.items():
                 self.get_paragraphs_from_lines(file_path, line_numbers)
 
-    def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping={}):
+    def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping: dict = {}, exclude_files: list = ['wm-django.po', 'wm-djangojs.po', 'manual.po', 'manualjs.po']):
         """
         Merge base language translations with other languages
         Arguments:
@@ -282,6 +283,7 @@ class Command(BaseCommand):
             base_lang: (str) base language of edx-platform
             generate_po_file_if_not_exist: (bool) if True and destination path doesn't exist, it will create empty po file
             output_file_mapping: (dict) used to generate metadata when creatring new .po file
+            exclude_files: (list) exclude files in the staged_files 
         """
         msgmerge_command = 'msgmerge {to} {source} --update --no-fuzzy-matching'
         locales = list(set(locales) - set([base_lang]))
@@ -291,15 +293,16 @@ class Command(BaseCommand):
             to_path = f'{edx_translation_path}/{lang}/LC_MESSAGES'
             log.info(f'Merging {base_lang} translations with {lang}')
             for filename in staged_files:
-                from_file = f'{from_path}/{filename}'
-                to_file = f'{to_path}/{filename}'
-                if generate_po_file_if_not_exist and not os.path.exists(to_file):
-                    log.info(f'{to_file} not exist, Creating {filename} in {to_path}')
-                    meta_data = self._get_metadata_from_po_file(f'{to_path}/{output_file_mapping[filename]}')
-                    self._create_or_update_po_file(to_file, [], meta_data)
-                command = msgmerge_command.format(to=to_file, source=from_file)
-                execute(command)
-    
+                if filename not in exclude_files:
+                    from_file = f'{from_path}/{filename}'
+                    to_file = f'{to_path}/{filename}'
+                    if generate_po_file_if_not_exist and not os.path.exists(to_file):
+                        log.info(f'{to_file} not exist, Creating {filename} in {to_path}')
+                        meta_data = self._get_metadata_from_po_file(f'{to_path}/{output_file_mapping[filename]}')
+                        self._create_or_update_po_file(to_file, [], meta_data)
+                    command = msgmerge_command.format(to=to_file, source=from_file)
+                    execute(command)
+
     def update_translations_from_transifex(self, locales, staged_files, base_lang='en'):
         """
         Merge base language translations with other languages
@@ -313,7 +316,7 @@ class Command(BaseCommand):
             raise ValueError(
                 'Translatewiki: Transifex token not found, set TX_TOKEN as an env variable'
             )
-        
+
         pomerge_command = 'pomerge --from {from_path} --to {to_path}'
         locales = list(set(locales) - set([base_lang]))
 
@@ -323,22 +326,22 @@ class Command(BaseCommand):
             wm_dir = f'{edx_translation_path}/{lang}/LC_MESSAGES/wm'
 
             self._move_files_from_src_to_dest(edx_dir, wm_dir, staged_files)
-            
+
             log.info(f'Pulling {lang} translations from Transifex')
             execute(f'tx pull --mode=reviewed -l {lang}')
-            
+
             log.info(f'Merging Transifex {lang} files to platform {lang} files')
             for filename in staged_files:
                 command = pomerge_command.format(
-                    from_path = f'{edx_dir}/{filename}',
-                    to_path = f'{wm_dir}/{filename}'
+                    from_path=f'{edx_dir}/{filename}',
+                    to_path=f'{wm_dir}/{filename}'
                 )
                 execute(command)
-            
+
             self._move_files_from_src_to_dest(
                 wm_dir, edx_dir, staged_files, delete_src_dir_if_empty=True
             )
-        
+
         log.info(f'{locales} are updated with Transifex Translations')
 
     def update_translations_from_schema(self, locals, merge_scheme, override=True):
@@ -356,12 +359,15 @@ class Command(BaseCommand):
             for source_file, files in merge_scheme.items():
                 if os.path.exists(f'{edx_dir}/{source_file}'):
                     for filename in files:
-                        log.info(f'Updating {edx_dir}/{filename} from {edx_dir}/{source_file}')
-                        command = pomerge_command.format(
-                            from_path=f'{edx_dir}/{source_file}',
-                            to_path=f'{edx_dir}/{filename}',
-                        )
-                        execute(command)
+                        if os.path.exists(f'{edx_dir}/{filename}'):
+                            log.info(f'Updating {edx_dir}/{filename} from {edx_dir}/{source_file}')
+                            command = pomerge_command.format(
+                                from_path=f'{edx_dir}/{source_file}',
+                                to_path=f'{edx_dir}/{filename}',
+                            )
+                            execute(command)
+                        else:
+                            log.info(f'Unable to find destination path: {edx_dir}/{filename}')
                 else:
                     log.info(f'Unable to find source path: {edx_dir}/{source_file}')
 
@@ -385,7 +391,7 @@ class Command(BaseCommand):
         wm_dir = f'{edx_translation_path}/{base_lang}/LC_MESSAGES/wm'
 
         self._move_files_from_src_to_dest(edx_dir, wm_dir, target_files)
-        
+
         log.info(f'Pulling {base_lang} translations from Transifex')
         execute(f'tx pull --mode=reviewed -l {base_lang}')
         output_files = []
@@ -400,13 +406,12 @@ class Command(BaseCommand):
                 output_file, po_entries, edx_msgs.metadata, add_fuzzy=True,
             )
             output_files.append(f'{prefix}-{filename}')
-        
+
         self._move_files_from_src_to_dest(wm_dir, edx_dir, target_files, delete_src_dir_if_empty=True)
         files_mapping = dict(zip(output_files, target_files))
         self.msgmerge(locales, output_files, generate_po_file_if_not_exist=True, output_file_mapping=files_mapping)
-        
+
         log.info(f'{len(output_files)} new file(s) are created {output_files}')
-    
 
     def process_configuration_file(self, filepath):
         """
@@ -433,12 +438,12 @@ class Command(BaseCommand):
         """
         locales, targated_files, staged_files, merge_scheme = self.process_configuration_file('conf/locale/config.yaml')
         languages = options.get('languages', [])
-        
+
         if languages:
             if len(set(locales) - set(languages)) == len(set(locales)):
                 raise ValueError(f'Invaild Languages, valid languages are {locales}')
             locales = languages
-        
+
         if options['action'] == 'pull_transifex_translations':
             self.pull_translation_from_transifex(locales)
         elif options['action'] == 'msgmerge':
@@ -452,9 +457,9 @@ class Command(BaseCommand):
         elif options['action'] == 'update_from_translatewiki':
             scheme = {f'wm-{key}': val for key, val in merge_scheme.items()}
             self.update_translations_from_schema(locales, scheme)
-        elif options['action'] == 'update_from_lilac':
-            scheme = {f'lilac-{key}': val for key, val in merge_scheme.items()}
+        elif options['action'] == 'update_from_version':
+            scheme = {f'version-{key}': val for key, val in merge_scheme.items()}
             self.update_translations_from_schema(locales, scheme, False)
         elif options['action'] == 'update_from_manual':
-            scheme = {f'manual.po': staged_files}
+            scheme = {'manual.po': staged_files}
             self.update_translations_from_schema(locales, scheme)

@@ -96,9 +96,7 @@ jobs:
           export LMS_CFG=$(pwd)/lms/devstack.yml
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
 
-          python manage.py cms translatewiki update_from_lilac
-          python manage.py cms translatewiki update_from_translatewiki
-          python manage.py cms translatewiki update_from_manual
+          python manage.py cms translatewiki update_from_version
           python manage.py cms translatewiki remove_bad_msgstr
 
           unset LMS_CFG
