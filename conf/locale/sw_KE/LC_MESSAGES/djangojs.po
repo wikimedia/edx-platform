@@ -5946,10 +5946,6 @@ msgstr ""
 msgid "{startTag}{requestToken}{endTag}{selector}"
 msgstr ""
 
-#: cms/static/js/views/course_blocks_mapping.js
-msgid "Mapping Blocks"
-msgstr ""
-
 #: cms/static/js/views/course_info_update.js
 msgid "Are you sure you want to delete this update?"
 msgstr ""
@@ -6245,6 +6241,8 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "Chapisha mabadiliko yote yasiyochapishwa kwa kipengele hiki {item}?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Chapisha"
 
@@ -6358,14 +6356,6 @@ msgstr ""
 #. edited.
 #: cms/static/js/views/pages/container.js
 msgid "Editing access for: {title}"
-msgstr ""
-
-#: cms/static/js/views/pages/container.js
-msgid "Disable Translations"
-msgstr ""
-
-#: cms/static/js/views/pages/container.js
-msgid "Enable Translations"
 msgstr ""
 
 #: cms/static/js/views/pages/container_subviews.js
@@ -6606,70 +6596,6 @@ msgstr ""
 msgid "Take me to the new location"
 msgstr ""
 
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Updating"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Disable Translations for this block?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Block data would not be sent to server for translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Yes, Disable Translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Enable Translations for this block?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Block data would be sent to server for translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Yes, Enable Translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Edit on Translated rerun?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid ""
-"Please disable translations after an edit, otherwise edited component will "
-"be overwritten by auto next applied translations."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Continue Editing"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Edit on Base Course Block?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid ""
-"If you edit base block content all linked translated-rerun blocks "
-"translations will be lost and all previous version history will be deleted."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Change can not be reverted."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Are you sure you want to update flag as it will not be reverted again."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Yes, Update Flag"
-msgstr ""
-
 #: cms/static/js/views/utils/xblock_utils.js
 msgid "Duplicating"
 msgstr ""
@@ -6684,10 +6610,6 @@ msgstr ""
 
 #: cms/static/js/views/utils/xblock_utils.js
 msgid "Deleting this {xblock_type} is permanent and cannot be undone."
-msgstr ""
-
-#: cms/static/js/views/utils/xblock_utils.js
-msgid "Note that any linked translated rerun blocks mapping will be lost."
 msgstr ""
 
 #: cms/static/js/views/utils/xblock_utils.js
@@ -6986,85 +6908,10 @@ msgid "Actions"
 msgstr "Matendo"
 
 #: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Haijapangiwa"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Section Highlights"
-msgstr ""
 
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
@@ -7502,7 +7349,7 @@ msgstr "Hali ilivyo"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Download URL"
-msgstr ""
+msgstr "Pakua URL"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Grade"
@@ -7514,11 +7361,11 @@ msgstr "Mara ya mwisho Kusasishwa"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Download the user's certificate"
-msgstr ""
+msgstr "Pakua hati ya mtumiaji"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Not available"
-msgstr ""
+msgstr "Haipatikani"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Regenerate"
@@ -8463,6 +8310,7 @@ msgid ""
 "To complete the program, you must earn a verified certificate for each "
 "course."
 msgstr ""
+"Kukamilisha programu yako, lazima upate cheti cha uthibitisho wa kila kozi"
 
 #: lms/templates/learner_dashboard/program_details_tab_view.underscore
 #: lms/templates/learner_dashboard/program_details_view.underscore
@@ -9742,14 +9590,6 @@ msgstr ""
 msgid "Copy Component Location"
 msgstr ""
 
-#: cms/templates/js/course-blocks-mapping.underscore
-msgid "Course Blocks mapping"
-msgstr ""
-
-#: cms/templates/js/course-blocks-mapping.underscore
-msgid "Map blocks"
-msgstr ""
-
 #: cms/templates/js/course-highlights-enable.underscore
 msgid "Course Highlight Emails"
 msgstr ""
@@ -9824,6 +9664,133 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "Pakia Picha"
+
+#: cms/templates/js/course-outline.underscore
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Contains staff only content"
+msgstr "Ina maudhui ya walimu tu"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to live content"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished units will not be released"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+"Mabadiliko yasiochapishwa kwa ajili ya maudhui ambayo yataachiwa baadae"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+"Upatikanaji wa baadhi ya maudhui ya sura hii upo kwa baadhi ya makundi "
+"maalum ya wanafunzi"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Ungraded"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Practice proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctored Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Timed Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Display Name"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Configure"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Duplicate"
+msgstr "Nakili"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Drag to reorder"
+msgstr "Kokota kupanga tena"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Release Status:"
+msgstr "Arifu hali ilivyo"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "Released:"
+msgstr "Ilitolewa"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+msgid "Scheduled:"
+msgstr "Pangwa"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+msgid "Section Highlights"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Graded as:"
+msgstr "Pewa daraja kama:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Due:"
+msgstr "Stahili:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after course end date"
+msgstr "Kifungu kidogo kimefichwa baada ya tarehe ya mwisho ya kozi"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after due date"
+msgstr "'Kifungu kidogo' kimefichwa baada ya tarehe stahiki"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "You haven't added any content to this course yet."
+msgstr "Bado hujajaza kitu chochote kwenye hii kozi."
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr "Bofya kujaza mpya%(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -10453,12 +10420,16 @@ msgid ""
 "incorrect, nor the score received, until after the course end date has "
 "passed."
 msgstr ""
+"Wanafunzi hawaoni ikiwa majibu yao ya tathmini yalikuwa sahihi au si sahihi,"
+" sio alama zilizopokelewa, mpaka  kupita kwa tarehe ya mwisho ya kozi."
 
 #: cms/templates/js/show-correctness-editor.underscore
 msgid ""
 "If the course does not have an end date, learners always see their scores "
 "when they submit answers to assessments."
 msgstr ""
+"Kama kozi haina tarehe ya mwisho, wanafunzi wanaona alama zao muda wote "
+"wanapowasilisha majibu kwenye tathmini."
 
 #: cms/templates/js/show-correctness-editor.underscore
 msgid ""
@@ -10980,50 +10951,3 @@ msgstr ""
 #: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore
 msgid "Use Current Transcript"
 msgstr ""
-
-#~ msgid "Contains staff only content"
-#~ msgstr "Ina maudhui ya walimu tu"
-
-#~ msgid "Unpublished changes to content that will release in the future"
-#~ msgstr ""
-#~ "Mabadiliko yasiochapishwa kwa ajili ya maudhui ambayo yataachiwa baadae"
-
-#~ msgid ""
-#~ "Access to some content in this unit is restricted to specific groups of "
-#~ "learners"
-#~ msgstr ""
-#~ "Upatikanaji wa baadhi ya maudhui ya sura hii upo kwa baadhi ya makundi "
-#~ "maalum ya wanafunzi"
-
-#~ msgid "Duplicate"
-#~ msgstr "Nakili"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Kokota kupanga tena"
-
-#~ msgid "Release Status:"
-#~ msgstr "Arifu hali ilivyo"
-
-#~ msgid "Released:"
-#~ msgstr "Ilitolewa"
-
-#~ msgid "Scheduled:"
-#~ msgstr "Pangwa"
-
-#~ msgid "Graded as:"
-#~ msgstr "Pewa daraja kama:"
-
-#~ msgid "Due:"
-#~ msgstr "Stahili:"
-
-#~ msgid "Subsection is hidden after course end date"
-#~ msgstr "Kifungu kidogo kimefichwa baada ya tarehe ya mwisho ya kozi"
-
-#~ msgid "Subsection is hidden after due date"
-#~ msgstr "'Kifungu kidogo' kimefichwa baada ya tarehe stahiki"
-
-#~ msgid "You haven't added any content to this course yet."
-#~ msgstr "Bado hujajaza kitu chochote kwenye hii kozi."
-
-#~ msgid "Click to add a new %(xblock_type)s"
-#~ msgstr "Bofya kujaza mpya%(xblock_type)s"
