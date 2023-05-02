@@ -11,7 +11,6 @@
 # Alexander Gropmann <alexander.gropmann@charite.de>, 2018
 # Alexander L. <alexander.lohberg@ufo-style.de>, 2013-2014
 # Alexander L. <alexander.lohberg@ufo-style.de>, 2016-2017
-# Alfredo Guillem, 2022
 # andreas.frey <andreas.frey@liip.ch>, 2014
 # 2b2d35a2693e2be4fb9cc6718ad20b07_8542ebf <37324aa543125a600265fedaa47d04f3_158329>, 2014
 # c377c1a4a254197c7969440fac89353f, 2014
@@ -117,7 +116,6 @@
 # Alexander Gropmann <alexander.gropmann@charite.de>, 2018
 # Alexander L. <alexander.lohberg@ufo-style.de>, 2014
 # Alexander L. <alexander.lohberg@ufo-style.de>, 2016-2017
-# Alfredo Guillem, 2022
 # Christian Layr <Christian.Layr@unisg.ch>, 2015
 # Donna Kl <donna@polarstern-education.com>, 2019
 # Donna Kl <donna@polarstern-education.com>, 2019
@@ -190,7 +188,6 @@ msgstr "Speichert"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Löschen"
 
@@ -285,7 +282,7 @@ msgstr "OK"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "None"
-msgstr "Nichts"
+msgstr "Kein Schulabschluss"
 
 #: cms/static/js/views/course_video_settings.js
 #: cms/static/js/views/metadata.js
@@ -2098,11 +2095,11 @@ msgstr "Geschlossene Überschriften anzeigen"
 
 #: common/lib/xmodule/xmodule/js/src/video/09_video_caption.js
 msgid "Turn on transcripts"
-msgstr "Transkripte aktivieren"
+msgstr "Transskripte aktivieren"
 
 #: common/lib/xmodule/xmodule/js/src/video/09_video_caption.js
 msgid "Turn off transcripts"
-msgstr "Transkripte deaktivieren"
+msgstr "Transskripte deaktivieren"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 #: cms/templates/js/move-xblock-list.underscore
@@ -2115,7 +2112,7 @@ msgstr "Aufwärts navigieren"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Browsing"
-msgstr ""
+msgstr "Durchsuchen"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Select"
@@ -2694,19 +2691,19 @@ msgstr ""
 
 #: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
 msgid "the more quickly and helpfully we can respond!"
-msgstr ""
+msgstr "desto schneller und gezielter können wir Ihnen antworten!"
 
 #: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
 msgid "Create Support Ticket"
-msgstr ""
+msgstr "Erstellen Sie ein Supportticket"
 
 #: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
 msgid "What can we help you with, {username}?"
-msgstr ""
+msgstr "Wie können wir Ihnen helfen, {username}?"
 
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Sign in to {platform} so we can help you better."
@@ -2716,7 +2713,7 @@ msgstr ""
 
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Need help logging in?"
-msgstr ""
+msgstr "Brauchen Sie Hilfe beim einloggen?"
 
 #: lms/djangoapps/support/static/support/jsx/single_support_form.jsx
 msgid ""
@@ -4023,6 +4020,11 @@ msgid ""
 "'{verifiedCohortName}'. To change the configuration for verified track "
 "cohorts, contact your edX partner manager."
 msgstr ""
+"Dieser Kurs verwendet die automatische Kohortierung für Lerner im "
+"verifizierte Modus. Sie können Kohorten nicht deaktivieren und die manuelle "
+"Kohorte nicht in '{verifiedCohortName}' umbenennen. Um die Konfiguration für"
+" Kohorten des verifizierten Modus zu ändern, wenden Sie sich an Ihren edX "
+"Partnermanager."
 
 #: lms/static/js/groups/views/verified_track_settings_notification.js
 msgid ""
@@ -4030,12 +4032,19 @@ msgid ""
 " the required cohort does not exist. You must create a manually-assigned "
 "cohort named '{verifiedCohortName}' for the feature to work."
 msgstr ""
+"In diesem Kurs ist die automatische Kohortierung für Lerner im verifizierten"
+" Modus aktiviert, aber die erforderliche Kohorte existiert nicht. Sie müssen"
+" eine manuell zugewiesene Kohorte mit dem Namen '{verifiedCohortName}'' "
+"erstellen, damit das Feature funktioniert."
 
 #: lms/static/js/groups/views/verified_track_settings_notification.js
 msgid ""
 "This course has automatic cohorting enabled for verified track learners, but"
 " cohorts are disabled. You must enable cohorts for the feature to work."
 msgstr ""
+"Dieser Kurs hat die automatische Kohortierung für Lerner im verifizierten "
+"Modus aktiviert, aber Kohorten sind deaktiviert. Sie müssen Kohorten "
+"aktivieren, damit das Merkmal funktioniert."
 
 #: lms/static/js/instructor_dashboard/certificates.js
 msgid "Allow students to generate certificates for this course?"
@@ -5027,6 +5036,8 @@ msgstr ""
 #: lms/static/js/student_account/components/StudentAccountDeletion.jsx
 msgid "Before proceeding, please {htmlStart}activate your account{htmlEnd}."
 msgstr ""
+"Bevor Sie fortfahren, {htmlStart}aktivieren{htmlEnd} Sie bitte Ihren "
+"Account."
 
 #: lms/static/js/student_account/components/StudentAccountDeletion.jsx
 msgid ""
@@ -5782,31 +5793,35 @@ msgstr "Diese Seite merken"
 
 #: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
 msgid "Thank you for setting your course goal to {goal}!"
-msgstr ""
+msgstr "Danke, für das definieren eines Kursziels zu {goal}!"
 
 #: openedx/features/course_experience/static/course_experience/js/CourseHome.js
 msgid "You have successfully updated your goal."
-msgstr ""
+msgstr "Das Kursziel wurde erfolgreich aktualisiert."
 
 #: openedx/features/course_experience/static/course_experience/js/CourseHome.js
 msgid "There was an error updating your goal."
-msgstr ""
+msgstr "Es ist ein Fehler beim aktualisieren Ihres Kursziels aufgetreten."
 
+#: openedx/features/course_experience/static/course_experience/js/CourseOutline.js
 #: lms/templates/ccx/schedule.underscore
 msgid "Expand All"
 msgstr "Alles erweitern"
 
+#: openedx/features/course_experience/static/course_experience/js/CourseOutline.js
 #: lms/templates/ccx/schedule.underscore
 msgid "Collapse All"
 msgstr "Alles verbergen"
 
+#: openedx/features/course_experience/static/course_experience/js/WelcomeMessage.js
 #: lms/templates/courseware/proctored-exam-status.underscore
 msgid "Show More"
-msgstr "Mehr zeigen"
+msgstr "Mehr anzeigen"
 
+#: openedx/features/course_experience/static/course_experience/js/WelcomeMessage.js
 #: lms/templates/courseware/proctored-exam-status.underscore
 msgid "Show Less"
-msgstr "Weniger zeigen"
+msgstr "Weniger anzeigen"
 
 #: openedx/features/course_search/static/course_search/js/views/search_results_view.js
 msgid "{total_results} result found for \"{search_term}\""
@@ -6114,27 +6129,28 @@ msgstr "Es gab einen Fehler beim Upload"
 
 #: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 msgid "Organization:"
-msgstr ""
+msgstr "Organisation:"
 
 #: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 msgid "Course Number:"
-msgstr ""
+msgstr "Kursnummer:"
 
 #: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 msgid "Course Run:"
-msgstr ""
+msgstr "Kurslaufzeit:"
 
 #: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 msgid "(Read-only)"
-msgstr ""
+msgstr "(Nur Lesezugriff)"
 
 #: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 msgid "Re-run Course"
-msgstr ""
+msgstr "Neue Kurslaufzeit"
 
+#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
 #: cms/templates/js/show-textbook.underscore
 msgid "View Live"
-msgstr "Seite ansehen"
+msgstr "Live betrachten"
 
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
@@ -6764,6 +6780,8 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "Alle unveröffentlichten Änderungen für dieses {item} veröffentlichen?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Veröffentlichen"
 
@@ -6882,14 +6900,6 @@ msgstr "Datum hinzugefügt"
 #: cms/static/js/views/pages/container.js
 msgid "Editing access for: {title}"
 msgstr "Zugangseinstellungen bearbeiten für: {title}"
-
-#: cms/static/js/views/pages/container.js
-msgid "Disable Translations"
-msgstr ""
-
-#: cms/static/js/views/pages/container.js
-msgid "Enable Translations"
-msgstr ""
 
 #: cms/static/js/views/pages/container_subviews.js
 msgid "Publishing"
@@ -7166,70 +7176,6 @@ msgstr "Bewegung rückgängig machen"
 msgid "Take me to the new location"
 msgstr "Bringen Sie mich zu dem neuen Standort."
 
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Updating"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Disable Translations for this block?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Block data would not be sent to server for translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Yes, Disable Translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Enable Translations for this block?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Block data would be sent to server for translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Yes, Enable Translations"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Edit on Translated rerun?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid ""
-"Please disable translations after an edit, otherwise edited component will "
-"be overwritten by auto next applied translations."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Continue Editing"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Edit on Base Course Block?"
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid ""
-"If you edit base block content all linked translated-rerun blocks "
-"translations will be lost and all previous version history will be deleted."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Change can not be reverted."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Are you sure you want to update flag as it will not be reverted again."
-msgstr ""
-
-#: cms/static/js/views/utils/wiki_utils.js
-msgid "Yes, Update Flag"
-msgstr ""
-
 #: cms/static/js/views/utils/xblock_utils.js
 msgid "Duplicating"
 msgstr "Duplizieren"
@@ -7247,10 +7193,6 @@ msgid "Deleting this {xblock_type} is permanent and cannot be undone."
 msgstr ""
 "Das Löschen dieses {xblock_type} ist dauerhaft und kann nicht rückgängig "
 "gemacht werden."
-
-#: cms/static/js/views/utils/xblock_utils.js
-msgid "Note that any linked translated rerun blocks mapping will be lost."
-msgstr ""
 
 #: cms/static/js/views/utils/xblock_utils.js
 msgid ""
@@ -7577,7 +7519,6 @@ msgstr "Aktionen"
 #: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Nicht terminiert"
 
@@ -7820,7 +7761,7 @@ msgstr "Beitrag folgen"
 
 #: common/static/common/templates/discussion/templates.underscore
 msgid "post anonymously"
-msgstr ""
+msgstr "Eintrag anonym erstellen"
 
 #: common/static/common/templates/discussion/templates.underscore
 msgid "post anonymously to classmates"
@@ -8029,7 +7970,7 @@ msgstr "Status"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Download URL"
-msgstr ""
+msgstr "Downloadadresse"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Grade"
@@ -8041,11 +7982,11 @@ msgstr "Letztes Update"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Download the user's certificate"
-msgstr ""
+msgstr "Nutzerzertifikat herunterladen"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Not available"
-msgstr ""
+msgstr "Nicht verfügbar"
 
 #: lms/djangoapps/support/static/support/templates/certificates_results.underscore
 msgid "Regenerate"
@@ -9042,6 +8983,8 @@ msgid ""
 "To complete the program, you must earn a verified certificate for each "
 "course."
 msgstr ""
+"Um das Programm abzuschließen, müssen Sie für jeden Kurs ein verifiziertes "
+"Zertifikat erwerben."
 
 #: lms/templates/learner_dashboard/program_details_tab_view.underscore
 #: lms/templates/learner_dashboard/program_details_view.underscore
@@ -10421,14 +10364,6 @@ msgstr ""
 msgid "Copy Component Location"
 msgstr "Komponentenposition kopieren"
 
-#: cms/templates/js/course-blocks-mapping.underscore
-msgid "Course Blocks mapping"
-msgstr ""
-
-#: cms/templates/js/course-blocks-mapping.underscore
-msgid "Map blocks"
-msgstr ""
-
 #: cms/templates/js/course-highlights-enable.underscore
 msgid "Course Highlight Emails"
 msgstr "E-Mails über Neuigkeiten im Kurs."
@@ -11107,7 +11042,7 @@ msgstr "Videokennung"
 
 #: cms/templates/js/previous-video-upload-list.underscore
 msgid "Transcripts"
-msgstr "Transkripte"
+msgstr "Transskripte"
 
 #: cms/templates/js/previous-video-upload-list.underscore
 msgid "Video Status"
@@ -11298,12 +11233,16 @@ msgid ""
 "incorrect, nor the score received, until after the course end date has "
 "passed."
 msgstr ""
+"Nutzer sehen erst die Auswertungen ihrer Antworten, nach Ablauf der "
+"Kurslaufzeit."
 
 #: cms/templates/js/show-correctness-editor.underscore
 msgid ""
 "If the course does not have an end date, learners always see their scores "
 "when they submit answers to assessments."
 msgstr ""
+"Wenn der Kurs kein Enddatum hat, sehen Nutzer immer die Auswertung, nachdem "
+"Antworten eingereicht wurden."
 
 #: cms/templates/js/show-correctness-editor.underscore
 msgid ""
@@ -11471,6 +11410,10 @@ msgid ""
 " back to a basic exam. You may not configure it as a special exam now. "
 "Contact edX Support for assistance."
 msgstr ""
+"Dieser Unterabschnitt wurde für die Teilnehmer als Sonderprüfung "
+"veröffentlicht, anschließend aber wieder zu einer Grundprüfung "
+"zurückgewandelt. Die Prüfung kann jetzt nicht mehr als Sonderprüfung "
+"konfiguriert werden. Wenden Sie sich zur Unterstützung an den edX-Support."
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid ""
@@ -11479,6 +11422,11 @@ msgid ""
 " basic exam by selecting 'None', but you will NOT be able to configure it as"
 " a special exam in the future."
 msgstr ""
+"Diese Sonderprüfung wurde für die Teilnehmer veröffentlicht und kann nicht "
+"in eine andere Art von Sonderprüfung umgewandelt werden. Dieser "
+"Unterabschnitt kann jedoch wieder in eine Basisprüfung umgewandelt werden, "
+"indem Sie \"None\" wählen. Sie können die Prüfung in Zukunft NICHT mehr als "
+"Sonderprüfung konfigurieren."
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Timed"
@@ -11506,6 +11454,10 @@ msgid ""
 "exam. The videos are then reviewed to ensure that learners follow all "
 "examination rules."
 msgstr ""
+"Beaufsichtigte Prüfungen werden zeitlich begrenzt und es werden Videos von "
+"jedem Lernenden aufgezeichnet, der die Prüfung ablegt. Die Videos werden "
+"dann überprüft, um sicherzustellen, dass die Lernenden alle Prüfungsregeln "
+"einhalten."
 
 #: cms/templates/js/timed-examination-preference-editor.underscore
 msgid "Onboarding"
@@ -11884,93 +11836,3 @@ msgstr ""
 #: cms/templates/js/video/transcripts/messages/transcripts-use-existing.underscore
 msgid "Use Current Transcript"
 msgstr "Nutze aktuelles Transkript"
-
-#~ msgid "Prerequisite: %(prereq_display_name)s"
-#~ msgstr "Voraussetzung: %(prereq_display_name)s"
-
-#~ msgid "Contains staff only content"
-#~ msgstr "Enthält nur für Kursmitarbeiter bestimmte Inhalte"
-
-#~ msgid "Unpublished changes to live content"
-#~ msgstr "Unveröffentlichte Änderungen am Live-Inhalt"
-
-#~ msgid "Unpublished units will not be released"
-#~ msgstr "Unveröffentlichte Lerneinheiten werden nicht freigegeben"
-
-#~ msgid "Unpublished changes to content that will release in the future"
-#~ msgstr ""
-#~ "Unveröffentlichte Änderungen am Inhalt, die in der Zukunft freigeben werden"
-
-#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-#~ msgstr ""
-#~ "Der Zugriff auf diese Lerneinheit ist beschränkt auf: {selectedGroupsLabel}"
-
-#~ msgid ""
-#~ "Access to some content in this unit is restricted to specific groups of "
-#~ "learners"
-#~ msgstr ""
-#~ "Der Zugang zu einigen Inhalten in dieser Lektion ist auf bestimmte Gruppen "
-#~ "von Lernenden beschränkt."
-
-#~ msgid "Ungraded"
-#~ msgstr "Unbenotet"
-
-#~ msgid "Onboarding Exam"
-#~ msgstr "Aufnahmeprüfung"
-
-#~ msgid "Practice proctored Exam"
-#~ msgstr "Beaufsichtigte Prüfung üben"
-
-#~ msgid "Proctored Exam"
-#~ msgstr "Beaufsichtigte Prüfung"
-
-#~ msgid "Timed Exam"
-#~ msgstr "Terminierte Prüfung"
-
-#~ msgid "Collapse/Expand this %(xblock_type)s"
-#~ msgstr "%(xblock_type)s Ein- oder Ausfahren "
-
-#~ msgid "Display Name"
-#~ msgstr "Anzeigename"
-
-#~ msgid "Proctoring Settings"
-#~ msgstr "Einstellung der Beaufsichtigung"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurieren"
-
-#~ msgid "Duplicate"
-#~ msgstr "Dupliziere"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Für eine neue Reihenfolge, ziehen"
-
-#~ msgid "Release Status:"
-#~ msgstr "Freigabestatus:"
-
-#~ msgid "Released:"
-#~ msgstr "Freigegeben:"
-
-#~ msgid "Scheduled:"
-#~ msgstr "Terminiert:"
-
-#~ msgid "Section Highlights"
-#~ msgstr "Highlights des Abschnitts"
-
-#~ msgid "Graded as:"
-#~ msgstr "Benotet als:"
-
-#~ msgid "Due:"
-#~ msgstr "Bis:"
-
-#~ msgid "Subsection is hidden after course end date"
-#~ msgstr "Unterabschnitt ist nach Ablauf der Kurslaufzeit nicht mehr sichtbar"
-
-#~ msgid "Subsection is hidden after due date"
-#~ msgstr "Unterabschnitt wird nach dem Fälligkeitsdatum nicht mehr angezeigt."
-
-#~ msgid "You haven't added any content to this course yet."
-#~ msgstr "Du hast bisher keine Inhalte zu diesem Kurs hinzugefügt"
-
-#~ msgid "Click to add a new %(xblock_type)s"
-#~ msgstr "Klicken Sie, um einen neuen %(xblock_type)s hinzuzufügen"
