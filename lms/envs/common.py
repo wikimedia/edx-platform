@@ -1673,7 +1673,7 @@ CELERY_TIMEZONE = 'UTC'
 TIME_ZONE = 'UTC'
 LANGUAGE_CODE = 'en'  # http://www.i18nguy.com/unicode/language-identifiers.html
 # these languages display right to left
-LANGUAGES_BIDI = ("he", "ar", "fa", "ur", "fa-ir", "rtl")
+LANGUAGES_BIDI = ("he", "ar", "ar-ma", "fa", "ur", "fa-ir", "rtl")
 
 LANGUAGE_COOKIE = "openedx-language-preference"
 
@@ -1686,6 +1686,7 @@ LANGUAGES = [
 
     ('am', 'አማርኛ'),  # Amharic
     ('ar', 'العربية'),  # Arabic
+    ('ar-ma', 'العربية (المغربي)'),  # Arabic Moroccan
     ('az', 'azərbaycanca'),  # Azerbaijani
     ('bg-bg', 'български (България)'),  # Bulgarian (Bulgaria)
     ('bn-bd', 'বাংলা (বাংলাদেশ)'),  # Bengali (Bangladesh)
