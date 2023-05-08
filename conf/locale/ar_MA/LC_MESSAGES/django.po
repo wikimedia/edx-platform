@@ -1,3 +1,14 @@
+# #-#-#-#-#  manual.po  #-#-#-#-#
+#
+# #-#-#-#-#  wm-django.po (0.1a)  #-#-#-#-#
+# Translation of WikiLearn - Backend to Arabic (العربية)
+# Exported from translatewiki.net
+#
+# Author: محمد أحمد عبد الفتاح
+# --
+# This file is part of the WikiLearn Project
+# This file is distributed under the same license as the WikiLearn package.
+#
 # #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 # edX translation file.
 # Copyright (C) 2023 EdX
@@ -30,7 +41,7 @@
 # AzizAhmed <dr.zezo@gmail.com>, 2014
 # e2f_ar r3 <e2f_ar_r3@outlook.com>, 2016-2017
 # e2f_ar t3 <e2f_ar_t3@outlook.com>, 2016
-# Ghassan Maslamani <ghassan.maslamani@gmail.com>, 2021-2022
+# Ghassan Maslamani <ghassan.maslamani@gmail.com>, 2021-2023
 # Glib Glugovskiy <glugov1998@gmail.com>, 2021
 # Hamza Madni, 2022
 # HasnaG <hasnaa.elghandor@yahoo.com>, 2014
@@ -137,8 +148,10 @@
 # baraahadri <baraahadri@gmail.com>, 2014
 # Belal A. Nwiran <bnwiran@gmail.com>, 2015
 # طاهر <charaf.le.prince@gmail.com>, 2014
+# Deimer Morales, 2023
 # e2f_ar r3 <e2f_ar_r3@outlook.com>, 2017
 # e2f_ar t3 <e2f_ar_t3@outlook.com>, 2016
+# Ghassan Maslamani <ghassan.maslamani@gmail.com>, 2023
 # Hamza Madni, 2022
 # Hani <hani0a@hotmail.com>, 2014
 # Hani <hani0a@hotmail.com>, 2014
@@ -257,16 +270,833 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-01 05:38+0000\n"
+"POT-Creation-Date: 2023-05-08 11:57+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: NELC Open edX Translation <openedx@elc.edu.sa>, 2020\n"
-"Language-Team: Arabic (https://www.transifex.com/open-edx/teams/6205/ar/)\n"
+"Language-Team: Arabic (https://app.transifex.com/open-edx/teams/6205/ar/)\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "Generated-By: Babel 2.8.0\n"
+"X-Generator: MediaWiki 1.41.0-alpha; Translate 2023-01-24\n"
+"X-POT-Import-Date: 2023-03-29 06:30:20+0000\n"
+"#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
+
+#: lms/djangoapps/courseware/date_summary.py
+msgid "Course Starts"
+msgstr "بداية المساق"
+
+#: lms/djangoapps/courseware/date_summary.py
+msgid "Don't forget to add a calendar reminder!"
+msgstr "لا تنس إضافة تنبيه لمذكرتك"
+
+#: lms/djangoapps/courseware/date_summary.py
+#, python-brace-format
+msgid "Course starts in {time_remaining_string} on {course_start_date}."
+msgstr "يبدأ المساق بتاريخ {time_remaining_string} في {course_start_date}."
+
+#: lms/djangoapps/courseware/date_summary.py
+#, python-brace-format
+msgid "Course starts in {time_remaining_string} at {course_start_time}."
+msgstr "يبدأ المساق بتاريخ {time_remaining_string} في {course_start_time}."
+
+#: lms/djangoapps/courseware/date_summary.py
+msgid ""
+"To earn a certificate, you must complete all requirements before this date."
+msgstr "لاستحقاق شهادة التخرج، يتوجب  اتمام  جميع المهام قبل هذا التاريخ"
+
+#: lms/templates/courseware/dates.html
+msgid "Important Dates"
+msgstr "تواريخ مهمة"
+
+#: lms/templates/courseware/info.html
+#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+msgid "Course Tools"
+msgstr "أدوات المساق"
+
+#: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+msgid "Expand All"
+msgstr "تكبير جميع الأقسام"
+
+#: openedx/features/course_search/templates/course_search/course-search-fragment.html
+msgid "Search Results"
+msgstr "نتائج البحث"
+
+#: lms/djangoapps/courseware/date_summary.py
+msgid "Course End"
+msgstr "نهاية المساق"
+
+#: openedx/features/course_experience/templates/course_experience/course-dates-fragment.html
+msgid "View all course dates"
+msgstr "إظهار كل تواريخ المساق"
+
+#: lms/djangoapps/course_wiki/views.py
+msgid "Course page automatically created."
+msgstr "تم إنشاء صفحة المساق تلقائيًا."
+
+#: lms/templates/courseware/dates.html
+msgid "Due Next"
+msgstr "التالي"
+
+#: lms/templates/courseware/progress.html
+msgid "Course Progress for '{username}' ({email})"
+msgstr "حالة تقدم المتعلم: '{username}' ({email})"
+
+#: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
+msgid "View Certificate"
+msgstr "معاينة شهادة التخرج"
+
+#: lms/templates/dashboard/_dashboard_certificate_information.html
+msgid "Your final grade:"
+msgstr "درجتك النهائية:"
+
+#: common/lib/xmodule/xmodule/course_module.py
+#: lms/templates/courseware/info.html
+#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+msgid "Course Handouts"
+msgstr "النشرة"
+
+#: lms/djangoapps/courseware/date_summary.py
+msgid "After this date, course content will be archived."
+msgstr "سيتم أرشفة محتوى المادة بعد هذا التاريخ."
+
+#: lms/djangoapps/course_home_api/outline/v1/serializers.py
+#: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#, python-brace-format
+msgid "({number} Question)"
+msgid_plural "({number} Questions)"
+msgstr[0] "({number} سؤال)"
+msgstr[1] "({number} سؤال)"
+msgstr[2] "({number} أسئلة)"
+msgstr[3] "({number} أسئلة)"
+msgstr[4] "({number} أسئلة)"
+msgstr[5] "({number} أسئلة)"
+
+#: lms/templates/static_templates/404.html
+msgid ""
+"The page that you were looking for was not found. Go back to the "
+"{link_start}homepage{link_end} ."
+msgstr ""
+"لا يمكن العثور على الصفحة المطلوبة، العودة إلى {link_start}الصفحة "
+"الرئيسية{link_end} ."
+
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
+msgid "Course Grade for '{username}' ({email})"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load Course Outline."
+msgstr "تعذر تحميل مخطط الدورة التدريبية."
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#, python-format
+msgid ""
+"%(comment_username)s mentioned you in the comment on post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Error in sending message. Please try again!"
+msgstr "حصل خطأ عند إرسال الرسالة. حاول مرة اخرى!"
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Translated Course re-run"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
+msgid "You have "
+msgstr "لديك "
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Message"
+msgstr "رسالة"
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"Identify the course language here. You can request for translation after "
+"creating a course"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/api/v0/views.py
+msgid "with_user param is required."
+msgstr "اعداد with_user مطلوب."
+
+#: openedx/features/wikimedia_features/meta_translations/models.py
+msgid "Destination"
+msgstr "الوجهة"
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Anonymized student ID's"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "pending translation"
+msgstr "ترجمة معلقة"
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
+msgid "unread message(s) waiting for your response from following users:"
+msgstr "رسالة (رسائل) غير مقروءة في انتظار ردك من المستخدمين التاليين:"
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a copy of a course, It should be considered as a new course"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Applied"
+msgstr "تم التطبيق"
+
+#: cms/djangoapps/contentstore/views/course.py
+msgid ""
+"Translated rerun for Source Course in selected language already exists."
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "New Message"
+msgstr "رسالة جديدة"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Select Rerun Course"
+msgstr "حدد الدورة المعادة"
+
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
+msgid "TS"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Enable Score column on the Progress Page"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "applied"
+msgstr "تم التطبيق"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No Translations Found!, Please apply mapping."
+msgstr "لم يتم العثور على ترجمات! المرجو تطبيق التعيين."
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
+msgid "unread message(s) waiting for your response from "
+msgstr "رسالة (رسائل) غير مقروءة في انتظار ردك من"
+
+#: cms/templates/settings.html
+msgid "Convert course to Source"
+msgstr "تحويل الدورة إلى المصدر"
+
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+msgid "Catalog"
+msgstr "فهرس"
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
+#, python-format
+msgid ""
+"This email message was automatically sent from %(platform_name)s because "
+"someone attempted to create an account using this email address."
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Filter My Courses"
+msgstr "فلترة الدورات الخاصة بي"
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#, python-format
+msgid "This email was automatically sent from %(platform_name)s to %(email)s"
+msgstr ""
+"تم إرسال هذا البريد الإلكتروني تلقائيًا من %(platform_name)s إلى %(email)s"
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a copy of a course for translation into a new language"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
+msgid "Login your platform to view all new messages "
+msgstr "سجل الدخول إلى منصتك لعرض جميع الرسائل الجديدة"
+
+#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
+msgid "Missing request object."
+msgstr "لا يوجد أي شيء مطلوب."
+
+#: cms/djangoapps/contentstore/views/course.py
+msgid "Course Language is required field for Translated rerun."
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to apply this time, Please try again later."
+msgstr "تعذر التطبيق حاليا، المرجو المحاولة مرة أخرى لاحقًا."
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Expand Outline"
+msgstr "توسيع المخطط"
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Average grade report for multiple courses"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
+#, python-format
+msgid ""
+"This email was automatically sent from %(platform_name)s because someone "
+"attempted to create an account using this email address."
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Incomplete Translation"
+msgstr "ترجمة غير مكتملة"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translation is Disabled"
+msgstr "الترجمة معطلة"
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Reports Available for Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Approve"
+msgstr "الموافقة"
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger.html
+msgid "Messenger - {platform_name}"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "APPLY"
+msgstr "طَبق"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Unable to load conversation of user:"
+msgstr "تعذر تحميل محادثة المستخدم:"
+
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid " All rights reserved"
+msgstr "كل الحقوق محفوظة"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to approve this time, Please try again later."
+msgstr "تعذرت الموافقة حاليا، المرجو المحاولة مرة أخرى لاحقا."
+
+#: openedx/features/wikimedia_features/messenger/api/v0/views.py
+msgid "User with username: {} does not exist."
+msgstr "المستخدم صاحب الإسم: {} غير موجود."
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course Version Report (Aggregate)"
+msgstr ""
+
+#: cms/templates/settings.html
+msgid "Course Direction Flag"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
+#, python-format
+msgid "%(subject)s"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No Translated Course Found!"
+msgstr "تعذر العثور على مقرر دراسي مترجم!"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Unable to load conversations."
+msgstr "تعذر تحميل المحادثات."
+
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
+msgid "Edly Privacy Policy"
+msgstr ""
+
+#: cms/templates/settings.html
+msgid "Option is disabled as course is not a translated re-run."
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Select"
+msgstr "تحديد"
+
+#: openedx/features/wikimedia_features/meta_translations/models.py
+msgid "Source"
+msgstr "المصدر"
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Average Grade Report"
+msgstr ""
+
+#: cms/templates/settings.html
+msgid ""
+"The option is disabled because the course is mapped as a base course or a "
+"translated course."
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Unable to search users."
+msgstr "تعذر البحث عن المستخدمين."
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Users"
+msgstr "المستخدمون"
+
+#: cms/djangoapps/contentstore/views/course.py
+msgid ""
+"Translated rerun can not be created for the base course with no language. "
+"Please set base course language from settings."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Different grading schemes can affect the comparison."
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
+#, python-format
+msgid ""
+"%(comment_username)s mentioned you in the comment on post: "
+"<b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
+msgid "recipient list can not be empty."
+msgstr "قائمة المستلمين لا يمكن أن تكون فارغة"
+
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Copyright "
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Report Name"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
+msgid "User does not exist - invalid username {}"
+msgstr "المستخدم غير موجود - اسم المستخدم غير صالح {}"
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+msgid "Login your platform to view all new messages."
+msgstr "سجل الدخول إلى منصتك لعرض جميع الرسائل الجديدة."
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+msgid "Hi "
+msgstr "أهلاً"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Enter Message ..."
+msgstr "أدخل رسالة..."
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Send"
+msgstr "إرسال"
+
+#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
+msgid "Invalid request - request object not found."
+msgstr "طلب غير صالح - لم يتم العثور على الشيء المطلوب."
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load Courses."
+msgstr "تعذر تحميل الدورات."
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "APPROVE ALL"
+msgstr "الموافقة على الكل"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+msgid "Inbox"
+msgstr "صندوق الواردات"
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Problem Grade report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Search Users"
+msgstr "البحث عن مستخدم"
+
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Translations"
+msgstr "الترجمات"
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
+#, python-format
+msgid ""
+"You're almost there! Use the link below to activate your account to access "
+"engaging, high-quality %(platform_name)s courses. "
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid ""
+"Congratulations! Translations are approved. They're also applied "
+"automatically to the Course Blocks"
+msgstr ""
+"تهانينا! تمت الموافقة على الترجمات. يتم تطبيقها أيضًا تلقائيًا على قوالب "
+"الدورة التدريبية"
+
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "progress"
+msgstr "التقدم"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Select Base Course"
+msgstr "حدد الدورة التدريبية الأساسية"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No pending translations to be approved"
+msgstr "لا يوجد أي ترجمات معلقة للموافقة"
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s mentioned you on post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "recent"
+msgstr "حديث"
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"Enter true or false. If true, students can see score tab on the progress "
+"page"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
+msgid " <font color=\"#ffffff\"><b>View Messenger</b></font>"
+msgstr " <font color=\"#ffffff\"><b>مرسول</b></font>"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load content."
+msgstr "تعذر تحميل المحتوى."
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid ""
+"Congratulations! The translation is approved. It's also applied "
+"automatically to the Course Block"
+msgstr ""
+"هنيئا! تمت الموافقة على الترجمة. سيتم تطبيقها تلقائيًا أيضًا على قسم الدورة "
+"التدريبية"
+
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+msgid "Sysadmin"
+msgstr "إداري النظام"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Error in marking messages read."
+msgstr "حصل خطأ خلال تسجيل الرسائل كمقروءة."
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Progress report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Congratulations! The translation is applied to the Course Block"
+msgstr "هنيئا! تم تطبيق الترجمة على قسم الدورة التدريبية"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Message(s) have been sent."
+msgstr "تم إرسال الرسالة (الرسائل)."
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Grade report for all currently enrolled students"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to fetch translation this time, Please try again later."
+msgstr "تعذر ربط الترجمة حاليا، المرجو المحاولة مرة أخرى لاحقًا."
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Basic re-run"
+msgstr ""
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Certificate of"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/api/v0/views.py
+msgid "Search query param is required."
+msgstr "اعدادات البحث مطلوبة."
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Base Course ID"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "APPROVE"
+msgstr "الموافقة"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Message has been sent."
+msgstr "تم ارسال الرسالة."
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Apply"
+msgstr "طَبق"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Reply"
+msgstr "رد"
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
+msgid "Dear "
+msgstr "العزيز "
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course Version Report (Detailed - Per Course)"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "APPLIED"
+msgstr "تم التطبيق"
+
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "The Base Course ID"
+msgstr ""
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Achievement"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
+msgid ""
+"Note that you will not be able to log back into your account until you have "
+"activated it."
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/tab.py
+msgid "Wiki Progress"
+msgstr "ويكي تقدم"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Collapse Outline"
+msgstr "طي المخطط"
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "has successfully completed"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "List profile information for enrolled students"
+msgstr ""
+
+#. Translators: This text fragment appears after the signatures (displayed in
+#. a small font) on the certificate
+#: lms/djangoapps/certificates/views/webview.py
+msgid "Certificate Info"
+msgstr "معلومات الشهادة"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "other"
+msgstr "آخر"
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Type your message..."
+msgstr "اكتب رسالتك..."
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s mentioned you on post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/models.py
+msgid "Days settings for next Fetch call"
+msgstr "إعدادات الأيام للمكالمة المسترجعة القادمة"
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(mentioned_by)s mentioned you on the post."
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/views.py
+msgid "Error in sending messages. Please try again!"
+msgstr "حصل خطأ عند إرسال الرسائل. حاول مرة اخرى!"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translated Course Name"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translated:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translation"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "To Language"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Translated"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Untranslated"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\", \"font-open-sans\", \"font-montserrat\", and \"font-source-sans-pro\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Hrs Ago"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Filters"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+msgid "N/A"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No courses found"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Search Course By Name"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Select Course Font Family"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Section Header"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "No course blocks found"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "From Language"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load courses"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load a course"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Unable to load course blocks"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Load More"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Block Type"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Last Updated:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "Courses available for translation"
+msgstr ""
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "course name"
+msgstr "اسم المساق"
+
+#: openedx/features/wikimedia_features/meta_translations/views.py
+msgid "outline"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+msgid "Practice Score"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+msgid "Not Graded"
+msgstr "غير مقيَّم"
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+msgid "Problem Score"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "All Courses"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "See what we have been up to"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "19 April 2021"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "By Jan Gerlach"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Subscribe"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "By Pats Pena"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "26 Februrary 2021"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Subscribe to news about ongoing projects and initiatives"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Wikipedia needs local journalism and the open Web"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "View All News >"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid ""
+"Wikipedia readers in Latin America invited to support 20 years of free "
+"knowledge through new fundraising campaign"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Featured"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Recently Added"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Read More >"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/index.html
+msgid "Unlock The World’s Knowledge"
+msgstr "استكشف المعرفة العالمية"
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Discussion' refers to the tab in the courseware that leads to
@@ -2928,7 +3758,7 @@ msgstr "تاريخ إغلاق باب التسجيل في هذا الصف"
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Start time when this module is visible"
-msgstr "تاريخ البدء الذي تصبح بعده هذه الوحدة مرئيّة"
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Date that this class ends"
@@ -3266,12 +4096,6 @@ msgid ""
 "Enter the heading that you want students to see above your course handouts "
 "on the Course Home page. Your course handouts appear in the right panel of "
 "the page."
-msgstr ""
-
-#: common/lib/xmodule/xmodule/course_module.py
-#: lms/templates/courseware/info.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Handouts"
 msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
@@ -3614,7 +4438,7 @@ msgstr "رقم امتحان الدخول"
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Content module identifier (location) of entrance exam."
-msgstr "معرّف (موقع) وحدة المحتوى الخاص بامتحان الدخول."
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Social Media Sharing URL"
@@ -3845,29 +4669,6 @@ msgstr ""
 "أدخل صواب أو خطأ. إذا كان إدخالك صواب ، سيتم إرسال أي لمحات او نقاط بارزة "
 "مرتبطة بالمحتوى في المساق إلى المتعلمين في الوقت المحدد."
 
-#: common/lib/xmodule/xmodule/course_module.py
-msgid "Enable Score column on the Progress Page"
-msgstr ""
-
-#: common/lib/xmodule/xmodule/course_module.py
-msgid ""
-"Enter true or false. If true, students can see score tab on the progress "
-"page"
-msgstr ""
-
-#: common/lib/xmodule/xmodule/course_module.py
-msgid "Select Course Font Family"
-msgstr ""
-
-#: common/lib/xmodule/xmodule/course_module.py
-msgid ""
-"\n"
-"            Select course family in which you want to display your course.\n"
-"            Available options are \"font-trebuchet\" and \"font-open-sans\".\n"
-"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
-"            "
-msgstr ""
-
 #: common/lib/xmodule/xmodule/course_module.py cms/templates/certificates.html
 #: cms/templates/group_configurations.html cms/templates/settings.html
 #: cms/templates/settings_advanced.html cms/templates/settings_graders.html
@@ -3935,7 +4736,7 @@ msgstr "نصّ"
 
 #: common/lib/xmodule/xmodule/html_module.py
 msgid "Html contents to display for this module"
-msgstr "محتويات HTML التي يجب عرضها لهذه الوحدة"
+msgstr ""
 
 #: common/lib/xmodule/xmodule/html_module.py
 msgid "Source code for LaTeX documents. This feature is not well-supported."
@@ -4015,7 +4816,7 @@ msgstr "العدد"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Enter the number of components to display to each student."
-msgstr "يُرجى إدخال عدد المكوِّنات الواجب عرضها على كل طالب."
+msgstr ""
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Problem Type"
@@ -4572,15 +5373,13 @@ msgstr ""
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 msgid "Tag this module as part of an Entrance Exam section"
-msgstr "وسم هذه الوحدة على أنّها جزء من قسم خاص بامتحان الدخول."
+msgstr ""
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 msgid ""
 "Enter true or false. If true, answer submissions for problem modules will be"
 " considered in the Entrance Exam scoring/gating algorithm."
 msgstr ""
-"يُرجى إدخال ’true‘ أو ’false‘. باختيارك للقيمة ’true‘، ستُحتسب إجابات وحدات "
-"المسائل كجزء من خوارزمية تقييم/تحكيم امتحان الدخول أو القبول في المساق."
 
 #: common/lib/xmodule/xmodule/modulestore/xml_importer.py
 msgid "Error while reading {}. Check file for XML errors."
@@ -4785,8 +5584,6 @@ msgstr "إعدادات المجموعة"
 #: common/lib/xmodule/xmodule/split_test_module.py
 msgid "Which child module students in a particular group_id should see"
 msgstr ""
-"ما هي الوحدة الفرعية التي يجب أن يراها الطلّاب في المجموعة ذات الرقم "
-"group_id "
 
 #: common/lib/xmodule/xmodule/split_test_module.py
 #, python-brace-format
@@ -6166,12 +6963,6 @@ msgstr ""
 "تُقرّ المنصّة {platform_name} الإنجازات من خلال شهادات، تُمنح مقابل أنشطة "
 "المساق التي يُكملها طلّاب {platform_name}"
 
-#. Translators: This text fragment appears after the signatures (displayed in
-#. a small font) on the certificate
-#: lms/djangoapps/certificates/views/webview.py
-msgid "Certificate Info"
-msgstr "معلومات الشهادة"
-
 #. Translators:  'All rights reserved' is a legal term used in copyrighting to
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
@@ -6414,18 +7205,6 @@ msgstr ""
 msgid "Not sure yet"
 msgstr ""
 
-#: lms/djangoapps/course_home_api/outline/v1/serializers.py
-#: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
-#, python-brace-format
-msgid "({number} Question)"
-msgid_plural "({number} Questions)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
-
 #: lms/djangoapps/course_home_api/outline/v1/views.py
 msgid ""
 "Please contact your degree administrator or edX Support if you have "
@@ -6468,10 +7247,6 @@ msgstr "الويكي"
 #, python-brace-format
 msgid "This is the wiki for **{organization}**'s _{course_name}_."
 msgstr "هذا هو ويكي _{course_name}_ الخاص بـ**{organization}**."
-
-#: lms/djangoapps/course_wiki/views.py
-msgid "Course page automatically created."
-msgstr "جرى إنشاء صفحة المساق تلقائيًّا."
 
 #: lms/djangoapps/course_wiki/views.py
 #, python-brace-format
@@ -6572,37 +7347,6 @@ msgstr "في {relative} - {absolute}"
 #: lms/djangoapps/courseware/date_summary.py
 msgid "Enrollment Date"
 msgstr "تاريخ التسجيل "
-
-#: lms/djangoapps/courseware/date_summary.py
-msgid "Course Starts"
-msgstr ""
-
-#: lms/djangoapps/courseware/date_summary.py
-msgid "Don't forget to add a calendar reminder!"
-msgstr ""
-
-#: lms/djangoapps/courseware/date_summary.py
-#, python-brace-format
-msgid "Course starts in {time_remaining_string} on {course_start_date}."
-msgstr ""
-
-#: lms/djangoapps/courseware/date_summary.py
-#, python-brace-format
-msgid "Course starts in {time_remaining_string} at {course_start_time}."
-msgstr ""
-
-#: lms/djangoapps/courseware/date_summary.py
-msgid "Course End"
-msgstr ""
-
-#: lms/djangoapps/courseware/date_summary.py
-msgid ""
-"To earn a certificate, you must complete all requirements before this date."
-msgstr ""
-
-#: lms/djangoapps/courseware/date_summary.py
-msgid "After this date, course content will be archived."
-msgstr ""
 
 #: lms/djangoapps/courseware/date_summary.py
 msgid ""
@@ -6793,6 +7537,7 @@ msgstr "مخطّط المنهج الدراسي"
 #: lms/djangoapps/courseware/tabs.py
 #: lms/templates/peer_grading/peer_grading.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Progress"
 msgstr "التقدم"
 
@@ -8224,7 +8969,7 @@ msgstr "تتعارض إعدادات الدخول لهذا العنصر مع إع
 
 #: lms/djangoapps/lms_xblock/mixin.py
 msgid "Whether to display this module in the table of contents"
-msgstr "فيما إذا ستُعرض هذه الوحدة في فهرس المحتويات"
+msgstr ""
 
 #. Translators: "TOC" stands for "Table of Contents"
 #: lms/djangoapps/lms_xblock/mixin.py
@@ -8232,8 +8977,6 @@ msgid ""
 "What format this module is in (used for deciding which grader to apply, and "
 "what to show in the TOC)"
 msgstr ""
-"ما هي صيغة المعتمدة لهذه الوحدة (تُستخدم لاختيار المُقيّم المُطبّق وما "
-"يتوجّب إظهاره في فهرس المحتويات)"
 
 #: lms/djangoapps/lms_xblock/mixin.py
 msgid "Course Chrome"
@@ -12117,467 +12860,12 @@ msgstr "حاول مرة أخرى (محاولات غير محدودة)"
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr "لقد استنفدت  {attempts} من المحاولات اللامحدودة لهذه المسألة."
 
-#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
-msgid "progress"
-msgstr "التقدم"
-
-#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
-msgid "User does not exist - invalid username {}"
-msgstr "المستخدم غير موجود - اسم المستخدم غير صالح {}"
-
-#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
-msgid "recipient list can not be empty."
-msgstr "قائمة المستلمين لا يمكن أن تكون فارغة"
-
-#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
-msgid "Missing request object."
-msgstr "لا يوجد أي شيء مطلوب."
-
-#: openedx/features/wikimedia_features/messenger/api/v0/serializers.py
-msgid "Invalid request - request object not found."
-msgstr "طلب غير صالح - لم يتم العثور على الشيء المطلوب."
-
-#: openedx/features/wikimedia_features/messenger/api/v0/views.py
-msgid "Search query param is required."
-msgstr "اعدادات البحث مطلوبة."
-
-#: openedx/features/wikimedia_features/messenger/api/v0/views.py
-msgid "with_user param is required."
-msgstr "اعداد with_user مطلوب."
-
-#: openedx/features/wikimedia_features/messenger/api/v0/views.py
-msgid "User with username: {} does not exist."
-msgstr "المستخدم صاحب الإسم: {} غير موجود."
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-msgid "Hi "
-msgstr "أهلاً"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
-msgid "You have "
-msgstr "لديك"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
-msgid "unread message(s) waiting for your response from following users:"
-msgstr "رسالة (رسائل) غير مقروءة في انتظار ردك من المستخدمين التاليين:"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
-msgid "unread message(s) waiting for your response from "
-msgstr "رسالة (رسائل) غير مقروءة في انتظار ردك من"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-msgid "Login your platform to view all new messages."
-msgstr "سجل الدخول إلى منصتك لعرض جميع الرسائل الجديدة."
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-msgid " <font color=\"#ffffff\"><b>View Messenger</b></font>"
-msgstr " <font color=\"#ffffff\"><b> مرسول </b></font>"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.html
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
-#, python-format
-msgid "This email was automatically sent from %(platform_name)s to %(email)s"
-msgstr ""
-"تم إرسال هذا البريد الإلكتروني تلقائيًا من %(platform_name)s إلى %(email)s"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
-msgid "Dear "
-msgstr "العزيز"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
-msgid "Login your platform to view all new messages "
-msgstr "سجل الدخول إلى منصتك لعرض جميع الرسائل الجديدة"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
-#, python-format
-msgid "%(subject)s"
-msgstr ""
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Send"
-msgstr "إرسال"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Reply"
-msgstr "رد"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "New Message"
-msgstr "رسالة جديدة"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Type your message..."
-msgstr "اكتب رسالتك ..."
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Enter Message ..."
-msgstr "أدخل رسالة ..."
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Search Users"
-msgstr "البحث عن مستخدم"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Select"
-msgstr "تحديد"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
-msgid "Inbox"
-msgstr "صندوق الواردات"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Message"
-msgstr "رسالة"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Users"
-msgstr "المستخدمون"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Message has been sent."
-msgstr "تم ارسال الرسالة."
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Message(s) have been sent."
-msgstr "تم إرسال الرسالة (الرسائل)."
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Error in sending message. Please try again!"
-msgstr "حصل خطأ عند إرسال الرسالة. حاول مرة اخرى!"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Error in sending messages. Please try again!"
-msgstr "حصل خطأ عند إرسال الرسائل. حاول مرة اخرى!"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Error in marking messages read."
-msgstr "حصل خطأ خلال تسجيل الرسائل كمقروءة."
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Unable to load conversations."
-msgstr "تعذر تحميل المحادثات."
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Unable to load conversation of user:"
-msgstr "تعذر تحميل محادثة المستخدم:"
-
-#: openedx/features/wikimedia_features/messenger/views.py
-msgid "Unable to search users."
-msgstr "تعذر البحث عن المستخدمين."
-
-#: openedx/features/wikimedia_features/meta_translations/models.py
-msgid "Days settings for next Fetch call"
-msgstr "إعدادات الأيام للمكالمة المسترجعة القادمة"
-
-#: openedx/features/wikimedia_features/meta_translations/models.py
-msgid "Destination"
-msgstr "الوجهة"
-
-#: openedx/features/wikimedia_features/meta_translations/models.py
-msgid "Source"
-msgstr "المصدر"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Expand Outline"
-msgstr "توسيع المخطط"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Collapse Outline"
-msgstr "طي المخطط"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "outline"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "course name"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Select Base Course"
-msgstr "حدد الدورة التدريبية الأساسية"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Select Rerun Course"
-msgstr "حدد الدورة المعادة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "No Translated Course Found!"
-msgstr "تعذر العثور على مقرر دراسي مترجم!"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "No Translations Found!, Please apply mapping."
-msgstr "لم يتم العثور على ترجمات! المرجو تطبيق التعيين."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Filter My Courses"
-msgstr "فلترة الدورات الخاصة بي"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "APPROVE"
-msgstr "الموافقة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Translation is Disabled"
-msgstr "الترجمة معطلة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Incomplete Translation"
-msgstr "ترجمة غير مكتملة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Approve"
-msgstr "الموافقة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to approve this time, Please try again later."
-msgstr "تعذرت الموافقة حاليا، المرجو المحاولة مرة أخرى لاحقا."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid ""
-"Congratulations! The translation is approved. It's also applied "
-"automatically to the Course Block"
-msgstr ""
-"هنيئا! تمت الموافقة على الترجمة. سيتم تطبيقها تلقائيًا أيضًا على قسم الدورة "
-"التدريبية"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "APPLY"
-msgstr "طَبق"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Applied"
-msgstr "تم التطبيق"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Apply"
-msgstr "طَبق"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to apply this time, Please try again later."
-msgstr "تعذر التطبيق حاليا، المرجو المحاولة مرة أخرى لاحقًا."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Congratulations! The translation is applied to the Course Block"
-msgstr "هنيئا! تم تطبيق الترجمة على قسم الدورة التدريبية"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "APPLIED"
-msgstr "تم التطبيق"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "APPROVE ALL"
-msgstr "الموافقة على الكل"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "No pending translations to be approved"
-msgstr "لا يوجد أي ترجمات معلقة للموافقة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid ""
-"Congratulations! Translations are approved. They're also applied "
-"automatically to the Course Blocks"
-msgstr ""
-"تهانينا! تمت الموافقة على الترجمات. يتم تطبيقها أيضًا تلقائيًا على قوالب "
-"الدورة التدريبية"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "pending translation"
-msgstr "ترجمة معلقة"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "recent"
-msgstr "حديث"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "applied"
-msgstr "تم التطبيق"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "other"
-msgstr "آخر"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to fetch translation this time, Please try again later."
-msgstr "تعذر ربط الترجمة حاليا، المرجو المحاولة مرة أخرى لاحقًا."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to load Courses."
-msgstr "تعذر تحميل الدورات."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to load Course Outline."
-msgstr "تعذر تحميل مخطط الدورة التدريبية."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to load content."
-msgstr "تعذر تحميل المحتوى."
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Courses available for translation"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Filters"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "From Language"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "To Language"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Block Type"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Translation"
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "اسم المساق"
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Translated Course Name"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Search Course By Name"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Hrs Ago"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "N/A"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Translated"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Last Updated:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Translated:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "No course blocks found"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "No courses found"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Load More"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Section Header"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Untranslated"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to load course blocks"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to load a course"
-msgstr ""
-
-#: openedx/features/wikimedia_features/meta_translations/views.py
-msgid "Unable to load courses"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/tab.py
-msgid "Wiki Progress"
-msgstr "ويكي تقدم"
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
-#, python-format
-msgid "%(thread_username)s mentioned you on post: <b>%(thread_title)s</b>:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
-#, python-format
-msgid ""
-"%(comment_username)s mentioned you in the comment on post: "
-"<b>%(thread_title)s</b>:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
-#, python-format
-msgid "%(thread_username)s mentioned you on post: %(thread_title)s:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
-#, python-format
-msgid ""
-"%(comment_username)s mentioned you in the comment on post: %(thread_title)s:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/subject.txt
-#, python-format
-msgid "%(platform_name)s -> %(mentioned_by)s mentioned you on the post."
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
-msgid "Copyright "
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
-msgid " All rights reserved"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
-#, python-format
-msgid ""
-"You're almost there! Use the link below to activate your account to access "
-"engaging, high-quality %(platform_name)s courses. "
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
-msgid ""
-"Note that you will not be able to log back into your account until you have "
-"activated it."
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
-#, python-format
-msgid ""
-"This email was automatically sent from %(platform_name)s because someone "
-"attempted to create an account using this email address."
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
-#, python-format
-msgid ""
-"This email message was automatically sent from %(platform_name)s because "
-"someone attempted to create an account using this email address."
-msgstr ""
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
@@ -12888,21 +13176,6 @@ msgstr ""
 "لا يُسمح باستخدام الأحرف الخاصة ضمن اسم المنظمة و رقم المساق و رقم تشغيله."
 
 #: cms/djangoapps/contentstore/views/course.py
-msgid "Course Language is required field for Translated rerun."
-msgstr ""
-
-#: cms/djangoapps/contentstore/views/course.py
-msgid ""
-"Translated rerun for Source Course in selected language already exists."
-msgstr ""
-
-#: cms/djangoapps/contentstore/views/course.py
-msgid ""
-"Translated rerun can not be created for the base course with no language. "
-"Please set base course language from settings."
-msgstr ""
-
-#: cms/djangoapps/contentstore/views/course.py
 msgid ""
 "There is already a course defined with the same organization and course "
 "number. Please change either organization or course number to be unique."
@@ -13114,7 +13387,7 @@ msgstr "المعلومات التي أدخلتها غير صحيحة."
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Transcripts are supported only for \"video\" modules."
-msgstr "يتوفّر الدّعم للنصوص فقط في حالة الوحدات الدراسية المؤلّفة من \"فيديو\"."
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Cannot find item by locator."
@@ -13204,7 +13477,7 @@ msgstr "قيد المعالجة"
 #. successfully processed
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Ready"
-msgstr "مستعدّ"
+msgstr ""
 
 #. Translators: This is the status for a video that is uploaded completely
 #: cms/djangoapps/contentstore/views/videos.py
@@ -14369,6 +14642,7 @@ msgstr "تسلسل"
 #: lms/templates/courseware/dates.html lms/templates/seq_module.html
 #: lms/templates/vert_module.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Completed"
 msgstr "تمّت"
 
@@ -16022,20 +16296,8 @@ msgid "{platform_name} Home"
 msgstr "{platform_name} الرئيسية"
 
 #: lms/templates/certificates/_accomplishment-rendering.html
-msgid "has successfully completed"
-msgstr ""
-
-#: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Noted by"
 msgstr "لاحظها"
-
-#: lms/templates/certificates/_accomplishment-rendering.html
-msgid "Certificate of"
-msgstr ""
-
-#: lms/templates/certificates/_accomplishment-rendering.html
-msgid "Achievement"
-msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
@@ -16507,19 +16769,11 @@ msgid "{course.display_number_with_default} Course Info"
 msgstr "معلومات المساق {course.display_number_with_default}   "
 
 #: lms/templates/courseware/dates.html
-msgid "Important Dates"
-msgstr ""
-
-#: lms/templates/courseware/dates.html
 msgid "Today"
 msgstr ""
 
 #: lms/templates/courseware/dates.html
 msgid "Verified Only"
-msgstr ""
-
-#: lms/templates/courseware/dates.html
-msgid "Due Next"
 msgstr ""
 
 #: lms/templates/courseware/dates.html
@@ -16589,11 +16843,6 @@ msgstr ""
 
 #: lms/templates/courseware/info.html
 msgid "Handout Navigation"
-msgstr ""
-
-#: lms/templates/courseware/info.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Tools"
 msgstr ""
 
 #: lms/templates/courseware/news.html
@@ -16725,15 +16974,6 @@ msgstr "تقدّم العمل {course_number}"
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "استعراض عملية التقييم في استوديو"
-
-#: lms/templates/courseware/progress.html
-msgid "Course Progress for '{username}' ({email})"
-msgstr ""
-
-#: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
-msgid "View Certificate"
-msgstr "معاينة الشهادة"
 
 #: lms/templates/courseware/progress.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
@@ -16961,10 +17201,6 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 msgid "Your certificate will be available on or before {date}"
-msgstr ""
-
-#: lms/templates/dashboard/_dashboard_certificate_information.html
-msgid "Your final grade:"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_certificate_information.html
@@ -18171,7 +18407,7 @@ msgstr "المدارس"
 #: lms/templates/header/user_dropdown.html
 #: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
-msgstr "استئناف مساقك الأخير"
+msgstr ""
 
 #: lms/templates/header/user_dropdown.html
 #: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
@@ -18422,10 +18658,12 @@ msgid "Has the course started?"
 msgstr "هل بدأ المساق؟"
 
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Yes"
 msgstr "نعم"
 
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "No"
 msgstr "لا"
 
@@ -19487,6 +19725,7 @@ msgid ""
 msgstr "عدد نقاط جديد من مجموع النقاط المتاحة للمسألة"
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Score"
 msgstr "النتيجة"
 
@@ -19959,14 +20198,6 @@ msgstr ""
 "لقد قمنا بإرسال رسالةٍ على عنوان البريد الإلكتروني الذي زودتنا به تتضمن "
 "التعليمات الخاصة بضبط كلمة المرور، وستصلك قريباً. "
 
-#: lms/templates/static_templates/404.html
-msgid ""
-"The page that you were looking for was not found. Go back to the "
-"{link_start}homepage{link_end} ."
-msgstr ""
-"لا يمكن العثور على الصفحة المطلوبة، العودة إلى "
-"{link_start}homepage{link_end} ."
-
 #: lms/templates/static_templates/429.html
 msgid "Too Many Requests"
 msgstr "طلبات أكثر مما ينبغي"
@@ -20372,10 +20603,6 @@ msgid "Upgrade ({price})"
 msgstr ""
 
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
-msgid "Expand All"
-msgstr ""
-
-#: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
 msgid "Prerequisite: "
 msgstr ""
 
@@ -20469,10 +20696,6 @@ msgstr ""
 msgid "Show More"
 msgstr ""
 
-#: openedx/features/course_search/templates/course_search/course-search-fragment.html
-msgid "Search Results"
-msgstr ""
-
 #. Translators: this section lists all the third-party authentication
 #. providers
 #. (for example, Google and LinkedIn) the user can link with or unlink from
@@ -20535,117 +20758,6 @@ msgstr "أنشئ ملفك الشخصي لتخصيص هويتك على {platform_
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
 msgstr "حدث خطأ. حاول تحميل الصفحة مرة أخرى."
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Report Name"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "List profile information for enrolled students"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Grade report for all currently enrolled students"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Anonymized student ID's"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Problem Grade report for all currently enrolled students"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Progress report for all currently enrolled students"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Course Version Report (Detailed - Per Course)"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Course Version Report (Aggregate)"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Average grade report for multiple courses"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Different grading schemes can affect the comparison."
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate Average Grade Report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Reports Available for Generate"
-msgstr ""
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger.html
-msgid "Messenger - {platform_name}"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Base Course ID"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "The Base Course ID"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Basic re-run"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create a copy of a course, It should be considered as a new course"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Translated Course re-run"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create a copy of a course for translation into a new language"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"Identify the course language here. You can request for translation after "
-"creating a course"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Translations"
-msgstr "الترجمات"
-
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
-msgid "Course Grade for '{username}' ({email})"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
-msgid "Edly Privacy Policy"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
-msgid "Catalog"
-msgstr "فهرس"
-
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
-msgid "Sysadmin"
-msgstr "إداري النظام"
-
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
-msgid "TS"
-msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
@@ -20860,8 +20972,6 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
-"لإنشاء رابط إلى هذه الوحدة من عنصر HTML في هذا المساق، أدخل "
-"\"/jump_to_id/<location ID>\" كقيمة الرابط."
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -22535,30 +22645,12 @@ msgid "Upgrade Deadline Time"
 msgstr "تحديث وقت الموعد النهائي"
 
 #: cms/templates/settings.html
-msgid "Course Direction Flag"
-msgstr ""
-
-#: cms/templates/settings.html
-msgid "Convert course to Source"
-msgstr ""
-
-#: cms/templates/settings.html
-msgid "Option is disabled as course is not a translated re-run."
-msgstr ""
-
-#: cms/templates/settings.html
 msgid "Course Details"
 msgstr "تفاصيل المساق"
 
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "يُرجى توفير معلومات مفيدة عن مساقك"
-
-#: cms/templates/settings.html
-msgid ""
-"The option is disabled because the course is mapped as a base course or a "
-"translated course."
-msgstr ""
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -23275,11 +23367,11 @@ msgstr "إنشاء جديد"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "previous"
-msgstr ""
+msgstr "السابق"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "next"
-msgstr ""
+msgstr "التالي"
 
 #: cms/templates/maintenance/_force_publish_course.html
 msgid "Required data to force publish course."
@@ -24730,6 +24822,9 @@ msgstr "أُنقر على زر \"بدء الامتحان المراقب\" أدن
 #~ "                        %(course_name)s: المحتوى المبلغ عنه في انتظار المراجعة\n"
 #~ "                    "
 
+#~ msgid "The requested course does not exist."
+#~ msgstr "المساق المطلوب غير موجود."
+
 #~ msgid "Leverage teams to allow learners to connect by topic of interest."
 #~ msgstr "اعتمد الفِرق لتمكين المتعلمين من التواصل حسب المواضيع المهمة."
 
@@ -25339,6 +25434,12 @@ msgstr "أُنقر على زر \"بدء الامتحان المراقب\" أدن
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "مدعومة من المؤسسات التالية"
+
+#~ msgid "Upgrade"
+#~ msgstr "ترقية"
+
+#~ msgid "Hello {full_name},"
+#~ msgstr "مرحبًا {full_name}،"
 
 #~ msgid ""
 #~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
