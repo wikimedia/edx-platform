@@ -2,8 +2,9 @@
 
 import logging
 import re
+import pytz
 from abc import ABCMeta, abstractmethod
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from django.conf import settings
 from django.urls import resolve
@@ -541,11 +542,54 @@ class AboutInfo:
 
         return [mode.slug for mode in CourseMode.modes_for_course(course.id)]
 
+    def index_course_type_filter(self, **kwargs):
+        """ fetches the available course modes from the CourseMode model """
+        course = kwargs.get('course', None)
+        if not course:
+            raise ValueError("Context dictionary does not contain expected argument 'course'")
+
+        is_self_paced = getattr(course, 'self_paced', None)
+        
+        return 'self_paced' if is_self_paced else 'instructor_paced'
+    
+    def index_enrollment_filter(self, **kwargs):
+        """ fetches the available course modes from the CourseMode model """
+        course = kwargs.get('course', None)
+        if not course:
+            raise ValueError("Context dictionary does not contain expected argument 'course'")
+
+        enrollment_date = getattr(course, 'enrollment_start', None)
+        if enrollment_date:
+            today = datetime.now(pytz.utc)
+            three_months_from_today = today + timedelta(days=3*30)
+
+            if enrollment_date <= today:
+                return 'enrollment_open'
+            elif enrollment_date <= three_months_from_today:
+                return 'enrollment_open_in_comming_three_months'
+        return 'enrollment_open_after_three_months'
+    
+    def index_prerequisite_filter(self, **kwargs):
+        """
+        Courses require prerequisites
+        """
+        course = kwargs.get('course', None)
+        if not course:
+            raise ValueError("Context dictionary does not contain expected argument 'course'")
+        
+        pre_requisite_courses = getattr(course, 'pre_requisite_courses', [])
+        
+        return 'require_prerequisites' if len(pre_requisite_courses) else 'no_prerequisites'
+    
     # Source location options - either from the course or the about info
     FROM_ABOUT_INFO = from_about_dictionary
     FROM_COURSE_PROPERTY = from_course_property
     FROM_COURSE_MODE = from_course_mode
 
+    # custom indexing
+    INDEX_COURSE_TYPE_FILTER = index_course_type_filter
+    INDEX_ENROLLMENT_FILTER = index_enrollment_filter
+    INDEX_PREREQISITE_FILTER = index_prerequisite_filter
 
 class CourseAboutSearchIndexer(CoursewareSearchIndexer):
     """
@@ -587,6 +631,9 @@ class CourseAboutSearchIndexer(CoursewareSearchIndexer):
         AboutInfo("org", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("modes", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_MODE),
         AboutInfo("language", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
+        AboutInfo("course_type", AboutInfo.PROPERTY, AboutInfo.INDEX_COURSE_TYPE_FILTER),
+        AboutInfo("enrollment_type", AboutInfo.PROPERTY, AboutInfo.INDEX_ENROLLMENT_FILTER),
+        AboutInfo("prerequisites", AboutInfo.PROPERTY, AboutInfo.INDEX_PREREQISITE_FILTER),
     ]
 
     @classmethod
