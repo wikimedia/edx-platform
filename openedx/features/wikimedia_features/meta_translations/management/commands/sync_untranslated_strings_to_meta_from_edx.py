@@ -49,6 +49,12 @@ class Command(BaseCommand):
             action='store_true',
             help='Send API calls to Meta wiki',
         )
+        parser.add_argument(
+            '-bck',
+            '--base-course-key',
+            help='Specify course key',
+            default=None,
+        )
 
     def _log_final_report(self):
         """
@@ -93,7 +99,7 @@ class Command(BaseCommand):
         }
         return request
 
-    def _get_request_data_list(self):
+    def _get_request_data_list(self, master_courses=[]):
         """
         Returns list of request dict required for update pages API of Wiki Meta for all updated blocks.
         Blocks need to be updated on Meta => if block-data content is updated or block-data mapping is updated.
@@ -112,7 +118,9 @@ class Command(BaseCommand):
             ...
         ]
         """
-        master_courses = CourseTranslation.get_base_courses_list(outdated=True)
+        if not master_courses: 
+            master_courses = CourseTranslation.get_base_courses_list(outdated=True)
+        
         data_list = []
         for base_course in master_courses:
             outdated_translation = CourseTranslation.is_outdated_course(base_course)
@@ -257,7 +265,11 @@ class Command(BaseCommand):
             MetaCronJobInfo.objects.create(sent_date = datetime.now())
     
     def handle(self, *args, **options):
-        data_list = self._get_request_data_list()
+        base_courses = []
+        if options.get('base-course-key'):
+            base_courses = [CourseKey.from_string(base_courses)]
+        
+        data_list = self._get_request_data_list(base_courses)
         if options.get('commit'):
             self._RESULT.update({"updated_blocks_count": len(data_list)})
 
