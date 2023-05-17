@@ -7,6 +7,7 @@ from logging import getLogger
 from lxml import etree
 from django.conf import settings
 
+from openedx.features.wikimedia_features.meta_translations.tasks import send_untranslated_strings_to_meta_from_edx_task
 from openedx.features.wikimedia_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
 from openedx.features.wikimedia_features.meta_translations.models import (
     CourseBlock, CourseBlockData, CourseTranslation, WikiTranslation
@@ -259,6 +260,8 @@ def course_blocks_mapping(course_key):
     For base-course: run mapping just on course.
     For translated-rerun course: run mapping on base course then run mapping on translated-rerun course
     For Normal course or rerun: Log message and skip mapping call.
+    ...
+    For every translated rerun: send course strings to the Meta Server
     """
     def map_base_course(base_course_key):
         base_course = get_course_by_id(base_course_key)
@@ -291,4 +294,5 @@ def course_blocks_mapping(course_key):
     else:
         map_base_course(base_course_key)
         map_translated_version(base_course_key, course_key)
+        send_untranslated_strings_to_meta_from_edx_task.delay(str(base_course_key))
         return True
