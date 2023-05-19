@@ -190,9 +190,32 @@ COURSE_DISCOVERY_MEANINGS = {
         'terms': {
             'honor': 'Honor',
             'verified': 'Verified',
+            'audit': 'Audit'
         },
     },
     'language': LANGUAGE_MAP,
+    'course_type': {
+        'name': 'Course Pace',
+        'terms': {
+            'instructor_paced': 'Instructor Paced',
+            'self_paced': 'Self Paced'
+        }
+    },
+    'enrollment_type': {
+        'name': 'Enrollment_type',
+        'terms': {
+            'enrollment_open': 'Enrollment Open',
+            'enrollment_open_in_coming_three_months': 'Enrollment Open In Coming Three Months',
+            'enrollment_open_after_three_months': 'Enrollment Open After Three Months'
+        }
+    },
+    'prerequisites': {
+        'name': 'Prerequisites',
+        'terms': {
+            'no_prerequisites': 'No Prerequisites',
+            'require_prerequisites': 'Require Prerequisites'
+        }
+    }
 }
 
 FEATURES['ENABLE_COURSE_DISCOVERY'] = True
