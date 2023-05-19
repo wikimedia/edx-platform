@@ -8,6 +8,9 @@ from opaque_keys.edx.keys import CourseKey
 from openedx.features.course_experience.utils import get_course_outline_block_tree
 from openedx.core.djangoapps.site_configuration.models import SiteConfiguration
 
+from lms.djangoapps.grades.api import CourseGradeFactory
+from common.djangoapps.student.views import get_course_enrollments, get_org_black_and_whitelist_for_site
+
 log = logging.getLogger(__name__)
 User = get_user_model()
 ENABLE_FORUM_NOTIFICATIONS_FOR_SITE_KEY = 'enable_forum_notifications'
@@ -74,3 +77,21 @@ def get_mentioned_users_list(input_string, users_list=None):
         # remove tagged name from string and search for next tagged name
         remianing_string = input_string.replace(name, "")
         return get_mentioned_users_list(remianing_string, users_list)
+
+
+def get_user_completed_course_keys(user):
+    """Get courses that the user has completed.
+    """
+
+    course_limit = None
+    # Get the org whitelist or the org blacklist for the current site
+    site_org_whitelist, site_org_blacklist = get_org_black_and_whitelist_for_site()
+    course_enrollments = list(get_course_enrollments(user, site_org_whitelist, site_org_blacklist, course_limit))
+    course_enrollments_keys = [enrollment.course_id for enrollment in course_enrollments]
+
+    completed_course_keys = set()
+    for course_key in course_enrollments_keys:
+        if CourseGradeFactory().read(user, course_key=course_key).summary['grade'] == 'Pass':
+            completed_course_keys.add('{}'.format(course_key))
+
+    return completed_course_keys
