@@ -566,7 +566,7 @@ class AboutInfo:
             if enrollment_date <= today:
                 return 'enrollment_open'
             elif enrollment_date <= three_months_from_today:
-                return 'enrollment_open_in_comming_three_months'
+                return 'enrollment_open_in_coming_three_months'
         return 'enrollment_open_after_three_months'
     
     def index_prerequisite_filter(self, **kwargs):
