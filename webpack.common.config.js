@@ -72,6 +72,7 @@ module.exports = Merge.smart({
             // Studio
             Import: './cms/static/js/features/import/factories/import.js',
             CourseOrLibraryListing: './cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx',
+            WikiCourseListing: './cms/static/js/features_jsx/studio/WikiCourseListing.jsx',
             LibrarySourcedBlockPicker: './common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx',  // eslint-disable-line max-len
             'js/factories/textbooks': './cms/static/js/factories/textbooks.js',
             'js/factories/container': './cms/static/js/factories/container.js',
