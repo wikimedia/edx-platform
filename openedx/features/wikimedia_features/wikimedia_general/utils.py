@@ -4,6 +4,11 @@ import operator
 from functools import reduce
 
 from django.db.models import Q
+import pytz
+import copy
+
+from datetime import datetime, timedelta
+from django.conf import settings
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
 from opaque_keys.edx.keys import CourseKey
@@ -113,3 +118,75 @@ def get_follow_up_courses(course_keys):
         follow_up_courses = list(CourseOverview.objects.filter(query))
 
     return follow_up_courses
+def get_paced_type(self_paced):
+    """ Paced Type Filter
+    Args:
+        self_paced (Bool): Self paced or Instructor Led
+    Returns:
+        str: paced type
+    """
+    return 'self_paced' if self_paced else 'instructor_led'
+
+def get_prerequisites_type(pre_requisite_courses):
+    """ Prerequisites Filter
+    Args:
+        pre_requisite_courses (list): List of prerequisites
+    Returns:
+        str: Prerequisites Type
+    """
+    return 'require_prerequisites' if len(pre_requisite_courses) else 'no_prerequisites'
+
+
+def get_enrollment_type(enrollment_date):
+    """ Enrollment Filter
+    Args:
+        enrollment_date (DateTime): Enrollment start date
+    Returns:
+        string: enrollment type
+    """
+    if enrollment_date:
+        today = datetime.now(pytz.utc)
+        three_months_from_today = today + timedelta(days=3*30)
+        if enrollment_date <= today:
+            return 'enrollment_open'
+        elif enrollment_date <= three_months_from_today:
+            return 'enrollment_open_in_coming_three_months'
+        return 'enrollment_open_after_three_months'
+    return None
+
+
+def _get_studio_filters(courses):
+    """
+    courses (List): Courses List 
+    """
+    studio_filters={
+        'org': {},
+        'language': {},
+    }
+    languages = dict(settings.ALL_LANGUAGES)
+
+    for course in courses:
+        if course['org'] and course['org'] not in studio_filters['org']:
+            studio_filters['org'].update({course['org']: course['org']})
+        if course['language'] and course['language'] not in studio_filters['language']:
+            studio_filters['language'].update({course['language']: languages[course['language']]})
+    return studio_filters
+
+
+def get_updated_studio_filter_meanings(courses):
+    """
+    Update STUDIO_FILTERS_MEANINGS from courses' contexts
+    """
+    studio_filters = _get_studio_filters(courses)
+    studio_filters_meanings = copy.deepcopy(settings.STUDIO_FILTERS_MEANINGS)
+    for studio_filter in studio_filters_meanings:
+        if studio_filter in studio_filters:
+            studio_filters_meanings[studio_filter]['terms'] = studio_filters[studio_filter]
+    return studio_filters_meanings
+
+
+WIKI_LMS_FILTER_MAPPINGS = {
+    'self_paced': get_paced_type,
+    'enrollment_start': get_enrollment_type,
+    'pre_requisite_courses': get_prerequisites_type,
+}
