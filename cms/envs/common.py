@@ -2513,9 +2513,36 @@ TEAMS_HELP_URL = "https://edx.readthedocs.io/projects/open-edx-building-and-runn
 TEXTBOOKS_HELP_URL = "https://edx.readthedocs.io/projects/open-edx-building-and-running-a-course/en/latest/course_assets/textbooks.html"
 WIKI_HELP_URL = "https://edx.readthedocs.io/projects/open-edx-building-and-running-a-course/en/latest/course_assets/course_wiki.html"
 CUSTOM_PAGES_HELP_URL = "https://edx.readthedocs.io/projects/open-edx-building-and-running-a-course/en/latest/course_assets/pages.html#adding-custom-pages"
+
 ################### Settings for wiki meta translations ##############
 WIKI_META_BASE_API_URL = "https://language-mleb-master.wmcloud.org/api.php"
 WIKI_META_CONTENT_MODEL = "translate-messagebundle"
 WIKI_META_MCGROUP_PREFIX = "messagebundle"
 WIKI_META_API_USERNAME = ""
 WIKI_META_API_PASSWORD = ""
+
+################### Settings for wikimedia studio filters ##############
+STUDIO_FILTERS_MEANINGS = {
+    'org': {
+        'name': _('Organization'),
+    },
+    'language': {
+        'name': _('Language'),
+        'terms': dict(ALL_LANGUAGES),
+    },
+    'enrollment': {
+        'name': _('Enrollment Type'),
+        'terms': {
+            'enrollment_open': _('Enrollment open'),
+            'enrollment_open_in_coming_three_months': _('Enrollment open in coming 3 months'),
+            'enrollment_open_after_three_months': _('Enrollment open after 3 months')
+        }
+    },
+    'course_paced': {
+        'name': _('Course Paced'),
+        'terms': {
+            'self_paced': _('Self Paced'),
+            'instructor_led': _('Instructor Led'),
+        }
+    }
+}
