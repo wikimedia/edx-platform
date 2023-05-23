@@ -1,6 +1,8 @@
 """
 Views for wikimedia_general v0 API(s)
 """
+from django.contrib.auth.decorators import login_required
+
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -41,6 +43,7 @@ class RetrieveWikiMetaData(generics.RetrieveAPIView):
 
 
 @api_view(['GET'])
+@login_required
 def get_courses_to_study_next(request):
     """Endpoint to retrieve follow up courses for the user's completed courses.
     """
