@@ -39,7 +39,8 @@ from markupsafe import escape
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey, UsageKey
 from pytz import UTC
-from requests.exceptions import ConnectionError, Timeout  # pylint: disable=redefined-builtin
+from requests.exceptions import ConnectionError, Timeout
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_follow_up_courses, get_user_completed_course_keys  # pylint: disable=redefined-builtin
 from rest_framework import status
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.response import Response
@@ -283,6 +284,12 @@ def courses(request):
 
     # Add marketable programs to the context.
     programs_list = get_programs_with_type(request.site, include_hidden=False)
+    
+    follow_up_courses = []
+    user = request.user
+    if user.is_authenticated:
+        user_completed_course_keys = get_user_completed_course_keys(user)
+        follow_up_courses = get_follow_up_courses(user_completed_course_keys)
 
     return render_to_response(
         "courseware/courses.html",
@@ -290,6 +297,7 @@ def courses(request):
             'courses': courses_list,
             'course_discovery_meanings': course_discovery_meanings,
             'programs_list': programs_list,
+            'follow_up_courses': follow_up_courses,
         }
     )
 
