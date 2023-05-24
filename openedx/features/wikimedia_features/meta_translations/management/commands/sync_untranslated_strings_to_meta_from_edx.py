@@ -11,12 +11,12 @@ from logging import getLogger
 
 from django.core.management.base import BaseCommand
 from django.db.models import Q
-from opaque_keys.edx.keys import UsageKey
+from opaque_keys.edx.keys import CourseKey, UsageKey
 from opaque_keys import InvalidKeyError
 
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.meta_translations.models import (
-    WikiTranslation, CourseTranslation, CourseBlock, CourseBlockData, MetaCronJobInfo
+    CourseTranslation, CourseBlock, CourseBlockData, MetaCronJobInfo
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
 from openedx.features.wikimedia_features.meta_translations.utils import get_course_description_by_id
@@ -49,6 +49,12 @@ class Command(BaseCommand):
             '--commit',
             action='store_true',
             help='Send API calls to Meta wiki',
+        )
+        parser.add_argument(
+            '-bck',
+            '--base-course-key',
+            help='Specify course key',
+            default=None,
         )
 
     def _log_final_report(self):
@@ -94,7 +100,7 @@ class Command(BaseCommand):
         }
         return request
 
-    def _get_request_data_list(self):
+    def _get_request_data_list(self, master_courses=[]):
         """
         Returns list of request dict required for update pages API of Wiki Meta for all updated blocks.
         Blocks need to be updated on Meta => if block-data content is updated or block-data mapping is updated.
@@ -113,7 +119,9 @@ class Command(BaseCommand):
             ...
         ]
         """
-        master_courses = CourseTranslation.get_base_courses_list(outdated=True)
+        if not master_courses: 
+            master_courses = CourseTranslation.get_base_courses_list(outdated=True)
+        
         data_list = []
         for base_course in master_courses:
             outdated_translation = CourseTranslation.is_outdated_course(base_course)
@@ -258,7 +266,14 @@ class Command(BaseCommand):
             MetaCronJobInfo.objects.create(sent_date = datetime.now())
     
     def handle(self, *args, **options):
-        data_list = self._get_request_data_list()
+        """
+        Send translations to the Meta Server
+        """
+        base_courses = []
+        if options.get('base-course-key'):
+            base_courses = [CourseKey.from_string(base_courses)]
+        
+        data_list = self._get_request_data_list(base_courses)
         if options.get('commit'):
             self._RESULT.update({"updated_blocks_count": len(data_list)})
 
