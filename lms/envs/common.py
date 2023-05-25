@@ -4865,7 +4865,7 @@ EMAIL_ADMIN = 'email_admin'
 #username configurations
 USERNAME_MAX_LENGTH = 150
 
-COURSE_DISCOVERY_FILTERS = ["org", "language", "self_paced", "enrollment_start", "pre_requisite_courses"]
+COURSE_DISCOVERY_FILTERS = ["org", "language", "paced_type", "enrollment_type", "prerequisite_type"]
 COURSE_DISCOVERY_MEANINGS = {
     'org': {
         'name': _('Organization'),
@@ -4882,14 +4882,14 @@ COURSE_DISCOVERY_MEANINGS = {
         'name': _('Language'),
         'terms': dict(ALL_LANGUAGES),
     },
-    'self_paced': {
+    'paced_type': {
         'name': 'Course Pace',
         'terms': {
             'instructor_led': _('Instructor Led'),
             'self_paced': _('Self Paced')
         }
     },
-    'enrollment_start': {
+    'enrollment_type': {
         'name': _('Enrollment Type'),
         'terms': {
             'enrollment_open': _('Enrollment Open'),
@@ -4897,7 +4897,7 @@ COURSE_DISCOVERY_MEANINGS = {
             'enrollment_open_after_three_months': _('Enrollment Open After Three Months')
         }
     },
-    'pre_requisite_courses': {
+    'prerequisite_type': {
         'name': _('Prerequisites'),
         'terms': {
             'no_prerequisites': _('No Prerequisites'),

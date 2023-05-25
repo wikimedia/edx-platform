@@ -186,7 +186,7 @@ def get_updated_studio_filter_meanings(courses):
 
 
 WIKI_LMS_FILTER_MAPPINGS = {
-    'self_paced': get_paced_type,
-    'enrollment_start': get_enrollment_type,
-    'pre_requisite_courses': get_prerequisites_type,
+    'paced_type': get_paced_type,
+    'enrollment_type': get_enrollment_type,
+    'prerequisites_type': get_prerequisites_type,
 }
