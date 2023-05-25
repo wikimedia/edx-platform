@@ -40,15 +40,15 @@ from openedx.features.wikimedia_features.meta_translations.models import CourseT
 def course_reports(request):
     courses_list = []
     sections = {"key": {}}
-    if not settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-        courses_list = get_courses(request.user)
-        course = get_course_by_id(courses_list[0].id, depth=0)
 
-        access = {
-            'admin': request.user.is_staff,
-            'instructor': bool(has_access(request.user, 'instructor', courses_list[0])),
-        }
-        sections["key"] = section_data_download(course, access)
+    courses_list = get_courses(request.user)
+    course = get_course_by_id(courses_list[0].id, depth=0)
+
+    access = {
+        'admin': request.user.is_staff,
+        'instructor': bool(has_access(request.user, 'instructor', courses_list[0])),
+    }
+    sections["key"] = section_data_download(course, access)
 
     return render_to_response(
         "course_report/course-reports.html",

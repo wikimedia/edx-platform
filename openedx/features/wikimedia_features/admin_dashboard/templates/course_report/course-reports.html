@@ -15,8 +15,6 @@
 
   <%block name="pagetitle">${_("Reports")}</%block>
 
-% if not course_discovery_enabled:
-
   <div class="admin-dashboard">
     <select id="select-courses" name="course_categories" class="filter-selectbox" multiple>
       %for course in courses:
@@ -171,7 +169,6 @@
     </div>
     <div style="display: none" id="base_courses_list">${ base_courses_list }</div>
   </div>
-% endif
 <%block name="head_extra">
     <link rel="stylesheet" type="text/css" href="/static/css/select2.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
