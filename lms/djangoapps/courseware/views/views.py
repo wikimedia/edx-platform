@@ -39,8 +39,8 @@ from markupsafe import escape
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey, UsageKey
 from pytz import UTC
-from requests.exceptions import ConnectionError, Timeout
-from openedx.features.wikimedia_features.wikimedia_general.utils import get_follow_up_courses, get_user_completed_course_keys  # pylint: disable=redefined-builtin
+from requests.exceptions import ConnectionError, Timeout # pylint: disable=redefined-builtin
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_follow_up_courses, get_user_completed_course_keys
 from rest_framework import status
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.response import Response

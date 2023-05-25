@@ -543,43 +543,14 @@ class AboutInfo:
 
         return [mode.slug for mode in CourseMode.modes_for_course(course.id)]
 
-    # def index_course_type_filter(self, **kwargs):
-    #     """ fetches the available course modes from the CourseMode model """
-    #     course = kwargs.get('course', None)
-    #     if not course:
-    #         raise ValueError("Context dictionary does not contain expected argument 'course'")
-
-    #     self_paced = getattr(course, 'self_paced', None)
-    #     return get_paced_type(self_paced)
-    
-    # def index_enrollment_filter(self, **kwargs):
-    #     """ fetches the available course modes from the CourseMode model """
-    #     course = kwargs.get('course', None)
-    #     if not course:
-    #         raise ValueError("Context dictionary does not contain expected argument 'course'")
-
-    #     enrollment_date = getattr(course, 'enrollment_start', None)
-    #     return get_enrollment_type(enrollment_date)
-    
-    # def index_prerequisite_filter(self, **kwargs):
-    #     """
-    #     Courses require prerequisites
-    #     """
-    #     course = kwargs.get('course', None)
-    #     if not course:
-    #         raise ValueError("Context dictionary does not contain expected argument 'course'")
-        
-    #     pre_requisite_courses = getattr(course, 'pre_requisite_courses', [])
-    #     return get_prerequisites_type(pre_requisite_courses)
-
     def index_wiki_filters(self, **kwargs):
-        """ fetches the available course modes from the CourseMode model """
+        """ index wikimedia custom features based on the property_name """
         course = kwargs.get('course', None)
         if not course:
             raise ValueError("Context dictionary does not contain expected argument 'course'")
 
         course_property = getattr(course, self.property_name, None)
-        return WIKI_LMS_FILTER_MAPPING[self.property_name](course_property)
+        return WIKI_LMS_FILTER_MAPPINGS[self.property_name](course_property)
     
     # Source location options - either from the course or the about info
     FROM_ABOUT_INFO = from_about_dictionary
@@ -587,7 +558,7 @@ class AboutInfo:
     FROM_COURSE_MODE = from_course_mode
 
     # custom indexing
-    INDEX_WiKI_FILTER = index_wiki_filters
+    INDEX_WiKI_FILTERS = index_wiki_filters
 
 class CourseAboutSearchIndexer(CoursewareSearchIndexer):
     """
@@ -624,7 +595,6 @@ class CourseAboutSearchIndexer(CoursewareSearchIndexer):
         AboutInfo("faq", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
         AboutInfo("more_info", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
         AboutInfo("ocw_links", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
-        # AboutInfo("enrollment_start", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("enrollment_end", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("org", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("modes", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_MODE),
@@ -633,9 +603,9 @@ class CourseAboutSearchIndexer(CoursewareSearchIndexer):
 
     ## Wikimedia Custom Filters
     ABOUT_INFORMATION_TO_INCLUDE += [
-        AboutInfo("self_paced", AboutInfo.PROPERTY, AboutInfo.INDEX_WiKI_FILTER),
-        AboutInfo("enrollment_start", AboutInfo.PROPERTY, AboutInfo.INDEX_WiKI_FILTER),
-        AboutInfo("pre_requisite_courses", AboutInfo.PROPERTY, AboutInfo.INDEX_WiKI_FILTER),
+        AboutInfo("self_paced", AboutInfo.PROPERTY, AboutInfo.INDEX_WiKI_FILTERS),
+        AboutInfo("enrollment_start", AboutInfo.PROPERTY, AboutInfo.INDEX_WiKI_FILTERS),
+        AboutInfo("pre_requisite_courses", AboutInfo.PROPERTY, AboutInfo.INDEX_WiKI_FILTERS),
     ]
 
     @classmethod
