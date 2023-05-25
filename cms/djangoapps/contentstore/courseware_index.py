@@ -616,6 +616,7 @@ class CourseAboutSearchIndexer(CoursewareSearchIndexer):
         AboutInfo("faq", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
         AboutInfo("more_info", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
         AboutInfo("ocw_links", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
+        AboutInfo("enrollment_start", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("enrollment_end", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("org", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("modes", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_MODE),
