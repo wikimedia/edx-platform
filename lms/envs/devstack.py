@@ -184,7 +184,7 @@ LANGUAGE_MAP = {
 
 FEATURES['ENABLE_COURSE_DISCOVERY'] = True
 # Setting for overriding default filtering facets for Course discovery
-COURSE_DISCOVERY_FILTERS = ["org", "language", "self_paced", "enrollment_start", "pre_requisite_courses"]
+COURSE_DISCOVERY_FILTERS = ["org", "language", "paced_type", "enrollment_type", "prerequisite_type"]
 COURSE_DISCOVERY_MEANINGS = {
     'org': {
         'name': 'Organization',
@@ -201,14 +201,14 @@ COURSE_DISCOVERY_MEANINGS = {
         'name': 'Language',
         'terms': dict(ALL_LANGUAGES),
     },
-    'self_paced': {
+    'paced_type': {
         'name': 'Course Pace',
         'terms': {
             'instructor_led': 'Instructor Led',
             'self_paced': 'Self Paced'
         }
     },
-    'enrollment_start': {
+    'enrollment_type': {
         'name': 'Enrollment Type',
         'terms': {
             'enrollment_open': 'Enrollment Open',
@@ -216,7 +216,7 @@ COURSE_DISCOVERY_MEANINGS = {
             'enrollment_open_after_three_months': 'Enrollment Open After Three Months'
         }
     },
-    'pre_requisite_courses': {
+    'prerequisite_type': {
         'name': 'Prerequisites',
         'terms': {
             'no_prerequisites': 'No Prerequisites',
