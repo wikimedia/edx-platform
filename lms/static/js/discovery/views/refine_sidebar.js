@@ -13,7 +13,8 @@
             events: {
                 'click li button': 'selectOption',
                 'click .show-less': 'collapse',
-                'click .show-more': 'expand'
+                'click .show-more': 'expand',
+                'keyup .lng-srch-facet-input': 'search'
             },
 
             initialize: function(options) {
@@ -85,13 +86,31 @@
             selectOption: function(event) {
                 var $target = $(event.currentTarget);
                 this.trigger(
-                'selectOption',
-                $target.data('facet'),
-                $target.data('value'),
-                $target.data('text')
-            );
-            }
+                    'selectOption',
+                    $target.data('facet'),
+                    $target.data('value'),
+                    $target.data('text')
+                );
+            },
 
+            search: function(event) {
+                var $el = $(event.currentTarget),
+                    $lis = $el.parent('div').siblings('ul').children('li'),
+                    searchTerm = $el.val().toLowerCase();   
+                
+                $lis.removeClass('hidden')
+
+                if (searchTerm){
+                    $lis.each((i, li) => {
+                        // only hide facets that didn't match the search
+                        var $li = $(li)
+                        const textMatched = $li.children('button').attr('data-text').toLowerCase().includes(searchTerm)
+                        if (!textMatched) {
+                            $li.addClass('hidden')
+                        }
+                    });
+                }
+            },
         });
     });
 }(define || RequireJS.define));
