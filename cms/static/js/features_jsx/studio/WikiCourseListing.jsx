@@ -24,7 +24,7 @@ export function WikiCourseListing(props) {
       (organization.value == '' || organization.value == course.org) &&
       (enrollment.value == '' || enrollment.value == course.enrollment_type) &&
       (coursePaced.value == '' || coursePaced.value == course.paced_type) &&
-      (searchCourse == '' || course.display_name.toLowerCase().startsWith(searchCourse.toLowerCase()))
+      (searchCourse == '' || course.display_name.toLowerCase().includes(searchCourse.toLowerCase()))
     )
   }
 
