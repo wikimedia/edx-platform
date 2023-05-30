@@ -12,8 +12,6 @@
             el: '.search-facets',
             events: {
                 'click li button': 'selectOption',
-                'click .show-less': 'collapse',
-                'click .show-more': 'expand',
                 'keyup .lng-srch-facet-input': 'search'
             },
 
@@ -62,25 +60,6 @@
             );
                 HtmlUtils.setHtml(this.$container, htmlSnippet);
                 return this;
-            },
-
-            collapse: function(event) {
-                var $el = $(event.currentTarget),
-                    $more = $el.siblings('.show-more'),
-                    $ul = $el.parent().siblings('ul');
-
-                $ul.addClass('collapse');
-                $el.addClass('hidden');
-                $more.removeClass('hidden');
-            },
-
-            expand: function(event) {
-                var $el = $(event.currentTarget),
-                    $ul = $el.parent('div').siblings('ul');
-
-                $el.addClass('hidden');
-                $ul.removeClass('collapse');
-                $el.siblings('.show-less').removeClass('hidden');
             },
 
             selectOption: function(event) {
