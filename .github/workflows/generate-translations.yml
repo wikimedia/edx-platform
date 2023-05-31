@@ -1,6 +1,12 @@
 name: Dispatch - Generate Transifex and Translatewiki translations
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      theme_branch:
+        description: 'Theme Branch'
+        required: false
+        default: 'develop'
 
 jobs:
   generate-translations:
@@ -11,8 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: master
 
       - name: Set up python
         uses: actions/setup-python@v2
@@ -43,7 +47,7 @@ jobs:
         with:
           repository: wikimedia/wikilearn-edx-theme
           path: ./themes
-          ref: develop
+          ref: ${{ inputs.theme_branch }}
           token: ${{ secrets.THEME_ACCESS_TOKEN }}
 
       - name: Checkout master as feature branch does not exist
@@ -102,11 +106,14 @@ jobs:
           unset LMS_CFG
           unset STUDIO_CFG
       
-      - name: Delete qqq folder and generate i18n files
+      - name: Delete qqq folder if exists
+        id: delete-qqq-files
+        run: rm -r conf/locale/qqq
+        continue-on-error: true
+
+      - name: generate i18n files
         id: generate-i18n-files
-        run: |
-          rm -r conf/locale/qqq
-          paver i18n_fastgenerate
+        run: paver i18n_fastgenerate
         continue-on-error: true
       
       - name: Check errors
@@ -151,12 +158,12 @@ jobs:
       
       - name: Restore qqq files
         run: git restore conf/locale/qqq/
+        continue-on-error: true
       
       - name: Create Pull Request and commit changed translation files
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          base: master
           branch: 'gitflow/auto-generated-translations'
           commit-message: 'Add changed translation files'
           add-paths: |

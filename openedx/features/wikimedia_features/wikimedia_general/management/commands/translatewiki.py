@@ -409,7 +409,7 @@ class Command(BaseCommand):
 
         self._move_files_from_src_to_dest(wm_dir, edx_dir, target_files, delete_src_dir_if_empty=True)
         files_mapping = dict(zip(output_files, target_files))
-        self.msgmerge(locales, output_files, generate_po_file_if_not_exist=True, output_file_mapping=files_mapping)
+        self.msgmerge(locales, output_files, generate_po_file_if_not_exist=True, output_file_mapping=files_mapping, exclude_files=[])
 
         log.info(f'{len(output_files)} new file(s) are created {output_files}')
 
