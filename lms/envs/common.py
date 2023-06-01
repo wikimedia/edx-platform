@@ -4865,6 +4865,7 @@ EMAIL_ADMIN = 'email_admin'
 #username configurations
 USERNAME_MAX_LENGTH = 150
 
+# Wikimedia Discover Course configurations
 COURSE_DISCOVERY_FILTERS = ["org", "language", "paced_type", "enrollment_type", "prerequisite_type"]
 COURSE_DISCOVERY_MEANINGS = {
     'org': {
@@ -4905,3 +4906,4 @@ COURSE_DISCOVERY_MEANINGS = {
         }
     }
 }
+SEARCH_SKIP_ENROLLMENT_START_DATE_FILTERING = True
