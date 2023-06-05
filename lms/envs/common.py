@@ -4893,9 +4893,9 @@ COURSE_DISCOVERY_MEANINGS = {
     'enrollment_type': {
         'name': _('Enrollment Type'),
         'terms': {
-            'enrollment_open': _('Enrollment Open'),
-            'enrollment_open_in_coming_three_months': _('Enrollment Open In Coming Three Months'),
-            'enrollment_open_after_three_months': _('Enrollment Open After Three Months')
+            'enrollment_open': _('Open'),
+            'enrollment_open_in_coming_three_months': _('Open In Coming Three Months'),
+            'enrollment_open_after_three_months': _('Open After Three Months')
         }
     },
     'prerequisite_type': {

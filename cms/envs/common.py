@@ -2533,9 +2533,9 @@ STUDIO_FILTERS_MEANINGS = {
     'enrollment': {
         'name': _('Enrollment Type'),
         'terms': {
-            'enrollment_open': _('Enrollment open'),
-            'enrollment_open_in_coming_three_months': _('Enrollment open in coming 3 months'),
-            'enrollment_open_after_three_months': _('Enrollment open after 3 months')
+            'enrollment_open': _('Open'),
+            'enrollment_open_in_coming_three_months': _('Open in coming 3 months'),
+            'enrollment_open_after_three_months': _('Open after 3 months')
         }
     },
     'course_paced': {
