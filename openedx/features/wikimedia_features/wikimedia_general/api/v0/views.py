@@ -9,13 +9,14 @@ from rest_framework.decorators import api_view
 
 from opaque_keys.edx.keys import CourseKey
 
+from django.utils.translation import ugettext as _
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     get_follow_up_courses,
     get_user_completed_course_keys
 )
 from openedx.core.djangoapps.content.course_overviews.serializers import CourseOverviewBaseSerializer
-
+from openedx.features.wikimedia_features.wikimedia_general.api.v0.utils import get_authenticated_header_tabs, get_unauthenticated_header_tabs
 
 class RetrieveWikiMetaData(generics.RetrieveAPIView):
     """
@@ -24,12 +25,15 @@ class RetrieveWikiMetaData(generics.RetrieveAPIView):
         {
             "key": String,
             "course_font": String, 
-           
+
         }
     """
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
+        """
+        Returns course Meta Data
+        """
         course_key_string = kwargs.get('course_key_string')
         course_key = CourseKey.from_string(course_key_string)
         course = get_course_by_id(course_key)
@@ -54,3 +58,32 @@ def get_courses_to_study_next(request):
     serialzer = CourseOverviewBaseSerializer(follow_up_courses, many=True)
 
     return Response({"follow-up-courses": serialzer.data}, status=status.HTTP_200_OK)
+
+class RetrieveLMSTabs(generics.RetrieveAPIView):
+    """
+    API to get LMS tabs
+    Response:
+        {
+            "tabs: [
+                {
+                    "id": String,
+                    "name": String,
+                    "url": URL
+                },
+                ...
+            ]
+        }
+    """
+
+    def get(self, request, *args, **kwargs):
+        """
+        Return header tabs for MFEs
+        This API is particularly made for getting Authenticated header tabs
+        """
+        header_tabs = []
+        if request.user.is_authenticated:
+            header_tabs = get_authenticated_header_tabs(request.user)
+        else:
+            header_tabs = get_unauthenticated_header_tabs()
+
+        return Response({'tabs': header_tabs}, status=status.HTTP_200_OK)
