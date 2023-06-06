@@ -479,21 +479,12 @@ $facet-background-color: #007db8;
       text-transform: none;
     }
 
-    .header-facet {
-      border-top: 1px solid $gray-l4;
-    }
-
     .facet-list {
       @extend %ui-no-list;
 
       @include clearfix();
 
       padding-bottom: ($baseline/2);
-
-      &.collapse {
-        max-height: ($baseline*1.5*9) - ($baseline/2);
-        overflow: hidden;
-      }
 
       li {
         @include clearfix();

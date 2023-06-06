@@ -4864,3 +4864,46 @@ EMAIL_ADMIN = 'email_admin'
 
 #username configurations
 USERNAME_MAX_LENGTH = 150
+
+# Wikimedia Discover Course configurations
+COURSE_DISCOVERY_FILTERS = ["org", "language", "paced_type", "enrollment_type", "prerequisite_type"]
+COURSE_DISCOVERY_MEANINGS = {
+    'org': {
+        'name': _('Organization'),
+    },
+    'modes': {
+        'name': _('Course Type'),
+        'terms': {
+            'honor': _('Honor'),
+            'verified': _('Verified'),
+            'audit': _('Audit')
+        },
+    },
+    'language': {
+        'name': _('Language'),
+        'terms': dict(ALL_LANGUAGES),
+    },
+    'paced_type': {
+        'name': 'Course Pace',
+        'terms': {
+            'instructor_led': _('Instructor Led'),
+            'self_paced': _('Self Paced')
+        }
+    },
+    'enrollment_type': {
+        'name': _('Enrollment Type'),
+        'terms': {
+            'enrollment_open': _('Open'),
+            'enrollment_open_in_coming_three_months': _('Open In Coming Three Months'),
+            'enrollment_open_after_three_months': _('Open After Three Months')
+        }
+    },
+    'prerequisite_type': {
+        'name': _('Prerequisites'),
+        'terms': {
+            'no_prerequisites': _('No Prerequisites'),
+            'require_prerequisites': _('Require Prerequisites')
+        }
+    }
+}
+SEARCH_SKIP_ENROLLMENT_START_DATE_FILTERING = True

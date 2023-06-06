@@ -77,6 +77,7 @@ from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBA
 from openedx.features.course_experience.waffle import waffle as course_experience_waffle
 from openedx.features.wikimedia_features.meta_translations.utils import update_course_to_source, is_destination_course
 from openedx.features.wikimedia_features.meta_translations.models import MetaTranslationConfiguration
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_paced_type, get_enrollment_type, get_updated_studio_filter_meanings
 from xmodule.contentstore.content import StaticContent
 from xmodule.course_module import CourseBlock, DEFAULT_START_DATE, CourseFields
 from xmodule.error_module import ErrorBlock
@@ -566,6 +567,9 @@ def course_listing(request):
         if (request.user.is_staff and meta_config.staff_show_api_buttons) or meta_config.normal_users_show_api_buttons:
             # user is staff and config for staff is set otherwise check if config for normal users is set
             show_meta_api_buttons = True
+    
+    active_studio_filter_options = get_updated_studio_filter_meanings(active_courses)
+    archived_studio_filter_options = get_updated_studio_filter_meanings(archived_courses)
 
     return render_to_response('index.html', {
         'language_options': settings.ALL_LANGUAGES,
@@ -587,7 +591,9 @@ def course_listing(request):
         'optimization_enabled': optimization_enabled,
         'active_tab': 'courses',
         'course_blocks_send_fetch_url': reverse("meta_translations:course_blocks_api_send_fetch"),
-        'show_meta_api_buttons': show_meta_api_buttons
+        'show_meta_api_buttons': show_meta_api_buttons,
+        'active_studio_filter_options': active_studio_filter_options,
+        'archived_studio_filter_options': archived_studio_filter_options,
     })
 
 
@@ -791,6 +797,7 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
         """
         Return a dict of the data which the view requires for each course
         """
+        course_details = CourseDetails.fetch(course_key=course.location.course_key)
         return {
             'display_name': course.display_name,
             'course_key': str(course.location.course_key),
@@ -801,6 +808,9 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
             'number': course.display_number_with_default,
             'run': course.location.run,
             'translation_info': _(CourseTranslation.is_base_or_translated_course(course.id)),
+            'language': course_details.language,
+            'paced_type': get_paced_type(course_details.self_paced),
+            'enrollment_type': get_enrollment_type(course_details.enrollment_start),
         }
 
     in_process_action_course_keys = {uca.course_key for uca in in_process_course_actions}

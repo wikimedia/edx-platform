@@ -181,6 +181,10 @@ LANGUAGE_MAP = {
     'terms': dict(ALL_LANGUAGES),
     'name': 'Language',
 }
+
+FEATURES['ENABLE_COURSE_DISCOVERY'] = True
+# Setting for overriding default filtering facets for Course discovery
+COURSE_DISCOVERY_FILTERS = ["org", "language", "paced_type", "enrollment_type", "prerequisite_type"]
 COURSE_DISCOVERY_MEANINGS = {
     'org': {
         'name': 'Organization',
@@ -190,14 +194,37 @@ COURSE_DISCOVERY_MEANINGS = {
         'terms': {
             'honor': 'Honor',
             'verified': 'Verified',
+            'audit': 'Audit'
         },
     },
-    'language': LANGUAGE_MAP,
+    'language': {
+        'name': 'Language',
+        'terms': dict(ALL_LANGUAGES),
+    },
+    'paced_type': {
+        'name': 'Course Pace',
+        'terms': {
+            'instructor_led': 'Instructor Led',
+            'self_paced': 'Self Paced'
+        }
+    },
+    'enrollment_type': {
+        'name': 'Enrollment Type',
+        'terms': {
+            'enrollment_open': 'Open',
+            'enrollment_open_in_coming_three_months': 'Open In Coming Three Months',
+            'enrollment_open_after_three_months': 'Open After Three Months'
+        }
+    },
+    'prerequisite_type': {
+        'name': 'Prerequisites',
+        'terms': {
+            'no_prerequisites': 'No Prerequisites',
+            'require_prerequisites': 'Require Prerequisites'
+        }
+    }
 }
 
-FEATURES['ENABLE_COURSE_DISCOVERY'] = False
-# Setting for overriding default filtering facets for Course discovery
-# COURSE_DISCOVERY_FILTERS = ["org", "language", "modes"]
 FEATURES['COURSES_ARE_BROWSEABLE'] = True
 HOMEPAGE_COURSE_MAX = 9
 

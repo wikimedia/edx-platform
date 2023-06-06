@@ -15,6 +15,9 @@ from search.search_engine_base import SearchEngine
 from cms.djangoapps.contentstore.course_group_config import GroupConfiguration
 from common.djangoapps.course_modes.models import CourseMode
 from openedx.core.lib.courses import course_image_url
+from openedx.features.wikimedia_features.wikimedia_general.utils import (
+    get_paced_type, get_enrollment_type, get_prerequisites_type,
+)
 from xmodule.annotator_mixin import html_to_text
 from xmodule.library_tools import normalize_key_for_search
 from xmodule.modulestore import ModuleStoreEnum
@@ -541,11 +544,42 @@ class AboutInfo:
 
         return [mode.slug for mode in CourseMode.modes_for_course(course.id)]
 
+    def from_paced_type_filter(self, **kwargs):
+        """ extracts the self_paced value from course and returns PacedType """
+        course = kwargs.get('course', None)
+        if not course:
+            raise ValueError("Context dictionary does not contain expected argument 'course'")
+
+        self_paced = getattr(course, 'self_paced', None)
+        return get_paced_type(self_paced)
+
+    def from_enrollment_type_filter(self, **kwargs):
+        """ extracts the enrollment_start value from course and returns EnrollmentType  """
+        course = kwargs.get('course', None)
+        if not course:
+            raise ValueError("Context dictionary does not contain expected argument 'course'")
+
+        enrollment_date = getattr(course, 'enrollment_start', None)
+        return get_enrollment_type(enrollment_date)
+
+    def from_prerequisite_type_filter(self, **kwargs):
+        """ extracts the pre_requisite_courses value from course and returns PrerequisiteType  """
+        course = kwargs.get('course', None)
+        if not course:
+            raise ValueError("Context dictionary does not contain expected argument 'course'")
+
+        pre_requisite_courses = getattr(course, 'pre_requisite_courses', [])
+        return get_prerequisites_type(pre_requisite_courses)
+    
     # Source location options - either from the course or the about info
     FROM_ABOUT_INFO = from_about_dictionary
     FROM_COURSE_PROPERTY = from_course_property
     FROM_COURSE_MODE = from_course_mode
 
+    # [Wikimedia] Custom Filters
+    FROM_PACED_TYPE_FILTER = from_paced_type_filter
+    FROM_ENROLLMENT_TYPE_FILTER = from_enrollment_type_filter
+    FROM_PREREQUISITE_TYPE_FILTER = from_prerequisite_type_filter
 
 class CourseAboutSearchIndexer(CoursewareSearchIndexer):
     """
@@ -584,9 +618,16 @@ class CourseAboutSearchIndexer(CoursewareSearchIndexer):
         AboutInfo("ocw_links", AboutInfo.ANALYSE, AboutInfo.FROM_ABOUT_INFO),
         AboutInfo("enrollment_start", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("enrollment_end", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
-        AboutInfo("org", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
+        AboutInfo("org", AboutInfo.PROPERTY | AboutInfo.ANALYSE, AboutInfo.FROM_COURSE_PROPERTY),
         AboutInfo("modes", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_MODE),
         AboutInfo("language", AboutInfo.PROPERTY, AboutInfo.FROM_COURSE_PROPERTY),
+    ]
+
+    ## Wikimedia Custom Filters
+    ABOUT_INFORMATION_TO_INCLUDE += [
+        AboutInfo("paced_type", AboutInfo.PROPERTY, AboutInfo.FROM_PACED_TYPE_FILTER),
+        AboutInfo("enrollment_type", AboutInfo.PROPERTY, AboutInfo.FROM_ENROLLMENT_TYPE_FILTER),
+        AboutInfo("prerequisite_type", AboutInfo.PROPERTY, AboutInfo.FROM_PREREQUISITE_TYPE_FILTER),
     ]
 
     @classmethod
