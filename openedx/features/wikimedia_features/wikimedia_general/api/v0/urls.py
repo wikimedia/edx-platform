@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls import url
 
 from openedx.features.wikimedia_features.wikimedia_general.api.v0.views import (
-    RetrieveWikiMetaData, get_courses_to_study_next
+    RetrieveWikiMetaData, get_courses_to_study_next, RetrieveLMSTabs,
 )
 
 app_name = 'general_api_v0'
@@ -17,9 +17,13 @@ urlpatterns = [
         name='course_font',
     ),
     url(
-        fr'^courses/study_next',
+        r'^courses/study_next',
         get_courses_to_study_next,
         name='study_next',
     ),
-
+    url(
+        r'lms_tabs',
+        RetrieveLMSTabs.as_view(),
+        name='retrieve_lms_tabs'
+    ),
 ]
