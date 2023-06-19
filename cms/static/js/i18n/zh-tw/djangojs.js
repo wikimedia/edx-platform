@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=0;
-    if (typeof(v) == 'boolean') {
+    const v = 0;
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     "%(cohort_name)s (%(user_count)s)": "%(cohort_name)s (%(user_count)s)",
     "%(errorCount)s error found in form.": [
       "\u5728\u8868\u55ae\u4e2d\u767c\u73fe%(errorCount)s\u7684\u932f\u8aa4\u3002"
@@ -164,6 +165,7 @@
     "Could not retrieve upload url.": "\u7121\u6cd5\u627e\u5230\u4e0a\u50b3\u7db2\u5740",
     "Could not submit order": "\u7121\u6cd5\u63d0\u4ea4\u8a02\u55ae",
     "Could not submit photos": "\u7121\u6cd5\u63d0\u4ea4\u5716\u7247",
+    "Couldn't Save This Assignment": "\u4e0d\u80fd\u5132\u5b58\u9019\u4f5c\u696d",
     "Country": "\u570b\u5bb6",
     "Country of residence": "\u5c45\u4f4f\u570b\u5bb6",
     "Course Credit Requirements": "\u8ab2\u7a0b\u5b78\u5206\u8981\u6c42",
@@ -270,7 +272,6 @@
     "Everyone who has staff privileges in this course": "\u9019\u9580\u8ab2\u7a0b\u6709\u5de5\u4f5c\u4eba\u54e1\u6b0a\u9650",
     "Expand All": "\u5c55\u958b\u5168\u90e8",
     "Explain if other.": "\u82e5\u6709\u5176\u4ed6\u4e8b\u9805\uff0c\u8acb\u8aaa\u660e\u3002",
-    "Explore New Programs": "\u63a2\u7d22\u65b0\u8a08\u756b",
     "Explore Programs": "\u63a2\u7d22\u8a08\u756b",
     "Explore your course!": "\u700f\u89bd\u60a8\u7684\u8ab2\u7a0b\uff01",
     "File Name": "\u6a94\u6848\u540d\u7a31",
@@ -436,6 +437,7 @@
     "Photos don't meet the requirements?": "\u7167\u7247\u4e0d\u7b26\u5408\u8981\u6c42\uff1f",
     "Placeholder": "Placeolder",
     "Please address the errors on this page first, and then save your progress.": "\u8acb\u5148\u8aaa\u660e\u672c\u9801\u9762\u51fa\u73fe\u7684\u932f\u8aa4\uff0c\u7136\u5f8c\u5132\u5b58\u60a8\u7684\u9032\u5ea6\u3002",
+    "Please correct the outlined fields.": "\u8acb\u66f4\u6b63\u7cfb\u7d71\u986f\u793a\u7684\u6b04\u4f4d\u3002",
     "Please describe this image or agree that it has no contextual value by checking the checkbox.": "\u8acb\u63cf\u8ff0\u672c\u5716\u7247\u6216\u85c9\u7531\u52fe\u9078\u8907\u9078\u6846\u4ee5\u540c\u610f\u662f\u5426\u8207\u5167\u5bb9\u76f8\u95dc\u3002",
     "Please do not use any spaces in this field.": "\u6b64\u6b04\u4f4d\u7684\u5167\u5bb9\u4e0d\u80fd\u5305\u542b\u7a7a\u683c",
     "Please do not use any spaces or special characters in this field.": "\u6b64\u6b04\u4f4d\u7684\u5167\u5bb9\u4e0d\u80fd\u5305\u542b\u7a7a\u683c\u6216\u7279\u6b8a\u5b57\u5143\u3002",
@@ -666,6 +668,7 @@
     "This image is for decorative purposes only and does not require a description.": "\u6b64\u5716\u7247\u50c5\u4f5c\u70ba\u8f14\u52a9\u7684\u7528\u9014\u4e26\u4e0d\u9700\u8981\u63cf\u8ff0\u3002",
     "This page contains information about orders that you have placed with {platform_name}.": "\u6b64\u9801\u5305\u542b\u60a8\u900f\u904e{platform_name}\u767c\u51fa\u7684\u8a02\u55ae\u7684\u76f8\u95dc\u8a0a\u606f\u3002",
     "This problem could not be saved.": "\u6b64\u554f\u984c\u7121\u6cd5\u5132\u5b58\u3002",
+    "This problem has already been released. Any changes will apply only to future assessments.": "\u6b64\u554f\u984c\u5df2\u7d93\u88ab\u91cb\u51fa\u4e86\u3002\u4efb\u4f55\u66f4\u6539\u90fd\u53ea\u6703\u5728\u672a\u4f86\u7684\u8a55\u5206\u4e2d\u51fa\u73fe\u3002",
     "This response could not be saved.": "\u4f5c\u7b54\u7121\u6cd5\u4fdd\u5b58\u3002",
     "This response could not be submitted.": "\u4f5c\u7b54\u7121\u6cd5\u63d0\u4ea4\u3002",
     "This response has been saved but not submitted.": "\u9019\u4e00\u4efd\u4f5c\u7b54\u5df2\u7d93\u5132\u5b58\u4e86\uff0c\u4f46\u4ecd\u672a\u63d0\u4ea4\u3002",
@@ -777,6 +780,7 @@
     "You did not select a content group": "\u60a8\u6c92\u9078\u64c7\u4e00\u500b\u5167\u5bb9\u7fa4\u7d44",
     "You don't seem to have Flash installed. Get Flash to continue your verification.": "\u60a8\u4f3c\u4e4e\u5c1a\u672a\u5b89\u88dd Flash\u3002\u53d6\u5f97Flash\u4ee5\u7e7c\u7e8c\u60a8\u7684\u9a57\u8b49\u3002",
     "You don't seem to have a webcam connected.": "\u60a8\u4f3c\u4e4e\u5c1a\u672a\u9023\u63a5\u8996\u8a0a\u88dd\u7f6e\u3002",
+    "You have added a criterion. You will need to select an option for the criterion in the Learner Training step. To do this, click the Settings tab.": "\u60a8\u5fc5\u9808\u589e\u52a0\u8a55\u5206\u6a19\u6e96\u3002\u60a8\u5c07\u6703\u9700\u8981\u5728\u8a55\u5206\u7df4\u7fd2\u6b65\u9a5f\u4e2d\u9078\u64c7\u8a55\u5206\u6a19\u6e96\u9078\u9805\u3002\u8acb\u9ede\u9078\u8a2d\u5b9a\u6a19\u8b58\u4ee5\u5b8c\u6210\u6b64\u6b65\u9a5f\u3002",
     "You have already verified your ID!": "\u60a8\u5df2\u7d93\u9a57\u8b49\u60a8\u7684ID\uff01",
     "You have deleted a criterion. The criterion has been removed from the example responses in the Learner Training step.": "\u60a8\u5df2\u7d93\u522a\u9664 \u4e00\u500b\u6a19\u6e96\u3002\u5728\u8a55\u5206\u7df4\u7fd2\u4e2d\uff0c\u8a72\u6a19\u6e96\u5df2\u7d93\u5f9e\u7bc4\u4f8b\u4f5c\u7b54\u88e1\u522a\u9664\u3002",
     "You have deleted all the options for this criterion. The criterion has been removed from the sample responses in the Learner Training step.": "\u60a8\u5df2\u7d93\u522a\u9664\u4e86\u9019\u8a55\u5206\u6a19\u6e96\u4e2d\u6240\u6709\u7684\u9078\u9805\uff0c\u5df2\u7d93\u5f9e\u7bc4\u4f8b\u4f5c\u7b54\u88e1\u522a\u9664\u8a55\u5206\u6a19\u6e96\u3002",
@@ -869,24 +873,24 @@
     ],
     "\u2026": "..."
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -896,16 +900,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -928,15 +932,12 @@
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
-      "%Y-%m-%d",
       "%m/%d/%Y %H:%M:%S",
       "%m/%d/%Y %H:%M:%S.%f",
       "%m/%d/%Y %H:%M",
-      "%m/%d/%Y",
       "%m/%d/%y %H:%M:%S",
       "%m/%d/%y %H:%M:%S.%f",
-      "%m/%d/%y %H:%M",
-      "%m/%d/%y"
+      "%m/%d/%y %H:%M"
     ],
     "DATE_FORMAT": "N j, Y",
     "DATE_INPUT_FORMATS": [
@@ -969,8 +970,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -989,6 +990,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 

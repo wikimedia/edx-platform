@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=0;
-    if (typeof(v) == 'boolean') {
+    const v = 0;
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     " and ": "v\u00e0",
     "%(cohort_name)s (%(user_count)s)": "%(cohort_name)s (%(user_count)s)",
     "%(errorCount)s error found in form.": [
@@ -343,6 +344,7 @@
     "Could not submit order": "Kh\u00f4ng g\u1eedi \u0111\u01b0\u1ee3c \u0111\u01a1n h\u00e0ng",
     "Could not submit photos": "Kh\u00f4ng th\u1ec3 t\u1ea3i \u1ea3nh l\u00ean.",
     "Could not upload the video image file": "Kh\u00f4ng th\u1ec3 t\u1ea3i l\u00ean t\u1ec7p h\u00ecnh \u1ea3nh video",
+    "Couldn't Save This Assignment": "Kh\u00f4ng Th\u1ec3 L\u01b0u B\u00e0i T\u1eadp N\u00e0y",
     "Country": "Qu\u1ed1c gia",
     "Country or Region of Residence": "Qu\u1ed1c gia ho\u1eb7c N\u01a1i c\u01b0 tr\u00fa",
     "Course Credit Requirements": "Nh\u1eefng y\u00eau c\u1ea7u v\u1ec1 T\u00edn ch\u1ec9",
@@ -1328,6 +1330,7 @@
     "This post could not be unflagged for abuse. Refresh the page and try again.": "B\u00e0i n\u00e0y kh\u00f4ng th\u1ec3 g\u1ee1 b\u1ecf c\u1edd vi ph\u1ea1m. L\u00e0m m\u1edbi l\u1ea1i trang v\u00e0 th\u1eed l\u1ea1i.",
     "This post could not be unpinned. Refresh the page and try again.": "B\u00e0i n\u00e0y ch\u01b0a \u0111\u01b0\u1ee3c b\u1ecf ghim. L\u00e0m m\u1edbi l\u1ea1i trang v\u00e0 th\u1eed l\u1ea1i.",
     "This problem could not be saved.": "Kh\u00f4ng th\u1ec3 l\u01b0u c\u00e2u h\u1ecfi n\u00e0y.",
+    "This problem has already been released. Any changes will apply only to future assessments.": "C\u00e2u h\u1ecfi n\u00e0y \u0111\u00e3 \u0111\u01b0\u1ee3c \u0111\u0103ng. B\u1ea5t k\u1ef3 thay \u0111\u1ed5i n\u00e0o c\u0169ng ch\u1ec9 \u1ea3nh h\u01b0\u1edfng \u0111\u1ebfn nh\u1eefng \u0111\u00e1nh gi\u00e1 trong t\u01b0\u01a1ng lai.",
     "This problem has been reset.": "C\u00e2u h\u1ecfi n\u00e0y \u0111\u00e3 \u0111\u01b0\u1ee3c s\u1eeda.",
     "This response could not be marked as an answer. Refresh the page and try again.": "Ph\u1ea3n h\u1ed3i n\u00e0y kh\u00f4ng th\u1ec3 \u0111\u00e1nh d\u1ea5u l\u00e0 m\u1ed9t c\u00e2u tr\u1ea3 l\u1eddi. L\u00e0m m\u1edbi l\u1ea1i trang v\u00e0 th\u1eed l\u1ea1i.",
     "This response could not be marked as endorsed. Refresh the page and try again.": "Ph\u1ea3n h\u1ed3i n\u00e0y kh\u00f4ng th\u1ec3 \u0111\u00e1nh d\u1ea5u l\u00e0 x\u00e1c nh\u1eadn. L\u00e0m m\u1edbi l\u1ea1i trang v\u00e0 th\u1eed l\u1ea1i.",
@@ -1725,24 +1728,24 @@
     "{type} Progress": "{type} Ti\u1ebfn \u0111\u1ed9",
     "\u2026": "..."
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -1752,16 +1755,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -1784,15 +1787,12 @@
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
-      "%Y-%m-%d",
       "%m/%d/%Y %H:%M:%S",
       "%m/%d/%Y %H:%M:%S.%f",
       "%m/%d/%Y %H:%M",
-      "%m/%d/%Y",
       "%m/%d/%y %H:%M:%S",
       "%m/%d/%y %H:%M:%S.%f",
-      "%m/%d/%y %H:%M",
-      "%m/%d/%y"
+      "%m/%d/%y %H:%M"
     ],
     "DATE_FORMAT": "\\N\\g\u00e0\\y d \\t\\h\u00e1\\n\\g n \\n\u0103\\m Y",
     "DATE_INPUT_FORMATS": [
@@ -1825,8 +1825,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -1845,6 +1845,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 
