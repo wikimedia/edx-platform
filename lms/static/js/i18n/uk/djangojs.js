@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);
-    if (typeof(v) == 'boolean') {
+    const v = (n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     " and ": " \u0456 ",
     "%(errorCount)s error found in form.": [
       "%(errorCount)s \u043f\u043e\u043c\u0438\u043b\u043a\u0430 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0430.",
@@ -326,6 +327,7 @@
     "Could not submit order": "\u041d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u0438\u0442\u0438 \u0437\u0430\u043c\u043e\u0432\u043b\u0435\u043d\u043d\u044f",
     "Could not submit photos": "\u041d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0456\u0457",
     "Could not upload the video image file": "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0444\u0430\u0439\u043b \u0432\u0456\u0434\u0435\u043e\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f",
+    "Couldn't Save This Assignment": "\u041d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0437\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0446\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f",
     "Country": "\u041a\u0440\u0430\u0457\u043d\u0430",
     "Country or Region of Residence": "\u041a\u0440\u0430\u0457\u043d\u0430 \u0430\u0431\u043e \u0440\u0435\u0433\u0456\u043e\u043d \u043f\u0440\u043e\u0436\u0438\u0432\u0430\u043d\u043d\u044f",
     "Course Credit Requirements": "\u0412\u0438\u043c\u043e\u0433\u0438 \u041a\u0443\u0440\u0441\u0443 \u0434\u043e \u043a\u0440\u0435\u0434\u0438\u0442\u0443",
@@ -803,6 +805,7 @@
     "Please add the instructor's name": "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u043a\u0430\u0436\u0456\u0442\u044c \u0456\u043c'\u044f \u043b\u0435\u043a\u0442\u043e\u0440\u0430",
     "Please add the instructor's title": "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0434\u043e\u0434\u0430\u0439\u0442\u0435 \u0442\u0438\u0442\u0443\u043b \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u0430",
     "Please address the errors on this page first, and then save your progress.": "\u041f\u0435\u0440\u0435\u0434 \u0442\u0438\u043c \u044f\u043a \u0437\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0432\u0430\u0448 \u043f\u0440\u043e\u0433\u0440\u0435\u0441, \u0431\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u043f\u0440\u0430\u0432\u0442\u0435 \u043f\u043e\u043c\u0438\u043b\u043a\u0438 \u043d\u0430 \u0446\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456. ",
+    "Please correct the outlined fields.": "\u0412\u0456\u0434\u043a\u043e\u0440\u0438\u0433\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0456 \u043f\u043e\u043b\u044f",
     "Please describe this image or agree that it has no contextual value by checking the checkbox.": "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043e\u043f\u0438\u0448\u0456\u0442\u044c \u0446\u044e \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443 \u0447\u0438 \u043f\u043e\u0433\u043e\u0434\u044c\u0442\u0435\u0441\u044f \u0437 \u0442\u0438\u043c, \u0449\u043e \u0432\u043e\u043d\u0430 \u043d\u0435 \u0432\u0438\u043c\u0430\u0433\u0430\u0454 \u043e\u043f\u0438\u0441\u0443, \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0432\u0448\u0438 \u043f\u0440\u0430\u043f\u043e\u0440\u0435\u0446\u044c.",
     "Please do not use any spaces in this field.": "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 \u043f\u0440\u043e\u0431\u0456\u043b\u0456\u0432 \u0432 \u0446\u044c\u043e\u043c\u0443 \u043f\u043e\u043b\u0456. ",
     "Please do not use any spaces or special characters in this field.": "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 \u0432 \u0446\u044c\u043e\u043c\u0443 \u043f\u043e\u043b\u0456 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u0438 \u0447\u0438 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u0456 \u0441\u0438\u043c\u0432\u043e\u043b\u0438.",
@@ -1160,6 +1163,7 @@
     "This post could not be unflagged for abuse. Refresh the page and try again.": "\u0426\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0432\u0456\u0434\u0445\u0438\u043b\u0435\u043d\u043e, \u044f\u043a \u043f\u043e\u0440\u0443\u0448\u0435\u043d\u043d\u044f. \u041e\u043d\u043e\u0432\u0456\u0442\u044c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u0441\u043f\u0440\u043e\u0431\u0443.",
     "This post could not be unpinned. Refresh the page and try again.": "\u0426\u044e \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u044e \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0432\u0456\u0434\u043a\u0440\u0456\u043f\u0438\u0442\u0438. \u041e\u043d\u043e\u0432\u0456\u0442\u044c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u0441\u043f\u0440\u043e\u0431\u0443.",
     "This problem could not be saved.": "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0437\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0446\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f.",
+    "This problem has already been released. Any changes will apply only to future assessments.": "\u0426\u0435 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f \u0432\u0436\u0435 \u0431\u0443\u043b\u043e \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e. \u0411\u0443\u0434\u044c-\u044f\u043a\u0456 \u0437\u043c\u0456\u043d\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u0437\u0430\u0441\u0442\u043e\u0441\u043e\u0432\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0442\u0456\u043b\u044c\u043a\u0438 \u0434\u043e \u043c\u0430\u0439\u0431\u0443\u0442\u043d\u0456\u0445 \u0437\u0430\u0432\u0434\u0430\u043d\u044c.",
     "This problem has been reset.": "\u0417\u0430\u0434\u0430\u0447\u0443 \u0441\u043a\u0438\u043d\u0443\u0442\u043e.",
     "This response could not be marked as an answer. Refresh the page and try again.": "\u0426\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043f\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0435, \u044f\u043a \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u044c. \u041e\u043d\u043e\u0432\u0456\u0442\u044c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u0441\u043f\u0440\u043e\u0431\u0443.",
     "This response could not be marked as endorsed. Refresh the page and try again.": "\u0426\u044f \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u044c \u043d\u0435 \u043c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u043f\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u044f\u043a \u0441\u0445\u0432\u0430\u043b\u0435\u043d\u0430. \u041e\u043d\u043e\u0432\u0456\u0442\u044c \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u043f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u0441\u043f\u0440\u043e\u0431\u0443.",
@@ -1334,6 +1338,7 @@
     "You did not submit the required files: {requiredFiles}.": "\u0412\u0438 \u043d\u0435 \u0434\u043e\u0434\u0430\u043b\u0438 \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u0456 \u0444\u0430\u0439\u043b\u0438: {requiredFiles}.",
     "You don't seem to have Flash installed. Get Flash to continue your verification.": "\u0423 \u0432\u0430\u0441 \u043d\u0435 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0430 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0430 Flash. \u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0457\u0457, \u0449\u043e\u0431 \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0438\u0442\u0438 \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043d\u043d\u044f.",
     "You don't seem to have a webcam connected.": "\u0417\u0434\u0430\u0454\u0442\u044c\u0441\u044f \u0432\u0430\u0448\u0430 \u0432\u0435\u0431-\u043a\u0430\u043c\u0435\u0440\u0430 \u043d\u0435 \u043f\u0456\u0434'\u0454\u0434\u043d\u0430\u043d\u0430.",
+    "You have added a criterion. You will need to select an option for the criterion in the Learner Training step. To do this, click the Settings tab.": "\u0412\u0438 \u0434\u043e\u0434\u0430\u043b\u0438 \u043a\u0440\u0438\u0442\u0435\u0440\u0456\u0439. \u0412\u0438 \u043c\u0430\u0454\u0442\u0435 \u0432\u0438\u0431\u0440\u0430\u0442\u0438 \u043e\u043f\u0446\u0456\u044e \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u043a\u0440\u0438\u0442\u0435\u0440\u0456\u044e \u043d\u0430 \u043a\u0440\u043e\u0446\u0456 \u041d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0441\u043b\u0443\u0445\u0430\u0447\u0430. \u0429\u043e\u0431 \u0446\u0435 \u0437\u0440\u043e\u0431\u0438\u0442\u0438, \u043a\u043b\u0456\u043a\u043d\u0456\u0442\u044c \u043d\u0430 \u0432\u043a\u043b\u0430\u0434\u0446\u0456 \u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f.",
     "You have deleted a criterion. The criterion has been removed from the example responses in the Learner Training step.": "\u0412\u0438 \u0432\u0438\u0434\u0430\u043b\u0438\u043b\u0438 \u043a\u0440\u0438\u0442\u0435\u0440\u0456\u0439. \u041a\u0440\u0438\u0442\u0435\u0440\u0456\u0439 \u0431\u0443\u043b\u043e \u0432\u0438\u043b\u0443\u0447\u0435\u043d\u043e \u0437 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0443 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0456 \u043d\u0430 \u043a\u0440\u043e\u0446\u0456 \u041d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0441\u043b\u0443\u0445\u0430\u0447\u0430.",
     "You have deleted all the options for this criterion. The criterion has been removed from the sample responses in the Learner Training step.": "\u0412\u0438 \u0432\u0438\u0434\u0430\u043b\u0438\u043b\u0438 \u0432\u0441\u0456 \u043e\u043f\u0446\u0456\u0457 \u0446\u044c\u043e\u0433\u043e \u043a\u0440\u0438\u0442\u0435\u0440\u0456\u044e. \u041a\u0440\u0438\u0442\u0435\u0440\u0456\u0439 \u0431\u0443\u043b\u043e \u0432\u0438\u043b\u0443\u0447\u0435\u043d\u043e \u0437 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0443 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0456 \u043d\u0430 \u043a\u0440\u043e\u0446\u0456 \u041d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0441\u043b\u0443\u0445\u0430\u0447\u0430.",
     "You have deleted an option. That option has been removed from its criterion in the sample responses in the Learner Training step. You might have to select a new option for the criterion.": "\u0412\u0438 \u0432\u0438\u0434\u0430\u043b\u0438\u043b\u0438 \u043e\u043f\u0446\u0456\u044e. \u0426\u044e \u043e\u043f\u0446\u0456\u044e \u0431\u0443\u043b\u043e \u0432\u0438\u043b\u0443\u0447\u0435\u043d\u043e \u0437 \u0457\u0457 \u043a\u0438\u0442\u0435\u0440\u0456\u044e \u0443 \u043f\u0440\u0438\u043a\u043b\u0430\u0434\u0456 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0456 \u043d\u0430 \u043a\u0440\u043e\u0446\u0456 \u041d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0441\u043b\u0443\u0445\u0430\u0447\u0430. \u0412\u0430\u043c \u0441\u043b\u0456\u0434 \u043e\u0431\u0440\u0430\u0442\u0438 \u043d\u043e\u0432\u0443 \u043e\u043f\u0446\u0456\u044e \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u043a\u0440\u0438\u0442\u0435\u0440\u0456\u044e.",
@@ -1536,24 +1541,24 @@
     "{type} Progress": "{type} \u041f\u0440\u043e\u0433\u0440\u0435\u0441",
     "\u2026": "..."
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -1563,16 +1568,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -1595,11 +1600,9 @@
       "%d.%m.%Y %H:%M:%S",
       "%d.%m.%Y %H:%M:%S.%f",
       "%d.%m.%Y %H:%M",
-      "%d.%m.%Y",
       "%d %B %Y %H:%M:%S",
       "%d %B %Y %H:%M:%S.%f",
       "%d %B %Y %H:%M",
-      "%d %B %Y",
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
@@ -1628,8 +1631,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -1648,6 +1651,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 
