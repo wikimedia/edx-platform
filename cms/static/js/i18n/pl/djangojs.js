@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);
-    if (typeof(v) == 'boolean') {
+    const v = (n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     " ${price} {currency} )": " ${price} {currency} )",
     " Member": [
       "Cz\u0142onek",
@@ -216,6 +217,7 @@
     "Before proceeding, please confirm that your details match": "Przed przej\u015bciem dalej, prosz\u0119 potwierdzi\u0107 zgodno\u015b\u0107 danych",
     "Before you upgrade to a certificate track, you must activate your account.": "Zanim podniesiesz swoje zaanga\u017cowanie w kursie, musisz aktywowa\u0107 swoje konto.",
     "Biography": "Profil",
+    "Block data would not be sent to server for translations": "Dane bloku nie zostan\u0105 wys\u0142ane na serwer w celu t\u0142umaczenia",
     "Block view is unavailable": "Podgl\u0105d bloku jest niedost\u0119pny",
     "Blockquote": "Cytat",
     "Blockquote (Ctrl+Q)": "D\u0142ugi cytat (Ctrl+Q)",
@@ -253,6 +255,7 @@
     "Change Manually": "Zmie\u0144 r\u0119cznie",
     "Change My Email Address": "Zmie\u0144 m\u00f3j adres e-mail",
     "Change Session": "Zmie\u0144 sesj\u0119",
+    "Change can not be reverted.": "Zmiany nie mo\u017cna cofn\u0105\u0107.",
     "Change image": "Zmie\u0144 zdj\u0119cie",
     "Change or Leave Session": "Zmie\u0144 lub opu\u015b\u0107 sesj\u0119 kursu",
     "Change to a different session or leave the current session.": "Zmie\u0144 na inn\u0105 sesj\u0119 lub opu\u015b\u0107 obecn\u0105 sesj\u0119.",
@@ -319,6 +322,7 @@
     "Content Group ID": "Identyfikator grupy tre\u015bci",
     "Content Group Name": "Nazwa grupy tre\u015bci",
     "Content-Specific Discussion Topics": "Tematy dyskusji okre\u015blonej tre\u015bci",
+    "Continue Editing": "Kontynujowa\u0107 Edycj\u0119",
     "Copy Email To Editor": "Skopiuj e-mail do edytora",
     "Correct failed component": "Napraw b\u0142\u0119dny element",
     "Cost": "Cena",
@@ -331,6 +335,7 @@
     "Could not submit order": "Sk\u0142adanie zam\u00f3wienia nie powiod\u0142o si\u0119",
     "Could not submit photos": "Przes\u0142anie zdj\u0119cia nie powiod\u0142o si\u0119.",
     "Could not upload the video image file": "Nie uda\u0142o si\u0119 przes\u0142a\u0107 pliku obrazka filmu.",
+    "Couldn't Save This Assignment": "Nie uda\u0142o si\u0119 zapisa\u0107 tego zadania",
     "Country": "Region",
     "Country of residence": "Kraj zamieszkania",
     "Country or Region of Residence": "Kraj lub region",
@@ -402,6 +407,7 @@
     "Deprecated": "Przestarza\u0142y",
     "Describe ": "Opis",
     "Description of the certificate": "Opis certyfikatu",
+    "Disable Translations": "Wy\u0142\u0105cz T\u0142umaczenia",
     "Discard Changes": "Odrzu\u0107 zmiany",
     "Discussion": "Dyskusja",
     "Discussion Home": "Strona g\u0142\u00f3wna dyskusji",
@@ -451,6 +457,8 @@
     "Enable": "W\u0142\u0105cz",
     "Enable Cohorts": "W\u0142\u0105cz kohorty",
     "Enable Now": "W\u0142\u0105cz",
+    "Enable Translations": "W\u0142\u0105czy\u0107 T\u0142umaczenia",
+    "Enable Translations for this block?": "W\u0142\u0105czy\u0107 T\u0142umaczenia dla tego bloku?",
     "Enabled": "W\u0142\u0105czone",
     "End My Exam": "Zako\u0144cz m\u00f3j egzamin",
     "Ends {end}": "Zako\u0144czy si\u0119 {end}",
@@ -524,7 +532,6 @@
     "Exception Granted": "Wyj\u0105tek przyznany",
     "Expand All": "Rozwi\u0144 wszystko",
     "Explain if other.": "Inny? Jaki?",
-    "Explore New Programs": "Odkryj nowe programy",
     "Explore Programs": "Przegl\u0105daj programy",
     "Explore your course!": "Przejrzyj sw\u00f3j kurs!",
     "Failed to delete student state for user.": "Nie uda\u0142o si\u0119 usun\u0105\u0107 stanu studenta dla u\u017cytkownika.",
@@ -724,6 +731,7 @@
     "Make this subsection available as a prerequisite to other content": "Udost\u0119pnij t\u0119 lekcj\u0119 jako wymaganie wst\u0119pne dla dost\u0119pu do innej tre\u015bci.",
     "Manage Learners": "Zarz\u0105dzaj studentami",
     "Manual": "Manualna",
+    "Map blocks": "Bloki mapy",
     "March": "Marzec",
     "Mark Exam As Completed": "Oznacz egzamin jako uko\u0144czony",
     "Mark enrollment code as unused": "Oznacz kod rejestracyjny jako niewykorzystany",
@@ -859,6 +867,7 @@
     "Please add the instructor's title": "Prosz\u0119 poda\u0107 tytu\u0142 prowadz\u0105cego",
     "Please address the errors on this page first, and then save your progress.": "Zwr\u00f3\u0107 uwag\u0119 na b\u0142\u0119dy wskazane na tej stronie, a nast\u0119pnie zapisz sw\u00f3j post\u0119p.",
     "Please check the following validation feedbacks and reflect them in your course settings:": "Prosz\u0119 zapozna\u0107 si\u0119 z poni\u017cszymi komunikatami uwierzytelniania i nanie\u015b\u0107 stosowne zmiany do ustawie\u0144 kursu:",
+    "Please correct the outlined fields.": "Prosz\u0119 poprawi\u0107 zaznaczone pola.",
     "Please describe this image or agree that it has no contextual value by checking the checkbox.": "Prosz\u0119 opisa\u0107 ten obraz lub zaznaczy\u0107 okienko je\u015bli obraz nie posiada warto\u015bci kontekstowej.",
     "Please do not use any spaces in this field.": "Prosimy nie u\u017cywa\u0107 spacji w tym polu.",
     "Please do not use any spaces or special characters in this field.": "Prosimy nie u\u017cywa\u0107 spacji ani znak\u00f3w specjalnych.",
@@ -1268,6 +1277,7 @@
     "This post could not be unflagged for abuse. Refresh the page and try again.": "Nie uda\u0142o si\u0119 cofn\u0105\u0107 oflagowania tego wpisu jako nieodpowiedniego. Od\u015bwie\u017c stron\u0119 i spr\u00f3buj ponownie.",
     "This post could not be unpinned. Refresh the page and try again.": "Nie uda\u0142o si\u0119 odpi\u0105\u0107 tego wpisu. Od\u015bwie\u017c stron\u0119 i spr\u00f3buj ponownie.",
     "This problem could not be saved.": "Nie uda\u0142o si\u0119 zapisa\u0107 \u0107wiczenia.",
+    "This problem has already been released. Any changes will apply only to future assessments.": "To \u0107wiczenie zosta\u0142o ju\u017c opublikowane. Jakiekolwiek zmiany b\u0119d\u0105 obowi\u0105zywa\u0107 tylko dla przysz\u0142ych ocen.",
     "This response could not be marked as an answer. Refresh the page and try again.": "Nie uda\u0142o si\u0119 oznaczy\u0107 tej odpowiedzi jako udzielonej odpowiedzi. Od\u015bwie\u017c stron\u0119 i spr\u00f3buj ponownie.",
     "This response could not be marked as endorsed. Refresh the page and try again.": "Nie uda\u0142o si\u0119 oznaczy\u0107 tej odpowiedzi jako zatwierdzonej. Od\u015bwie\u017c stron\u0119 i spr\u00f3buj ponownie.",
     "This response could not be saved.": "Nie uda\u0142o si\u0119 zapisa\u0107 tej odpowiedzi.",
@@ -1350,6 +1360,7 @@
     "Update": "Edytuj",
     "Update Settings": "Aktualizuj ustawienia",
     "Update team.": "Aktualizuj zesp\u00f3\u0142",
+    "Updating": "Aktualizacja",
     "Updating Tags": "Aktualizowanie tag\u00f3w",
     "Updating with latest library content": "Aktualizacja o najnowsz\u0105 tre\u015b\u0107 biblioteki",
     "Upgrade All Remaining Courses (": "Zaktualizuj wszystkie pozosta\u0142e kursy (",
@@ -1468,6 +1479,9 @@
     "Will Be Visible To:": "B\u0119dzie widoczna dla:",
     "Would you like to sign in using your %(providerName)s credentials?": "Czy chcesz si\u0119 zalogowa\u0107 korzystaj\u0105c z systemu %(providerName)s?",
     "Year of Birth": "Rok urodzenia",
+    "Yes, Disable Translations": "Tak, Wy\u0142\u0105czy\u0107 T\u0142umaczenia",
+    "Yes, Enable Translations": "Tak, W\u0142\u0105czy\u0107 T\u0142umaczenia",
+    "Yes, Update Flag": "Tak, Zaktualizuj Flag\u0119",
     "Yes, allow edits to the active Certificate": "Tak, pozw\u00f3l na edycj\u0119 aktywnego certyfikatu.",
     "Yes, replace the edX transcript with the YouTube transcript": "Tak, zamie\u0144 transkrypcj\u0119 na transkrypcj\u0119 z YouTube",
     "Yesterday": "Wczoraj",
@@ -1498,6 +1512,7 @@
     "You did not select a content group": "Nie wybrano grupy tre\u015bci",
     "You don't seem to have Flash installed. Get Flash to continue your verification.": "Wygl\u0105da na to, \u017ce nie posiadasz zainstalowanego flasha. Zainstaluj flasha, aby kontynuowa\u0107 swoj\u0105 weryfikacj\u0119.",
     "You don't seem to have a webcam connected.": "Wygl\u0105da na to, \u017ce nie masz pod\u0142\u0105czonej kamery internetowej.",
+    "You have added a criterion. You will need to select an option for the criterion in the Learner Training step. To do this, click the Settings tab.": "Doda\u0142e\u015b kryterium. Musisz teraz wybra\u0107 opcj\u0119 dla kryterium z poziomu Szkolenia Studenta. Aby to zrobi\u0107, kliknij na Ustawienia.",
     "You have already verified your ID!": "Ju\u017c potwierdzi\u0142e\u015b swoj\u0105 to\u017csamo\u015b\u0107!",
     "You have deleted a criterion. The criterion has been removed from the example responses in the Learner Training step.": "Usun\u0105\u0142e\u015b kryterium. Tak wi\u0119c kryterium zosta\u0142o usuni\u0119te z przyk\u0142adowych odpowiedzi w Szkoleniu Studenta.",
     "You have deleted all the options for this criterion. The criterion has been removed from the sample responses in the Learner Training step.": "Usun\u0105\u0142e\u015b wszystkie opcje dla tego kryterium. Tak wi\u0119c kryterium zosta\u0142o usuni\u0119te z przyk\u0142adowych odpowiedzi w Szkoleniu Studenta.",
@@ -1508,8 +1523,8 @@
     "You have not created any certificates yet.": "Nie stworzy\u0142e\u015b jeszcze \u017cadnych certyfikat\u00f3w.",
     "You have not created any content groups yet.": "Nie stworzy\u0142e\u015b jeszcze \u017cadnej grupy tre\u015bci.",
     "You have not created any group configurations yet.": "Nie stworzy\u0142e\u015b jeszcze \u017cadnych konfiguracji grupy.",
-    "You have selected an action, and you haven't made any changes on individual fields. You're probably looking for the Go button rather than the Save button.": "Wybrano akcj\u0119, lecz nie dokonano \u017cadnych zmian w polach. Prawdopodobnie szukasz przycisku \u201eWykonaj\u201d, a nie \u201eZapisz\u201d.",
-    "You have selected an action, but you haven't saved your changes to individual fields yet. Please click OK to save. You'll need to re-run the action.": "Wybrano akcj\u0119, lecz cz\u0119\u015b\u0107 zmian w polach nie zosta\u0142a zachowana. Kliknij OK, aby zapisa\u0107. Aby wykona\u0107 akcj\u0119, nale\u017cy j\u0105 ponownie uruchomi\u0107.",
+    "You have selected an action, and you haven\u2019t made any changes on individual fields. You\u2019re probably looking for the Go button rather than the Save button.": "Wybrano akcj\u0119, lecz nie dokonano \u017cadnych zmian w polach. Prawdopodobnie szukasz przycisku \u201eWykonaj\u201d, a nie \u201eZapisz\u201d.",
+    "You have selected an action, but you haven\u2019t saved your changes to individual fields yet. Please click OK to save. You\u2019ll need to re-run the action.": "Wybrano akcj\u0119, lecz cz\u0119\u015b\u0107 zmian w polach nie zosta\u0142a zachowana. Kliknij OK, aby zapisa\u0107. Aby wykona\u0107 akcj\u0119, nale\u017cy j\u0105 ponownie uruchomi\u0107.",
     "You have successfully signed into %(currentProvider)s, but your %(currentProvider)s account does not have a linked %(platformName)s account. To link your accounts, sign in now using your %(platformName)s password.": "Pomy\u015blnie zalogowa\u0142e\u015b si\u0119 do %(currentProvider)s, ale twoje konto %(currentProvider)s nie jest po\u0142\u0105czone z kontem w %(platformName)s. Aby po\u0142\u0105czy\u0107 konta, zaloguj si\u0119 u\u017cywaj\u0105c swojego has\u0142a w %(platformName)s.",
     "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost.": "Zmiany w niekt\u00f3rych polach nie zosta\u0142y zachowane. Po wykonaniu akcji, zmiany te zostan\u0105 utracone.",
     "You haven't added any assets to this course yet.": "Jeszcze nie doda\u0142e\u015b \u017cadnych zasob\u00f3w do tego kursu.",
@@ -1571,6 +1586,18 @@
     "Zoom In": "Powi\u0119ksz",
     "Zoom Out": "Pomniejsz",
     "[no tags]": "[brak tag\u00f3w]",
+    "abbrev. month April\u0004Apr": "Kwi",
+    "abbrev. month August\u0004Aug": "Sie",
+    "abbrev. month December\u0004Dec": "Gru",
+    "abbrev. month February\u0004Feb": "Lut",
+    "abbrev. month January\u0004Jan": "Sty",
+    "abbrev. month July\u0004Jul": "Lip",
+    "abbrev. month June\u0004Jun": "Cze",
+    "abbrev. month March\u0004Mar": "Mar",
+    "abbrev. month May\u0004May": "Maj",
+    "abbrev. month November\u0004Nov": "Lis",
+    "abbrev. month October\u0004Oct": "Pa\u017a",
+    "abbrev. month September\u0004Sep": "Wrz",
     "and others": "i inni",
     "anonymous": "anonimowy",
     "bytes": "bajt\u00f3w",
@@ -1702,24 +1729,24 @@
     "{type} Progress": "{type} - post\u0119p",
     "\u2026": "\u2026"
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -1729,16 +1756,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -1761,7 +1788,6 @@
       "%d.%m.%Y %H:%M:%S",
       "%d.%m.%Y %H:%M:%S.%f",
       "%d.%m.%Y %H:%M",
-      "%d.%m.%Y",
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
@@ -1791,8 +1817,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -1811,6 +1837,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 

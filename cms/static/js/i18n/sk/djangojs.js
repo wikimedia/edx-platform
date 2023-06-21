@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);
-    if (typeof(v) == 'boolean') {
+    const v = (n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     "%(sel)s of %(cnt)s selected": [
       "%(sel)s z %(cnt)s vybran\u00e9",
       "%(sel)s z %(cnt)s vybran\u00e9",
@@ -120,6 +121,7 @@
     "Could not find the specified string.": "Nie je mo\u017en\u00e9 n\u00e1js\u0165 \u0161pecifikovan\u00fd re\u0165azec.",
     "Could not retrieve download url.": "Nebolo mo\u017en\u00e9 z\u00edska\u0165 adresu pre prevzatie obsahu.",
     "Could not retrieve upload url.": "Nebolo mo\u017en\u00e9 z\u00edska\u0165 url adresu pre odovzdanie obsahu.",
+    "Couldn't Save This Assignment": "Toto zadanie nie je mo\u017en\u00e9 ulo\u017ei\u0165",
     "Country": "Krajina",
     "Course Credit Requirements": "Po\u017eiadavky pre z\u00edskanie kreditu z kurzu",
     "Course Index": "Register kurzu",
@@ -339,6 +341,7 @@
     "Play": "Prehra\u0165",
     "Play video": "Prehra\u0165 video",
     "Please address the errors on this page first, and then save your progress.": "Vyrie\u0161te, pros\u00edm, najsk\u00f4r chyby na tejto str\u00e1nke a n\u00e1sledne ulo\u017ete tento stav.",
+    "Please correct the outlined fields.": "Opravte, pros\u00edm, zv\u00fdraznen\u00e9 polia.",
     "Please do not use any spaces in this field.": "V tomto poli nepou\u017e\u00edvajte, pros\u00edm, \u017eiadne medzery.",
     "Please do not use any spaces or special characters in this field.": "V tomto poli nepou\u017e\u00edvajte, pros\u00edm, \u017eiadne medzery alebo \u0161peci\u00e1lne znaky.",
     "Please enter an integer between %(min)s and %(max)s.": "Zadajte, pros\u00edm, cel\u00e9 \u010d\u00edslo v rozsahu %(min)s a %(max)s.",
@@ -469,6 +472,7 @@
     "This is the list of available %s. You may choose some by selecting them in the box below and then clicking the \"Choose\" arrow between the two boxes.": "Toto je zoznam dostupn\u00fdch %s. Pre v\u00fdber je potrebn\u00e9 ozna\u010di\u0165 ich v poli a n\u00e1sledne kliknut\u00edm na \u0161\u00edpku \"Vybra\u0165\" presun\u00fa\u0165.",
     "This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the \"Remove\" arrow between the two boxes.": "Toto je zoznam dostupn\u00fdch %s. Pre vymazanie je potrebn\u00e9 ozna\u010di\u0165 ich v poli a n\u00e1sledne kliknut\u00edm na \u0161\u00edpku \"Vymaza\u0165\" vymaza\u0165.",
     "This problem could not be saved.": "T\u00fato \u00falohu nebolo mo\u017en\u00e9 ulo\u017ei\u0165.",
+    "This problem has already been released. Any changes will apply only to future assessments.": "T\u00e1to \u00faloha u\u017e bola vydan\u00e1. Ak\u00e1ko\u013evek zmena sa t\u00fdka len bud\u00facich hodnoten\u00ed.",
     "This response could not be saved.": "T\u00fato odpove\u010f nie je mo\u017en\u00e9 ulo\u017ei\u0165.",
     "This response could not be submitted.": "T\u00fato odpove\u010f nie je mo\u017en\u00e9 odosla\u0165.",
     "This response has been saved but not submitted.": "T\u00e1to odpove\u010f bola ulo\u017een\u00e1, ale nebola odoslan\u00e1.",
@@ -530,6 +534,7 @@
     "Yesterday": "V\u010dera",
     "You are not currently a member of any team.": "Moment\u00e1lne nie ste \u010dlenom \u017eiadneho t\u00edmu.",
     "You commented...": "Pridali ste koment\u00e1r...",
+    "You have added a criterion. You will need to select an option for the criterion in the Learner Training step. To do this, click the Settings tab.": "Pridali ste krit\u00e9rium. Pre toto krit\u00e9rium si mus\u00edte zvoli\u0165 vo\u013ebu v kroku V\u00fdcvik \u0161tudentov. Aby ste tak mohli spravi\u0165, kliknite na kartu Nastavenia.",
     "You have deleted a criterion. The criterion has been removed from the example responses in the Learner Training step.": "Odstr\u00e1nili ste krit\u00e9rium. Toto krit\u00e9rium bolo vymazan\u00e9 zo v\u0161etk\u00fdch vzorov\u00fdch odpoved\u00ed v kroku V\u00fdcvik \u0161tudentov.",
     "You have deleted all the options for this criterion. The criterion has been removed from the sample responses in the Learner Training step.": "Odstr\u00e1nili ste v\u0161etky vo\u013eby pre toto krit\u00e9rium. Toto krit\u00e9rium bolo vymazan\u00e9 zo v\u0161etk\u00fdch vzorov\u00fdch odpoved\u00ed v kroku V\u00fdcvik \u0161tudentov.",
     "You have deleted an option. That option has been removed from its criterion in the sample responses in the Learner Training step. You might have to select a new option for the criterion.": "Odstr\u00e1nili ste vo\u013ebu. T\u00e1to vo\u013eba bola vymazan\u00e1 z pridru\u017een\u00e9ho krit\u00e9ria vo vzorov\u00fdch odpovediach v koku V\u00fdcvik \u0161tudentov. Pravdepodobne budete musie\u0165 pre toto krit\u00e9rium zvoli\u0165 nov\u00fa vo\u013ebu.",
@@ -582,24 +587,24 @@
     "{email} is already on the {container} team. Recheck the email address if you want to add a new member.": "{email} je u\u017e v t\u00edme pre {container}. Znovu si overte e-mailov\u00fa adresu, ak chcete prida\u0165 nov\u00e9ho \u010dlena.",
     "\u2026": "..."
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -609,16 +614,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -641,7 +646,6 @@
       "%d.%m.%Y %H:%M:%S",
       "%d.%m.%Y %H:%M:%S.%f",
       "%d.%m.%Y %H:%M",
-      "%d.%m.%Y",
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
@@ -671,8 +675,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -691,6 +695,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 

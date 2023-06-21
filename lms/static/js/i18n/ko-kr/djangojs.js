@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=0;
-    if (typeof(v) == 'boolean') {
+    const v = 0;
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     "%(sel)s of %(cnt)s selected": [
       "%(sel)s\uac1c\uac00 %(cnt)s\uac1c \uc911\uc5d0 \uc120\ud0dd\ub428."
     ],
@@ -231,6 +232,7 @@
     "Show notes": "\ub178\ud2b8 \ubcf4\uc774\uae30",
     "Showing all responses": "\ubaa8\ub4e0 \ub2f5\ubcc0 \ubcf4\uc5ec\uc8fc\uae30",
     "Sign in": "\ub85c\uadf8\uc778",
+    "Staff": "\uc6b4\uc601\ud300",
     "Start generating certificates for all students in this course?": "\ubcf8 \uac15\uc88c\uc758 \ubaa8\ub4e0 \ud559\uc2b5\uc790\ub97c \uc704\ud55c \uac15\uc88c \uc774\uc218\uc99d \uc0dd\uc131\uc744 \uc2dc\uc791\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
     "Starts": "\uac1c\uac15\uc77c",
     "State": "\uc0c1\ud0dc",
@@ -292,8 +294,10 @@
     "Updating with latest library content": "\ucd5c\uc2e0 \ucf58\ud150\uce20 \ubcf4\uad00\ud568\uc73c\ub85c \uc5c5\ub370\uc774\ud2b8",
     "Upload File": "\ud30c\uc77c \uc5c5\ub85c\ub4dc",
     "Upload File and Assign Students": "\ud30c\uc77c \uc5c5\ub85c\ub4dc \ubc0f \ud559\uc2b5\uc790 \ud560\ub2f9\ud558\uae30",
+    "Upload New File": "\ud30c\uc77c \uc5c5\ub85c\ub4dc",
     "Upload an image": "\uc774\ubbf8\uc9c0 \uc5c5\ub85c\ub4dc",
     "Upload is in progress. To avoid errors, stay on this page until the process is complete.": "\uc5c5\ub85c\ub4dc\uac00 \uc9c4\ud589 \uc911\uc785\ub2c8\ub2e4. \uc624\ub958 \ubc1c\uc0dd\uc744 \ubc29\uc9c0\ud558\uae30 \uc704\ud574 \uc644\ub8cc\ub420 \ub54c\uae4c\uc9c0 \ubcf8 \ud398\uc774\uc9c0\uc5d0 \uba38\ubb3c\ub7ec \uc8fc\uc2ed\uc2dc\uc624",
+    "Upload signature image.": "\uc11c\uba85 \uc774\ubbf8\uc9c0 \uc5c5\ub85c\ub4dc\ud558\uae30",
     "Uploading": "\uc5c5\ub85c\ub4dc \uc911",
     "Username": "\uc544\uc774\ub514",
     "Users must create and activate their account before they can be promoted to beta tester.": "\uc774\uc6a9\uc790\ub294 \ubca0\ud0c0\ud14c\uc2a4\ud130\ub85c \ub4f1\ub85d\ub418\uae30 \uc804\uc5d0 \uacc4\uc815\uc744 \uc0dd\uc131\ud558\uace0 \ud65c\uc131\ud654\ud574\uc57c \ud569\ub2c8\ub2e4.",
@@ -316,13 +320,15 @@
     "You did not select a content group": "\ucf58\ud150\uce20 \uadf8\ub8f9\uc744 \uc120\ud0dd\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. ",
     "You don't seem to have Flash installed. Get Flash to continue your verification.": "Flash\uac00 \uc124\uce58\ub418\uc5b4 \uc788\uc9c0 \uc54a\uc740 \uac83 \uac19\uc2b5\ub2c8\ub2e4. Flash \uc124\uce58 \ud6c4 \uacc4\uc18d \uc9c4\ud589\ud558\uc138\uc694.",
     "You don't seem to have a webcam connected.": "\uc6f9\ucea0\uc774 \uc5f0\uacb0\ub418\uc9c0 \uc54a\uc740 \uac83 \uac19\uc2b5\ub2c8\ub2e4.",
-    "You have selected an action, and you haven't made any changes on individual fields. You're probably looking for the Go button rather than the Save button.": "\uac1c\ubcc4 \ud544\ub4dc\uc5d0 \uc544\ubb34\ub7f0 \ubcc0\uacbd\uc774 \uc5c6\ub294 \uc0c1\ud0dc\ub85c \uc561\uc158\uc744 \uc120\ud0dd\ud588\uc2b5\ub2c8\ub2e4. \uc800\uc7a5 \ubc84\ud2bc\uc774 \uc544\ub2c8\ub77c \uc9c4\ud589 \ubc84\ud2bc\uc744 \ucc3e\uc544\ubcf4\uc138\uc694.",
-    "You have selected an action, but you haven't saved your changes to individual fields yet. Please click OK to save. You'll need to re-run the action.": "\uac1c\ubcc4 \ud544\ub4dc\uc758 \uac12\ub4e4\uc744 \uc800\uc7a5\ud558\uc9c0 \uc54a\uace0 \uc561\uc158\uc744 \uc120\ud0dd\ud588\uc2b5\ub2c8\ub2e4. OK\ub97c \ub204\ub974\uba74 \uc800\uc7a5\ub418\uba70, \uc561\uc158\uc744 \ud55c \ubc88 \ub354 \uc2e4\ud589\ud574\uc57c \ud569\ub2c8\ub2e4.",
+    "You have selected an action, and you haven\u2019t made any changes on individual fields. You\u2019re probably looking for the Go button rather than the Save button.": "\uac1c\ubcc4 \ud544\ub4dc\uc5d0 \uc544\ubb34\ub7f0 \ubcc0\uacbd\uc774 \uc5c6\ub294 \uc0c1\ud0dc\ub85c \uc561\uc158\uc744 \uc120\ud0dd\ud588\uc2b5\ub2c8\ub2e4. \uc800\uc7a5 \ubc84\ud2bc\uc774 \uc544\ub2c8\ub77c \uc9c4\ud589 \ubc84\ud2bc\uc744 \ucc3e\uc544\ubcf4\uc138\uc694.",
+    "You have selected an action, but you haven\u2019t saved your changes to individual fields yet. Please click OK to save. You\u2019ll need to re-run the action.": "\uac1c\ubcc4 \ud544\ub4dc\uc758 \uac12\ub4e4\uc744 \uc800\uc7a5\ud558\uc9c0 \uc54a\uace0 \uc561\uc158\uc744 \uc120\ud0dd\ud588\uc2b5\ub2c8\ub2e4. OK\ub97c \ub204\ub974\uba74 \uc800\uc7a5\ub418\uba70, \uc561\uc158\uc744 \ud55c \ubc88 \ub354 \uc2e4\ud589\ud574\uc57c \ud569\ub2c8\ub2e4.",
     "You have set your language to {beta_language}, which is currently not fully translated. You can help us translate this language fully by joining the Transifex community and adding translations from English for learners that speak {beta_language}.": "\uc5b8\uc5b4\ub97c {beta_language} \uc73c\ub85c \uc124\uc815\ud588\uc2b5\ub2c8\ub2e4. \ud604\uc7ac\ub294 \uc644\uc804\ud788 \ubc88\uc5ed\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. Transifex \ucee4\ubba4\ub2c8\ud2f0\uc5d0 \uac00\uc785\ud558\uace0 {beta_language}\ub97c \uc0ac\uc6a9\ud558\ub294 \ud559\uc2b5\uc790\ub97c \uc704\ud574 \uc601\uc5b4 \ubc88\uc5ed\ubcf8\uc744 \ucd94\uac00\ud558\uba74\uc774 \uc5b8\uc5b4\ub97c \uc644\ubcbd\ud558\uac8c \ubc88\uc5ed \ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
     "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost.": "\uac1c\ubcc4 \ud3b8\uc9d1 \uac00\ub2a5\ud55c \ud544\ub4dc\uc5d0 \uc800\uc7a5\ub418\uc9c0 \uc54a\uc740 \uac12\uc774 \uc788\uc2b5\ub2c8\ub2e4. \uc561\uc158\uc744 \uc218\ud589\ud558\uba74 \uc800\uc7a5\ub418\uc9c0 \uc54a\uc740 \uac12\ub4e4\uc744 \uc783\uc5b4\ubc84\ub9ac\uac8c \ub429\ub2c8\ub2e4.",
     "You must sign out and sign back in before your language changes take effect.": "\uc5b8\uc5b4\uac00 \ubc14\ub00c\uc5b4\uc84c\ub294\uc9c0 \ud655\uc778\ud558\uae30 \uc704\ud574 \ub85c\uadf8\uc544\uc6c3 \ud558\uace0 \ub2e4\uc2dc \ub85c\uadf8\uc778 \ud558\uc138\uc694.",
     "You must specify a name for the cohort": "\ud559\uc2b5 \uc9d1\ub2e8\uc758 \uc774\ub984\uc744 \uc785\ub825\ud574\uc57c \ud569\ub2c8\ub2e4.",
+    "You've made some changes": "\uc218\uc815 \uc644\ub8cc",
     "Your changes have been saved.": "\ubcc0\uacbd\uc0ac\ud56d\uc774 \uc800\uc7a5\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+    "Your changes will not take effect until you save your progress.": "\uc800\uc7a5\ud558\uae30 \uc804\uc5d0\ub294 \ubcc0\uacbd\uc0ac\ud56d\uc774 \uc801\uc6a9\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
     "Your donation could not be submitted.": "\uae30\ubd80 \ucc98\ub9ac\uac00 \ub420 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.",
     "Your file '{file}' has been uploaded. Allow a few minutes for processing.": "'{file}' \ud30c\uc77c\uc774 \uc5c5\ub85c\ub4dc \ub418\uc5c8\uc2b5\ub2c8\ub2e4. \ucc98\ub9ac\ud558\ub294\ub370 \uc7a0\uc2dc \uc2dc\uac04\uc774 \ud544\uc694\ud569\ub2c8\ub2e4. ",
     "Your message cannot be blank.": "\ub0b4\uc6a9\uc744 \uc785\ub825\ud574\uc57c \ud569\ub2c8\ub2e4.",
@@ -352,24 +358,24 @@
     "team count": "\ud300 \uc778\uc6d0 \uc218",
     "\u2026": "\u2026"
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -379,16 +385,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -411,17 +417,15 @@
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
-      "%Y-%m-%d",
       "%m/%d/%Y %H:%M:%S",
       "%m/%d/%Y %H:%M:%S.%f",
       "%m/%d/%Y %H:%M",
-      "%m/%d/%Y",
       "%m/%d/%y %H:%M:%S",
       "%m/%d/%y %H:%M:%S.%f",
       "%m/%d/%y %H:%M",
-      "%m/%d/%y",
       "%Y\ub144 %m\uc6d4 %d\uc77c %H\uc2dc %M\ubd84 %S\ucd08",
-      "%Y\ub144 %m\uc6d4 %d\uc77c %H\uc2dc %M\ubd84"
+      "%Y\ub144 %m\uc6d4 %d\uc77c %H\uc2dc %M\ubd84",
+      "%Y-%m-%d"
     ],
     "DATE_FORMAT": "Y\ub144 n\uc6d4 j\uc77c",
     "DATE_INPUT_FORMATS": [
@@ -449,8 +453,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -469,6 +473,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 
