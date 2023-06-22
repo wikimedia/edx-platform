@@ -1,13 +1,14 @@
 
 
-(function(globals) {
-
-  var django = globals.django || (globals.django = {});
+'use strict';
+{
+  const globals = this;
+  const django = globals.django || (globals.django = {});
 
   
   django.pluralidx = function(n) {
-    var v=(n != 1);
-    if (typeof(v) == 'boolean') {
+    const v = (n != 1);
+    if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
       return v;
@@ -19,7 +20,7 @@
 
   django.catalog = django.catalog || {};
   
-  var newcatalog = {
+  const newcatalog = {
     "\n                    Make sure you are on a computer with a webcam, and that you have valid photo identification\n                    such as a driver's license or passport, before you continue.\n                ": "\nStellen Sie sicher, dass Sie sich auf einem Computer mit einer Webcam befinden und dass Sie sich mit einem g\u00fcltigen Lichtbildausweis ausweisen k\u00f6nnen.\n beispielsweise ein F\u00fchrerschein oder ein Personalausweis.",
     "\n                    Your verification attempt failed. Please read our guidelines to make\n                    sure you understand the requirements for successfully completing verification,\n                    then try again.\n                ": "\n                    Ihr Versuch zur Verifikation ist fehlgeschlagen. Bitte Lesen Sie\nunsere Richtlinien um sicher zu gehen, dass Sie die Anforderungen f\u00fcr eine erfolgreiche Durchf\u00fchrung der verifikation verstanden haben.\nBitte versuchen Sie es dann noch einmal.\n                ",
     "\n                    Your verification has expired. You must successfully complete a new identity verification\n                    before you can start the proctored exam.\n                ": "\n                    Ihre Verifikation ist abgelaufen. Sie m\u00fcssen sich erneut erfolgreich verifizieren\n                    bevor Sie die beaufsichtigte Pr\u00fcfung beginnen k\u00f6nnen.\n                ",
@@ -61,6 +62,20 @@
     " and ": "und",
     " and {num_of_minutes} minute": " und {num_of_minutes} Minuten",
     " and {num_of_minutes} minutes": " und {num_of_minutes} Minuten",
+    " learner account cannot be found and has not been added to the exception list": "Das Teilnehmerkonto kann nicht gefunden werden und wurde nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " learner accounts cannot be found and have not been added to the exception list": "Lernerkonten k\u00f6nnen nicht gefunden werden und wurden nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " learner already appears on the exception list in this course": "Der Lernende steht in diesem Kurs bereits auf der Ausnahmeliste",
+    " learner encountered an unknown error": "Teilnehmer ist auf einen unbekannten Fehler gesto\u00dfen",
+    " learner has an active certificate invalidation in this course and has not been added to the exception list": "Der Lernende hat in diesem Kurs eine aktive Zertifikatsentwertung und wurde nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " learner is not enrolled in this course and has not been added to the exception list": "Der Lernende ist nicht in diesem Kurs eingeschrieben und wurde nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " learner was successfully added to the exception list": "Der Lernende wurde erfolgreich zur Ausnahmeliste hinzugef\u00fcgt",
+    " learners already appear on the exception list in this course": "Lernende stehen in diesem Kurs bereits auf der Ausnahmeliste",
+    " learners are not enrolled in this course and have not added to the exception list": "Lernende sind nicht in diesem Kurs eingeschrieben und wurden nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " learners encountered unknown errors": "Teilnehmer sind auf einen unbekannten Fehler gesto\u00dfen",
+    " learners have an active certificate invalidation in this course and have not been added to the exception list": "Lernende haben in diesem Kurs eine aktive Zertifikatsentwertung und wurden nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " learners were successfully added to exception list": "Lernende wurden erfolgreich zur Ausnahmeliste hinzugef\u00fcgt",
+    " record is not in the correct format and has not been added to the exception list": "Datensatz hat nicht das richtige Format und wurde nicht zur Ausnahmeliste hinzugef\u00fcgt",
+    " records are not in the correct format and have not been added to the exception list": "Datens\u00e4tze haben nicht das richtige Format und wurden nicht zur Ausnahmeliste hinzugef\u00fcgt",
     " to complete and submit the exam.": "Zum Beenden und Einreichen der Pr\u00fcfung.",
     "${listPrice}": "${listPrice}",
     "%(cohort_name)s (%(user_count)s)": "%(cohort_name)s (%(user_count)s)",
@@ -113,6 +128,7 @@
     "(Caption will be displayed when you start playing the video.)": "(Beschriftung wird angezeigt, sobald das Video gestartet wird.)",
     "(Community TA)": "(Gemeinschaftslehrkraft)",
     "(Optional)": "(Optional)",
+    "(Read-only)": "(Nur Lesezugriff)",
     "(Required Field)": "(Erforderliches Feld)",
     "(Self-paced) Ended {end}": "(Eigenes Tempo) Ist beendet {end}",
     "(Self-paced) Ends {end}": "(Eigenes Tempo) Endet {end}",
@@ -130,6 +146,8 @@
     "6 a.m.": "6 Uhr",
     "6 p.m.": "18 Uhr",
     ": video upload complete.": ": Hochladen des Videos erfolgreich abgeschlossen.",
+    "<%- user %> already in exception list.": "<%- user %> ist bereits auf der Ausnahmeliste.",
+    "<%- user %> has been successfully added to the exception list. Click Generate Exception Certificate below to send the certificate.": "<%- user %> wurde erfolgreich in die Ausnahmeliste aufgenommen. Klicken Sie unten auf Ausnahmezertifikat generieren, um das Zertifikat zu senden.",
     "A Password is required": "Ein Passwort ist erforderlich",
     "A driver's license, passport, or other government-issued ID with your name and photo": "Ein F\u00fchrerschein, Reisepass, oder ein anderes Bildausweis mit amtliches Licht",
     "A highlight to look forward to this week.": "Ein Highlight, auf das Sie sich diese Woche freuen k\u00f6nnen.",
@@ -145,7 +163,6 @@
     "About You": "\u00dcber Sie",
     "About me": "\u00dcber mich",
     "Access to some content in this {blockType} is restricted to specific groups of learners.": "Der Zugang zu manchen Inhalten im {blockType} ist nur bestimmten Teilnehmergruppen erlaubt.",
-    "Access to this unit is restricted to: {selectedGroupsLabel}": "Der Zugriff auf diese Lerneinheit ist beschr\u00e4nkt auf: {selectedGroupsLabel}",
     "Access to this {blockType} is restricted to: {selectedGroupsLabel}": "Der Zugang zu {blockType}\u00a0ist nur den folgenden Gruppen erlaubt: {selectedGroupsLabel}",
     "Accomplishments": "Leistungen",
     "Accomplishments Pagination": "Seitennummerierung der Leistungen",
@@ -247,6 +264,7 @@
     "Alternative source": "Alternative Quelle",
     "Always divide content-specific discussion topics": "Inhaltsspezifische Diskussionsthemen immer aufteilen",
     "Always show assessment results": "Auswertungen immer zeigen",
+    "An answer option has been left blank. Please review and edit the component.": "Eine Antwortoption wurde leer gelassen. Bitte \u00fcberpr\u00fcfen und bearbeiten Sie die Komponente.",
     "An email has been sent to {userEmail} with a link for you to activate your account.": "Eine E-Mail wurde gesendet an: {userEmail} mit einem Link, um Ihren Account zu aktivieren.",
     "An error has occurred. Check your Internet connection and try again.": "Es ist ein Fehler aufgetreten. \u00dcberpr\u00fcfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
     "An error has occurred. Make sure that you are connected to the Internet, and then try refreshing the page.": "Es ist ein Fehler aufgetreten. Stellen Sie sicher, dass Sie mit dem Internet verbunden sind, und versuchen Sie dann, die Seite zu aktualisieren.",
@@ -345,6 +363,7 @@
     "Bottom": "Grundlinie",
     "Browse": "Durchsuchen",
     "Browse recently launched courses and see what\\'s new in your favorite subjects": "Neue Kurse durchsuchen",
+    "Browsing": "Durchsuchen",
     "Bulk Exceptions": "Sammelausnahmen",
     "Bullet list": "Aufz\u00e4hlung",
     "Bulleted List (Ctrl+U)": "Aufz\u00e4hlende Liste (STRG+U)",
@@ -484,6 +503,7 @@
     "Copy row": "Kopiere Zeile",
     "Correct failed component": "Die fehlerhafte Komponente korrigieren",
     "Cost": "Kosten",
+    "Could not find Certificate Exception in the allowlist. Please refresh the page and try again": "Zertifikatsausnahme konnte nicht in der Zulassungsliste gefunden werden. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut",
     "Could not find Certificate Invalidation in the list. Please refresh the page and try again": "Die Zertifikatsinvalidierung konnte in der Liste nicht gefunden werden. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut.",
     "Could not find a user with username or email address '<%- identifier %>'.": "Ein Benutzer mit Benutzername oder E-Mail-Adresse '<%- identifier %>' konnte nicht gefunden werden.",
     "Could not find the specified string.": "Konnte die festgelegte Zeichenkette nicht finden",
@@ -496,6 +516,7 @@
     "Could not submit order": "Bestellung konnte nicht aufgegeben werden.",
     "Could not submit photos": "Fotos konnten nicht eingereicht werden",
     "Could not upload the video image file": "Die Videobilddatei konnte nicht hochgeladen werden.",
+    "Couldn't Save This Assignment": "Konnte diese Aufgabe nicht speichern",
     "Country": "Land",
     "Country of residence": "Wohnsitz",
     "Country or Region of Residence": "Land oder Wohnsitz",
@@ -516,7 +537,9 @@
     "Course Name": "Kursbezeichnung",
     "Course Number": "Kursnummer",
     "Course Number Override": "Kursnummer \u00dcberschreibung",
+    "Course Number:": "Kursnummer:",
     "Course Outline": "Kurs\u00fcbersicht",
+    "Course Run:": "Kurslaufzeit:",
     "Course Start": "Kursbeginn",
     "Course Title": "Kurs Titel",
     "Course Title Override": "Kurstitel \u00fcberschreiben",
@@ -528,6 +551,7 @@
     "Create": "Erstellen",
     "Create Account": "Konto erstellen",
     "Create Re-run": "Erstelle Wiederholungslauf",
+    "Create Support Ticket": "Erstellen Sie ein Supportticket",
     "Create a New Team": "Ein neues Team erstellen",
     "Create a content group": "Erstelle eine Inhaltsgruppe",
     "Create a new team if you can't find an existing team to join, or if you would like to learn with friends you know.": "Erstelle ein neues Team, wenn Du keinem bestehenden Team beitreten kannst, oder wenn Du mit Freunden lernen m\u00f6chtest, die Du kennst.",
@@ -597,6 +621,7 @@
     "Describe ": "Beschreibe",
     "Description": "Beschreibung",
     "Description of the certificate": "Beschreibung des Zertifikats",
+    "Details": "Details",
     "Device with Camera": "Ger\u00e4t mit Kamera",
     "Dimensions": "Dimensionen",
     "Disc": "Scheibe",
@@ -633,8 +658,6 @@
     "Due Date:": "F\u00e4lligkeitsdatum:",
     "Due Time in UTC:": "F\u00e4lligkeitsuhrzeit in UTC:",
     "Due date cannot be before start date.": "Das F\u00e4lligkeitsdatum kann nicht vor dem Startdatum liegen.",
-    "Due:": "Bis:",
-    "Duplicate": "Dupliziere",
     "Duplicating": "Duplizieren",
     "Duration (sec)": "Dauer (Sek.)",
     "Earned %(created)s.": "Hat %(created)s verdient.",
@@ -716,6 +739,7 @@
     "Error deleting student '<%- student_id %>'s state on problem '<%- problem_id %>'. Make sure that the problem and student identifiers are complete and correct.": "Fehler beim L\u00f6schen von Teilnehmer '<%- student_id %>'s Status bei Problem '<%- problem_id %>'. Stellen Sie sicher, dass die Problem- und Teilnehmercodes vollst\u00e4ndig und korrekt sind.",
     "Error enrolling/unenrolling users.": "Fehler beim Einschreiben/Streichen der Nutzer.",
     "Error generating ORA data report. Please try again.": "Fehler bei der Generierung des ORA-Datenberichts. Bitte versuchen Sie es erneut.",
+    "Error generating anonymous IDs. Please try again.": "Fehler beim Generieren der anonymen IDs. Bitte versuchen Sie es erneut.",
     "Error generating grades. Please try again.": "Fehler beim Erzeugen der Noten. Bitte versuche es noch einmal.",
     "Error generating list of students who may enroll. Please try again.": "Fehler beim Generieren der Liste der Teilnehmer, die sich einschreiben k\u00f6nnen. Bitte versuchen Sie es erneut.",
     "Error generating problem grade report. Please try again.": "Fehler beim Generieren von Berichten \u00fcber die Problembenotung. Bitte versuchen Sie es erneut.",
@@ -734,6 +758,7 @@
     "Error posting your message.": "Fehler beim Senden Ihrer Nachricht.",
     "Error removing user": "Fehler beim Entfernen des Nutzers",
     "Error resetting entrance exam attempts for student '{student_id}'. Make sure student identifier is correct.": "Fehler beim Zur\u00fccksetzen der Pr\u00fcfungsversuche der Teilnehmer '{student_id}'. Stellen Sie sicher, dass der Teilnehmercode korrekt ist.",
+    "Error resetting problem attempts for problem '<%- problem_id %>' and student '<%- student_id %>'. Make sure that the problem and student identifiers are complete and correct.": "Es ist ein Fehler beim Zur\u00fccksetzen von Problemversuchen f\u00fcr das Problem '<%- problem_id %>' und Teilnehmer <%- student_id %>' aufgetreten. Stellen Sie sicher, dass die Problem- und Teilnehmercodes vollst\u00e4ndig und korrekt sind.",
     "Error retrieving grading configuration.": "Es gab einen Fehler beim Erhalt der Benotungskonfiguration.",
     "Error sending email.": "Fehler beim Senden der E-Mail.",
     "Error starting a task to override score for problem '<%- problem_id %>' for student '<%- student_id %>'. Make sure that the the score and the problem and student identifiers are complete and correct.": "Fehler beim Starten einer Aufgabe, um die Punktzahl f\u00fcr das Problem '<%- problem_id %>' zu \u00fcberschreiben f\u00fcr den Teilnehmer '<%- student_id %>'. Vergewissern Sie sich, dass die Punktzahl sowie die Problem- und Teilnehmercodes vollst\u00e4ndig und korrekt sind.",
@@ -766,7 +791,6 @@
     "Explain if other.": "Erkl\u00e4ren Sie, wenn anders.",
     "Explanation": "Erkl\u00e4rung",
     "Explicitly Hiding from Students": "Gezielt vor Teilnehmern verstecken",
-    "Explore New Programs": "Nach neuen Programmen suchen",
     "Explore Programs": "Nach Programmen suchen",
     "Explore your course!": "Erkunde ihr Kurs!",
     "Failed Proctoring": "Nicht bestanden unter Beaufsichtigung",
@@ -829,6 +853,7 @@
     "Get started": "Erste Schritte",
     "Go Back": "Gehe zur\u00fcck",
     "Go to Dashboard": "Zu \"Meine Kurse\"",
+    "Go to dashboard": "Gehe zur 'Meine Kurse' \u00dcbersicht",
     "Go to my Dashboard": "Zu \"Meine Kurse\"",
     "Go to your Dashboard": "Zu \"Meine Kurse\"",
     "Go to {platform} Home": "Gehe zur Startseite der {platform} ",
@@ -1112,6 +1137,7 @@
     "Name of the signatory": "Name des Unterzeichners",
     "Name or short description of the configuration": "Name oder Kurzbeschreibung des Aufbaus",
     "Navigate up": "Aufw\u00e4rts navigieren",
+    "Need help logging in?": "Brauchen Sie Hilfe beim einloggen?",
     "Need help signing in?": "Brauchen Sie Hilfe bei der Anmeldung?",
     "Need other help signing in?": "Brauchen Sie weitere Hilfe bei der Anmeldung?",
     "Needs verified certificate ": "Ben\u00f6tigt ein verifiziertes Zertifikat",
@@ -1213,6 +1239,7 @@
     "Organization ": "Organsation",
     "Organization Name": "Name der Organisation",
     "Organization of the signatory": "Organisation des Unterzeichners",
+    "Organization:": "Organisation:",
     "Other": "Anderer Abschluss",
     "Other sign-in issues": "Andere Probleme beim Anmelden",
     "Overall Score": "Gesamtpunkte",
@@ -1259,6 +1286,7 @@
     "Please add the instructor's title": "Bitte f\u00fcgen Sie den Titel des Dozenten hinzu",
     "Please address the errors on this page first, and then save your progress.": "Bitte beachten Sie zuerst die Fehlermeldungen auf dieser Seite und speichern Sie danach ihren Fortschritt.",
     "Please check the following validation feedbacks and reflect them in your course settings:": "Bitte pr\u00fcfe die folgenden Validierungsr\u00fcckmeldungen und beachte sie in deinen Kurseinstellungen:",
+    "Please correct the outlined fields.": "Bitte korrigiere die umrandeten Felder.",
     "Please describe this image or agree that it has no contextual value by checking the checkbox.": "Bitte beschreiben Sie dieses Bild oder stimmen Sie zu, dass es keinen kontextuellen Wert hat, indem Sie das Kontrollk\u00e4stchen klicken.",
     "Please do not use any spaces in this field.": "Bitte keine Leerzeichen in diesem Eingabefeld benutzen.",
     "Please do not use any spaces or special characters in this field.": "Bitte benutzen Sie keine Leer- oder Sonderzeichen in diesem Eingabefeld.",
@@ -1347,6 +1375,7 @@
     "Questions raise issues that need answers. Discussions share ideas and start conversations. (Required)": "Fragen ben\u00f6tigen Antworten. Diskussionen l\u00f6sen eine Konversation aus. (Erforderlich)",
     "Queued": "Eingereiht",
     "REMAINING COURSES": "VERBLEIBENDE KURSE",
+    "Re-run Course": "Neue Kurslaufzeit",
     "Read More": "Weiterlesen",
     "Read more": "Mehr erfahren",
     "Ready To Start": "Bereit um zu starten",
@@ -1455,6 +1484,7 @@
     "Select": "Ausw\u00e4hlen",
     "Select Session": "Sitzung ausw\u00e4hlen",
     "Select a Content Group": "W\u00e4hle eine Inhaltsgruppe",
+    "Select a category": "W\u00e4hlen Sie eine Kategorie",
     "Select a chapter": "W\u00e4hle ein Kapitel.",
     "Select a cohort": "W\u00e4hlen Sie einen Kohort",
     "Select a cohort to manage": "Zu verwaltenden Kohort w\u00e4hlen",
@@ -1466,7 +1496,6 @@
     "Select a subject for your support request.": "W\u00e4hlen Sie ein Betreff f\u00fcr Ihre Supportanfrage.",
     "Select a time allotment for the exam. If it is over 24 hours, type in the amount of time. You can grant individual learners extra time to complete the exam through the Instructor Dashboard.": "W\u00e4hlen Sie eine Zeitzuteilung f\u00fcr die Pr\u00fcfung aus. Wenn es mehr als 24 Stunden sind, geben Sie die Zeitspanne ein. Sie k\u00f6nnen einzelnen Lernenden \u00fcber das Lehrer-Dashboard zus\u00e4tzliche Zeit geben, um die Pr\u00fcfung abzuschlie\u00dfen.",
     "Select all": "Alles ausw\u00e4hlen",
-    "Select employment status": "W\u00e4hlen Sie Ihren Besch\u00e4ftigungsstatus",
     "Select fidelity": "Treue ausw\u00e4hlen",
     "Select language": "W\u00e4hlen Sie eine Sprache",
     "Select one or more groups:": "W\u00e4hlen Sie eine oder mehrere Gruppen aus:",
@@ -1514,7 +1543,7 @@
     "Show invisible characters": "Zeige unsichtbare Zeichen",
     "Show me other ways to sign in or register": "Andere M\u00f6glichkeiten f\u00fcr die Anmeldung oder Registrierung",
     "Show notes": "Notizen anzeigen",
-    "Show posts by {username}.": "Zeige Beitr\u00e4ge von {username}.",
+    "Show posts by {username}.": "Beitr\u00e4ge von {username} anzeigen.",
     "Show transcripts ({totalTranscripts})": "Transkripte anzeigen ({totalTranscripts})",
     "Show transcripts ({transcriptCount})": "Transkript anzeigen ({transcriptCount})",
     "Showing all responses": "Zeige alle Antworten an",
@@ -1589,9 +1618,11 @@
     "Status of Your Response": "Status Ihrer Antwort",
     "Strikethrough": "Durchgestrichen",
     "Student": "Teilnehmer",
+    "Student Removed from certificate allowlist successfully.": "Student wurde erfolgreich von der Zulassungsliste f\u00fcr Zertifikate entfernt.",
     "Student email or username": "Teilnehmer E-Mail oder Benutzername",
     "Student username/email field is required and can not be empty. Kindly fill in username/email and then press \"Add to Exception List\" button.": "Teilnehmer Benutzername/E-Mail Adresse ist erforderlich und kann nicht unausgef\u00fcllt bleiben. Bitte geben Sie den Benutzername/E-Mail Adresse an und klicken Sie auf den Button.",
     "Student username/email field is required and can not be empty. Kindly fill in username/email and then press \"Invalidate Certificate\" button.": "Teilnehmer Benutzername/E-Mail Adresse ist erforderlich und kann nicht unausgef\u00fcllt bleiben. Bitte geben Sie den Benutzername/E-Mail Adresse an und klicken Sie auf den Button.",
+    "Studio's having trouble parsing the problem component's content": "Studio hat Probleme beim Analysieren des Inhalts der problematischen Komponente",
     "Studio's having trouble saving your work": "Studio hat Probleme beim Speichern Ihrer Arbeit",
     "Studio:": "Studio:",
     "Style": "Stil",
@@ -1677,7 +1708,9 @@
     "The URL you entered seems to be an external link. Do you want to add the required http:// prefix?": "Die URL, die du eingegeben hast scheint ein externer Link zu sein. M\u00f6chtest du das ben\u00f6tigte Prefix http:// hinzuf\u00fcgen?",
     "The assignment type must have a name.": "Der Aufgabentyp muss einen Namen haben.",
     "The certificate available date must be later than the course end date.": "Das Austellungsdatum des Zertifikates muss sp\u00e4ter gesetzt werden als das Enddatum des Kurses.",
+    "The certificate display behavior must be one of: {behavior_options}": "Das Anzeigeverhalten des Zertifikats muss eines der folgenden sein: {behavior_options}",
     "The certificate for this learner has been re-validated and the system is re-running the grade for this learner.": "Das Zertifikat f\u00fcr diesen Lerner wurde erneut validiert und das System f\u00fchrt die Note f\u00fcr diesen Lerner erneut durch.",
+    "The certificates display behavior must be {valid_option} if certificate available date is set.": "Das Anzeigeverhalten der Zertifikate muss {valid_option} sein, wenn das Verf\u00fcgbarkeitsdatum des Zertifikats festgelegt ist.",
     "The cohort cannot be added": "Der Kohort kann nicht hinzugef\u00fcgt werden",
     "The cohort cannot be saved": "Dieser Kohort kann nicht gespeichert werden",
     "The combined length of the organization and library code fields cannot be more than <%- limit %> characters.": "Die Gesamtl\u00e4nge der Organisations- und Bibliothekscodefelder darf nicht mehr als <%- limit %> Zeichen enthalten.",
@@ -1719,6 +1752,7 @@
     "The post you selected has been deleted.": "Der Beitrag, den Sie ausgew\u00e4hlt haben, wurde bereits gel\u00f6scht.",
     "The published branch version, {published}, was reset to the draft branch version, {draft}.": "Die ver\u00f6ffentlichte Branch-Version, {published}, wurde auf den Entwurf der Branch-Version, {draft}, zur\u00fcckgesetzt.",
     "The raw error message is:": "Die urspr\u00fcngliche Fehlermeldung ist:",
+    "The refund deadline for this course has passed, so you will not receive a refund.": "Die R\u00fcckgabefrist f\u00fcr diesen Kurs ist abgelaufen, so dass Sie keine R\u00fcckerstattung erhalten.",
     "The selected content group does not exist": "Die ausgew\u00e4hlte Inhaltsgruppe existiert nicht",
     "The selected image must be larger than {minFileSizeInKB}.": "Das ausgew\u00e4hlte Bild muss gr\u00f6\u00dfer als {minFileSizeInKB} sein.",
     "The selected image must be smaller than {maxFileSizeInMB}.": "Das ausgew\u00e4hlte Bild muss kleiner als {maxFileSizeInMB} sein.",
@@ -1796,8 +1830,8 @@
     "This includes access to {siteName} from your employer\u2019s or university\u2019s system{additionalSiteSpecificDeletionText}.": "Dazu geh\u00f6rt auch der Zugriff auf {siteName} aus dem System Ihres Arbeitgebers oder Ihrer Universit\u00e4t{additionalSiteSpecificDeletionText}.",
     "This is the Description of the Group Configuration": "Dies ist die Beschreibung des Gruppenaufbaus",
     "This is the Name of the Group Configuration": "Dies ist der Name des Gruppenaufbaus",
-    "This is the list of available %s. You may choose some by selecting them in the box below and then clicking the \"Choose\" arrow between the two boxes.": "Dies ist die Liste der verf\u00fcgbaren %s. Einfach im unten stehenden Feld markieren und mithilfe des \"Ausw\u00e4hlen\"-Pfeils ausw\u00e4hlen.",
-    "This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the \"Remove\" arrow between the two boxes.": "Dies ist die Liste der ausgew\u00e4hlten %s. Einfach im unten stehenden Feld markieren und mithilfe des \"Entfernen\"-Pfeils wieder entfernen.",
+    "This is the list of available %s. You may choose some by selecting them in the box below and then clicking the \"Choose\" arrow between the two boxes.": "Dies ist die Liste der verf\u00fcgbaren %s. Einfach im unten stehenden Feld markieren und mithilfe des \u201eAusw\u00e4hlen\u201c-Pfeils ausw\u00e4hlen.",
+    "This is the list of chosen %s. You may remove some by selecting them in the box below and then clicking the \"Remove\" arrow between the two boxes.": "Dies ist die Liste der ausgew\u00e4hlten %s. Einfach im unten stehenden Feld markieren und mithilfe des \u201eEntfernen\u201c-Pfeils wieder entfernen.",
     "This is the name of the group": "Dies ist der Name der Gruppe",
     "This learner is currently sharing a limited profile.": "Dieser Teilnehmer teilt momentan ein eingeschr\u00e4nktes Profil.",
     "This learner will be removed from the team,allowing another learner to take the available spot.": "Dieser Lernende wird aus dem Team entfernt, so dass ein anderer Lernender den verf\u00fcgbaren Platz einnehmen kann. ",
@@ -1816,6 +1850,7 @@
     "This post will be visible only to %(group_name)s.": "Dieser Beitrag wird nur f\u00fcr  %(group_name)s sichtbar sein.",
     "This post will be visible to everyone.": "Dieser Beitrag wird f\u00fcr alle sichtbar sein.",
     "This problem could not be saved.": "Dieses Problem konnte nicht gespeichert werden.",
+    "This problem has already been released. Any changes will apply only to future assessments.": "Diese Fragestellung wurde bereits ver\u00f6ffentlicht. Jegliche \u00c4nderung betrifft nur zuk\u00fcnftige Bewertungen.",
     "This problem has been reset.": "Die Aufgabenstellung wurde zur\u00fcckgesetzt.",
     "This response could not be marked as an answer. Refresh the page and try again.": "Diese Antwort konnte nicht zugelassen werden. Laden Sie bitte die Seite erneut und versuchen Sie es noch einmal.",
     "This response could not be marked as endorsed. Refresh the page and try again.": "Diese Antwort konnte nicht als bef\u00fcrwortet gekennzeichnet werden. Aktualisieren Sie die Seite und versuchen Sie es erneut.",
@@ -1854,6 +1889,7 @@
     "Title of the signatory": "Titel des Unterzeichners",
     "Titles more than 100 characters may prevent students from printing their certificate on a single page.": "Titel mit mehr als 100 Zeichen k\u00f6nnen dazu f\u00fchren, dass Zertifikate sp\u00e4ter nicht auf eine DINA4 Seite passen.",
     "To access the course, select a session.": "Um auf den Kurs zuzugreifen, w\u00e4hlen Sie eine Sitzung aus.",
+    "To access the courses available to you through {enterpriseName}, visit the {enterpriseName} dashboard.": "Um auf die Kurse zuzugreifen, die Ihnen \u00fcber {enterpriseName} zur Verf\u00fcgung stehen, besuchen Sie das {enterpriseName}-Dashboard.",
     "To be sure all students can access the video, we recommend providing both an .mp4 and a .webm version of your video. Click below to add a URL for another version. These URLs cannot be YouTube URLs. The first listed video that's compatible with the student's computer will play.": "Um sicherzustellen, dass alle Teilnehmer auf das Video zugreifen k\u00f6nnen, empfehlen wir Ihnen, sowohl eine .mp4- als auch eine .webm Version Ihres Videos bereitzustellen. Klicken Sie unten, um eine URL f\u00fcr eine andere Version hinzuzuf\u00fcgen. Diese URLs k\u00f6nnen keine YouTube-URLs sein. Das erste aufgelistete Video, das mit dem Computer des Teilnehmers kompatibel ist, wird abgespielt.",
     "To continue learning with this account, sign in below.": "Um mit diesem Konto weiter zu lernen, melden Sie sich unten an.",
     "To invalidate a certificate for a particular learner, add the username or email address below.": "F\u00fcgen Sie \u00fcber die untenstehenden Eingabefelder den Benutzername oder die E-Mail Adresse des Teilnehmers hinzu, f\u00fcr welchen Sie die Zertifikate ung\u00fcltig machen m\u00f6chten.",
@@ -2031,7 +2067,7 @@
     "View Cohort": "Kohort ansehen",
     "View Course": "Anzeigen",
     "View Current Team Memberships": "Aktuelle Team-Mitgliedschaft sehen ",
-    "View Live": "Seite ansehen",
+    "View Live": "Live betrachten",
     "View Program Record": "Programmprotokoll einsehen",
     "View Report": "Sehen Sie den Bericht hier",
     "View Teams in the {topic_name} Topic": "Teams im {topic_name}  ansehen.",
@@ -2076,15 +2112,12 @@
     "Weight of Total Grade": "Gewichtung der Gesamtnote",
     "We\u2019re sorry to see you go!": "Es tut uns leid, dass Sie Ihren Account l\u00f6schen m\u00f6chten!",
     "What You Need for Verification": "Was du zur Verifizierung ben\u00f6tigst",
+    "What can we help you with, {username}?": "Wie k\u00f6nnen wir Ihnen helfen, {username}?",
     "What does %(platformName)s do with this photo?": "Was macht %(platformName)s mit dieses Foto?",
     "What does this mean?": "Was soll dies bedeuten?",
     "What if I can't see the camera image, or if I can't see my photo do determine which side is visible?": "Was, wenn ich mein Kamerabild  oder mein Foto nicht sehen kann?",
     "What if I have difficulty holding my ID in position relative to the camera?": "Was, wenn ich Schwierigkeiten habe, meinen Ausweis in der richtigen Position zur Kamera zu halten?",
     "What if I have difficulty holding my head in position relative to the camera?": "Was, wenn ich Schwierigkeiten habe, meinen Kopf in der richtigen Position zur Kamera zu halten?",
-    "What industry do you currently work in?": "In welcher Branche arbeiten Sie derzeit?",
-    "What industry do you want to work in?": "In welcher Branchen wollen Sie arbeiten?",
-    "What is the highest level of education that any of your parents or guardians have achieved?": "Welches ist der h\u00f6chste Bildungsabschluss, den ein Elternteil oder Erziehungsberechtigter von Ihnen erreicht hat?",
-    "What is the highest level of education that you have achieved so far?": "Was ist der h\u00f6chste Bildungsabschluss, den Sie erreicht haben?",
     "What was the total combined income, during the last 12 months, of all members of your family? ": "Wie hoch war das gemeinsame Gesamteinkommen aller Mitglieder Ihrer Familie in den letzten 12 Monaten? ",
     "What's Your Next Accomplishment?": "Was ist Ihr n\u00e4chster Erfolg?",
     "When learners submit an answer to an assessment, they immediately see whether the answer is correct or incorrect, and the score received.": "Nutzer sehen sofort nach einreichen ihrer Antworten, ob diese richtig oder falsch sind und welche Punkte sie erhalten.",
@@ -2136,18 +2169,20 @@
     "You did not submit the required files: {requiredFiles}.": "Sie haben folgende ben\u00f6tigte Dateien nicht eingereicht: {requiredFiles}.",
     "You don't seem to have Flash installed. Get Flash to continue your verification.": "Sie scheinen kein Flash installiert zu haben. Holen Sie sich Flash, um Ihre Verifizierung fortzusetzen.",
     "You don't seem to have a webcam connected.": "Es scheint, als w\u00e4re Ihre Webcam nicht angeschlossen.",
+    "You have added a criterion. You will need to select an option for the criterion in the Learner Training step. To do this, click the Settings tab.": "Sie haben ein Kriterium hinzugef\u00fcgt. Sie m\u00fcssen eine Einstellung f\u00fcr dieses Kriterium im Teilnehmertrainingsschritt ausw\u00e4hlen. Klicken Sie hierzu auf den 'Einstellungen'-Tab.",
     "You have already verified your ID!": "Du hast deine ID bereits verifiziert!",
+    "You have been logged out of your account. Click Okay to log in again now. Click Cancel to stay on this page (you must log in again to save your work).": "Sie wurden von Ihrem Konto abgemeldet. Klicken Sie auf Okay, um sich jetzt erneut anzumelden. Klicken Sie auf Abbrechen, um auf dieser Seite zu bleiben (Sie m\u00fcssen sich erneut anmelden, um Ihre Arbeit zu speichern).",
     "You have deleted a criterion. The criterion has been removed from the example responses in the Learner Training step.": "Sie haben ein Kriterium gel\u00f6scht. Das Kriterium wurde aus den Beispielantworten im Teilnehmer\u00fcbungsschritt entfernt.",
     "You have deleted all the options for this criterion. The criterion has been removed from the sample responses in the Learner Training step.": "Sie haben alle Optionen f\u00fcr dieses Kriterium gel\u00f6scht. Das Kriterium wurde aus den Beispielantworten im Teilnehmer\u00fcbungsschritt entfernt.",
     "You have deleted an option. That option has been removed from its criterion in the sample responses in the Learner Training step. You might have to select a new option for the criterion.": "Sie haben eine Option gel\u00f6scht. Diese Option wurde als Kriterium aus den Beispielantworten im Teilnehmer\u00fcbungsschritt entfernt. Sie m\u00fcssen wahrscheinlich eine neue Option f\u00fcr dieses Kriterium festlegen.",
     "You have done a dry run of force publishing the course. Nothing has changed. Had you run it, the following course versions would have been change.": "Sie haben einen Probelauf gemacht und den Kurs ver\u00f6ffentlicht. Es hat sich nichts ge\u00e4ndert. H\u00e4tten Sie ihn ausgef\u00fchrt, w\u00e4ren die folgenden Kursversionen ge\u00e4ndert worden.",
     "You have no handouts defined": "Sie haben keine Informationsmaterialien definiert.",
     "You have not bookmarked any courseware pages yet": "Du hast noch keine Lesezeichen hinzugef\u00fcgt",
-    "You have not created any certificates yet.": "Du hast bislang keine Zertifikate erhalten.",
+    "You have not created any certificates yet.": "Sie haben bislang keine Zertifikate erhalten.",
     "You have not created any content groups yet.": "Sie haben noch keine Inhaltsgruppen definiert.",
     "You have not created any group configurations yet.": "Sie haben noch keine Gruppenkonfigurationen erstellt.",
-    "You have selected an action, and you haven't made any changes on individual fields. You're probably looking for the Go button rather than the Save button.": "Sie haben eine Aktion ausgew\u00e4hlt, aber keine \u00c4nderungen an bearbeitbaren Feldern vorgenommen. Sie wollten wahrscheinlich auf \"Ausf\u00fchren\" und nicht auf \"Speichern\" klicken.",
-    "You have selected an action, but you haven't saved your changes to individual fields yet. Please click OK to save. You'll need to re-run the action.": "Sie haben eine Aktion ausgew\u00e4hlt, aber ihre vorgenommenen \u00c4nderungen nicht gespeichert. Klicken Sie OK, um dennoch zu speichern. Danach m\u00fcssen Sie die Aktion erneut ausf\u00fchren.",
+    "You have selected an action, and you haven\u2019t made any changes on individual fields. You\u2019re probably looking for the Go button rather than the Save button.": "Sie haben eine Aktion ausgew\u00e4hlt, aber keine \u00c4nderungen an bearbeitbaren Feldern vorgenommen. Sie wollten wahrscheinlich auf \u201eAusf\u00fchren\u201c und nicht auf \u201eSpeichern\u201c klicken.",
+    "You have selected an action, but you haven\u2019t saved your changes to individual fields yet. Please click OK to save. You\u2019ll need to re-run the action.": "Sie haben eine Aktion ausgew\u00e4hlt, aber Ihre vorgenommenen \u00c4nderungen nicht gespeichert. Klicken Sie OK, um dennoch zu speichern. Danach m\u00fcssen Sie die Aktion erneut ausf\u00fchren.",
     "You have selected \u201cDelete my account.\u201d Deletion of your account and personal data is permanent and cannot be undone. {platformName} will not be able to recover your account or the data that is deleted.": "Du hast \u201cDelete my account.\u201d gew\u00e4hlt. Die L\u00f6schung Ihres Kontos und Ihrer personenbezogenen Daten ist dauerhaft und kann nicht r\u00fcckg\u00e4ngig gemacht werden. {platformName} kann Ihr Konto oder die gel\u00f6schten Daten nicht wiederherstellen.",
     "You have set your language to {beta_language}, which is currently not fully translated. You can help us translate this language fully by joining the Transifex community and adding translations from English for learners that speak {beta_language}.": "Sie haben Ihre Sprache auf {beta_language} eingestellt, die derzeit noch nicht vollst\u00e4ndig \u00fcbersetzt ist. Sie k\u00f6nnen uns helfen, diese Sprache vollst\u00e4ndig zu \u00fcbersetzen, indem Sie der Transifex-Community beitreten und \u00dcbersetzungen aus dem Englischen f\u00fcr Lernende hinzuf\u00fcgen, die {beta_language} sprechen.",
     "You have successfully signed into %(currentProvider)s, but your %(currentProvider)s account does not have a linked %(platformName)s account. To link your accounts, sign in now using your %(platformName)s password.": "Sie haben sich erfolgreich bei %(currentProvider)s angemeldet. Allerdings, %(currentProvider)s Konto ist nicht mit %(platformName)s verbunden. Um ihre Konten zu verbinden, geben Sie %(platformName)s Passwort ein.",
@@ -2323,6 +2358,7 @@
     "team count": "Anzahl an Teams",
     "text_word_{uniqueId}": "text_word_{uniqueId}",
     "text_word_{uniqueId} title_word_{uniqueId}": "text_word_{uniqueId} title_word_{uniqueId}",
+    "the more quickly and helpfully we can respond!": "desto schneller und gezielter k\u00f6nnen wir Ihnen antworten!",
     "there is currently {numVotes} vote": [
       "aktuell gibt es {numVotes} Stimme",
       "aktuell gibt es {numVotes} Stimmen"
@@ -2440,24 +2476,24 @@
     "{unread_comments_count} new": "{unread_comments_count} neu",
     "\u2026": "..."
   };
-  for (var key in newcatalog) {
+  for (const key in newcatalog) {
     django.catalog[key] = newcatalog[key];
   }
   
 
   if (!django.jsi18n_initialized) {
     django.gettext = function(msgid) {
-      var value = django.catalog[msgid];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[msgid];
+      if (typeof value === 'undefined') {
         return msgid;
       } else {
-        return (typeof(value) == 'string') ? value : value[0];
+        return (typeof value === 'string') ? value : value[0];
       }
     };
 
     django.ngettext = function(singular, plural, count) {
-      var value = django.catalog[singular];
-      if (typeof(value) == 'undefined') {
+      const value = django.catalog[singular];
+      if (typeof value === 'undefined') {
         return (count == 1) ? singular : plural;
       } else {
         return value.constructor === Array ? value[django.pluralidx(count)] : value;
@@ -2467,16 +2503,16 @@
     django.gettext_noop = function(msgid) { return msgid; };
 
     django.pgettext = function(context, msgid) {
-      var value = django.gettext(context + '\x04' + msgid);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.gettext(context + '\x04' + msgid);
+      if (value.includes('\x04')) {
         value = msgid;
       }
       return value;
     };
 
     django.npgettext = function(context, singular, plural, count) {
-      var value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
-      if (value.indexOf('\x04') != -1) {
+      let value = django.ngettext(context + '\x04' + singular, context + '\x04' + plural, count);
+      if (value.includes('\x04')) {
         value = django.ngettext(singular, plural, count);
       }
       return value;
@@ -2499,7 +2535,6 @@
       "%d.%m.%Y %H:%M:%S",
       "%d.%m.%Y %H:%M:%S.%f",
       "%d.%m.%Y %H:%M",
-      "%d.%m.%Y",
       "%Y-%m-%d %H:%M:%S",
       "%Y-%m-%d %H:%M:%S.%f",
       "%Y-%m-%d %H:%M",
@@ -2528,8 +2563,8 @@
   };
 
     django.get_format = function(format_type) {
-      var value = django.formats[format_type];
-      if (typeof(value) == 'undefined') {
+      const value = django.formats[format_type];
+      if (typeof value === 'undefined') {
         return format_type;
       } else {
         return value;
@@ -2548,6 +2583,5 @@
 
     django.jsi18n_initialized = true;
   }
-
-}(this));
+};
 
