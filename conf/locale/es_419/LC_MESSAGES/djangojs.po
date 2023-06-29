@@ -46,6 +46,7 @@
 # Natalia Berdnikov <nberdnikov@edx.org>, 2023
 # Natalia, 2013
 # Natalia, 2013-2014,2016,2018
+# Nawfal Ahmed, 2023
 # Ned Batchelder <ned@edx.org>, 2017
 # Ned Weitzman <nweitzman@edx.org>, 2017-2018
 # Nuri Plans Toral <nplans@gmail.com>, 2015
@@ -183,7 +184,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-06-21 09:53+0000\n"
+"POT-Creation-Date: 2023-06-29 05:41+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Jesica Greco, 2023\n"
 "Language-Team: Spanish (Latin America) (http://app.transifex.com/open-edx/edx-platform/language/es_419/)\n"
@@ -285,6 +286,22 @@ msgstr ""
 #: lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
+msgid "Learn More >"
+msgstr ""
+
+#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
+msgid "Search Course by Name"
+msgstr ""
+
+#: lms/static/js/courses.js
+msgid "Show All Courses"
+msgstr ""
+
+#: lms/static/js/courses.js
+msgid "What to study next?"
 msgstr ""
 
 #: cms/static/cms/js/main.js cms/static/js/views/active_video_upload_list.js
@@ -3689,14 +3706,6 @@ msgstr ""
 msgid "There has been an error processing your survey."
 msgstr "Ocurrió un error al procesar tu encuesta."
 
-#: lms/static/js/courses.js
-msgid "What to study next?"
-msgstr ""
-
-#: lms/static/js/courses.js
-msgid "Show All Courses"
-msgstr ""
-
 #: lms/static/js/courseware/credit_progress.js
 #: common/static/common/templates/discussion/templates.underscore
 #: lms/templates/discovery/facet.underscore
@@ -6317,10 +6326,6 @@ msgstr "Reabrir Curso"
 #: cms/templates/js/show-textbook.underscore
 msgid "View Live"
 msgstr "Ver en vivo"
-
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Search Course by Name"
-msgstr ""
 
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
@@ -10144,10 +10149,6 @@ msgstr ""
 "como){link_end} y luego {upload_link_start} carguela {link_end} a su bolsa "
 "en Mozilla Backpack."
 
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
-msgid "Learn More >"
-msgstr ""
-
 #: cms/templates/js/access-editor.underscore
 msgid "Limit Access"
 msgstr "Restrinja permisos"
@@ -11841,16 +11842,16 @@ msgstr "Usar la transcripción actual"
 #~ msgstr "Selecciona estatus militar"
 
 #~ msgid "Select level of education"
-#~ msgstr "Seleccione el nivel de educación"
+#~ msgstr "Seleccionar nivel de estudios"
 
 #~ msgid "Select guardian education"
-#~ msgstr "Seleccionar educación de tutores"
+#~ msgstr "Seleccionar estudios del tutor"
 
 #~ msgid "Select current industry"
-#~ msgstr "Seleccione la industria actual"
+#~ msgstr "Seleccionar sector actual"
 
 #~ msgid "Select prospective industry"
-#~ msgstr "Seleccione la industria potencial"
+#~ msgstr "Seleccionar sector de actividad"
 
 #~ msgid "Thank you! You’re helping make edX better for everyone."
 #~ msgstr ""
@@ -11889,19 +11890,22 @@ msgstr "Usar la transcripción actual"
 #~ " plataformas de aprendizaje en línea gratuitas más completas del mundo."
 
 #~ msgid "${price}/month {currency}"
-#~ msgstr "${price}/mes {currency}"
+#~ msgstr "${price} {currency} al mes"
 
 #~ msgid "View program"
-#~ msgstr "ver programa"
+#~ msgstr "Ver programa"
+
+#~ msgid "Enroll in a {programName}'s course"
+#~ msgstr "Inscríbete en un curso de {programName}"
 
 #~ msgid ""
 #~ "You have an active subscription to the {programName} program but are not "
 #~ "enrolled in any courses. Enroll in a remaining course and enjoy verified "
 #~ "access."
 #~ msgstr ""
-#~ "Tiene una suscripción activa al programa {programName} pero no está inscrito"
-#~ " en ningún curso. Inscríbete en un curso restante y disfruta de un acceso "
-#~ "verificado."
+#~ "Tienes una suscripción activa al programa {programName}, pero no estás "
+#~ "inscrito en ningún curso. Inscríbete en alguno de los cursos existentes y "
+#~ "disfruta de acceso verificado."
 
 #~ msgid ""
 #~ "According to our records, you are not enrolled in any courses included in "
@@ -11912,11 +11916,23 @@ msgstr "Usar la transcripción actual"
 #~ "suscripción al programa {programName}. Inscríbete en un curso por medio de "
 #~ "la página {i_start}Detalles del programa{i_end}."
 
+#~ msgid "Subscription trial expires in less than 24 hours"
+#~ msgstr "El periodo de prueba de la suscripción caduca en menos de 24 horas"
+
 #~ msgid "Subscription trial expires in {remainingDays} day"
 #~ msgid_plural "Subscription trial expires in {remainingDays} days"
 #~ msgstr[0] "La prueba de suscripción vence en {remainingDays} día"
 #~ msgstr[1] "La prueba de suscripción vence en {remainingDays} días"
-#~ msgstr[2] "La prueba de suscripción vence en {remainingDays} días"
+#~ msgstr[2] ""
+#~ "El periodo de prueba de la suscripción caduca dentro de {remainingDays} días"
+
+#~ msgid ""
+#~ "Your {programName} trial will expire at {trialEndTime} on {trialEndDate} and"
+#~ " the card on file will be charged {subscriptionPrice}."
+#~ msgstr ""
+#~ "La prueba de {programName} caducará el {trialEndDate} a las {trialEndTime}, "
+#~ "tras lo cual haremos un cargo de {subscriptionPrice} en la tarjeta "
+#~ "registrada."
 
 #~ msgid ""
 #~ "Your {programName} trial will expire in {remainingDays} day at "
@@ -11935,9 +11951,9 @@ msgstr "Usar la transcripción actual"
 #~ "{trialEndTime} el {trialEndDate} y se cargará a la tarjeta registrada "
 #~ "{subscriptionPrice}."
 #~ msgstr[2] ""
-#~ "Su prueba de {programName} caducará en {remainingDays} días a las "
-#~ "{trialEndTime} el {trialEndDate} y se cargará a la tarjeta registrada "
-#~ "{subscriptionPrice}."
+#~ "La prueba de {programName} caducará dentro de {remainingDays} días, a las "
+#~ "{trialEndTime} del {trialEndDate}, tras lo cual haremos un cargo en tarjeta "
+#~ "de {subscriptionPrice}."
 
 #~ msgid "Before proceeding, please {htmlStart}{emailMsg}{htmlEnd}."
 #~ msgstr " Antes de proceder, por favor {htmlStart}{emailMsg}{htmlEnd}."
@@ -12035,7 +12051,7 @@ msgstr "Usar la transcripción actual"
 #~ msgstr "Selección de grupo de excepciones de certificado"
 
 #~ msgid "Explore new programs"
-#~ msgstr "Explora nuevos programas"
+#~ msgstr "Explorar nuevos programas"
 
 #~ msgid "Subscribed"
 #~ msgstr "Suscrito"
@@ -12044,7 +12060,7 @@ msgstr "Usar la transcripción actual"
 #~ msgstr "Suscripción de prueba"
 
 #~ msgid "Active subscription"
-#~ msgstr "suscripción activa"
+#~ msgstr "Suscripción activa"
 
 #~ msgid "Inactive subscription"
 #~ msgstr "Suscripción inactiva"
@@ -12060,51 +12076,93 @@ msgstr "Usar la transcripción actual"
 #~ "Restart your subscription for {subscriptionPrice}. Your payment history is "
 #~ "still available on the {a_start}Orders and subscriptions{a_end} page"
 #~ msgstr ""
-#~ "Reinicie su suscripción por {subscriptionPrice}. Su historial de pagos aún "
-#~ "está disponible en la página {a_start}Pedidos y suscripciones{a_end}"
+#~ "Reinicia tu suscripción por {subscriptionPrice}. Tu historial de pagos "
+#~ "seguirá disponible en la página {a_start}Pedidos y suscripciones{a_end}"
 
 #~ msgid ""
 #~ "If you had a subscription previously, your payment history is still "
 #~ "available on the {a_start}Orders and subscriptions{a_end} page"
 #~ msgstr ""
-#~ "Si tenía una suscripción anteriormente, su historial de pago todavía está "
-#~ "disponible en la página {a_start}Pedidos y suscripciones{a_end}"
+#~ "Si ya tenías contratada una suscripción, tu historial de pagos sigue "
+#~ "disponible en la página de {a_start}Pedidos y suscripciones{a_end}"
 
 #~ msgid ""
 #~ "Need help? Check out the {a_start}Learner Help "
 #~ "Center{span_start}{icon}{span_end}{a_end} to troubleshoot issues or contact "
 #~ "support"
 #~ msgstr ""
-#~ "¿Necesitas ayuda? Consulte el {a_start}Centro de ayuda para "
-#~ "estudiantes{span_start}{icon}{span_end}{a_end} para solucionar problemas o "
-#~ "ponerse en contacto con el servicio de asistencia."
+#~ "¿Necesitas ayuda? Pásate por el {a_start}Centro de ayuda para "
+#~ "estudiantes{span_start}{icon}{span_end}{a_end} para encontrar soluciones a "
+#~ "problemas o ponte en contacto con el servicio de asistencia."
+
+#~ msgid ""
+#~ "You have successfully completed all the requirements for the %(title)s "
+#~ "%(type)s."
+#~ msgstr "Has cumplido todos los requisitos del %(type)s %(title)s con éxito."
+
+#~ msgid ""
+#~ "Track and plan your progress through the %(count)s course(s) in this "
+#~ "program. To complete the program, you must earn a verified certificate for "
+#~ "each course."
+#~ msgstr ""
+#~ "Supervisa y planifica tu progreso con los %(count)s cursos de este programa."
+#~ " Para completar el programa, debes obtener un certificado verificado para "
+#~ "cada curso."
 
 #~ msgid "Manage my subscription"
-#~ msgstr "Administrar mi suscripción"
+#~ msgstr "Gestionar mi suscripción"
 
 #~ msgid "Restart my subscription"
-#~ msgstr "reiniciar mi suscripción"
+#~ msgstr "Reiniciar mi suscripción"
 
 #~ msgid "Start {trialLength}-day free trial"
-#~ msgstr "Inicie la prueba gratuita de {trialLength} días"
+#~ msgstr "Iniciar prueba gratuita de {trialLength} días"
+
+#~ msgid "Trial ends {trialEndDate} at {trialEndTime}"
+#~ msgstr "El periodo de prueba finaliza el {trialEndDate} a las {trialEndTime}"
 
 #~ msgid "Your next billing date is {currentPeriodEnd}"
-#~ msgstr "Su próxima fecha de facturación es {currentPeriodEnd}"
+#~ msgstr "Tu próxima fecha de facturación es el {currentPeriodEnd}"
+
+#~ msgid "{subscriptionPrice} subscription. Cancel anytime."
+#~ msgstr ""
+#~ "Suscripción de {subscriptionPrice}. Puedes cancelarla en cualquier momento."
 
 #~ msgid "{subscriptionPrice} subscription after trial ends. Cancel anytime."
 #~ msgstr ""
 #~ "La suscripción tendrá un coste de {subscriptionPrice} una vez finalizada la "
 #~ "prueba. Puedes cancelarla en cualquier momento."
 
+#~ msgid "Transform your %(org)s %(type)s into a full master’s degree"
+#~ msgstr "Transforma tu %(type)s de %(org)s en un máster completo"
+
+#~ msgid ""
+#~ "Successful completion of %(org)s %(program)s credential can be applied "
+#~ "towards flexible, rigorous, and affordable masters degrees from the world’s "
+#~ "leading universities."
+#~ msgstr ""
+#~ "Si has completado con éxito los %(program)s de %(org)s, puedes presentar las"
+#~ " credenciales para acceder a másteres flexibles, rigurosos y asequibles de "
+#~ "las mejores universidades del mundo."
+
+#~ msgid ""
+#~ "Track and plan your progress through the %(count)s courses in this program. "
+#~ "To complete the program, you must earn a verified certificate for each "
+#~ "course."
+#~ msgstr ""
+#~ "Supervisa y planifica tu progreso con los %(count)s cursos de este programa."
+#~ " Para completar el programa, debes obtener un certificado verificado "
+#~ "correspondiente a cada curso."
+
 #~ msgid "My programs"
-#~ msgstr "mis programas"
+#~ msgstr "Mis programas"
 
 #~ msgid "New"
 #~ msgstr "Nuevo"
 
 #~ msgid "Monthly program subscriptions {emDash} more flexible, more affordable"
 #~ msgstr ""
-#~ "Suscripciones mensuales al programa {emDash} más flexibles, más asequibles"
+#~ "Suscripciones mensuales a programas {emDash} más flexibles y asequibles"
 
 #~ msgid ""
 #~ "Now available for many popular programs, affordable monthly subscription "
@@ -12112,24 +12170,25 @@ msgstr "Usar la transcripción actual"
 #~ "start at {minSubscriptionPrice}/month USD per program, after a 7-day full "
 #~ "access free trial. Cancel at any time."
 #~ msgstr ""
-#~ "Ahora disponible para muchos programas populares, el precio de suscripción "
-#~ "mensual asequible puede ayudarlo a administrar su presupuesto de manera más "
-#~ "efectiva. Las suscripciones comienzan en {minSubscriptionPrice}/mes USD por "
-#~ "programa, después de una prueba gratuita de acceso completo de 7 días. "
-#~ "Cancelar en cualquier momento."
+#~ "Los asequibles precios de suscripción mensual, que están disponibles desde "
+#~ "ya mismo para muchos programas populares, pueden ayudarte a gestionar tu "
+#~ "presupuesto de forma más eficaz. Las suscripciones parten de "
+#~ "{minSubscriptionPrice} USD al mes por programa una vez completada una prueba"
+#~ " gratuita de acceso completo de 7 días, y es posible cancelarlas en "
+#~ "cualquier momento."
 
 #~ msgid "Explore subscription options"
-#~ msgstr "Explora las opciones de suscripción"
+#~ msgstr "Explorar las opciones de suscripción"
 
 #~ msgid "Upgrade with a subscription"
-#~ msgstr "Actualizar con una suscripción"
+#~ msgstr "Mejorar con una suscripción"
 
 #~ msgid "Pay {subscriptionPrice} for all courses in this program"
 #~ msgstr "Paga {subscriptionPrice} por todos los cursos de este programa"
 
 #~ msgid "Pay {subscriptionPrice} after {trialLength}-day free trial"
 #~ msgstr ""
-#~ "Pague {subscriptionPrice} después de una prueba gratuita de {trialLength} "
+#~ "Paga {subscriptionPrice} cuando termine la prueba gratuita de {trialLength} "
 #~ "días"
 
 #~ msgid "Discussions enabled"
