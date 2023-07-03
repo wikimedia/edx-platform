@@ -113,7 +113,10 @@ jobs:
 
       - name: generate i18n files
         id: generate-i18n-files
-        run: paver i18n_fastgenerate
+        run: |
+          paver i18n_fastgenerate
+          msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-django.po -o conf/locale/en/LC_MESSAGES/wm-django.po
+          msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-djangojs.po -o conf/locale/en/LC_MESSAGES/wm-djangojs.po
         continue-on-error: true
       
       - name: Check errors
