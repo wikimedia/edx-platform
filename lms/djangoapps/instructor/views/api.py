@@ -2353,7 +2353,6 @@ def list_all_courses_report_downloads(request):
     return _list_all_courses_report_downloads(request=request)
 
 @cache_control(no_cache=True, no_store=True, must_revalidate=True)
-@require_course_permission(permissions.CAN_RESEARCH)
 def _list_all_courses_report_downloads(request):
     """
     List grade CSV files that are available for download for all courses.

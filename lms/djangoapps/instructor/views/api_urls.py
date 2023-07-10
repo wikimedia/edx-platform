@@ -21,7 +21,7 @@ v1_api_urls = [
 
 # [Wikimedia] Custom Apis
 wikimedia_api_urls = [
-    path('/list_all_courses_report_downloads', api.list_all_courses_report_downloads, name='list_all_courses_report_downloads'),
+    path('list_all_courses_report_downloads', api.list_all_courses_report_downloads, name='list_all_courses_report_downloads'),
 ]
 
 urlpatterns = [

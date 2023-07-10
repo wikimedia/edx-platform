@@ -15,7 +15,7 @@ urlpatterns = [
         include((api_urls.v1_api_urls, 'lms.djangoapps.instructor'), namespace='instructor_api_v1'),
     ),
     path(
-        'api/instructor/v1/',
+        'wikimedia/',
         include((api_urls.wikimedia_api_urls, 'lms.djangoapps.instructor'), namespace='instructor_api_v1'),
     ),
 ]

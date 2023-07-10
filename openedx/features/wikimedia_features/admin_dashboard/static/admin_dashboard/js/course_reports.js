@@ -27,7 +27,6 @@
             dataType: 'json',
             url: endpoint,
             success: function(data) {
-                debugger;
                 if (data.downloads.length > 0) {
                     $('.download-section, #report-downloads-list').show();
                     if ($('#report-downloads-list').find('a').length == 0){
@@ -111,14 +110,13 @@
     };
 
     setInterval(function() {
-        if(course_name != null)
+        if(endpoint != null)
         {
-            if(report_for_single_courses == true)
-            {
-                ReportDownloads();
-            }
-            else if(report_for_single_courses == false) {
+            if(report_for_single_courses == false) {
                 ReportDownloadsForMultipleCourses();
+            }
+            else{
+                ReportDownloads();
             }
         }
     }, 20000);
@@ -181,9 +179,9 @@
             $('.btn-primary').attr('disabled', true);
             $('.all-courses-report .action .btn-primary').attr('disabled', false);
             course_name = null;
-            endpoint = 'api/instructor/v1/list_all_courses_report_downloads/';
+            endpoint = '/wikimedia/list_all_courses_report_downloads';
             report_for_single_courses = null;
-            $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
+            $('#report-request-response,#report-request-response-error').empty().hide();
         }
     });
 
@@ -238,8 +236,7 @@
     })
     
     $(document).ready(function() {
-        // Your code here
-        endpoint = 'api/instructor/v1/list_all_courses_report_downloads/';
+        endpoint = '/wikimedia/list_all_courses_report_downloads';
         ReportDownloads();
     });
 

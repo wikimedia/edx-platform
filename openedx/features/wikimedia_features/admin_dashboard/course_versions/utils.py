@@ -187,12 +187,13 @@ def list_courses_enrollement_data():
     for course in courses:
         enrollments = CourseEnrollment.objects.filter(course_id=course.id, is_active=True).order_by('created')
         for enrollment in enrollments:
+            base_course_id = ''
             try:
                 course_traslation = CourseTranslation.objects.get(course_id=course.id)
                 base_course_id = str(course_traslation.base_course_id)
             except CourseTranslation.DoesNotExist:
-                base_course_id = ''
-            else:
+                pass
+            finally:
                 user = User.objects.get(id=enrollment.user_id)
                 username = user.get_username()
                 completion_date = get_last_exam_completion_date(course.id, username)
