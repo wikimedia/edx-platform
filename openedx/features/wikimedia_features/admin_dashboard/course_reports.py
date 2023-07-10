@@ -75,6 +75,7 @@ def section_data_download(course, access):
         'average_calculate_grades_csv_url': reverse('admin_dashboard:average_calculate_grades_csv', kwargs={'course_id': str(course_key)}),
         'progress_report_csv_url': reverse('admin_dashboard:progress_report_csv', kwargs={'course_id': str(course_key)}),
         'course_version_report_url': reverse('admin_dashboard:course_version_report', kwargs={'course_id': str(course_key)}),
+        'courses_enrollements_csv_url': reverse('admin_dashboard:courses_enrollement_report'),
     }
     if not access.get('data_researcher'):
         section_data['is_hidden'] = True

@@ -30,7 +30,7 @@ from edx_django_utils.monitoring import set_code_owner_attribute
 from openedx.features.wikimedia_features.admin_dashboard.tasks_base import BaseAdminReportTask
 from openedx.features.wikimedia_features.admin_dashboard.grades import MultipleCourseGradeReport,  CourseProgressReport
 from openedx.features.wikimedia_features.admin_dashboard.runner import run_main_task
-from openedx.features.wikimedia_features.admin_dashboard.course_versions.task_helper import upload_course_versions_csv
+from openedx.features.wikimedia_features.admin_dashboard.course_versions.task_helper import upload_course_versions_csv, upload_courses_enrollement_csv
 
 
 TASK_LOG = logging.getLogger('edx.celery.task')
@@ -83,4 +83,20 @@ def task_course_version_report(entry_id, xmodule_instance_args, user_id):
     )
 
     task_fn = partial(upload_course_versions_csv, xmodule_instance_args)
+    return run_main_task(entry_id, task_fn, action_name, user_id)
+
+
+@shared_task(base=BaseAdminReportTask)
+@set_code_owner_attribute
+def task_courses_enrollement_report(entry_id, xmodule_instance_args, user_id):
+    """
+    Generate a course enrollement report for all courses and push the results to an S3 bucket for download.
+    """
+    # Translators: This is a past-tense verb that is inserted into task progress messages as {action}.
+    action_name = ugettext_noop('generated')
+    TASK_LOG.info(
+        "Task: %s, AdminReportTask ID: %s, Task type: %s, Preparing for task execution",
+        xmodule_instance_args.get('task_id'), entry_id, action_name
+    )    
+    task_fn = partial(upload_courses_enrollement_csv, xmodule_instance_args)
     return run_main_task(entry_id, task_fn, action_name, user_id)

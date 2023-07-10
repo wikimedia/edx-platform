@@ -131,7 +131,6 @@
           <td>
             <span class="text">${_("Average grade report for multiple courses")}</span>
             <span class="info-text">${_("Different grading schemes can affect the comparison.")}</span>
-
           </td>
           <td class="action">
             <button
@@ -140,6 +139,20 @@
               disabled
               value="${_("Generate Average Grade Report")}"
               data-endpoint="${ section_data['key']['average_calculate_grades_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Courses Enrollement Report")}</span>
+            <span class="info-text">${_("generate report for all course_discovery_enabled.")}</span>
+          </td>
+          <td class="action">
+            <button
+              name="courses-enrollements-csv"
+              class="btn btn-primary"
+              value="${_("Generate Average Grade Report")}"
+              data-endpoint="${ section_data['key']['courses_enrollements_csv_url'] }"
             >${_("Generate")}</button>
           </td>
         </tr>

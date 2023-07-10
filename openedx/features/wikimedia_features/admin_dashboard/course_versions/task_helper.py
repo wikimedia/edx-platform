@@ -12,7 +12,8 @@ from lms.djangoapps.instructor_task.tasks_helper.runner import TaskProgress
 from lms.djangoapps.instructor_task.tasks_helper.utils import tracker_emit
 from openedx.features.wikimedia_features.admin_dashboard.course_versions.utils import (
     list_version_report_info_per_course,
-    list_version_report_info_total
+    list_version_report_info_total,
+    list_courses_enrollement_data
 )
 
 
@@ -108,3 +109,47 @@ def upload_course_versions_csv_to_report_store(rows, error_rows, course_key, tim
         error_rows.insert(0, ['Course ID', 'User ID', 'Username', 'Error'])
         report_store.store_rows(str(course_key), report_name, error_rows)
     tracker_emit(csv_name)
+
+
+def upload_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course_id_str, task_input, action_name, user_ids):
+    """
+    Generate a CSV file containing information of all courses enrollements.
+    """
+    start_time = time()
+    start_date = datetime.now(UTC)
+    num_reports = 1
+    task_progress = TaskProgress(action_name, num_reports, start_time)
+    current_step = {'step': 'Calculating version'}
+    task_progress.update_task_state(extra_meta=current_step)
+
+    # Compute result table and format it
+    query_features = task_input.get('features')
+    csv_type = task_input.get('csv_type', "course_version")
+
+    query_features_names = [
+        'Course ID', 'Base Course ID', 'Course Title', 'Course Language', 'Username', 'Date Enrolled',
+        'Date Completed', 'Cohort Enrollee', 'Student Blocked'
+    ]
+    data = list_courses_enrollement_data()
+
+    header, rows = format_dictlist(data, query_features)
+
+    task_progress.attempted = task_progress.succeeded = len(rows)
+    task_progress.skipped = task_progress.total - task_progress.attempted
+
+    rows.insert(0, query_features_names)
+
+    current_step = {'step': 'Uploading CSV'}
+    task_progress.update_task_state(extra_meta=current_step)
+
+    # Perform the upload
+    report_store = ReportStore.from_config('GRADES_DOWNLOAD')
+
+    csv_name = "courses_enrollements"
+    report_name = '{csv_name}_{timestamp_str}.csv'.format(
+        csv_name=csv_name,
+        timestamp_str=start_date.strftime('%Y-%m-%d-%H%M')
+    )
+    report_store.store_rows(course_id_str, report_name, rows)
+
+    return task_progress.update_task_state(extra_meta=current_step)

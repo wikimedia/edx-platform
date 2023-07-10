@@ -1,11 +1,15 @@
 from django.test import RequestFactory
+from django.contrib.auth import get_user_model
 
 from common.djangoapps.student.models import CourseEnrollment
 from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.grades.api import CourseGradeFactory
 
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+from edx_proctoring.api import get_last_exam_completion_date
 
+User = get_user_model()
 
 
 def list_version_report_info_per_course(course_key):
@@ -65,7 +69,7 @@ def list_version_report_info_per_course(course_key):
                 total_students_with_no_errors += 1
                 sum_grade_percent += course_grade.percent
 
-        average_grade = total_students_with_no_errors and (sum_grade_percent/total_students_with_no_errors)
+        average_grade = total_students_with_no_errors and (sum_grade_percent / total_students_with_no_errors)
         versions_data.append({
             'course_id': str(course_key),
             'course_title': course.display_name,
@@ -73,7 +77,7 @@ def list_version_report_info_per_course(course_key):
             'version_type': course_type,
             'total_active_enrolled': total_enrollments,
             'total_completion': completion_count,
-            'completion_percent': total_enrollments and completion_count/total_enrollments,
+            'completion_percent': total_enrollments and completion_count / total_enrollments,
             'average_grade': average_grade,
             'error_count': error_count
         })
@@ -155,7 +159,6 @@ def list_version_report_info_total(course_key):
                 report['total_students_with_no_errors'] += 1
                 report['sum_grade_percent'] += course_grade.percent
 
-
     course_translation = CourseTranslation.objects.filter(base_course_id=course_key)
     if course_translation.exists():
         update_report_data_with_details(course_key)
@@ -169,7 +172,39 @@ def list_version_report_info_total(course_key):
     report.update({
         'course_ids': course_ids,
         'course_languages': course_languages,
-        'completion_percent': total_enrollments and completion_count/total_enrollments,
-        'average_grade': total_students_with_no_errors and (sum_grade_percent/total_students_with_no_errors),
+        'completion_percent': total_enrollments and completion_count / total_enrollments,
+        'average_grade': total_students_with_no_errors and (sum_grade_percent / total_students_with_no_errors),
     })
     return [report], error_data
+
+
+def list_courses_enrollement_data():
+    """
+    Get course reports
+    """
+    courses_data = []
+    courses = CourseOverview.objects.all()
+    for course in courses:
+        enrollments = CourseEnrollment.objects.filter(course_id=course.id, is_active=True).order_by('created')
+        for enrollment in enrollments:
+            try:
+                course_traslation = CourseTranslation.objects.get(course_id=course.id)
+                base_course_id = str(course_traslation.base_course_id)
+            except CourseTranslation.DoesNotExist:
+                base_course_id = ''
+            else:
+                user = User.objects.get(id=enrollment.user_id)
+                username = user.get_username()
+                completion_date = get_last_exam_completion_date(course.id, username)
+                courses_data.append({
+                    'course_id': str(course.id),
+                    'base_course_id': str(base_course_id),
+                    'course_title': course.display_name,
+                    'course_language': course.language,
+                    'student_username': username,
+                    'date_enrolled': enrollment.created.strftime("%Y-%m-%d"),
+                    'date_completed': completion_date.strftime("%Y-%m-%d") if completion_date else '',
+                    'cohort_enrollee': 'N' if course.self_paced else 'Y',
+                    'student_blocked': 'N' if user.is_active else 'Y',
+                })
+    return courses_data

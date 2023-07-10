@@ -1,6 +1,9 @@
 
 import logging
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from django.db import transaction
 from django.http.response import HttpResponseBadRequest, HttpResponseForbidden
 from django.contrib.auth.models import User  # lint-amnesty, pylint: disable=imported-auth-user
@@ -17,7 +20,7 @@ from lms.djangoapps.instructor.views.api import require_course_permission as cou
 from common.djangoapps.util.json_request import JsonResponse
 from openedx.features.wikimedia_features.admin_dashboard.admin_task.api_helper import AlreadyRunningError, QueueConnectionError, submit_task
 from openedx.features.wikimedia_features.admin_dashboard.tasks import (
-    task_average_calculate_grades_csv, task_progress_report_csv, task_course_version_report
+    task_average_calculate_grades_csv, task_progress_report_csv, task_course_version_report, task_courses_enrollement_report
 )
 from openedx.features.wikimedia_features.admin_dashboard.course_versions import task_helper
 
@@ -145,6 +148,26 @@ def course_version_report(request, course_id):
     return JsonResponse({"status": success_status})
 
 
+@transaction.non_atomic_requests
+@require_POST
+@ensure_csrf_cookie
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+def courses_enrollement_report(request):
+    """
+    Handles request to generate CSV of base course versions info for all translated reruns.
+    """
+    report_type = _('enrollement')
+
+    success_status = SUCCESS_MESSAGE_TEMPLATE.format(report_type="Courses Enrollement Report")
+    query_features = [
+        'course_id', 'base_course_id', 'course_title', 'course_language', 'student_username',
+        'date_enrolled', 'date_completed', 'cohort_enrollee', 'student_blocked',
+    ]
+    submit_courses_enrollement_report(request, query_features, report_type)
+
+    return JsonResponse({"status": success_status})
+
+
 def submit_average_calculate_grades_csv(request, course_key):
     """
     AlreadyRunningError is raised if the course's grades are already being updated.
@@ -181,3 +204,16 @@ def submit_course_version_report(request, course_key,  features, task_type):
     task_key = ""
 
     return submit_task(request, task_type, task_class, course_key, task_input, task_key)
+
+def submit_courses_enrollement_report(request, features, task_type):
+    """
+    Submits a task to generate a CSV of courses enrollements report
+    """
+    task_class = task_courses_enrollement_report
+    task_input = {
+        'features': features,
+        'csv_type': task_type,
+    }
+    task_key = ""
+
+    return submit_task(request, task_type, task_class, 'all_courses', task_input, task_key)

@@ -27,6 +27,7 @@
             dataType: 'json',
             url: endpoint,
             success: function(data) {
+                debugger;
                 if (data.downloads.length > 0) {
                     $('.download-section, #report-downloads-list').show();
                     if ($('#report-downloads-list').find('a').length == 0){
@@ -131,10 +132,12 @@
         let list_of_single_course_elements = $('.single-course-report');
         let list_of_multiple_course_elements = $('.multiple-course-report');
         let list_of_course_version_elements = $('.course-version-report');
+        let list_of_all_courses_elements = $('.all-courses-report')
         prev_data_download_len = 0;
         if ($(this).val())
         {
             $('.btn-primary').attr('disabled', false);
+            list_of_all_courses_elements.hide();
             if ($(this).val().length > 1) {
                 course_name = $(this).val().toString();
                 list_of_single_course_elements.hide();
@@ -174,9 +177,11 @@
             list_of_single_course_elements.show();
             list_of_multiple_course_elements.show();
             list_of_course_version_elements.show();
+            list_of_all_courses_elements.show();
             $('.btn-primary').attr('disabled', true);
+            $('.all-courses-report .action .btn-primary').attr('disabled', false);
             course_name = null;
-            endpoint = null;
+            endpoint = 'api/instructor/v1/list_all_courses_report_downloads/';
             report_for_single_courses = null;
             $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
         }
@@ -186,8 +191,6 @@
         let url_for_list_profiles_csv = '/courses/' + course_name + '/instructor/api/get_students_features' + '/csv';
         AjaxCall(url_for_list_profiles_csv);
     });
-
-
 
     $("[name='calculate-grades-csv']").click(function() {
         let url_for_calculate_grades = '/courses/' + course_name + '/instructor/api/calculate_grades_csv';
@@ -229,4 +232,16 @@
         let url_for_average_calculate_grades = '/admin_dashboard/progress_report_csv/' + course_name ;
         AjaxCall(url_for_average_calculate_grades);
     })
+    $("[name='courses-enrollements-csv']").click(function() {
+        let url_for_courses_enrollement_report = '/admin_dashboard/courses_enrollement_report';
+        AjaxCall(url_for_courses_enrollement_report);
+    })
+    
+    $(document).ready(function() {
+        // Your code here
+        endpoint = 'api/instructor/v1/list_all_courses_report_downloads/';
+        ReportDownloads();
+    });
+
+
 }).call(this);
