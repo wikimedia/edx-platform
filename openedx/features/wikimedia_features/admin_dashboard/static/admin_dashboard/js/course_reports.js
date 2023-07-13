@@ -110,14 +110,13 @@
     };
 
     setInterval(function() {
-        if(course_name != null)
+        if(endpoint != null)
         {
-            if(report_for_single_courses == true)
-            {
-                ReportDownloads();
-            }
-            else if(report_for_single_courses == false) {
+            if(report_for_single_courses == false) {
                 ReportDownloadsForMultipleCourses();
+            }
+            else{
+                ReportDownloads();
             }
         }
     }, 20000);
@@ -126,15 +125,46 @@
         placeholder: "Browse Courses",
     });
 
-    $('select').change(function (e) {
+    $('#select-enrolment-year').change(function (e) {
+        e.preventDefault();
+        const today = new Date();
+        const selected_year = Number($(this).val())
+        const current_year = today.getFullYear()
+        var quarters = 4;
+
+        var quarter_select = $("#select-enrolment-quarter")
+        quarter_select.empty()
+
+        if(!selected_year){
+            var opt = document.createElement('option');
+            opt.value = "";
+            opt.innerHTML = "Select Quarter";
+            quarter_select.append(opt);
+        }
+
+        if (selected_year === current_year){
+            quarters = Math.floor((today.getMonth() + 3) / 3) - 1;
+        }
+
+        for (var i = 1; i<=quarters; i++){
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i;
+            quarter_select.append(opt);
+        }
+    })
+
+    $('#select-courses').change(function (e) {
         e.preventDefault();
         let list_of_single_course_elements = $('.single-course-report');
         let list_of_multiple_course_elements = $('.multiple-course-report');
         let list_of_course_version_elements = $('.course-version-report');
+        let list_of_all_courses_elements = $('.all-courses-report')
         prev_data_download_len = 0;
         if ($(this).val())
         {
             $('.btn-primary').attr('disabled', false);
+            list_of_all_courses_elements.hide();
             if ($(this).val().length > 1) {
                 course_name = $(this).val().toString();
                 list_of_single_course_elements.hide();
@@ -174,11 +204,13 @@
             list_of_single_course_elements.show();
             list_of_multiple_course_elements.show();
             list_of_course_version_elements.show();
+            list_of_all_courses_elements.show();
             $('.btn-primary').attr('disabled', true);
+            $('.all-courses-report .action .btn-primary').attr('disabled', false);
             course_name = null;
-            endpoint = null;
+            endpoint = '/wikimedia/list_all_courses_report_downloads';
             report_for_single_courses = null;
-            $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
+            $('#report-request-response,#report-request-response-error').empty().hide();
         }
     });
 
@@ -186,8 +218,6 @@
         let url_for_list_profiles_csv = '/courses/' + course_name + '/instructor/api/get_students_features' + '/csv';
         AjaxCall(url_for_list_profiles_csv);
     });
-
-
 
     $("[name='calculate-grades-csv']").click(function() {
         let url_for_calculate_grades = '/courses/' + course_name + '/instructor/api/calculate_grades_csv';
@@ -229,4 +259,20 @@
         let url_for_average_calculate_grades = '/admin_dashboard/progress_report_csv/' + course_name ;
         AjaxCall(url_for_average_calculate_grades);
     })
+    $("[name='courses-enrollments-csv']").click(function() {
+        let url_for_courses_enrolment_report = $(this).attr('data-endpoint');
+        let year = $('#select-enrolment-year').val()
+        let quarter = $('#select-enrolment-quarter').val()
+        AjaxCall(url_for_courses_enrolment_report, {year: Number(year), quarter: Number(quarter)});
+    })
+    $("[name='all-courses-enrollments-csv']").click(function() {
+        let data_url = $(this).attr('data-endpoint');
+        AjaxCall(data_url);
+    })
+    $(document).ready(function() {
+        endpoint = '/wikimedia/list_all_courses_report_downloads';
+        ReportDownloads();
+    });
+
+
 }).call(this);

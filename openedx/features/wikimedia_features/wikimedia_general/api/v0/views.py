@@ -2,10 +2,12 @@
 Views for wikimedia_general v0 API(s)
 """
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from lms.djangoapps.branding import get_visible_courses
 
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 
 from opaque_keys.edx.keys import CourseKey
 
@@ -13,7 +15,10 @@ from django.utils.translation import ugettext as _
 from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     get_follow_up_courses,
-    get_user_completed_course_keys
+    get_user_completed_course_keys,
+    get_user_enrollments_course_keys,
+    get_users_course_completion_stats,
+    get_users_enrollment_stats
 )
 from openedx.core.djangoapps.content.course_overviews.serializers import CourseOverviewBaseSerializer
 from openedx.features.wikimedia_features.wikimedia_general.api.v0.utils import get_authenticated_header_tabs, get_unauthenticated_header_tabs
@@ -58,6 +63,27 @@ def get_courses_to_study_next(request):
     serialzer = CourseOverviewBaseSerializer(follow_up_courses, many=True)
 
     return Response({"follow-up-courses": serialzer.data}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes((permissions.IsAdminUser, ))
+def courses_stats(request):
+    """Endpoint to retrieve follow up courses for the user's completed courses.
+    """
+    users = User.objects.all()
+    
+    courses = get_visible_courses()
+    course_keys = {'{}'.format(key) for key in courses}
+
+    users_enrollments = {}
+    for user in users:
+        users_enrollments[user.id] = {'{}'.format(key) for key in get_user_enrollments_course_keys(user)}
+        
+    response = dict(get_users_enrollment_stats(users_enrollments, course_keys),
+                    **get_users_course_completion_stats(users, users_enrollments, course_keys))
+
+    return Response(response, status=status.HTTP_200_OK)
+
 
 class RetrieveLMSTabs(generics.RetrieveAPIView):
     """

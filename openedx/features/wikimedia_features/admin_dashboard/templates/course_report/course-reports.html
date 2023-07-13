@@ -29,6 +29,7 @@
       <thead>
         <tr>
           <th>${_("Report Name")}</th>
+          <th class="action">${_("Options")}</th>
           <th class="action">${_("Actions")}</th>
         </tr>
       </thead>
@@ -37,6 +38,7 @@
           <td>
             <span class="text">${_("List profile information for enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               class="btn btn-primary"
@@ -51,6 +53,7 @@
           <td>
             <span class="text">${_("Grade report for all currently enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               class="btn btn-primary"
@@ -64,6 +67,7 @@
           <td>
             <span class="text">${_("Anonymized student ID's")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               name="list-anon-ids"
@@ -79,6 +83,7 @@
           <td>
             <span class="text">${_("Problem Grade report for all currently enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               class="btn btn-primary"
@@ -92,6 +97,7 @@
           <td>
             <span class="text">${_("Progress report for all currently enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               class="btn btn-primary"
@@ -105,6 +111,7 @@
           <td>
             <span class="text">${_("Course Version Report (Detailed - Per Course)")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               class="btn btn-primary"
@@ -118,6 +125,7 @@
           <td>
             <span class="text">${_("Course Version Report (Aggregate)")}</span>
           </td>
+          <td></td>
           <td class="action">
             <button
               class="btn btn-primary"
@@ -131,8 +139,8 @@
           <td>
             <span class="text">${_("Average grade report for multiple courses")}</span>
             <span class="info-text">${_("Different grading schemes can affect the comparison.")}</span>
-
           </td>
+          <td></td>
           <td class="action">
             <button
               name="average-calculate-grades-csv"
@@ -140,6 +148,47 @@
               disabled
               value="${_("Generate Average Grade Report")}"
               data-endpoint="${ section_data['key']['average_calculate_grades_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Quarterly Courses Enrollement Report")}</span>
+            <span class="info-text">${_("Generate a report for last quarter enrollments of all courses.")}</span>
+          </td>
+          <td class="d-flex align-items-center p-3">
+            <select name="enrolment-year" id="select-enrolment-year">
+              <option value="">${_("Select Year")}</option>
+              %for year in year_options:
+                <option value=${year}>${year}</option>
+              %endfor
+            </select>
+            <select name="enrolment-quarter" id="select-enrolment-quarter" class="ml-1">
+              <option value="">${_("Select Quarter")}</option>
+            </select>
+          </td>
+          <td class="action">
+
+            <button
+              name="courses-enrollments-csv"
+              class="btn btn-primary"
+              value="${_("Generate Average Grade Report")}"
+              data-endpoint="${ section_data['key']['courses_enrollments_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("All Courses Enrollement Report")}</span>
+            <span class="info-text">${_("Generate an all time report of enrolment/completion for all courses.")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="all-courses-enrollments-csv"
+              class="btn btn-primary"
+              value="${_("Generate Courses Enrollment Report")}"
+              data-endpoint="${ section_data['key']['all_courses_enrollments_csv_url'] }"
             >${_("Generate")}</button>
           </td>
         </tr>

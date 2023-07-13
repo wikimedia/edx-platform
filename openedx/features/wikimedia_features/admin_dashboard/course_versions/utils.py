@@ -1,11 +1,19 @@
+from datetime import date
+import calendar
 from django.test import RequestFactory
+from django.contrib.auth import get_user_model
 
 from common.djangoapps.student.models import CourseEnrollment
+from lms.djangoapps.branding import get_visible_courses
 from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.grades.api import CourseGradeFactory
 
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+from edx_proctoring.api import get_last_exam_completion_date
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_user_enrollments_course_keys, get_users_course_completion_stats, get_users_enrollment_stats
 
+User = get_user_model()
 
 
 def list_version_report_info_per_course(course_key):
@@ -65,7 +73,7 @@ def list_version_report_info_per_course(course_key):
                 total_students_with_no_errors += 1
                 sum_grade_percent += course_grade.percent
 
-        average_grade = total_students_with_no_errors and (sum_grade_percent/total_students_with_no_errors)
+        average_grade = total_students_with_no_errors and (sum_grade_percent / total_students_with_no_errors)
         versions_data.append({
             'course_id': str(course_key),
             'course_title': course.display_name,
@@ -73,7 +81,7 @@ def list_version_report_info_per_course(course_key):
             'version_type': course_type,
             'total_active_enrolled': total_enrollments,
             'total_completion': completion_count,
-            'completion_percent': total_enrollments and completion_count/total_enrollments,
+            'completion_percent': total_enrollments and completion_count / total_enrollments,
             'average_grade': average_grade,
             'error_count': error_count
         })
@@ -155,7 +163,6 @@ def list_version_report_info_total(course_key):
                 report['total_students_with_no_errors'] += 1
                 report['sum_grade_percent'] += course_grade.percent
 
-
     course_translation = CourseTranslation.objects.filter(base_course_id=course_key)
     if course_translation.exists():
         update_report_data_with_details(course_key)
@@ -169,7 +176,91 @@ def list_version_report_info_total(course_key):
     report.update({
         'course_ids': course_ids,
         'course_languages': course_languages,
-        'completion_percent': total_enrollments and completion_count/total_enrollments,
-        'average_grade': total_students_with_no_errors and (sum_grade_percent/total_students_with_no_errors),
+        'completion_percent': total_enrollments and completion_count / total_enrollments,
+        'average_grade': total_students_with_no_errors and (sum_grade_percent / total_students_with_no_errors),
     })
     return [report], error_data
+
+
+def get_quarter_dates(year, quarter):
+    """Returns the start and end date of the given quarter
+    """
+    year, quarter = int(year), int(quarter)
+
+    date_format = "%Y-%m-%d"
+
+    start_month = (quarter * 3) - 2
+    start = date(year, start_month, 1)
+
+    last_month = start_month + 2
+    last_day = calendar.monthrange(year, last_month)[-1]
+    end = date(year, last_month, last_day)
+
+    return [start.strftime(date_format), end.strftime(date_format)]
+
+
+def get_last_quarter():
+    """Returns the start and end date of the last yearly quarter
+    """
+    ref = date.today()
+    date_format = "%Y-%m-%d"
+    if ref.month < 4:
+        return [date(ref.year - 1, 10, 1).strftime(date_format), date(ref.year - 1, 12, 31).strftime(date_format)]
+    elif ref.month < 7:
+        return [date(ref.year, 1, 1).strftime(date_format), date(ref.year, 3, 31).strftime(date_format)]
+    elif ref.month < 10:
+        return [date(ref.year, 4, 1).strftime(date_format), date(ref.year, 6, 30).strftime(date_format)]
+    return [date(ref.year, 7, 1).strftime(date_format), date(ref.year, 9, 30).strftime(date_format)]
+
+
+
+def list_all_courses_enrollment_data():
+    """
+    Get all courses enrollment report
+    """
+    users = User.objects.all()
+
+    courses = get_visible_courses()
+    course_keys = {'{}'.format(key) for key in courses}
+
+    users_enrollments = {}
+    for user in users:
+        users_enrollments[user.id] = {'{}'.format(key) for key in get_user_enrollments_course_keys(user)}
+
+    stats = dict(get_users_enrollment_stats(users_enrollments, course_keys),
+                    **get_users_course_completion_stats(users, users_enrollments, course_keys))
+    return [stats]
+
+
+def list_quarterly_courses_enrollement_data(quarter):
+    """
+    Get course reports
+    """
+    courses_data = []
+    courses = CourseOverview.objects.all()
+    for course in courses:
+        enrollments = CourseEnrollment.objects.filter(course_id=course.id, is_active=True, created__range=quarter).order_by('created')
+        language = get_course_by_id(course.id).language
+        for enrollment in enrollments:
+            base_course_id = ''
+            try:
+                course_traslation = CourseTranslation.objects.get(course_id=course.id)
+                base_course_id = str(course_traslation.base_course_id)
+            except CourseTranslation.DoesNotExist:
+                pass
+            finally:
+                user = User.objects.get(id=enrollment.user_id)
+                username = user.get_username()
+                completion_date = get_last_exam_completion_date(course.id, username)
+                courses_data.append({
+                    'course_id': str(course.id),
+                    'base_course_id': str(base_course_id),
+                    'course_title': course.display_name,
+                    'course_language': language,
+                    'student_username': username,
+                    'date_enrolled': enrollment.created.strftime("%Y-%m-%d"),
+                    'date_completed': completion_date.strftime("%Y-%m-%d") if completion_date else '',
+                    'cohort_enrollee': 'N' if course.self_paced else 'Y',
+                    'student_blocked': 'N' if user.is_active else 'Y',
+                })
+    return courses_data

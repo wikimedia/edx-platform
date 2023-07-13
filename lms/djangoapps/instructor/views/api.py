@@ -2343,6 +2343,35 @@ def _list_report_downloads(request, course_id):
 
 @require_POST
 @ensure_csrf_cookie
+def list_all_courses_report_downloads(request):
+    """
+    List grade CSV files that are available for download for all courses.
+
+    Takes the following query parameters:
+    - (optional) report_name - name of the report
+    """
+    return _list_all_courses_report_downloads(request=request)
+
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+def _list_all_courses_report_downloads(request):
+    """
+    List grade CSV files that are available for download for all courses.
+
+    Internal function with common code shared between DRF and functional views.
+    """
+    report_store = ReportStore.from_config(config_name='GRADES_DOWNLOAD')
+    report_name = getattr(request, 'query_params', request.POST).get("report_name", None)
+
+    response_payload = {
+        'downloads': [
+            dict(name=name, url=url, link=HTML('<a href="{}">{}</a>').format(HTML(url), Text(name)))
+            for name, url in report_store.links_for('all_courses') if report_name is None or name == report_name
+        ]
+    }
+    return JsonResponse(response_payload)
+
+@require_POST
+@ensure_csrf_cookie
 @cache_control(no_cache=True, no_store=True, must_revalidate=True)
 @require_course_permission(permissions.CAN_RESEARCH)
 @require_finance_admin
