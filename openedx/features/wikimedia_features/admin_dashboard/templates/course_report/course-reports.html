@@ -157,13 +157,13 @@
             <span class="info-text">${_("Generate a report for last quarter enrollments of all courses.")}</span>
           </td>
           <td class="d-flex align-items-center p-3">
-            <select name="enrolment-year" id="select-enrolment-year">
+            <select name="enrolment-year" id="select-enrolment-year" class="quarterly-selector">
               <option value="">${_("Select Year")}</option>
               %for year in year_options:
                 <option value=${year}>${year}</option>
               %endfor
             </select>
-            <select name="enrolment-quarter" id="select-enrolment-quarter" class="ml-1">
+            <select name="enrolment-quarter" id="select-enrolment-quarter" class="ml-1 quarterly-selector">
               <option value="">${_("Select Quarter")}</option>
             </select>
           </td>
