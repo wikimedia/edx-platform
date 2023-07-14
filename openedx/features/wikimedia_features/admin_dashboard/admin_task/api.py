@@ -160,7 +160,7 @@ def all_courses_enrollment_report(request):
 
     success_status = SUCCESS_MESSAGE_TEMPLATE.format(report_type="All Courses Enrollement Report")
     query_features = [
-        'students_enrolled_in_all_courses', 'students_enrolled_in_any_course', 'students_completed_all_courses', 'students_completed_any_course',
+        'students_enrolled_in_all_courses', 'students_enrolled_in_any_course', 'students_completed_all_courses', 'students_completed_any_course', 'admins', 'blocked_users'
     ]
     submit_courses_enrollement_report(request, query_features, report_type, task_all_courses_enrollement_report)
 

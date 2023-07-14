@@ -71,6 +71,8 @@ def courses_stats(request):
     """Endpoint to retrieve follow up courses for the user's completed courses.
     """
     users = User.objects.all()
+    admins = User.objects.filter(is_staff=True)
+    blocked_users = User.objects.filter(is_active=False)
     
     courses = get_visible_courses()
     course_keys = {'{}'.format(key) for key in courses}
@@ -81,7 +83,8 @@ def courses_stats(request):
         
     response = dict(get_users_enrollment_stats(users_enrollments, course_keys),
                     **get_users_course_completion_stats(users, users_enrollments, course_keys))
-
+    response['admins'] = admins.count()
+    response['blocked_users'] = blocked_users.count()
     return Response(response, status=status.HTTP_200_OK)
 
 

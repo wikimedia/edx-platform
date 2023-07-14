@@ -130,7 +130,7 @@ def upload_all_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course
     csv_type = task_input.get('csv_type', "all_enrollement_stats")
 
     query_features_names = [
-        'Students Enrolled in All Courses', 'Students Enrolled in Any Course', 'Students Who Completed All Courses', 'Students Who Completed Any Courses'
+        'Students Enrolled in All Courses', 'Students Enrolled in Any Course', 'Students Who Completed All Courses', 'Students Who Completed Any Courses', 'Admins', 'Blocked Users'
     ]
     data = list_all_courses_enrollment_data()
 

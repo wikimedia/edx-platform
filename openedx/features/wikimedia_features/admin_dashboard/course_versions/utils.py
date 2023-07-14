@@ -1,7 +1,9 @@
 from datetime import date
 import calendar
+
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 from common.djangoapps.student.models import CourseEnrollment
 from lms.djangoapps.branding import get_visible_courses
@@ -219,6 +221,8 @@ def list_all_courses_enrollment_data():
     Get all courses enrollment report
     """
     users = User.objects.all()
+    admins = User.objects.filter(is_staff=True)
+    blocked_users = User.objects.filter(is_active=False)
 
     courses = get_visible_courses()
     course_keys = {'{}'.format(key) for key in courses}
@@ -229,6 +233,8 @@ def list_all_courses_enrollment_data():
 
     stats = dict(get_users_enrollment_stats(users_enrollments, course_keys),
                     **get_users_course_completion_stats(users, users_enrollments, course_keys))
+    stats['admins'] = admins.count()
+    stats['blocked_users'] = blocked_users.count()
     return [stats]
 
 
@@ -239,7 +245,12 @@ def list_quarterly_courses_enrollement_data(quarter):
     courses_data = []
     courses = CourseOverview.objects.all()
     for course in courses:
-        enrollments = CourseEnrollment.objects.filter(course_id=course.id, is_active=True, created__range=quarter).order_by('created')
+        enrollments = CourseEnrollment.objects.filter(
+            Q(created__range=quarter) | Q()
+            course_id=course.id,
+            is_active=True,
+        ).order_by('created')
+
         language = get_course_by_id(course.id).language
         for enrollment in enrollments:
             base_course_id = ''
