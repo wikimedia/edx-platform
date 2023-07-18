@@ -3,7 +3,7 @@ import calendar
 
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
-from django.db.models import Q
+from django.conf import settings
 
 from common.djangoapps.student.models import CourseEnrollment
 from lms.djangoapps.branding import get_visible_courses
@@ -13,7 +13,7 @@ from lms.djangoapps.grades.api import CourseGradeFactory
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from edx_proctoring.api import get_last_exam_completion_date
-from openedx.features.wikimedia_features.wikimedia_general.utils import get_user_enrollments_course_keys, get_users_course_completion_stats, get_users_enrollment_stats
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_course_enrollment_and_completion_stats
 
 User = get_user_model()
 
@@ -220,22 +220,36 @@ def list_all_courses_enrollment_data():
     """
     Get all courses enrollment report
     """
-    users = User.objects.all()
-    admins = User.objects.filter(is_staff=True)
-    blocked_users = User.objects.filter(is_active=False)
 
     courses = get_visible_courses()
-    course_keys = {'{}'.format(key) for key in courses}
+    courses_data = []
 
-    users_enrollments = {}
-    for user in users:
-        users_enrollments[user.id] = {'{}'.format(key) for key in get_user_enrollments_course_keys(user)}
 
-    stats = dict(get_users_enrollment_stats(users_enrollments, course_keys),
-                    **get_users_course_completion_stats(users, users_enrollments, course_keys))
-    stats['admins'] = admins.count()
-    stats['blocked_users'] = blocked_users.count()
-    return [stats]
+    for course in courses:
+        
+        parent_course_url = ''
+        parent_course_title = ''
+        try:
+            course_traslation = CourseTranslation.objects.get(course_id=course.id)
+            parent_course_url = f"{settings.CMS_BASE}/course/{str(course.id)}"
+            parent_course_title = get_course_by_id(course_traslation.base_course_id).display_name
+        except CourseTranslation.DoesNotExist:
+            pass
+        
+        total_learners_completed, total_learners_enrolled, completed_percentage = \
+            get_course_enrollment_and_completion_stats(course.id)
+        courses_data.append({
+            'course_url' : f"{settings.CMS_BASE}/course/{str(course.id)}",
+            'course_title': course.display_name,
+            'available_since': course.enrollment_start,
+            "parent_course_url": parent_course_url,
+            "parent_course_title": parent_course_title,
+            "total_learners_enrolled": total_learners_enrolled,
+            "total_learners_completed": total_learners_completed,
+            "completed_percentage": completed_percentage,
+        })
+    
+    return courses_data
 
 
 def list_quarterly_courses_enrollement_data(quarter):
@@ -246,32 +260,32 @@ def list_quarterly_courses_enrollement_data(quarter):
     courses = CourseOverview.objects.all()
     for course in courses:
         enrollments = CourseEnrollment.objects.filter(
-            created__range=quarter
+            created__range=quarter,
             course_id=course.id,
             is_active=True,
         ).order_by('created')
 
         language = get_course_by_id(course.id).language
+        base_course_id = ''
+        try:
+            course_traslation = CourseTranslation.objects.get(course_id=course.id)
+            base_course_id = str(course_traslation.base_course_id)
+        except CourseTranslation.DoesNotExist:
+            pass
+
         for enrollment in enrollments:
-            base_course_id = ''
-            try:
-                course_traslation = CourseTranslation.objects.get(course_id=course.id)
-                base_course_id = str(course_traslation.base_course_id)
-            except CourseTranslation.DoesNotExist:
-                pass
-            finally:
-                user = User.objects.get(id=enrollment.user_id)
-                username = user.get_username()
-                completion_date = get_last_exam_completion_date(course.id, username)
-                courses_data.append({
-                    'course_id': str(course.id),
-                    'base_course_id': str(base_course_id),
-                    'course_title': course.display_name,
-                    'course_language': language,
-                    'student_username': username,
-                    'date_enrolled': enrollment.created.strftime("%Y-%m-%d"),
-                    'date_completed': completion_date.strftime("%Y-%m-%d") if completion_date else '',
-                    'cohort_enrollee': 'N' if course.self_paced else 'Y',
-                    'student_blocked': 'N' if user.is_active else 'Y',
-                })
+            user = User.objects.get(id=enrollment.user_id)
+            username = user.get_username()
+            completion_date = get_last_exam_completion_date(course.id, username)
+            courses_data.append({
+                'course_id': str(course.id),
+                'base_course_id': str(base_course_id),
+                'course_title': course.display_name,
+                'course_language': language,
+                'student_username': username,
+                'date_enrolled': enrollment.created.strftime("%Y-%m-%d"),
+                'date_completed': completion_date.strftime("%Y-%m-%d") if completion_date else '',
+                'cohort_enrollee': 'N' if course.self_paced else 'Y',
+                'student_blocked': 'N' if user.is_active else 'Y',
+            })
     return courses_data

@@ -160,7 +160,14 @@ def all_courses_enrollment_report(request):
 
     success_status = SUCCESS_MESSAGE_TEMPLATE.format(report_type="All Courses Enrollement Report")
     query_features = [
-        'students_enrolled_in_all_courses', 'students_enrolled_in_any_course', 'students_completed_all_courses', 'students_completed_any_course', 'admins', 'blocked_users'
+            'course_url' ,
+            'course_title',
+            'available_since',
+            "parent_course_url",
+            "parent_course_title",
+            "total_learners_enrolled",
+            "total_learners_completed",
+            "completed_percentage",
     ]
     submit_courses_enrollement_report(request, query_features, report_type, task_all_courses_enrollement_report)
 

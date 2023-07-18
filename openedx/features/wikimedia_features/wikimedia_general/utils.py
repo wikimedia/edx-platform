@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from django.conf import settings
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
+from common.djangoapps.student.models import CourseEnrollment
 from opaque_keys.edx.keys import CourseKey
 
 from openedx.features.course_experience.utils import get_course_outline_block_tree
@@ -167,6 +168,26 @@ def get_users_course_completion_stats(users, users_enrollments, course_keys):
             course_completion_stats['students_completed_all_courses'] += 1
 
     return course_completion_stats
+
+
+def get_course_enrollment_and_completion_stats(course_id) -> dict:
+    """Returns the count of student completed the provided course
+    """
+    enrollments = CourseEnrollment.objects.filter(
+            course_id=course_id,
+            is_active=True,
+        )
+
+    total_students_completed = 0
+    for enrollment in enrollments:
+        user = User.objects.get(id=enrollment.user_id)
+        if is_course_completed(user, course_id):
+            total_students_completed += 1
+
+    enrollment_count = enrollments.count()
+    percentage_completed = (total_students_completed/enrollment_count) * 100 if enrollment_count else 0
+
+    return (total_students_completed, enrollment_count, percentage_completed)
 
 
 def get_paced_type(self_paced):

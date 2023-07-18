@@ -2,8 +2,8 @@
 Views for wikimedia_general v0 API(s)
 """
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from lms.djangoapps.branding import get_visible_courses
+
+from openedx.features.wikimedia_features.admin_dashboard.course_versions.utils import list_all_courses_enrollment_data
 
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
@@ -12,13 +12,10 @@ from rest_framework.decorators import api_view, permission_classes
 from opaque_keys.edx.keys import CourseKey
 
 from django.utils.translation import ugettext as _
-from lms.djangoapps.courseware.courses import get_course_by_id
+from lms.djangoapps.courseware.courses import  get_course_by_id
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     get_follow_up_courses,
     get_user_completed_course_keys,
-    get_user_enrollments_course_keys,
-    get_users_course_completion_stats,
-    get_users_enrollment_stats
 )
 from openedx.core.djangoapps.content.course_overviews.serializers import CourseOverviewBaseSerializer
 from openedx.features.wikimedia_features.wikimedia_general.api.v0.utils import get_authenticated_header_tabs, get_unauthenticated_header_tabs
@@ -70,22 +67,9 @@ def get_courses_to_study_next(request):
 def courses_stats(request):
     """Endpoint to retrieve follow up courses for the user's completed courses.
     """
-    users = User.objects.all()
-    admins = User.objects.filter(is_staff=True)
-    blocked_users = User.objects.filter(is_active=False)
+    courses_data = list_all_courses_enrollment_data()
     
-    courses = get_visible_courses()
-    course_keys = {'{}'.format(key) for key in courses}
-
-    users_enrollments = {}
-    for user in users:
-        users_enrollments[user.id] = {'{}'.format(key) for key in get_user_enrollments_course_keys(user)}
-        
-    response = dict(get_users_enrollment_stats(users_enrollments, course_keys),
-                    **get_users_course_completion_stats(users, users_enrollments, course_keys))
-    response['admins'] = admins.count()
-    response['blocked_users'] = blocked_users.count()
-    return Response(response, status=status.HTTP_200_OK)
+    return Response(courses_data, status=status.HTTP_200_OK)
 
 
 class RetrieveLMSTabs(generics.RetrieveAPIView):
