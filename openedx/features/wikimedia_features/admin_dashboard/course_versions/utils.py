@@ -246,7 +246,7 @@ def list_quarterly_courses_enrollement_data(quarter):
     courses = CourseOverview.objects.all()
     for course in courses:
         enrollments = CourseEnrollment.objects.filter(
-            Q(created__range=quarter) | Q()
+            created__range=quarter
             course_id=course.id,
             is_active=True,
         ).order_by('created')
