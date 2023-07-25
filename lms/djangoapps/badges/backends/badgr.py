@@ -9,8 +9,9 @@ import json
 import hashlib
 import logging
 import mimetypes
-
 import requests
+
+from io import BytesIO
 from cryptography.fernet import Fernet
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -104,6 +105,27 @@ class BadgrBackend(BadgeBackend):
             )
             raise
 
+    def _get_byte_image(self, image):
+        """
+        Get the byte representation of an image from the given image object.
+
+        This function takes an image object and retrieves its byte representation
+        Parameters:
+            image (Image): An image object representing the image to retrieve.
+
+        Returns:
+            BytesIO or None: A BytesIO object containing the byte representation
+            of the image if successful, or None if there was an error during the
+            retrieval process.
+        """
+        try:
+            storage = image.storage
+            file_object = storage.open(image.file.name, mode='rb')
+            return BytesIO(file_object.file.read())
+        except Exception as e:  # pylint: disable=broad-except
+            LOGGER.error(f"Error opening an image: {e}")
+            return None
+
     def _create_badge(self, badge_class):
         """
         Create the badge class on Badgr.
@@ -117,7 +139,7 @@ class BadgrBackend(BadgeBackend):
                 "Could not determine content-type of image! Make sure it is a properly named .png file. "
                 "Filename was: {}".format(image.name)
             )
-        with open(image.path, 'rb') as image_file:
+        if image_file := self._get_byte_image(image):
             files = {'image': (image.name, image_file, content_type)}
             data = {
                 'name': badge_class.display_name,
