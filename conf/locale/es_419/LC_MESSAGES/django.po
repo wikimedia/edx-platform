@@ -296,7 +296,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-07-15 05:39+0000\n"
+"POT-Creation-Date: 2023-07-29 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Albeiro Gonzalez <albeiro.gonzalez@edunext.co>, 2019\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/open-edx/teams/6205/es_419/)\n"
@@ -13844,11 +13844,6 @@ msgstr "Reportes"
 msgid "Course is full"
 msgstr "Inscripciones cerradas"
 
-#: lms/templates/courseware/course_about.html
-#: lms/templates/dashboard/_dashboard_course_resume.html
-msgid "View Course"
-msgstr "Ver curso"
-
 #: cms/templates/certificates.html cms/templates/container.html
 #: cms/templates/course_outline.html cms/templates/group_configurations.html
 #: cms/templates/library.html cms/templates/manage_users.html
@@ -14372,15 +14367,6 @@ msgstr "Error al cargar el archivo. Inténtalo de nuevo"
 #, python-brace-format
 msgid "Libraries cannot have more than {limit} components"
 msgstr "Las librerías no pueden tener más de {limit} componentes"
-
-#: cms/djangoapps/contentstore/views/item.py
-msgid "Invalid data"
-msgstr "Datos inválidos"
-
-#: cms/djangoapps/contentstore/views/item.py
-#, python-brace-format
-msgid "Invalid data ({details})"
-msgstr "Datos inválidos ({details})"
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
@@ -17889,6 +17875,11 @@ msgstr "Ocurrió un error. Por favor intenta nuevamente más tarde."
 #: lms/templates/courseware/course_about.html
 msgid "You are enrolled in this course"
 msgstr "Usted está inscrito en este curso:"
+
+#: lms/templates/courseware/course_about.html
+#: lms/templates/dashboard/_dashboard_course_resume.html
+msgid "View Course"
+msgstr "Ver curso"
 
 #: lms/templates/courseware/course_about.html
 msgid "Enrollment in this course is by invitation only"
@@ -26463,6 +26454,12 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ msgid "Ready"
 #~ msgstr "Listo"
 
+#~ msgid "Invalid data"
+#~ msgstr "Datos inválidos"
+
+#~ msgid "Invalid data ({details})"
+#~ msgstr "Datos inválidos ({details})"
+
 #~ msgid "Lock upgrade deadline date"
 #~ msgstr "Fecha límite de actualización de bloqueo"
 
@@ -26671,6 +26668,13 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ msgid "Percentage of courses allowed to use edx-financial-assistance"
 #~ msgstr "Porcentaje de cursos autorizados para usar edx-financial-assistance"
 
+#~ msgid "Open Response Assessment Settings"
+#~ msgstr "Configuración de evaluación de respuesta abierta"
+
+#~ msgid "Course level settings for Open Response Assessment."
+#~ msgstr ""
+#~ "Configuración del nivel del curso para la evaluación de respuesta abierta."
+
 #~ msgid ""
 #~ "\n"
 #~ "                        %(course_name)s: Reported content awaits review\n"
@@ -26818,38 +26822,6 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ msgstr ""
 #~ "Si no se redirige en 5 segundos, {start_anchor}%(target)s{middle_anchor}haga"
 #~ " clic aquí para ir a la página de inicio{end_anchor}."
-
-#~ msgid "Check out this course on edx"
-#~ msgstr "Echa un vistazo a este curso en edx"
-
-#~ msgid "Enroll now"
-#~ msgstr "Inscribirse ahora"
-
-#~ msgid "Estimated 6 weeks"
-#~ msgstr "6 semanas estimadas"
-
-#~ msgid "4-6 hours per week"
-#~ msgstr "4-6 horas por semana"
-
-#~ msgid "Self-paced"
-#~ msgstr "A ritmo propio"
-
-#~ msgid "Progress at your own speed"
-#~ msgstr "Progresa a tu propio ritmo"
-
-#~ msgid "Optional upgrade available"
-#~ msgstr "Actualización opcional disponible"
-
-#~ msgid "Check out this course on %(platform_name)s."
-#~ msgstr "Mira este curso en %(platform_name)s."
-
-#~ msgid "This email message was automatically sent by %(lms_url)s "
-#~ msgstr ""
-#~ "Este mensaje de correo electrónico fue enviado automáticamente por "
-#~ "%(lms_url)s"
-
-#~ msgid "%(display_name)s"
-#~ msgstr "%(display_name)s"
 
 #~ msgid "My Account"
 #~ msgstr "Mi cuenta"
@@ -27976,6 +27948,25 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ "estudiante por renglón y no incluya títulos, pies de página, o líneas "
 #~ "vacías. Se proveerán columnas opcionales: cohorte y modo de curso, en ese "
 #~ "orden. Estas columnas extra podrían quedar en blanco. "
+
+#~ msgid "Limited Staff"
+#~ msgstr "Personal limitado"
+
+#~ msgid ""
+#~ "Course team members with the Limited Staff role help you manage your course."
+#~ " Limited Staff can enroll and unenroll learners, as well as modify their "
+#~ "grades and access all course data. Limited Staff don't have access to your "
+#~ "course in Studio. You can only give course team roles to enrolled users."
+#~ msgstr ""
+#~ "Los miembros del equipo del curso con el rol de Personal limitado lo ayudan "
+#~ "a administrar su curso. El personal limitado puede inscribir y cancelar la "
+#~ "inscripción de los estudiantes, así como modificar sus calificaciones y "
+#~ "acceder a todos los datos del curso. El personal limitado no tiene acceso a "
+#~ "su curso en Studio. Solo puede otorgar roles de equipo del curso a los "
+#~ "usuarios inscritos."
+
+#~ msgid "Add Limited Staff"
+#~ msgstr "Agregar personal limitado"
 
 #~ msgid "To use the email tool, visit the"
 #~ msgstr "Para usar la herramienta de correo electrónico, visite el"
