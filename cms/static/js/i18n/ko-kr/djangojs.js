@@ -246,8 +246,6 @@
     "Successfully enrolled the following users:": "\ub2e4\uc74c \uc774\uc6a9\uc790\ub4e4\uc744 \uc131\uacf5\uc801\uc73c\ub85c \ub4f1\ub85d\ud588\uc2b5\ub2c8\ub2e4.",
     "Successfully rescored problem for user {user}": "{user} \uc774\uc6a9\uc790\uc758 \ubb38\uc81c\uac00 \uc7ac\ucc44\uc810 \ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
     "Successfully reset the attempts for user {user}": "{user} \uc774\uc6a9\uc790\uc758 \uc2dc\ub3c4\ub97c \ucd08\uae30\ud654 \ud558\uc600\uc2b5\ub2c8\ub2e4.",
-    "Successfully sent enrollment emails to the following users. They will be allowed to enroll once they register:": "\ub4f1\ub85d \uc774\uba54\uc77c\uc744 \ub2e4\uc74c \uc774\uc6a9\uc790\ub4e4\uc5d0\uac8c  \ubc1c\uc1a1\ud588\uc2b5\ub2c8\ub2e4. ",
-    "Successfully sent enrollment emails to the following users. They will be enrolled once they register:": "\ub2e4\uc74c \uc0ac\uc6a9\uc790\uc5d0\uac8c  \uc131\uacf5\uc801\uc73c\ub85c \ub4f1\ub85d \uc774\uba54\uc77c\uc744 \ubc1c\uc1a1\ud588\uc2b5\ub2c8\ub2e4. \uac00\uc785\uc2e0\uccad\ud558\uba74 \uac15\uc88c\uc5d0 \ub4f1\ub85d\uc774 \ub420 \uac83\uc785\ub2c8\ub2e4: ",
     "Successfully unlinked.": "\uc131\uacf5\uc801 \uc5f0\uacb0\uc774 \ud574\uc81c\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
     "Tags": "Tags",
     "Take Photo": "\uc0ac\uc9c4 \ucd2c\uc601",
