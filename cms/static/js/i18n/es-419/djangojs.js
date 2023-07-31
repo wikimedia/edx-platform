@@ -1788,8 +1788,6 @@
     "Successfully rescored problem for user {user}": "Se repuntu\u00f3 exitosamente el problema para el usuario {user}",
     "Successfully rescored problem to improve score for user {user}": "Se repuntu\u00f3 exitosamente el problema para mejorar la calificaci\u00f3n del usuario {user}",
     "Successfully reset the attempts for user {user}": "Se han reiniciado los intentos para el usuario {user}",
-    "Successfully sent enrollment emails to the following users. They will be allowed to enroll once they register:": "Se envi\u00f3 el correo electr\u00f3nico a los siguientes usuarios. Podr\u00e1n inscribirse una vez se hayan registrado:",
-    "Successfully sent enrollment emails to the following users. They will be enrolled once they register:": "Se envi\u00f3 el correo electr\u00f3nico a los siguientes usuarios. Estar\u00e1n inscritos al curso una vez se hayan registrado:",
     "Successfully started task to rescore problem '<%- problem_id %>' for all students. Click the 'Show Task Status' button to see the status of the task.": "Se program\u00f3 la tarea para re puntuar el problema '<%- problem_id %>' para todos los estudiantes.  Haz clic en el bot\u00f3n de 'Mostrar estado de tareas' para ver el estado de dicha tarea.",
     "Successfully started task to reset attempts for problem '<%- problem_id %>'. Click the 'Show Task Status' button to see the status of the task.": "Se ha programado la tarea de reinicio de los env\u00edos para todos los estudiantes en el problema '<%- problem_id %>'. Haz clic en el bot\u00f3n de 'Mostrar estado de tareas' para ver el estado de dicha tarea.",
     "Successfully unlinked.": "Se desvincul\u00f3 con \u00e9xito.",
