@@ -164,6 +164,11 @@
         if ($(this).val())
         {
             $('.btn-primary').attr('disabled', false);
+            $('.div-tooltip').each(function() {
+                const $this = $(this);
+                $this.attr('data', $this.attr('title'));
+                $this.removeAttr('title');
+            });
             list_of_all_courses_elements.hide();
             if ($(this).val().length > 1) {
                 course_name = $(this).val().toString();
@@ -187,7 +192,6 @@
                 for (const [_, value] of Object.entries(base_courses_list)) {
                     if(value == $(this).val()[0])
                     {
-                        console.log("hello")
                         list_of_course_version_elements.show();
                     }
                 }
@@ -201,6 +205,11 @@
             }
         }
         else {
+            $('.div-tooltip').each(function() {
+                const $this = $(this);
+                $this.attr('title', $this.attr('data'));
+                $this.removeAttr('data');
+            });
             list_of_single_course_elements.show();
             list_of_multiple_course_elements.show();
             list_of_course_version_elements.show();
