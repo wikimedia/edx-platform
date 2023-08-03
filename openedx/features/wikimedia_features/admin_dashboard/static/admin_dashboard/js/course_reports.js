@@ -1,8 +1,9 @@
 (function() {
     'use strict';
-    let getCookie, ReportDownloads, AjaxCall, ReportDownloadsForMultipleCourses;
+    let getCookie, ReportDownloads, AjaxCall, ReportDownloadsForMultipleCourses, PendingTasks;
     let course_name = null;
     let endpoint =  null;
+    let pendingTaskEndpoint = "/wikimedia/pending_tasks/all_courses";
     let report_for_single_courses = null;
     let prev_data_download_len = 0;
 
@@ -105,6 +106,7 @@
             },
             success: function(data) {
                 $('.request-response').text(data.status).show();
+                PendingTasks()
             }
         });
     };
@@ -120,6 +122,39 @@
             }
         }
     }, 20000);
+
+     PendingTasks = function() {
+        var $no_tasks_message = $('.no-pending-tasks-message'),
+            $running_tasks_section = $('.running-tasks-section')
+        return $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: pendingTaskEndpoint,
+            success: function(tasks) {
+                if (tasks.length) {
+                    $("#pending-tasks").empty().show()
+                    for(const task of tasks){
+                        $("#pending-tasks").append('<li>'+`${task.fields.task_type}_${task.fields.created}`+'</li>')
+                    }
+                    $no_tasks_message.hide();
+                    return $running_tasks_section.show();
+                } else {
+                    $("#pending-tasks").hide()
+                    $running_tasks_section.hide();
+                    $no_tasks_message.empty();
+                    $no_tasks_message.append($('<p>').text(gettext('No tasks currently running.')));
+                    return $no_tasks_message.show();
+                }
+            },
+            error: function() {
+                console.log("There is an error in the pending tasks api")
+            }
+        });
+    };
+
+    setInterval(function() {
+        PendingTasks()
+    }, 15000);
 
     $('#select-courses').select2({
         placeholder: "Browse Courses",
@@ -170,6 +205,8 @@
                 $this.removeAttr('title');
             });
             list_of_all_courses_elements.hide();
+            pendingTaskEndpoint = `/wikimedia/pending_tasks/${$(this).val()[0]}`
+            PendingTasks()
             if ($(this).val().length > 1) {
                 course_name = $(this).val().toString();
                 list_of_single_course_elements.hide();
@@ -220,6 +257,9 @@
             endpoint = '/wikimedia/list_all_courses_report_downloads';
             report_for_single_courses = null;
             $('#report-request-response,#report-request-response-error').empty().hide();
+            // pending tasks
+            pendingTaskEndpoint = "/wikimedia/pending_tasks/all_courses";
+            PendingTasks()
         }
     });
 
@@ -281,6 +321,7 @@
     $(document).ready(function() {
         endpoint = '/wikimedia/list_all_courses_report_downloads';
         ReportDownloads();
+        PendingTasks()
     });
 
 

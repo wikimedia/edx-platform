@@ -27,7 +27,7 @@ from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 from django.views.decorators.cache import cache_control
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.views.decorators.http import require_POST, require_http_methods
+from django.views.decorators.http import (require_POST, require_http_methods, require_GET)
 from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthentication
 from edx_rest_framework_extensions.auth.session.authentication import SessionAuthenticationAllowInactiveUser
 from edx_when.api import get_date_for_block
@@ -117,6 +117,8 @@ from openedx.core.lib.api.authentication import BearerAuthenticationAllowInactiv
 from openedx.core.lib.api.view_utils import DeveloperErrorViewMixin, view_auth_classes
 from openedx.core.lib.courses import get_course_by_id
 from openedx.features.course_experience.url_helpers import get_learning_mfe_home_url
+from openedx.features.wikimedia_features.admin_dashboard.models import AdminReportTask
+
 from .tools import (
     dump_module_extensions,
     dump_student_extensions,
@@ -129,6 +131,8 @@ from .tools import (
     strip_if_string,
 )
 from .. import permissions
+
+from celery.states import READY_STATES
 
 log = logging.getLogger(__name__)
 
@@ -2339,6 +2343,17 @@ def _list_report_downloads(request, course_id):
         ]
     }
     return JsonResponse(response_payload)
+
+
+@require_GET
+@ensure_csrf_cookie
+def pending_tasks(request, course_id=None):
+    """
+    Lists pending report tasks
+    """
+    tasks = AdminReportTask.objects.filter(course_id=course_id).exclude(task_state__in=READY_STATES)
+    
+    return JsonResponse(tasks)
 
 
 @require_POST

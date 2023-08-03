@@ -232,6 +232,23 @@
         )}
       </div>
     </div>
+    <div class="running-tasks-container action-type-container">
+      <hr>
+      <h3 class="hd hd-3"> ${_("Pending Tasks")} </h3>
+      <div class="running-tasks-section">
+          <p>${_("The status for any active tasks appears in the list below.")} </p>
+          <br />
+          <div>
+            <ul
+            class="pending-tasks"
+            id="pending-tasks"
+            style="display: none;"
+            >
+            </ul>
+          </div>
+      </div>
+      <div class="no-pending-tasks-message"></div>
+  </div>
     <div style="display: none" id="base_courses_list">${ base_courses_list }</div>
   </div>
 <%block name="head_extra">
