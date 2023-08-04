@@ -215,7 +215,7 @@ def get_last_quarter():
     return [date(ref.year, 7, 1).strftime(date_format), date(ref.year, 9, 30).strftime(date_format)]
 
 
-def get_cms_url(course_key):
+def get_cms_course_url(course_key):
     return f"https://{settings.CMS_BASE}/course/{course_key}"
 
 
@@ -234,7 +234,7 @@ def list_all_courses_enrollment_data():
         parent_course_title = ''
         try:
             course_traslation = CourseTranslation.objects.get(course_id=course.id)
-            parent_course_url = get_cms_url(str(course_traslation.base_course_id))
+            parent_course_url = get_cms_course_url(str(course_traslation.base_course_id))
             parent_course_title = get_course_by_id(course_traslation.base_course_id).display_name
         except CourseTranslation.DoesNotExist:
             pass
@@ -242,7 +242,7 @@ def list_all_courses_enrollment_data():
         total_learners_completed, total_learners_enrolled, completed_percentage = \
             get_course_enrollment_and_completion_stats(course.id)
         courses_data.append({
-            'course_url' : get_cms_url(str(course.id)),
+            'course_url' : get_cms_course_url(str(course.id)),
             'course_title': course.display_name,
             'available_since': course.enrollment_start.strftime("%Y-%m-%d") if course.enrollment_start else '',
             "parent_course_url": parent_course_url,
