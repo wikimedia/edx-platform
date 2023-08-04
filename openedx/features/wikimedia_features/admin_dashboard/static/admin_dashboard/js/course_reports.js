@@ -4,7 +4,7 @@
     let course_name = null;
     let endpoint =  null;
     let pendingTaskEndpoint = "/wikimedia/pending_tasks/all_courses";
-    let report_for_single_courses = null;
+    let report_for_single_courses = true;
     let prev_data_download_len = 0;
 
     getCookie = function(name) {
@@ -57,6 +57,15 @@
         });
     };
 
+    const GetPreviousLinks = function(){
+        var aTags = $('#report-downloads-list li a')
+        var previousLinks = [];
+        for ( let counter = 0; counter < aTags.length; counter++){
+            previousLinks.push( aTags[ counter ].getAttribute("href") );
+        }
+        return previousLinks
+    }
+
     ReportDownloadsForMultipleCourses = function(){
         $.ajax({
             type: 'POST',
@@ -66,8 +75,9 @@
                 if (data.downloads.length > 0) {
                     $('.download-section, #report-downloads-list').show();
                     if (report_for_single_courses != false){
+                        const previousLinks = GetPreviousLinks()
                         for (let i = 0; i < data.downloads.length; i++) {
-                            if(data.downloads[i]['name'].split("_")[0] == 'multiple')
+                            if(data.downloads[i]['name'].split("_")[0] == 'multiple' && !previousLinks.includes(data.downloads[i]['url']))
                             {
                                 $('#report-downloads-list').append('<li>'+data.downloads[i]['link']+'</li>');
                             }
@@ -111,19 +121,7 @@
         });
     };
 
-    setInterval(function() {
-        if(endpoint != null)
-        {
-            if(report_for_single_courses == false) {
-                ReportDownloadsForMultipleCourses();
-            }
-            else{
-                ReportDownloads();
-            }
-        }
-    }, 20000);
-
-     PendingTasks = function() {
+    PendingTasks = function() {
         var $no_tasks_message = $('.no-pending-tasks-message'),
             $running_tasks_section = $('.running-tasks-section')
         return $.ajax({
@@ -153,8 +151,17 @@
     };
 
     setInterval(function() {
+        if(endpoint != null)
+        {
+            if(report_for_single_courses == true) {
+                ReportDownloads();
+            }
+            else{
+                ReportDownloadsForMultipleCourses();
+            }
+        }
         PendingTasks()
-    }, 15000);
+    }, 20000);
 
     $('#select-courses').select2({
         placeholder: "Browse Courses",
@@ -205,8 +212,7 @@
                 $this.removeAttr('title');
             });
             list_of_all_courses_elements.hide();
-            pendingTaskEndpoint = `/wikimedia/pending_tasks/${$(this).val()[0]}`
-            PendingTasks()
+            pendingTaskEndpoint = `/wikimedia/pending_tasks/${$(this).val().toString()}`
             if ($(this).val().length > 1) {
                 course_name = $(this).val().toString();
                 list_of_single_course_elements.hide();
@@ -255,12 +261,12 @@
             $('.all-courses-report .action .btn-primary').attr('disabled', false);
             course_name = null;
             endpoint = '/wikimedia/list_all_courses_report_downloads';
-            report_for_single_courses = null;
-            $('#report-request-response,#report-request-response-error').empty().hide();
-            // pending tasks
             pendingTaskEndpoint = "/wikimedia/pending_tasks/all_courses";
-            PendingTasks()
+            report_for_single_courses = true;
+            $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
+            ReportDownloads()
         }
+        PendingTasks()
     });
 
     $("[name='list-profiles-csv']").click(function() {
