@@ -1,12 +1,12 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.features.wikimedia_features.admin_dashboard.models import AdminReportTask
+from openedx.features.wikimedia_features.admin_dashboard.tasks import send_report_ready_email_task
+from openedx.features.wikimedia_features.admin_dashboard.utils import get_report_tab_link
 
 from celery.states import SUCCESS
-from openedx.features.wikimedia_features.admin_dashboard.utils import get_report_tab_link, list_report_downloads_links
-from openedx.features.wikimedia_features.email.utils import send_notification
 
 from opaque_keys import InvalidKeyError
 
@@ -39,6 +39,4 @@ def send_email_when_report_ready(sender, instance, created, **kwargs):
             "report_link": get_report_tab_link(),
             "email_msg": email_msg
         }
-        print(email, data, email_msg)
-        print(instance)
-        send_notification("report_ready", data, "", email)
+        send_report_ready_email_task.delay("report_ready", data, "", [email])

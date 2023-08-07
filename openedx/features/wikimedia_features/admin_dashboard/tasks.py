@@ -23,7 +23,9 @@ of the query for traversing StudentModule objects.
 import logging
 from functools import partial
 
-from celery import shared_task
+from celery import shared_task, task
+from celery_utils.logged_task import LoggedTask
+
 from django.utils.translation import ugettext_noop
 from edx_django_utils.monitoring import set_code_owner_attribute
 
@@ -31,6 +33,7 @@ from openedx.features.wikimedia_features.admin_dashboard.tasks_base import BaseA
 from openedx.features.wikimedia_features.admin_dashboard.grades import MultipleCourseGradeReport,  CourseProgressReport
 from openedx.features.wikimedia_features.admin_dashboard.runner import run_main_task
 from openedx.features.wikimedia_features.admin_dashboard.course_versions.task_helper import upload_course_versions_csv, upload_quarterly_courses_enrollement_csv, upload_all_courses_enrollement_csv
+from openedx.features.wikimedia_features.email.utils import send_notification
 
 
 TASK_LOG = logging.getLogger('edx.celery.task')
@@ -116,3 +119,10 @@ def task_courses_enrollement_report(entry_id, xmodule_instance_args, user_id):
     )    
     task_fn = partial(upload_quarterly_courses_enrollement_csv, xmodule_instance_args)
     return run_main_task(entry_id, task_fn, action_name, user_id)
+
+
+@task(base=LoggedTask)
+def send_report_ready_email_task(msg_class_key, context, subject, email):
+    TASK_LOG.info("Initiated task to send admin report ready notifications.")
+    import pdb; pdb.set_trace();
+    send_notification(msg_class_key, context, subject, email)
