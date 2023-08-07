@@ -8,6 +8,8 @@ from celery.states import SUCCESS
 from openedx.features.wikimedia_features.admin_dashboard.utils import get_report_tab_link, list_report_downloads_links
 from openedx.features.wikimedia_features.email.utils import send_notification
 
+from opaque_keys import InvalidKeyError
+
 @receiver(post_save, sender=AdminReportTask)
 def send_email_when_report_ready(sender, instance, created, **kwargs):
     if instance.task_state ==  SUCCESS:
@@ -15,7 +17,11 @@ def send_email_when_report_ready(sender, instance, created, **kwargs):
         report_type = instance.task_type.replace('_', " ").title()
         
         course_ids = instance.course_id.split(',')
-        courses = list(CourseOverview.objects.filter(id__in=course_ids))
+        try:
+            courses = list(CourseOverview.objects.filter(id__in=course_ids))
+        except InvalidKeyError:
+            courses = []
+
         if len(courses) > 1:
             courses_names = list()
             for course in courses:

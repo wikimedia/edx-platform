@@ -9,7 +9,6 @@ from eventtracking import tracker
 from django.urls import reverse
 
 from lms.djangoapps.instructor_task.models import ReportStore
-from openedx.core.djangoapps.theming.helpers import get_current_site
 
 from django.conf import settings
 
@@ -58,7 +57,5 @@ def list_report_downloads_links(course_id="all_courses", report_name=None):
         ]
 
 def get_report_tab_link():
-    site = get_current_site()
-    scheme = 'https' if settings.HTTPS == 'on' else 'http'
-    base_url = '{}://{}'.format(scheme, site.domain)
-    return urljoin(base_url, reverse('admin_dashboard:course_reports'))
+    lms_root_url = settings.LMS_ROOT_URL
+    return urljoin(lms_root_url, reverse('admin_dashboard:course_reports'))
