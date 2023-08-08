@@ -29,7 +29,6 @@ from edx_django_utils.monitoring import set_code_owner_attribute
 
 from lms.djangoapps.bulk_email.tasks import perform_delegate_email_batches
 from lms.djangoapps.instructor_task.tasks_base import BaseInstructorTask
-from openedx.features.wikimedia_features.admin_dashboard.tasks_base import BaseAdminReportTask
 from lms.djangoapps.instructor_task.tasks_helper.certs import generate_students_certificates
 from lms.djangoapps.instructor_task.tasks_helper.enrollments import upload_may_enroll_csv, upload_students_csv
 from lms.djangoapps.instructor_task.tasks_helper.grades import CourseGradeReport, ProblemGradeReport, ProblemResponses
@@ -181,7 +180,7 @@ def calculate_problem_responses_csv(entry_id, xmodule_instance_args):
     return run_main_task(entry_id, task_fn, action_name)
 
 
-@shared_task(base=BaseAdminReportTask)
+@shared_task(base=BaseInstructorTask)
 @set_code_owner_attribute
 def calculate_grades_csv(entry_id, xmodule_instance_args):
     """
@@ -198,7 +197,7 @@ def calculate_grades_csv(entry_id, xmodule_instance_args):
     return run_main_task(entry_id, task_fn, action_name)
 
 
-@shared_task(base=BaseAdminReportTask)
+@shared_task(base=BaseInstructorTask)
 @set_code_owner_attribute
 def calculate_problem_grade_report(entry_id, xmodule_instance_args):
     """
@@ -216,7 +215,7 @@ def calculate_problem_grade_report(entry_id, xmodule_instance_args):
     return run_main_task(entry_id, task_fn, action_name)
 
 
-@shared_task(base=BaseAdminReportTask)
+@shared_task(base=BaseInstructorTask)
 @set_code_owner_attribute
 def calculate_students_features_csv(entry_id, xmodule_instance_args):
     """
@@ -254,7 +253,7 @@ def proctored_exam_results_csv(entry_id, xmodule_instance_args):
     return run_main_task(entry_id, task_fn, action_name)
 
 
-@shared_task(base=BaseAdminReportTask)
+@shared_task(base=BaseInstructorTask)
 @set_code_owner_attribute
 def calculate_may_enroll_csv(entry_id, xmodule_instance_args):
     """
@@ -298,7 +297,7 @@ def cohort_students(entry_id, xmodule_instance_args):
     return run_main_task(entry_id, task_fn, action_name)
 
 
-@shared_task(base=BaseAdminReportTask)
+@shared_task(base=BaseInstructorTask)
 @set_code_owner_attribute
 def generate_anonymous_ids_for_course(entry_id, xmodule_instance_args):
     """
