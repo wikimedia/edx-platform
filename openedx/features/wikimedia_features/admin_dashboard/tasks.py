@@ -124,5 +124,4 @@ def task_courses_enrollement_report(entry_id, xmodule_instance_args, user_id):
 @task(base=LoggedTask)
 def send_report_ready_email_task(msg_class_key, context, subject, email):
     TASK_LOG.info("Initiated task to send admin report ready notifications.")
-    import pdb; pdb.set_trace();
     send_notification(msg_class_key, context, subject, email)
