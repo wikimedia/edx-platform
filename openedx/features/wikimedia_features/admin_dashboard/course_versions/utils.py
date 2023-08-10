@@ -216,6 +216,9 @@ def get_last_quarter():
 
 
 def get_cms_course_url(course_key):
+    """
+    Get course url for studio
+    """
     return f"https://{settings.CMS_BASE}/course/{course_key}"
 
 
