@@ -132,7 +132,7 @@
                 if (tasks.length) {
                     $("#pending-tasks").empty().show()
                     for(const task of tasks){
-                        $("#pending-tasks").append('<li>'+`${task.fields.task_type}_${task.fields.created}`+'</li>')
+                        $("#pending-tasks").append('<li>'+`${task.task_type}_${task.created}`+'</li>')
                     }
                     $no_tasks_message.hide();
                     return $running_tasks_section.show();

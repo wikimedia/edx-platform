@@ -2351,9 +2351,17 @@ def pending_tasks(request, course_id=None):
     """
     Lists pending report tasks
     """
-    tasks = AdminReportTask.objects.filter(course_id=course_id).exclude(task_state__in=READY_STATES)
-    
-    return JsonResponse(tasks)
+    tasks = list(AdminReportTask.objects.filter(course_id=course_id).exclude(task_state__in=READY_STATES))
+    if not ',' in course_id:
+        #  InstructorTasks have course key objects, not comma-separated strings like AdminReportTasks
+        try:
+            course_key = CourseKey.from_string(course_id)
+            instructor_tasks = list(task_api.get_running_instructor_tasks(course_key))
+            tasks += instructor_tasks
+        except InvalidKeyError:
+            pass
+
+    return JsonResponse(list(map(extract_task_features, tasks)))
 
 
 @require_POST
