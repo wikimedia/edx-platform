@@ -3,9 +3,15 @@ Utility methods for instructor tasks
 """
 
 
+from urllib.parse import urljoin
 from eventtracking import tracker
 
+from django.urls import reverse
+
 from lms.djangoapps.instructor_task.models import ReportStore
+
+from django.conf import settings
+
 
 REPORT_REQUESTED_EVENT_NAME = 'edx.instructor.report.requested'
 
@@ -41,3 +47,16 @@ def tracker_emit(report_name):
     Emits a 'report.requested' event for the given report.
     """
     tracker.emit(REPORT_REQUESTED_EVENT_NAME, {"report_type": report_name, })
+
+
+def list_report_downloads_links(course_id="all_courses", report_name=None):
+    report_store = ReportStore.from_config(config_name='GRADES_DOWNLOAD')
+
+    return [
+            dict(name=name, url=url)
+            for name, url in report_store.links_for(course_id) if report_name is None or name == report_name
+        ]
+
+def get_report_tab_link():
+    lms_root_url = settings.LMS_ROOT_URL
+    return urljoin(lms_root_url, reverse('admin_dashboard:course_reports'))

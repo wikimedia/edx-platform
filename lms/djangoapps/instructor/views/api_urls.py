@@ -19,6 +19,12 @@ v1_api_urls = [
             name='generate_problem_responses', ),
 ]
 
+# [Wikimedia] Custom Apis
+wikimedia_api_urls = [
+    path('list_all_courses_report_downloads', api.list_all_courses_report_downloads, name='list_all_courses_report_downloads'),
+    path('pending_tasks/<str:course_id>', api.pending_tasks, name='pending_tasks'),
+]
+
 urlpatterns = [
     path('students_update_enrollment', api.students_update_enrollment, name='students_update_enrollment'),
     path('register_and_enroll_students', api.register_and_enroll_students, name='register_and_enroll_students'),

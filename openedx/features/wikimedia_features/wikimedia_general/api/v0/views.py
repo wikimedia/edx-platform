@@ -3,17 +3,19 @@ Views for wikimedia_general v0 API(s)
 """
 from django.contrib.auth.decorators import login_required
 
+from openedx.features.wikimedia_features.admin_dashboard.course_versions.utils import list_all_courses_enrollment_data
+
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 
 from opaque_keys.edx.keys import CourseKey
 
 from django.utils.translation import ugettext as _
-from lms.djangoapps.courseware.courses import get_course_by_id
+from lms.djangoapps.courseware.courses import  get_course_by_id
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     get_follow_up_courses,
-    get_user_completed_course_keys
+    get_user_completed_course_keys,
 )
 from openedx.core.djangoapps.content.course_overviews.serializers import CourseOverviewBaseSerializer
 from openedx.features.wikimedia_features.wikimedia_general.api.v0.utils import get_authenticated_header_tabs, get_unauthenticated_header_tabs
@@ -58,6 +60,17 @@ def get_courses_to_study_next(request):
     serialzer = CourseOverviewBaseSerializer(follow_up_courses, many=True)
 
     return Response({"follow-up-courses": serialzer.data}, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes((permissions.IsAdminUser, ))
+def courses_stats(request):
+    """Endpoint to retrieve follow up courses for the user's completed courses.
+    """
+    courses_data = list_all_courses_enrollment_data()
+    
+    return Response(courses_data, status=status.HTTP_200_OK)
+
 
 class RetrieveLMSTabs(generics.RetrieveAPIView):
     """

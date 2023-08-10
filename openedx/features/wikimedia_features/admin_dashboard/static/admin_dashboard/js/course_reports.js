@@ -1,9 +1,10 @@
 (function() {
     'use strict';
-    let getCookie, ReportDownloads, AjaxCall, ReportDownloadsForMultipleCourses;
+    let getCookie, ReportDownloads, AjaxCall, ReportDownloadsForMultipleCourses, PendingTasks;
     let course_name = null;
     let endpoint =  null;
-    let report_for_single_courses = null;
+    let pendingTaskEndpoint = "/wikimedia/pending_tasks/all_courses";
+    let report_for_single_courses = true;
     let prev_data_download_len = 0;
 
     getCookie = function(name) {
@@ -56,6 +57,15 @@
         });
     };
 
+    const GetPreviousLinks = function(){
+        var aTags = $('#report-downloads-list li a')
+        var previousLinks = [];
+        for ( let counter = 0; counter < aTags.length; counter++){
+            previousLinks.push( aTags[ counter ].getAttribute("href") );
+        }
+        return previousLinks
+    }
+
     ReportDownloadsForMultipleCourses = function(){
         $.ajax({
             type: 'POST',
@@ -65,8 +75,9 @@
                 if (data.downloads.length > 0) {
                     $('.download-section, #report-downloads-list').show();
                     if (report_for_single_courses != false){
+                        const previousLinks = GetPreviousLinks()
                         for (let i = 0; i < data.downloads.length; i++) {
-                            if(data.downloads[i]['name'].split("_")[0] == 'multiple')
+                            if(data.downloads[i]['name'].split("_")[0] == 'multiple' && !previousLinks.includes(data.downloads[i]['url']))
                             {
                                 $('#report-downloads-list').append('<li>'+data.downloads[i]['link']+'</li>');
                             }
@@ -105,36 +116,103 @@
             },
             success: function(data) {
                 $('.request-response').text(data.status).show();
+                PendingTasks()
+            }
+        });
+    };
+
+    PendingTasks = function() {
+        var $no_tasks_message = $('.no-pending-tasks-message'),
+            $running_tasks_section = $('.running-tasks-section')
+        return $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: pendingTaskEndpoint,
+            success: function(tasks) {
+                if (tasks.length) {
+                    $("#pending-tasks").empty().show()
+                    for(const task of tasks){
+                        $("#pending-tasks").append('<li>'+`${task.task_type}_${task.created}`+'</li>')
+                    }
+                    $no_tasks_message.hide();
+                    return $running_tasks_section.show();
+                } else {
+                    $("#pending-tasks").hide()
+                    $running_tasks_section.hide();
+                    $no_tasks_message.empty();
+                    $no_tasks_message.append($('<p>').text(gettext('No tasks currently running.')));
+                    return $no_tasks_message.show();
+                }
+            },
+            error: function() {
+                console.log("There is an error in the pending tasks api")
             }
         });
     };
 
     setInterval(function() {
-        if(course_name != null)
+        if(endpoint != null)
         {
-            if(report_for_single_courses == true)
-            {
+            if(report_for_single_courses == true) {
                 ReportDownloads();
             }
-            else if(report_for_single_courses == false) {
+            else{
                 ReportDownloadsForMultipleCourses();
             }
         }
+        PendingTasks()
     }, 20000);
 
     $('#select-courses').select2({
         placeholder: "Browse Courses",
     });
 
-    $('select').change(function (e) {
+    $('#select-enrolment-year').change(function (e) {
+        e.preventDefault();
+        const today = new Date();
+        const selected_year = Number($(this).val())
+        const current_year = today.getFullYear()
+        var quarters = 4;
+
+        var quarter_select = $("#select-enrolment-quarter")
+        quarter_select.empty()
+
+        if(!selected_year){
+            var opt = document.createElement('option');
+            opt.value = "";
+            opt.innerHTML = "Select Quarter";
+            quarter_select.append(opt);
+        }
+
+        if (selected_year === current_year){
+            quarters = Math.floor((today.getMonth() + 3) / 3) - 1;
+        }
+
+        for (var i = 1; i<=quarters; i++){
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = i;
+            quarter_select.append(opt);
+        }
+    })
+
+    $('#select-courses').change(function (e) {
         e.preventDefault();
         let list_of_single_course_elements = $('.single-course-report');
         let list_of_multiple_course_elements = $('.multiple-course-report');
         let list_of_course_version_elements = $('.course-version-report');
+        let list_of_all_courses_elements = $('.all-courses-report')
         prev_data_download_len = 0;
         if ($(this).val())
         {
             $('.btn-primary').attr('disabled', false);
+            $('.div-tooltip').each(function() {
+                const $this = $(this);
+                $this.attr('data', $this.attr('title'));
+                $this.removeAttr('title');
+            });
+            list_of_all_courses_elements.hide();
+            pendingTaskEndpoint = `/wikimedia/pending_tasks/${$(this).val().toString()}`
             if ($(this).val().length > 1) {
                 course_name = $(this).val().toString();
                 list_of_single_course_elements.hide();
@@ -157,7 +235,6 @@
                 for (const [_, value] of Object.entries(base_courses_list)) {
                     if(value == $(this).val()[0])
                     {
-                        console.log("hello")
                         list_of_course_version_elements.show();
                     }
                 }
@@ -171,23 +248,31 @@
             }
         }
         else {
+            $('.div-tooltip').each(function() {
+                const $this = $(this);
+                $this.attr('title', $this.attr('data'));
+                $this.removeAttr('data');
+            });
             list_of_single_course_elements.show();
             list_of_multiple_course_elements.show();
             list_of_course_version_elements.show();
+            list_of_all_courses_elements.show();
             $('.btn-primary').attr('disabled', true);
+            $('.all-courses-report .action .btn-primary').attr('disabled', false);
             course_name = null;
-            endpoint = null;
-            report_for_single_courses = null;
+            endpoint = '/wikimedia/list_all_courses_report_downloads';
+            pendingTaskEndpoint = "/wikimedia/pending_tasks/all_courses";
+            report_for_single_courses = true;
             $('#report-request-response,#report-request-response-error,#report-downloads-list').empty().hide();
+            ReportDownloads()
         }
+        PendingTasks()
     });
 
     $("[name='list-profiles-csv']").click(function() {
         let url_for_list_profiles_csv = '/courses/' + course_name + '/instructor/api/get_students_features' + '/csv';
         AjaxCall(url_for_list_profiles_csv);
     });
-
-
 
     $("[name='calculate-grades-csv']").click(function() {
         let url_for_calculate_grades = '/courses/' + course_name + '/instructor/api/calculate_grades_csv';
@@ -229,4 +314,21 @@
         let url_for_average_calculate_grades = '/admin_dashboard/progress_report_csv/' + course_name ;
         AjaxCall(url_for_average_calculate_grades);
     })
+    $("[name='courses-enrollments-csv']").click(function() {
+        let url_for_courses_enrolment_report = $(this).attr('data-endpoint');
+        let year = $('#select-enrolment-year').val()
+        let quarter = $('#select-enrolment-quarter').val()
+        AjaxCall(url_for_courses_enrolment_report, {year: Number(year), quarter: Number(quarter)});
+    })
+    $("[name='all-courses-enrollments-csv']").click(function() {
+        let data_url = $(this).attr('data-endpoint');
+        AjaxCall(data_url);
+    })
+    $(document).ready(function() {
+        endpoint = '/wikimedia/list_all_courses_report_downloads';
+        ReportDownloads();
+        PendingTasks()
+    });
+
+
 }).call(this);

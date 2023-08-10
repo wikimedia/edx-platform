@@ -21,7 +21,8 @@ User = get_user_model()
 
 MESSAGE_TYPES = {
   'pending_messages': message_types.PendingMessagesNotification,
-  'thread_mention': message_types.ThreadMentionNotification
+  'thread_mention': message_types.ThreadMentionNotification,
+  'report_ready': message_types.ReportReadyNotification
 }
 
 

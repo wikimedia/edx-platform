@@ -12,3 +12,9 @@ class ThreadMentionNotification(BaseMessageType):
     A message for notifying users that they have been mentioned in a post/response/comment on discussion forum.
     """
     APP_LABEL = 'wikimedia_general'
+
+class ReportReadyNotification(BaseMessageType):
+    """
+    A message for notifying users that their requested report is ready.
+    """
+    APP_LABEL = 'admin_dashboard'

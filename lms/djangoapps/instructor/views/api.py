@@ -27,7 +27,7 @@ from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 from django.views.decorators.cache import cache_control
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.views.decorators.http import require_POST, require_http_methods
+from django.views.decorators.http import (require_POST, require_http_methods, require_GET)
 from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthentication
 from edx_rest_framework_extensions.auth.session.authentication import SessionAuthenticationAllowInactiveUser
 from edx_when.api import get_date_for_block
@@ -117,6 +117,8 @@ from openedx.core.lib.api.authentication import BearerAuthenticationAllowInactiv
 from openedx.core.lib.api.view_utils import DeveloperErrorViewMixin, view_auth_classes
 from openedx.core.lib.courses import get_course_by_id
 from openedx.features.course_experience.url_helpers import get_learning_mfe_home_url
+from openedx.features.wikimedia_features.admin_dashboard.models import AdminReportTask
+
 from .tools import (
     dump_module_extensions,
     dump_student_extensions,
@@ -129,6 +131,8 @@ from .tools import (
     strip_if_string,
 )
 from .. import permissions
+
+from celery.states import READY_STATES
 
 log = logging.getLogger(__name__)
 
@@ -2340,6 +2344,54 @@ def _list_report_downloads(request, course_id):
     }
     return JsonResponse(response_payload)
 
+
+@require_GET
+@ensure_csrf_cookie
+def pending_tasks(request, course_id=None):
+    """
+    Lists pending report tasks
+    """
+    tasks = list(AdminReportTask.objects.filter(course_id=course_id).exclude(task_state__in=READY_STATES))
+    if not ',' in course_id:
+        #  InstructorTasks have course key objects, not comma-separated strings like AdminReportTasks
+        try:
+            course_key = CourseKey.from_string(course_id)
+            instructor_tasks = list(task_api.get_running_instructor_tasks(course_key))
+            tasks += instructor_tasks
+        except InvalidKeyError:
+            pass
+
+    return JsonResponse(list(map(extract_task_features, tasks)))
+
+
+@require_POST
+@ensure_csrf_cookie
+def list_all_courses_report_downloads(request):
+    """
+    List grade CSV files that are available for download for all courses.
+
+    Takes the following query parameters:
+    - (optional) report_name - name of the report
+    """
+    return _list_all_courses_report_downloads(request=request)
+
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+def _list_all_courses_report_downloads(request):
+    """
+    List grade CSV files that are available for download for all courses.
+
+    Internal function with common code shared between DRF and functional views.
+    """
+    report_store = ReportStore.from_config(config_name='GRADES_DOWNLOAD')
+    report_name = getattr(request, 'query_params', request.POST).get("report_name", None)
+
+    response_payload = {
+        'downloads': [
+            dict(name=name, url=url, link=HTML('<a href="{}">{}</a>').format(HTML(url), Text(name)))
+            for name, url in report_store.links_for('all_courses') if report_name is None or name == report_name
+        ]
+    }
+    return JsonResponse(response_payload)
 
 @require_POST
 @ensure_csrf_cookie

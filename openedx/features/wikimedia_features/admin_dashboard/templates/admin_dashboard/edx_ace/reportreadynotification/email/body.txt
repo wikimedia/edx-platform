@@ -1,0 +1,7 @@
+{% load i18n %}
+{% block content %}
+
+{% blocktrans trimmed %}{{ email_msg }}{% endblocktrans %}
+{% trans "View Reports" %} -> {{ report_link }}
+{% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+{% endblock %}

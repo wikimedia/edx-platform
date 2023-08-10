@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 from django.conf import settings
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
+from common.djangoapps.student.models import CourseEnrollment
 from opaque_keys.edx.keys import CourseKey
 
 from openedx.features.course_experience.utils import get_course_outline_block_tree
@@ -87,23 +88,30 @@ def get_mentioned_users_list(input_string, users_list=None):
         return get_mentioned_users_list(remianing_string, users_list)
 
 
-def get_user_completed_course_keys(user):
-    """
-    Get courses that the user has completed.
-    """
-
+def get_user_enrollments_course_keys(user):
     course_limit = None
     # Get the org whitelist or the org blacklist for the current site
     site_org_whitelist, site_org_blacklist = get_org_black_and_whitelist_for_site()
     course_enrollments = list(get_course_enrollments(user, site_org_whitelist, site_org_blacklist, course_limit))
     course_enrollments_keys = [enrollment.course_id for enrollment in course_enrollments]
+    
+    return course_enrollments_keys
 
-    completed_course_keys = list()
-    for course_key in course_enrollments_keys:
-        if CourseGradeFactory().read(user, course_key=course_key).summary['grade'] == 'Pass':
-            completed_course_keys.append('{}'.format(course_key))
 
-    return completed_course_keys
+def is_course_completed(user, course_key):
+    if isinstance(course_key, str):
+        course_key = CourseKey.from_string(course_key)
+    return CourseGradeFactory().read(user, course_key=course_key).summary['grade'] == 'Pass'
+
+
+def get_user_completed_course_keys(user):
+    """
+    Get courses that the user has completed.
+    """
+    course_enrollments_keys = get_user_enrollments_course_keys(user)
+
+    return ['{}'.format(course_key) for course_key in course_enrollments_keys if is_course_completed(user, course_key)]
+
 
 def get_follow_up_courses(course_keys):
     """
@@ -118,6 +126,70 @@ def get_follow_up_courses(course_keys):
         follow_up_courses = list(CourseOverview.objects.filter(query))
 
     return follow_up_courses
+
+
+def get_users_enrollment_stats(users_enrollments, course_keys):
+    """Returns stats based on users enrollments
+    dict: 
+        students_enrolled_in_any_course
+        students_enrolled_in_all_courses
+    """
+    enrollment_stats = {
+        "students_enrolled_in_any_course": 0,
+        "students_enrolled_in_all_courses": 0
+    }
+    for enrollments in users_enrollments.values():
+        if enrollments: # If user has any enrollments
+            enrollment_stats['students_enrolled_in_any_course'] += 1
+        if enrollments >= course_keys:
+            enrollment_stats['students_enrolled_in_all_courses'] += 1
+        
+    return enrollment_stats
+
+
+def get_users_course_completion_stats(users, users_enrollments, course_keys):
+    """Returns stats about course completion based on users enrollments
+    dict: 
+        students_completed_any_course: number
+        students_completed_all_courses: number
+    """
+    users_course_completion = dict()
+    for user in users:
+        users_course_completion[user.id] = set(filter(lambda course_key: is_course_completed(user, course_key),
+                                                users_enrollments[user.id]))
+    course_completion_stats = {
+        "students_completed_any_course": 0,
+        "students_completed_all_courses": 0
+    }
+    for course_completions in users_course_completion.values():
+        if course_completions:
+            course_completion_stats['students_completed_any_course'] += 1
+        if course_completions >= course_keys:
+            course_completion_stats['students_completed_all_courses'] += 1
+
+    return course_completion_stats
+
+
+def get_course_enrollment_and_completion_stats(course_id) -> dict:
+    """Returns the count of student completed the provided course
+    """
+    enrollments = CourseEnrollment.objects.filter(
+            course_id=course_id,
+            is_active=True,
+        )
+
+    total_students_completed = 0
+    for enrollment in enrollments:
+        user = User.objects.get(id=enrollment.user_id)
+        if is_course_completed(user, course_id):
+            total_students_completed += 1
+
+    enrollment_count = enrollments.count()
+    percentage_completed = (total_students_completed/enrollment_count) * 100 if enrollment_count else 0
+
+    return (total_students_completed, enrollment_count, percentage_completed)
+
+
 def get_paced_type(self_paced):
     """ Paced Type Filter
     Args:
@@ -126,6 +198,7 @@ def get_paced_type(self_paced):
         str: paced type
     """
     return 'self_paced' if self_paced else 'instructor_led'
+
 
 def get_prerequisites_type(pre_requisite_courses):
     """ Prerequisites Filter

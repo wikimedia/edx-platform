@@ -29,6 +29,7 @@
       <thead>
         <tr>
           <th>${_("Report Name")}</th>
+          <th class="action">${_("Options")}</th>
           <th class="action">${_("Actions")}</th>
         </tr>
       </thead>
@@ -37,7 +38,9 @@
           <td>
             <span class="text">${_("List profile information for enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a course to generate this report">
             <button
               class="btn btn-primary"
               disabled
@@ -45,26 +48,32 @@
               data-endpoint="${ section_data['key']['get_students_features_url'] }"
               data-csv="true"
             >${_("Generate")}</button>
+            </div>
           </td>
         </tr>
         <tr class="single-course-report">
           <td>
             <span class="text">${_("Grade report for all currently enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a course to generate this report">
             <button
               class="btn btn-primary"
               disabled
               name="calculate-grades-csv"
               data-endpoint="${ section_data['key']['calculate_grades_csv_url'] }"
             >${_("Generate")}</button>
+          </div>
           </td>
         </tr>
         <tr class="single-course-report">
           <td>
             <span class="text">${_("Anonymized student ID's")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a course to generate this report">
             <button
               name="list-anon-ids"
               data-csv="true"
@@ -73,73 +82,129 @@
               disabled
               aria-disabled="${'true' if disable_buttons else 'false'}"
             >${_("Generate")}</button>
+            </div>
           </td>
         </tr>
         <tr class="single-course-report">
           <td>
             <span class="text">${_("Problem Grade report for all currently enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a course to generate this report">
             <button
               class="btn btn-primary"
               disabled
               name="problem-grade-report"
               data-endpoint="${ section_data['key']['problem_grade_report_url'] }"
             >${_("Generate")}</button>
+            </div>
           </td>
         </tr>
         <tr class="single-course-report">
           <td>
             <span class="text">${_("Progress report for all currently enrolled students")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a course to generate this report">
             <button
               class="btn btn-primary"
               disabled
               name="progress-report-csv"
               data-endpoint="${ section_data['key']['progress_report_csv_url'] }"
             >${_("Generate")}</button>
+            </div>
           </td>
         </tr>
         <tr class="course-version-report">
           <td>
             <span class="text">${_("Course Version Report (Detailed - Per Course)")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a base course to generate this report">
             <button
               class="btn btn-primary"
               disabled
               name="course-version-report-detailed"
               data-endpoint="${ section_data['key']['course_version_report_url'] }"
             >${_("Generate")}</button>
+            </div>
           </td>
         </tr>
         <tr class="course-version-report">
           <td>
             <span class="text">${_("Course Version Report (Aggregate)")}</span>
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select a base course to generate this report">
             <button
               class="btn btn-primary"
               disabled
               name="course-version-report-total"
               data-endpoint="${ section_data['key']['course_version_report_url'] }"
             >${_("Generate")}</button>
+            </div>
           </td>
         </tr>
         <tr class="multiple-course-report">
           <td>
             <span class="text">${_("Average grade report for multiple courses")}</span>
             <span class="info-text">${_("Different grading schemes can affect the comparison.")}</span>
-
           </td>
+          <td></td>
           <td class="action">
+            <div class="div-tooltip" title="Select multiple courses to generate this report">
             <button
               name="average-calculate-grades-csv"
               class="btn btn-primary"
               disabled
               value="${_("Generate Average Grade Report")}"
               data-endpoint="${ section_data['key']['average_calculate_grades_csv_url'] }"
+            >${_("Generate")}</button>
+            </div>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Quarterly Courses Enrollement Report")}</span>
+            <span class="info-text">${_("Generate a report for last quarter enrollments of all courses.")}</span>
+          </td>
+          <td class="d-flex align-items-center p-3">
+            <select name="enrolment-year" id="select-enrolment-year" class="quarterly-selector">
+              <option value="">${_("Select Year")}</option>
+              %for year in year_options:
+                <option value=${year}>${year}</option>
+              %endfor
+            </select>
+            <select name="enrolment-quarter" id="select-enrolment-quarter" class="ml-1 quarterly-selector">
+              <option value="">${_("Select Quarter")}</option>
+            </select>
+          </td>
+          <td class="action">
+
+            <button
+              name="courses-enrollments-csv"
+              class="btn btn-primary"
+              value="${_("Generate Average Grade Report")}"
+              data-endpoint="${ section_data['key']['courses_enrollments_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("All Courses Enrollement Report")}</span>
+            <span class="info-text">${_("Generate an all time report of enrolment/completion for all courses.")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="all-courses-enrollments-csv"
+              class="btn btn-primary"
+              value="${_("Generate Courses Enrollment Report")}"
+              data-endpoint="${ section_data['key']['all_courses_enrollments_csv_url'] }"
             >${_("Generate")}</button>
           </td>
         </tr>
@@ -167,6 +232,23 @@
         )}
       </div>
     </div>
+    <div class="running-tasks-container action-type-container">
+      <hr>
+      <h3 class="hd hd-3"> ${_("Pending Tasks")} </h3>
+      <div class="running-tasks-section">
+          <p>${_("The status for any active tasks appears in the list below.")} </p>
+          <br />
+          <div>
+            <ul
+            class="pending-tasks"
+            id="pending-tasks"
+            style="display: none;"
+            >
+            </ul>
+          </div>
+      </div>
+      <div class="no-pending-tasks-message"></div>
+  </div>
     <div style="display: none" id="base_courses_list">${ base_courses_list }</div>
   </div>
 <%block name="head_extra">

@@ -1,6 +1,7 @@
 """
 Views for Course Reports
 """
+from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseForbidden
@@ -50,12 +51,16 @@ def course_reports(request):
     }
     sections["key"] = section_data_download(course, access)
 
+    current_year = datetime.today().year
+    year_options = sorted(range(2021, current_year+1), reverse=True)
+
     return render_to_response(
         "course_report/course-reports.html",
         {
             'base_courses_list': json.dumps([str(course_id) for course_id in CourseTranslation.get_base_courses_list()]),
             'courses': courses_list,
             'section_data': sections,
+            "year_options": year_options,
         }
     )
 
@@ -75,6 +80,8 @@ def section_data_download(course, access):
         'average_calculate_grades_csv_url': reverse('admin_dashboard:average_calculate_grades_csv', kwargs={'course_id': str(course_key)}),
         'progress_report_csv_url': reverse('admin_dashboard:progress_report_csv', kwargs={'course_id': str(course_key)}),
         'course_version_report_url': reverse('admin_dashboard:course_version_report', kwargs={'course_id': str(course_key)}),
+        'courses_enrollments_csv_url': reverse('admin_dashboard:courses_enrollment_report'),
+        'all_courses_enrollments_csv_url': reverse('admin_dashboard:all_courses_enrollment_report'),
     }
     if not access.get('data_researcher'):
         section_data['is_hidden'] = True
