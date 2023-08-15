@@ -296,7 +296,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-08-01 05:40+0000\n"
+"POT-Creation-Date: 2023-08-15 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Albeiro Gonzalez <albeiro.gonzalez@edunext.co>, 2019\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/open-edx/teams/6205/es_419/)\n"
@@ -432,6 +432,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -13815,6 +13817,30 @@ msgstr "Intenta nuevamente (Intentos ilimitados)"
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr "Has usado {attempts} de intentos ilimitados para este problema."
 
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "all_enrollements_stats"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "enrollement"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#, python-format
+msgid "%(email_msg)s"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+msgid "View Reports"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> Your report is ready."
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
@@ -13854,6 +13880,10 @@ msgstr "Inscripciones cerradas"
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "Cargando"
+
+#: wiki/models/article.py
+msgid "owner"
+msgstr "propietario"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -19898,6 +19928,7 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
 #: lms/templates/instructor/instructor_dashboard_2/send_email.html
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Pending Tasks"
 msgstr "Tareas pendientes"
 
@@ -22231,6 +22262,42 @@ msgstr ""
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
 msgstr "Ocurrió un error. Intenta cargar la página nuevamente."
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Options"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Quarterly Courses Enrollement Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate a report for last quarter enrollments of all courses."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Select Year"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Select Quarter"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "All Courses Enrollement Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate an all time report of enrolment/completion for all courses."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Courses Enrollment Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "The status for any active tasks appears in the list below."
+msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
@@ -25441,10 +25508,6 @@ msgid "Article properties last modified"
 msgstr "Última modificación a las propiedades del artículo"
 
 #: wiki/models/article.py
-msgid "owner"
-msgstr "propietario"
-
-#: wiki/models/article.py
 msgid ""
 "The owner of the article, usually the creator. The owner always has both "
 "read and write access."
@@ -26936,6 +26999,22 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ msgstr "Rutas de aprendizaje"
 
 #~ msgid ""
+#~ "<{p}><{strong}>{replier_name}</{strong}> commented on your response to the "
+#~ "post <{strong}>{post_title}</{strong}></{p}>"
+#~ msgstr ""
+#~ "<{p}><{strong}>{replier_name}</{strong}> comentó en la respuesta de la "
+#~ "publicación <{strong}>{post_title}</{strong}></{p}>"
+
+#~ msgid ""
+#~ "<{p}><{strong}>{replier_name}</{strong}> commented on "
+#~ "<{strong}>{author_name}'s</{strong}> response to your post "
+#~ "<{strong}>{post_title}</{strong}></{p}>"
+#~ msgstr ""
+#~ "<{p}><{strong}>{replier_name}</{strong}> respondió el "
+#~ "<{strong}>{author_name}</{strong}> respuesta a su publicación "
+#~ "<{strong}>{post_title}</{strong}></{p}>"
+
+#~ msgid ""
 #~ "<{p}><{strong}>{replier_name}</{strong}> responded to your post "
 #~ "<{strong}>{post_title}</{strong}></{p}>"
 #~ msgstr ""
@@ -27064,6 +27143,13 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 
 #~ msgid "I agree that {platform_name} may send me marketing messages."
 #~ msgstr "Acepto que {platform_name} pueda enviarme mensajes de marketing."
+
+#~ msgid ""
+#~ "Organization that is related to this taxonomy.If None, then this taxonomy is"
+#~ " related to all organizations."
+#~ msgstr ""
+#~ "Organización relacionada con esta taxonomía. Si no hay ninguna, esta "
+#~ "taxonomía está relacionada con todas las organizaciones."
 
 #~ msgid "Our mailing address is"
 #~ msgstr "Nuestra dirección de correo es"

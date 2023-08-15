@@ -102,7 +102,7 @@
 # AndyZ <Andrey.Zakhvatov@gmail.com>, 2014
 # AndyZ <Andrey.Zakhvatov@gmail.com>, 2014
 # 80dca42de6d6f19a9206ebd06d0c9cb9_4216643 <e5580e6e1f445efa0c4f3eb584b99765_116976>, 2013
-# ashed <craysy@gmail.com>, 2022
+# ashed <craysy@gmail.com>, 2022-2023
 # berseneva, 2013
 # Danil Moskovoy <tenrius@gmail.com>, 2013
 # Dmitri Polevoi <polevaiabrest@gmail.com>, 2014
@@ -229,7 +229,7 @@
 # AndyZ <Andrey.Zakhvatov@gmail.com>, 2014
 # AndyZ <Andrey.Zakhvatov@gmail.com>, 2014
 # 80dca42de6d6f19a9206ebd06d0c9cb9_4216643 <e5580e6e1f445efa0c4f3eb584b99765_116976>, 2013
-# ashed <craysy@gmail.com>, 2022
+# ashed <craysy@gmail.com>, 2022-2023
 # berseneva, 2013
 # Danil Moskovoy <tenrius@gmail.com>, 2013
 # Dmitri Polevoi <polevaiabrest@gmail.com>, 2014
@@ -301,7 +301,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-08-01 05:40+0000\n"
+"POT-Creation-Date: 2023-08-15 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Alexander Loubanets <aloubanets@yandex.ru>, 2020\n"
 "Language-Team: Russian (https://app.transifex.com/open-edx/teams/6205/ru/)\n"
@@ -439,6 +439,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -13375,6 +13377,30 @@ msgstr ""
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr ""
 
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "all_enrollements_stats"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "enrollement"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#, python-format
+msgid "%(email_msg)s"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+msgid "View Reports"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> Your report is ready."
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
@@ -19125,6 +19151,7 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
 #: lms/templates/instructor/instructor_dashboard_2/send_email.html
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Pending Tasks"
 msgstr "Текущие задачи"
 
@@ -21311,6 +21338,42 @@ msgstr ""
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
 msgstr "Произошла ошибка.  Попробуйте перезагрузить страницу."
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Options"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Quarterly Courses Enrollement Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate a report for last quarter enrollments of all courses."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Select Year"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Select Quarter"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "All Courses Enrollement Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate an all time report of enrolment/completion for all courses."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Courses Enrollment Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "The status for any active tasks appears in the list below."
+msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
