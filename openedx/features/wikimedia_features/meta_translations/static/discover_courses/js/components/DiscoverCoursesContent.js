@@ -28,7 +28,7 @@ function DiscoverCoursesContent({ context }) {
     return (
       (toLanguge.value == '' || toLanguge.value == course.course_lang) &&
       (fromLanguge.value == '' || fromLanguge.value == course.base_course_lang) &&
-      (searchCourse == '' || course.base_course_name.toLowerCase().startsWith(searchCourse.toLowerCase()))
+      (searchCourse == '' || course.base_course_name.toLowerCase().includes(searchCourse.toLowerCase()))
     )
   }
 
