@@ -242,6 +242,7 @@ class WikiMetaClient(object):
             "summary": summary,
             "contentmodel": self._CONTENT_MODEL,
             "token": csrf_token,
+            "bot": 1,
         }
 
         success, response_data = await self.handle_request(session.post, params=None, data=data)
