@@ -167,14 +167,14 @@
         placeholder: "Browse Courses",
     });
 
-    $('#select-enrolment-year').change(function (e) {
+    $('#select-enrollment-year').change(function (e) {
         e.preventDefault();
         const today = new Date();
         const selected_year = Number($(this).val())
         const current_year = today.getFullYear()
         var quarters = 4;
 
-        var quarter_select = $("#select-enrolment-quarter")
+        var quarter_select = $("#select-enrollment-quarter")
         quarter_select.empty()
 
         if(!selected_year){
@@ -315,10 +315,10 @@
         AjaxCall(url_for_average_calculate_grades);
     })
     $("[name='courses-enrollments-csv']").click(function() {
-        let url_for_courses_enrolment_report = $(this).attr('data-endpoint');
-        let year = $('#select-enrolment-year').val()
-        let quarter = $('#select-enrolment-quarter').val()
-        AjaxCall(url_for_courses_enrolment_report, {year: Number(year), quarter: Number(quarter)});
+        let url_for_courses_enrollment_report = $(this).attr('data-endpoint');
+        let year = $('#select-enrollment-year').val()
+        let quarter = $('#select-enrollment-quarter').val()
+        AjaxCall(url_for_courses_enrollment_report, {year: Number(year), quarter: Number(quarter)});
     })
     $("[name='all-courses-enrollments-csv']").click(function() {
         let data_url = $(this).attr('data-endpoint');
