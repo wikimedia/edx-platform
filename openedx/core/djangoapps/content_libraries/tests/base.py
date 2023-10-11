@@ -15,7 +15,7 @@ from search.search_engine_base import SearchEngine
 
 from common.djangoapps.student.tests.factories import UserFactory
 from openedx.core.djangoapps.content_libraries.libraries_index import MAX_SIZE
-from openedx.core.djangoapps.content_libraries.constants import COMPLEX, ALL_RIGHTS_RESERVED
+from openedx.core.djangoapps.content_libraries.constants import COMPLEX, CC_4_BY_SA
 from openedx.core.djangolib.testing.utils import skip_unless_cms
 from openedx.core.lib import blockstore_api
 
@@ -170,7 +170,7 @@ class ContentLibrariesRestApiTest(APITestCase):
 
     def _create_library(
         self, slug, title, description="", org=None, library_type=COMPLEX,
-        license_type=ALL_RIGHTS_RESERVED, expect_response=200,
+        license_type=CC_4_BY_SA, expect_response=200,
     ):
         """ Create a library """
         if org is None:
