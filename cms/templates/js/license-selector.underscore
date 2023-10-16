@@ -102,7 +102,11 @@
                 <% _.each(enabled, function(option) { %>
                         <span class="sr"><%- license.options[option.toUpperCase()].name %>&nbsp;</span><span aria-hidden="true" class="icon-cc-<%- option %>"></span>
                 <% }); %>
-                <span class="license-text"><%- gettext("Some Rights Reserved") %></span>
+                <% if (enabled.includes('sa')) {%>
+                    <span class="license-text"><%- gettext(`CC-by-sa ${version}`) %></span>
+                <%} else {%>
+                    <span class="license-text"><%- gettext("Some Rights Reserved") %></span>
+                <% } %>
             <% } %>
         <% } else { %>
             <%- typeof licenseString == "string" ? licenseString : "" %>
