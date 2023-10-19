@@ -61,7 +61,7 @@ class CourseDetails:
         self.about_sidebar_html = ""
         self.intro_video = None  # a video pointer
         self.effort = None  # hours/week
-        self.license = "all-rights-reserved"  # default course license is all rights reserved
+        self.license = "creative-commons: ver=4.0 BY SA" # default course license is cc-by-sa
         self.course_image_name = ""
         self.course_image_asset_path = ""  # URL of the course image
         self.banner_image_name = ""
@@ -131,9 +131,9 @@ class CourseDetails:
         course_details.learning_info = course_descriptor.learning_info
         course_details.instructor_info = course_descriptor.instructor_info
 
-        # Default course license is "All Rights Reserved"
-        course_details.license = getattr(course_descriptor, "license", "all-rights-reserved")
-
+        # Default course license is "Cretive Commons by SA"
+        course_details.license = getattr(course_descriptor, "license", "creative-commons: ver=4.0 BY SA")
+        
         course_details.intro_video = cls.fetch_youtube_video_id(course_key)
 
         for attribute in ABOUT_ATTRIBUTES:
