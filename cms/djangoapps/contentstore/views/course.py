@@ -1016,6 +1016,13 @@ def create_new_course_in_store(store, user, org, number, run, fields):
         fields.update({
             'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
         })
+
+    # set default license to creative common share alike
+    if 'license' not in fields:
+        fields.update({
+            'license': "creative-commons: ver=4.0 BY SA",
+        })
+
     fields.update({
         'cert_html_view_enabled': True,
     })

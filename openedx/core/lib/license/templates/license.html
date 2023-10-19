@@ -52,7 +52,11 @@ def parse_license(lic):
         % for option in enabled:
             <span class="sr">${names[option]}&nbsp;</span><span aria-hidden="true" class="icon-cc-${option}"></span>
         % endfor
-        <span class="license-text">${_("Some Rights Reserved")}</span>
+        % if 'sa' in enabled:
+            <span class="license-text">${_("CC-by-sa 4.0")}</span>
+        % else:
+            <span class="license-text">${_("Some Rights Reserved")}</span>
+        % endif
     % endif
     </a>
 % else:
