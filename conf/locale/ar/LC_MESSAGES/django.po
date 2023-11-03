@@ -270,7 +270,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-01 07:43+0000\n"
+"POT-Creation-Date: 2023-10-01 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: NELC Open edX Translation <openedx@elc.edu.sa>, 2020\n"
 "Language-Team: Arabic (https://app.transifex.com/open-edx/teams/6205/ar/)\n"
@@ -1437,10 +1437,6 @@ msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Generate an all time report of enrollment/completion for all courses."
-msgstr ""
-
-#: openedx/core/lib/license/templates/license.html
-msgid "CC-by-sa 4.0"
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -4477,13 +4473,14 @@ msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Issue Open Badges"
-msgstr ""
+msgstr "إصدار الشارات المفتوحة"
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
 "Issue Open Badges badges for this course. Badges are generated when "
 "certificates are created."
 msgstr ""
+"إصدار الشارات المفتوحة لهذا المساق. وتُولّد الشارات عند إعداد الشهادات."
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
@@ -6803,11 +6800,15 @@ msgstr "يجب أن تكون هذه القيمة بالحروف الإنجليز
 #: lms/djangoapps/badges/models.py
 msgid "The course mode for this badge image. For example, \"verified\" or \"honor\"."
 msgstr ""
+"وضع المساق الموفق لصورة الشارة هذه. مثلًا، \"موثَّقة\" أو \"شهادة ميثاق "
+"الشرف\""
 
 #: lms/djangoapps/badges/models.py
 msgid ""
 "Badge images must be square PNG files. The file size should be under 250KB."
 msgstr ""
+"يجب أن تكون صور الشارات ملفّات صور مربّعة بصيغة PNG. وألا يزيد حجم كل ملفّ "
+"عن 250 كيلو بايت."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6815,10 +6816,13 @@ msgid ""
 "any course modes that do not have a specified badge image. You can have only"
 " one default image."
 msgstr ""
+"اضبط هذه القيمة على \"صحيح\" إذا أردت اعتماد هذه الصورة كصورة افتراضية لجميع"
+" أوضاع المساق غير الموسومة بصورة محدَّدة. يمكن أن يكون لديك صورة افتراضية "
+"واحدة."
 
 #: lms/djangoapps/badges/models.py
 msgid "There can be only one default image."
-msgstr ""
+msgstr "يجب تحديد صورة افتراضية واحدة فقط."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6826,6 +6830,9 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
+"في كل سطر، ضع عنوانًا مختصرًا للجائزة على عدد المساقات المكتملة مع فاصلة "
+"وعنوانًا مختصرًا للفئة التي قمت بإنشائها وتحتوي على عنصر الإصدار "
+"\"openedx__course\". على سبيل المثال: 3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6833,6 +6840,9 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
+"في كل سطر، ضع عنوانًا مختصرًا لجائزة على عدد الدورات المسجلة مع فاصلة "
+"وعنوانًا مختصرًا للفئة التي قمت بإنشائها وتحتوي على عنصر الإصدار "
+"\"openedx__course\". على سبيل المثال: 3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6842,10 +6852,16 @@ msgid ""
 "learner needs to complete to be awarded the badge. For example: "
 "slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
 msgstr ""
+"كل سطر عبارة عن قائمة مفصولة بفواصل. العنصر الأول في كل سطر هو العنوان "
+"المختصر للفئة التي قمت بإنشائها وتحتوي على عنصر إصدار \"openedx__course\". "
+"العناصر المتبقية في كل سطر تعد مفاتيح المساق التي يحتاج المتعلم لإكمالها "
+"للحصول على الشارة. على سبيل المثال: "
+"slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
+"  "
 
 #: lms/djangoapps/badges/models.py
 msgid "Please check the syntax of your entry."
-msgstr ""
+msgstr "قم بمراجعة صياغة مدخلاتك."
 
 #. Translators: This string is used across Open edX installations
 #. as a callback to edX. Please do not translate `edX.org`
@@ -14444,11 +14460,6 @@ msgstr "هذه الصفحة غير موجودة"
 #: cms/templates/404.html lms/templates/static_templates/404.html
 msgid "Page not found"
 msgstr "هذه الصفحة غير موجودة"
-
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
 
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
@@ -25661,6 +25672,9 @@ msgstr "أُنقر على زر \"بدء الامتحان المراقب\" أدن
 
 #~ msgid "Our mailing address is"
 #~ msgstr "عنواننا البريدي هو"
+
+#~ msgid "Files & Uploads"
+#~ msgstr "الملفات والتحميل "
 
 #~ msgid "Grading"
 #~ msgstr "التقييم"

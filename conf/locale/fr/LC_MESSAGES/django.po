@@ -327,7 +327,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-01 07:43+0000\n"
+"POT-Creation-Date: 2023-10-01 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Alexandre DS <alexandre@cleverm8.com>, 2020\n"
 "Language-Team: French (https://app.transifex.com/open-edx/teams/6205/fr/)\n"
@@ -1426,10 +1426,6 @@ msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Generate an all time report of enrollment/completion for all courses."
-msgstr ""
-
-#: openedx/core/lib/license/templates/license.html
-msgid "CC-by-sa 4.0"
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -4522,13 +4518,15 @@ msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Issue Open Badges"
-msgstr ""
+msgstr "Émettre des badges ouverts"
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
 "Issue Open Badges badges for this course. Badges are generated when "
 "certificates are created."
 msgstr ""
+"Émettre des badges ouverts pour ce cours. Les badges sont générés quand les "
+"attestations sont créées."
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
@@ -6955,11 +6953,15 @@ msgstr "Cette valeur doit être complètement en minuscule."
 #: lms/djangoapps/badges/models.py
 msgid "The course mode for this badge image. For example, \"verified\" or \"honor\"."
 msgstr ""
+"Le parcours de cours pour cette image de badge. Par exemple \"vérifié\" ou "
+"\"honneur\"."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
 "Badge images must be square PNG files. The file size should be under 250KB."
 msgstr ""
+"Les images des badges doivent être carrées et au format PNG. La taille d'un "
+"fichier ne doit pas dépasser 250 kB."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6967,10 +6969,13 @@ msgid ""
 "any course modes that do not have a specified badge image. You can have only"
 " one default image."
 msgstr ""
+"Définissez cette valeur à True si vous voulez que cette image soit l'image "
+"par défaut pour tous les modes de cours qui ne disposent pas d'une image de "
+"badges. Vous pouvez avoir seulement une image par défaut."
 
 #: lms/djangoapps/badges/models.py
 msgid "There can be only one default image."
-msgstr ""
+msgstr "Il ne peut y avoir qu'une seule image par défaut."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6978,6 +6983,10 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
+"Sur chaque ligne, inscrivez le nombre de cours complétés nécessaire pour "
+"attribuer un badge, une virgule, et le slug de la classe de badge que vous "
+"avez créé qui attribue le composant 'openedx__course'. Par exemple: "
+"3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6985,6 +6994,10 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
+"Sur chaque ligne, inscrivez le nombre de cours inscrits nécessaire pour "
+"attribuer un badge, une virgule, et le slug de la classe de badge que vous "
+"avez créé qui attribue le composant 'openedx__course'. Par exemple: "
+"3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6994,10 +7007,16 @@ msgid ""
 "learner needs to complete to be awarded the badge. For example: "
 "slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
 msgstr ""
+"Chaque ligne est liste séparée par des virgules. Le premier item sur chaque "
+"ligne est le slug de slug de la classe de badge que vous avez créé qui "
+"attribue le composant 'openedx__course'. Les autres items sur chaque ligne "
+"sont les clés de cours que l'apprenant doit compléter afin de se voir "
+"attribuer le badge. Par exemple: "
+"slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
 
 #: lms/djangoapps/badges/models.py
 msgid "Please check the syntax of your entry."
-msgstr ""
+msgstr "Veuillez vérifier la syntaxe de votre entrée, s'il vous plaît."
 
 #. Translators: This string is used across Open edX installations
 #. as a callback to edX. Please do not translate `edX.org`
@@ -14972,11 +14991,6 @@ msgstr "Page non trouvée"
 msgid "Page not found"
 msgstr "Page non trouvée"
 
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
-
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
@@ -15621,7 +15635,7 @@ msgstr "Bienvenue sur {platform_name}"
 #. untranslated. See https://open.edx.org for more information.
 #: lms/templates/index_overlay.html
 msgid "It works! Powered by Open edX{registered_trademark}"
-msgstr ""
+msgstr "Ça marche ! Propulsé par Open edX{registered_trademark}"
 
 #: lms/templates/invalid_email_key.html
 msgid "Invalid email change key"
@@ -27066,6 +27080,9 @@ msgstr ""
 
 #~ msgid "Enqueued dumps for {} course(s)."
 #~ msgstr "Vidages en file d'attente pour {} cours()."
+
+#~ msgid "Files & Uploads"
+#~ msgstr "Fichiers & téléchargements"
 
 #~ msgid "Grading"
 #~ msgstr "Évaluation"
