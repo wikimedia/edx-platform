@@ -126,9 +126,12 @@ jobs:
           export STUDIO_CFG=$(pwd)/cms/devstack.yml
 
           django-admin.py compilemessages
+          i18n_tool validate
 
           unset LMS_CFG
           unset STUDIO_CFG
+          
+          exit 1
         if: steps.generate-i18n-files.outcome != 'success'
 
       - name: Compile JS translations
