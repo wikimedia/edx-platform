@@ -27,6 +27,7 @@
 # IvanPrimachenko <jastudent1@gmail.com>, 2014
 # Martin Horst <horst.mr@gmail.com>, 2018
 # Mykhailo Parfeniuk <sopyer@gmail.com>, 2016
+# Mykola Melnyk, 2023
 # Natalia Vynogradenko <tannaha@gmail.com>, 2017-2018
 # Nikolai Belochub, 2014
 # cc322e8fc6cc292f0f00d8b7420e7410_e468d09 <95dee59251c2de5d1d21e213a66df19d_243275>, 2014
@@ -134,7 +135,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-10-01 05:39+0000\n"
+"POT-Creation-Date: 2023-11-06 06:53+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Danylo Shcherbak <danylo.shcherbak@raccoongang.com>, 2020\n"
 "Language-Team: Ukrainian (https://app.transifex.com/open-edx/teams/6205/uk/)\n"
@@ -1284,6 +1285,11 @@ msgstr "Ідентифікатор відео"
 msgid "Pending"
 msgstr "В очікуванні"
 
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Organization"
+msgstr "Організація"
+
 #: cms/envs/common.py lms/djangoapps/instructor/views/api.py
 #: lms/envs/common.py
 msgid "Language"
@@ -1368,6 +1374,8 @@ msgstr "Ви зареєстровані як студент за програм�
 #: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/static_templates/honor.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "Кодекс Честі"
 
@@ -1503,6 +1511,7 @@ msgstr "Аккаунт відновлено"
 #: openedx/core/djangoapps/user_authn/views/login_form.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "Пароль"
 
@@ -3475,7 +3484,7 @@ msgstr "Правильна відповідь"
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Submit"
 msgstr "Надіслати"
 
@@ -4199,15 +4208,13 @@ msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Issue Open Badges"
-msgstr "Видача відкритих відзнак"
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
 "Issue Open Badges badges for this course. Badges are generated when "
 "certificates are created."
 msgstr ""
-"Видайте відкриті відзнаки для цього курсу. Значки генеруються при створенні "
-"сертифікатів."
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
@@ -4460,7 +4467,7 @@ msgstr ""
 "абсолютною, наприклад:\\nhttp://www.edx.org/course/Introduction-to-MOOCs-"
 "ITM001"
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Course Language"
 msgstr "Мова курсу"
 
@@ -5301,6 +5308,9 @@ msgstr ""
 "повідомлення про помилку, будь ласка, зв'яжіться з moocsupport@mathworks.com"
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
 msgid "Group Configurations"
 msgstr "Налаштування групи"
 
@@ -5674,9 +5684,6 @@ msgstr "Домашня сторінка"
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Курс"
 
@@ -6120,12 +6127,12 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html
+#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Close"
 msgstr "Закрити"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -6146,7 +6153,6 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr ""
 
@@ -6157,7 +6163,6 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -6175,7 +6180,6 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -6511,15 +6515,11 @@ msgstr "Дане значення повинно бути в нижньому р
 #: lms/djangoapps/badges/models.py
 msgid "The course mode for this badge image. For example, \"verified\" or \"honor\"."
 msgstr ""
-"Статус сертифіката для значка. Наприклад, «Підтверджений сертифікат» або "
-"«Сертифікат Кодексу честі»."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
 "Badge images must be square PNG files. The file size should be under 250KB."
 msgstr ""
-"Завантажте квадратне зображення у форматі PNG. Його розмір не повинен "
-"перевищувати 250 КБ."
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6527,13 +6527,10 @@ msgid ""
 "any course modes that do not have a specified badge image. You can have only"
 " one default image."
 msgstr ""
-"Якщо ви хочете, щоб це зображення використовувалося для курсів без "
-"спеціальних значків, встановіть значення true. За замовчуванням Значок може "
-"бути тільки один."
 
 #: lms/djangoapps/badges/models.py
 msgid "There can be only one default image."
-msgstr "Може використовуватися тільки одне зображення за замовчуванням."
+msgstr ""
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6541,9 +6538,6 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
-"В кожному рядку, зазначте кількість пройденних курсів для отримання в "
-"нагороду значок, кома, потім клас значка, який Ви створили компонентом "
-"видачі 'openedx__course'. Наприклад: 3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6551,9 +6545,6 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
-"В кожному рядку зазначте кількість пройденних курсів для отримання в "
-"нагороду значок, кома, потім клас значка, який Ви створили компонентом "
-"видачі 'openedx__course'. Наприклад: 3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6563,15 +6554,10 @@ msgid ""
 "learner needs to complete to be awarded the badge. For example: "
 "slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
 msgstr ""
-"Кожен рядок є список через кому. Перший елемент в кожному рядку - це клас "
-"значка, який Ви створили з компонентом 'openedx__course'.. Інші елементи в "
-"кожному рядку - це ключі курсу, які учень повинен виконати, щоб бути "
-"нагородженим знаком. Наприклад: "
-"slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
 
 #: lms/djangoapps/badges/models.py
 msgid "Please check the syntax of your entry."
-msgstr "Будь ласка, перевірте синтаксис запису."
+msgstr ""
 
 #. Translators: This string is used across Open edX installations
 #. as a callback to edX. Please do not translate `edX.org`
@@ -6591,7 +6577,12 @@ msgstr ""
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Open edX' is a trademark, please keep this untranslated.
 #. See http://openedx.org for more information.
-#: lms/djangoapps/branding/api.py
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: 'Open edX' is a brand, please keep this untranslated. See
+#. http://openedx.org for more information.
+#: lms/djangoapps/branding/api.py cms/templates/widgets/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Powered by Open edX"
 msgstr "За підтримки Open edX"
 
@@ -6599,7 +6590,9 @@ msgstr "За підтримки Open edX"
 msgid "Blog"
 msgstr "Блог"
 
-#: lms/djangoapps/branding/api.py
+#: lms/djangoapps/branding/api.py cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact Us"
 msgstr "Зв'яжіться з нами"
 
@@ -6617,7 +6610,9 @@ msgstr "Пожертвувати"
 
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Про нас"
 
@@ -6627,6 +6622,9 @@ msgid "{platform_name} for Business"
 msgstr "{platform_name} для бізнесу"
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/contact.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "Контакти"
 
@@ -6648,7 +6646,10 @@ msgstr "Умови надання послуг і Кодекс честі"
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Privacy Policy"
 msgstr "Політика конфіденційності"
 
@@ -6662,6 +6663,9 @@ msgstr "Політика щодо доступності матеріалів"
 #: lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "Умови надання послуг"
 
@@ -6982,6 +6986,7 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr "Всі права захищено"
 
@@ -7703,6 +7708,7 @@ msgstr ""
 #. Translators: 'Textbooks' refers to the tab in the course that leads to the
 #. course' textbooks
 #: lms/djangoapps/courseware/plugins.py lms/djangoapps/courseware/tabs.py
+#: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Textbooks"
 msgstr "Підручники"
 
@@ -8272,6 +8278,7 @@ msgid "Level of Education"
 msgstr "Рівень освіти"
 
 #: lms/djangoapps/instructor/views/api.py
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Mailing Address"
 msgstr "Ваше місто або населений пункт"
 
@@ -8711,7 +8718,8 @@ msgid "Special Exams"
 msgstr "Контрольні випробування"
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
-#: lms/djangoapps/support/views/index.py
+#: lms/djangoapps/support/views/index.py cms/templates/certificates.html
+#: cms/templates/export.html cms/templates/widgets/header.html
 msgid "Certificates"
 msgstr "Сертифікати"
 
@@ -8838,6 +8846,8 @@ msgstr ""
 #: lms/djangoapps/instructor/views/tools.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "Ім'я та прізвище"
 
@@ -9149,6 +9159,7 @@ msgstr " (з {total})"
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "Програми"
 
@@ -9999,8 +10010,6 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
-#: themes/edx-platform/wikilearn/cms/templates/base.html
-#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Перейти до головного змісту"
 
@@ -10200,6 +10209,7 @@ msgstr "Видалити статтю"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -10241,9 +10251,7 @@ msgstr "Ви видаляєте статтю. Будь ласка, підтве�
 
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-#: wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "Редагувати"
@@ -10269,6 +10277,8 @@ msgstr "Попередній перегляд Вікі"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "відкрити вікно"
 
@@ -10525,9 +10535,8 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/stanford-style/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Пошук"
@@ -10631,53 +10640,53 @@ msgid "ACE Common"
 msgstr "ACE Common"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr "Перейти на домашню сторінку %(platform_name)s"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Sign In"
 msgstr "Увійти"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr "%(platform_name)s на LinkedIn"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr "%(platform_name)s у Twitter"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr "%(platform_name)s у Facebook"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr "%(platform_name)s в Google Plus"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr "%(platform_name)s на Reddit"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr "Завантажте iOS додаток у Apple Store"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr "Завантажте Android додаток у Google Play Store"
 
@@ -10686,7 +10695,6 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -10933,6 +10941,11 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Course Run"
+msgstr "Запуск курсу"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -11782,6 +11795,7 @@ msgstr "Продовжуйте навчатися"
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -11794,6 +11808,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -11824,6 +11839,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr "Розпочати навчання"
 
@@ -12359,7 +12375,8 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Register"
 msgstr ""
 
@@ -12578,6 +12595,8 @@ msgstr "Це ім'я буде використано у кожному отри�
 #. meant to hold the user's public username.
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "Загальнодоступне ім’я користувача"
 
@@ -12959,7 +12978,6 @@ msgstr ""
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "Оновлення"
 
@@ -13156,8 +13174,6 @@ msgstr ""
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "Назва курсу"
 
@@ -13167,9 +13183,7 @@ msgstr "Назва курсу"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Courses"
 msgstr "Курси"
 
@@ -13177,6 +13191,10 @@ msgstr "Курси"
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Reports"
 msgstr "Звіти"
+
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Our mailing address is"
+msgstr "Наша поштова адреса - "
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -14113,7 +14131,6 @@ msgstr "Сторінку не знайдено"
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "Контент"
 
@@ -14122,7 +14139,6 @@ msgstr "Контент"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
@@ -14135,153 +14151,13 @@ msgstr "Налаштування"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "Завантаження"
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr ""
-
-#: cms/templates/checklists.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Checklists"
-msgstr ""
-
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Move"
-msgstr ""
-
-#: cms/templates/container.html cms/templates/course-create-rerun.html
-#: cms/templates/course_info.html cms/templates/course_outline.html
-#: cms/templates/edit-tabs.html cms/templates/index.html
-#: cms/templates/library.html cms/templates/manage_users.html
-#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
-#: cms/templates/videos_index.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Page Actions"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create a Course Rerun of:"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create a re-run of a course"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "You are creating a re-run from:"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"Provide identifying information for this re-run of the course. The original "
-"course is not affected in any way by a re-run."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"Note: Together, the organization, course number, and course run must "
-"uniquely identify this new course instance."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Required Information to Create a re-run of a course"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The public display name for the new course. (This name is often the same as "
-"the original course name.)"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The name of the organization sponsoring the new course. (This name is often "
-"the same as the original organization name.)"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Note: No spaces or special characters are allowed."
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "Номер Курсу"
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The unique number that identifies the new course within the organization.  "
-"(This number will be the same as the original course number and cannot be "
-"changed.)"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The term in which the new course will run. (This value is often different "
-"than the original course run value.)"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create Re-run"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "When will my course re-run start?"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "What transfers from the original course?"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The new course has the same course outline and content as the original "
-"course. All problems, videos, announcements, and other files are duplicated "
-"to the new course."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "What does not transfer from the original course?"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"You are the only member of the new course's staff. No students are enrolled "
-"in the course, and there is no student data. There is no content in the "
-"discussion topics or wiki."
-msgstr ""
 
 #: cms/templates/course_outline.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
@@ -14294,268 +14170,30 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr ""
-
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
 msgstr "Помилка:"
 
 #: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Email staff to create course"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Please correct the highlighted fields below."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Required Information to Create a New Course"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Required Information to Create a New Library"
-msgstr ""
-
-#. Translators: This is an example name for a new content library, seen when
-#. filling out the form to create a new library.
-#. (A library is a collection of content or problems.)
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. Computer Science Problems"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Organization and Library Settings"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Show all courses in organization:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "For example, MITx"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Courses Being Processed"
-msgstr ""
-
-#: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "Організація:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "Номер Курсу:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr ""
 
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "This course run is currently being created."
-msgstr ""
-
-#. Translators: This is a status message, used to inform the user of
-#. what the system is doing. This status means that the user has
-#. requested to re-run an existing course, and the system is currently
-#. in the process of duplicating and configuring the existing course
-#. so that it can be re-run.
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Configuring as re-run"
-msgstr ""
-
-#. Translators: This is a status message for the course re-runs feature.
-#. When a course admin indicates that a course should be re-run, the system
-#. needs to process the request and prepare the new course. The status of
-#. the process will follow this text.
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "This re-run processing status:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Configuration Error"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"A system error occurred while your course was being processed. Please go to "
-"the original course to try the re-run again, or contact your PM for "
-"assistance."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Archived Courses"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The course creator must give you access to the course. Contact the course "
-"creator or administrator for the course you are helping to author."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Create Your First Course"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Your new course is just a click away!"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Becoming a Course Creator in {studio_name}"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team will evaluate your request and provide you feedback within 24 hours "
-"during the work week."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Your Course Creator Request Status:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Request the Ability to Create Courses"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Your Course Creator Request Status"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is has completed evaluating your request."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Your Course Creator request is:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Your request did not meet the criteria/guidelines specified by "
-"{platform_name} Staff."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is currently  evaluating your request."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Your request is currently being reviewed by {platform_name} staff and should"
-" be updated shortly."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Can I create courses in {studio_name}?"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must {link_start}contact "
-"{platform_name} staff to help you create a course{link_end}."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must have course creator "
-"privileges to create your own course."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Your request to author courses in {studio_name} has been denied. Please "
-"{link_start}contact {platform_name} Staff with further questions{link_end}."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Thanks for signing up, {name}!"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "We need to verify your email address"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Almost there! In order to complete your sign up we need you to verify your "
-"email address ({email}). An activation message and next steps should be "
-"waiting for you there."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Need help?"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Please check your Junk or Spam folders in case our email isn't in your "
-"INBOX. Still can't find the verification email? Request help via the link "
-"below."
-msgstr ""
-
-#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "User Access"
-msgstr ""
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: username@domain.com"
+msgstr "приклад: username@domain.com"
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -14566,45 +14204,18 @@ msgid "Requirements"
 msgstr "Вимоги"
 
 #: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Expand or Collapse"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "Деталі"
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "This block contains multiple components."
-msgstr ""
 
 #. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "Дивитися"
-
-#: cms/templates/videos_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Video Uploads"
-msgstr ""
 
 #: cms/templates/maintenance/_announcement_edit.html
 #: lms/templates/problem.html lms/templates/word_cloud.html
@@ -14619,68 +14230,91 @@ msgid "Reset"
 msgstr "Зкинути"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "Юридична інформація"
 
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Current Course:"
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
 msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Course Navigation"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Current Library:"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Language preference"
-msgstr ""
+"edX, Open edX, the edX та Open edX логотипи є зареєстрованими товарними "
+"знаками {link_start}edX Inc.{link_end}"
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "Обрати мову"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "Обліковий запис"
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Account Navigation"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Contextual Online Help"
-msgstr ""
 
 #: cms/templates/widgets/header.html
 #: lms/templates/header/navbar-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Допомога"
+
+#: cms/templates/widgets/sock.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Looking for help with {studio_name}?"
+msgstr ""
+
+#: cms/templates/widgets/sock.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Hide {studio_name} Help"
+msgstr ""
+
+#: cms/templates/widgets/sock.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "{studio_name} Documentation"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Access documentation on http://docs.edx.org"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "edX Documentation"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Enroll in edX101: Overview of Creating an edX Course"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Enroll in edX101"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Enroll in StudioX: Creating a Course with edX Studio"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Enroll in StudioX"
+msgstr ""
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "Send an email to {email}"
+msgstr ""
 
 #: cms/templates/widgets/tabs-aggregator.html
 #: lms/templates/courseware/static_tab.html
@@ -14690,7 +14324,6 @@ msgstr "ім'я"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "Вийти"
 
@@ -14849,17 +14482,14 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "Дізнатися більше"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "Розпочинається"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "Починається: {date}"
 
@@ -14869,19 +14499,19 @@ msgstr "Переглянути усі курси"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Dashboard"
 msgstr "Панель управління"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr "результати успішно заповнені,"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr "Натисніть, щоб завантажити всі зареєстровані курси"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "Ви ще не зареєструвались на жодному курсі"
 
@@ -14889,6 +14519,7 @@ msgstr "Ви ще не зареєструвались на жодному кур
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr "Обрати курси"
 
@@ -14897,16 +14528,16 @@ msgstr "Обрати курси"
 msgid "Activate your account!"
 msgstr "Активуйте ваш аккаунт!"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "Проблеми з завантаженням курсу"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "Знайти Ваші курси"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Clear search"
 msgstr "Очистити пошук"
 
@@ -14914,7 +14545,7 @@ msgstr "Очистити пошук"
 msgid "Skip to list of announcements"
 msgstr "Перейти до списку оголошень"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -14936,15 +14567,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr "Перейти до {platform_name}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "Налаштування електронної пошти для  {course_number}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "Отримувати листи від курсу"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "Зберегти налаштування"
 
@@ -14953,6 +14584,8 @@ msgstr "Зберегти налаштування"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "Відписатися від курсу"
 
@@ -15103,7 +14736,6 @@ msgid "External Authentication failed"
 msgstr ""
 
 #: lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr ""
 
@@ -15123,6 +14755,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr ""
 
@@ -15165,8 +14799,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
+#: themes/stanford-style/lms/templates/index.html
 msgid "Search for a course"
 msgstr ""
 
@@ -15421,6 +15054,8 @@ msgid ""
 msgstr ""
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "Електронна адреса"
 
@@ -15505,6 +15140,7 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "Введіть загальнодоступне ім’я користувача:"
 
@@ -15521,14 +15157,19 @@ msgid "Goals in signing up for {platform_name}"
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "Я погоджуюсь з {link_start} Умовами Надання Послуг{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "Я погоджуюсь з  {link_start} Кодексом Честі {link_end} "
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr ""
 
@@ -15701,7 +15342,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "Панель управління для:"
 
@@ -15715,7 +15355,6 @@ msgstr ""
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr ""
 
@@ -16815,6 +16454,7 @@ msgid "Download student grades"
 msgstr ""
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr ""
 
@@ -16828,6 +16468,7 @@ msgstr "Опублікувати у Facebook"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr ""
 
@@ -16836,6 +16477,7 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "Поширити це досягнення у Twitter. З'явиться додаткове вікно."
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr ""
 
@@ -16926,31 +16568,40 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -16959,50 +16610,59 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -17010,38 +16670,45 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "Безкоштовне прослуховування курсу"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "Безкоштовне прослуховування курсу (сертифікат не видається)"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -17049,6 +16716,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -17056,6 +16724,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -17063,6 +16732,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -17159,7 +16829,6 @@ msgstr ""
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr ""
 
@@ -17182,6 +16851,7 @@ msgstr ""
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "Переглянути курс"
 
@@ -17234,6 +16904,7 @@ msgid "enroll"
 msgstr ""
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr ""
 
@@ -17250,6 +16921,7 @@ msgid "Take a course with {platform} online"
 msgstr ""
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr ""
 
@@ -17258,11 +16930,11 @@ msgid "Post a Facebook message to say you've enrolled in this course"
 msgstr ""
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr ""
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr ""
 
@@ -17270,13 +16942,10 @@ msgstr ""
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr ""
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr ""
 
@@ -17293,25 +16962,21 @@ msgid "Show Earlier Course Updates"
 msgstr ""
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr ""
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr ""
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} Навчальна Програма"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr ""
 
@@ -17327,17 +16992,14 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -17345,7 +17007,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr ""
 
@@ -17423,6 +17084,7 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "Продовжити курс"
 
@@ -17562,12 +17224,10 @@ msgid "Starts on {}"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "Переглянути оцінки в Студії"
 
@@ -17576,141 +17236,114 @@ msgid "Course Progress for '{username}' ({email})"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "Бали за завдання:"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "Немає балів за виконання у цьому розділі"
 
@@ -17951,6 +17584,7 @@ msgid "Share {course_name} on Facebook"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr ""
 
@@ -18760,6 +18394,9 @@ msgstr ""
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
+#: themes/stanford-style/lms/templates/embargo/default_courseware.html
+#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
+#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr ""
 
@@ -18868,7 +18505,6 @@ msgid "{platform_name} Home Page"
 msgstr "{platform_name} Домашня Сторінка"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr ""
 
@@ -18879,6 +18515,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr ""
 
@@ -18887,34 +18524,29 @@ msgid "{name} Dashboard"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "How it Works"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "Профіль"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr ""
 
@@ -20305,6 +19937,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "Мої курси"
 
@@ -20566,10 +20199,12 @@ msgid ""
 msgstr ""
 
 #: lms/templates/static_templates/faq.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr ""
 
 #: lms/templates/static_templates/jobs.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr ""
 
@@ -20879,6 +20514,10 @@ msgid "Creative Commons licensed content, with terms as follow:"
 msgstr ""
 
 #: openedx/core/lib/license/templates/license.html
+msgid "CC-by-sa 4.0"
+msgstr ""
+
+#: openedx/core/lib/license/templates/license.html
 msgid "Some Rights Reserved"
 msgstr ""
 
@@ -21051,6 +20690,7 @@ msgid "You haven't earned any certificates yet."
 msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "Обрати нові курси"
 
@@ -21071,10 +20711,383 @@ msgstr ""
 msgid "An error occurred. Try loading the page again."
 msgstr ""
 
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid ""
+"Access Course Staff Support on the Partner Portal to submit or review "
+"support tickets"
+msgstr ""
+
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "edX Partner Portal"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid ""
+"Browse recently launched courses and see what's new in your favorite "
+"subjects."
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Take advantage of free coaching!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Get Started"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Page Footer"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "edX Home Page"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Connect"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "© {year} edX Inc. All rights reserved."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid "About edX Verified Certificates"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid ""
+"An edX Verified Certificate signifies that the learner has agreed to abide "
+"by the edX honor code and completed all of the required tasks of this course"
+" under its guidelines, as well as having their photo ID checked to verify "
+"their identity."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid "About edX"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid ""
+"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
+"the world's best universities, including MIT, Harvard, Berkeley, University "
+"of Texas, and many others. edX is a mission driven initiative created by "
+"founding partners Harvard and MIT."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Congratulations, {user_name}!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid ""
+"You worked hard to earn your certificate from "
+"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
+"and family to get the word out about what you mastered in "
+"{accomplishment_course_title}."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Share this certificate on Facebook (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Tweet this certificate (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print this certificate"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid "edX Inc."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid ""
+"All rights reserved except where noted. edX, Open edX and the edX and Open "
+"edX logos are registered trademarks of edX Inc."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
+"help fund affordable education to everyone globally."
+msgstr ""
+
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
+"certificates to help fund free education for everyone globally"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Find Courses"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Schools & Partners"
+msgstr ""
+
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+"Code{honor_link_end}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Copyright"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/footer.html
+msgid "Copyright {year}. All rights reserved."
+msgstr "Copyright {year}. Всі права захищено."
+
+#: themes/stanford-style/lms/templates/index.html
+msgid "For anyone, anywhere, anytime"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"We're sorry, but this version of your browser is not supported. Try again "
+"using a different browser or a newer version of your browser."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "The following errors occurred while processing your registration:"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Sign up with {provider_name}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Create your own {platform_name} account below"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"Required fields are noted by <strong class=\"indicator\">bold text and an "
+"asterisk (*)</strong>."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "You've successfully signed in with {selected_provider}."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"We just need a little more information before you start learning with "
+"{platform_name}."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please complete the following fields to register for an account. "
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: Jane Doe"
+msgstr "приклад:  Петрик П’яточкін"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Your legal name, used for any certificates you earn."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: JaneDoe"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Will be shown in any discussions or forums you participate in"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "cannot be changed later"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Welcome {username}"
+msgstr "Ласкаво просимо, {username}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Enter a Public Display Name:"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Public Display Name"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Additional Personal Information"
+msgstr "Додаткова персональна інформація"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: New York"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Highest Level of Education Completed"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Year of Birth"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please share with us your reasons for registering with {platform_name}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Account Acknowledgements"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Preferences for {platform_name}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update my {platform_name} Account"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Processing your account information"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Welcome {username}!  Please set your preferences below"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"Required fields are noted by {strong_indicator}bold text and an asterisk "
+"(*).{strong_close}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update My Account"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Registration Help"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Already registered?"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "Увійти"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Next Steps"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"You will receive an activation email.  You must click on the activation link"
+" to complete the process.  Don't see the email?  Check your spam folder and "
+"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+"able to receive email from your courses."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need Help?"
+msgstr "Потрібна допомога?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need help in registering with {platform_name}?"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "View our FAQs for answers to commonly asked questions."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"Once registered, most questions can be answered in the course specific "
+"discussion forums or through the FAQs."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid "Thank you for signing up for {platform_name}."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid ""
+"Change your life and start learning today by activating your {platform_name}"
+" account. Click on the link below or copy and paste it into your browser's "
+"address bar."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"If you didn't request this, you don't need to do anything; you won't receive"
+" any more email from us. Please do not reply to this e-mail; if you require "
+"assistance, check the about section of the {platform_name} Courses web site."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"This is to confirm that you changed the e-mail associated with "
+"{platform_name} from {old_email} to {new_email}. If you did not make this "
+"request, please contact us at"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"We received a request to change the e-mail associated with your "
+"{platform_name} account from {old_email} to {new_email}. If this is correct,"
+" please confirm your new e-mail address by visiting:"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
+msgid ""
+"We are sorry. Our course staff did not approve your request to change your "
+"name from {old_name} to {new_name}. If you need further assistance, please "
+"e-mail the tech support at {email}"
+msgstr ""
+"Вибачте. Наш персонал відхилив ваш запит на зміну вашого імені з {old_name} "
+"на {new_name}. Якщо вам все ще потрібна наша допомога, будь ласка, надішліть"
+" листа на адресу технічної підтримки {email}"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Terms of Service here!"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Privacy Policy here!"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Honor Code here!"
+msgstr "Додайте текст Політики Доброчесності сюди!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Copyright Text here!"
+msgstr "Додайте текст Авторського Права сюди!"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -21108,6 +21121,10 @@ msgstr ""
 
 #: cms/templates/accessibility.html
 msgid "Studio Accessibility Policy"
+msgstr ""
+
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+msgid "Files & Uploads"
 msgstr ""
 
 #: cms/templates/certificates.html
@@ -21180,12 +21197,69 @@ msgstr "Дізнайтеся більше про сертифікати"
 msgid "Details & Schedule"
 msgstr ""
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Grading"
+msgstr "Оцінювання"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/manage_users.html cms/templates/settings.html
+#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
+#: cms/templates/widgets/header.html
+msgid "Course Team"
+msgstr "Команда курсу"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Advanced Settings"
+msgstr "Розширені налаштування"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr ""
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr ""
+
+#: cms/templates/checklists.html cms/templates/export.html
+#: cms/templates/export_git.html cms/templates/import.html
+#: cms/templates/widgets/header.html
+msgid "Tools"
+msgstr "Інструменти"
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Duplicate"
+msgstr "Створити копію"
+
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "Створити копію цього компонента"
 
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr ""
+
 #: cms/templates/component.html
 msgid "Delete this component"
+msgstr ""
+
+#: cms/templates/component.html cms/templates/edit-tabs.html
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Drag to reorder"
+msgstr "Перетягніть, щоб змінити порядок "
+
+#: cms/templates/container.html cms/templates/course-create-rerun.html
+#: cms/templates/course_info.html cms/templates/course_outline.html
+#: cms/templates/edit-tabs.html cms/templates/index.html
+#: cms/templates/library.html cms/templates/manage_users.html
+#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
+#: cms/templates/videos_index.html
+msgid "Page Actions"
 msgstr ""
 
 #: cms/templates/container.html
@@ -21265,6 +21339,131 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a Course Rerun of:"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a re-run of a course"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "You are creating a re-run from:"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Provide identifying information for this re-run of the course. The original "
+"course is not affected in any way by a re-run."
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Note: Together, the organization, course number, and course run must "
+"uniquely identify this new course instance."
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Required Information to Create a re-run of a course"
+msgstr ""
+
+#. Translators: This is an example name for a new course, seen when
+#. filling out the form to create a new course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. Introduction to Computer Science"
+msgstr "наприклад: вступ до компьютерної науки"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The public display name for the new course. (This name is often the same as "
+"the original course name.)"
+msgstr ""
+
+#. Translators: This is an example for the name of the organization sponsoring
+#. a course, seen when filling out the form to create a new course. The
+#. organization name cannot contain spaces.
+#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
+#. when user put no data into this field.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. UniversityX or OrganizationX"
+msgstr "наприклад: Інститут Х або Організація Х"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The name of the organization sponsoring the new course. (This name is often "
+"the same as the original organization name.)"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Note: No spaces or special characters are allowed."
+msgstr ""
+
+#. Translators: This is an example for the number used to identify a course,
+#. seen when filling out the form to create a new course. The number here is
+#. short for "Computer Science 101". It can contain letters but cannot contain
+#. spaces.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. CS101"
+msgstr "наприклад: CS101"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
+
+#. Translators: This is an example for the "run" used to identify different
+#. instances of a course, seen when filling out the form to create a new
+#. course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. 2014_T1"
+msgstr "наприклад: 2014_T1"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The term in which the new course will run. (This value is often different "
+"than the original course run value.)"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Create Re-run"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "When will my course re-run start?"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "What transfers from the original course?"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The new course has the same course outline and content as the original "
+"course. All problems, videos, announcements, and other files are duplicated "
+"to the new course."
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "What does not transfer from the original course?"
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"You are the only member of the new course's staff. No students are enrolled "
+"in the course, and there is no student data. There is no content in the "
+"discussion topics or wiki."
+msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Learn more about Course Re-runs"
+msgstr "Дізнайтеся більше про перезапуск курсу"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -21462,6 +21661,13 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "Дізнайтеся більше про налаштування видимості коненту"
+
+#. Translators: Pages refer to the tabs that appear in the top navigation of
+#. each course.
+#: cms/templates/edit-tabs.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+msgid "Pages"
+msgstr "Сторінки"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -21846,6 +22052,10 @@ msgstr "Дізнайтеся більше про експорт курсу"
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "Експорт курсу в Git"
+
+#: cms/templates/export_git.html cms/templates/widgets/header.html
+msgid "Export to Git"
+msgstr ""
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -22418,6 +22628,364 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "Дізнайтеся більше про іморт курсу"
 
+#: cms/templates/index.html
+msgid "New Course"
+msgstr "Новий курс"
+
+#: cms/templates/index.html
+msgid "Email staff to create course"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "New Library"
+msgstr "Створити нову бібліотеку"
+
+#: cms/templates/index.html
+msgid "Please correct the highlighted fields below."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Create a New Course"
+msgstr "Створити новий курс"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Course"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"The public display name for your course. This cannot be changed, but you can"
+" set a different display name in Advanced Settings later."
+msgstr ""
+"Публічна назва вашого курсу. Її неможливо змінити, але пізніше можна "
+"зазначити іншу назву в \"Розширенних налаштуваннях\""
+
+#: cms/templates/index.html
+msgid ""
+"The name of the organization sponsoring the course. {strong_start}Note: The "
+"organization name is part of the course URL.{strong_end} This cannot be "
+"changed, but you can set a different display name in Advanced Settings "
+"later."
+msgstr ""
+"Назва організації, яка фінансує курс. {strong_start}Примітка: Назва "
+"організації є частиною URL-адреси курсу.{strong_end} Назву неможливо "
+"змінити, але пізніше можна зазначити іншу назву в \"Розширенних "
+"налаштуваннях\"."
+
+#: cms/templates/index.html
+msgid ""
+"The unique number that identifies your course within your organization. "
+"{strong_start}Note: This is part of your course URL, so no spaces or special"
+" characters are allowed and it cannot be changed.{strong_end}"
+msgstr ""
+"Унікальний номер, який визначає ваш курс у вашій організації.  "
+"{strong_start}Примітка: Це частина URL-адреси вашого курсу, тому пробіли або"
+" спеціальні символи не допускаються, і цей номер не можна "
+"змінити.{strong_end}"
+
+#: cms/templates/index.html
+msgid ""
+"The term in which your course will run. {strong_start}Note: This is part of "
+"your course URL, so no spaces or special characters are allowed and it "
+"cannot be changed.{strong_end}"
+msgstr ""
+"Термін, протягом якого розпочинається ваш курс. {strong_start}Примітка: Це "
+"частина URL-адреси вашого курсу, тому пробіли або спеціальні символи не "
+"допускаються, і термін не можна буде змінити.{strong_end}"
+
+#: cms/templates/index.html
+msgid "Create"
+msgstr "Створити"
+
+#: cms/templates/index.html
+msgid "Create a New Library"
+msgstr "Створити нову бібліотеку"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Library"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Library Name"
+msgstr "Назва бібліотеки"
+
+#. Translators: This is an example name for a new content library, seen when
+#. filling out the form to create a new library.
+#. (A library is a collection of content or problems.)
+#: cms/templates/index.html
+msgid "e.g. Computer Science Problems"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "The public display name for your library."
+msgstr "Публічна назва вашої бібліотеки."
+
+#: cms/templates/index.html
+msgid "The public organization name for your library."
+msgstr "Публічна назва організації для вашої бібліотеки. "
+
+#: cms/templates/index.html
+msgid "This cannot be changed."
+msgstr "Не можна змінити потім."
+
+#: cms/templates/index.html
+msgid "Library Code"
+msgstr "Код бібліотеки"
+
+#. Translators: This is an example for the "code" used to identify a library,
+#. seen when filling out the form to create a new library. This example is
+#. short
+#. for "Computer Science Problems". The example number may contain letters
+#. but must not contain spaces.
+#: cms/templates/index.html
+msgid "e.g. CSPROB"
+msgstr "наприклад: CSPROB"
+
+#: cms/templates/index.html
+msgid ""
+"The unique code that identifies this library. {strong_start}Note: This is "
+"part of your library URL, so no spaces or special characters are "
+"allowed.{strong_end} This cannot be changed."
+msgstr ""
+"Унікальний код, який ідентифікує цю бібліотеку. {strong_start}Примітка: Це "
+"частина URL-адреси вашої бібліотеки, тому пробіли або спеціальні символи не "
+"допускаються.{strong_end}  Цей код не можна змінити."
+
+#: cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "For example, MITx"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Courses Being Processed"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "This course run is currently being created."
+msgstr ""
+
+#. Translators: This is a status message, used to inform the user of
+#. what the system is doing. This status means that the user has
+#. requested to re-run an existing course, and the system is currently
+#. in the process of duplicating and configuring the existing course
+#. so that it can be re-run.
+#: cms/templates/index.html
+msgid "Configuring as re-run"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"The new course will be added to your course list in 5-10 minutes. Return to "
+"this page or {link_start}refresh it{link_end} to update the course list. The"
+" new course will need some manual configuration."
+msgstr ""
+"Новий курс буде додано до вашого списку курсів через 5-10 хвилин. "
+"Поверніться на цю сторінку або {link_start} оновіть її {link_end}, щоб "
+"оновити список курсів. Для нового курсу потрібна ручна конфігурація."
+
+#. Translators: This is a status message for the course re-runs feature.
+#. When a course admin indicates that a course should be re-run, the system
+#. needs to process the request and prepare the new course. The status of
+#. the process will follow this text.
+#: cms/templates/index.html
+msgid "This re-run processing status:"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Configuration Error"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"A system error occurred while your course was being processed. Please go to "
+"the original course to try the re-run again, or contact your PM for "
+"assistance."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Archived Courses"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Libraries"
+msgstr "Бібліотеки"
+
+#: cms/templates/index.html
+msgid "Are you staff on an existing {studio_name} course?"
+msgstr "Чи являєтеся ви персоналом на існуючому курсі  {studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"The course creator must give you access to the course. Contact the course "
+"creator or administrator for the course you are helping to author."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Create Your First Course"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Your new course is just a click away!"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Becoming a Course Creator in {studio_name}"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team will evaluate your request and provide you feedback within 24 hours "
+"during the work week."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status:"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Request the Ability to Create Courses"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is has completed evaluating your request."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Your Course Creator request is:"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"Your request did not meet the criteria/guidelines specified by "
+"{platform_name} Staff."
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is currently  evaluating your request."
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"Your request is currently being reviewed by {platform_name} staff and should"
+" be updated shortly."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Were you expecting to see a particular library here?"
+msgstr "Ви очікували знайти тут певну бібліотеку?"
+
+#: cms/templates/index.html
+msgid ""
+"The library creator must give you access to the library. Contact the library"
+" creator or administrator for the library you are helping to author."
+msgstr ""
+"Автор бібліотеки повинен надати вам доступ до бібліотеки. Зверніться до "
+"розробника бібліотеки або адміністратора бібліотеки, з наповненням якої ви "
+"допомогаєте. "
+
+#: cms/templates/index.html
+msgid "Create Your First Library"
+msgstr "Створіть свою першу бібліотеку"
+
+#: cms/templates/index.html
+msgid ""
+"Libraries hold a pool of components that can be re-used across multiple "
+"courses. Create your first library with the click of a button!"
+msgstr ""
+"Бібліотеки мають комплекс компонентів, які можна повторно використовувати на"
+" кількох курсах. Створіть свою першу бібліотеку, лише натиснувши одну "
+"кнопку!"
+
+#: cms/templates/index.html
+msgid "New to {studio_name}?"
+msgstr "Вперше на {studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"Click Help in the upper-right corner to get more information about the "
+"{studio_name} page you are viewing. You can also use the links at the bottom"
+" of the page to access our continually updated documentation and other "
+"{studio_name} resources."
+msgstr ""
+"Натисніть «Допомога» у верхньому правому куті, щоб отримати додаткову "
+"інформацію про сторінку {studio_name}, яку ви переглядаєте. Ви також можете "
+"використовувати посилання у нижній частині сторінки, щоб отримати доступ до "
+"наших документів, що постійно оновлюються, та інших ресурсів {studio_name} ."
+
+#: cms/templates/index.html
+msgid "Getting Started with {studio_name}"
+msgstr "Почати працювати у {studio_name} "
+
+#: cms/templates/index.html
+msgid "Can I create courses in {studio_name}?"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must {link_start}contact "
+"{platform_name} staff to help you create a course{link_end}."
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must have course creator "
+"privileges to create your own course."
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"Your request to author courses in {studio_name} has been denied. Please "
+"{link_start}contact {platform_name} Staff with further questions{link_end}."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Thanks for signing up, {name}!"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "We need to verify your email address"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"Almost there! In order to complete your sign up we need you to verify your "
+"email address ({email}). An activation message and next steps should be "
+"waiting for you there."
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Need help?"
+msgstr ""
+
+#: cms/templates/index.html
+msgid ""
+"Please check your Junk or Spam folders in case our email isn't in your "
+"INBOX. Still can't find the verification email? Request help via the link "
+"below."
+msgstr ""
+
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "Бібліотека контенту"
@@ -22560,6 +23128,10 @@ msgstr ""
 msgid "Library User Access"
 msgstr ""
 
+#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
+msgid "User Access"
+msgstr ""
+
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr ""
@@ -22614,6 +23186,10 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "Розклад та деталі налаштувань"
+
+#: cms/templates/settings.html cms/templates/widgets/header.html
+msgid "Schedule & Details"
+msgstr "Розклад і деталі"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -22866,6 +23442,16 @@ msgstr "Деталі курсу"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "Надайте корисну інформацію про ваш курс"
+
+#: cms/templates/settings.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
+"Визначте мову курсу тут. Це допоможе користувачам знайти курси, які "
+"читаються певною мовою. Також, ця мова буде використовуватися для "
+"локалізації поля \"Від:\" у групових розсилках електронної пошти."
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -23313,6 +23899,22 @@ msgstr ""
 " лабораторні роботи, вікторини та іспити, а також визначати, як оцінювати "
 "кожний тип завдання, виконаний студентом."
 
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Expand or Collapse"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "This block contains multiple components."
+msgstr ""
+
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr ""
@@ -23353,6 +23955,10 @@ msgstr ""
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "Дізнайтеся більше про підручники"
+
+#: cms/templates/videos_index.html cms/templates/widgets/header.html
+msgid "Video Uploads"
+msgstr ""
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -23614,6 +24220,50 @@ msgstr ""
 msgid "LMS"
 msgstr ""
 
+#: cms/templates/widgets/header.html
+msgid "Current Course:"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Course Navigation"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Outline"
+msgstr "Структура курсу"
+
+#: cms/templates/widgets/header.html
+msgid "Publisher"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Import"
+msgstr "Імпорт"
+
+#: cms/templates/widgets/header.html
+msgid "Export"
+msgstr "Експорт"
+
+#: cms/templates/widgets/header.html
+msgid "Current Library:"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Language preference"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Account Navigation"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Contextual Online Help"
+msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Sign Up"
+msgstr "Зареєструватися"
+
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
 msgstr ""
@@ -23666,52 +24316,12 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: cms/templates/widgets/sock.html
-msgid "Looking for help with {studio_name}?"
-msgstr ""
-
-#: cms/templates/widgets/sock.html
-msgid "Hide {studio_name} Help"
-msgstr ""
-
-#: cms/templates/widgets/sock.html
-msgid "{studio_name} Documentation"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Access documentation on http://docs.edx.org"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "edX Documentation"
-msgstr ""
-
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr ""
 
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX"
-msgstr ""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Send an email to {email}"
 msgstr ""
 
 #: cms/templates/widgets/user_dropdown.html
@@ -24931,253 +25541,8 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
 
-#~ msgid "Organization"
-#~ msgstr "Організація"
-
-#~ msgid "Course Run"
-#~ msgstr "Запуск курсу"
-
-#~ msgid "Our mailing address is"
-#~ msgstr "Наша поштова адреса - "
-
-#~ msgid "Files & Uploads"
-#~ msgstr "Файли і завантаження"
-
-#~ msgid "Grading"
-#~ msgstr "Оцінювання"
-
-#~ msgid "Course Team"
-#~ msgstr "Команда курсу"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Розширені налаштування"
-
-#~ msgid "Tools"
-#~ msgstr "Інструменти"
-
-#~ msgid "Duplicate"
-#~ msgstr "Створити копію"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Перетягніть, щоб змінити порядок "
-
-#~ msgid "e.g. Introduction to Computer Science"
-#~ msgstr "наприклад: вступ до компьютерної науки"
-
-#~ msgid "e.g. UniversityX or OrganizationX"
-#~ msgstr "наприклад: Інститут Х або Організація Х"
-
-#~ msgid "e.g. CS101"
-#~ msgstr "наприклад: CS101"
-
-#~ msgid "e.g. 2014_T1"
-#~ msgstr "наприклад: 2014_T1"
-
-#~ msgid "Learn more about Course Re-runs"
-#~ msgstr "Дізнайтеся більше про перезапуск курсу"
-
-#~ msgid "Pages"
-#~ msgstr "Сторінки"
-
 #~ msgid "{studio_name} Home"
 #~ msgstr "{studio_name} Домашня сторінка"
 
-#~ msgid "New Course"
-#~ msgstr "Новий курс"
-
-#~ msgid "New Library"
-#~ msgstr "Створити нову бібліотеку"
-
-#~ msgid "Create a New Course"
-#~ msgstr "Створити новий курс"
-
-#~ msgid ""
-#~ "The public display name for your course. This cannot be changed, but you can"
-#~ " set a different display name in Advanced Settings later."
-#~ msgstr ""
-#~ "Публічна назва вашого курсу. Її неможливо змінити, але пізніше можна "
-#~ "зазначити іншу назву в \"Розширенних налаштуваннях\""
-
-#~ msgid ""
-#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
-#~ "organization name is part of the course URL.{strong_end} This cannot be "
-#~ "changed, but you can set a different display name in Advanced Settings "
-#~ "later."
-#~ msgstr ""
-#~ "Назва організації, яка фінансує курс. {strong_start}Примітка: Назва "
-#~ "організації є частиною URL-адреси курсу.{strong_end} Назву неможливо "
-#~ "змінити, але пізніше можна зазначити іншу назву в \"Розширенних "
-#~ "налаштуваннях\"."
-
-#~ msgid ""
-#~ "The unique number that identifies your course within your organization. "
-#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
-#~ " characters are allowed and it cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "Унікальний номер, який визначає ваш курс у вашій організації.  "
-#~ "{strong_start}Примітка: Це частина URL-адреси вашого курсу, тому пробіли або"
-#~ " спеціальні символи не допускаються, і цей номер не можна "
-#~ "змінити.{strong_end}"
-
-#~ msgid ""
-#~ "The term in which your course will run. {strong_start}Note: This is part of "
-#~ "your course URL, so no spaces or special characters are allowed and it "
-#~ "cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "Термін, протягом якого розпочинається ваш курс. {strong_start}Примітка: Це "
-#~ "частина URL-адреси вашого курсу, тому пробіли або спеціальні символи не "
-#~ "допускаються, і термін не можна буде змінити.{strong_end}"
-
-#~ msgid "Create"
-#~ msgstr "Створити"
-
-#~ msgid "Create a New Library"
-#~ msgstr "Створити нову бібліотеку"
-
-#~ msgid "Library Name"
-#~ msgstr "Назва бібліотеки"
-
-#~ msgid "The public display name for your library."
-#~ msgstr "Публічна назва вашої бібліотеки."
-
-#~ msgid "The public organization name for your library."
-#~ msgstr "Публічна назва організації для вашої бібліотеки. "
-
-#~ msgid "This cannot be changed."
-#~ msgstr "Не можна змінити потім."
-
-#~ msgid "Library Code"
-#~ msgstr "Код бібліотеки"
-
-#~ msgid "e.g. CSPROB"
-#~ msgstr "наприклад: CSPROB"
-
-#~ msgid ""
-#~ "The unique code that identifies this library. {strong_start}Note: This is "
-#~ "part of your library URL, so no spaces or special characters are "
-#~ "allowed.{strong_end} This cannot be changed."
-#~ msgstr ""
-#~ "Унікальний код, який ідентифікує цю бібліотеку. {strong_start}Примітка: Це "
-#~ "частина URL-адреси вашої бібліотеки, тому пробіли або спеціальні символи не "
-#~ "допускаються.{strong_end}  Цей код не можна змінити."
-
-#~ msgid ""
-#~ "The new course will be added to your course list in 5-10 minutes. Return to "
-#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
-#~ " new course will need some manual configuration."
-#~ msgstr ""
-#~ "Новий курс буде додано до вашого списку курсів через 5-10 хвилин. "
-#~ "Поверніться на цю сторінку або {link_start} оновіть її {link_end}, щоб "
-#~ "оновити список курсів. Для нового курсу потрібна ручна конфігурація."
-
-#~ msgid "Libraries"
-#~ msgstr "Бібліотеки"
-
-#~ msgid "Are you staff on an existing {studio_name} course?"
-#~ msgstr "Чи являєтеся ви персоналом на існуючому курсі  {studio_name}?"
-
-#~ msgid "Were you expecting to see a particular library here?"
-#~ msgstr "Ви очікували знайти тут певну бібліотеку?"
-
-#~ msgid ""
-#~ "The library creator must give you access to the library. Contact the library"
-#~ " creator or administrator for the library you are helping to author."
-#~ msgstr ""
-#~ "Автор бібліотеки повинен надати вам доступ до бібліотеки. Зверніться до "
-#~ "розробника бібліотеки або адміністратора бібліотеки, з наповненням якої ви "
-#~ "допомогаєте. "
-
-#~ msgid "Create Your First Library"
-#~ msgstr "Створіть свою першу бібліотеку"
-
-#~ msgid ""
-#~ "Libraries hold a pool of components that can be re-used across multiple "
-#~ "courses. Create your first library with the click of a button!"
-#~ msgstr ""
-#~ "Бібліотеки мають комплекс компонентів, які можна повторно використовувати на"
-#~ " кількох курсах. Створіть свою першу бібліотеку, лише натиснувши одну "
-#~ "кнопку!"
-
-#~ msgid "New to {studio_name}?"
-#~ msgstr "Вперше на {studio_name}?"
-
-#~ msgid ""
-#~ "Click Help in the upper-right corner to get more information about the "
-#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
-#~ " of the page to access our continually updated documentation and other "
-#~ "{studio_name} resources."
-#~ msgstr ""
-#~ "Натисніть «Допомога» у верхньому правому куті, щоб отримати додаткову "
-#~ "інформацію про сторінку {studio_name}, яку ви переглядаєте. Ви також можете "
-#~ "використовувати посилання у нижній частині сторінки, щоб отримати доступ до "
-#~ "наших документів, що постійно оновлюються, та інших ресурсів {studio_name} ."
-
-#~ msgid "Getting Started with {studio_name}"
-#~ msgstr "Почати працювати у {studio_name} "
-
-#~ msgid "Schedule & Details"
-#~ msgstr "Розклад і деталі"
-
-#~ msgid ""
-#~ "Identify the course language here. This is used to assist users find courses"
-#~ " that are taught in a specific language. It is also used to localize the "
-#~ "'From:' field in bulk emails."
-#~ msgstr ""
-#~ "Визначте мову курсу тут. Це допоможе користувачам знайти курси, які "
-#~ "читаються певною мовою. Також, ця мова буде використовуватися для "
-#~ "локалізації поля \"Від:\" у групових розсилках електронної пошти."
-
-#~ msgid "Outline"
-#~ msgstr "Структура курсу"
-
-#~ msgid "Import"
-#~ msgstr "Імпорт"
-
-#~ msgid "Export"
-#~ msgstr "Експорт"
-
-#~ msgid "Sign Up"
-#~ msgstr "Зареєструватися"
-
-#~ msgid "example: username@domain.com"
-#~ msgstr "приклад: username@domain.com"
-
-#~ msgid ""
-#~ "edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-#~ "{link_start}edX Inc.{link_end}"
-#~ msgstr ""
-#~ "edX, Open edX, the edX та Open edX логотипи є зареєстрованими товарними "
-#~ "знаками {link_start}edX Inc.{link_end}"
-
 #~ msgid "You do not have access to this dependency block."
 #~ msgstr "У вас немає доступу до цього модуля."
-
-#~ msgid "Copyright {year}. All rights reserved."
-#~ msgstr "Copyright {year}. Всі права захищено."
-
-#~ msgid "example: Jane Doe"
-#~ msgstr "приклад:  Петрик П’яточкін"
-
-#~ msgid "Welcome {username}"
-#~ msgstr "Ласкаво просимо, {username}"
-
-#~ msgid "Additional Personal Information"
-#~ msgstr "Додаткова персональна інформація"
-
-#~ msgid "Need Help?"
-#~ msgstr "Потрібна допомога?"
-
-#~ msgid ""
-#~ "We are sorry. Our course staff did not approve your request to change your "
-#~ "name from {old_name} to {new_name}. If you need further assistance, please "
-#~ "e-mail the tech support at {email}"
-#~ msgstr ""
-#~ "Вибачте. Наш персонал відхилив ваш запит на зміну вашого імені з {old_name} "
-#~ "на {new_name}. Якщо вам все ще потрібна наша допомога, будь ласка, надішліть"
-#~ " листа на адресу технічної підтримки {email}"
-
-#~ msgid "Put your Honor Code here!"
-#~ msgstr "Додайте текст Політики Доброчесності сюди!"
-
-#~ msgid "Put your Copyright Text here!"
-#~ msgstr "Додайте текст Авторського Права сюди!"
