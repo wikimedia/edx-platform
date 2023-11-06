@@ -34,7 +34,6 @@
 # CHANDRA SHEKHAR SHARMA <shekharsharma041@gmail.com>, 2014
 # Manish Manish <manish@manprax.com>, 2021
 # CHANDRA SHEKHAR SHARMA <shekharsharma041@gmail.com>, 2014
-# YAGNESHKUMAR NAYI, 2023
 # #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 # edX translation file
 # Copyright (C) 2023 edX
@@ -93,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-01 07:43+0000\n"
+"POT-Creation-Date: 2023-10-01 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Manish Manish <manish@manprax.com>, 2020\n"
 "Language-Team: Hindi (https://app.transifex.com/open-edx/teams/6205/hi/)\n"
@@ -1142,10 +1141,6 @@ msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Generate an all time report of enrollment/completion for all courses."
-msgstr ""
-
-#: openedx/core/lib/license/templates/license.html
-msgid "CC-by-sa 4.0"
 msgstr ""
 
 #. Translators: 'Discussion' refers to the tab in the courseware that leads to
@@ -6049,12 +6044,14 @@ msgstr "यह मान सभी छोटे अक्षर में हो
 
 #: lms/djangoapps/badges/models.py
 msgid "The course mode for this badge image. For example, \"verified\" or \"honor\"."
-msgstr ""
+msgstr "इस बैज छवि के लिए कोर्स मोड। उदाहरण के लिए, \"verified\" या \"honor\"।"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
 "Badge images must be square PNG files. The file size should be under 250KB."
 msgstr ""
+"बैज छवियों को वर्ग PNG फ़ाइलें होनी चाहिए। फ़ाइल का आकार 250KB से कम होना "
+"चाहिए।"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6062,10 +6059,13 @@ msgid ""
 "any course modes that do not have a specified badge image. You can have only"
 " one default image."
 msgstr ""
+"इस मान को सही पर सेट करें यदि आप चाहते हैं कि यह छवि किसी भी पाठ्यक्रम मोड "
+"के लिए डिफ़ॉल्ट छवि हो, जिसमें एक निर्दिष्ट बैज छवि न हो। आपके पास केवल एक "
+"डिफ़ॉल्ट छवि हो सकती है।"
 
 #: lms/djangoapps/badges/models.py
 msgid "There can be only one default image."
-msgstr ""
+msgstr "केवल एक डिफ़ॉल्ट छवि हो सकती है।"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6073,6 +6073,9 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
+"प्रत्येक पंक्ति में, बैज कमाने के लिए पूर्ण किए गए पाठ्यक्रमों की संख्या, एक"
+" अल्पविराम डालें और बैज की कक्षा का स्लग लिखें जिसके प्रकाशित करने वाले घटक "
+"'openedx__course' हैं। उदाहरण के लिए: 3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6080,6 +6083,9 @@ msgid ""
 "comma, and the slug of a badge class you have created that has the issuing "
 "component 'openedx__course'. For example: 3,enrolled_3_courses"
 msgstr ""
+"प्रत्येक पंक्ति में, बैज कमाने के लिए नामांकित पाठ्यक्रमों की संख्या, एक "
+"अल्पविराम डालें और बैज की कक्षा का स्लग लिखें जिसके प्रकाशित करने वाले घटक "
+"'openedx__course' हैं। उदाहरण के लिए: 3,enrolled_3_courses"
 
 #: lms/djangoapps/badges/models.py
 msgid ""
@@ -6089,10 +6095,16 @@ msgid ""
 "learner needs to complete to be awarded the badge. For example: "
 "slug_for_compsci_courses_group_badge,course-v1:CompSci+Course+First,course-v1:CompsSci+Course+Second"
 msgstr ""
+"प्रत्येक पंक्ति अल्पविराम से अलग की गई सूची है। प्रत्येक पंक्ति में पहला "
+"आइटम आपके द्वारा बनाए गए बैज वर्ग का स्लग है जिसमें 'openx__course' का एक "
+"जारी करने वाला घटक है। प्रत्येक पंक्ति में शेष आइटम कोर्स कुंजियाँ हैं "
+"जिन्हें सीखने वाले को बैज से सम्मानित करने की आवश्यकता है। उदाहरण के लिए: "
+"slug_for_compsci_courses_group_badge, course-v1: CompSci + Course + First, "
+"course-v1: CompsSci +Course+Second"
 
 #: lms/djangoapps/badges/models.py
 msgid "Please check the syntax of your entry."
-msgstr ""
+msgstr "कृपया अपनी प्रविष्टि का सिंटैक्स देखें।"
 
 #. Translators: This string is used across Open edX installations
 #. as a callback to edX. Please do not translate `edX.org`
@@ -12592,132 +12604,128 @@ msgstr "लोड हो रहा है"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
-msgstr "पाठ्यक्रम टीम उपयोगकर्ता मौजूद नहीं है"
+msgstr ""
 
 #: cms/djangoapps/contentstore/admin.py
 #, python-brace-format
 msgid ""
 "Number of course outline regenerations successfully requested: {regenerates}"
-msgstr "सफलतापूर्वक अनुरोधित पाठ्यक्रम रूपरेखा सुधार की संख्या: {regenerates}"
+msgstr ""
 
 #: cms/djangoapps/contentstore/admin.py
 msgid "Regenerate selected course outlines"
-msgstr "चयनित पाठ्यक्रम की रूपरेखा पुनः तैयार करें"
+msgstr ""
 
 #: cms/djangoapps/contentstore/admin.py
 msgid "All course outline regenerations successfully requested."
-msgstr "सभी पाठ्यक्रम रूपरेखा सुधार का सफलतापूर्वक अनुरोध किया गया।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/admin.py
 msgid "Regenerate *all* course outlines"
-msgstr "*सभी* पाठ्यक्रम की रूपरेखा पुनः बनाएँ"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_group_config.py
 msgid ""
 "The groups in this configuration can be mapped to cohorts in the Instructor "
 "Dashboard."
 msgstr ""
-"इस कॉन्फ़िगरेशन में समूहों को प्रशिक्षक डैशबोर्ड में समूहों में मैप किया जा "
-"सकता है।"
 
 #: cms/djangoapps/contentstore/course_group_config.py
+#: cms/templates/group_configurations.html
 msgid "Content Groups"
-msgstr "सामग्री समूह"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_group_config.py
 #: cms/djangoapps/contentstore/views/certificates.py
 msgid "invalid JSON"
-msgstr "अमान्य JSON"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_group_config.py
 msgid "must have name of the configuration"
-msgstr "कॉन्फ़िगरेशन का नाम होना चाहिए"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_group_config.py
 msgid "must have at least one group"
-msgstr "कम से कम एक समूह होना चाहिए"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_group_config.py
 msgid "unable to load this type of group configuration"
-msgstr "इस प्रकार के समूह कॉन्फ़िगरेशन को लोड करने में असमर्थ"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_info_model.py
 msgid "Invalid course update id."
-msgstr "अमान्य पाठ्यक्रम अपडेट आईडी।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/course_info_model.py
 msgid "Course update not found."
-msgstr "पाठ्यक्रम अपडेट नहीं मिला।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/courseware_index.py
 msgid "Could not index item: {}"
-msgstr "आइटम अनुक्रमित नहीं कर सका: {}"
+msgstr ""
 
 #: cms/djangoapps/contentstore/courseware_index.py
 msgid "General indexing error occurred"
-msgstr "सामान्य अनुक्रमणिका त्रुटि हुई"
+msgstr ""
 
 #: cms/djangoapps/contentstore/courseware_index.py
 msgid "(Unnamed)"
-msgstr "(बेनाम)"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Aborting import because a course with this id: {} already exists."
 msgstr ""
-"आयात निरस्त किया जा रहा है क्योंकि इस आईडी वाला एक पाठ्यक्रम: {} पहले से "
-"मौजूद है।"
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Permission denied. You do not have write access to this course."
-msgstr "अनुमति नहीं दी गई। आप इस पाठ्यक्रम में लेखन पहुँच नहीं है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 #, python-brace-format
 msgid "Could not find the {0} file in the package."
-msgstr "पैकेज में {0} फ़ाइल नहीं मिल सकी।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Uploaded Tar file not found. Try again."
-msgstr "अपलोड की गई टार फ़ाइल नहीं मिली। पुनः प्रयास करें।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 #: cms/djangoapps/contentstore/views/import_export.py
 msgid "We only support uploading a .tar.gz file."
-msgstr "हम केवल एक .tar.gz फाइल अपलोड करने का समर्थन करते हैं।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Aborting import since a library with this id already exists."
 msgstr ""
-"आयात निरस्त किया जा रहा है क्योंकि इस आईडी वाली लाइब्रेरी पहले से मौजूद है।"
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Course olx validation failed. Please check your email."
-msgstr "पाठ्यक्रम olx सत्यापन विफल रहा। कृपया अपनी ईमेल देखें।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Permission denied"
-msgstr "अनुमति नहीं मिली"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Unknown error while importing course."
-msgstr "पाठ्यक्रम आयात करते समय अज्ञात त्रुटि।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "An Unknown error occurred during the unpacking step."
-msgstr "अनपैकिंग चरण के दौरान एक अज्ञात त्रुटि उत्पन्न हुई।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 #, python-brace-format
 msgid "Unknown User ID: {0}"
-msgstr "अज्ञात उपयोगकर्ता आईडी: {0}"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "Unsafe tar file. Aborting import."
-msgstr "असुरक्षित टार फ़ाइल। आयात निरस्त किया जा रहा है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/errors.py
 msgid "User permission denied."
-msgstr "उपयोगकर्ता की अनुमति अस्वीकृत।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 #, python-brace-format
@@ -12725,8 +12733,6 @@ msgid ""
 "GIT_REPO_EXPORT_DIR not set or path {0} doesn't exist, please create it, or "
 "configure a different path with GIT_REPO_EXPORT_DIR"
 msgstr ""
-"GIT_REPO_EXPORT_DIR सेट नहीं है या पथ {0} मौजूद नहीं है, कृपया इसे बनाएं, या"
-" GIT_REPO_EXPORT_DIR के साथ एक अलग पथ कॉन्फ़िगर करें"
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid ""
@@ -12739,125 +12745,116 @@ msgid ""
 "If using http urls, you must provide the username and password in the url. "
 "Similar to https://user:pass@github.com/user/course."
 msgstr ""
-"यदि http यूआरएल का उपयोग कर रहे हैं, तो आपको यूआरएल में उपयोगकर्ता नाम और "
-"पासवर्ड प्रदान करना होगा। https://user:pass@github.com/user/course के समान।"
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid "Unable to determine branch, repo in detached HEAD mode"
-msgstr "अलग-अलग हेड मोड में शाखा, रेपो निर्धारित करने में असमर्थ"
+msgstr ""
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid "Unable to update or clone git repository."
-msgstr "शाखा निर्धारित करने में असमर्थ, अलग हेड मोड में रेपो।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid "Unable to export course to xml."
-msgstr "पाठ्यक्रम को xml में निर्यात करने में असमर्थ।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid "Unable to configure git username and password"
-msgstr "git उपयोगकर्ता नाम और पासवर्ड कॉन्फ़िगर करने में असमर्थ"
+msgstr ""
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid ""
 "Unable to commit changes. This is usually because there are no changes to be"
 " committed"
 msgstr ""
-"बदलाव करने में असमर्थ। ऐसा आम तौर पर इसलिए होता है क्योंकि इसमें कोई बदलाव "
-"नहीं किया जाना होता है"
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid ""
 "Unable to push changes.  This is usually because the remote repository "
 "cannot be contacted"
 msgstr ""
-"परिवर्तनों को आगे बढ़ाने में असमर्थ। ऐसा आमतौर पर इसलिए होता है क्योंकि "
-"रिमोट रिपॉजिटरी से संपर्क नहीं किया जा सकता है"
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid "Bad course location provided"
-msgstr "खराब पाठ्यक्रम स्थान प्रदान किया गया"
+msgstr ""
 
 #: cms/djangoapps/contentstore/git_export_utils.py
 msgid "Missing branch on fresh clone"
-msgstr "ताजा क्लोन पर शाखा गायब है"
+msgstr ""
 
 #: cms/djangoapps/contentstore/management/commands/git_export.py
 msgid ""
 "Take the specified course and attempt to export it to a git repository\n"
 ". Course directory must already be a git repository. Usage:  git_export <course_loc> <git_url>"
 msgstr ""
-"निर्दिष्ट पाठ्यक्रम लें और इसे git रिपॉजिटरी में निर्यात करने का प्रयास करें\n"
-"। पाठ्यक्रम निर्देशिका पहले से ही एक गिट रिपॉजिटरी होनी चाहिए। उपयोग: git_export<course_loc><git_url>"
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/advanced_settings.py
 msgid "Marks a field as deprecated."
-msgstr "किसी फ़ील्ड को बहिष्कृत के रूप में चिह्नित करता है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/advanced_settings.py
 msgid "User-friendly display name for the field"
-msgstr "फ़ील्ड के लिए उपयोगकर्ता-अनुकूल प्रदर्शन नाम"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/advanced_settings.py
 msgid "Help text that describes the setting."
-msgstr "सेटिंग का वर्णन करने वाले पाठ की मदद करें।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "Tab type"
-msgstr "टैब प्रकार"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "Default name for the tab displayed to users"
-msgstr "उपयोगकर्ताओं को प्रदर्शित टैब का डिफ़ॉल्ट नाम"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "True if it's possible to hide the tab for a course"
-msgstr "यदि किसी पाठ्यक्रम के लिए टैब छिपाना संभव है तो यह सत्य है"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "True the tab is hidden for the course"
-msgstr "यह सच है कि टैब पाठ्यक्रम के लिए छिपा हुआ है"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "True if it's possible to reorder the tab in the list of tabs"
-msgstr "यदि टैब की सूची में टैब को पुन: व्यवस्थित करना संभव है तो यह सत्य है"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "True if this tab should be displayed only for instructors"
 msgstr ""
-"यह सत्य है कि यह टैब केवल प्रशिक्षकों के लिए प्रदर्शित किया जाना चाहिए"
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "Name of the tab displayed to users. Overrides title."
-msgstr "उपयोगकर्ताओं को प्रदर्शित टैब का नाम. शीर्षक को ओवरराइड करता है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "Additional settings specific to the tab"
-msgstr "टैब के लिए विशिष्ट अतिरिक्त सेटिंग्स"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "ID of tab to update"
-msgstr "अद्यतन करने के लिए टैब की आईडी"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "Location (Usage Key) of tab to update"
-msgstr "अद्यतन करने के लिए टैब का स्थान (उपयोग कुंजी)"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "Need to supply either a valid tab_id or a tab_location."
-msgstr "या तो एक वैध tab_id या एक tab_location प्रदान करने की आवश्यकता है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/serializers/tabs.py
 msgid "True to hide the tab, and False to show it."
-msgstr "टैब को छुपाने के लिए सही है, और दिखाने के लिए गलत है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/rest_api/v0/views/tabs.py
 msgid "Change the visibility of tabs in a course."
-msgstr "किसी पाठ्यक्रम में टैब की दृश्यता बदलें।"
+msgstr ""
 
-#: cms/djangoapps/contentstore/utils.py
+#: cms/djangoapps/contentstore/utils.py cms/templates/visibility_editor.html
 msgid "Deleted Group"
-msgstr "हटाया गया समूह"
+msgstr ""
 
 #. Translators: This is building up a list of groups. It is marked for
 #. translation because of the
@@ -12865,11 +12862,11 @@ msgstr "हटाया गया समूह"
 #: cms/djangoapps/contentstore/utils.py
 #, python-brace-format
 msgid "{previous_groups}, {current_group}"
-msgstr "{previous_groups}, {current_group}"
+msgstr ""
 
 #: cms/djangoapps/contentstore/video_utils.py
 msgid "The image must have name, content type, and size information."
-msgstr "छवि में नाम, सामग्री प्रकार और आकार की जानकारी अवश्य होनी चाहिए।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/video_utils.py
 #, python-brace-format
@@ -12877,24 +12874,21 @@ msgid ""
 "This image file type is not supported. Supported file types are "
 "{supported_file_formats}."
 msgstr ""
-"यह छवि फ़ाइल प्रकार समर्थित नहीं है. समर्थित फ़ाइल प्रकार "
-"{supported_file_formats} हैं।"
 
 #: cms/djangoapps/contentstore/video_utils.py
 #, python-brace-format
 msgid "This image file must be smaller than {image_max_size}."
-msgstr "यह छवि फ़ाइल {image_max_size} से छोटी होनी चाहिए।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/video_utils.py
 #, python-brace-format
 msgid "This image file must be larger than {image_min_size}."
-msgstr "यह छवि फ़ाइल {image_min_size} से बड़ी होनी चाहिए।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/video_utils.py
 msgid ""
 "There is a problem with this image file. Try to upload a different file."
 msgstr ""
-"इस छवि फ़ाइल में कोई समस्या है। एक अलग फ़ाइल अपलोड करने का प्रयास करें।"
 
 #: cms/djangoapps/contentstore/video_utils.py
 #, python-brace-format
@@ -12903,8 +12897,6 @@ msgid ""
 "{image_file_max_width}x{image_file_max_height}. The minimum resolution is "
 "{image_file_min_width}x{image_file_min_height}."
 msgstr ""
-"अनुशंसित छवि संकल्प {image_file_max_width} x {image_file_max_height} है। "
-"न्यूनतम रिज़ॉल्यूशन {image_file_min_width} x {image_file_min_height} है।"
 
 #: cms/djangoapps/contentstore/video_utils.py
 #, python-brace-format
@@ -12912,16 +12904,12 @@ msgid ""
 "This image file must have an aspect ratio of "
 "{video_image_aspect_ratio_text}."
 msgstr ""
-"इस छवि फ़ाइल में {video_image_aspect_ratio_text} का एक पहलू अनुपात होना "
-"चाहिए।"
 
 #: cms/djangoapps/contentstore/video_utils.py
 msgid ""
 "The image file name can only contain letters, numbers, hyphens (-), and "
 "underscores (_)."
 msgstr ""
-"छवि फ़ाइल नाम में केवल अक्षर, संख्याएँ, हाइफ़न (-), और अंडरस्कोर (_) शामिल "
-"हो सकते हैं।"
 
 #: cms/djangoapps/contentstore/views/assets.py
 msgid "Upload completed"
@@ -12935,30 +12923,30 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/certificates.py
 msgid "must have name of the certificate"
-msgstr "प्रमाणपत्र का नाम अवश्य होना चाहिए"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/certificates.py
 #, python-brace-format
 msgid "Certificate dict {0} missing value key '{1}'"
-msgstr "प्रमाणपत्र निर्देश {0} गुम मान कुंजी '{1}'"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/certificates.py
 #, python-brace-format
 msgid "PermissionDenied: Failed in authenticating {user}"
-msgstr "अनुमति अस्वीकृत: {user} को प्रमाणित करने में विफल"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 #, python-brace-format
 msgid "{platform_name} Support Levels:"
-msgstr "{platform_name} समर्थन स्तर:"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
-msgstr "खुली प्रतिक्रिया"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Blank"
-msgstr "खाली"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Blank Open Response Assessment"
@@ -12966,34 +12954,29 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "Course has been successfully reindexed."
-msgstr "पाठ्यक्रम को सफलतापूर्वक पुनः अनुक्रमित किया गया है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "Set Date"
-msgstr "तारीख तय करें"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
 "Special characters not allowed in organization, course number, and course "
 "run."
 msgstr ""
-"संगठन, पाठ्यक्रम संख्या और पाठ्यक्रम चलाने में विशेष वर्णों की अनुमति नहीं "
-"है।"
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
 "There is already a course defined with the same organization and course "
 "number. Please change either organization or course number to be unique."
 msgstr ""
-"समान संगठन और पाठ्यक्रम संख्या के साथ पहले से ही एक पाठ्यक्रम परिभाषित है। "
-"कृपया अद्वितीय होने के लिए संगठन या पाठ्यक्रम संख्या में से किसी एक को "
-"बदलें।"
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
 "Please change either the organization or course number so that it is unique."
 msgstr ""
-"कृपया संगठन या पाठ्यक्रम संख्या में से किसी एक को बदलें ताकि यह विशिष्ट हो।"
+"कृप्या या तो संगठन का नाम या फ़िर पाठ्यक्रम संख्या विशिष्ट रूप से बदले ।"
 
 #: cms/djangoapps/contentstore/views/course.py
 #, python-brace-format
@@ -13002,17 +12985,12 @@ msgid ""
 "\n"
 "{err}"
 msgstr ""
-"पाठ्यक्रम '{name}' बनाने में असमर्थ।\n"
-"\n"
-"{err}"
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
 "User does not have the permission to create courses in this organization or "
 "course creation is disabled"
 msgstr ""
-"उपयोगकर्ता के पास इस संगठन में पाठ्यक्रम बनाने की अनुमति नहीं है या "
-"पाठ्यक्रम निर्माण अक्षम है"
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid ""
@@ -13020,116 +12998,113 @@ msgid ""
 "Organization you selected does not exist in the system, you will need to add"
 " it to the system"
 msgstr ""
-"जारी रखने के लिए आपको इस पाठ्यक्रम को किसी संगठन से जोड़ना होगा। आपके द्वारा"
-" चुना गया संगठन सिस्टम में मौजूद नहीं है, आपको इसे सिस्टम में जोड़ना होगा"
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "Invalid prerequisite course key"
-msgstr "अमान्य शर्त पाठ्यक्रम कुंजी"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "An error occurred while trying to save your tabs"
-msgstr "आपके टैब सहेजने का प्रयास करते समय एक त्रुटि उत्पन्न हुई"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "Tabs Exception"
-msgstr "टैब अपवाद"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "This group configuration is in use and cannot be deleted."
-msgstr "यह समूह कॉन्फ़िगरेशन उपयोग में है और इसे हटाया नहीं जा सकता है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "This content group is in use and cannot be deleted."
-msgstr "यह सामग्री समूह उपयोग में है और इसे हटाया नहीं जा सकता है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/entrance_exam.py
 msgid "Entrance Exam - Subsection"
-msgstr "प्रवेश परीक्षा - उपधारा"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/entrance_exam.py
 msgid "Completed Course Entrance Exam"
-msgstr "पूर्ण पाठ्यक्रम प्रवेश परीक्षा"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/export_git.py
 msgid "Course successfully exported to git repository"
-msgstr "पाठ्यक्रम सफलतापूर्वक git रिपोजिटरी में निर्यात किया गया"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/helpers.py
 msgid "Vertical"
-msgstr "सीधा"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/helpers.py
+#: cms/templates/course_outline.html lms/templates/ccx/schedule.html
+#: lms/templates/seq_module.html
 msgid "Section"
-msgstr "अनुभाग"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/helpers.py
+#: lms/templates/ccx/schedule.html
 msgid "Subsection"
-msgstr "उपधारा"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/import_export.py
 msgid "Some chunks missed during file upload. Please try again"
-msgstr "फ़ाइल अपलोड के दौरान कुछ हिस्से छूट गए। कृपया पुन: प्रयास करें"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/import_export.py
 msgid "File upload failed. Please try again"
-msgstr "फ़ाइल अपलोड विफल रहा। कृपया पुन: प्रयास करें"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "Libraries cannot have more than {limit} components"
-msgstr "लाइब्रेरी में {limit} से अधिक घटक नहीं हो सकते"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "You can not move {source_type} into {target_parent_type}."
-msgstr "आप {source_type} को {target_parent_type} में नहीं ले जा सकते।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 msgid "Item is already present in target location."
-msgstr "आइटम लक्ष्य स्थान पर पहले से ही मौजूद है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 msgid "You can not move an item into itself."
-msgstr "आप एक वस्तु को अपने आप में स्थानांतरित नहीं कर सकते।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 msgid "You can not move an item into it's child."
-msgstr "आप किसी वस्तु को बच्चे में स्थानांतरित नहीं कर सकते।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 msgid "You can not move an item directly into content experiment."
-msgstr "आप किसी वस्तु को सीधे सामग्री प्रयोग में नहीं ले जा सकते।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "{source_usage_key} not found in {parent_usage_key}."
-msgstr "{source_usage_key} {parent_usage_key} में नहीं मिला।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid ""
 "You can not move {source_usage_key} at an invalid index ({target_index})."
 msgstr ""
-"आप किसी अमान्य इंडेक्स ({target_index}) पर {source_usage_key} को स्थानांतरित"
-" नहीं कर सकते।"
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "You must provide target_index ({target_index}) as an integer."
 msgstr ""
-"आपको target_index ({target_index}) को एक पूर्णांक के रूप में प्रदान करना "
-"होगा।"
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "Duplicate of {0}"
-msgstr "{0} का डुप्लीकेट"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "Duplicate of '{0}'"
-msgstr "'{0}' का डुप्लीकेट"
+msgstr ""
 
 #. Translators: The {pct_sign} here represents the percent sign, i.e., '%'
 #. in many languages. This is used to avoid Transifex's misinterpreting of
@@ -13139,32 +13114,28 @@ msgstr "'{0}' का डुप्लीकेट"
 msgid ""
 "Students must score {score}{pct_sign} or higher to access course materials."
 msgstr ""
-"पाठ्यक्रम सामग्री तक पहुँचने के लिए छात्रों को {score} {pct_sign} या उच्चतर "
-"स्कोर करना होगा।"
 
 #. Translators: This is the percent sign. It will be used to represent
 #. a percent value out of 100, e.g. "58%" means "58/100".
 #: cms/djangoapps/contentstore/views/item.py
 msgid "%"
-msgstr "%"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/item.py
 #, python-brace-format
 msgid "{section_or_subsection} \"{display_name}\""
-msgstr "{section_or_subsection} \"{display_name}\""
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/library.py
 msgid ""
 "User does not have the permission to create library in this organization or "
 "course creation is disabled"
 msgstr ""
-"उपयोगकर्ता के पास इस संगठन में लाइब्रेरी बनाने की अनुमति नहीं है या "
-"पाठ्यक्रम निर्माण अक्षम है"
 
 #: cms/djangoapps/contentstore/views/library.py
 #, python-brace-format
 msgid "Unable to create library - missing required field '{field}'"
-msgstr "लाइब्रेरी बनाने में असमर्थ - आवश्यक फ़ील्ड '{field}' अनुपलब्ध है"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/library.py
 #, python-brace-format
@@ -13173,9 +13144,6 @@ msgid ""
 "\n"
 "{err}"
 msgstr ""
-"लाइब्रेरी '{name}' बनाने में असमर्थ।\n"
-"\n"
-"{err}"
 
 #: cms/djangoapps/contentstore/views/library.py
 msgid ""
@@ -13183,22 +13151,20 @@ msgid ""
 "code. Please change your library code so that it is unique within your "
 "organization."
 msgstr ""
-"समान संगठन और लाइब्रेरी कोड के साथ पहले से ही एक लाइब्रेरी परिभाषित है। "
-"कृपया अपना लाइब्रेरी कोड बदलें ताकि यह आपके संगठन के भीतर अद्वितीय हो।"
 
 #: cms/djangoapps/contentstore/views/library.py
 #, python-brace-format
 msgid "'{organization_key}' is not a valid organization identifier."
-msgstr "'{organization_key}' एक वैध संगठन पहचानकर्ता नहीं है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/preview.py
 #, python-brace-format
 msgid "Access restricted to: {list_of_groups}"
-msgstr "प्रवेश यहीं तक सीमित है: {list_of_groups}"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcript_settings.py
 msgid "The information you entered is incorrect."
-msgstr "आपके द्वारा दर्ज की गई जानकारी गलत है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Transcripts are supported only for \"video\" modules."
@@ -13206,162 +13172,160 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Cannot find item by locator."
-msgstr "लोकेटर द्वारा वस्तु नहीं खोजा जा सकता।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Video locator is required."
-msgstr "वीडियो लोकेटर की आवश्यकता है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "This transcript file type is not supported."
-msgstr "यह ट्रांसक्रिप्ट फ़ाइल प्रकार समर्थित नहीं है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Video ID is required."
-msgstr "वीडियो आईडी आवश्यक है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Incoming video data is empty."
-msgstr "आने वाला वीडियो डेटा खाली है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Can't find item by locator."
-msgstr "लोकेटर द्वारा वस्तु नहीं मिल रहा है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "No such transcript."
-msgstr "ऐसी कोई प्रतिलिपि नहीं।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "There is a problem with the chosen transcript file."
-msgstr "चुनी गई ट्रांस्क्रिप्ट फ़ाइल में कोई समस्या है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid ""
 "There is a problem with the existing transcript file. Please upload a "
 "different file."
 msgstr ""
-"मौजूदा ट्रांसक्रिप्ट फ़ाइल में कोई समस्या है। कृपया एक अलग फ़ाइल अपलोड करें।"
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "YouTube ID is required."
-msgstr "YouTube आईडी आवश्यक है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "There is a problem with the YouTube transcript file."
-msgstr "YouTube ट्रांस्क्रिप्ट फ़ाइल में एक समस्या है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/user.py
 msgid "Insufficient permissions"
-msgstr "अपर्याप्त अनुमति"
+msgstr "अपर्याप्त अनुमति "
 
 #: cms/djangoapps/contentstore/views/user.py
 #, python-brace-format
 msgid "Could not find user by email address '{email}'."
-msgstr "ईमेल पते '{email}' द्वारा उपयोगकर्ता नहीं मिल सका।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/user.py
 msgid "No `role` specified."
-msgstr "कोई `भूमिका` निर्दिष्ट नहीं है।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/user.py
 #, python-brace-format
 msgid "User {email} has registered but has not yet activated their account."
 msgstr ""
-"उपयोगकर्ता {email} ने पंजीकरण कराया है लेकिन अभी तक अपना खाता सक्रिय नहीं "
-"किया है।"
 
 #: cms/djangoapps/contentstore/views/user.py
 msgid "Invalid `role` specified."
-msgstr "अमान्य 'भूमिका' निर्दिष्ट की गई।"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/user.py
 msgid "You may not remove the last Admin. Add another Admin first."
-msgstr "आप अंतिम व्यवस्थापक को नहीं निकाल सकते। पहले एक और व्यवस्थापक जोड़ें।"
+msgstr ""
 
+#. #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
 #. Translators: This is the status of an active video upload
-#: cms/djangoapps/contentstore/views/videos.py
+#: cms/djangoapps/contentstore/views/videos.py cms/templates/import.html
 msgid "Uploading"
-msgstr "अपलोड हो रहा है"
+msgstr ""
 
 #. Translators: This is the status for a video that the servers are currently
 #. processing
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "In Progress"
-msgstr "प्रगति पर है"
+msgstr ""
 
 #. Translators: This is the status for a video that is uploaded completely
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Uploaded"
-msgstr "अपलोड किया गया"
+msgstr ""
 
 #. Translators: This is the status for a video that the servers have failed to
 #. process
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Failed"
-msgstr "असफल"
+msgstr ""
 
 #. Translators: This is the status for a video that is cancelled during upload
 #. by user
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Cancelled"
-msgstr "रद्द कर दिया"
+msgstr ""
 
 #. Translators: This is the status for a video which has failed
 #. due to being flagged as a duplicate by an external or internal CMS
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Failed Duplicate"
-msgstr "डुप्लिकेट विफल रहा"
+msgstr ""
 
 #. Translators: This is the status for a video which has duplicate token for
 #. youtube
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "YouTube Duplicate"
-msgstr "YouTube डुप्लिकेट"
+msgstr ""
 
 #. Translators: This is the status for a video for which an invalid
 #. processing token was provided in the course settings
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Invalid Token"
-msgstr "अमान्य टोकन"
+msgstr ""
 
 #. Translators: This is the status for a video that was included in a course
 #. import
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Imported"
-msgstr "आयातित"
+msgstr ""
 
 #. Translators: This is the status for a video that is in an unknown state
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Unknown"
-msgstr "अपरिचित"
+msgstr ""
 
 #. Translators: This is the status for a video that is having its
 #. transcription in progress on servers
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Transcription in Progress"
-msgstr "प्रतिलेखन प्रगति पर है"
+msgstr ""
 
 #. Translators: This is the status for a video whose transcription is complete
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Transcript Ready"
-msgstr "प्रतिलेख तैयार"
+msgstr ""
 
 #. Translators: This is the status for a video whose transcription job was
 #. failed for some languages
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Partial Failure"
-msgstr "आंशिक विफलता"
+msgstr ""
 
 #. Translators: This is the status for a video whose transcription job has
 #. failed altogether
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Transcript Failed"
-msgstr "प्रतिलिपि विफल"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "An image file is required."
-msgstr "एक छवि फ़ाइल की आवश्यकता है।"
+msgstr ""
 
 #. Translators: This is the header for a CSV file column
 #. containing URLs for video encodings for the named profile
@@ -13369,30 +13333,30 @@ msgstr "एक छवि फ़ाइल की आवश्यकता है�
 #: cms/djangoapps/contentstore/views/videos.py
 #, python-brace-format
 msgid "{profile_name} URL"
-msgstr "{profile_name} यूआरएल"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Duration"
-msgstr "अवधि"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Date Added"
-msgstr "तिथि जोड़ी गई"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Status"
-msgstr "स्थिति"
+msgstr ""
 
 #. Translators: This is the suggested filename when downloading the URL
 #. listing for videos uploaded through Studio
 #: cms/djangoapps/contentstore/views/videos.py
 #, python-brace-format
 msgid "{course}_video_urls"
-msgstr "{course} _video_urls"
+msgstr ""
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "A non zero positive integer is expected"
-msgstr "एक गैर शून्य सकारात्मक पूर्णांक की उम्मीद है"
+msgstr ""
 
 #: cms/djangoapps/course_creators/models.py
 msgid "unrequested"
@@ -13400,11 +13364,11 @@ msgstr "अनिवेदित"
 
 #: cms/djangoapps/course_creators/models.py
 msgid "pending"
-msgstr "अपूर्ण"
+msgstr "बाकी है"
 
 #: cms/djangoapps/course_creators/models.py
 msgid "granted"
-msgstr "मंज़ूर किया गया"
+msgstr "स्वीकृत किया गया"
 
 #: cms/djangoapps/course_creators/models.py
 msgid "denied"
@@ -13412,11 +13376,11 @@ msgstr "अस्वीकृत किया गया"
 
 #: cms/djangoapps/course_creators/models.py
 msgid "Studio user"
-msgstr "स्टूडियो उपयोगकर्ता"
+msgstr ""
 
 #: cms/djangoapps/course_creators/models.py
 msgid "The date when state was last updated"
-msgstr "वह तिथि जब राज्य अंतिम बार अपडेट किया गया था"
+msgstr ""
 
 #: cms/djangoapps/course_creators/models.py
 msgid "Current course creator state"
@@ -13427,20 +13391,19 @@ msgid ""
 "Optional notes about this user (for example, why course creation access was "
 "denied)"
 msgstr ""
-"इस उपयोगकर्ता के बारे में वैकल्पिक नोट्स (उदाहरण के लिए, पाठ्यक्रम निर्माण "
-"की पहुंच क्यों अस्वीकृत की गई)"
 
 #: cms/djangoapps/course_creators/models.py
 msgid "Organizations under which the user is allowed to create courses."
-msgstr "वे संगठन जिनके अंतर्गत उपयोगकर्ता को पाठ्यक्रम बनाने की अनुमति है।"
+msgstr ""
 
 #: cms/djangoapps/course_creators/models.py
 msgid "Grant the user the permission to create courses in ALL organizations"
-msgstr "उपयोगकर्ता को सभी संगठनों में पाठ्यक्रम बनाने की अनुमति दें"
+msgstr ""
 
 #: cms/djangoapps/maintenance/views.py
+#: cms/templates/maintenance/_force_publish_course.html
 msgid "Force Publish Course"
-msgstr "फोर्स पब्लिश पाठ्यक्रम"
+msgstr ""
 
 #: cms/djangoapps/maintenance/views.py
 msgid ""
@@ -13449,56 +13412,49 @@ msgid ""
 "point to the draft branch, effectively force publishing the course. This "
 "view dry runs the force publish command"
 msgstr ""
-"कभी-कभी किसी पाठ्यक्रम का प्रारूप और प्रकाशित शाखाएं समन्वय से बाहर हो सकती "
-"हैं। फ़ोर्स पब्लिश कोर्स कमांड किसी पाठ्यक्रम की प्रकाशित शाखा को ड्राफ्ट "
-"शाखा की ओर इंगित करने के लिए रीसेट करता है, जिससे पाठ्यक्रम को प्रभावी ढंग "
-"से प्रकाशित किया जाता है। यह दृश्य फ़ोर्स पब्लिश कमांड को ड्राई रन करता है"
 
 #: cms/djangoapps/maintenance/views.py
 msgid "Edit Announcements"
-msgstr "घोषणाएँ संपादित करें"
+msgstr ""
 
 #: cms/djangoapps/maintenance/views.py
 msgid ""
 "This view shows the announcement editor to create or alter announcements "
 "that are shown on the rightside of the dashboard."
 msgstr ""
-"यह दृश्य घोषणा संपादक को घोषणाएँ बनाने या बदलने के लिए दिखाता है जो डैशबोर्ड"
-" के दाईं ओर दिखाई जाती हैं।"
 
 #: cms/djangoapps/maintenance/views.py
 msgid "Please provide course id."
-msgstr "कृपया पाठ्यक्रम आईडी प्रदान करें।"
+msgstr ""
 
 #: cms/djangoapps/maintenance/views.py
 msgid "Invalid course key."
-msgstr "अमान्य पाठ्यक्रम कुंजी।"
+msgstr ""
 
 #: cms/djangoapps/maintenance/views.py
 msgid "No matching course found."
-msgstr "कोई मिलता-जुलता पाठ्यक्रम नहीं मिला।"
+msgstr ""
 
 #: cms/djangoapps/maintenance/views.py
 msgid "Force publishing course is not supported with old mongo courses."
 msgstr ""
-"फ़ोर्स प्रकाशन पाठ्यक्रम पुराने मोंगो पाठ्यक्रमों के साथ समर्थित नहीं है।"
 
 #: cms/djangoapps/maintenance/views.py
 msgid "Course is already in published state."
-msgstr "पाठ्यक्रम पहले से ही प्रकाशित अवस्था में है।"
+msgstr ""
 
 #: cms/djangoapps/models/settings/course_metadata.py
 #, python-brace-format
 msgid "Incorrect format for field '{name}'. {detailed_message}"
-msgstr "फ़ील्ड '{name}' के लिए गलत प्रारूप। {detailed_message}"
+msgstr ""
 
 #: cms/lib/xblock/tagging/tagging.py
 msgid "Dictionary with the available tags"
-msgstr "उपलब्ध टैग के साथ शब्दकोश"
+msgstr ""
 
 #: cms/urls.py
 msgid "Studio Administration"
-msgstr "स्टूडियो प्रशासन"
+msgstr ""
 
 #: cms/templates/404.html cms/templates/error.html
 #: lms/templates/static_templates/404.html
@@ -24423,49 +24379,6 @@ msgstr ""
 
 #~ msgid "You must give Data Sharing Consent for the course"
 #~ msgstr "आपको कोर्स के लिए डेटा साझा करने के सहमति देनी होगी"
-
-#~ msgid ""
-#~ "Non writable git url provided. Expecting something like: "
-#~ "git@github.com:openedx/openedx-demo-course.git"
-#~ msgstr ""
-#~ "गैर लिखने योग्य git url प्रदान किया गया। कुछ इस तरह की अपेक्षा: "
-#~ "git@github.com:openedx/openedx-demo-course.git"
-
-#~ msgid "Library Content"
-#~ msgstr "पुस्तकालय सामग्री"
-
-#~ msgid "Drag and Drop"
-#~ msgstr "खींचें और छोड़ें"
-
-#~ msgid "Peer Assessment Only"
-#~ msgstr "केवल सहकर्मी मूल्यांकन"
-
-#~ msgid "Transcripts are supported only for \"video\" blocks."
-#~ msgstr "प्रतिलेख केवल \"वीडियो\" ब्लॉक के लिए समर्थित हैं।"
-
-#~ msgid "There was a problem pasting your component."
-#~ msgstr "आपके घटक को चिपकाने में एक समस्या थी।"
-
-#~ msgid "Your clipboard is empty or invalid."
-#~ msgstr "आपका क्लिपबोर्ड खाली या अमान्य है।"
-
-#~ msgid "Dump courses to CourseGraph (respect cache)"
-#~ msgstr "कोर्सग्राफ़ में पाठ्यक्रम डंप करें (कैश का सम्मान करें)"
-
-#~ msgid "Error enqueueing dumps for {} course(s): {}"
-#~ msgstr "डंपों को कतारबद्ध करने में त्रुटि {} course(s): {}"
-
-#~ msgid "Enqueued dumps for {} course(s). Skipped {} unchanged course(s)."
-#~ msgstr "लिए कतारबद्ध डंप {} course(s)। छोड़ा गया {} अपरिवर्तित course(s)।"
-
-#~ msgid "Skipped all {} course(s), as they were unchanged."
-#~ msgstr "छोड़ दिए गए सभी {} course(s), चूँकि वे अपरिवर्तित थे।"
-
-#~ msgid "Dump courses to CourseGraph (override cache)"
-#~ msgstr "कोर्स को कोर्सग्राफ में डंप करें (कैच को ओवरराइड करें)"
-
-#~ msgid "Enqueued dumps for {} course(s)."
-#~ msgstr "लिए कतारबद्ध डंप {} course(s)।"
 
 #~ msgid "Page Actions"
 #~ msgstr "पृष्‍ठ के कार्यकलाप"
