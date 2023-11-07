@@ -143,12 +143,12 @@ class Command(BaseCommand):
                 po.append(entry)
             po.save(output_file)
 
-    def reset_pofile(self, file_path, output_file):
+    def reset_pofile(self, file_path, output_file_path):
         """
         Removes msgstr from pofile
         """
         _, poids = self._get_msgids_from_po_file(file_path)
-        pomsgs = pofile(output_file)
+        pomsgs = pofile(output_file_path)
         for entry in pomsgs:
             if entry.msgid in poids:
                 entry.msgstr = ""
@@ -214,7 +214,7 @@ class Command(BaseCommand):
                     output_mappings[file_name] = [line_number]
         return output_mappings
 
-    def _get_paragraph(self, line_numbers, paragraphs):
+    def _get_bad_paragraphs(self, line_numbers, paragraphs):
         """
         Get paragraph based on line_numbers in a file
         """
@@ -225,11 +225,22 @@ class Command(BaseCommand):
                     fuzzy_paragraphs.append(paragraph.strip())
         return fuzzy_paragraphs
 
-    def get_paragraphs_from_lines(self, file_path, line_numbers):
+    def get_paragraphs(self, file_path):
         """
-        Remove fuzzy msgstr from the file
+        Extract and return message paragraphs from file.
+
+        Parameters:
+        - file_path (str): The path to the input po file to extract paragraphs from.
+
+        This function splits the content of the file into paragraphs based on empty lines,
+        and returns a list of tuples. Each tuple contains the starting line number and the text of a paragraph.
+
+        Returns:
+        - list of tuple: [(start_line_number, paragraph_text),...].
+
         """
         paragraphs = []
+
         with open(file_path, 'r') as file:
             # read the contents of the file
             file_contents = file.read()
@@ -246,14 +257,36 @@ class Command(BaseCommand):
             if current_paragraph:
                 paragraphs.append((current_line_number, current_paragraph.strip()))
 
-            fuzzy_paragraphs = self._get_paragraph(line_numbers, paragraphs)
+        return paragraphs
 
-            dir_path, file_name = os.path.split(file_path)
-            temp_path = os.path.join(dir_path, f'temp-{file_name}')
-            with open(temp_path, 'w+') as temp_file:
-                temp_file.write("\n\n".join(fuzzy_paragraphs))
-            self.reset_pofile(temp_path, file_path)
-            execute(f'rm {temp_path}')
+    def _remove_bad_msgstr(self, file_path, line_numbers):
+        """
+        Remove invalid 'msgstr' entries from a PO file, keeping only valid message paragraphs.
+
+        Parameters:
+        - file_path (str): The path to the input PO file to be cleaned.
+        - line_numbers (list): A list of line numbers corresponding to invalid translations.
+
+        This function reads the contents of a PO file, splits it into paragraphs based on empty lines,
+        and identifies invalid 'msgstr' entries. It then creates a temporary file containing only
+        the invalid message paragraphs and resets those entries in the original file.
+
+        Returns:
+        - None
+        """
+        # split file into list of paragraphs
+        paragraphs = self.get_paragraphs(file_path)
+
+        fuzzy_paragraphs = self._get_bad_paragraphs(line_numbers, paragraphs)
+
+        # create a temporary file to store fuzzy paragraphs
+        dir_path, file_name = os.path.split(file_path)
+        temp_path = os.path.join(dir_path, f'temp-{file_name}')
+        with open(temp_path, 'w+') as temp_file:
+            temp_file.write("\n\n".join(fuzzy_paragraphs))
+
+        self.reset_pofile(temp_path, file_path)
+        execute(f'rm {temp_path}')
 
     def remove_bad_msgstr(self, filename=None):
         """
@@ -272,7 +305,7 @@ class Command(BaseCommand):
 
             files_mapping = self._get_line_number_from_output(error_msg)
             for file_path, line_numbers in files_mapping.items():
-                self.get_paragraphs_from_lines(file_path, line_numbers)
+                self._remove_bad_msgstr(file_path, line_numbers)
 
     def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping: dict = {}, exclude_files: list = ['wm-django.po', 'wm-djangojs.po', 'manual.po', 'manualjs.po']):
         """
