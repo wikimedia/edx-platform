@@ -152,6 +152,7 @@ class Command(BaseCommand):
         for entry in pomsgs:
             if entry.msgid in poids:
                 entry.msgstr = ""
+                entry.msgstr_plural = {k: "" for k in entry.msgstr_plural}
         pomsgs.save()
 
     def rename_version_files_and_remove_errors(self, locales):
@@ -212,6 +213,25 @@ class Command(BaseCommand):
                     output_mappings[file_name].append(line_number)
                 else:
                     output_mappings[file_name] = [line_number]
+        return output_mappings
+    
+    def _get_line_number_from_validate_output(self, output):
+        output_mappings = {}
+        
+        pattern = r"(.+LC_MESSAGES/.+):(\d+)"
+        cwd = os.getcwd()
+
+        for paragraph in output.split('\n\n'):
+            if 'fatal error' in paragraph:
+                match = re.findall(pattern, paragraph)
+                file_path_abs = cwd + '/conf/locale/' + match[-1][0]
+                line_number = int(match[-1][1])
+                # store file path and line number
+                if file_path_abs in output_mappings:
+                    output_mappings[file_path_abs].append(line_number)
+                else:
+                    output_mappings[file_path_abs] = [line_number]
+
         return output_mappings
 
     def _get_bad_paragraphs(self, line_numbers, paragraphs):
@@ -292,6 +312,26 @@ class Command(BaseCommand):
         """
         Execute the command and remove fuzzy msgstrs
         """
+
+
+        compile_error_mapping = self._check_for_compile_errors(filename)
+        files_mapping = compile_error_mapping
+        
+        # if checking all files then include i18n errors 
+        if not filename:
+            i18n_error_mappinng = self._check_for_i18n_fatal_errors()
+            # merge compile and i18n errors
+            files_mapping = {
+                k: compile_error_mapping.get(k, []) + i18n_error_mappinng.get(k, [])
+                for k in set(compile_error_mapping) | set(i18n_error_mappinng)
+            }
+
+        for file_path, line_numbers in files_mapping.items():
+            self._remove_bad_msgstr(file_path, line_numbers)
+    
+    def _check_for_compile_errors(self, filename=None):
+        compile_error_mapping = {}
+
         if filename:
             cmd = f'msgfmt --check-format {filename}'
         else:
@@ -303,9 +343,21 @@ class Command(BaseCommand):
             except UnicodeDecodeError:
                 error_msg = result.stderr.decode('latin-1')
 
-            files_mapping = self._get_line_number_from_output(error_msg)
-            for file_path, line_numbers in files_mapping.items():
-                self._remove_bad_msgstr(file_path, line_numbers)
+            compile_error_mapping = self._get_line_number_from_output(error_msg)
+
+        return compile_error_mapping
+
+    def _check_for_i18n_fatal_errors(self):
+        cmd = 'i18n_tool validate'
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            error_msg = result.stdout.decode('utf-8')
+        except UnicodeDecodeError:
+            error_msg = result.stdout.decode('latin-1')
+
+        i18n_error_mappinng = self._get_line_number_from_validate_output(error_msg)
+        return i18n_error_mappinng
+
 
     def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping: dict = {}, exclude_files: list = ['wm-django.po', 'wm-djangojs.po', 'manual.po', 'manualjs.po']):
         """
