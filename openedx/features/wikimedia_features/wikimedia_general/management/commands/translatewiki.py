@@ -216,6 +216,17 @@ class Command(BaseCommand):
         return output_mappings
     
     def _get_line_number_from_validate_output(self, output):
+        """ 
+        Extracts file paths and line numbers from the given 'output' string,
+        specifically targeting paragraphs containing 'fatal error'.
+
+        Parameters:
+        - output (str): The string output of i18n_tool validate.
+
+        Returns:
+        dict: A dictionary mapping absolute file paths to lists of line numbers.
+              Each file path represents sources of 'fatal error' in the 'output'.
+        """
         output_mappings = {}
         
         pattern = r"(.+LC_MESSAGES/.+):(\d+)"
@@ -224,19 +235,20 @@ class Command(BaseCommand):
         for paragraph in output.split('\n\n'):
             if 'fatal error' in paragraph:
                 match = re.findall(pattern, paragraph)
-                file_path_abs = cwd + '/conf/locale/' + match[-1][0]
-                line_number = int(match[-1][1])
-                # store file path and line number
-                if file_path_abs in output_mappings:
-                    output_mappings[file_path_abs].append(line_number)
-                else:
-                    output_mappings[file_path_abs] = [line_number]
+                if match:
+                    file_path_abs = os.path.join(cwd, 'conf', 'locale', match[-1][0])
+                    line_number = int(match[-1][1])
+                    # store file path and line number
+                    if file_path_abs in output_mappings:
+                        output_mappings[file_path_abs].append(line_number)
+                    else:
+                        output_mappings[file_path_abs] = [line_number]
 
         return output_mappings
 
     def _get_bad_paragraphs(self, line_numbers, paragraphs):
         """
-        Get paragraph based on line_numbers in a file
+        Returns paragraphs containing given line_numbers
         """
         fuzzy_paragraphs = []
         for line_number in line_numbers:
@@ -310,7 +322,18 @@ class Command(BaseCommand):
 
     def remove_bad_msgstr(self, filename=None):
         """
-        Execute the command and remove fuzzy msgstrs
+        Execute commands to check for compile errors and i18n fatal errors, and remove fuzzy msgstr entries.
+
+        Parameters:
+        - filename (str, optional): The name of the specific translation file to check.
+                                    If not provided, the entire project will be checked.
+
+        Notes:
+        - If 'filename' is provided, only the specified file is checked for compile errors.
+          If 'filename' is not provided, the entire project is checked, and i18n fatal errors are also checked.
+        - If checking the entire project, compile and i18n errors are merged into a combined 'files_mapping'.
+        - The method then iterates through each file in 'files_mapping' and removes fuzzy 'msgstr' entries
+          based on the identified line numbers.
         """
 
 
@@ -330,6 +353,25 @@ class Command(BaseCommand):
             self._remove_bad_msgstr(file_path, line_numbers)
     
     def _check_for_compile_errors(self, filename=None):
+        """
+        Check for compile errors in a Django translation file or project.
+
+        Parameters:
+        - filename (str, optional): The name of the specific translation file to check.
+                                If not provided, the entire project will be checked.
+
+        Returns:
+        dict: A dictionary mapping absolute file paths to lists of line numbers.
+              Each entry represents a compilation error found in the specified file or project.
+
+        Notes:
+        - If 'filename' is provided, only the specified file is checked; otherwise, the entire project is checked.
+        - The function uses 'msgfmt --check-format' for individual files and 'django-admin.py compilemessages'
+          for the entire project.
+        - Compilation errors are detected in the standard error output of the subprocess.
+        - The error messages are further processed to extract file paths and line numbers
+          using the '_get_line_number_from_output' method.
+        """
         compile_error_mapping = {}
 
         if filename:
@@ -348,6 +390,20 @@ class Command(BaseCommand):
         return compile_error_mapping
 
     def _check_for_i18n_fatal_errors(self):
+        """
+        Check for internationalization (i18n) fatal errors using an i18n validation tool.
+
+        Returns:
+        dict: A dictionary mapping absolute file paths to lists of line numbers.
+              Each entry represents an i18n fatal error found during validation.
+
+        Notes:
+        - The method uses the 'i18n_tool validate' command to perform validation.
+        - The result is captured from the standard output of the subprocess.
+        - The standard output is decoded, and the resulting error message is processed
+          to extract file paths and line numbers.
+        """
+
         cmd = 'i18n_tool validate'
         result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         try:
