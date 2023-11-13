@@ -143,15 +143,16 @@ class Command(BaseCommand):
                 po.append(entry)
             po.save(output_file)
 
-    def reset_pofile(self, file_path, output_file):
+    def reset_pofile(self, file_path, output_file_path):
         """
         Removes msgstr from pofile
         """
         _, poids = self._get_msgids_from_po_file(file_path)
-        pomsgs = pofile(output_file)
+        pomsgs = pofile(output_file_path)
         for entry in pomsgs:
             if entry.msgid in poids:
                 entry.msgstr = ""
+                entry.msgstr_plural = {k: "" for k in entry.msgstr_plural}
         pomsgs.save()
 
     def rename_version_files_and_remove_errors(self, locales):
@@ -213,10 +214,41 @@ class Command(BaseCommand):
                 else:
                     output_mappings[file_name] = [line_number]
         return output_mappings
+    
+    def _get_line_number_from_validate_output(self, output):
+        """ 
+        Extracts file paths and line numbers from the given 'output' string,
+        specifically targeting paragraphs containing 'fatal error'.
 
-    def _get_paragraph(self, line_numbers, paragraphs):
+        Parameters:
+        - output (str): The string output of i18n_tool validate.
+
+        Returns:
+        dict: A dictionary mapping absolute file paths to lists of line numbers.
+              Each file path represents sources of 'fatal error' in the 'output'.
         """
-        Get paragraph based on line_numbers in a file
+        output_mappings = {}
+        
+        pattern = r"(.+LC_MESSAGES/.+):(\d+)"
+        cwd = os.getcwd()
+
+        for paragraph in output.split('\n\n'):
+            if 'fatal error' in paragraph:
+                match = re.findall(pattern, paragraph)
+                if match:
+                    file_path_abs = os.path.join(cwd, 'conf', 'locale', match[-1][0])
+                    line_number = int(match[-1][1])
+                    # store file path and line number
+                    if file_path_abs in output_mappings:
+                        output_mappings[file_path_abs].append(line_number)
+                    else:
+                        output_mappings[file_path_abs] = [line_number]
+
+        return output_mappings
+
+    def _get_bad_paragraphs(self, line_numbers, paragraphs):
+        """
+        Returns paragraphs containing given line_numbers
         """
         fuzzy_paragraphs = []
         for line_number in line_numbers:
@@ -225,11 +257,22 @@ class Command(BaseCommand):
                     fuzzy_paragraphs.append(paragraph.strip())
         return fuzzy_paragraphs
 
-    def get_paragraphs_from_lines(self, file_path, line_numbers):
+    def get_paragraphs(self, file_path):
         """
-        Remove fuzzy msgstr from the file
+        Extract and return message paragraphs from file.
+
+        Parameters:
+        - file_path (str): The path to the input po file to extract paragraphs from.
+
+        This function splits the content of the file into paragraphs based on empty lines,
+        and returns a list of tuples. Each tuple contains the starting line number and the text of a paragraph.
+
+        Returns:
+        - list of tuple: [(start_line_number, paragraph_text),...].
+
         """
         paragraphs = []
+
         with open(file_path, 'r') as file:
             # read the contents of the file
             file_contents = file.read()
@@ -246,19 +289,91 @@ class Command(BaseCommand):
             if current_paragraph:
                 paragraphs.append((current_line_number, current_paragraph.strip()))
 
-            fuzzy_paragraphs = self._get_paragraph(line_numbers, paragraphs)
+        return paragraphs
 
-            dir_path, file_name = os.path.split(file_path)
-            temp_path = os.path.join(dir_path, f'temp-{file_name}')
-            with open(temp_path, 'w+') as temp_file:
-                temp_file.write("\n\n".join(fuzzy_paragraphs))
-            self.reset_pofile(temp_path, file_path)
-            execute(f'rm {temp_path}')
+    def _remove_bad_msgstr(self, file_path, line_numbers):
+        """
+        Remove invalid 'msgstr' entries from a PO file, keeping only valid message paragraphs.
+
+        Parameters:
+        - file_path (str): The path to the input PO file to be cleaned.
+        - line_numbers (list): A list of line numbers corresponding to invalid translations.
+
+        This function reads the contents of a PO file, splits it into paragraphs based on empty lines,
+        and identifies invalid 'msgstr' entries. It then creates a temporary file containing only
+        the invalid message paragraphs and resets those entries in the original file.
+
+        Returns:
+        - None
+        """
+        # split file into list of paragraphs
+        paragraphs = self.get_paragraphs(file_path)
+
+        fuzzy_paragraphs = self._get_bad_paragraphs(line_numbers, paragraphs)
+
+        # create a temporary file to store fuzzy paragraphs
+        dir_path, file_name = os.path.split(file_path)
+        temp_path = os.path.join(dir_path, f'temp-{file_name}')
+        with open(temp_path, 'w+') as temp_file:
+            temp_file.write("\n\n".join(fuzzy_paragraphs))
+
+        self.reset_pofile(temp_path, file_path)
+        execute(f'rm {temp_path}')
 
     def remove_bad_msgstr(self, filename=None):
         """
-        Execute the command and remove fuzzy msgstrs
+        Execute commands to check for compile errors and i18n fatal errors, and remove fuzzy msgstr entries.
+
+        Parameters:
+        - filename (str, optional): The name of the specific translation file to check.
+                                    If not provided, the entire project will be checked.
+
+        Notes:
+        - If 'filename' is provided, only the specified file is checked for compile errors.
+          If 'filename' is not provided, the entire project is checked, and i18n fatal errors are also checked.
+        - If checking the entire project, compile and i18n errors are merged into a combined 'files_mapping'.
+        - The method then iterates through each file in 'files_mapping' and removes fuzzy 'msgstr' entries
+          based on the identified line numbers.
         """
+
+
+        compile_error_mapping = self._check_for_compile_errors(filename)
+        files_mapping = compile_error_mapping
+        
+        # if checking all files then include i18n errors 
+        if not filename:
+            i18n_error_mappinng = self._check_for_i18n_fatal_errors()
+            # merge compile and i18n errors
+            files_mapping = {
+                k: compile_error_mapping.get(k, []) + i18n_error_mappinng.get(k, [])
+                for k in set(compile_error_mapping) | set(i18n_error_mappinng)
+            }
+
+        for file_path, line_numbers in files_mapping.items():
+            self._remove_bad_msgstr(file_path, line_numbers)
+    
+    def _check_for_compile_errors(self, filename=None):
+        """
+        Check for compile errors in a Django translation file or project.
+
+        Parameters:
+        - filename (str, optional): The name of the specific translation file to check.
+                                If not provided, the entire project will be checked.
+
+        Returns:
+        dict: A dictionary mapping absolute file paths to lists of line numbers.
+              Each entry represents a compilation error found in the specified file or project.
+
+        Notes:
+        - If 'filename' is provided, only the specified file is checked; otherwise, the entire project is checked.
+        - The function uses 'msgfmt --check-format' for individual files and 'django-admin.py compilemessages'
+          for the entire project.
+        - Compilation errors are detected in the standard error output of the subprocess.
+        - The error messages are further processed to extract file paths and line numbers
+          using the '_get_line_number_from_output' method.
+        """
+        compile_error_mapping = {}
+
         if filename:
             cmd = f'msgfmt --check-format {filename}'
         else:
@@ -270,9 +385,35 @@ class Command(BaseCommand):
             except UnicodeDecodeError:
                 error_msg = result.stderr.decode('latin-1')
 
-            files_mapping = self._get_line_number_from_output(error_msg)
-            for file_path, line_numbers in files_mapping.items():
-                self.get_paragraphs_from_lines(file_path, line_numbers)
+            compile_error_mapping = self._get_line_number_from_output(error_msg)
+
+        return compile_error_mapping
+
+    def _check_for_i18n_fatal_errors(self):
+        """
+        Check for internationalization (i18n) fatal errors using an i18n validation tool.
+
+        Returns:
+        dict: A dictionary mapping absolute file paths to lists of line numbers.
+              Each entry represents an i18n fatal error found during validation.
+
+        Notes:
+        - The method uses the 'i18n_tool validate' command to perform validation.
+        - The result is captured from the standard output of the subprocess.
+        - The standard output is decoded, and the resulting error message is processed
+          to extract file paths and line numbers.
+        """
+
+        cmd = 'i18n_tool validate'
+        result = subprocess.run(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            error_msg = result.stdout.decode('utf-8')
+        except UnicodeDecodeError:
+            error_msg = result.stdout.decode('latin-1')
+
+        i18n_error_mappinng = self._get_line_number_from_validate_output(error_msg)
+        return i18n_error_mappinng
+
 
     def msgmerge(self, locales, staged_files, base_lang='en', generate_po_file_if_not_exist=False, output_file_mapping: dict = {}, exclude_files: list = ['wm-django.po', 'wm-djangojs.po', 'manual.po', 'manualjs.po']):
         """
