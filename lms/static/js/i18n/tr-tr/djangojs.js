@@ -503,6 +503,10 @@
     "Constrain proportions": "Oranlar\u0131 S\u0131n\u0131rla",
     "Contact Us": "Bizimle \u0130leti\u015fime Ge\u00e7in",
     "Contains staff only content": "Sadece personele \u00f6zel i\u00e7erikleri i\u00e7erir",
+    "Contains {count} group": [
+      "{count} grup i\u00e7eriyor",
+      "{count} grup i\u00e7eriyor"
+    ],
     "Content Group ID": "\u0130\u00e7erik Grup ID",
     "Content Group Name": "\u0130\u00e7erik Grup Ad\u0131",
     "Content-Specific Discussion Topics": "\u0130\u00e7erik-Odakl\u0131 Tart\u0131\u015fma Ba\u015fl\u0131klar\u0131",
@@ -2081,6 +2085,10 @@
     "Use your webcam to take a photo of your ID.": "Kimli\u011finizin foto\u011fraf\u0131n\u0131 \u00e7ekmek i\u00e7in web kameran\u0131z\u0131 kullan\u0131n.",
     "Use your webcam to take a photo of your face. We will match this photo with the photo on your ID.": "Y\u00fcz\u00fcn\u00fcz\u00fcn foto\u011fraf\u0131n\u0131 \u00e7ekmek i\u00e7in web kameran\u0131z\u0131 kullan\u0131n. Biz bu foto\u011fraf\u0131n\u0131z\u0131 kimli\u011finiz \u00fczerindeki foto\u011fraf ile e\u015fle\u015ftirece\u011fiz.",
     "Used": "Kullan\u0131ld\u0131",
+    "Used in {count} location": [
+      "{count} konumda kullan\u0131l\u0131yor",
+      "{count} konumda kullan\u0131l\u0131yor"
+    ],
     "User Email": "Kullan\u0131c\u0131 E-postas\u0131",
     "Username": "Kullan\u0131c\u0131 ad\u0131",
     "Username or email address": "Kullan\u0131c\u0131 ad\u0131 ve e-posta adresi",
