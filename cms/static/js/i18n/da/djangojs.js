@@ -647,6 +647,7 @@
     "Enable Cohorts": "Aktiver grupper",
     "Enable Course Highlight Emails": "Aktiver e-mails til kursusfremh\u00e6vning",
     "Enable Now": "Aktiver nu",
+    "Enable Translations": "Aktiver overs\u00e6ttelser",
     "Enabled": "Aktiveret",
     "Encoding": "Kode",
     "End My Exam": "Afslut min eksamen",

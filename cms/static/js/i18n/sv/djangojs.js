@@ -50,6 +50,7 @@
     "Disable Translations": "Inaktivera \u00f6vers\u00e4ttningar",
     "Disable Translations for this block?": "Inaktivera \u00f6vers\u00e4ttningar f\u00f6r denna modul?",
     "Edit on Base Course Block?": "Redigera grundkursmodul?",
+    "Edit on Translated rerun?": "Redigera p\u00e5 \u00f6versatt repris?",
     "Enable Translations": "Aktivera \u00f6vers\u00e4ttningar",
     "Enable Translations for this block?": "Aktivera \u00f6vers\u00e4ttningar f\u00f6r denna modul?",
     "February": "februari",
