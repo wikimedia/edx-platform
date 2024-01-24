@@ -724,6 +724,8 @@ def get_courses(user, org=None, filter_=None, permissions=None):
         settings.COURSE_CATALOG_VISIBILITY_PERMISSION
     )
     permissions.add(permission_name)
+    
+    courses = courses.exclude(catalog_visibility="none")
 
     return LazySequence(
         (c for c in courses if all(has_access(user, p, c) for p in permissions)),
