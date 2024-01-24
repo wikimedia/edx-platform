@@ -12,6 +12,7 @@ from django.conf import settings
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
 from common.djangoapps.student.models import CourseEnrollment
+from common.djangoapps.student.roles import CourseInstructorRole, CourseStaffRole
 from opaque_keys.edx.keys import CourseKey
 
 from openedx.features.course_experience.utils import get_course_outline_block_tree
@@ -50,6 +51,7 @@ def is_course_graded(course_id, user, request=None):
     else:
         return False
 
+
 def is_discussion_notification_configured_for_site(site, post_id):
     if site is None:
         log.info('Discussion: No current site, not sending notification about new thread: %s.', post_id)
@@ -64,6 +66,36 @@ def is_discussion_notification_configured_for_site(site, post_id):
         log.info(log_message, site, post_id)
         return False
     return True
+
+
+def get_course_instructors_list(post_id):
+    """
+    Get a list of unique user objects representing both instructors and staff members for a course.
+
+    Args:
+        context: The context or environment in which the function is called.
+        post_id (str): The identifier for the course.
+
+    Returns:
+        list: A list of unique user objects representing instructors and staff members.
+
+    Example:
+        users = get_course_instructors_list(context, "course_id")
+    """
+    course_key = CourseKey.from_string(post_id)
+    log.info("course_key check %s", course_key)
+
+    instructors = set(CourseInstructorRole(course_key).users_with_role())
+    staff_members = set(CourseStaffRole(course_key).users_with_role())
+
+    # Combine instructors and staff members, ensuring uniqueness
+    users_set = instructors.union(staff_members)
+
+    # Convert the set to a list
+    users_list = list(users_set)
+
+    log.info("Unique list of instructors and staff members: %s", users_list)
+    return users_list
 
 
 def get_mentioned_users_list(input_string, users_list=None):

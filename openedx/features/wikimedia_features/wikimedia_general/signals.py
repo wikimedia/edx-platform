@@ -11,14 +11,14 @@ from opaque_keys.edx.keys import CourseKey
 from common.djangoapps.course_modes.models import CourseMode
 from xmodule.modulestore.django import SignalHandler
 from openedx.core.djangoapps.django_comment_common.signals import (
-    comment_created, comment_edited, thread_created, thread_edited,
+    comment_created, comment_edited, thread_created, thread_edited, 
 )
 from openedx.core.djangoapps.theming.helpers import get_current_site
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     is_discussion_notification_configured_for_site
 )
-from openedx.features.wikimedia_features.wikimedia_general.tasks import send_thread_mention_email_task
+from openedx.features.wikimedia_features.wikimedia_general.tasks import send_thread_mention_email_task, send_thread_creation_email_task
 from openedx.features.wikimedia_features.email.utils import (
     update_context_with_thread,
     update_context_with_comment,
@@ -84,3 +84,45 @@ def send_thread_mention_email_notification(sender, user, post, **kwargs):
         update_context_with_comment(context, post)
     message_context = build_discussion_notification_context(context)
     send_thread_mention_email_task.delay(post.body, message_context, is_thread)
+
+@receiver(thread_created)
+def send_new_post_email_notification_to_instructors(sender, user, post, **kwargs):
+    """
+    Sends email notification to course instructors when a new discussion post is created.
+
+    Args:
+        sender: The sender of the signal.
+        user: The user who created the post.
+        post: The newly created discussion post.
+        **kwargs: Additional keyword arguments.
+
+    Returns:
+        None
+    """
+    logger.info("Muqadim process started")
+    
+    if post.type != 'thread':
+        return
+
+    current_site = get_current_site()
+
+    if not is_discussion_notification_configured_for_site(current_site, post.id):
+        logger.info('discussion notification not enabled')
+        return
+
+    post_id = post.course_id
+    course_key = CourseKey.from_string(post.course_id)
+    logger.info("course_key check %s", course_key)
+    
+    context = {
+        'course_id': course_key,
+        'site': current_site,
+        'is_thread': True
+    }
+    
+    update_context_with_thread(context, post)
+    message_context = build_discussion_notification_context(context)
+    
+    send_thread_creation_email_task.delay(post.body, message_context, True, post_id)
+    
+    logger.info("signal successful;")

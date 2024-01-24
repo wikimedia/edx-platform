@@ -2,6 +2,8 @@ import markdown
 import json
 import logging
 
+from opaque_keys.edx.keys import CourseKey
+
 from edx_ace import ace
 from edx_ace.utils import date
 from edx_ace.recipient import Recipient
@@ -22,11 +24,15 @@ User = get_user_model()
 MESSAGE_TYPES = {
   'pending_messages': message_types.PendingMessagesNotification,
   'thread_mention': message_types.ThreadMentionNotification,
-  'report_ready': message_types.ReportReadyNotification
+  'report_ready': message_types.ReportReadyNotification,
+  'thread_creation': message_types.ThreadCreationNotification
 }
 
 
 def send_ace_message(request_user, request_site, dest_email, context, message_class):
+    logger.info("enteredt send ace message with sending mail to %s", dest_email)
+    logger.info("the request user in here rn is %s",request_user)
+    logger.info("the context is %s",context)
     with emulate_http_request(site=request_site, user=request_user):
         message = message_class().personalize(
             recipient=Recipient(lms_user_id=0, email_address=dest_email),
@@ -77,7 +83,6 @@ def send_notification(message_type, data, subject, dest_emails, request_user=Non
         "logo_url": current_site.configuration.get_value('DEFAULT_EMAIL_LOGO_URL', settings.DEFAULT_EMAIL_LOGO_URL),
         "messenger_url": u'{base_url}{messenger_path}'.format(base_url=base_root_url, messenger_path=reverse("messenger:messenger_home"))
     })
-
     for email in dest_emails:
         message_context.update({
             "email": email
@@ -91,9 +96,10 @@ def send_notification(message_type, data, subject, dest_emails, request_user=Non
             )
         except Exception as e:
             logger.error(
-                'Unable to send an email to %s for content "%s".',
+                'Unable to send an email to %s for content "%s" and fro recipient "%s"',
                 email,
                 content,
+                request_user,
             )
             logger.error(e)
             return_value = False
@@ -158,4 +164,27 @@ def send_thread_mention_email(receivers, context, is_thread=True):
         "mentioned_by": mentioned_by,
     })
 
+    send_notification(key, context, "", receivers)
+
+def send_thread_creation_email(receivers, context, is_thread=True):
+    """
+    Send email notifications for thread mentions.
+
+    Args:
+        receivers (list): A list of email addresses to send the notifications to.
+        context (dict): A dictionary containing context information for the email.
+        is_thread (bool, optional): Indicates whether the post is a thread. Defaults to True.
+
+    Returns:
+        None
+    """
+    logger.info("Sending thread mention email to users: {}".format(receivers))
+    key = "thread_creation"
+
+    if is_thread:
+        mentioned_by = context.get("thread_username")
+
+    context.update({
+        "mentioned_by": mentioned_by,
+    })
     send_notification(key, context, "", receivers)
