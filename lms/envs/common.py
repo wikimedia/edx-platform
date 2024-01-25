@@ -4912,3 +4912,6 @@ COURSE_DISCOVERY_MEANINGS = {
     }
 }
 SEARCH_SKIP_ENROLLMENT_START_DATE_FILTERING = True
+
+if 'edx_zoom.apps.XBlockZoomApp' in INSTALLED_APPS:
+    INSTALLED_APPS.remove('edx_zoom.apps.XBlockZoomApp')
