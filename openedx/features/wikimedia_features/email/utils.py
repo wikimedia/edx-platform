@@ -93,10 +93,9 @@ def send_notification(message_type, data, subject, dest_emails, request_user=Non
             )
         except Exception as e:
             logger.error(
-                'Unable to send an email to %s for content "%s" and fro recipient "%s"',
+                'Unable to send an email to %s for content "%s"',
                 email,
-                content,
-                request_user,
+                content
             )
             logger.error(e)
             return_value = False

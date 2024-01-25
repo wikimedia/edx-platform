@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from opaque_keys.edx.keys import CourseKey
 
+from django.contrib.sites.models import Site
 from common.djangoapps.course_modes.models import CourseMode
 from xmodule.modulestore.django import SignalHandler
 from openedx.core.djangoapps.django_comment_common.signals import (
@@ -52,39 +53,11 @@ def create_default_course_mode(sender, instance, created, **kwargs):
         else:
             logger.info('Default mode set is Audit - no need to change course mode.')
 
-@receiver(thread_created)
-def handle_thread_creation_notifications(sender, user, post, **kwargs):
-    """
-    Handles the sending of email notifications upon the creation of a discussion thread.
-
-    This function is triggered when a new discussion thread is created. It fetches the
-    current site context and then delegates the responsibility of sending out different
-    types of email notifications to specific functions.
-
-    Args:
-        sender: The model class that sent the signal.
-        user: The user who created the discussion thread.
-        post: The discussion thread that was created.
-        **kwargs: Additional keyword arguments.
-
-    Note:
-        This function serves as a central point for handling all notifications related
-        to thread creation. It ensures that the current site is determined only once and 
-        then passes this information to the functions responsible for individual 
-        notification types.
-    """
-    current_site = get_current_site()
-    if current_site is None:
-        logger.error("Current site could not be determined.")
-        return
-
-    send_thread_mention_email_notification(sender, user, post, current_site, **kwargs)
-    send_new_post_email_notification_to_instructors(sender, user, post, current_site, **kwargs)
-
 @receiver(comment_created)
 @receiver(comment_edited)
 @receiver(thread_edited)
-def send_thread_mention_email_notification(sender, user, post,current_site, **kwargs):
+@receiver(thread_created)
+def send_thread_mention_email_notification(sender, user, post, **kwargs):
     """
     This function will retrieve list of tagged usernames from discussion post/response
     and then send email notifications to all tagged usernames.
@@ -94,7 +67,12 @@ def send_thread_mention_email_notification(sender, user, post,current_site, **kw
         post: Thread/Comment that is being created/edited
         current_site: The current site of the discussion
         kwargs: Remaining key arguments of signal.
-    """
+    """ 
+    current_site = get_current_site()
+ 
+    if current_site is None:
+        current_site = Site.objects.get_current()
+ 
     is_thread = post.type == 'thread'
     if not is_discussion_notification_configured_for_site(current_site, post.id):
         return
@@ -112,8 +90,9 @@ def send_thread_mention_email_notification(sender, user, post,current_site, **kw
         update_context_with_comment(context, post)
     message_context = build_discussion_notification_context(context)
     send_thread_mention_email_task.delay(post.body, message_context, is_thread)
-    
-def send_new_post_email_notification_to_instructors(sender, user, post, current_site, **kwargs):
+
+@receiver(thread_created)
+def send_new_post_email_notification_to_instructors(sender, user, post,**kwargs):
     """
     Sends email notification to course instructors when a new discussion post is created.
 
@@ -127,7 +106,11 @@ def send_new_post_email_notification_to_instructors(sender, user, post, current_
     Returns:
         None
     """
-    
+    current_site = get_current_site()
+
+    if current_site is None:
+        current_site = Site.objects.get_current()
+
     if post.type != 'thread':
         return
 
