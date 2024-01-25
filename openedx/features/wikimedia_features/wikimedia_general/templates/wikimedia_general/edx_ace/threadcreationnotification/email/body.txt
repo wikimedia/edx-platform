@@ -1,0 +1,7 @@
+{% load i18n %}
+{% block content %}
+    {% blocktrans trimmed %}{{ thread_username }} created a post: {{ thread_title }}:{% endblocktrans %}
+    {{ thread_body }}
+    {% trans "View discussion" %} -> {{ post_link }}
+    {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+{% endblock %}
