@@ -30,9 +30,6 @@ MESSAGE_TYPES = {
 
 
 def send_ace_message(request_user, request_site, dest_email, context, message_class):
-    logger.info("enteredt send ace message with sending mail to %s", dest_email)
-    logger.info("the request user in here rn is %s",request_user)
-    logger.info("the context is %s",context)
     with emulate_http_request(site=request_site, user=request_user):
         message = message_class().personalize(
             recipient=Recipient(lms_user_id=0, email_address=dest_email),
@@ -182,9 +179,9 @@ def send_thread_creation_email(receivers, context, is_thread=True):
     key = "thread_creation"
 
     if is_thread:
-        mentioned_by = context.get("thread_username")
+        created_by = context.get("thread_username")
 
     context.update({
-        "mentioned_by": mentioned_by,
+        "created_by": created_by,
     })
     send_notification(key, context, "", receivers)

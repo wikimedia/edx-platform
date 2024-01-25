@@ -38,7 +38,7 @@ def send_thread_mention_email_task(post_body, context, is_thread):
 
 
 @task(base=LoggedTask)
-def send_thread_creation_email_task(post_body, context, is_thread, post_id):
+def send_thread_creation_email_task(context, is_thread, post_id):
     """
     Task to send email notifications for thread mentions in a discussion forum.
 
@@ -56,10 +56,6 @@ def send_thread_creation_email_task(post_body, context, is_thread, post_id):
     """
     log.info("Initiated task to send thread mention notifications.")
 
-    # convert markdown post_body to html
-    processed_post_body = markdown.markdown(post_body)
-
-    processed_post_body = processed_post_body.replace("\n", " ").replace("</", " ")
     users_list = get_course_instructors_list(post_id)
 
     if users_list:

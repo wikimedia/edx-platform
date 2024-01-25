@@ -7,26 +7,16 @@
     <tr>
         <td>
             <p>
-                {% if is_thread %}
-                    {% blocktrans trimmed %}
-                        {{ thread_username }} mentioned you on post: <b>{{ thread_title }}</b>:
-                    {% endblocktrans %}
-                {% else %}
-                    {% blocktrans trimmed %}
-                            {{ comment_username }} mentioned you in the comment on post: <b>{{ thread_title }}</b>:
-                    {% endblocktrans %}
-                {% endif %}
+                {% blocktrans trimmed %}
+                    {{ thread_username }} created a post: <b>{{ thread_title }}</b>:
+                {% endblocktrans %}
             </p>
             <div style="border-left: 1px solid rgba(0,0,0,0.25);
                     padding: 1px 1px 1px 15px;
                     margin: 20px 20px 30px 30px;
                     color: rgba(0,0,0,.75);">
 
-                {% if is_thread %}
-                    {{ thread_body|safe}}
-                {% else %}
-                    {{ comment_body|safe }}
-                {% endif %}
+                {{ thread_body|safe}}
 
             </div>
 
