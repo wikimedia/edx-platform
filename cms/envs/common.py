@@ -2546,3 +2546,6 @@ STUDIO_FILTERS_MEANINGS = {
         }
     }
 }
+
+if 'edx_zoom.apps.XBlockZoomApp' in INSTALLED_APPS:
+    INSTALLED_APPS.remove('edx_zoom.apps.XBlockZoomApp')
