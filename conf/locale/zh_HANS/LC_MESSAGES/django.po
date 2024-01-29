@@ -363,7 +363,7 @@
 # 黄鸿飞 <853885165@qq.com>, 2015
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -394,9 +394,9 @@
 # 汤和果 <hgtang93@163.com>, 2015
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # ifLab <webmaster@iflab.org>, 2019
@@ -405,7 +405,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: ifLab <webmaster@iflab.org>, 2019\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/open-edx/teams/6205/zh_CN/)\n"
@@ -543,6 +543,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -4153,7 +4155,7 @@ msgid ""
 "course ends, if they've met certificate requirements."
 msgstr "输入真或假。如果是真的，学生遇到下载证书的要求，可以在课程结束前下载证书。"
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Certificates Display Behavior"
 msgstr "认证演示行为"
 
@@ -7409,7 +7411,7 @@ msgid ""
 "Maintain exam integrity by enabling a proctoring solution for your course"
 msgstr "通过为您的课程启用监考解决方案来保持考试的公正性。"
 
-#: lms/djangoapps/courseware/plugins.py
+#: lms/djangoapps/courseware/plugins.py cms/templates/edit-tabs.html
 msgid "Custom pages"
 msgstr "自定义页面"
 
@@ -7672,6 +7674,8 @@ msgstr "%(comment_username)s 回复了 {start_tag}%(thread_title)s{end_tag}："
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -12617,6 +12621,21 @@ msgstr "课程"
 msgid "Reports"
 msgstr "报告"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: lms/templates/courseware/course_about.html
 msgid "Course is full"
 msgstr "该课程已满"
@@ -13535,30 +13554,12 @@ msgstr "内容"
 msgid "Settings"
 msgstr "设置"
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "课程代码"
-
-#: cms/templates/course_outline.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Outline"
-msgstr ""
-
-#: cms/templates/course_outline.html
-#: cms/templates/widgets/deprecated-course-key-warning.html
-#: lms/templates/dashboard/_dashboard_status_verification.html
-msgid "Warning"
-msgstr ""
 
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
@@ -13631,11 +13632,6 @@ msgstr "重置"
 #: cms/templates/widgets/footer.html lms/templates/footer.html
 msgid "Legal"
 msgstr "合法"
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
@@ -14165,17 +14161,6 @@ msgstr "您的邮箱客户端是否将URL分成两行？"
 #: lms/templates/invalid_email_key.html
 msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr "由于密钥的时效有限，请检查是否已过期。"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -20454,15 +20439,15 @@ msgstr "注意：页面是公开可见的，知道该页面链接的用户可以
 
 #: cms/templates/edit-tabs.html
 msgid "Show this page"
-msgstr ""
+msgstr "显示该页面"
 
 #: cms/templates/edit-tabs.html
 msgid "Show/hide page"
-msgstr ""
+msgstr "显示/隐藏页面"
 
 #: cms/templates/edit-tabs.html
 msgid "This page cannot be reordered"
-msgstr ""
+msgstr "该页面无法重新排序"
 
 #: cms/templates/edit-tabs.html
 msgid "You can add additional custom pages to your course."
@@ -20474,31 +20459,31 @@ msgstr "添加新的页面"
 
 #: cms/templates/edit-tabs.html
 msgid "What are pages?"
-msgstr ""
+msgstr "什么是页面？"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Pages are listed horizontally at the top of your course. Default pages "
 "(Home, Course, Discussion, Wiki, and Progress) are followed by textbooks and"
 " custom pages that you create."
-msgstr ""
+msgstr "课程页面顶部水平列有页面菜单栏，默认页面 (包括课件，课程信息，讨论，维基和进度)之后是教材和自定义页面。"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "You can create and edit custom pages to provide students with additional "
 "course content. For example, you can create pages for the grading policy, "
 "course slides, and a course calendar. "
-msgstr ""
+msgstr "您可以通过创建个性化页面来为学生提供额外的课程内容。例如，您可以为评分策略、课程幻灯片、课程日历等创建自定义页面。"
 
 #: cms/templates/edit-tabs.html
 msgid "How do pages look to students in my course?"
-msgstr ""
+msgstr "学生看到的课程页面会是什么样子？"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Students see the default and custom pages at the top of your course and use "
 "these links to navigate."
-msgstr ""
+msgstr "学生将会看到水平列于您课程主页上方的缺省页面及自定义页面的链接，并通过这些链接来漫游整个课程。"
 
 #: cms/templates/edit-tabs.html
 msgid "See an example"
@@ -20506,7 +20491,7 @@ msgstr "查看例子"
 
 #: cms/templates/edit-tabs.html
 msgid "Pages in Your Course"
-msgstr ""
+msgstr "课程中的页面"
 
 #: cms/templates/edit-tabs.html
 msgid "Preview of Pages in your course"
@@ -20517,7 +20502,7 @@ msgid ""
 "Pages appear in your course's top navigation bar. The default pages (Home, "
 "Course, Discussion, Wiki, and Progress) are followed by textbooks and custom"
 " pages."
-msgstr ""
+msgstr "您课程页面顶部导航栏显示页面。默认标签页（包括主页、课程、讨论、Wiki、进度）之后是教材和自定义标签页。"
 
 #: cms/templates/edit-tabs.html cms/templates/howitworks.html
 msgid "close modal"
@@ -21671,7 +21656,7 @@ msgstr "调整您的课程可以浏览的日期"
 
 #: cms/templates/settings.html
 msgid "Course Start Date"
-msgstr ""
+msgstr "开课日期"
 
 #: cms/templates/settings.html
 msgid "First day the course begins"
@@ -21687,7 +21672,7 @@ msgstr "(UTC)"
 
 #: cms/templates/settings.html
 msgid "Course End Date"
-msgstr ""
+msgstr "课程结束日期"
 
 #: cms/templates/settings.html
 msgid "Last day your course is active"
@@ -21781,7 +21766,7 @@ msgstr "选课截止时间"
 
 #: cms/templates/settings.html
 msgid "Upgrade Deadline Date"
-msgstr ""
+msgstr "更新截止时间"
 
 #: cms/templates/settings.html
 msgid "Last day students can upgrade to a verified enrollment."
@@ -21789,7 +21774,7 @@ msgstr ""
 
 #: cms/templates/settings.html
 msgid "Upgrade Deadline Time"
-msgstr ""
+msgstr "更新截止时间"
 
 #: cms/templates/settings.html
 msgid "Course Details"
@@ -22223,7 +22208,7 @@ msgstr "您也可以创建作业类型，比如家庭作业、实验、测验、
 
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
-msgstr ""
+msgstr "页面和资源"
 
 #: cms/templates/textbooks.html
 msgid "New Textbook"
@@ -22437,11 +22422,11 @@ msgstr "创建新"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "previous"
-msgstr ""
+msgstr "上一项"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "next"
-msgstr ""
+msgstr "下一个"
 
 #: cms/templates/maintenance/_force_publish_course.html
 msgid "Required data to force publish course."
@@ -22568,7 +22553,7 @@ msgstr "高级编辑器"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Markdown Help"
-msgstr ""
+msgstr "Markdown帮助"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Label"
@@ -22576,23 +22561,23 @@ msgstr "标签"
 
 #: cms/templates/widgets/sock.html
 msgid "Looking for help with {studio_name}?"
-msgstr ""
+msgstr "查找有关{studio_name}的帮助？"
 
 #: cms/templates/widgets/sock.html
 msgid "Hide {studio_name} Help"
-msgstr ""
+msgstr "隐藏{studio_name}帮助"
 
 #: cms/templates/widgets/sock.html
 msgid "{studio_name} Documentation"
-msgstr ""
+msgstr "{studio_name}文档"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access documentation on http://docs.edx.org"
-msgstr ""
+msgstr "到 http://docs.edx.org 获取文档"
 
 #: cms/templates/widgets/sock_links.html
 msgid "edX Documentation"
-msgstr ""
+msgstr "edX文档"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
@@ -22604,23 +22589,23 @@ msgstr "Open edX Portal"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
+msgstr "参加 edX101：关于创建一门 edX 课程的概述"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101"
-msgstr ""
+msgstr "选修edX101"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
+msgstr "参加 StudioX：使用 edX Studio 创建课程"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX"
-msgstr ""
+msgstr "参加 StudioX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Send an email to {email}"
-msgstr ""
+msgstr "发送邮件到 {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -24287,6 +24272,9 @@ msgstr "点击下方的“开始监考考试”按钮继续"
 #~ msgid "Advanced Settings"
 #~ msgstr "高级设置"
 
+#~ msgid "Proctored Exam Settings"
+#~ msgstr "监考考试设置"
+
 #~ msgid "Checklists"
 #~ msgstr "清单"
 
@@ -24392,6 +24380,12 @@ msgstr "点击下方的“开始监考考试”按钮继续"
 
 #~ msgid "Learn more about Course Re-runs"
 #~ msgstr "了解更多关于课程重启的信息"
+
+#~ msgid "Course Outline"
+#~ msgstr "课程概述"
+
+#~ msgid "Warning"
+#~ msgstr "警告"
 
 #~ msgid "Pages"
 #~ msgstr "页面"
@@ -24694,6 +24688,9 @@ msgstr "点击下方的“开始监考考试”按钮继续"
 #~ msgid "Outline"
 #~ msgstr "大纲"
 
+#~ msgid "Publisher"
+#~ msgstr "发布商"
+
 #~ msgid "Import"
 #~ msgstr "导入"
 
@@ -24714,6 +24711,16 @@ msgstr "点击下方的“开始监考考试”按钮继续"
 
 #~ msgid "Sign Up"
 #~ msgstr "注册"
+
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] "显示可添加到 {display_name} 的全部匹配内容。每位学生都将从此列表随机分配到 {max_count} 个组件。"
 
 #~ msgid "example: username@domain.com"
 #~ msgstr "例：username@domain.com"
@@ -24936,3 +24943,9 @@ msgstr "点击下方的“开始监考考试”按钮继续"
 
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "将您的版权文本置于此处！"
+
+#~ msgid "Collapse All"
+#~ msgstr "折叠全部"
+
+#~ msgid "Videos"
+#~ msgstr "视频"

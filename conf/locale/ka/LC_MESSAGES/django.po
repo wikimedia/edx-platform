@@ -43,7 +43,7 @@
 # Salome Gegeshidze <geges0@bp.com>, 2016
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -51,20 +51,21 @@
 # Salome Gegeshidze <geges0@bp.com>, 2016
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Waheed Ahmed <waheed@edx.org>, 2019
+# Transifex Bot <>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
-"Last-Translator: Waheed Ahmed <waheed@edx.org>, 2019\n"
+"Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Georgian (https://app.transifex.com/open-edx/teams/6205/ka/)\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
@@ -200,6 +201,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -1385,9 +1388,11 @@ msgstr ""
 msgid "{currency_symbol}{price}"
 msgstr "{currency_symbol}{price}"
 
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: This refers to the cost of the course. In this case, the
 #. course costs nothing so it is free.
 #: common/djangoapps/course_modes/models.py
+#: lms/templates/course_modes/track_selection.html
 msgid "Free"
 msgstr "უფასო"
 
@@ -3948,7 +3953,7 @@ msgstr ""
 "სერტიფიკატის მოთხოვნებს აკმაყოფილებენ, შეუძლიათ სერტიფიკატები კურსის "
 "დასრულებამდე ჩამოტვირთონ."
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Certificates Display Behavior"
 msgstr "სერტიფიკატების ხილვადი თვისებები"
 
@@ -6730,6 +6735,9 @@ msgid "Certificate ID Number"
 msgstr "სერტიფიკატის ID ნომერი"
 
 #: lms/djangoapps/certificates/views/webview.py
+#: lms/templates/certificates/invalid.html
+#: lms/templates/certificates/url_unsupported.html
+#: lms/templates/certificates/valid.html
 #, python-brace-format
 msgid "About {platform_name} Certificates"
 msgstr "{platform_name} -ის სერტიფიკატების შესახებ"
@@ -6909,10 +6917,9 @@ msgstr ""
 "{username} ({email})-ის მიერ ანაზღაურების მოთხოვნა ინიცირებულია. ამ "
 "მოთხოვნის სამართავად, გთხოვთ, ეწვიეთ მისამართს(ებს) ქვემოთ."
 
-#: lms/djangoapps/course_goals/models.py
 #: lms/templates/course_modes/track_selection.html
 msgid "Earn a certificate"
-msgstr ""
+msgstr "მიიღეთ სერტიფიკატი"
 
 #: lms/djangoapps/course_goals/models.py
 msgid "Complete the course"
@@ -7063,6 +7070,7 @@ msgstr ""
 #: lms/djangoapps/course_wiki/plugins/course_app.py
 #: lms/djangoapps/course_wiki/tab.py lms/djangoapps/course_wiki/views.py
 #: lms/templates/wiki/base.html
+#: lms/templates/ux/reference/bootstrap/course-skeleton.html
 msgid "Wiki"
 msgstr "ვიკი"
 
@@ -7254,10 +7262,9 @@ msgid ""
 "certificates on your {learner_profile_link}."
 msgstr ""
 
-#: lms/djangoapps/courseware/date_summary.py
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "Learner Profile"
-msgstr ""
+msgstr "მსმენელის პროფილი"
 
 #: lms/djangoapps/courseware/date_summary.py
 msgid "We are working on generating course certificates."
@@ -7321,6 +7328,9 @@ msgid "Upgrade ({upgrade_price})"
 msgstr ""
 
 #: lms/djangoapps/courseware/date_summary.py
+#: cms/templates/group_configurations.html
+#: lms/templates/courseware/program_marketing.html
+#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 msgid "Learn More"
 msgstr "გაიგეთ მეტი"
 
@@ -7426,9 +7436,9 @@ msgid ""
 "Maintain exam integrity by enabling a proctoring solution for your course"
 msgstr ""
 
-#: lms/djangoapps/courseware/plugins.py cms/templates/edit-tabs.html
+#: cms/templates/edit-tabs.html
 msgid "Custom pages"
-msgstr ""
+msgstr "მორგებული გვერდები"
 
 #: lms/djangoapps/courseware/plugins.py
 msgid "Provide additional course content and resources with custom pages"
@@ -7438,11 +7448,10 @@ msgstr ""
 msgid "Syllabus"
 msgstr "სილაბუსი"
 
-#: lms/djangoapps/courseware/tabs.py
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Score"
-msgstr ""
+msgstr "ქულა"
 
 #: lms/djangoapps/courseware/tabs.py
 msgid "Dates"
@@ -7702,6 +7711,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -8963,10 +8974,9 @@ msgstr "ჩარიცხვა"
 msgid "View and update learner enrollments."
 msgstr "მსმენელთა ჩარიცხვის დათვალიერება და განახლება."
 
-#: lms/djangoapps/support/views/index.py
 #: lms/templates/support/manage_user.html
 msgid "Manage User"
-msgstr ""
+msgstr "მომხმარებლის მართვა"
 
 #: lms/djangoapps/support/views/index.py
 msgid "Disable User Account"
@@ -9253,10 +9263,9 @@ msgstr "პროფესიული"
 msgid "Honor"
 msgstr "საპატიო"
 
-#: lms/envs/common.py
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 msgid "Master's"
-msgstr ""
+msgstr "მაგისტრის"
 
 #: lms/envs/common.py
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
@@ -9808,36 +9817,47 @@ msgstr "ბოლოს შეცვლილია:"
 msgid "See all children"
 msgstr "ნახეთ ყველა შვილობილი"
 
-#: lms/templates/wiki/article.html
+#: lms/templates/wiki/article.html wiki/templates/wiki/article.html
 msgid "This article was last modified:"
 msgstr "სტატია ბოლოს შესწორდა:"
 
-#: lms/templates/wiki/create.html
+#: lms/templates/wiki/create.html wiki/templates/wiki/create.html
 msgid "Add new article"
 msgstr "ახალი სტატიის დამატება"
 
-#: lms/templates/wiki/create.html
+#: lms/templates/wiki/create.html wiki/templates/wiki/create.html
 msgid "Create article"
 msgstr "სტატიის შექმნა"
 
 #: lms/templates/wiki/create.html lms/templates/wiki/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html
+#: wiki/templates/wiki/create.html wiki/templates/wiki/delete.html
 msgid "Go back"
 msgstr "უკან დაბრუნება"
 
 #: lms/templates/wiki/delete.html lms/templates/wiki/edit.html
+#: wiki/templates/wiki/delete.html wiki/templates/wiki/edit.html
 msgid "Delete article"
 msgstr "სტატიის წაშლა"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/delete.html
 msgid "Delete"
 msgstr "წაშლა"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "You cannot delete a root article."
 msgstr "თქვენ ვერ წაშლით ძირითად სტატიას."
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid ""
 "You cannot delete this article because you do not have permission to delete "
 "articles with children. Try to remove the children manually one-by-one."
@@ -9846,7 +9866,7 @@ msgstr ""
 " პუბლიკაციების წაშლის უფლება. სცადეთ დაკავშირებული სტატიების სათითაოდ, ხელით"
 " მოშორება."
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid ""
 "You are deleting an article. This means that its children will be deleted as"
 " well. If you choose to purge, children will also be purged!"
@@ -9854,15 +9874,15 @@ msgstr ""
 "თქვენ გსურთ წაშალოთ სტატია, რაც ნიშნავს, რომ წაიშლება მასთან დაკავშირებული "
 "სტატიებიც. თუ აირჩევთ წმენდას, წმენდაში მოყვებიან დაკავშირებული სტატიებიც!"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "Articles that will be deleted"
 msgstr "სტატიები, რომლებიც წაიშლება"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "...and more!"
 msgstr "...და მეტი!"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "You are deleting an article. Please confirm."
 msgstr "თქვენ შლით სტატიას. გთხოვთ დაადასტუროთ."
 
@@ -9870,14 +9890,18 @@ msgstr "თქვენ შლით სტატიას. გთხოვთ �
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/edit.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "რედაქტირება"
 
 #: lms/templates/wiki/edit.html lms/templates/ccx/schedule.html
+#: wiki/templates/wiki/edit.html wiki/templates/wiki/settings.html
 msgid "Save changes"
 msgstr "ცვლილებების შენახვა"
 
 #: lms/templates/wiki/edit.html cms/templates/container.html
+#: wiki/templates/wiki/edit.html
 msgid "Preview"
 msgstr "გადახედვა"
 
@@ -9895,15 +9919,17 @@ msgstr "ვიკის გადახედვა"
 msgid "window open"
 msgstr "ფანჯარა ღიაა"
 
-#: lms/templates/wiki/edit.html
+#: lms/templates/wiki/edit.html wiki/templates/wiki/edit.html
 msgid "Back to editor"
 msgstr "რედაქტორში დაბრუნება"
 
 #: lms/templates/wiki/history.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
+#: wiki/templates/wiki/history.html
 msgid "History"
 msgstr "ისტორია"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid ""
 "Click each revision to see a list of edited lines. Click the Preview button "
 "to see how the article looked at this stage. At the bottom of this page, you"
@@ -9919,23 +9945,24 @@ msgstr ""
 msgid "(no log message)"
 msgstr "(ჟურნალის ჩანაწერები არ არის)"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Preview this revision"
 msgstr "ამ ვერსიის დათვალიერება"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Auto log:"
 msgstr "ავტომატური ჟურნალი:"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html cms/templates/videos_index_pagination.html
+#: wiki/templates/wiki/history.html
 msgid "Change"
 msgstr "შეცვლა"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Merge selected with current..."
 msgstr "მონიშნულის არსებულთან გაერთიანება..."
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Switch to selected version"
 msgstr "შერჩეულ ვერსიაზე გადასვლა"
 
@@ -9943,11 +9970,11 @@ msgstr "შერჩეულ ვერსიაზე გადასვლა"
 msgid "Wiki Revision Preview"
 msgstr "ვიკის განახლების დათვალიერება"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Back to history view"
 msgstr "ისტორიის ხედზე დაბრუნება"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Switch to this version"
 msgstr "ამ ვერსიაზე გადასვლა"
 
@@ -9955,11 +9982,11 @@ msgstr "ამ ვერსიაზე გადასვლა"
 msgid "Merge Revision"
 msgstr "შესწორებების გაერთიანება"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Merge with current"
 msgstr "არსებულთან გაერთიანება"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid ""
 "When you merge a revision with the current, all data will be retained from "
 "both versions and merged at its approximate location from each revision."
@@ -9968,11 +9995,11 @@ msgstr ""
 "მონაცემი შენარჩუნდება და თითოეულ ვერსიაში მისი დაახლოებითი მდებარეობის "
 "მიხედვით გაერთიანდება."
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "After this, it's important to do a manual review."
 msgstr "ამის შემდეგ, მნიშვნელოვანია ხელით გადამოწმება."
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Create new merged version"
 msgstr "ახალი, გაერთიანებული ვერსიის შექმნა"
 
@@ -10017,6 +10044,7 @@ msgid "Miniature Markdown Guide"
 msgstr "მონიშვნის მცირე ინსტრუქცია"
 
 #: lms/templates/wiki/includes/cheatsheet.html
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid ""
 "To create a new wiki article, create a link to it. Clicking the link gives "
 "you the creation page."
@@ -10106,10 +10134,12 @@ msgid "Attachments"
 msgstr "დანართები"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Upload new file"
 msgstr "ახალი ფაილის ატვირთვა"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search and add file"
 msgstr "ფაილის ძებნა და დამატება"
 
@@ -10118,14 +10148,17 @@ msgid "Upload File"
 msgstr "ფაილის ატვირთვა"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Upload file"
 msgstr "ფაილის ატვირთვა"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Search files and articles"
 msgstr "ფაილების და სტატიების ძებნა"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid ""
 "You can reuse files from other articles. These files are subject to updates "
 "on other articles which may or may not be a good thing."
@@ -10144,10 +10177,12 @@ msgstr ""
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "ძიება"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid ""
 "The following files are available for this article. Copy the markdown tag to"
 " directly refer to a file from the article text."
@@ -10156,14 +10191,23 @@ msgstr ""
 "ტექსტიდან გადასასვლელად, დააკოპირეთ markdown ტეგი."
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Markdown tag"
 msgstr "მონიშვნის თეგი"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Uploaded by"
 msgstr "ატვირთულია:"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Size"
 msgstr "ზომა"
 
@@ -10172,30 +10216,40 @@ msgid "File History"
 msgstr "ფაილის ისტორია"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Detach"
 msgstr "განცალკევება"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Replace"
 msgstr "გადაწერა"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/deleted.html
 msgid "Restore"
 msgstr "აღდგენა"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/includes/revision_info.html
 msgid "anonymous (IP logged)"
 msgstr "ანონიმური (IP შესვლა)"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "File history"
 msgstr "ფაილის ისტორია"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "revisions"
 msgstr "შესწორებები"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "There are no attachments for this article."
 msgstr "ამ სტატიას არ აქვს დანართები."
 
@@ -10208,10 +10262,12 @@ msgid "Previewing a merge between two revisions:"
 msgstr "ორი გაერთიანებული ვერსიის გადახედვა:"
 
 #: lms/templates/wiki/preview_inline.html
+#: wiki/templates/wiki/preview_inline.html
 msgid "This revision has been deleted."
 msgstr "ეს ვერსია წაშლილია."
 
 #: lms/templates/wiki/preview_inline.html
+#: wiki/templates/wiki/preview_inline.html
 msgid "Restoring to this revision will mark the article as deleted."
 msgstr "ამ ვერსიის აღდგენის შემდეგ სტატია მონიშნული იქნება როგორც წაშლილი."
 
@@ -10297,11 +10353,9 @@ msgid ""
 "%(user_schedule_upgrade_deadline_time)s."
 msgstr ""
 
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.html
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.txt
 #: lms/templates/course_modes/track_selection.html
 msgid "Upgrade Now"
-msgstr ""
+msgstr "მსმენელის სტატუსის ცვლილება"
 
 #: openedx/core/djangoapps/api_admin/admin.py
 #, python-brace-format
@@ -11030,6 +11084,7 @@ msgid "Group Moderator"
 msgstr ""
 
 #: openedx/core/djangoapps/django_comment_common/models.py
+#: lms/templates/instructor/instructor_dashboard_2/membership.html
 msgid "Community TA"
 msgstr "გაერთიანების ჯგუფხელი"
 
@@ -12467,6 +12522,10 @@ msgid "Deadlines successfully reset."
 msgstr ""
 
 #: openedx/features/course_experience/plugins.py
+#: cms/templates/widgets/header.html
+#: lms/templates/api_admin/terms_of_service.html
+#: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "განახლებები"
 
@@ -12677,6 +12736,21 @@ msgstr "კურსები"
 msgid "Reports"
 msgstr "ანგარიშები"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
 msgstr ""
@@ -12705,6 +12779,7 @@ msgid ""
 "Dashboard."
 msgstr ""
 
+#: cms/djangoapps/contentstore/course_group_config.py
 #: cms/templates/group_configurations.html
 msgid "Content Groups"
 msgstr "შინაარსის ჯგუფები"
@@ -13133,11 +13208,13 @@ msgstr "კურსი წარმატებით დაექსპორ�
 msgid "Vertical"
 msgstr "ვერტიკალური"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: cms/templates/course_outline.html lms/templates/ccx/schedule.html
 #: lms/templates/seq_module.html
 msgid "Section"
 msgstr "განყოფილება"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: lms/templates/ccx/schedule.html
 msgid "Subsection"
 msgstr "ქვეგანყოფილება"
@@ -13379,7 +13456,7 @@ msgstr ""
 #. Translators: This is the status for a video that is uploaded completely
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Uploaded"
-msgstr ""
+msgstr "ატვირთულია"
 
 #. Translators: This is the status for a video that the servers have failed to
 #. process
@@ -13403,7 +13480,7 @@ msgstr "არაფუნქციური ასლი"
 #. youtube
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "YouTube Duplicate"
-msgstr ""
+msgstr "YouTube -ის რესურსის ასლი"
 
 #. Translators: This is the status for a video for which an invalid
 #. processing token was provided in the course settings
@@ -13467,7 +13544,7 @@ msgstr "დამატების თარიღით"
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Status"
-msgstr ""
+msgstr "სტატუსი"
 
 #. Translators: This is the suggested filename when downloading the URL
 #. listing for videos uploaded through Studio
@@ -13614,6 +13691,8 @@ msgstr "შინაარსი"
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: wiki/templates/wiki/includes/article_menu.html
+#: wiki/templates/wiki/settings.html
 msgid "Settings"
 msgstr "პარამეტრები"
 
@@ -13660,17 +13739,6 @@ msgid ""
 "changed.)"
 msgstr ""
 
-#: cms/templates/course_outline.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Outline"
-msgstr ""
-
-#: cms/templates/course_outline.html
-#: cms/templates/widgets/deprecated-course-key-warning.html
-#: lms/templates/dashboard/_dashboard_status_verification.html
-msgid "Warning"
-msgstr ""
-
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
 msgstr "შეცდომა:"
@@ -13706,7 +13774,7 @@ msgstr "კურსის ნომერი:"
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
-msgstr ""
+msgstr "კურსის მსვლელობა:"
 
 #: cms/templates/index.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
@@ -13723,7 +13791,7 @@ msgstr ""
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
-msgstr ""
+msgstr "ინსტრუქტორები"
 
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 msgid "Requirements"
@@ -13746,10 +13814,12 @@ msgstr ""
 msgid "Details"
 msgstr "დეტალები"
 
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "ნახვა"
 
@@ -13768,11 +13838,6 @@ msgstr "პარამეტრების ჩამოყრა"
 #: cms/templates/widgets/footer.html lms/templates/footer.html
 msgid "Legal"
 msgstr "იურიდიული"
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
@@ -13803,7 +13868,7 @@ msgstr "დახმარება"
 #: lms/templates/courseware/static_tab.html
 #: lms/templates/courseware/tab-view.html
 msgid "name"
-msgstr ""
+msgstr "სახელი"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
@@ -14167,7 +14232,7 @@ msgstr "სანამ ერთეულზე წვდომის მიღ
 #: lms/templates/courseware/course_about.html lms/templates/enroll_staff.html
 msgctxt "self"
 msgid "Enroll"
-msgstr ""
+msgstr "ჩარიცხვა"
 
 #: lms/templates/enroll_staff.html
 msgid "Don't enroll"
@@ -14251,11 +14316,11 @@ msgstr "ელფოსტა არასწორია."
 
 #: lms/templates/hidden_content.html
 msgid "The course has ended."
-msgstr ""
+msgstr "კურსი დასრულებია"
 
 #: lms/templates/hidden_content.html
 msgid "The due date for this assignment has passed."
-msgstr ""
+msgstr "დავალების ჩაბარების ბოლო ვადა უკვე გავიდა."
 
 #: lms/templates/hidden_content.html
 msgid ""
@@ -14312,18 +14377,6 @@ msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr ""
 "გასაღებები შეზღუდული დროის განმავლობაში მოქმედებენ. თქვენს გასაღებს ვადა ხომ"
 " არ გაუვიდა?"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -14579,13 +14632,13 @@ msgstr ""
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Previous"
-msgstr ""
+msgstr "წინა"
 
 #. Translators: A button for showing the Next Unit
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Next"
-msgstr ""
+msgstr "მომდევნო"
 
 #: lms/templates/seq_module.html
 msgid "Sequence"
@@ -14596,7 +14649,7 @@ msgstr ""
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Completed"
-msgstr ""
+msgstr "დასრულებული"
 
 #: lms/templates/signup_modal.html
 msgid "Sign Up for {platform_name}"
@@ -15632,7 +15685,7 @@ msgstr ""
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 msgid "Note:"
-msgstr ""
+msgstr "შენიშვნა:"
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 msgid ""
@@ -15921,7 +15974,7 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
 msgctxt "someone"
 msgid "Enroll"
-msgstr ""
+msgstr "ჩარიცხვა"
 
 #: lms/templates/ccx/enrollment.html
 msgid "Student List Management"
@@ -15969,6 +16022,8 @@ msgstr ""
 
 #: lms/templates/ccx/schedule.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Date"
 msgstr "თარიღი"
 
@@ -16471,7 +16526,7 @@ msgstr "ჩარიცხვა დასრულებულია"
 
 #: lms/templates/courseware/course_about.html
 msgid "Enroll Now"
-msgstr ""
+msgstr "დარეგისტრირდით ახლა"
 
 #: lms/templates/courseware/course_about.html
 msgid "View About Page in studio"
@@ -16505,7 +16560,7 @@ msgstr "დამატებითი რესურსები"
 #: lms/templates/courseware/course_about.html
 msgctxt "self"
 msgid "enroll"
-msgstr ""
+msgstr "ჩარიცხვა"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
@@ -16757,7 +16812,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Play"
-msgstr ""
+msgstr "დაკვრა"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "YouTube Video"
@@ -16773,7 +16828,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "ხშირად დასმული კითხვები"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Job Outlook"
@@ -16785,7 +16840,7 @@ msgstr ""
 
 #: lms/templates/courseware/program_marketing.html
 msgid "What You'll Learn"
-msgstr ""
+msgstr "რას ისწავლი"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Average Length"
@@ -17193,7 +17248,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Course details"
-msgstr ""
+msgstr "კურსის დეტალები"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "{course_number} {course_name} Home Page"
@@ -17636,7 +17691,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_reason_survey.html
 msgid "Other"
-msgstr ""
+msgstr "სხვა"
 
 #: lms/templates/debug/run_python_form.html
 msgid "Results:"
@@ -19472,7 +19527,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Learner's {platform_name} email address or username *"
-msgstr ""
+msgstr "მოსწავლის {platform_name} ელფოსტა ან მომხმარებლის სახელი *"
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Learner email address or username"
@@ -19677,7 +19732,7 @@ msgstr "იხილეთ იმ დავალებების სტატ
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/reports.html
 msgid "Note"
-msgstr ""
+msgstr "შენიშვნა"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/problem_report.html
 msgid ""
@@ -20326,6 +20381,7 @@ msgid "{span_start}(active){span_end}"
 msgstr "{span_start}(მოქმედი){span_end}"
 
 #: lms/templates/wiki/includes/article_menu.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "Changes"
 msgstr "ცვლილებები"
 
@@ -20337,7 +20393,7 @@ msgstr "{span_start}მოქმედი{span_end}"
 msgid "Course Wiki"
 msgstr ""
 
-#: lms/templates/wiki/includes/breadcrumbs.html
+#: lms/templates/wiki/includes/breadcrumbs.html wiki/templates/wiki/dir.html
 msgid "Add article"
 msgstr "სტატიის დამატება"
 
@@ -20359,31 +20415,31 @@ msgstr ""
 
 #: openedx/core/lib/license/templates/license.html
 msgid "All Rights Reserved"
-msgstr ""
+msgstr "ყველა უფლება დაცულია"
 
 #: openedx/core/lib/license/templates/license.html
 msgid "Attribution"
-msgstr ""
+msgstr "Attribution"
 
 #: openedx/core/lib/license/templates/license.html
 msgid "Noncommercial"
-msgstr ""
+msgstr "არაკომერციული"
 
 #: openedx/core/lib/license/templates/license.html
 msgid "No Derivatives"
-msgstr ""
+msgstr "გადამუშავებული ნაწარმოებების აკრძალვა"
 
 #: openedx/core/lib/license/templates/license.html
 msgid "Share Alike"
-msgstr ""
+msgstr "Share Alike"
 
 #: openedx/core/lib/license/templates/license.html
 msgid "Creative Commons licensed content, with terms as follow:"
-msgstr ""
+msgstr "შინაარსი დაცულია Creative Commons ლიცენზიის შემდეგი პირობებით:"
 
 #: openedx/core/lib/license/templates/license.html
 msgid "Some Rights Reserved"
-msgstr ""
+msgstr "ზოგიერთი უფლება დაცულია"
 
 #: openedx/features/course_experience/templates/course_experience/course-dates-fragment.html
 msgid "Upcoming Dates"
@@ -20517,29 +20573,29 @@ msgstr ""
 #. their edX account.
 #: openedx/features/learner_profile/static/learner_profile/templates/third_party_auth.html
 msgid "Connected Accounts"
-msgstr ""
+msgstr "დაკავშირებული ანგარიშები"
 
 #: openedx/features/learner_profile/static/learner_profile/templates/third_party_auth.html
 msgid "Linked"
-msgstr ""
+msgstr "მიბმული"
 
 #: openedx/features/learner_profile/static/learner_profile/templates/third_party_auth.html
 msgid "Not Linked"
-msgstr ""
+msgstr "მიუბმელი"
 
 #. Translators: clicking on this removes the link between a user's edX account
 #. and their account with an external authentication provider (like Google or
 #. LinkedIn).
 #: openedx/features/learner_profile/static/learner_profile/templates/third_party_auth.html
 msgid "Unlink"
-msgstr ""
+msgstr "ბმულის მოშლა"
 
 #. Translators: clicking on this creates a link between a user's edX account
 #. and their account with an external authentication provider (like Google or
 #. LinkedIn).
 #: openedx/features/learner_profile/static/learner_profile/templates/third_party_auth.html
 msgid "Link"
-msgstr ""
+msgstr "მიბმა"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
 msgid "Completed {completion_date_html}"
@@ -20563,7 +20619,7 @@ msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "My Profile"
-msgstr ""
+msgstr "ჩემი პროფილი"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid ""
@@ -20572,7 +20628,12 @@ msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
-msgstr ""
+msgstr "დაფიქსირდა შეცდომა. კიდევ სცადეთ  გვერდის ჩამოტვირთვა."
+
+#: wiki/templates/wiki/accounts/login.html
+#: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
+msgid "Log in"
+msgstr "შესვლა"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -20669,6 +20730,10 @@ msgid ""
 "Staff or Admin role selects {em_start}Activate{em_end}. Only course team "
 "members with these roles can edit or delete an activated certificate."
 msgstr ""
+"კურსის სერტიფიკატების შესაქმნელად, Staff -ის ან Admin -ის როლის მქონე კურსის"
+" გუნდის წევრი ირჩევს ოფციას {em_start}გააქტიურე{em_end}. მხოლოდ ამ ორიდან "
+"რომელიმე როლის მქონე გუნდის წევრს შუძლია გააქტიურებული სერტიფიკატის "
+"რედაქტირება ან წაშლა."
 
 #: cms/templates/certificates.html
 msgid ""
@@ -21012,15 +21077,15 @@ msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "Show this page"
-msgstr ""
+msgstr "მაჩვენეთ ეს გვერდი"
 
 #: cms/templates/edit-tabs.html
 msgid "Show/hide page"
-msgstr ""
+msgstr "მაჩვენეთ/დამალეთ გვერდი"
 
 #: cms/templates/edit-tabs.html
 msgid "This page cannot be reordered"
-msgstr ""
+msgstr "ეს გვერდი დახარისხებას არ ექვემდებარება"
 
 #: cms/templates/edit-tabs.html
 msgid "You can add additional custom pages to your course."
@@ -21032,7 +21097,7 @@ msgstr "ახალი გვერდის დამატება"
 
 #: cms/templates/edit-tabs.html
 msgid "What are pages?"
-msgstr ""
+msgstr "რა არის გვერდები?"
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -21040,6 +21105,9 @@ msgid ""
 "(Home, Course, Discussion, Wiki, and Progress) are followed by textbooks and"
 " custom pages that you create."
 msgstr ""
+"თქვენი კურსის ზედა ნაწილში, ჰორიზონტალურად განლაგებულია გვერდების "
+"ჩამონათვალი. ნაგულისხმევ გვერდებს (მთავარი გვერდი, კურსი, დისკუსია, ვიკი და "
+"პროგრესი) მოყვება სახელმძღვანელოები და თქვენი შექმნილი მორგებული გვერდები."
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -21047,16 +21115,21 @@ msgid ""
 "course content. For example, you can create pages for the grading policy, "
 "course slides, and a course calendar. "
 msgstr ""
+"სტუდენტებისთვის დამატებითი მასალის მისაწოდებლად მორგებული გვერდების შექმნა "
+"და რედაქტირება შეგიძლიათ. მაგალითად, შეგიძლიათ შექმნათ შეფასების სქემის, "
+"კურსის სლაიდებისა და კურსის კალენდრის გვერდები."
 
 #: cms/templates/edit-tabs.html
 msgid "How do pages look to students in my course?"
-msgstr ""
+msgstr "როგორ გამოიყურება გვერდები ჩემი კურსის სტუდენტებისთვის?"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Students see the default and custom pages at the top of your course and use "
 "these links to navigate."
 msgstr ""
+"სტუდენტები ხედავენ თქვენი კურსის ზედა ნაწილში განლაგებულ ნაგულისხმევ და "
+"მორგებულ გვერდებს და ამ ბმულებს ნავიგაციისთვის იყენებენ."
 
 #: cms/templates/edit-tabs.html
 msgid "See an example"
@@ -21064,7 +21137,7 @@ msgstr "ნახეთ მაგალითი"
 
 #: cms/templates/edit-tabs.html
 msgid "Pages in Your Course"
-msgstr ""
+msgstr "თქვენი კურსის გვერდები"
 
 #: cms/templates/edit-tabs.html
 msgid "Preview of Pages in your course"
@@ -21076,6 +21149,9 @@ msgid ""
 "Course, Discussion, Wiki, and Progress) are followed by textbooks and custom"
 " pages."
 msgstr ""
+"გვერდები განთავსებულია თქვენი კურსის ზედა ნავიგაციის ზოლში. სტანდარტულ "
+"გვერდებს (მთავარი გვერდი, კურსი, დისკუსია, ვიკი და პროგრესი) მოყვება "
+"სახელმძღვანელოები და მორგებული გვერდები."
 
 #: cms/templates/edit-tabs.html cms/templates/howitworks.html
 msgid "close modal"
@@ -22385,7 +22461,7 @@ msgstr "ვადები, რომელიც მიუთითებს, �
 
 #: cms/templates/settings.html
 msgid "Course Start Date"
-msgstr ""
+msgstr "კურსის დაწყების თარიღი"
 
 #: cms/templates/settings.html
 msgid "First day the course begins"
@@ -22401,7 +22477,7 @@ msgstr "(UTC)"
 
 #: cms/templates/settings.html
 msgid "Course End Date"
-msgstr ""
+msgstr "კურსის დამთავრების თარიღი"
 
 #: cms/templates/settings.html
 msgid "Last day your course is active"
@@ -23206,7 +23282,7 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_delete.html
 msgid "Confirm"
-msgstr ""
+msgstr "დადასტურება"
 
 #: cms/templates/maintenance/_announcement_edit.html
 msgid "Edit Announcement"
@@ -23218,11 +23294,11 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "previous"
-msgstr ""
+msgstr "წინა"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "next"
-msgstr ""
+msgstr "მომდევნო"
 
 #: cms/templates/maintenance/_force_publish_course.html
 msgid "Required data to force publish course."
@@ -23242,23 +23318,23 @@ msgstr "ტექნიკური მომსახურების მა�
 
 #: cms/templates/registration/activation_complete.html
 msgid "Thanks for activating your account."
-msgstr ""
+msgstr "მადლობას გიხდით ანგარიშის გააქტიურებისათვის."
 
 #: cms/templates/registration/activation_complete.html
 msgid "This account has already been activated."
-msgstr ""
+msgstr "ეს ანგარიში უკვე გააქტიურდა."
 
 #: cms/templates/registration/activation_complete.html
 msgid "Visit your {link_start}dashboard{link_end} to see your courses."
-msgstr ""
+msgstr "ეწვიეთ {link_start}მართვის დაფას{link_end} თქვენი კურსების სანახავად."
 
 #: cms/templates/registration/activation_complete.html
 msgid "You can now {link_start}sign in{link_end}."
-msgstr ""
+msgstr "ახლა შეგიძლიათ {link_start}შესვლა{link_end}."
 
 #: cms/templates/registration/activation_invalid.html
 msgid "Activation Invalid"
-msgstr ""
+msgstr "აქტივაცია არასწორია"
 
 #: cms/templates/registration/activation_invalid.html
 msgid ""
@@ -23266,10 +23342,14 @@ msgid ""
 " make sure the URL you're using is formatted correctly. If you still have "
 "issues, send us an email message at {email_start}{email}{email_end}."
 msgstr ""
+"რაღაც არასწორია. ელფოსტის პროგრამები ზოგჯერ ყოფენ URL-ებს ორ ზოლად, ამიტომ "
+"დარწმუნდით რომ URL რომელსაც იყენებთ სწორად დაფორმატებულია. თუ კვლავ  გაქვთ "
+"კითხვები, გამოგვიგზავნეთ ელექტრონული შეტყობინება "
+"{email_start}{email}{email_end}-ზე."
 
 #: cms/templates/registration/activation_invalid.html
 msgid "Return to the {link_start}home page{link_end}."
-msgstr ""
+msgstr "დაუბრუნდით {link_start}მთავარ გვერდს{link_end}."
 
 #: cms/templates/widgets/deprecated-course-key-warning.html
 msgid "Support will be removed in an upcoming release."
@@ -23363,23 +23443,23 @@ msgstr "ლეიბლი"
 
 #: cms/templates/widgets/sock.html
 msgid "Looking for help with {studio_name}?"
-msgstr ""
+msgstr "გესაჭიროებათ დახმარება {studio_name}-სთან დაკავშირებით?"
 
 #: cms/templates/widgets/sock.html
 msgid "Hide {studio_name} Help"
-msgstr ""
+msgstr "{studio_name} დახმარების დამალვა"
 
 #: cms/templates/widgets/sock.html
 msgid "{studio_name} Documentation"
-msgstr ""
+msgstr "{studio_name} დოკუმენტაცია"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access documentation on http://docs.edx.org"
-msgstr ""
+msgstr "დოკუმენტაცია ხელმისაწვდომია შემდეგ ბმულზე http://docs.edx.org"
 
 #: cms/templates/widgets/sock_links.html
 msgid "edX Documentation"
-msgstr ""
+msgstr "edX დოკუმენტაცია"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
@@ -23391,23 +23471,23 @@ msgstr "Open edX პორტალი"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
+msgstr "edX101-ში ჩარიცხვა: edX კურსის შექმნის მიმოხილვა"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101"
-msgstr ""
+msgstr " edX101-ში ჩარიცხვა"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
+msgstr "StudioX-ში ჩარიხცვა: edX Studio კურსის შექმნა"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX"
-msgstr ""
+msgstr "StudioX-ში ჩარიცხვა"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Send an email to {email}"
-msgstr ""
+msgstr "ელფოსტის გაგზავნა მისამართზე {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -23917,7 +23997,7 @@ msgstr ""
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid "Remove"
-msgstr ""
+msgstr "წაშლა"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid ""
@@ -23935,17 +24015,17 @@ msgstr ""
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "User"
-msgstr ""
+msgstr "მომხმარებელი"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "File"
-msgstr ""
+msgstr "ფაილი"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Action"
-msgstr ""
+msgstr "მოქმდება"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
@@ -23955,7 +24035,7 @@ msgstr ""
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Download"
-msgstr ""
+msgstr "ჩამოტვირთვა"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "Use this!"
@@ -24021,7 +24101,7 @@ msgstr ""
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid "Headers"
-msgstr ""
+msgstr "ზედა კოლონტიტულები"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid ""
@@ -24180,7 +24260,7 @@ msgstr ""
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid "Insert"
-msgstr ""
+msgstr "ჩასმა"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "No images found for this article"
@@ -24292,7 +24372,7 @@ msgstr ""
 
 #: wiki/templates/wiki/base.html
 msgid "Search..."
-msgstr ""
+msgstr "ძიება…"
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
@@ -24389,7 +24469,7 @@ msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Please log in"
-msgstr ""
+msgstr "გთხოვთ, შედით სისტემაში"
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Log me in..."
@@ -24719,6 +24799,12 @@ msgstr ""
 
 #~ msgid "Learn more about Course Re-runs"
 #~ msgstr "გაიგეთ მეტი კურსის ხელახალი გამოშვების შესახებ"
+
+#~ msgid "Course Outline"
+#~ msgstr "კურსის სტრუქტურა"
+
+#~ msgid "Warning"
+#~ msgstr "გაფრთხილება"
 
 #~ msgid "Pages"
 #~ msgstr "გვერდები"
@@ -25056,6 +25142,9 @@ msgstr ""
 #~ msgid "Outline"
 #~ msgstr "სტრუქტურა"
 
+#~ msgid "Publisher"
+#~ msgstr "გამომცემელი"
+
 #~ msgid "Import"
 #~ msgstr "იმპორტირება"
 
@@ -25077,8 +25166,28 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "რეგისტრაცია"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "ნაჩვენებია ყველა შესაბამისი შინაარსი, რომელიც შეიძლება {display_name}-ს "
+#~ "დაემატოს. ყველა სტუდენტს დაენიშნება ამ სიიდან შემთხვევითობის პრინციპით "
+#~ "არჩეული {max_count} კომპონენტი. "
+#~ msgstr[1] ""
+#~ "ნაჩვენებია ყველა შესაბამისი შინაარსი, რომელიც შეიძლება {display_name}-ს "
+#~ "დაემატოს. ყველა სტუდენტს დაენიშნება ამ სიიდან შემთხვევითობის პრინციპით "
+#~ "არჩეული {max_count} კომპონენტი. "
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "მაგალითი : username@domain.com"
+
+#~ msgid "Copy"
+#~ msgstr "კოპირება"
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "მხარდაჭერილია შემდეგი ორგანიზაციების მიერ"
@@ -25202,9 +25311,6 @@ msgstr ""
 #~ msgid "Already registered?"
 #~ msgstr "უკვე დარეგისტრირდით?"
 
-#~ msgid "Log in"
-#~ msgstr "შესვლა"
-
 #~ msgid "Next Steps"
 #~ msgstr "მომდევნო საფეხურები"
 
@@ -25257,3 +25363,9 @@ msgstr ""
 
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "განათავსეთ თქვენი საავტორო უფლების მქონე ტექსტი აქ!"
+
+#~ msgid "Collapse All"
+#~ msgstr "ყველას აკეცვა"
+
+#~ msgid "Videos"
+#~ msgstr "ვიდეოები"

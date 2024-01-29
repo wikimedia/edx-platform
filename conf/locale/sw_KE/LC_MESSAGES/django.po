@@ -67,7 +67,7 @@
 # YAHAYA MWAVURIZI <translations_1@camara.ie>, 2017
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -76,20 +76,21 @@
 # YAHAYA MWAVURIZI <translations_1@camara.ie>, 2017
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Waheed Ahmed <waheed@edx.org>, 2019
+# Transifex Bot <>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
-"Last-Translator: Waheed Ahmed <waheed@edx.org>, 2019\n"
+"Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Swahili (Kenya) (https://app.transifex.com/open-edx/teams/6205/sw_KE/)\n"
 "Language: sw_KE\n"
 "MIME-Version: 1.0\n"
@@ -225,6 +226,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -1409,9 +1412,11 @@ msgstr ""
 msgid "{currency_symbol}{price}"
 msgstr "{currency_symbol}{price}"
 
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: This refers to the cost of the course. In this case, the
 #. course costs nothing so it is free.
 #: common/djangoapps/course_modes/models.py
+#: lms/templates/course_modes/track_selection.html
 msgid "Free"
 msgstr "Bure / Huru"
 
@@ -2758,10 +2763,12 @@ msgid "See XML source line {sourcenum}."
 msgstr ""
 
 #: common/lib/capa/capa/responsetypes.py
+#: cms/templates/widgets/problem-edit.html
 msgid "Checkboxes"
 msgstr "Visanduku vya uhakiki"
 
 #: common/lib/capa/capa/responsetypes.py
+#: cms/templates/widgets/problem-edit.html
 msgid "Multiple Choice"
 msgstr "Majibu Mchanganyiko"
 
@@ -2786,15 +2793,13 @@ msgstr ""
 msgid "True/False Choice"
 msgstr "Chaguo la Kweli/Si kweli"
 
-#: common/lib/capa/capa/responsetypes.py
 #: cms/templates/widgets/problem-edit.html
 msgid "Dropdown"
-msgstr ""
+msgstr "Angushia chini"
 
-#: common/lib/capa/capa/responsetypes.py
 #: cms/templates/widgets/problem-edit.html
 msgid "Numerical Input"
-msgstr ""
+msgstr "Ungizaji kwa Nambari"
 
 #: common/lib/capa/capa/responsetypes.py
 msgid "There was a problem with the staff answer to this problem."
@@ -2848,6 +2853,7 @@ msgid "or"
 msgstr "au"
 
 #: common/lib/capa/capa/responsetypes.py
+#: cms/templates/widgets/problem-edit.html
 msgid "Text Input"
 msgstr "Uingizaji wa Maandishi"
 
@@ -3896,7 +3902,7 @@ msgstr ""
 "Ingiza kweli au si kweli. Kama kweli, wanafunzi waweza kupakua vyeti kabla "
 "kozi kumalizika, kama wametimiza masharti ya cheti."
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Certificates Display Behavior"
 msgstr "Mtindo wa  Kuonyesha Vyeti"
 
@@ -3929,9 +3935,9 @@ msgstr ""
 "Hariri jina la faili ya picha ya bango. Unaweza kuweka picha ya bango katika"
 " Mikakati & Ukurasa wa Tondoti. "
 
-#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
+#: cms/templates/settings.html
 msgid "Course Video Thumbnail Image"
-msgstr ""
+msgstr "Taswira ya Kucha la Gumba kwenye Video ya Kozi"
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid ""
@@ -5257,7 +5263,7 @@ msgstr ""
 #: openedx/core/djangoapps/user_api/admin.py
 #: openedx/features/wikimedia_features/messenger/views.py
 msgid "Cancel"
-msgstr "Batilisha "
+msgstr "Batilisha"
 
 #: common/lib/xmodule/xmodule/video_module/transcripts_utils.py
 #, python-brace-format
@@ -7114,9 +7120,9 @@ msgid ""
 "Maintain exam integrity by enabling a proctoring solution for your course"
 msgstr ""
 
-#: lms/djangoapps/courseware/plugins.py cms/templates/edit-tabs.html
+#: cms/templates/edit-tabs.html
 msgid "Custom pages"
-msgstr ""
+msgstr "Kurasa za desturi"
 
 #: lms/djangoapps/courseware/plugins.py
 msgid "Provide additional course content and resources with custom pages"
@@ -7384,6 +7390,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -9417,56 +9425,71 @@ msgstr "Mwisho Kuboreshwa:"
 msgid "See all children"
 msgstr "Ona watoto wote"
 
-#: lms/templates/wiki/article.html
+#: lms/templates/wiki/article.html wiki/templates/wiki/article.html
 msgid "This article was last modified:"
 msgstr "Makala haya yaliboreshwa mara ya mwisho:"
 
-#: lms/templates/wiki/create.html
+#: lms/templates/wiki/create.html wiki/templates/wiki/create.html
 msgid "Add new article"
 msgstr "Ongeza 'makala' mpya"
 
-#: lms/templates/wiki/create.html
+#: lms/templates/wiki/create.html wiki/templates/wiki/create.html
 msgid "Create article"
 msgstr "Tengeneza makala"
 
 #: lms/templates/wiki/create.html lms/templates/wiki/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html
+#: wiki/templates/wiki/create.html wiki/templates/wiki/delete.html
 msgid "Go back"
 msgstr "Rudi Nyuma"
 
 #: lms/templates/wiki/delete.html lms/templates/wiki/edit.html
+#: wiki/templates/wiki/delete.html wiki/templates/wiki/edit.html
 msgid "Delete article"
 msgstr "Futa makala"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/delete.html
 msgid "Delete"
 msgstr "Futa"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "You cannot delete a root article."
 msgstr "Huwezi 'kufuta' shina la makala."
 
-#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
+#: wiki/templates/wiki/delete.html
 msgid ""
 "You cannot delete this article because you do not have permission to delete "
 "articles with children. Try to remove the children manually one-by-one."
 msgstr ""
+"Huwezi kufuta makala haya kwa sababu huna ruhusa kufuta makala na watoto. "
+"Jaribu kuondoa watoto kwa mkono mmoja baada ya mwengine."
 
-#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
+#: wiki/templates/wiki/delete.html
 msgid ""
 "You are deleting an article. This means that its children will be deleted as"
 " well. If you choose to purge, children will also be purged!"
 msgstr ""
+"Unafuta makala. Hii inamaanisha watoto wake watafutwa pia. Kama unachagua "
+"kusafisha, watoto pia watasafishwa!"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "Articles that will be deleted"
 msgstr "Makala ambazo zitafutwa"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "...and more!"
 msgstr "...na zaidi!"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "You are deleting an article. Please confirm."
 msgstr "Unafuta makala. Tafadhali thibitisha."
 
@@ -9474,14 +9497,18 @@ msgstr "Unafuta makala. Tafadhali thibitisha."
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/edit.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "'Hariri'"
 
 #: lms/templates/wiki/edit.html lms/templates/ccx/schedule.html
+#: wiki/templates/wiki/edit.html wiki/templates/wiki/settings.html
 msgid "Save changes"
 msgstr "'Hifadhi' mabadiliko"
 
 #: lms/templates/wiki/edit.html cms/templates/container.html
+#: wiki/templates/wiki/edit.html
 msgid "Preview"
 msgstr "'Pitia kabla'"
 
@@ -9499,15 +9526,17 @@ msgstr "Pitia 'Wiki' "
 msgid "window open"
 msgstr "dirisha likowazi"
 
-#: lms/templates/wiki/edit.html
+#: lms/templates/wiki/edit.html wiki/templates/wiki/edit.html
 msgid "Back to editor"
 msgstr "Rudi kwa Mhariri"
 
 #: lms/templates/wiki/history.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
+#: wiki/templates/wiki/history.html
 msgid "History"
 msgstr "Kumbukumbu"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid ""
 "Click each revision to see a list of edited lines. Click the Preview button "
 "to see how the article looked at this stage. At the bottom of this page, you"
@@ -9523,23 +9552,24 @@ msgstr ""
 msgid "(no log message)"
 msgstr "(no log message)"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Preview this revision"
 msgstr "Pitia haya 'marudio'"
 
-#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
+#: wiki/templates/wiki/history.html
 msgid "Auto log:"
-msgstr ""
+msgstr "Log kiwenyewe:"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html cms/templates/videos_index_pagination.html
+#: wiki/templates/wiki/history.html
 msgid "Change"
 msgstr "Badilisha"
 
-#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
+#: wiki/templates/wiki/history.html
 msgid "Merge selected with current..."
-msgstr ""
+msgstr "Ulinganishi uliochaguliwa na wa sasa... "
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Switch to selected version"
 msgstr "Hama kuchagua toleo"
 
@@ -9547,11 +9577,11 @@ msgstr "Hama kuchagua toleo"
 msgid "Wiki Revision Preview"
 msgstr ""
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Back to history view"
 msgstr "Rudi kwenye 'kuangalia' kumbukumbu"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Switch to this version"
 msgstr "Tumia toleo 'hili'"
 
@@ -9559,21 +9589,23 @@ msgstr "Tumia toleo 'hili'"
 msgid "Merge Revision"
 msgstr "Unganisha 'Marudio'"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Merge with current"
 msgstr "'Unganisha' na ya sasa"
 
-#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
+#: wiki/templates/wiki/history.html
 msgid ""
 "When you merge a revision with the current, all data will be retained from "
 "both versions and merged at its approximate location from each revision."
 msgstr ""
+"UKiweka sambamba marudio na ya sasa, takwimu zote zitadhibitiwa kutoka kwa "
+"toleo zote mbili na ziwekwe sambamba kwa eneo lake kutoka kwa kila marudio."
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "After this, it's important to do a manual review."
 msgstr "Baada ya hii, ni muhimu kupitia muongozo."
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Create new merged version"
 msgstr "Buni toleo jipya "
 
@@ -9616,12 +9648,13 @@ msgstr "Muongozo wa mfumo wa uandishi kwenye wavuti"
 msgid "Miniature Markdown Guide"
 msgstr ""
 
-#: lms/templates/wiki/includes/cheatsheet.html
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid ""
 "To create a new wiki article, create a link to it. Clicking the link gives "
 "you the creation page."
 msgstr ""
+"Kubuni makala mapya ya wiki, buni uunganishaji wake. Kubonyeza uunganishaji "
+"inakupatia ukurasa wa kubuni. "
 
 #: lms/templates/wiki/includes/cheatsheet.html
 msgid "[Article Name](wiki:ArticleName)"
@@ -9705,10 +9738,12 @@ msgid "Attachments"
 msgstr "Viambatisho"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Upload new file"
 msgstr "Pkia faili mpya"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search and add file"
 msgstr "Tafuta na uongeze faili"
 
@@ -9717,19 +9752,22 @@ msgid "Upload File"
 msgstr "Pakia Faili"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Upload file"
 msgstr "Pakia faili"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Search files and articles"
 msgstr "Tafuta faili na makala"
 
-#: lms/templates/wiki/plugins/attachments/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid ""
 "You can reuse files from other articles. These files are subject to updates "
 "on other articles which may or may not be a good thing."
 msgstr ""
+"Unaweza kutumia faili kutoka kwa makala mengine. Faili hizi ni za "
+"kukamilishwa kwa makala mengine ambazo zaweza au haziwezi kuwa kitu kizuri."
 
 #: lms/templates/wiki/plugins/attachments/index.html
 #: lms/templates/api_admin/catalogs/search.html
@@ -9742,27 +9780,35 @@ msgstr ""
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Tafuta"
 
-#: lms/templates/wiki/plugins/attachments/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid ""
 "The following files are available for this article. Copy the markdown tag to"
 " directly refer to a file from the article text."
 msgstr ""
+"Falil zifuatazo zinapatikana kwa makala haya. Iga alama chini tag kukumbuka "
+"moja kwa moja kwa faili kutoka kwa jumbe za makala."
 
-#: lms/templates/wiki/plugins/attachments/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Markdown tag"
-msgstr ""
+msgstr "Alama chini tag"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Uploaded by"
 msgstr "Imepakiwa na "
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Size"
 msgstr "Ukubwa"
 
@@ -9771,30 +9817,40 @@ msgid "File History"
 msgstr "Kumbukumbu za 'Faili'"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Detach"
 msgstr "Achanisha"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Replace"
 msgstr "Badilisha"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/deleted.html
 msgid "Restore"
 msgstr "Rudisha"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/includes/revision_info.html
 msgid "anonymous (IP logged)"
 msgstr "isiojulukana (IP logged)"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "File history"
 msgstr "Kumbukumbu za 'Faili'"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "revisions"
 msgstr "marudio"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "There are no attachments for this article."
 msgstr "Hakuna viambatisho kwa 'hii' makala."
 
@@ -9807,10 +9863,12 @@ msgid "Previewing a merge between two revisions:"
 msgstr "Utizamaji kabla wa uwekaji pamoja wa marudio mawili:"
 
 #: lms/templates/wiki/preview_inline.html
+#: wiki/templates/wiki/preview_inline.html
 msgid "This revision has been deleted."
 msgstr "Marudio haya yamefutwa."
 
 #: lms/templates/wiki/preview_inline.html
+#: wiki/templates/wiki/preview_inline.html
 msgid "Restoring to this revision will mark the article as deleted."
 msgstr "Kurudisha haya 'marudio' kutaonesha makala kama imefutwa."
 
@@ -9826,13 +9884,6 @@ msgstr ""
 #: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
-msgstr ""
-
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Sign In"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
@@ -9898,11 +9949,9 @@ msgid ""
 "%(user_schedule_upgrade_deadline_time)s."
 msgstr ""
 
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.html
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.txt
 #: lms/templates/course_modes/track_selection.html
 msgid "Upgrade Now"
-msgstr ""
+msgstr "Boresha Sasa"
 
 #: openedx/core/djangoapps/api_admin/admin.py
 #, python-brace-format
@@ -10117,14 +10166,6 @@ msgstr ""
 msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
-msgstr ""
-
-#: openedx/core/djangoapps/config_model_utils/models.py
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Course Run"
 msgstr ""
 
 #: openedx/core/djangoapps/config_model_utils/models.py
@@ -11793,14 +11834,6 @@ msgstr ""
 msgid "{header_open}{title}{header_close}"
 msgstr ""
 
-#: openedx/core/djangoapps/util/user_messages.py
-#: cms/templates/course_outline.html cms/templates/index.html
-#: openedx/features/course_experience/templates/course_experience/latest-update-fragment.html
-#: openedx/features/course_experience/templates/course_experience/welcome-message-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Dismiss"
-msgstr ""
-
 #: openedx/core/djangoapps/verified_track_content/models.py
 msgid "The course key for the course we would like to be auto-cohorted."
 msgstr ""
@@ -12275,6 +12308,21 @@ msgstr "Kozi"
 msgid "Reports"
 msgstr "Taarifa / Habari"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
 msgstr ""
@@ -12306,6 +12354,7 @@ msgstr ""
 "mwalimu."
 
 #: cms/djangoapps/contentstore/course_group_config.py
+#: cms/templates/group_configurations.html
 msgid "Content Groups"
 msgstr "Makundi yaliyomo"
 
@@ -12613,7 +12662,7 @@ msgstr "lazima iwe na jina la cheti"
 #: cms/djangoapps/contentstore/views/certificates.py
 #, python-brace-format
 msgid "Certificate dict {0} missing value key '{1}'"
-msgstr ""
+msgstr "Dict ya cheti {0} ina kosa tathmini ya ufunguo'{1}'"
 
 #: cms/djangoapps/contentstore/views/certificates.py
 #, python-brace-format
@@ -12693,7 +12742,7 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "Invalid prerequisite course key"
-msgstr ""
+msgstr "Sharti lisilohalali kwa ufunguo wa fanni"
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "An error occurred while trying to save your tabs"
@@ -12709,7 +12758,7 @@ msgstr "Usabidi wa kundi unatumika kwa sasa na hauwezi kufutwa."
 
 #: cms/djangoapps/contentstore/views/course.py
 msgid "This content group is in use and cannot be deleted."
-msgstr ""
+msgstr "Kundi la yaliyomo latumika kwa sasa na haliwezi kufutwa / kufutika."
 
 #: cms/djangoapps/contentstore/views/entrance_exam.py
 msgid "Entrance Exam - Subsection"
@@ -12727,11 +12776,13 @@ msgstr "Kozi imefanikiwa kutumwa kwenye hazina ya Git"
 msgid "Vertical"
 msgstr "Wima"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: cms/templates/course_outline.html lms/templates/ccx/schedule.html
 #: lms/templates/seq_module.html
 msgid "Section"
 msgstr "Kifungu"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: lms/templates/ccx/schedule.html
 msgid "Subsection"
 msgstr "Kifungu kidogo"
@@ -12858,6 +12909,9 @@ msgid ""
 "code. Please change your library code so that it is unique within your "
 "organization."
 msgstr ""
+"Tayari ipo maktaba iliyoelezwa na shirika hilo hilo na kificho cha maktaba "
+"hiyo hiyo. Tafadhali badilisha kificho chako cha maktaba ili iwe ya kipekee "
+"katika shirika lako."
 
 #: cms/djangoapps/contentstore/views/library.py
 #, python-brace-format
@@ -12895,7 +12949,7 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Incoming video data is empty."
-msgstr ""
+msgstr "Data ya video iingiyao  ni tupu."
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Can't find item by locator."
@@ -12950,8 +13004,9 @@ msgid "You may not remove the last Admin. Add another Admin first."
 msgstr ""
 "Waweza usiondoe Msimamizi wa mwisho. Ongeza Msimamizi mwingine kwanza."
 
+#. #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
 #. Translators: This is the status of an active video upload
-#: cms/djangoapps/contentstore/views/videos.py
+#: cms/djangoapps/contentstore/views/videos.py cms/templates/import.html
 msgid "Uploading"
 msgstr "Kupakia maudhui"
 
@@ -13058,7 +13113,7 @@ msgstr "Tarehe Imewekwa"
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Status"
-msgstr ""
+msgstr "Hali"
 
 #. Translators: This is the suggested filename when downloading the URL
 #. listing for videos uploaded through Studio
@@ -13205,6 +13260,8 @@ msgstr "Maudhui"
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: wiki/templates/wiki/includes/article_menu.html
+#: wiki/templates/wiki/settings.html
 msgid "Settings"
 msgstr "Mitegesho"
 
@@ -13231,78 +13288,6 @@ msgstr ""
 msgid "Checklists"
 msgstr ""
 
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create a Course Rerun of:"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create a re-run of a course"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "You are creating a re-run from:"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"Provide identifying information for this re-run of the course. The original "
-"course is not affected in any way by a re-run."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"Note: Together, the organization, course number, and course run must "
-"uniquely identify this new course instance."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Required Information to Create a re-run of a course"
-msgstr ""
-
-#. Translators: This is an example name for a new course, seen when
-#. filling out the form to create a new course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. Introduction to Computer Science"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The public display name for the new course. (This name is often the same as "
-"the original course name.)"
-msgstr ""
-
-#. Translators: This is an example for the name of the organization sponsoring
-#. a course, seen when filling out the form to create a new course. The
-#. organization name cannot contain spaces.
-#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
-#. when user put no data into this field.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. UniversityX or OrganizationX"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The name of the organization sponsoring the new course. (This name is often "
-"the same as the original organization name.)"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Note: No spaces or special characters are allowed."
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
@@ -13310,174 +13295,9 @@ msgstr ""
 msgid "Course Number"
 msgstr "Namba ya Kozi"
 
-#. Translators: This is an example for the number used to identify a course,
-#. seen when filling out the form to create a new course. The number here is
-#. short for "Computer Science 101". It can contain letters but cannot contain
-#. spaces.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. CS101"
-msgstr ""
-
-#. Translators: This is an example for the "run" used to identify different
-#. instances of a course, seen when filling out the form to create a new
-#. course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. 2014_T1"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The term in which the new course will run. (This value is often different "
-"than the original course run value.)"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "Create Re-run"
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-msgstr ""
-
-#: cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-msgid ""
-"The new course has the same course outline and content as the original "
-"course. All problems, videos, announcements, and other files are duplicated "
-"to the new course."
-msgstr ""
-
-#: cms/templates/course_outline.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Outline"
-msgstr ""
-
-#: cms/templates/course_outline.html
-#: cms/templates/widgets/deprecated-course-key-warning.html
-#: lms/templates/dashboard/_dashboard_status_verification.html
-msgid "Warning"
-msgstr ""
-
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr ""
-
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
 msgstr "Kosa:"
-
-#: cms/templates/index.html cms/templates/widgets/user_dropdown.html
-#: openedx/features/wikimedia_features/meta_translations/templates/discover_courses.html
-#: openedx/features/wikimedia_features/meta_translations/templates/translations.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "{studio_name} Home"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Email staff to create course"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Please correct the highlighted fields below."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Required Information to Create a New Course"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The public display name for your course. This cannot be changed, but you can"
-" set a different display name in Advanced Settings later."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The name of the organization sponsoring the course. {strong_start}Note: The "
-"organization name is part of the course URL.{strong_end} This cannot be "
-"changed, but you can set a different display name in Advanced Settings "
-"later."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The unique number that identifies your course within your organization. "
-"{strong_start}Note: This is part of your course URL, so no spaces or special"
-" characters are allowed and it cannot be changed.{strong_end}"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The term in which your course will run. {strong_start}Note: This is part of "
-"your course URL, so no spaces or special characters are allowed and it "
-"cannot be changed.{strong_end}"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Required Information to Create a New Library"
-msgstr ""
-
-#. Translators: This is an example name for a new content library, seen when
-#. filling out the form to create a new library.
-#. (A library is a collection of content or problems.)
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. Computer Science Problems"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "The public display name for your library."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "The public organization name for your library."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "This cannot be changed."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Library Code"
-msgstr ""
-
-#. Translators: This is an example for the "code" used to identify a library,
-#. seen when filling out the form to create a new library. This example is
-#. short
-#. for "Computer Science Problems". The example number may contain letters
-#. but must not contain spaces.
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "e.g. CSPROB"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The unique code that identifies this library. {strong_start}Note: This is "
-"part of your library URL, so no spaces or special characters are "
-"allowed.{strong_end} This cannot be changed."
-msgstr ""
 
 #: cms/templates/index.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
@@ -13492,11 +13312,6 @@ msgstr ""
 #: cms/templates/index.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "For example, MITx"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Courses Being Processed"
 msgstr ""
 
 #: cms/templates/index.html
@@ -13517,208 +13332,9 @@ msgstr "Namba ya Kozi:"
 msgid "Course Run:"
 msgstr "Uendeshaji wa Fanni:"
 
-#. Translators: This is a status message, used to inform the user of
-#. what the system is doing. This status means that the user has
-#. requested to re-run an existing course, and the system is currently
-#. in the process of duplicating and configuring the existing course
-#. so that it can be re-run.
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Configuring as re-run"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The new course will be added to your course list in 5-10 minutes. Return to "
-"this page or {link_start}refresh it{link_end} to update the course list. The"
-" new course will need some manual configuration."
-msgstr ""
-
-#. Translators: This is a status message for the course re-runs feature.
-#. When a course admin indicates that a course should be re-run, the system
-#. needs to process the request and prepare the new course. The status of
-#. the process will follow this text.
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "This re-run processing status:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Configuration Error"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"A system error occurred while your course was being processed. Please go to "
-"the original course to try the re-run again, or contact your PM for "
-"assistance."
-msgstr ""
-
 #: cms/templates/index.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Archived Courses"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Are you staff on an existing {studio_name} course?"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The course creator must give you access to the course. Contact the course "
-"creator or administrator for the course you are helping to author."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Becoming a Course Creator in {studio_name}"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team will evaluate your request and provide you feedback within 24 hours "
-"during the work week."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Your Course Creator Request Status:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Request the Ability to Create Courses"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Your Course Creator Request Status"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is has completed evaluating your request."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Your request did not meet the criteria/guidelines specified by "
-"{platform_name} Staff."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is currently  evaluating your request."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Your request is currently being reviewed by {platform_name} staff and should"
-" be updated shortly."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Were you expecting to see a particular library here?"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"The library creator must give you access to the library. Contact the library"
-" creator or administrator for the library you are helping to author."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Create Your First Library"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Libraries hold a pool of components that can be re-used across multiple "
-"courses. Create your first library with the click of a button!"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "New to {studio_name}?"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Click Help in the upper-right corner to get more information about the "
-"{studio_name} page you are viewing. You can also use the links at the bottom"
-" of the page to access our continually updated documentation and other "
-"{studio_name} resources."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Getting Started with {studio_name}"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Can I create courses in {studio_name}?"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must {link_start}contact "
-"{platform_name} staff to help you create a course{link_end}."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must have course creator "
-"privileges to create your own course."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Your request to author courses in {studio_name} has been denied. Please "
-"{link_start}contact {platform_name} Staff with further questions{link_end}."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Almost there! In order to complete your sign up we need you to verify your "
-"email address ({email}). An activation message and next steps should be "
-"waiting for you there."
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Please check your Junk or Spam folders in case our email isn't in your "
-"INBOX. Still can't find the verification email? Request help via the link "
-"below."
 msgstr ""
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
@@ -13728,11 +13344,6 @@ msgstr "Wakufunzi"
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 msgid "Requirements"
 msgstr "Yanayohitajika"
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Expand or Collapse"
-msgstr ""
 
 #: cms/templates/studio_xblock_wrapper.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
@@ -13751,22 +13362,14 @@ msgstr ""
 msgid "Details"
 msgstr "Utondoti"
 
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "This block contains multiple components."
-msgstr ""
-
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "Tazama"
-
-#: cms/templates/videos_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Video Uploads"
-msgstr ""
 
 #: cms/templates/maintenance/_announcement_edit.html
 #: lms/templates/problem.html lms/templates/word_cloud.html
@@ -13784,26 +13387,6 @@ msgstr "Tegesha upya"
 msgid "Legal"
 msgstr "Halali"
 
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Course Navigation"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Import"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Export"
-msgstr ""
-
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
@@ -13817,16 +13400,6 @@ msgstr "Chagua Lugha"
 #: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "Akaunti"
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Account Navigation"
-msgstr ""
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Contextual Online Help"
-msgstr ""
 
 #: cms/templates/widgets/header.html
 #: lms/templates/header/navbar-authenticated.html
@@ -14356,18 +13929,6 @@ msgstr ""
 "Nywila zinatumika kwa muda maalum. Je nywila zimemaliza muda wa matumizi "
 "yake?"
 
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
-
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
 #: lms/templates/lti.html
@@ -14624,13 +14185,13 @@ msgstr ""
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Previous"
-msgstr ""
+msgstr "Iliyopita"
 
 #. Translators: A button for showing the Next Unit
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Next"
-msgstr ""
+msgstr "Ifuatayo"
 
 #: lms/templates/seq_module.html
 msgid "Sequence"
@@ -14641,7 +14202,7 @@ msgstr "Mfululizo"
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Completed"
-msgstr ""
+msgstr "Imekamilika"
 
 #: lms/templates/signup_modal.html
 msgid "Sign Up for {platform_name}"
@@ -15669,7 +15230,7 @@ msgstr ""
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 msgid "Note:"
-msgstr ""
+msgstr "Ilani: / Tambua: / Nukuu:"
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 msgid ""
@@ -16003,6 +15564,8 @@ msgstr ""
 
 #: lms/templates/ccx/schedule.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Date"
 msgstr "Tarehe"
 
@@ -16497,7 +16060,7 @@ msgstr "Usajili Umefungwa"
 
 #: lms/templates/courseware/course_about.html
 msgid "Enroll Now"
-msgstr ""
+msgstr "'Sajili' Sasa"
 
 #: lms/templates/courseware/course_about.html
 msgid "View About Page in studio"
@@ -19673,7 +19236,7 @@ msgstr "Onesha hali ya shughuli ulizowasilisha kwa tatizo hili."
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/reports.html
 msgid "Note"
-msgstr ""
+msgstr "Zingatia "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/problem_report.html
 msgid ""
@@ -20323,6 +19886,7 @@ msgid "{span_start}(active){span_end}"
 msgstr "{span_start}(active){span_end}"
 
 #: lms/templates/wiki/includes/article_menu.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "Changes"
 msgstr "Mabadiliko"
 
@@ -20334,7 +19898,7 @@ msgstr "{span_start}hai{span_end}"
 msgid "Course Wiki"
 msgstr "Course Wiki"
 
-#: lms/templates/wiki/includes/breadcrumbs.html
+#: lms/templates/wiki/includes/breadcrumbs.html wiki/templates/wiki/dir.html
 msgid "Add article"
 msgstr "Ongeza makala"
 
@@ -20571,6 +20135,11 @@ msgstr ""
 msgid "An error occurred. Try loading the page again."
 msgstr "Hitlafu imetokea. Jaribu kupakia ukurasa tena."
 
+#: wiki/templates/wiki/accounts/login.html
+#: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
+msgid "Log in"
+msgstr "Ingia mtandaoni"
+
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
 msgstr "Ukurasa uliokuwa ukitafuta haukupatikana."
@@ -20617,7 +20186,7 @@ msgstr "Moduli hii ya kozi haijawezeshwa."
 
 #: cms/templates/certificates.html
 msgid "This course does not use a mode that offers certificates."
-msgstr ""
+msgstr "Fanni hii haitumii kitengo kinacho toa vyeti."
 
 #: cms/templates/certificates.html
 msgid "Working with Certificates"
@@ -20628,12 +20197,16 @@ msgid ""
 "Specify a course title to use on the certificate if the course's official "
 "title is too long to be displayed well."
 msgstr ""
+"Fafanua kichwa cha fanni utumie katika cheti kama kichwa rasmi ni kirefu "
+"sana kuoneshwa sawa sawa."
 
 #: cms/templates/certificates.html
 msgid ""
 "For verified certificates, specify between one and four signatories and "
 "upload the associated images."
 msgstr ""
+"Kwa vyeti vilivyo sawazishwa, fafanua kati ya wasahihishi mmoja au wanne na "
+"pakia taswira zinazohusika."
 
 #: cms/templates/certificates.html
 msgid ""
@@ -20673,6 +20246,8 @@ msgid ""
 "learners who have already earned certificates will no longer be able to "
 "access them."
 msgstr ""
+"{em_start}Usi{em_end} fute vyeti baada ya fanni kuanza; wanagenzi ambao "
+"tayari wamepokea vyeti hawataweza kuruhusiwa tena."
 
 #: cms/templates/certificates.html
 msgid "Learn more about certificates"
@@ -20712,6 +20287,8 @@ msgid ""
 "Select a component type under {strong_start}Add New Component{strong_end}. "
 "Then select a template."
 msgstr ""
+"Chagua aina ya kipengele chini ya {strong_start} Ongeza Kipengele "
+"Kipya{strong_end}.Kisha chagua kigezo."
 
 #: cms/templates/container.html
 msgid ""
@@ -20759,15 +20336,15 @@ msgstr "Hakikisha kuwa 'umepanga' maudhui kwa usahihi kwa kila jaribio lako."
 
 #: cms/templates/container.html
 msgid "Learn more about component containers"
-msgstr ""
+msgstr "Jifunze mengi kuhusu vyombo vya kipengele"
 
 #: cms/templates/container.html
 msgid "Unit Location"
-msgstr ""
+msgstr "Eneo la kitengo"
 
 #: cms/templates/container.html
 msgid "Location ID"
-msgstr ""
+msgstr "Eneo la ID"
 
 #: cms/templates/container.html
 msgid ""
@@ -20781,7 +20358,7 @@ msgstr "Taarifa mpya za Kozi"
 
 #: cms/templates/course_info.html
 msgid "New Update"
-msgstr ""
+msgstr "Ukamilishaji Mpya"
 
 #: cms/templates/course_info.html
 msgid ""
@@ -20906,6 +20483,7 @@ msgstr "Pangilia kozi zako"
 #: cms/templates/course_outline.html
 msgid "You add sections, subsections, and units directly in the outline."
 msgstr ""
+"Uongeze vifungu, vifungu toto, na vitengo moja kwa moja kwenye muongozo."
 
 #: cms/templates/course_outline.html
 msgid ""
@@ -20922,6 +20500,7 @@ msgstr "Kupanga upya kozi yako"
 #: cms/templates/course_outline.html
 msgid "Drag sections, subsections, and units to new locations in the outline."
 msgstr ""
+"Buruta vifungu, vifungu toto, na vitengo kwa maeneo mapya kwenye muongozo."
 
 #: cms/templates/course_outline.html
 msgid "Learn more about the course outline"
@@ -20937,6 +20516,9 @@ msgid ""
 "date. When you configure a subsection, you can also set the grading policy "
 "and due date."
 msgstr ""
+"Chagua kigingi cha mkusanyiko wa kifungu au vifungu toto kuweka tarehe ya "
+"kutolea. Ukikusanya kifungu toto, waweza pia kupanga kanuni ya ubora na "
+"tarehe yakutarajia."
 
 #: cms/templates/course_outline.html
 msgid "Learn more about grading policy settings"
@@ -20952,6 +20534,8 @@ msgid ""
 "To publish draft content, select the Publish icon for a section, subsection,"
 " or unit."
 msgstr ""
+"Kuchapisha waraka wa yaliyomo, chagua kigingi cha kuchapisha kwa kifungu, "
+"kifungu toto, au kitengo."
 
 #: cms/templates/course_outline.html
 msgid ""
@@ -20991,18 +20575,20 @@ msgid ""
 "view the page even if they are not registered for or logged in to your "
 "course."
 msgstr ""
+"Ilani: Kurasa zinazo onekana na umma. Kama watumiaji wanajua URL ya ukurasa,"
+" wanaweza kutizama hata kama hawaja jiandikisha au kuingia katika fanni."
 
 #: cms/templates/edit-tabs.html
 msgid "Show this page"
-msgstr ""
+msgstr "\"Onesha\" ukurasa huu"
 
 #: cms/templates/edit-tabs.html
 msgid "Show/hide page"
-msgstr ""
+msgstr "Onyesha/ficha ukurasa"
 
 #: cms/templates/edit-tabs.html
 msgid "This page cannot be reordered"
-msgstr ""
+msgstr "Ukurasa \"huu\" hauwezi kupangwa upya"
 
 #: cms/templates/edit-tabs.html
 msgid "You can add additional custom pages to your course."
@@ -21014,7 +20600,7 @@ msgstr "Ongeza Ukurasa Mpya"
 
 #: cms/templates/edit-tabs.html
 msgid "What are pages?"
-msgstr ""
+msgstr "Kurasa ni nini?"
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -21022,6 +20608,9 @@ msgid ""
 "(Home, Course, Discussion, Wiki, and Progress) are followed by textbooks and"
 " custom pages that you create."
 msgstr ""
+"Kurasa zinaorodheshwa usawa juu katika fanni yako. Kurasa za default (Home, "
+"Course, Discussion, Wiki, and Progress) zina fuatwa na vitabu vy kiada na "
+"kurasa za desturi unazo buni."
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -21029,16 +20618,21 @@ msgid ""
 "course content. For example, you can create pages for the grading policy, "
 "course slides, and a course calendar. "
 msgstr ""
+"Unaweza kubuni na kukagua kurasa za desturi kuwapa wanafunzi nyongeza za "
+"yaliyomo katika fanni. Kwa mfano, waweza kubuni kurasa za kanuni ya ubora, "
+"mitelezo ya fanni, na kalenda ya fanni. "
 
 #: cms/templates/edit-tabs.html
 msgid "How do pages look to students in my course?"
-msgstr ""
+msgstr "Kurasa zinaonekana vipi kwa  wanafunzi kwenye kozi yangu?"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Students see the default and custom pages at the top of your course and use "
 "these links to navigate."
 msgstr ""
+"Wanafunzi wanaona kurasa za desturi na default juu katika fanni yako na "
+"wanatumia viunganishi hivi kwa kumarisi."
 
 #: cms/templates/edit-tabs.html
 msgid "See an example"
@@ -21046,7 +20640,7 @@ msgstr "Tazama mfano"
 
 #: cms/templates/edit-tabs.html
 msgid "Pages in Your Course"
-msgstr ""
+msgstr "Kurasa katika Kozi Yako"
 
 #: cms/templates/edit-tabs.html
 msgid "Preview of Pages in your course"
@@ -21058,6 +20652,9 @@ msgid ""
 "Course, Discussion, Wiki, and Progress) are followed by textbooks and custom"
 " pages."
 msgstr ""
+"Kurasa zinatokeza juu katika ulingo wa kumarisi wa fanni yako. Kurasa za "
+"default (Home, Course, Discussion, Wiki, and Progress) zinafuatiwa na vitabu"
+" vya kiada na kurasa za desturi. "
 
 #: cms/templates/edit-tabs.html cms/templates/howitworks.html
 msgid "close modal"
@@ -21112,6 +20709,10 @@ msgid ""
 "Zip) that contains the library structure and content. You can also re-import"
 " libraries that you've exported."
 msgstr ""
+"Unaweza kupeleka nje maktaba na uzikague nje ya {studio_name}. Faili iliyo "
+"pelekwa nje ni .tar.gz faili (that is, a .tar file compressed with GNU Zip) "
+"ambayo ina mjengo na yaliyomo ya maktaba. Waweza pia ku pokea upya maktaba "
+"ulizo peleka nje."
 
 #: cms/templates/export.html
 msgid "About Exporting Courses"
@@ -21125,6 +20726,10 @@ msgid ""
 "contains the course structure and content. You can also re-import courses "
 "that you've exported."
 msgstr ""
+"Unaweza kupeleka nje fanni na uzikague nje ya {studio_name}. Faili iliyo "
+"pelekwa nje ni faili ya .tar.gz (that is, a .tar file compressed with GNU "
+"Zip) ambayo ina mjengo na yaliyomo kwenye fanni. Unaweza pia kupokea upya "
+"fanni ulizotuma nje.  "
 
 #: cms/templates/export.html
 msgid ""
@@ -21134,6 +20739,11 @@ msgid ""
 " exported files, you may also be sharing sensitive or license-specific "
 "information."
 msgstr ""
+"{em_start}Tahadhari:{em_end} Unapotuma nje fanni, taarifa kama MATLAB API "
+"funguo, LTI vyeti vya kusafiri nje, dokezo za masharti ya siri, na dokezo za"
+" uhifadhi URLs zikiwemo katika habari za upelekaji nje. Ukizishirisha faili "
+"zako za kupeleka nje, waweza pia kishirikisha taarifa nyeti au liseni "
+"maalum."
 
 #: cms/templates/export.html
 msgid "Export My Library Content"
@@ -21208,28 +20818,30 @@ msgstr "Pakua Kozi Zilizohifadhiwa"
 
 #: cms/templates/export.html
 msgid "Data {em_start}exported with{em_end} your course:"
-msgstr ""
+msgstr "Tarehe {em_start}pelekwa nje na{em_end} fanni yako:"
 
 #: cms/templates/export.html
 msgid ""
 "Values from Advanced Settings, including MATLAB API keys and LTI passports"
 msgstr ""
+"Tathmini kutoka kwa Mikakati ya Ubora, zikiwemo funguo za MATLAB API na "
+"vyeti vya usafiri nje vya LTI  "
 
 #: cms/templates/export.html
 msgid "Course Content (all Sections, Sub-sections, and Units)"
-msgstr ""
+msgstr "Yaliyomo ya Fanni (all Sections, Subsections, and Units)"
 
 #: cms/templates/export.html
 msgid "Course Structure"
-msgstr ""
+msgstr "Muundo wa Fanni"
 
 #: cms/templates/export.html
 msgid "Individual Problems"
-msgstr ""
+msgstr "Matatizo ya Kibinafsi"
 
 #: cms/templates/export.html
 msgid "Course Assets"
-msgstr ""
+msgstr "Rasili mali za Fanni"
 
 #: cms/templates/export.html
 msgid "Course Settings"
@@ -21237,15 +20849,15 @@ msgstr "Mitegesho ya Kozi"
 
 #: cms/templates/export.html
 msgid "Data {em_start}not exported{em_end} with your course:"
-msgstr ""
+msgstr "Taarifa {em_start}haijatumwa nje{em_end} na fanni yako:"
 
 #: cms/templates/export.html
 msgid "User Data"
-msgstr ""
+msgstr "Habari za Mtumiaji"
 
 #: cms/templates/export.html
 msgid "Course Team Data"
-msgstr ""
+msgstr "Habari za Kikosi cha Fanni"
 
 #: cms/templates/export.html
 msgid "Forum/discussion Data"
@@ -21253,7 +20865,7 @@ msgstr "Taarifa za Jukwaa/majadiliano"
 
 #: cms/templates/export.html
 msgid "Why export a library?"
-msgstr ""
+msgstr "Kwanini utume nje maktaba?"
 
 #: cms/templates/export.html
 msgid ""
@@ -21262,10 +20874,14 @@ msgid ""
 " may want to create a copy of your library that you can later import into "
 "another library instance and customize."
 msgstr ""
+"Ungependa kukagua XML katika maktaba yako moja kwa moja, nje ya "
+"{studio_name}. Ungependa kubuni kiigizo cha usaidizi wa maktaba yako. Au, "
+"ungehitaji kubuni kiigizo cha maktaba yako ambayo waweza kuipokea kwenye "
+"mfano wa maktaba nyingine na uipe desturi. "
 
 #: cms/templates/export.html
 msgid "Opening the downloaded file"
-msgstr ""
+msgstr "Ufunguzi wa faili iliyoshukishwa/iliyoshushwa"
 
 #. Translators: ".tar.gz" is a file extension, and should not be translated
 #: cms/templates/export.html
@@ -21274,14 +20890,17 @@ msgid ""
 "data includes the library.xml file, as well as subfolders that contain "
 "library content."
 msgstr ""
+"Tumia ratiba ya maktaba kutoa habari kutoka kwa faili ya .tar.gz. Taarifa "
+"iliyotolewa maktaba ikiwemo faili ya .xml, pamoja na mikunjo midogo iliyo na"
+" yaliyomo ya maktaba."
 
 #: cms/templates/export.html
 msgid "Learn more about exporting a library"
-msgstr ""
+msgstr "Jifunze mengi kuhusu upelekaji nje wa maktaba"
 
 #: cms/templates/export.html
 msgid "Why export a course?"
-msgstr ""
+msgstr "Kwanini utume nje fanni?"
 
 #: cms/templates/export.html
 msgid ""
@@ -21290,10 +20909,14 @@ msgid ""
 "may want to create a copy of your course that you can later import into "
 "another course instance and customize."
 msgstr ""
+"Ungependa kukagua XML kwenye fanni yako moja kwa moja, nje ya {studio_name}."
+" Ungependa kubuni kiigizo cha usaidizi wa fanni yako. Au, ungehitaji kubuni "
+"kiigizo cha fanni yako ambayo unaweza kuippokea katika mfano wa fanni "
+"nyingine na uipe desturi."
 
 #: cms/templates/export.html
 msgid "What content is exported?"
-msgstr ""
+msgstr "Ni yapi yaliyomo yanayo tumwa nje?"
 
 #: cms/templates/export.html
 msgid "The following content is exported."
@@ -21341,22 +20964,25 @@ msgid ""
 "data includes the course.xml file, as well as subfolders that contain course"
 " content."
 msgstr ""
+"Tumia mpango wa hifadhi za nyaraka kung'oa habari kutoka kwa faili ya "
+".tar.gz. Habari zilizong'olewa ni pamoja na faili ya fanni ya .xml, mikunjo "
+"midogo ambayo ina yaliyomo ya fanni."
 
 #: cms/templates/export.html
 msgid "Learn more about exporting a course"
-msgstr ""
+msgstr "Jifunze mengi kuhusu kutuma nje fanni"
 
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
-msgstr ""
+msgstr "Tuma Fanni nje kwa Git"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
-msgstr ""
+msgstr "Kuhusu Kutuma Nje kwa Git"
 
 #: cms/templates/export_git.html
 msgid "Use this to export your course to its git repository."
-msgstr ""
+msgstr "Tumia hii kutuma nje fanni yako kwa umiliki wake wa git."
 
 #: cms/templates/export_git.html
 msgid ""
@@ -21364,23 +20990,28 @@ msgid ""
 "the contents of your course visible there to students if automatic git "
 "imports are configured."
 msgstr ""
+"Hii kisha itafyatua ukamilishaji wakiwenyewe wa tovuti ya LMS hasa na "
+"ikamilishe yaliyomo ya fanni yako yaonekanayo kwa wanafunzi kama mapokezi "
+"yakiwenyewe ya git yatapangwa."
 
 #: cms/templates/export_git.html
 msgid "Export Course to Git:"
-msgstr ""
+msgstr "Tuma Nje Fanni kwa Git:"
 
 #: cms/templates/export_git.html
 msgid ""
 "giturl must be defined in your course settings before you can export to git."
 msgstr ""
+"lazima giturl ibainishwe katika mikakati ya fanni yako kabla uweze kutuma "
+"nje kwa git. "
 
 #: cms/templates/export_git.html
 msgid "Export Failed"
-msgstr ""
+msgstr "Utumaji nje Haukufaulu"
 
 #: cms/templates/export_git.html
 msgid "Export Succeeded"
-msgstr ""
+msgstr "Utumaji nje Umefaulu"
 
 #: cms/templates/export_git.html
 msgid "Your course:"
@@ -21388,15 +21019,15 @@ msgstr "Kozi yako:"
 
 #: cms/templates/export_git.html
 msgid "Course git url:"
-msgstr ""
+msgstr "Fanni ya git url:"
 
 #: cms/templates/group_configurations.html
 msgid "Experiment Group Configurations"
-msgstr ""
+msgstr "Jaribu Mikusanyiko ya Kundi"
 
 #: cms/templates/group_configurations.html
 msgid "This module is disabled at the moment."
-msgstr ""
+msgstr "Moduli hii imenyimwa uwezo kwa sasa hivi."
 
 #: cms/templates/group_configurations.html
 msgid ""
@@ -21434,6 +21065,9 @@ msgid ""
 "create cohort-specific courseware. In other words, you can customize the "
 "content that particular cohorts see in your course."
 msgstr ""
+"Kama kuna muungano uliofungamana katika kozi yako, unaweza kutumia vikundi "
+"vya yaliyomo kubuni mafungamano maalum ya courseware. Kwa lugha nyingine, "
+"kuyapa desturi yaliyomo kuwa waliofungamana maalum waone katika kozi yako."
 
 #: cms/templates/group_configurations.html
 msgid ""
@@ -21457,6 +21091,11 @@ msgid ""
 "use by a unit. To delete a content group, hover over its box and click the "
 "delete icon."
 msgstr ""
+"Bonyeza {em_start}Kundi jipya la yaliyomo{em_end} kuongeza kwa kundi la "
+"yaliyomo jipya. Kuhariri jina la kundi la yaliyomo, vinjari kwenye kisanduku"
+" chake na ubonyeze {em_start}Hariri{em_end}. Waweza kufuta kundi la yaliyomo"
+" pindi tu iwapo halitumiki kwa kitengo. Kufuta kundi la yaliyomo, vinjari "
+"kwenye kisanduku chake na bonyeza taswira ya kufuta."
 
 #: cms/templates/group_configurations.html
 msgid ""
@@ -21480,6 +21119,11 @@ msgid ""
 "not in use in an experiment. To delete a configuration, hover over its box "
 "and click the delete icon."
 msgstr ""
+"Bonyeza {em_start}Mpangilio wa Kundi Jipya{em_end} kuongeza mpangilio mpya. "
+"Kuhariri mpangilio, vinjari juu ya kisanduku chake na ubonyeze "
+"{em_start}Hariri{em_end}. Waweza kufuta mpangilio wa kundi iwapo tu "
+"hautumiki kwenye jaribio. Kufuta mpangilio, vinjari juu ya kisanduku chake "
+"na ubonyeze taswira ya kufuta."
 
 #: cms/templates/howitworks.html
 msgid "Welcome"
@@ -21539,13 +21183,15 @@ msgstr ""
 
 #: cms/templates/howitworks.html
 msgid "Change Your Mind Anytime"
-msgstr ""
+msgstr "Badili Fikra Zako Wakati wowote"
 
 #: cms/templates/howitworks.html
 msgid ""
 "Draft your outline and build content anywhere. Simple drag and drop tools "
 "let you reorganize quickly."
 msgstr ""
+"Fanya mchoro wa kwanza wa muongozo wako na ujenge yaliyomo popote. Buruta "
+"kirahisi na angusha zana zikupangie upya kwa upesi. "
 
 #: cms/templates/howitworks.html
 msgid "Go A Week Or A Semester At A Time"
@@ -21569,10 +21215,13 @@ msgid ""
 "learning. Insert videos, discussions, and a wide variety of exercises with "
 "just a few clicks."
 msgstr ""
+"{studio_name} inakupa wewe kusuka yaliyomo yako pamoja kwa njia ya "
+"kuimarisha mafunzo. Weka video, mazungumzo, na namna nyingi za mazoezi kwa "
+"vibonyezo vichache."
 
 #: cms/templates/howitworks.html
 msgid "Create Learning Pathways"
-msgstr ""
+msgstr "Kubuni Njia za Kujifindishia"
 
 #: cms/templates/howitworks.html
 msgid ""
@@ -21591,16 +21240,20 @@ msgid ""
 "Work visually and see exactly what your students will see. Reorganize all "
 "your content with drag and drop."
 msgstr ""
+"Fanya kazi kwa maono uone wanafunzi wako wataona nii hasa. Panga upya yote "
+"yaliyomo yako kwa kuburuta na kuangusha."
 
 #: cms/templates/howitworks.html
 msgid "A Broad Library of Problem Types"
-msgstr ""
+msgstr "Maktaba Pana ya Aina za Matatizo"
 
 #: cms/templates/howitworks.html
 msgid ""
 "It's more than just multiple choice. {studio_name} supports more than a "
 "dozen types of problems to challenge your learners."
 msgstr ""
+"Ni zaidi ya chaguo mchanganyiko. {studio_name} inasaidia zaidi ya aina kumi "
+"na mbili za matatizo kuwakabili wanagenzi wako."
 
 #: cms/templates/howitworks.html
 msgid ""
@@ -21621,6 +21274,10 @@ msgid ""
 "incremental release when it makes sense. And with co-authors, you can have a"
 " whole team building a course, together."
 msgstr ""
+"{studio_name} inafanya kama matumizi ya mtandao ambayo tayari wayajua, hali "
+"inafahamu namna gani unavyo jenga mtalaa. Uchapishaji wa papo kwa hapo wa "
+"mtandao unapohitajia, nyongeza za kuachilia ikiwa inaleta maana. Na pamoja "
+"na watunzi wenza, unaweza kuwa na kikosi kizima mukijenga kozi, pamoja."
 
 #: cms/templates/howitworks.html
 msgid "Instant Changes"
@@ -21631,10 +21288,12 @@ msgid ""
 "Caught a bug? No problem. When you want, your changes go live when you click"
 " Save."
 msgstr ""
+"Umeshika bug? Hamna tatizo. Ukihitaji, mabadiliko yako yako yaende hai "
+"ukibonyeza Dhibiti."
 
 #: cms/templates/howitworks.html
 msgid "Release-On Date Publishing"
-msgstr ""
+msgstr "Tarehe ya Kutoa Chapa"
 
 #: cms/templates/howitworks.html
 msgid ""
@@ -21656,6 +21315,8 @@ msgid ""
 "Co-authors have full access to all the same authoring tools. Make your "
 "course better through a team effort."
 msgstr ""
+"Watunzi wenzako wamefaulu kufikia zana zote za utungaji. Fanya fanni yako "
+"bora kupitia juhudi / jitihada za kikosi. "
 
 #: cms/templates/howitworks.html
 msgid "Sign Up for {studio_name} Today!"
@@ -21733,6 +21394,11 @@ msgid ""
 "recommend that you export the current library, so that you have a backup "
 "copy of it."
 msgstr ""
+"Kuwa na hakika unahitaji kupokea maktaba kabla kuendelea. Yaliyomo katika "
+"mapokezi ya maktaba yatachukua nafasi ya yaliyomo kwa sasa ya maktaba. "
+"{em_start}Huwezi kutangua mapokezi ya maktaba{em_end}. Kabla hujaendelea, "
+"tunapendekeza utume nje maktaba iliopo sasa, ili upate nakala ya kuungia "
+"mkono."
 
 #: cms/templates/import.html
 msgid ""
@@ -21740,6 +21406,9 @@ msgid ""
 "compressed with GNU Zip). This .tar.gz file must contain a library.xml file."
 " It may also contain other files."
 msgstr ""
+"Maktaba unayopokea lazima iwe ni faili ya tar.gz (that is, a .tar file "
+"compressed with GNU Zip). Faili hii ya .tar.gz lazima iwe na maktaba .xml "
+"faili. Inaweza pia kuwa na faili nyingine nyingi."
 
 #: cms/templates/import.html
 msgid ""
@@ -21748,6 +21417,10 @@ msgid ""
 "completed. We recommend, however, that you don't make important changes to "
 "your library until the import operation has completed."
 msgstr ""
+"Njia ya mapokezi ina vitongoji vitano. katika vitongo viwili vya kwanza, "
+"lazima ubakie katika ukurasa huu. Unaweza kutoka kwa ukurasa huu baada ya "
+"upanguzi kukamilika. Tunapendekeza, ijapokuwa, hufanyi mageuzi muhimu kwa "
+"maktaba yako mpaka harakati za mapokezi zikamilike."
 
 #: cms/templates/import.html
 msgid ""
@@ -21757,6 +21430,11 @@ msgid ""
 "recommend that you export the current course, so that you have a backup copy"
 " of it."
 msgstr ""
+"Kuwa na hakika unahitaji kupokea kozi kabla kuendelea. Yaliyomo katika "
+"mapokezi ya kozi yatachukua nafasi ya yaliyomo sasa kwenye kozi. "
+"{em_start}Huwezi kutangua mapokezi ya kozi{em_end}. Kabla hujaendelea, "
+"tunapendekeza kwamba utume nje kozi iliopo sasa, ili upate nakala yake ya "
+"kuungia mkono."
 
 #: cms/templates/import.html
 msgid ""
@@ -21764,6 +21442,9 @@ msgid ""
 "compressed with GNU Zip). This .tar.gz file must contain a course.xml file. "
 "It may also contain other files."
 msgstr ""
+"Kozi unayopokea lazima iwe kwa faili ya .tar.gz (that is, a .tar file "
+"compressed with GNU Zip). Faili hii .tar.gz lazima iwe na faili ya kozi ya "
+".xml. inaweza pia kuwa na faili nyenginezo."
 
 #: cms/templates/import.html
 msgid ""
@@ -21772,14 +21453,18 @@ msgid ""
 "completed. We recommend, however, that you don't make important changes to "
 "your course until the import operation has completed."
 msgstr ""
+"Njia ya mapokezi ina vitongoji vitano. Katika vitongoji viwili vya mwanzo, "
+"lazima ubakie kwenye ukurasa huu. Unaweza kutoka katika ukurasa huu baada ya"
+" kitongoji cha upanguzi kukamilika. Tunapendekeza, ijapokuwa, hufanyi "
+"mabadiliko muhimu kwa kozi yako mpaka harakati za mapokezi zikamilike."
 
 #: cms/templates/import.html
 msgid "Select a .tar.gz File to Replace Your Library Content"
-msgstr ""
+msgstr "Chagua Faili ya tar.gz Kubadilisha Yaliyomo ya Maktaba"
 
 #: cms/templates/import.html
 msgid "Select a .tar.gz File to Replace Your Course Content"
-msgstr ""
+msgstr "Chagua Faili ya tar.gz Kubadilisha Yaliyomo katika Fanni Yako"
 
 #: cms/templates/import.html
 msgid "Choose a File to Import"
@@ -21791,15 +21476,15 @@ msgstr "Faili Iliyochaguliwa:"
 
 #: cms/templates/import.html
 msgid "Replace my library with the selected file"
-msgstr ""
+msgstr "Badilisha maktaba yangu kwa faili teule"
 
 #: cms/templates/import.html
 msgid "Replace my course with the selected file"
-msgstr ""
+msgstr "Badilisha fanni yangu kwa faili teule"
 
 #: cms/templates/import.html
 msgid "Library Import Status"
-msgstr ""
+msgstr "Hali Ilivyo ya Upokeaji wa Maktaba"
 
 #: cms/templates/import.html
 msgid "Course Import Status"
@@ -21811,7 +21496,7 @@ msgstr "Kuhamisha faili yako kenda kwenye seva zetu"
 
 #: cms/templates/import.html
 msgid "Unpacking"
-msgstr ""
+msgstr "Kupangua"
 
 #: cms/templates/import.html
 msgid ""
@@ -21819,6 +21504,9 @@ msgid ""
 "safely, but avoid making drastic changes to content until this import is "
 "complete)"
 msgstr ""
+"Mkunjo wa upanuzi na matayarisho/muundo wa faili (you can leave this page "
+"safely, but avoid making drastic changes to content until this import is "
+"complete)"
 
 #: cms/templates/import.html
 msgid "Verifying"
@@ -21826,7 +21514,7 @@ msgstr "Uhakikishaji"
 
 #: cms/templates/import.html
 msgid "Reviewing semantics, syntax, and required data"
-msgstr ""
+msgstr "Kupitia upya semantiki, syntaksi, na takwimu inayohitajika"
 
 #: cms/templates/import.html
 msgid "Updating Library"
@@ -21841,32 +21529,36 @@ msgid ""
 "Integrating your imported content into this library. This process might take"
 " longer with larger libraries."
 msgstr ""
+"Kuchanganya yaliyomo katika mapokezi yako na maktaba hii. Njia hii yaweza "
+"kukawiya/kuchukua muda mrefu sana kwa maktaba kubwa zaidi. "
 
 #: cms/templates/import.html
 msgid ""
 "Integrating your imported content into this course. This process might take "
 "longer with larger courses."
 msgstr ""
+"Kuchanganya yaliyomo katika kozi hii. Njia hii yaweza kukawiya mno kwa kozi "
+"pana zaidi."
 
 #: cms/templates/import.html
 msgid "Your imported content has now been integrated into this library"
-msgstr ""
+msgstr "Yaliyomo katika mapokezi yako sasa yamechanganywa kwenye maktaba hii"
 
 #: cms/templates/import.html
 msgid "Your imported content has now been integrated into this course"
-msgstr ""
+msgstr "Yaliyomo katika mapokezi yako sasa yamechanganywa kwenye kozi hii"
 
 #: cms/templates/import.html
 msgid "View Updated Library"
-msgstr ""
+msgstr "Tizama Ukamilishaji wa Maktaba"
 
 #: cms/templates/import.html
 msgid "View Updated Outline"
-msgstr ""
+msgstr "Tizama Muongozo wa Ukamilishaji "
 
 #: cms/templates/import.html
 msgid "Why import a library?"
-msgstr ""
+msgstr "Kwanini Upokee Maktaba?"
 
 #: cms/templates/import.html
 msgid ""
@@ -21874,10 +21566,12 @@ msgid ""
 " existing library entirely. You might also have developed a library outside "
 "of {studio_name}."
 msgstr ""
+"Ungehitaji kukamilisha maktaba iliopo kwa mtindo mpya, au badilisha maktaba "
+"iliopo yote kabisa. Waweza kuwa umeanzisha maktaba nje ya {studio_name}."
 
 #: cms/templates/import.html
 msgid "Note: Library content is not automatically updated in courses"
-msgstr ""
+msgstr "Ilani: Yaliyomo ya maktaba hayajikamilishi yenyewe katika kozi"
 
 #: cms/templates/import.html
 msgid ""
@@ -21886,10 +21580,14 @@ msgid ""
 "updated content. You must manually refresh the randomized content blocks to "
 "bring them up to date with the latest library content."
 msgstr ""
+"Ukibadilisha na upokee maktaba ambayo imeashiriwa kwa kubahatisha tabaka za "
+"yaliyomo kati ya kozi moja au zaidi, kozi hizo hazitumii ukamilishaji "
+"kiwenyewe wa yaliyomo. Lazima urudie upya kwa kuweka tabaka za ubahatishaji "
+"wa yaliyomo kuzileta ziwe kamilifu na yaliyomo ya maktaba mpya kabisa."
 
 #: cms/templates/import.html
 msgid "Learn more about importing a library"
-msgstr ""
+msgstr "Jifunze mengi kuhusu upokeaji wa maktaba"
 
 #: cms/templates/import.html
 msgid "Why import a course?"
@@ -21901,10 +21599,12 @@ msgid ""
 "existing course altogether. Or, you may have developed a course outside "
 "{studio_name}."
 msgstr ""
+"Ungehitaji kuendesha toleo jipya la kozi iliopo sasa, au badilisha kozi "
+"iliopo yote kabisa. Au, pengine ungeanzisha kozi nje ya {studio_name}."
 
 #: cms/templates/import.html
 msgid "What content is imported?"
-msgstr ""
+msgstr "Ni yaliyomo yapi yakupokea?"
 
 #: cms/templates/import.html
 msgid "The following content is imported."
@@ -21916,7 +21616,7 @@ msgstr ""
 
 #: cms/templates/import.html
 msgid "Warning: Importing while a course is running"
-msgstr ""
+msgstr "Onyo: Upokeaji ikiwa fanni inaendelea "
 
 #: cms/templates/import.html
 msgid ""
@@ -21925,28 +21625,34 @@ msgid ""
 "associated with those Problem components may be lost. This data includes "
 "students' problem scores."
 msgstr ""
+"Ukitekeleza upokezi hali kozi inaendelea, na ubadilishe majina ya URL (or "
+"url_name nodes) ya vipengele vyovyote vya matatizo, habari za mwanafunzi "
+"zihusianazo na vipengele vya matatizo hayo zaweza kupotea. Taarifa hii ni "
+"pamoja na alama wapatazo wanafunzi za utahini wa matatizo. "
 
 #: cms/templates/import.html
 msgid "Learn more about importing a course"
-msgstr ""
+msgstr "Jifunze zaidi kuhusu upokeaji wa fanni"
 
 #: cms/templates/library.html
 msgid "Content Library"
-msgstr ""
+msgstr "Yaliyomo Maktaba"
 
 #: cms/templates/library.html
 msgid "Add Component"
-msgstr ""
+msgstr "Ongeza Kigezo/Sehemu"
 
 #: cms/templates/library.html
 msgid "Adding content to your library"
-msgstr ""
+msgstr "Kuongeza yaliyomo kwa maktaba yako"
 
 #: cms/templates/library.html
 msgid ""
 "Add components to your library for use in courses, using Add New Component "
 "at the bottom of this page."
 msgstr ""
+"Ongeza vigezo kwa maktaba yako kwa matumizi ya kozi, ukitumia Ongeza Kigezo "
+"Kipya chini ya ukurasa huu."
 
 #: cms/templates/library.html
 msgid ""
@@ -21954,6 +21660,10 @@ msgid ""
 "recently added at the bottom. Use the pagination arrows to navigate from "
 "page to page if you have more than one page of components in your library."
 msgstr ""
+"Vigezo vimeorodheshwa katika mpangilio kulingana vinavyo ongezwa, ikiwa "
+"kilichuongezewa karibuni zaidi kuwa chini. Tumia mishale ya kuweka nambari "
+"za kurasa kumarisi kutoka ukurasa hadi mwingine iwapo una kurasa zaidi ya "
+"moja ya vigezo kwenye maktaba yako."
 
 #: cms/templates/library.html
 msgid "Using library content in courses"
@@ -21968,14 +21678,21 @@ msgid ""
 "this library as the source library, and specify the number of problems to be"
 " randomly selected and displayed to each student."
 msgstr ""
+"Tumia yaliyomo ya maktaba katika kozi kwa kuongezea "
+"{em_start}yaliyomo_maktaba{en_end} kanuni halisi kwa Orodha ya Kipimo "
+"Kilichoboreshwa kwenye  Mikakati Ilioboreshwa ya kozi, kisha ongeza Pande "
+"kubwa la yaliyomo ya kubahatisha kwenye koziwea. Kwenye Mikakati ya kila "
+"pande la yaliyomo ya kubahatisha, chagua maktaba hii kama maktaba asili, na "
+"utaje idadi ya matatizo yachagulie kwa kubahatisha na yaonyeshwe kwa kila "
+"mwanafunzi.   "
 
 #: cms/templates/library.html
 msgid "Learn more about content libraries"
-msgstr ""
+msgstr "Jifunze zaidi kuhusu yaliyomo ya maktaba"
 
 #: cms/templates/manage_users.html
 msgid "Course Team Settings"
-msgstr ""
+msgstr "Mikakati ya Kikosi cha Kozi"
 
 #: cms/templates/manage_users.html cms/templates/manage_users_lib.html
 msgid "New Team Member"
@@ -22011,6 +21728,9 @@ msgid ""
 "Adding team members makes course authoring collaborative. Users must be "
 "signed up for {studio_name} and have an active account."
 msgstr ""
+"Kuongeza wanakikosi inafanya utungaji wa kozi uwe wa ushirikiano. Watumiaji "
+"lazima wajiunge kwa mtandao wa {studio_name} na wapate akaunti zilizo "
+"amka/hai."
 
 #: cms/templates/manage_users.html
 msgid "Add a New Team Member"
@@ -22025,6 +21745,8 @@ msgid ""
 "Course team members with the Staff role are course co-authors. They have "
 "full writing and editing privileges on all course content."
 msgstr ""
+"Wanakikosi wa kozi na uwajibikaji wa Wafanya kazi ni watunzi wenza. Wana "
+"haki kamili za uandishi na uhariri kwa yaliyomo yote katika kozi."
 
 #: cms/templates/manage_users.html
 msgid ""
@@ -22039,6 +21761,8 @@ msgid ""
 "All course team members can access content in Studio, the LMS, and Insights,"
 " but are not automatically enrolled in the course."
 msgstr ""
+"Wanakikosi wote wa kozi wanaweza kufikia yaliyomo katika studio, LMS, na "
+"Umaizi, lakini hawajasajiliwa kiwenyewe katika kozi."
 
 #: cms/templates/manage_users.html
 msgid "Transferring Ownership"
@@ -22051,6 +21775,10 @@ msgid ""
 " make another user the Admin, then ask that user to remove you from the "
 "Course Team list."
 msgstr ""
+"Kila kozi lazima iwe na mtawala. Kama wewe ni mtawala na unahitaji kuhamisha"
+" umiliki wa kozi, bonyeza <strong>Ongeza ufikiaji wa mtawala</strong> "
+"kumtawaza mtumiaji mwengine Utawala, kisha muuliaze huyo mtumiaji akuondoe "
+"katika orodha ya Kikosi cha Kozi. "
 
 #: cms/templates/manage_users_lib.html
 msgid "Library User Access"
@@ -22073,6 +21801,9 @@ msgid ""
 "Grant other members of your course team access to this library. New library "
 "users must have an active {studio_name} account."
 msgstr ""
+"Idhinisha ufikiaji kwa washiriki wengine wa kikosi cha kozi kwa maktaba hii."
+" Watumiaji wapya wa maktaba lazima wawe na akaunti {studio_name} "
+"ilioamka/hai."
 
 #: cms/templates/manage_users_lib.html
 msgid "Add a New User"
@@ -22093,12 +21824,17 @@ msgid ""
 "Library Users can view library content and can reference or use library "
 "components in their courses, but they cannot edit the contents of a library."
 msgstr ""
+"Watumiaji wa Maktaba waweza kuangalia yaliyomo ya maktaba na wanaweza "
+"kurudia au kutumia vigezo vya maktaba katika kozi zao, lakini hawawezi "
+"kuhariri yaliyomo ya maktaba."
 
 #: cms/templates/manage_users_lib.html
 msgid ""
 "Library Staff are content co-authors. They have full editing privileges on "
 "the contents of a library."
 msgstr ""
+"Wafanya kazi wa maktaba ni watungaji wenza wa yaliyomo. Wana haki kamili za "
+"uhariri kwa yaliyomo ya maktaba."
 
 #: cms/templates/manage_users_lib.html
 msgid ""
@@ -22106,6 +21842,9 @@ msgid ""
 "other team members. There must be at least one user with the Admin role in a"
 " library."
 msgstr ""
+"Watawala wa Maktaba wana haki kamili za uhariri na waweza pia kuongeza na "
+"kupunguza wanakikosi. Lazima kuwepo na japo mtumiaji mmoja na jukumu la "
+"Mtawala katika maktaba."
 
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
@@ -22141,6 +21880,8 @@ msgid ""
 "for enrollment. Please navigate to this course at {link_for_about_page} to "
 "enroll."
 msgstr ""
+"Kozi \"{course_display_name}\", imetolewa na {platform_name}, iko wazi kwa "
+"usajili. Tafadhali marisi kwa kozi hii na {link_for_about_page} kujisajili."
 
 #: cms/templates/settings.html
 msgid "Send a note to students via email"
@@ -22184,11 +21925,11 @@ msgstr "Daraja ya Chini "
 
 #: cms/templates/settings.html
 msgid "Successful Proctored Exam"
-msgstr ""
+msgstr "Mtihani wa Uleaji Umefaulu"
 
 #: cms/templates/settings.html
 msgid "Proctored Exam {number}"
-msgstr ""
+msgstr "Mtihani wa Uleaji {number}"
 
 #: cms/templates/settings.html
 msgid "ID Verification"
@@ -22196,7 +21937,7 @@ msgstr "Uthibitisho wa Kitambulisho"
 
 #: cms/templates/settings.html
 msgid "In-Course Reverification {number}"
-msgstr ""
+msgstr "Uthibitisho upya Uko Njiani {number}"
 
 #: cms/templates/settings.html
 msgid "Course Pacing"
@@ -22216,6 +21957,9 @@ msgid ""
 "You can configure release dates for course content and due dates for "
 "assignments."
 msgstr ""
+"Mwalimu aliweka hatua za maendeleo ya kozi kwa mwendo ambao mtunzi wa kozi "
+"huweka. Unaweza kupanga tarehe za kuachilia yaliyomo ya kozi na tarehe za "
+"kumalizia kwa mazoezi yaliyo tolewa. "
 
 #: cms/templates/settings.html
 msgid "Self-Paced"
@@ -22234,11 +21978,11 @@ msgstr "Ratiba ya Kozi"
 
 #: cms/templates/settings.html
 msgid "Dates that control when your course can be viewed"
-msgstr ""
+msgstr "Tarehe zinazo ongoza lini kozi yako yaweza kuangaliwa"
 
 #: cms/templates/settings.html
 msgid "Course Start Date"
-msgstr ""
+msgstr "Tarehe ya Kuanza Kozi"
 
 #: cms/templates/settings.html
 msgid "First day the course begins"
@@ -22254,7 +21998,7 @@ msgstr "(UTC)"
 
 #: cms/templates/settings.html
 msgid "Course End Date"
-msgstr ""
+msgstr "Tarehe ya Kumaliza Kozi"
 
 #: cms/templates/settings.html
 msgid "Last day your course is active"
@@ -22458,12 +22202,16 @@ msgid ""
 "You can manage this image along with all of your other {a_link_start}files "
 "and uploads{a_link_end}"
 msgstr ""
+"Unaweza kumudu taswira hii pamoja na faili zako nyingine {a_link_start} na "
+"ulizo zipakia{a_link_end}"
 
 #: cms/templates/settings.html
 msgid ""
 "Your course currently does not have an image. Please upload one (JPEG or PNG"
 " format, and minimum suggested dimensions are 375px wide by 200px tall)"
 msgstr ""
+"Kozi yako haina taswira kwa sasa. Tafadhali pakia moja (JPEG or PNG format, "
+"and minimum suggested dimensions are 375px wide by 200px tall) "
 
 #. Translators: This is the placeholder text for a field that requests the URL
 #. for a course image
@@ -22488,26 +22236,31 @@ msgid ""
 "Your course currently does not have an image. Please upload one (JPEG or PNG"
 " format, and minimum suggested dimensions are 1440px wide by 400px tall)"
 msgstr ""
+"Kozi yako kwa sasa hivi haina taswira. Tafadhali pakia faili moja ya (mfumo "
+"wa JPEG au PNG, na vipimo vya chini vilivyokadiriwa / kisiwa ni 1440px upana"
+" kwa 400px urefu)"
 
 #. Translators: This is the placeholder text for a field that requests the URL
 #. for a course banner image
 #: cms/templates/settings.html
 msgid "Your banner image URL"
-msgstr ""
+msgstr "URL ya taswira ya bango lako"
 
 #: cms/templates/settings.html
 msgid ""
 "Please provide a valid path and name to your banner image (Note: only JPEG "
 "or PNG format supported)"
 msgstr ""
+"Tafadhali toa njia halali na jina kwenye taswira ya bango lako (Tambua: "
+"mifumo inayokubalika ni ya JPEG au PNG)"
 
 #: cms/templates/settings.html
 msgid "Upload Course Banner Image"
-msgstr ""
+msgstr "Pakia Taswira ya Bango la Kozi"
 
 #: cms/templates/settings.html
 msgid "Video Thumbnail Image"
-msgstr ""
+msgstr "Taswira ya Video ya Dole gumba"
 
 #: cms/templates/settings.html
 msgid ""
@@ -22515,22 +22268,27 @@ msgid ""
 "one (JPEG or PNG format, and minimum suggested dimensions are 375px wide by "
 "200px tall)"
 msgstr ""
+"Kozi yako kwa sasa hivi haina taswira ya video ya dole gumba. Tafadhali "
+"pakia faili moja ya (mfumo wa JPEG au PNG, na vipimo vya chini "
+"vilivyokadiriwa/kisiwa ni 375px upana kwa 200px urefu)"
 
 #. Translators: This is the placeholder text for a field that requests the URL
 #. for a course video thumbnail image
 #: cms/templates/settings.html
 msgid "Your video thumbnail image URL"
-msgstr ""
+msgstr "URL ya taswira ya video ya dole gumba lako"
 
 #: cms/templates/settings.html
 msgid ""
 "Please provide a valid path and name to your video thumbnail image (Note: "
 "only JPEG or PNG format supported)"
 msgstr ""
+"Tafadhali toa njia halali na jina kwa taswira ya video ya dole gumba lako "
+"(Tambua: ni mfumo wa JPEG au PNG unaokubalika) "
 
 #: cms/templates/settings.html
 msgid "Upload Video Thumbnail Image"
-msgstr ""
+msgstr "Pakia Taswira ya Video ya Dole gumba"
 
 #: cms/templates/settings.html
 msgid "Course Introduction Video"
@@ -22549,6 +22307,8 @@ msgstr "Kitambulisho cha video yako ya YouTube"
 #: cms/templates/settings.html
 msgid "Enter your YouTube video's ID (along with any restriction parameters)"
 msgstr ""
+"Ingiza/Weka Kitambulisho cha video yako ya YouTube (along with any "
+"restriction parameters)"
 
 #: cms/templates/settings.html
 msgid "Learning Outcomes"
@@ -22607,6 +22367,8 @@ msgid ""
 "You can now view and author your course entrance exam from the "
 "{link_start}Course Outline{link_end}."
 msgstr ""
+"Unaweza sasa kutizama na kutunga kiingilio mtihanini cha kozi yako kutoka "
+"kwa {link_start}Muongozo wa Kozi{link_end}."
 
 #: cms/templates/settings.html
 msgid "Grade Requirements"
@@ -22636,17 +22398,18 @@ msgstr "'Leseni' ya Maudhui ya Kozi"
 #. following string:
 #: cms/templates/settings.html
 msgid "Select the default license for course content"
-msgstr ""
+msgstr "Chagua leseni ilio na kombo kwa yaliyomo katika kozi"
 
 #: cms/templates/settings.html
 msgid "How are these settings used?"
-msgstr ""
+msgstr "Mikakati hii ina tumika vipi?"
 
 #: cms/templates/settings.html
 msgid ""
 "Your course's schedule determines when students can enroll in and begin a "
 "course."
 msgstr ""
+"Ratiba ya kozi yako itategea wanafunzi wakiweza kujisajili na waanze kozi. "
 
 #: cms/templates/settings.html
 msgid ""
@@ -22655,6 +22418,10 @@ msgid ""
 "video, and estimated time requirements. Students use About pages to choose "
 "new courses to take."
 msgstr ""
+"Taarifa nyengine katika ukurasa huu inatokea kwenye ukurasa unaohusu mambo "
+"ya kozi yako. Habari hii ni pamoja na mtazamo wote wa kozi, taswira ya kozi,"
+" uanzilishi wa video, na makisio ya wakati unaohitaji. Wanafunzi wanatumia "
+"kurasa zihusianazo kuchagua kozi mpya ya kuchukua/kusomea. "
 
 #: cms/templates/settings_advanced.html
 msgid ""
@@ -22670,15 +22437,17 @@ msgstr ""
 
 #: cms/templates/settings_advanced.html
 msgid "Your policy changes have been saved."
-msgstr ""
+msgstr "Mabadiliko yako ya kanuni yamedhibitiwa."
 
 #: cms/templates/settings_advanced.html
 msgid "There was an error saving your information. Please see below."
 msgstr ""
+"Kulikuwa na hitlafu kudhibiti taarifa yako. Tafadhali ona/angalia hapo "
+"chini."
 
 #: cms/templates/settings_advanced.html
 msgid "Manual Policy Definition"
-msgstr ""
+msgstr "Muongozo unao Fafanua Kanuni"
 
 #: cms/templates/settings_advanced.html
 msgid ""
@@ -22690,11 +22459,11 @@ msgstr ""
 
 #: cms/templates/settings_advanced.html
 msgid "Show Deprecated Settings"
-msgstr ""
+msgstr "Onyesha Mikakati Lalamishi"
 
 #: cms/templates/settings_advanced.html
 msgid "What do advanced settings do?"
-msgstr ""
+msgstr "Mikakati iliyoboreshwa hufanya nini?"
 
 #: cms/templates/settings_advanced.html
 msgid ""
@@ -22702,6 +22471,9 @@ msgid ""
 "can edit manual policies, which are JSON-based key and value pairs that "
 "control specific course settings."
 msgstr ""
+"Mikakati iliyoboreshwa inapeleka / inamiliki kazi maalum ya kozi. Katika "
+"ukurasa huu, unaweza kuhariri kanuni za mkono, ambazo ni funguo msingi kwa "
+"JSON na inathamini jozi ambazo zinamiliki mikakati ya kazi maalum ya kozi. "
 
 #: cms/templates/settings_advanced.html
 msgid ""
@@ -22709,6 +22481,9 @@ msgid ""
 "elsewhere in {studio_name}. Do not edit policies unless you are familiar "
 "with both their purpose and syntax."
 msgstr ""
+"Kanuni zozote unazo boresha hapa inafuta habari zote ulizo elezea kwengine "
+"katika{studio_name}. Usihariri kanuni labda unauzofu na zote mbili sababu na"
+" syntaksi."
 
 #: cms/templates/settings_advanced.html
 msgid ""
@@ -22722,15 +22497,16 @@ msgstr ""
 
 #: cms/templates/settings_graders.html
 msgid "Grading Settings"
-msgstr ""
+msgstr "Mikakati Iliyo na Daraja"
 
 #: cms/templates/settings_graders.html
 msgid "Overall Grade Range"
-msgstr ""
+msgstr "Masafa ya Daraja kwa Jumla "
 
 #: cms/templates/settings_graders.html
 msgid "Your overall grading scale for student final grades"
 msgstr ""
+"Mizani ya utoaji daraja ya jumla kwa daraja ya mwisho wa kozi ya mwanafunzi "
 
 #: cms/templates/settings_graders.html
 msgid "Add grade"
@@ -22738,19 +22514,19 @@ msgstr "Weka daraja"
 
 #: cms/templates/settings_graders.html
 msgid "Credit Eligibility"
-msgstr ""
+msgstr "Ustahilifu wa Mkopo"
 
 #: cms/templates/settings_graders.html
 msgid "Settings for course credit eligibility"
-msgstr ""
+msgstr "Mikakati ustahilifu wa mikopo ya kozi"
 
 #: cms/templates/settings_graders.html
 msgid "Minimum Credit-Eligible Grade:"
-msgstr ""
+msgstr "Kiwango cha chini Daraja cha Ustahilifu wa Mkopo:"
 
 #: cms/templates/settings_graders.html
 msgid "Must be greater than or equal to the course passing grade"
-msgstr ""
+msgstr "Lazima iwe zaidi ya au sawiya na kiwango cha daraja ya kupita kozi"
 
 #: cms/templates/settings_graders.html
 msgid "Grading Rules & Policies"
@@ -22759,14 +22535,16 @@ msgstr ""
 #: cms/templates/settings_graders.html
 msgid "Deadlines, requirements, and logistics around grading student work"
 msgstr ""
+"Tarehe za mwisho, yanayohitajika/wa, na mpangilio wa ugavi na upelekaji wa "
+"daraja ya kazi ya mwanafunzi."
 
 #: cms/templates/settings_graders.html
 msgid "Grace Period on Deadline:"
-msgstr ""
+msgstr "Wakati mzuri/muaffak wa Kumalizia:"
 
 #: cms/templates/settings_graders.html
 msgid "Leeway on due dates"
-msgstr ""
+msgstr "Leeway ya tarehe ya kumalizia"
 
 #: cms/templates/settings_graders.html
 msgid "Assignment Types"
@@ -22774,11 +22552,11 @@ msgstr "Aina za Mazoezi"
 
 #: cms/templates/settings_graders.html
 msgid "Categories and labels for any exercises that are gradable"
-msgstr ""
+msgstr "Tabaka na vibandiko kwa mazoezi yoyote ambayo yanapewa daraja"
 
 #: cms/templates/settings_graders.html
 msgid "New Assignment Type"
-msgstr ""
+msgstr "Aina Mpya ya Utoaji wa Mazoezi"
 
 #: cms/templates/settings_graders.html
 msgid "What can I do on this page?"
@@ -22790,12 +22568,17 @@ msgid ""
 "course is pass/fail or graded by letter, and to establish the thresholds for"
 " each grade."
 msgstr ""
+"Unaweza kutumia kitelezo chini ya Masafa ya Jumla ya Daraja kutaja kama kozi"
+" yako ni ya faulu/anguka au kwa kupewa daraja kwa barua, na kufafanua "
+"vizingiti kwa kila daraja. "
 
 #: cms/templates/settings_graders.html
 msgid ""
 "You can specify whether your course offers students a grace period for late "
 "assignments."
 msgstr ""
+"Unaweza kutaja kama kozi ya inatoa kwa wanafunzi muda waheri kwa mazoezi ya "
+"kuchelewa."
 
 #: cms/templates/settings_graders.html
 msgid ""
@@ -22803,6 +22586,9 @@ msgid ""
 "exams, and specify how much of a student's grade each assignment type is "
 "worth."
 msgstr ""
+"Unaweza pia kubuni aina za mazoezi, kama kazi ya kufanya nyumbani, "
+"maabara,chemsha bongo, na mitihani, na taja mwanafunzi astahili kupata "
+"daraja ngapi kwa kila aina ya mazoezi inayo faa. "
 
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
@@ -22814,7 +22600,7 @@ msgstr "Vitabu vipya vya Kiada"
 
 #: cms/templates/textbooks.html
 msgid "Why should I break my textbook into chapters?"
-msgstr ""
+msgstr "Kwanini nikigawanye kitabu changu cha kiada kwa sura? "
 
 #: cms/templates/textbooks.html
 msgid ""
@@ -22823,10 +22609,15 @@ msgid ""
 "textbooks into chapters can also help students more easily find topic-based "
 "information."
 msgstr ""
+"Kuvunja kitabu chako cha kiada kuwa sura mchanganyiko kuna punguza wakati wa"
+" kupakia kwa mwanafunzi, hasa wale walio na uunganishi wa mtandao "
+"ulitaratibu sana. Uvunjaji wa vitabu vya kiada kuwa sura inaweza pia "
+"kusaidia wanafunzi kwa urahisi zaidi kutafuta habari zilizo kwa misingi ya "
+"mada."
 
 #: cms/templates/textbooks.html
 msgid "What if my book isn't divided into chapters?"
-msgstr ""
+msgstr "Je kama kitabu changu cha kiada hakigawanyiki kwa sura?"
 
 #: cms/templates/textbooks.html
 msgid ""
@@ -22834,10 +22625,13 @@ msgid ""
 " text as a single chapter and enter a name of your choice in the Chapter "
 "Name field."
 msgstr ""
+"Kama kitabu chako cha kiada hakina sura binafsi, unaweza kupakia kitabu "
+"chote kama sura moja na ingiza jina uhitajialo kwenye kiwanja cha Jina la "
+"Sura."
 
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
-msgstr ""
+msgstr "Jifunze mengi kuhusu vitabu vya kiada"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -22898,7 +22692,7 @@ msgstr ""
 
 #: cms/templates/visibility_editor.html
 msgid "Manage content groups"
-msgstr ""
+msgstr "Mudu Makundi ya yaliyomo"
 
 #. Translators: Any text between {screen_reader_start} and {screen_reader_end}
 #. is only read by screen readers and never shown in the browser.
@@ -22940,23 +22734,28 @@ msgstr ""
 
 #: cms/templates/emails/course_creator_admin_subject.txt
 msgid "{email} has requested {studio_name} course creator privileges on edge"
-msgstr ""
+msgstr "{email} imeoba {studio_name} m'buni wa kozi mpaka wa faida"
 
 #: cms/templates/emails/course_creator_admin_user_pending.txt
 msgid ""
 "User '{user}' with e-mail {email} has requested {studio_name} course creator"
 " privileges on edge."
 msgstr ""
+"Mtumiaji '{user}' kwa anwani ya barua pepe hii {email} ameomba {studio_name}"
+" faida za m'buni wa kozi kwenye ukingo."
 
 #: cms/templates/emails/course_creator_admin_user_pending.txt
 msgid "To grant or deny this request, use the course creator admin table."
 msgstr ""
+"Kuidhinisha au kunyima ombi hili, tumia ratiba ya utawala wa m'buni wa kozi."
 
 #: cms/templates/emails/course_creator_denied.txt
 msgid ""
 "Your request for course creation rights to {studio_name} have been denied. "
 "If you believe this was in error, please contact {email}"
 msgstr ""
+"Omba lako la haki za ubuni wa kozi kwa {studio_name} limekataliwa. Kama "
+"unaamini hii ilikuwa hitlafu, tafadhali wasiliana na {email}"
 
 #: cms/templates/emails/course_creator_granted.txt
 msgid ""
@@ -22964,16 +22763,21 @@ msgid ""
 "\n"
 "{url}"
 msgstr ""
+"Ombi lako la haki za ubuni wa kozi kwa {studio_name} limekubaliwa. Kubuni kozi yako ya kwanza, tembelea\n"
+"\n"
+"{url}"
 
 #: cms/templates/emails/course_creator_revoked.txt
 msgid ""
 "Your course creation rights to {studio_name} have been revoked. If you "
 "believe this was in error, please contact {email}"
 msgstr ""
+"Haki zako za kubuni kozi kwa {studio_name} zimefutiliwa mbali. Kama unaamini"
+" hii ni hitlafu, tafadhali wasiliana na {email}"
 
 #: cms/templates/emails/course_creator_subject.txt
 msgid "Your course creator status for {studio_name}"
-msgstr ""
+msgstr "Hali ya m'buni wa kozi yako kwa {studio_name}"
 
 #: cms/templates/emails/user_task_complete_email.txt
 msgid ""
@@ -23019,7 +22823,7 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_delete.html
 msgid "Confirm"
-msgstr ""
+msgstr "Thibitisha"
 
 #: cms/templates/maintenance/_announcement_edit.html
 msgid "Edit Announcement"
@@ -23031,11 +22835,11 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "previous"
-msgstr ""
+msgstr "iliyopita"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "next"
-msgstr ""
+msgstr "inayofuata"
 
 #: cms/templates/maintenance/_force_publish_course.html
 msgid "Required data to force publish course."
@@ -23128,11 +22932,11 @@ msgstr ""
 
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
-msgstr ""
+msgstr "Zindua Ukusanyaji Asili wa Latex "
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Heading"
-msgstr ""
+msgstr "Kichwa"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Insert a heading"
@@ -23140,23 +22944,23 @@ msgstr "Ingiza kichwa cha taarifa"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Add a multiple choice question"
-msgstr ""
+msgstr "Ongeza suali lenye chaguo mchanganyiko/nyingi"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Add a question with checkboxes"
-msgstr ""
+msgstr "Ongeza suali lenye visanduku vya uangaliaji"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Insert a text response"
-msgstr ""
+msgstr "Ingiza nakala ya jibu"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Insert a numerical response"
-msgstr ""
+msgstr "Ingiza jibu kwa nambari"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Insert a dropdown response"
-msgstr ""
+msgstr "Ingiza jibu kwa kuangushia chini"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Explanation"
@@ -23164,11 +22968,11 @@ msgstr "Maelezo"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Add an explanation for this question"
-msgstr ""
+msgstr "Ongeza maelezo kwa suali hili"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Advanced Editor"
-msgstr ""
+msgstr "Mhariri alie Boreshwa"
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Markdown Help"
@@ -23176,59 +22980,59 @@ msgstr ""
 
 #: cms/templates/widgets/problem-edit.html
 msgid "Label"
-msgstr ""
+msgstr "Kibandiko/Kitambulisho"
 
 #: cms/templates/widgets/sock.html
 msgid "Looking for help with {studio_name}?"
-msgstr ""
+msgstr "Kutafuta msaada na {studio_name}?"
 
 #: cms/templates/widgets/sock.html
 msgid "Hide {studio_name} Help"
-msgstr ""
+msgstr "Ficha Msaada wa {studio_name} "
 
 #: cms/templates/widgets/sock.html
 msgid "{studio_name} Documentation"
-msgstr ""
+msgstr "Nyaraka {studio_name}"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access documentation on http://docs.edx.org"
-msgstr ""
+msgstr "Pata waraka kwenye http://docs.edx.org"
 
 #: cms/templates/widgets/sock_links.html
 msgid "edX Documentation"
-msgstr ""
+msgstr "Waraka wa edX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
-msgstr ""
+msgstr "Fikia Lango la edX Wazi"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
-msgstr ""
+msgstr "Lango la edX Wazi"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
+msgstr "Jiandikishe kwenye edX101: Muhtasari wa kuunda Kozi ya edX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101"
-msgstr ""
+msgstr "Jiandikishe kwenye edX101"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
+msgstr "Jiandikishe kwenye StudioX: Unda Kozi na edX Studio "
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX"
-msgstr ""
+msgstr "Jiandikishe kwenye StudioX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Send an email to {email}"
-msgstr ""
+msgstr "Tuma barua pepe kwenda {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
-msgstr ""
+msgstr "Umejiunga kwa sasa hivi kama:"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Maintenance"
@@ -23733,7 +23537,7 @@ msgstr ""
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid "Remove"
-msgstr ""
+msgstr "Ondoa"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid ""
@@ -23751,17 +23555,17 @@ msgstr ""
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "User"
-msgstr ""
+msgstr "Mtumiaji"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "File"
-msgstr ""
+msgstr "Faili"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Action"
-msgstr ""
+msgstr "Kitendo"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
@@ -23771,7 +23575,7 @@ msgstr ""
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Download"
-msgstr ""
+msgstr "Pakua"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "Use this!"
@@ -23837,7 +23641,7 @@ msgstr ""
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid "Headers"
-msgstr ""
+msgstr "Mistari ya juu ya kurasa"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid ""
@@ -23996,7 +23800,7 @@ msgstr ""
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid "Insert"
-msgstr ""
+msgstr "Ingiza"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "No images found for this article"
@@ -24109,7 +23913,7 @@ msgstr ""
 
 #: wiki/templates/wiki/base.html
 msgid "Search..."
-msgstr ""
+msgstr "Tafuta..."
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
@@ -24206,7 +24010,7 @@ msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Please log in"
-msgstr ""
+msgstr "Tafadhali ingia mtandaoni"
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Log me in..."
@@ -24226,7 +24030,7 @@ msgstr ""
 
 #: wiki/templates/wiki/article/create_root.html
 msgid "Congratulations!"
-msgstr ""
+msgstr "Hongera!"
 
 #: wiki/templates/wiki/article/create_root.html
 msgid ""
@@ -24430,6 +24234,15 @@ msgstr ""
 #~ msgid "Careers"
 #~ msgstr "Kazi "
 
+#~ msgid "Sign In"
+#~ msgstr "Ingia Mtandaoni"
+
+#~ msgid "Course Run"
+#~ msgstr "Uendeshaji wa Fanni"
+
+#~ msgid "Dismiss"
+#~ msgstr "Puuza"
+
 #~ msgid "Grading"
 #~ msgstr "Kutoa Daraja"
 
@@ -24454,6 +24267,58 @@ msgstr ""
 #~ msgid "Page Actions"
 #~ msgstr "Vitendo vya Ukurasa"
 
+#~ msgid "Create a Course Rerun of:"
+#~ msgstr "Buni Maregeleo ya Fanni kwa:"
+
+#~ msgid "Create a re-run of a course"
+#~ msgstr "Buni maregeleo ya fanni"
+
+#~ msgid "You are creating a re-run from:"
+#~ msgstr "Unabuni maregeleo kutoka:"
+
+#~ msgid ""
+#~ "Provide identifying information for this re-run of the course. The original "
+#~ "course is not affected in any way by a re-run."
+#~ msgstr ""
+#~ "Toa taarifa yenye kutambua uendeshaji upya wa fanii hii. Fanni asili "
+#~ "haiathiki kwa njia yoyote na uendeshaji upya."
+
+#~ msgid ""
+#~ "Note: Together, the organization, course number, and course run must "
+#~ "uniquely identify this new course instance."
+#~ msgstr ""
+#~ "Ilani: Pamoja, shirika, nambari ya fanni, na uendeshaji wa fanni lazima "
+#~ "utambue kimaada mfano wa fanni hii mpya."
+
+#~ msgid "Required Information to Create a re-run of a course"
+#~ msgstr "Habari inayohitajika Kubuni uendeshaji upya wa fanni"
+
+#~ msgid "e.g. Introduction to Computer Science"
+#~ msgstr "kwa mfano. Uanzishaji wa Sayansi ya Komputa"
+
+#~ msgid ""
+#~ "The public display name for the new course. (This name is often the same as "
+#~ "the original course name.)"
+#~ msgstr ""
+#~ "Jina la kuonekana / kujulikana na umma la fanni mpya.(This name is often the"
+#~ " same as the original course name.) "
+
+#~ msgid "e.g. UniversityX or OrganizationX"
+#~ msgstr "kwa mfano. Chuo kikuuX au ShirikaX"
+
+#~ msgid ""
+#~ "The name of the organization sponsoring the new course. (This name is often "
+#~ "the same as the original organization name.)"
+#~ msgstr ""
+#~ "Jina la shirika linalo fadhili fanni mpya. (This name is often the same as "
+#~ "the original organization name.)"
+
+#~ msgid "Note: No spaces or special characters are allowed."
+#~ msgstr "Ilani: Hakuna nafasi au tabia/mtu/kitu/herufi maalum inayo ruhusiwa."
+
+#~ msgid "e.g. CS101"
+#~ msgstr "kwa mfano.CS101"
+
 #~ msgid ""
 #~ "The unique number that identifies the new course within the organization.  "
 #~ "(This number will be the same as the original course number and cannot be "
@@ -24462,11 +24327,35 @@ msgstr ""
 #~ "Namba pekee inayotambulisha kozi mpya kwenye jumuiya. (Namba hii itakuwa "
 #~ "sawa na namba ya zamani ya kozi na haiwezi kubadilishwa.)"
 
+#~ msgid "e.g. 2014_T1"
+#~ msgstr "kwa mfano. 2014_T1"
+
+#~ msgid ""
+#~ "The term in which the new course will run. (This value is often different "
+#~ "than the original course run value.)"
+#~ msgstr ""
+#~ "Masharti ambayo yataendesha fanni mpya. (This value is often different than "
+#~ "the original course run value.)"
+
+#~ msgid "Create Re-run"
+#~ msgstr "Buni Urudiaji tena"
+
 #~ msgid "When will my course re-run start?"
 #~ msgstr "Lini uendeshaji upya wa koziyangu utaanza?"
 
+#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+#~ msgstr "Fanni mpya imepangwa kuanza januari 1, 2030 usiku wa manane (UTC)."
+
 #~ msgid "What transfers from the original course?"
 #~ msgstr "Kipi kinahamishwa kutoka kwa kozi asili?"
+
+#~ msgid ""
+#~ "The new course has the same course outline and content as the original "
+#~ "course. All problems, videos, announcements, and other files are duplicated "
+#~ "to the new course."
+#~ msgstr ""
+#~ "Fanni mpya ina miongozo sawa na yaliyomo pia kama fanni asili. Matatizo, "
+#~ "video, matangazo, na faili nyenginezo ni pacha kwa fanni mpya."
 
 #~ msgid "What does not transfer from the original course?"
 #~ msgstr "Kipi hakihamishwi kutoka kwenye kozi asili?"
@@ -24483,17 +24372,74 @@ msgstr ""
 #~ msgid "Learn more about Course Re-runs"
 #~ msgstr "Jifunze zaidi kuhusu Uendeshaji upya wa Kozi"
 
+#~ msgid "Course Outline"
+#~ msgstr "Muhtasari wa Kozi"
+
+#~ msgid "Warning"
+#~ msgstr "Ilani"
+
 #~ msgid "Pages"
 #~ msgstr "Kurasa"
+
+#~ msgid "Export to Git"
+#~ msgstr "Tuma nje kwa Git"
+
+#~ msgid "{studio_name} Home"
+#~ msgstr "{studio_name} Nyumbani"
 
 #~ msgid "New Course"
 #~ msgstr "Kozi Mpya"
 
+#~ msgid "Email staff to create course"
+#~ msgstr "Tuma barua pepe kwa mfanyakazi abuni fanni"
+
 #~ msgid "New Library"
 #~ msgstr "Maktaba Mpya"
 
+#~ msgid "Please correct the highlighted fields below."
+#~ msgstr "Tafadhali rekebisha viwanja vilivyo angaziwa hapo chini."
+
 #~ msgid "Create a New Course"
 #~ msgstr "Buni Kozi Mpya"
+
+#~ msgid "Required Information to Create a New Course"
+#~ msgstr "Taarifa Inayohitajika Kubuni Fanni Mpya"
+
+#~ msgid ""
+#~ "The public display name for your course. This cannot be changed, but you can"
+#~ " set a different display name in Advanced Settings later."
+#~ msgstr ""
+#~ "Jina lionekanalo na umma kwa kozi hii. Hili haliwezi kubadilishwa, lakini "
+#~ "waweza kuonyesha jina tofauti baadae kwa Mikakati Ilioboreshwa."
+
+#~ msgid ""
+#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
+#~ "organization name is part of the course URL.{strong_end} This cannot be "
+#~ "changed, but you can set a different display name in Advanced Settings "
+#~ "later."
+#~ msgstr ""
+#~ "Jina la shirika linalo fadhili kozi. {strong_start}Tambua: Jina la shirika "
+#~ "ni mojawapo ya URL ya kozi.{strong_end} Hili haliwezi kugeuzwa, lakini "
+#~ "waweza kuweka jina jengine lakuonekana baadae kwa Mikakati Iliyoboreshwa."
+
+#~ msgid ""
+#~ "The unique number that identifies your course within your organization. "
+#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
+#~ " characters are allowed and it cannot be changed.{strong_end}"
+#~ msgstr ""
+#~ "Nambari ya kipekee inayo tambua kozi yako katika shirika "
+#~ "lako.{strong_start}Tambua: hii ni baadhi ya URL ya kozi yako, hivyo basi "
+#~ "hakuna nafasi au tabia maalum zinazo ruhusiwa na haiwezi "
+#~ "kubadilishwa.{strong_end}"
+
+#~ msgid ""
+#~ "The term in which your course will run. {strong_start}Note: This is part of "
+#~ "your course URL, so no spaces or special characters are allowed and it "
+#~ "cannot be changed.{strong_end}"
+#~ msgstr ""
+#~ "Sharti ambayo kozi yako itaendeshwa.{strong_start}Tambua: Hii ni baadhi ya "
+#~ "URL ya kozi yako, hivyo basi hakuna nafasi au tabia maalum zinazo ruhusiwa "
+#~ "na haiwezi kubalishwa.{strong_end}"
 
 #~ msgid "Create"
 #~ msgstr "Unda"
@@ -24501,14 +24447,84 @@ msgstr ""
 #~ msgid "Create a New Library"
 #~ msgstr "Unda Maktaba Mpya"
 
+#~ msgid "Required Information to Create a New Library"
+#~ msgstr "Taarifa Inayohitajika Kubuni Maktaba Mpya"
+
 #~ msgid "Library Name"
 #~ msgstr "Jina la Maktaba"
+
+#~ msgid "e.g. Computer Science Problems"
+#~ msgstr "kwa mfano. Matatizo ya Sayansi ya Kompyuta"
+
+#~ msgid "The public display name for your library."
+#~ msgstr "JIna lijulikanalo kwa umma la maktaba. "
+
+#~ msgid "The public organization name for your library."
+#~ msgstr "Jina lijulikanalo na umma la shirika kwa maktaba yako."
+
+#~ msgid "This cannot be changed."
+#~ msgstr "Hii haiwezi kubadilishwa."
+
+#~ msgid "Library Code"
+#~ msgstr "Kificho cha Maktaba"
+
+#~ msgid "e.g. CSPROB"
+#~ msgstr "kwa mfano. CSPROB"
+
+#~ msgid ""
+#~ "The unique code that identifies this library. {strong_start}Note: This is "
+#~ "part of your library URL, so no spaces or special characters are "
+#~ "allowed.{strong_end} This cannot be changed."
+#~ msgstr ""
+#~ "Kificho cha kipekee kinacho tambua maktaba hii. {strong_start}Tambua: Hii ni"
+#~ " baadhi ya URL ya maktaba yako, hivyo basi hakuna nafasi au tabia maalum "
+#~ "zinazo ruhusiwa.{strong_end} Hii haiwezi kubadilishwa."
+
+#~ msgid "Courses Being Processed"
+#~ msgstr "Fanni Zina Tayarishwa"
 
 #~ msgid "This course run is currently being created."
 #~ msgstr "Kozi hii inaendelea kubuniwa kwa sasa."
 
+#~ msgid "Configuring as re-run"
+#~ msgstr "Ukusanyaji wa uendeshaji upya"
+
+#~ msgid ""
+#~ "The new course will be added to your course list in 5-10 minutes. Return to "
+#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
+#~ " new course will need some manual configuration."
+#~ msgstr ""
+#~ "Kozi mpya itaongezewa kwa orodha ya kozi yako ndani ya dakika 5-10. Rudi kwa"
+#~ " ukurasa huu au {link_start}rudia upya{link_end} kukamilisha orodha ya kozi."
+#~ " Kozi mpya itahitaji upangaji usio wa kiwenyewe."
+
+#~ msgid "This re-run processing status:"
+#~ msgstr "Hali ya uendeshaji upya wa matayarisho:"
+
+#~ msgid "Configuration Error"
+#~ msgstr "Hitlafu za Ukusanyaji"
+
+#~ msgid ""
+#~ "A system error occurred while your course was being processed. Please go to "
+#~ "the original course to try the re-run again, or contact your PM for "
+#~ "assistance."
+#~ msgstr ""
+#~ "Hitlafu ya mpangilio ilitokea ikitayarisha kozi yako. Tafadhali nenda kwa "
+#~ "kozi halisi kujaribu kuendesha upya tena, au wasiliana na PM yako kwa "
+#~ "usaidizi."
+
 #~ msgid "Libraries"
 #~ msgstr "Maktaba"
+
+#~ msgid "Are you staff on an existing {studio_name} course?"
+#~ msgstr "Mfanyikazi wewe uko katika fanni {studio_name}? "
+
+#~ msgid ""
+#~ "The course creator must give you access to the course. Contact the course "
+#~ "creator or administrator for the course you are helping to author."
+#~ msgstr ""
+#~ "M'buni wa kozi lazima akupe ufikiaji kwa kozi. Wasiliana na m'buni wa kozi "
+#~ "au mtawala wa kozi unaemsaidia kwa utungaji."
 
 #~ msgid "Create Your First Course"
 #~ msgstr "Unda Kozi Yako ya Kwanza"
@@ -24516,8 +24532,131 @@ msgstr ""
 #~ msgid "Your new course is just a click away!"
 #~ msgstr "Kozi yako mpya utaipata kwa kubofya tu!"
 
+#~ msgid "Becoming a Course Creator in {studio_name}"
+#~ msgstr "Kuwa m'buni wa Fanni katika {studio_name}"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team will evaluate your request and provide you feedback within 24 hours "
+#~ "during the work week."
+#~ msgstr ""
+#~ "{studio_name} ni uvumbuzi mwenyeji kwa xWashirika walioungana na wageni "
+#~ "wateule. Kozi ambazo wewe ni mwanakikosi hutokea juu kwa wewe kuhariri, hali"
+#~ " manufaa ya m'buni yanaidhinishwa na {platform_name}. Kikosi chetu "
+#~ "kitatathmini ombi lako na kukupa jibu ndani ya masaa 24 katika wiki ya kazi."
+#~ " "
+
+#~ msgid "Your Course Creator Request Status:"
+#~ msgstr "Hali ya Ombi la Ubuni wa Fanni:"
+
+#~ msgid "Request the Ability to Create Courses"
+#~ msgstr "Omba Uwezo wa Kubuni Fanni"
+
+#~ msgid "Your Course Creator Request Status"
+#~ msgstr "Hali ya Ombi la Ubuni wa Fanni Yako"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is has completed evaluating your request."
+#~ msgstr ""
+#~ "{studio_name} ni uvumbuzi mwenyeji kwa xWashirika walioungana na wageni "
+#~ "teule. Kozi ambazo wewe ni mwanakikosi hutokea juu kwa wewe kuhariri, hali "
+#~ "manufaa ya m'buni wa kozi yanaidhinishwa na {platform_name}. Kikosi chetu "
+#~ "kimemaliza kutathmini maombi lako."
+
 #~ msgid "Your Course Creator request is:"
 #~ msgstr "Ombi lako la Uanzishaji Kozi ni:"
+
+#~ msgid ""
+#~ "Your request did not meet the criteria/guidelines specified by "
+#~ "{platform_name} Staff."
+#~ msgstr ""
+#~ "Maombi yako hayakufikia kigezo/miongozo iliyo tajwa na {platform_name} "
+#~ "Mfanyikazi."
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is currently  evaluating your request."
+#~ msgstr ""
+#~ "{studio_name} ni uvumbuzi mwenyeji kwa xWashirika walioungana na wageni "
+#~ "wateule. Kozi ambazo wewe ni mwanakikosi hutokea juu kwa wewe kuhariri, hali"
+#~ " manufaa ya m'buni wa kozi yanaidhinishwa na {platform_name}. Kikosi chetu "
+#~ "kimemaliza kutathmini ombi lako."
+
+#~ msgid ""
+#~ "Your request is currently being reviewed by {platform_name} staff and should"
+#~ " be updated shortly."
+#~ msgstr ""
+#~ "Ombi lako linapitiwa upya hivi sasa na {platform_name} mfanya kazi na "
+#~ "lastahili ukamilishaji hivi punde. "
+
+#~ msgid "Were you expecting to see a particular library here?"
+#~ msgstr "Ulikuwa ukitarajia kuona maktaba maalum hapa?"
+
+#~ msgid ""
+#~ "The library creator must give you access to the library. Contact the library"
+#~ " creator or administrator for the library you are helping to author."
+#~ msgstr ""
+#~ "M'buni wa maktaba lazima akupe ufikiaji kwa maktaba. Wasiliana na m'buni wa "
+#~ "maktaba au mtawala wa maktaba unaemsaidia kwa utungaji."
+
+#~ msgid "Create Your First Library"
+#~ msgstr "Buni Maktaba Yako ya Kwanza"
+
+#~ msgid ""
+#~ "Libraries hold a pool of components that can be re-used across multiple "
+#~ "courses. Create your first library with the click of a button!"
+#~ msgstr ""
+#~ "Maktaba ina dimbwi la vigezo ambavyo vyaweza kutumiwa upya/tena kwa kozi "
+#~ "tofauti tofauti. Buni maktaba yako ya kwanza kwa kubonyeza kifungo!"
+
+#~ msgid "New to {studio_name}?"
+#~ msgstr "Mpya kwa {studio_name}?"
+
+#~ msgid ""
+#~ "Click Help in the upper-right corner to get more information about the "
+#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
+#~ " of the page to access our continually updated documentation and other "
+#~ "{studio_name} resources."
+#~ msgstr ""
+#~ "Bonyeza usaidizi kwa kona ya juu kulia kupata taarifa zaidi kuhusu "
+#~ "{studio_name} ukurasa unao angalia. Waweza pia kutumia viunganishi chini ya "
+#~ "ukurasa kupata ukamilishaji wa nyaraka mfulululizo na asili nyingine "
+#~ "{studio_name}."
+
+#~ msgid "Getting Started with {studio_name}"
+#~ msgstr "Anza na {studio_name}"
+
+#~ msgid "Can I create courses in {studio_name}?"
+#~ msgstr "Je naweza kubuni kozi katika {studio_name}?"
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must {link_start}contact "
+#~ "{platform_name} staff to help you create a course{link_end}."
+#~ msgstr ""
+#~ "Ili uweze kubuni kozi katika {studio_name}, lazima {link_start}uwasiliane na"
+#~ " {platform_name} mfanyi kazi akusaidie kubuni kozi{link_end}."
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must have course creator "
+#~ "privileges to create your own course."
+#~ msgstr ""
+#~ "Ili uweze kubuni kozi katika {studio_name}, lazima uwe na marupurupu ya "
+#~ "m'buni wa kozi kubuni kozi yako mwenyewe."
+
+#~ msgid ""
+#~ "Your request to author courses in {studio_name} has been denied. Please "
+#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
+#~ msgstr ""
+#~ "Maombi yako kwa mtungaji wa kozi katika {studio_name} yamekataliwa. "
+#~ "Tafadhali {link_start}wasiliana na {platform_name} mfanyi kazi kwa masuali "
+#~ "zaidi{link_end}."
 
 #~ msgid "Thanks for signing up, {name}!"
 #~ msgstr "Asante kwa kujinga, {name}!"
@@ -24525,8 +24664,27 @@ msgstr ""
 #~ msgid "We need to verify your email address"
 #~ msgstr "Tunahitaji kuhakiki anwani yako ya barua pepe"
 
+#~ msgid ""
+#~ "Almost there! In order to complete your sign up we need you to verify your "
+#~ "email address ({email}). An activation message and next steps should be "
+#~ "waiting for you there."
+#~ msgstr ""
+#~ "Karibu na hapo! Ili ukamilishe kujiunga kwako twahitaji wewe uhakikishe "
+#~ "anwani yako ya barua pepe ({email}). Ujumbe wa kuamsha na hatua nyenginezo "
+#~ "zitakungojea huko."
+
 #~ msgid "Need help?"
 #~ msgstr "Unahitaji msaada?"
+
+#~ msgid ""
+#~ "Please check your Junk or Spam folders in case our email isn't in your "
+#~ "INBOX. Still can't find the verification email? Request help via the link "
+#~ "below."
+#~ msgstr ""
+#~ "Tafadhali angalia mikunjo ya Spam na Junk iwapo anwani yetu ya barua "
+#~ "pepehaipo kwenye KISANDUKU CHA UPOKEZI WA JUMBE ZA BARUA PEPE. Bado huwezi "
+#~ "kupata barua pepe ya kuthibitisha?Omba usaidizi kupitia kiunganishi hapo "
+#~ "chini."
 
 #~ msgid "User Access"
 #~ msgstr "Fursa ya Mtumiaji"
@@ -24543,11 +24701,32 @@ msgstr ""
 #~ "kozi ambazo zinafundishwa kwa iana fulani ya lugaha. Pia inatumika "
 #~ "kubainisha sehemu ya 'From:' kipengele cha barua pepe nyingi."
 
+#~ msgid "Expand or Collapse"
+#~ msgstr "Panua au Katiza"
+
+#~ msgid "This block contains multiple components."
+#~ msgstr "Pande hili lina vipengele mchanganyiko."
+
+#~ msgid "Video Uploads"
+#~ msgstr "Mapakizi ya Video"
+
 #~ msgid "Current Course:"
 #~ msgstr "Kozi ya Sasa:"
 
+#~ msgid "Course Navigation"
+#~ msgstr "Umarisi wa Kozi"
+
 #~ msgid "Outline"
 #~ msgstr "Muongozo"
+
+#~ msgid "Publisher"
+#~ msgstr "Mchapishaji"
+
+#~ msgid "Import"
+#~ msgstr "Upokeaji kutoka nje"
+
+#~ msgid "Export"
+#~ msgstr "Upelekaji nje"
 
 #~ msgid "Current Library:"
 #~ msgstr "Maktaba ya Sasa:"
@@ -24555,11 +24734,37 @@ msgstr ""
 #~ msgid "Language preference"
 #~ msgstr "Uchaguzi wa lugha"
 
+#~ msgid "Account Navigation"
+#~ msgstr "Umarisi wa Akaunti"
+
+#~ msgid "Contextual Online Help"
+#~ msgstr "Msaada ya Mtindo wamtandaoni "
+
 #~ msgid "Sign Up"
 #~ msgstr "Jiandikishe Mtandaoni"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "Kuonyesha uwiyano wa liliyomo linalo stahili kuongezwa kwa {display_name}. "
+#~ "Kila mwanafunzi atagawiwa {max_count} kipengele kilicho chotwa kwa "
+#~ "kubahatisha kutoka kwenye orodha."
+#~ msgstr[1] ""
+#~ "Kuonyesha mawiyano yote ya yaliyomo yanayo stahili kuongezwa kwa "
+#~ "{display_name}. Wanafunzi wote watagawiwa {max_count} vipengele "
+#~ "vilivyochotwa kwa kubahatisha kutoka kwenye orodha."
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "mfano: jina la mtumiaji@miliki.com"
+
+#~ msgid "Copy"
+#~ msgstr "Nakili"
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "Imewezeshwa na mashirika yafuatayo"
@@ -24679,9 +24884,6 @@ msgstr ""
 #~ msgid "Already registered?"
 #~ msgstr "Tayari Umesajiliwa?"
 
-#~ msgid "Log in"
-#~ msgstr "Ingia mtandaoni"
-
 #~ msgid "Next Steps"
 #~ msgstr "Hatua Zifuatazo"
 
@@ -24772,3 +24974,9 @@ msgstr ""
 
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "Weka ujumbe wako wa haki miliki hapa!"
+
+#~ msgid "Collapse All"
+#~ msgstr "\"Futa\" Zote"
+
+#~ msgid "Videos"
+#~ msgstr "Video"

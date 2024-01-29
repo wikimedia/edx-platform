@@ -101,7 +101,7 @@
 # e9bb8fb5ffc36b415d1216869d7411be_857723a <56bb50d0e16dd64ebfbee187920dfe4a_229834>, 2014
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -116,9 +116,9 @@
 # Stefania Trabucchi <stefania.trabucchi@abstract-technology.de>, 2021
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Waheed Ahmed <waheed@edx.org>, 2019
@@ -129,7 +129,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Ilaria Botti <ilabotti@gmail.com>, 2021\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/open-edx/teams/6205/it_IT/)\n"
@@ -267,6 +267,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -8269,6 +8271,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -13755,6 +13759,21 @@ msgstr "Corsi"
 msgid "Reports"
 msgstr "Rapporti"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: lms/templates/courseware/course_about.html
 msgid "Course is full"
 msgstr "Corso al completo"
@@ -15394,19 +15413,6 @@ msgstr "Il tuo client di posta ha separato l'URL su due righe?"
 #: lms/templates/invalid_email_key.html
 msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr "Le chiavi hanno validità limitata. La chiave è scaduta?"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -26899,8 +26905,20 @@ msgstr ""
 #~ msgid "Library Content"
 #~ msgstr "Contenuto della libreria"
 
+#~ msgid "Drag and Drop"
+#~ msgstr "Trascina e Rilascia"
+
 #~ msgid "Peer Assessment Only"
 #~ msgstr "Solo valutazione dei colleghi "
+
+#~ msgid "Transcripts are supported only for \"video\" blocks."
+#~ msgstr "Le trascrizioni sono supportate solo per i blocchi &quot;video&quot;."
+
+#~ msgid "There was a problem pasting your component."
+#~ msgstr "Si è verificato un problema durante l&#39;incollaggio del componente."
+
+#~ msgid "Your clipboard is empty or invalid."
+#~ msgstr "I tuoi appunti sono vuoti o non validi."
 
 #~ msgid "Dump courses to CourseGraph (respect cache)"
 #~ msgstr "Scarica i corsi su CourseGraph (rispetta la cache)"
@@ -27452,6 +27470,27 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "Registrazione"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "Visualizzazione di tutto il contenuto corrispondente idoneo per essere "
+#~ "aggiunto a {display_name}. A ciascuno studente verrà assegnato {max_count} "
+#~ "componente estratto casualmente da questo elenco. "
+#~ msgstr[1] ""
+#~ "Visualizzazione di tutto il contenuto corrispondente idoneo per essere "
+#~ "aggiunto a {display_name}. A ciascuno studente verranno assegnati "
+#~ "{max_count} componenti estratti casualmente da questo elenco. "
+#~ msgstr[2] ""
+#~ "Visualizzazione di tutto il contenuto corrispondente idoneo per essere "
+#~ "aggiunto a {display_name}. A ciascuno studente verranno assegnati "
+#~ "{max_count} componenti estratti casualmente da questo elenco. "
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "esempio: username@domain.com"
 
@@ -27462,8 +27501,51 @@ msgstr ""
 #~ "edX, Open edX ed i logo edX e Open edX sono marchi registrati di "
 #~ "{link_start}edX Inc.{link_end}"
 
+#~ msgid "You do not have access to this dependency block."
+#~ msgstr "Non hai accesso a questo blocco di dipendenza."
+
+#~ msgid "It works! Powered by the Open edX{registered_trademark} Platform"
+#~ msgstr ""
+#~ "Funziona! Alimentato dalla piattaforma Open edX {registered_trademark}"
+
+#~ msgid "Learn more about this course"
+#~ msgstr "Ulteriori informazioni su questo corso"
+
+#~ msgid "Go to course"
+#~ msgstr "Vai al corso"
+
+#~ msgid "Enroll in this course"
+#~ msgstr "Iscriviti a questo corso"
+
+#~ msgid "New Unit"
+#~ msgstr "Nuova Unità"
+
+#~ msgid "Paste as new unit"
+#~ msgstr "Incolla come nuova unità"
+
+#~ msgid "Paste Component"
+#~ msgstr "Incolla componente"
+
+#~ msgid "From:"
+#~ msgstr "Da:"
+
+#~ msgid "What's in my clipboard?"
+#~ msgstr "Cosa c&#39;è nei miei appunti?"
+
 #~ msgid "Reset Problems"
 #~ msgstr "Ripristina problemi"
+
+#~ msgid "Share this video"
+#~ msgstr "Condividi questo video"
+
+#~ msgid "Share on {site}"
+#~ msgstr "Condividi su {site}"
+
+#~ msgid "Copy"
+#~ msgstr "Copia"
+
+#~ msgid "How is the transcript quality ?"
+#~ msgstr "Com&#39;è la qualità della trascrizione?"
 
 #~ msgid "Percent sign (%)"
 #~ msgstr "Segno di percentuale (%)"
@@ -27504,6 +27586,9 @@ msgstr ""
 #~ "Il blocco discussioni è disabilitato per questo corso poiché non utilizza un"
 #~ " provider di discussioni compatibile."
 
+#~ msgid "Register for free"
+#~ msgstr "Registrati GRATIS"
+
 #~ msgid "Unpaid Executive Education"
 #~ msgstr "Istruzione esecutiva non retribuita"
 
@@ -27531,11 +27616,56 @@ msgstr ""
 #~ "fornite colonne aggiuntive: modalità coorte e corso, in quest&#39;ordine. "
 #~ "Queste colonne aggiuntive potrebbero essere vuote."
 
+#~ msgid "Limited Staff"
+#~ msgstr "Personale limitato"
+
+#~ msgid ""
+#~ "Course team members with the Limited Staff role help you manage your course."
+#~ " Limited Staff can enroll and unenroll learners, as well as modify their "
+#~ "grades and access all course data. Limited Staff don't have access to your "
+#~ "course in Studio. You can only give course team roles to enrolled users."
+#~ msgstr ""
+#~ "I membri del team del corso con il ruolo di personale limitato ti aiutano a "
+#~ "gestire il corso. Il personale limitato può iscrivere e annullare "
+#~ "l&#39;iscrizione degli studenti, nonché modificare i loro voti e accedere a "
+#~ "tutti i dati del corso. Il personale limitato non ha accesso al tuo corso in"
+#~ " Studio. Puoi assegnare ruoli del team del corso solo agli utenti iscritti."
+
+#~ msgid "Add Limited Staff"
+#~ msgstr "Aggiungi personale limitato"
+
 #~ msgid "To use the email tool, visit the"
 #~ msgstr "Per utilizzare lo strumento di posta elettronica, visitare il"
 
 #~ msgid "new experience"
 #~ msgstr "nuova esperienza"
+
+#~ msgid ""
+#~ "You can include keywords in your messages. For list of available keywords "
+#~ "see the {start_link}documentation{end_link}."
+#~ msgstr ""
+#~ "Puoi includere parole chiave nei tuoi messaggi. Per l&#39;elenco delle "
+#~ "parole chiave disponibili, consulta la {start_link}documentazione{end_link}."
+
+#~ msgid "There was an error when loading this module!"
+#~ msgstr "Si è verificato un errore durante il caricamento di questo modulo!"
+
+#~ msgid ""
+#~ "This module is available only for users who are signed into {platform}. "
+#~ "Kindly sign in and refresh this page to load the content."
+#~ msgstr ""
+#~ "Questo modulo è disponibile solo per gli utenti che hanno effettuato "
+#~ "l&#39;accesso a {platform} . Si prega di accedere e aggiornare questa pagina"
+#~ " per caricare il contenuto ."
+
+#~ msgid "NOTE:"
+#~ msgstr "NOTA:"
+
+#~ msgid ""
+#~ "The email used to sign into this platform and {platform} should be the same."
+#~ msgstr ""
+#~ "L&#39;e-mail utilizzata per accedere a questa piattaforma e {platform} "
+#~ "dovrebbero essere le stesse."
 
 #~ msgid ""
 #~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
@@ -27757,6 +27887,34 @@ msgstr ""
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "Inserire qui il testo del Copyright! "
 
+#~ msgid "Files"
+#~ msgstr "File"
+
+#~ msgid "Collapse All"
+#~ msgstr "Chiudi Tutto"
+
+#~ msgid ""
+#~ "To create a link to this unit from an HTML component in this course, enter "
+#~ "{unit_link} as the URL value."
+#~ msgstr ""
+#~ "Per creare un collegamento a questa unità da un componente HTML in questo "
+#~ "corso, inserisci {unit_link} come valore dell&#39;URL."
+
+#~ msgid ""
+#~ "This course run is using an upgraded version of edx discussion forum. In "
+#~ "order to display the discussions sidebar, discussions xBlocks will no longer"
+#~ " be visible to learners."
+#~ msgstr ""
+#~ "Questo corso utilizza una versione aggiornata del forum di discussione edx. "
+#~ "Per visualizzare la barra laterale delle discussioni, gli xBlock delle "
+#~ "discussioni non saranno più visibili agli studenti."
+
+#~ msgid " Learn more"
+#~ msgstr "Per saperne di più"
+
+#~ msgid "Share feedback"
+#~ msgstr "Condividi feedback"
+
 #~ msgid "What are custom pages?"
 #~ msgstr "Cosa sono le pagine personalizzate?"
 
@@ -27778,3 +27936,24 @@ msgstr ""
 #~ msgstr ""
 #~ "Le pagine personalizzate sono elencate orizzontalmente nella parte superiore"
 #~ " del corso dopo le pagine predefinite."
+
+#~ msgid "Taxonomies"
+#~ msgstr "Tassonomie"
+
+#~ msgid "Importing components"
+#~ msgstr "Importazione di componenti"
+
+#~ msgid "Select this problem"
+#~ msgstr "Seleziona questo problema"
+
+#~ msgid "Manage Tags"
+#~ msgstr "Gestisci tag"
+
+#~ msgid "Manage Access"
+#~ msgstr "Gestisci l&#39;accesso"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Copia negli appunti"
+
+#~ msgid "Videos"
+#~ msgstr "Video"

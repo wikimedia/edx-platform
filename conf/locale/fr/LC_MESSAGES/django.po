@@ -300,7 +300,7 @@
 # PETIT Yannick <yannick.petit@gmail.com>, 2013
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -316,9 +316,9 @@
 # Sarina Canelake <sarina@tcril.org>, 2014
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Alexandre DS <alexandre@cleverm8.com>, 2020
@@ -327,7 +327,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Alexandre DS <alexandre@cleverm8.com>, 2020\n"
 "Language-Team: French (https://app.transifex.com/open-edx/teams/6205/fr/)\n"
@@ -8516,6 +8516,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -14013,6 +14015,21 @@ msgstr "Cours"
 msgid "Reports"
 msgstr "Rapports"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
 msgstr "Utilisateur de l'équipe pédagogique inexistant"
@@ -15023,11 +15040,6 @@ msgstr "Chargement en cours"
 msgid "Course Number"
 msgstr "Numéro du cours"
 
-#: cms/templates/course_outline.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Outline"
-msgstr ""
-
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
 msgstr "Erreur :"
@@ -15656,19 +15668,6 @@ msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr ""
 "Les clés sont valides pour une durée limitée. Est ce que la clé est expirée "
 "?"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -22914,15 +22913,15 @@ msgstr ""
 
 #: cms/templates/edit-tabs.html
 msgid "Show this page"
-msgstr ""
+msgstr "Montrer cette page"
 
 #: cms/templates/edit-tabs.html
 msgid "Show/hide page"
-msgstr ""
+msgstr "Montrer/cacher la page"
 
 #: cms/templates/edit-tabs.html
 msgid "This page cannot be reordered"
-msgstr ""
+msgstr "Cette page ne peut pas être reclassée."
 
 #: cms/templates/edit-tabs.html
 msgid "You can add additional custom pages to your course."
@@ -22935,7 +22934,7 @@ msgstr "Ajouter une nouvelle page"
 
 #: cms/templates/edit-tabs.html
 msgid "What are pages?"
-msgstr ""
+msgstr "Quelles sont les pages ?"
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -22943,6 +22942,9 @@ msgid ""
 "(Home, Course, Discussion, Wiki, and Progress) are followed by textbooks and"
 " custom pages that you create."
 msgstr ""
+"Les pages sont répertoriés horizontalement en haut de votre cours. Les pages"
+" par défaut (Accueil, Cours, Discussions, Wiki et Progression) sont suivies "
+"par les manuels et les pages personnalisées que vous créez."
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -22950,16 +22952,22 @@ msgid ""
 "course content. For example, you can create pages for the grading policy, "
 "course slides, and a course calendar. "
 msgstr ""
+"Vous pouvez créer et éditer des pages personnalisées pour fournir des "
+"informations aux étudiants sur le contenu additionnel du cours. Par exemple,"
+" vous pouvez créer des pages sur le système de notation, les supports de "
+"cours et un calendrier de cours."
 
 #: cms/templates/edit-tabs.html
 msgid "How do pages look to students in my course?"
-msgstr ""
+msgstr "Comment ces pages sont-elles vues dans mon cours par les étudiants ?"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Students see the default and custom pages at the top of your course and use "
 "these links to navigate."
 msgstr ""
+"Les étudiants voient les pages par défaut et les pages personnalisées en "
+"haut de votre cours et utilisent ces liens pour naviguer."
 
 #: cms/templates/edit-tabs.html
 msgid "See an example"
@@ -22967,7 +22975,7 @@ msgstr "Voir un exemple"
 
 #: cms/templates/edit-tabs.html
 msgid "Pages in Your Course"
-msgstr ""
+msgstr "Pages de votre cours."
 
 #: cms/templates/edit-tabs.html
 msgid "Preview of Pages in your course"
@@ -22979,6 +22987,9 @@ msgid ""
 "Course, Discussion, Wiki, and Progress) are followed by textbooks and custom"
 " pages."
 msgstr ""
+"Les pages sont répertoriés horizontalement en haut de votre cours. Les pages"
+" par défaut (Accueil, Cours, Discussions, Wiki et Progression) sont suivies "
+"par les manuels et les pages personnalisées que vous créez."
 
 #: cms/templates/edit-tabs.html cms/templates/howitworks.html
 msgid "close modal"
@@ -25378,23 +25389,23 @@ msgstr "Label"
 
 #: cms/templates/widgets/sock.html
 msgid "Looking for help with {studio_name}?"
-msgstr ""
+msgstr "Besoin d'aide sur {studio_name}?"
 
 #: cms/templates/widgets/sock.html
 msgid "Hide {studio_name} Help"
-msgstr ""
+msgstr "Cachez l'aide {studio_name}"
 
 #: cms/templates/widgets/sock.html
 msgid "{studio_name} Documentation"
-msgstr ""
+msgstr "Documentation {studio_name}"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access documentation on http://docs.edx.org"
-msgstr ""
+msgstr "Accéder à la documentation sur http://docs.edx.org"
 
 #: cms/templates/widgets/sock_links.html
 msgid "edX Documentation"
-msgstr ""
+msgstr "Documentation edX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
@@ -25406,23 +25417,23 @@ msgstr "Ouvrir le portail edX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
+msgstr "S'inscrire à edX101 : présentation de la création d'un cours sur edX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101"
-msgstr ""
+msgstr "S'inscrire à edX101"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
+msgstr "Inscription sur StudioX : Créer un cours avec edX Studio"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX"
-msgstr ""
+msgstr "S'inscrire à StudioX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Send an email to {email}"
-msgstr ""
+msgstr "Envoyer un email à {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -27051,6 +27062,15 @@ msgstr ""
 #~ "URL git non inscriptible fournie. En attente de quelque chose comme : "
 #~ "git@github.com:openedx/openedx-demo-course.git"
 
+#~ msgid "Library Content"
+#~ msgstr "Contenu de la bibliothèque"
+
+#~ msgid "Drag and Drop"
+#~ msgstr "Glisser Déposer"
+
+#~ msgid "Peer Assessment Only"
+#~ msgstr "Évaluation par les pairs seulement"
+
 #~ msgid "Dump courses to CourseGraph (respect cache)"
 #~ msgstr "Vider les cours dans CourseGraph (respecter le cache)"
 
@@ -27208,6 +27228,9 @@ msgstr ""
 
 #~ msgid "Learn more about Course Re-runs"
 #~ msgstr "Découvrez-en plus sur les cours dérivés"
+
+#~ msgid "Course Outline"
+#~ msgstr "Plan du Cours"
 
 #~ msgid "Warning"
 #~ msgstr "Avertissement"
@@ -27597,6 +27620,24 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "S'inscrire"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "Tous les éléments pouvant être ajoutés à {display_name}. Chaque étudiant "
+#~ "sera affecté à {max_count} composant pris au hasard depuis cette liste."
+#~ msgstr[1] ""
+#~ "Tous les éléments pouvant être ajoutés à {display_name}. Chaque étudiant "
+#~ "sera affecté à {max_count} composants pris au hasard depuis cette liste."
+#~ msgstr[2] ""
+#~ "Tous les éléments pouvant être ajoutés à {display_name}. Chaque étudiant "
+#~ "sera affecté à {max_count} composants pris au hasard depuis cette liste."
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "exemple : jean.dupont@domaine.com"
 
@@ -27607,8 +27648,50 @@ msgstr ""
 #~ "edX, Open edX et les logos de edX et de Open edX sont des marques déposées "
 #~ "de {link_start}edX Inc.{link_end}"
 
+#~ msgid "You do not have access to this dependency block."
+#~ msgstr "Vous n'avez pas accès à ce bloc de dépendance."
+
+#~ msgid "It works! Powered by the Open edX{registered_trademark} Platform"
+#~ msgstr "Ça marche! Propulsé par la plateforme Open edX {registered_trademark}"
+
+#~ msgid "Learn more about this course"
+#~ msgstr "En savoir plus sur ce cours"
+
+#~ msgid "Go to course"
+#~ msgstr "Aller au cours"
+
+#~ msgid "Enroll in this course"
+#~ msgstr "s&#39;inscrire à ce cours"
+
+#~ msgid "New Unit"
+#~ msgstr "Nouvelle Unité"
+
+#~ msgid "Paste as new unit"
+#~ msgstr "Coller comme nouvelle unité"
+
+#~ msgid "Paste Component"
+#~ msgstr "composant pâte"
+
+#~ msgid "From:"
+#~ msgstr "Depuis:"
+
+#~ msgid "What's in my clipboard?"
+#~ msgstr "Qu&#39;y a-t-il dans mon presse-papiers ?"
+
 #~ msgid "Reset Problems"
 #~ msgstr "Réinitialiser les problèmes"
+
+#~ msgid "Share this video"
+#~ msgstr "partage cette vidéo"
+
+#~ msgid "Share on {site}"
+#~ msgstr "partager sur {site}"
+
+#~ msgid "Copy"
+#~ msgstr "Copier"
+
+#~ msgid "How is the transcript quality ?"
+#~ msgstr "Quelle est la qualité de la transcription ?"
 
 #~ msgid "Percent sign (%)"
 #~ msgstr "Signe pourcentage (%)"
@@ -27649,6 +27732,9 @@ msgstr ""
 #~ "Le fil de discussion est désactivé pour ce cours car il n'utilise pas un "
 #~ "fournisseur compatible."
 
+#~ msgid "Register for free"
+#~ msgstr "S'inscrire gratuitement"
+
 #~ msgid "Unpaid Executive Education"
 #~ msgstr "Formation des cadres non rémunérée"
 
@@ -27677,11 +27763,57 @@ msgstr ""
 #~ ": groupe d'étudiants et mode de cours, dans cet ordre. Ces colonnes "
 #~ "supplémentaires peuvent être vides."
 
+#~ msgid "Limited Staff"
+#~ msgstr "Personnel limité"
+
+#~ msgid ""
+#~ "Course team members with the Limited Staff role help you manage your course."
+#~ " Limited Staff can enroll and unenroll learners, as well as modify their "
+#~ "grades and access all course data. Limited Staff don't have access to your "
+#~ "course in Studio. You can only give course team roles to enrolled users."
+#~ msgstr ""
+#~ "Les membres de Course Équipe avec le Rôle Personnel Limité vous aident à "
+#~ "gérer votre cours. Le personnel limité peut s&#39;inscrire et se désinscrire"
+#~ " des apprenants, ainsi que modifier leurs notes et Accédez toutes les "
+#~ "données du cours. Le personnel limité n&#39;a pas Accédez à votre cours dans"
+#~ " Studio. Vous ne pouvez attribuer des rôles Cours Équipe qu&#39;aux "
+#~ "utilisateurs inscrits ."
+
+#~ msgid "Add Limited Staff"
+#~ msgstr "Ajouter du personnel limité"
+
 #~ msgid "To use the email tool, visit the"
 #~ msgstr "Pour utiliser l'outil de messagerie, visitez le"
 
 #~ msgid "new experience"
 #~ msgstr "nouvelle expérience"
+
+#~ msgid ""
+#~ "You can include keywords in your messages. For list of available keywords "
+#~ "see the {start_link}documentation{end_link}."
+#~ msgstr ""
+#~ "Vous pouvez inclure des mots clés dans vos messages. Pour obtenir la liste "
+#~ "des mots clés disponibles, consultez la {start_link}documentation{end_link}."
+
+#~ msgid "There was an error when loading this module!"
+#~ msgstr "Une erreur s&#39;est produite lors du chargement de ce module !"
+
+#~ msgid ""
+#~ "This module is available only for users who are signed into {platform}. "
+#~ "Kindly sign in and refresh this page to load the content."
+#~ msgstr ""
+#~ "Ce module est disponible uniquement pour les utilisateurs connectés à "
+#~ "{platform} . Veuillez vous connecter et actualiser cette page pour charger "
+#~ "le contenu ."
+
+#~ msgid "NOTE:"
+#~ msgstr "NOTE:"
+
+#~ msgid ""
+#~ "The email used to sign into this platform and {platform} should be the same."
+#~ msgstr ""
+#~ "L&#39;e-mail utilisé pour se connecter à cette plateforme et {platform} "
+#~ "doivent être les mêmes."
 
 #~ msgid ""
 #~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
@@ -27902,6 +28034,34 @@ msgstr ""
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "Placer votre texte de droits d'auteur ici!"
 
+#~ msgid "Files"
+#~ msgstr "Des dossiers"
+
+#~ msgid "Collapse All"
+#~ msgstr "Tout replier"
+
+#~ msgid ""
+#~ "To create a link to this unit from an HTML component in this course, enter "
+#~ "{unit_link} as the URL value."
+#~ msgstr ""
+#~ "Pour créer un lier vers cette unité à partir d&#39;un composant HTML de ce "
+#~ "cours, entrez {unit_link} comme valeur url ."
+
+#~ msgid ""
+#~ "This course run is using an upgraded version of edx discussion forum. In "
+#~ "order to display the discussions sidebar, discussions xBlocks will no longer"
+#~ " be visible to learners."
+#~ msgstr ""
+#~ "Cette Session utilise une version améliorée du forum de discussion edx. Afin"
+#~ " d&#39;afficher la barre latérale des discussions, les discussions xBlocks "
+#~ "ne seront plus visibles par les apprenants."
+
+#~ msgid " Learn more"
+#~ msgstr "Apprendre encore plus"
+
+#~ msgid "Share feedback"
+#~ msgstr "Partager des commentaires"
+
 #~ msgid "What are custom pages?"
 #~ msgstr "À quoi servent les pages personnalisées ?"
 
@@ -27926,3 +28086,24 @@ msgstr ""
 #~ msgstr ""
 #~ "Les pages personnalisées sont listées horizontalement en haut de votre cours"
 #~ " après les pages par défaut."
+
+#~ msgid "Taxonomies"
+#~ msgstr "Taxonomies"
+
+#~ msgid "Importing components"
+#~ msgstr "Importation de composants"
+
+#~ msgid "Select this problem"
+#~ msgstr "Sélectionnez cet exercice"
+
+#~ msgid "Manage Tags"
+#~ msgstr "Gérer les balises"
+
+#~ msgid "Manage Access"
+#~ msgstr "Gérer Accédez"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Copier dans le presse-papier"
+
+#~ msgid "Videos"
+#~ msgstr "Vidéos"
