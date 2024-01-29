@@ -94,7 +94,7 @@
 # わたカフェの店長, 2013
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -105,20 +105,21 @@
 # Toshiboumi Ohta <ohta@securesky-tech.com>, 2017-2018
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Waheed Ahmed <waheed@edx.org>, 2019
+# Transifex Bot <>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
-"Last-Translator: Waheed Ahmed <waheed@edx.org>, 2019\n"
+"Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Japanese (Japan) (https://app.transifex.com/open-edx/teams/6205/ja_JP/)\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
@@ -254,6 +255,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -1293,10 +1296,9 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: cms/templates/admin/base_site.html lms/templates/admin/base_site.html
 #: wiki/templates/wiki/base.html
 msgid "Log out"
-msgstr ""
+msgstr "ログアウト"
 
 #: common/djangoapps/course_modes/admin.py
 #: common/djangoapps/course_modes/models.py
@@ -1431,9 +1433,11 @@ msgstr ""
 msgid "{currency_symbol}{price}"
 msgstr "{currency_symbol}{price}"
 
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: This refers to the cost of the course. In this case, the
 #. course costs nothing so it is free.
 #: common/djangoapps/course_modes/models.py
+#: lms/templates/course_modes/track_selection.html
 msgid "Free"
 msgstr "無料"
 
@@ -3861,7 +3865,7 @@ msgid ""
 msgstr ""
 "true または false を入力してください。trueの場合、受講者が修了要件を満たしていれば、講座終了前でも修了証をダウンロードできます。"
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Certificates Display Behavior"
 msgstr "修了証表示"
 
@@ -6407,6 +6411,9 @@ msgid "Certificate ID Number"
 msgstr "修了証番号"
 
 #: lms/djangoapps/certificates/views/webview.py
+#: lms/templates/certificates/invalid.html
+#: lms/templates/certificates/url_unsupported.html
+#: lms/templates/certificates/valid.html
 #, python-brace-format
 msgid "About {platform_name} Certificates"
 msgstr "{platform_name}修了証について"
@@ -6576,10 +6583,9 @@ msgid ""
 msgstr ""
 "{username} ({email}) の払い戻し請求が開始されました。この請求手続をするには、以下のリンク(複数の場合あり)をご覧ください。"
 
-#: lms/djangoapps/course_goals/models.py
 #: lms/templates/course_modes/track_selection.html
 msgid "Earn a certificate"
-msgstr ""
+msgstr "修了証を取得"
 
 #: lms/djangoapps/course_goals/models.py
 msgid "Complete the course"
@@ -6728,6 +6734,7 @@ msgstr ""
 #: lms/djangoapps/course_wiki/plugins/course_app.py
 #: lms/djangoapps/course_wiki/tab.py lms/djangoapps/course_wiki/views.py
 #: lms/templates/wiki/base.html
+#: lms/templates/ux/reference/bootstrap/course-skeleton.html
 msgid "Wiki"
 msgstr "Wiki"
 
@@ -6981,6 +6988,9 @@ msgid "Upgrade ({upgrade_price})"
 msgstr ""
 
 #: lms/djangoapps/courseware/date_summary.py
+#: cms/templates/group_configurations.html
+#: lms/templates/courseware/program_marketing.html
+#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 msgid "Learn More"
 msgstr "詳しく知る"
 
@@ -7081,9 +7091,9 @@ msgid ""
 "Maintain exam integrity by enabling a proctoring solution for your course"
 msgstr ""
 
-#: lms/djangoapps/courseware/plugins.py cms/templates/edit-tabs.html
+#: cms/templates/edit-tabs.html
 msgid "Custom pages"
-msgstr ""
+msgstr "カスタムページ"
 
 #: lms/djangoapps/courseware/plugins.py
 msgid "Provide additional course content and resources with custom pages"
@@ -7345,6 +7355,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -8545,19 +8557,17 @@ msgstr "受講登録"
 msgid "View and update learner enrollments."
 msgstr "受講者登録の閲覧および更新"
 
-#: lms/djangoapps/support/views/index.py
 #: lms/templates/support/manage_user.html
 msgid "Manage User"
-msgstr ""
+msgstr "ユーザの管理"
 
 #: lms/djangoapps/support/views/index.py
 msgid "Disable User Account"
 msgstr ""
 
-#: lms/djangoapps/support/views/index.py
 #: lms/templates/support/entitlement.html
 msgid "Entitlements"
-msgstr ""
+msgstr "所持している資格"
 
 #: lms/djangoapps/support/views/index.py
 msgid "View, create, and reissue learner entitlements"
@@ -8831,10 +8841,9 @@ msgstr "専門家"
 msgid "Honor"
 msgstr "Honor"
 
-#: lms/envs/common.py
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 msgid "Master's"
-msgstr ""
+msgstr "大学院（修士課程）"
 
 #: lms/envs/common.py
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
@@ -9383,56 +9392,67 @@ msgstr "最終更新: "
 msgid "See all children"
 msgstr "全ての子を見る"
 
-#: lms/templates/wiki/article.html
+#: lms/templates/wiki/article.html wiki/templates/wiki/article.html
 msgid "This article was last modified:"
 msgstr "この記事が最後に変更されたのは: "
 
-#: lms/templates/wiki/create.html
+#: lms/templates/wiki/create.html wiki/templates/wiki/create.html
 msgid "Add new article"
 msgstr "新たな記事を追加する"
 
-#: lms/templates/wiki/create.html
+#: lms/templates/wiki/create.html wiki/templates/wiki/create.html
 msgid "Create article"
 msgstr "記事を作成する"
 
 #: lms/templates/wiki/create.html lms/templates/wiki/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/purge.html
+#: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html
+#: wiki/templates/wiki/create.html wiki/templates/wiki/delete.html
 msgid "Go back"
 msgstr "戻る"
 
 #: lms/templates/wiki/delete.html lms/templates/wiki/edit.html
+#: wiki/templates/wiki/delete.html wiki/templates/wiki/edit.html
 msgid "Delete article"
 msgstr "記事を削除する"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/delete.html
 msgid "Delete"
 msgstr "削除"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "You cannot delete a root article."
 msgstr "上位の記事は削除できません。"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid ""
 "You cannot delete this article because you do not have permission to delete "
 "articles with children. Try to remove the children manually one-by-one."
 msgstr "この記事は削除できません。子が紐づいている記事を削除する権限がないことが原因です。子の記事を１つずつ削除してみてください。"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid ""
 "You are deleting an article. This means that its children will be deleted as"
 " well. If you choose to purge, children will also be purged!"
 msgstr "記事を削除しようとしています。同時に、この記事に紐づいている子の記事も削除対象となります。消去を選択すると、子の記事も同時に削除されます。"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "Articles that will be deleted"
 msgstr "削除される記事"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "...and more!"
 msgstr "…さらに！"
 
-#: lms/templates/wiki/delete.html
+#: lms/templates/wiki/delete.html wiki/templates/wiki/delete.html
 msgid "You are deleting an article. Please confirm."
 msgstr "記事を削除しようとしています。よろしいですか？"
 
@@ -9440,14 +9460,18 @@ msgstr "記事を削除しようとしています。よろしいですか？"
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/edit.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "編集"
 
 #: lms/templates/wiki/edit.html lms/templates/ccx/schedule.html
+#: wiki/templates/wiki/edit.html wiki/templates/wiki/settings.html
 msgid "Save changes"
 msgstr "変更を保存"
 
 #: lms/templates/wiki/edit.html cms/templates/container.html
+#: wiki/templates/wiki/edit.html
 msgid "Preview"
 msgstr "プレビュー"
 
@@ -9465,15 +9489,17 @@ msgstr "Wikiプレビュー"
 msgid "window open"
 msgstr "ウィンドウを開く"
 
-#: lms/templates/wiki/edit.html
+#: lms/templates/wiki/edit.html wiki/templates/wiki/edit.html
 msgid "Back to editor"
 msgstr "エディタに戻る"
 
 #: lms/templates/wiki/history.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
+#: wiki/templates/wiki/history.html
 msgid "History"
 msgstr "履歴"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid ""
 "Click each revision to see a list of edited lines. Click the Preview button "
 "to see how the article looked at this stage. At the bottom of this page, you"
@@ -9486,23 +9512,24 @@ msgstr ""
 msgid "(no log message)"
 msgstr "(ログメッセージがありません)"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Preview this revision"
 msgstr "この修正版をプレビュー"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Auto log:"
 msgstr "自動ログ: "
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html cms/templates/videos_index_pagination.html
+#: wiki/templates/wiki/history.html
 msgid "Change"
 msgstr "変更"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Merge selected with current..."
 msgstr "選択したものと現在のものをマージする…"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Switch to selected version"
 msgstr "選択したバージョンに移動する"
 
@@ -9510,11 +9537,11 @@ msgstr "選択したバージョンに移動する"
 msgid "Wiki Revision Preview"
 msgstr "Wiki改訂プレビュー"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Back to history view"
 msgstr "履歴表示に戻る"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Switch to this version"
 msgstr "このバージョンに移動する"
 
@@ -9522,22 +9549,22 @@ msgstr "このバージョンに移動する"
 msgid "Merge Revision"
 msgstr "改訂をマージする"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Merge with current"
 msgstr "現状とマージする"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid ""
 "When you merge a revision with the current, all data will be retained from "
 "both versions and merged at its approximate location from each revision."
 msgstr ""
 "あるバージョンと現状をマージする際、それぞれのバージョンからのデータはすべて残します。そして、それぞれの修正版に近いロケーションでマージされます。"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "After this, it's important to do a manual review."
 msgstr "この後、手動レビューをすることが重要です。"
 
-#: lms/templates/wiki/history.html
+#: lms/templates/wiki/history.html wiki/templates/wiki/history.html
 msgid "Create new merged version"
 msgstr "新しい合成バージョンを作成する"
 
@@ -9581,6 +9608,7 @@ msgid "Miniature Markdown Guide"
 msgstr "Markdownのミニガイド"
 
 #: lms/templates/wiki/includes/cheatsheet.html
+#: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid ""
 "To create a new wiki article, create a link to it. Clicking the link gives "
 "you the creation page."
@@ -9668,10 +9696,12 @@ msgid "Attachments"
 msgstr "添付"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Upload new file"
 msgstr "新規ファイルをアップロード"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search and add file"
 msgstr "ファイル検索および追加"
 
@@ -9680,14 +9710,17 @@ msgid "Upload File"
 msgstr "ファイルをアップロード"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Upload file"
 msgstr "ファイルをアップロード"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Search files and articles"
 msgstr "ファイルおよび記事の検索"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid ""
 "You can reuse files from other articles. These files are subject to updates "
 "on other articles which may or may not be a good thing."
@@ -9704,24 +9737,35 @@ msgstr "ファイルは別の記事からも再利用できます。これらの
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #: themes/edx-platform/wikilearn/lms/templates/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "検索"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid ""
 "The following files are available for this article. Copy the markdown tag to"
 " directly refer to a file from the article text."
 msgstr "これらのファイルはこの記事で利用できます。Markdownタグをコピーして、記事文中から直接ファイルを参照してください。"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Markdown tag"
 msgstr "Markdownタグ"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Uploaded by"
 msgstr "アップロード: "
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
+#: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Size"
 msgstr "サイズ"
 
@@ -9730,30 +9774,40 @@ msgid "File History"
 msgstr "ファイル履歴"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Detach"
 msgstr "分離"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
+#: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Replace"
 msgstr "置換"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/deleted.html
 msgid "Restore"
 msgstr "復元"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/templates/wiki/includes/revision_info.html
 msgid "anonymous (IP logged)"
 msgstr "匿名 (IP記録済)"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "File history"
 msgstr "ファイル履歴"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "revisions"
 msgstr "修正版"
 
 #: lms/templates/wiki/plugins/attachments/index.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "There are no attachments for this article."
 msgstr "この記事には添付がありません。"
 
@@ -9766,10 +9820,12 @@ msgid "Previewing a merge between two revisions:"
 msgstr "２つの修正版のマージをプレビュー中: "
 
 #: lms/templates/wiki/preview_inline.html
+#: wiki/templates/wiki/preview_inline.html
 msgid "This revision has been deleted."
 msgstr "この修正版は削除されました。"
 
 #: lms/templates/wiki/preview_inline.html
+#: wiki/templates/wiki/preview_inline.html
 msgid "Restoring to this revision will mark the article as deleted."
 msgstr "この修正版を復元すると、記事に削除済とマークされます。"
 
@@ -9785,13 +9841,6 @@ msgstr ""
 #: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
-msgstr ""
-
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Sign In"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
@@ -9858,11 +9907,9 @@ msgid ""
 msgstr ""
 "認証付き修了証を取得して新たな知識とスキルをアピールしよう。%(user_schedule_upgrade_deadline_time)sまでにアップグレードしてください。"
 
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.html
-#: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.txt
 #: lms/templates/course_modes/track_selection.html
 msgid "Upgrade Now"
-msgstr ""
+msgstr "アップグレード"
 
 #: openedx/core/djangoapps/api_admin/admin.py
 #, python-brace-format
@@ -11222,10 +11269,9 @@ msgstr "このアカウントは何度もログインに失敗したため、一
 msgid "Email or password is incorrect."
 msgstr "メールまたはパスワードが間違っています。"
 
-#: openedx/core/djangoapps/user_api/admin.py
 #: wiki/templates/wiki/permission_denied.html
 msgid "Permission Denied"
-msgstr ""
+msgstr "権限がありません"
 
 #: openedx/core/djangoapps/user_api/admin.py
 msgid "Retirement does not exist!"
@@ -11707,14 +11753,6 @@ msgstr "{header_open}{title}{header_close}{body}"
 msgid "{header_open}{title}{header_close}"
 msgstr ""
 
-#: openedx/core/djangoapps/util/user_messages.py
-#: cms/templates/course_outline.html cms/templates/index.html
-#: openedx/features/course_experience/templates/course_experience/latest-update-fragment.html
-#: openedx/features/course_experience/templates/course_experience/welcome-message-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Dismiss"
-msgstr ""
-
 #: openedx/core/djangoapps/verified_track_content/models.py
 msgid "The course key for the course we would like to be auto-cohorted."
 msgstr ""
@@ -12185,9 +12223,24 @@ msgstr "講座"
 msgid "Reports"
 msgstr "レポート"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
-msgstr ""
+msgstr "講座チームのユーザーがありません"
 
 #: cms/djangoapps/contentstore/admin.py
 #, python-brace-format
@@ -12509,7 +12562,7 @@ msgstr "アップロード完了"
 #, python-brace-format
 msgid ""
 "File {filename} exceeds maximum size of {maximum_size_in_megabytes} MB."
-msgstr ""
+msgstr " {filename} ファイルは最大サイズの {maximum_size_in_megabytes} MB を超過しています。"
 
 #: cms/djangoapps/contentstore/views/certificates.py
 msgid "must have name of the certificate"
@@ -12532,7 +12585,7 @@ msgstr "{platform_name}のサポートレベル: "
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Open Response"
-msgstr ""
+msgstr "公開討議"
 
 #: cms/djangoapps/contentstore/views/component.py
 msgid "Blank"
@@ -12628,11 +12681,13 @@ msgstr "gitレポジトリへのエクスポートが完了したコース"
 msgid "Vertical"
 msgstr "縦"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: cms/templates/course_outline.html lms/templates/ccx/schedule.html
 #: lms/templates/seq_module.html
 msgid "Section"
 msgstr "セクション"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: lms/templates/ccx/schedule.html
 msgid "Subsection"
 msgstr "サブセクション"
@@ -12767,7 +12822,7 @@ msgstr "アクセス制限: {list_of_groups}"
 
 #: cms/djangoapps/contentstore/views/transcript_settings.py
 msgid "The information you entered is incorrect."
-msgstr ""
+msgstr "入力された情報が不正確です。"
 
 #: cms/djangoapps/contentstore/views/transcripts_ajax.py
 msgid "Transcripts are supported only for \"video\" modules."
@@ -12913,12 +12968,12 @@ msgstr "不明"
 #. transcription in progress on servers
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Transcription in Progress"
-msgstr ""
+msgstr "字幕作成中"
 
 #. Translators: This is the status for a video whose transcription is complete
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Transcript Ready"
-msgstr ""
+msgstr "字幕が使用できます"
 
 #. Translators: This is the status for a video whose transcription job was
 #. failed for some languages
@@ -12954,7 +13009,7 @@ msgstr "追加日"
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Status"
-msgstr ""
+msgstr "ステータス"
 
 #. Translators: This is the suggested filename when downloading the URL
 #. listing for videos uploaded through Studio
@@ -13064,7 +13119,7 @@ msgstr "利用可能なタグのディクショナリ"
 
 #: cms/urls.py
 msgid "Studio Administration"
-msgstr ""
+msgstr "スタジオの管理"
 
 #: cms/templates/404.html cms/templates/error.html
 #: lms/templates/static_templates/404.html
@@ -13095,6 +13150,8 @@ msgstr "コンテンツ"
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: wiki/templates/wiki/includes/article_menu.html
+#: wiki/templates/wiki/settings.html
 msgid "Settings"
 msgstr "設定"
 
@@ -13116,28 +13173,12 @@ msgstr "読込中"
 msgid "Proctored Exam Settings"
 msgstr ""
 
-#: cms/templates/checklists.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Checklists"
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "講座番号"
-
-#: cms/templates/course_outline.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Outline"
-msgstr ""
-
-#: cms/templates/course_outline.html
-#: cms/templates/widgets/deprecated-course-key-warning.html
-#: lms/templates/dashboard/_dashboard_status_verification.html
-msgid "Warning"
-msgstr ""
 
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
@@ -13159,7 +13200,7 @@ msgstr "講座番号: "
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
 #: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
-msgstr ""
+msgstr "Course Run: "
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -13186,10 +13227,12 @@ msgstr ""
 msgid "Details"
 msgstr "詳細"
 
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
 #: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "見る"
 
@@ -13208,11 +13251,6 @@ msgstr "リセット"
 #: cms/templates/widgets/footer.html lms/templates/footer.html
 msgid "Legal"
 msgstr "法的な"
-
-#: cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
@@ -13243,7 +13281,7 @@ msgstr "ヘルプ"
 #: lms/templates/courseware/static_tab.html
 #: lms/templates/courseware/tab-view.html
 msgid "name"
-msgstr ""
+msgstr "名前"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
@@ -13292,20 +13330,22 @@ msgid ""
 "The email associated with your {platform_name} account has changed from "
 "{old_email} to {new_email}."
 msgstr ""
+" {platform_name} のアカウントが使用しているメールアドレスは {old_email} から {new_email} に変更されました。"
 
 #: common/templates/emails/sync_learner_profile_data_email_change_body.txt
 msgid "No action is needed on your part."
-msgstr ""
+msgstr "ここでは操作の必要はありません。"
 
 #: common/templates/emails/sync_learner_profile_data_email_change_body.txt
 msgid ""
 "If this change is not correct, contact {link_start}{platform_name} "
 "Support{link_end} or your administrator."
 msgstr ""
+"この変更が正しくない場合は、{link_start}{platform_name} のサポート {link_end} か担当の管理者に連絡してください。"
 
 #: common/templates/emails/sync_learner_profile_data_email_change_subject.txt
 msgid "Your {platform_name} account email has been updated"
-msgstr ""
+msgstr " {platform_name} のアカウントのメールアドレスが更新されます"
 
 #: lms/djangoapps/discussion/templates/discussion/discussion_board_fragment.html
 msgid "Add a Post"
@@ -13321,13 +13361,13 @@ msgstr "ディスカッションスレッドリスト"
 
 #: lms/djangoapps/discussion/templates/discussion/discussion_private_fragment.html
 msgid "Private Discussion"
-msgstr ""
+msgstr "私的ディスカッション"
 
 #: lms/djangoapps/discussion/templates/discussion/discussion_private_fragment.html
 msgid ""
 "This is a private discussion. You do not have permissions to view this "
 "discussion"
-msgstr ""
+msgstr "これは私的なディスカッションです。このディスカッションを見る権限がありません"
 
 #: lms/djangoapps/discussion/templates/discussion/discussion_profile_page.html
 #: lms/templates/discussion/_user_profile.html
@@ -13355,17 +13395,17 @@ msgstr "このディスカッションは現在整備作業中です。まもな
 
 #: lms/templates/_gated_content.html lms/templates/seq_module.html
 msgid "Content Locked"
-msgstr ""
+msgstr "コンテンツがロックされています"
 
 #: lms/templates/_gated_content.html
 msgid ""
 "You must complete the prerequisites for '{prereq_section_name}' to access "
 "this content."
-msgstr ""
+msgstr "このコンテンツにアクセスするためには、必修科目である '{prereq_section_name}' を修了していなければなりません。"
 
 #: lms/templates/_gated_content.html
 msgid "Go to Prerequisite Section"
-msgstr ""
+msgstr "必修セクションへ移動"
 
 #: lms/templates/annotatable.html
 msgid "Collapse Instructions"
@@ -13418,11 +13458,11 @@ msgstr "ダッシュボード"
 
 #: lms/templates/dashboard.html
 msgid "results successfully populated,"
-msgstr ""
+msgstr "成績が正常に登録されました。"
 
 #: lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
-msgstr ""
+msgstr "全ての受講登録済講座を読み込むためにクリック"
 
 #: lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
@@ -13455,7 +13495,7 @@ msgstr "検索をクリア"
 
 #: lms/templates/dashboard.html
 msgid "Skip to list of announcements"
-msgstr ""
+msgstr "告知の一覧表示をスキップする"
 
 #: lms/templates/dashboard.html
 msgid "Account Status Info"
@@ -13601,7 +13641,7 @@ msgstr "ユニットにアクセスするにはまず登録してください"
 #: lms/templates/courseware/course_about.html lms/templates/enroll_staff.html
 msgctxt "self"
 msgid "Enroll"
-msgstr ""
+msgstr "受講登録"
 
 #: lms/templates/enroll_staff.html
 msgid "Don't enroll"
@@ -13642,7 +13682,7 @@ msgstr "外部認証失敗"
 #: lms/templates/footer.html
 #: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
-msgstr ""
+msgstr "事業組織のロゴ"
 
 #: lms/templates/forgot_password_modal.html
 msgid "Password Reset"
@@ -13741,17 +13781,6 @@ msgstr "メールソフトがURLを２行に分割していませんか？"
 #: lms/templates/invalid_email_key.html
 msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr "キーには有効期間があります。キーは期限切れではないですか？"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -13934,7 +13963,7 @@ msgstr ""
 
 #: lms/templates/problem.html
 msgid "Answers are displayed within the problem"
-msgstr ""
+msgstr "解答が問題と共に表示されます"
 
 #: lms/templates/problem_notifications.html
 msgid "Next Hint"
@@ -13979,15 +14008,15 @@ msgstr ""
 
 #: lms/templates/secondary_email_change_failed.html
 msgid "Secondary e-mail change failed"
-msgstr ""
+msgstr "予備のメールアドレスの変更に失敗しました"
 
 #: lms/templates/secondary_email_change_failed.html
 msgid "We were unable to activate your secondary email {secondary_email}"
-msgstr ""
+msgstr "{secondary_email} を予備のメールアドレスとしてアクティベートすることができませんでした"
 
 #: lms/templates/secondary_email_change_successful.html
 msgid "Secondary e-mail change successful!"
-msgstr ""
+msgstr "正常に予備のメールアドレスを変更しました。"
 
 #: lms/templates/secondary_email_change_successful.html
 msgid ""
@@ -13997,19 +14026,19 @@ msgstr ""
 
 #: lms/templates/seq_module.html
 msgid "Important!"
-msgstr ""
+msgstr "重要！"
 
 #. Translators: A button for showing the Previous Unit
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Previous"
-msgstr ""
+msgstr "前へ"
 
 #. Translators: A button for showing the Next Unit
 #: lms/templates/seq_module.html
 msgctxt "unit"
 msgid "Next"
-msgstr ""
+msgstr "次"
 
 #: lms/templates/seq_module.html
 msgid "Sequence"
@@ -14020,7 +14049,7 @@ msgstr "順番"
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Completed"
-msgstr ""
+msgstr "完了"
 
 #: lms/templates/signup_modal.html
 msgid "Sign Up for {platform_name}"
@@ -14255,7 +14284,7 @@ msgstr "その他のオプション"
 #: lms/templates/user_dropdown.html
 #: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
-msgstr ""
+msgstr "その他のオプション"
 
 #: lms/templates/using.html
 msgid "Using the system"
@@ -14966,7 +14995,7 @@ msgstr ""
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 msgid "Note:"
-msgstr ""
+msgstr "注: "
 
 #: lms/templates/bulk_email/confirm_unsubscribe.html
 msgid ""
@@ -15188,13 +15217,13 @@ msgstr "メールアドレス/ユーザー名"
 msgid ""
 "Enter one or more email addresses or usernames separated by new lines or "
 "commas."
-msgstr ""
+msgstr "改行かコンマで区切ったメールアドレスまたはユーザ名を一つ以上入力してください。"
 
 #: lms/templates/ccx/enrollment.html
 msgid ""
 "Make sure you enter the information carefully. You will not receive "
 "notification for invalid usernames or email addresses."
-msgstr ""
+msgstr "情報は注意深く入力するようにしてください。無効なユーザー名やメールアドレスについての通知を受け取ることはできません。"
 
 #: lms/templates/ccx/enrollment.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
@@ -15239,7 +15268,7 @@ msgstr "このオプションが{em_start}有効{em_end}の場合、ユーザー
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
 msgctxt "someone"
 msgid "Enroll"
-msgstr ""
+msgstr "受講登録"
 
 #: lms/templates/ccx/enrollment.html
 msgid "Student List Management"
@@ -15280,6 +15309,8 @@ msgstr "日付の書式は4桁表記の年、ハイフン、2桁表記の月、�
 
 #: lms/templates/ccx/schedule.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
+#: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Date"
 msgstr "日付"
 
@@ -15406,13 +15437,13 @@ msgstr "注記"
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
-msgstr ""
+msgstr "奨学金："
 
 #: lms/templates/certificates/_edx-accomplishment-print-help.html
 msgid ""
 "For tips and tricks on printing your certificate, view the {link_start}Web "
 "Certificates help documentation{link_end}."
-msgstr ""
+msgstr "修了証を印刷出力する際の情報や裏技については、{link_start} ウェブ修了証の解説 {link_end} を参照してください。"
 
 #: lms/templates/certificates/invalid.html
 msgid "Cannot Find Certificate"
@@ -15443,7 +15474,7 @@ msgstr "問題を解決するには、partner managerが以下の情報が正し
 
 #: lms/templates/certificates/server-error.html
 msgid "The institution's logo."
-msgstr ""
+msgstr "協会のロゴ"
 
 #: lms/templates/certificates/server-error.html
 msgid "The institution that is linked to the course."
@@ -15634,7 +15665,7 @@ msgstr ""
 
 #: lms/templates/course_modes/fbe.html
 msgid "Show more"
-msgstr ""
+msgstr "詳しく見る"
 
 #: lms/templates/course_modes/fbe.html
 msgid ""
@@ -15749,7 +15780,7 @@ msgstr "受講登録は終了しました"
 
 #: lms/templates/courseware/course_about.html
 msgid "Enroll Now"
-msgstr ""
+msgstr "いますぐ登録しよう"
 
 #: lms/templates/courseware/course_about.html
 msgid "View About Page in studio"
@@ -15781,7 +15812,7 @@ msgstr "追加リソース"
 #: lms/templates/courseware/course_about.html
 msgctxt "self"
 msgid "enroll"
-msgstr ""
+msgstr "受講登録"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
@@ -15814,7 +15845,7 @@ msgstr "この講座に受講登録したことをメールする"
 #: lms/templates/courseware/course_navigation.html
 #: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
-msgstr ""
+msgstr "現在位置"
 
 #. Translators: 'needs attention' is an alternative string for the
 #. notification image that indicates the tab "needs attention".
@@ -16004,7 +16035,7 @@ msgstr "あなたがフォローしているディスカッションの更新情
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Purchase the Program ("
-msgstr ""
+msgstr "この番組を購入 ("
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Original Price"
@@ -16020,11 +16051,11 @@ msgstr "割引価格"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "${newPrice}"
-msgstr ""
+msgstr "${newPrice}"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "{currency})"
-msgstr ""
+msgstr "{currency})"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Start Learning"
@@ -16048,7 +16079,7 @@ msgstr "講師紹介"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "よくある質問"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Job Outlook"
@@ -16056,7 +16087,7 @@ msgstr "業務内容"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Real Career Impact"
-msgstr ""
+msgstr "実経歴への影響"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "What You'll Learn"
@@ -16106,11 +16137,11 @@ msgstr "プログラム全体で${full_program_price}"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Courses in the {}"
-msgstr ""
+msgstr "{} の講座"
 
 #: lms/templates/courseware/program_marketing.html
 msgid "Starts on {}"
-msgstr ""
+msgstr "{} で開始"
 
 #: lms/templates/courseware/progress.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
@@ -16288,6 +16319,8 @@ msgid ""
 "{providers} for successfully completing your {platform_name} course! "
 "{link_start}Purchase credit now.{link_end}"
 msgstr ""
+"おめでとうございます！　{platform_name} の講座を履修するための {providers} "
+"からの履修単位が届きました。{link_start} 今すぐ履修単位を取得しましょう {link_end} "
 
 #: lms/templates/credit_notifications/credit_eligibility_email.html
 msgid ""
@@ -16295,6 +16328,8 @@ msgid ""
 "successfully completing your {platform_name} course! {link_start}Purchase "
 "credit now.{link_end}"
 msgstr ""
+"おめでとうございます！　講座を履修するための {providers} からの履修単位が届きました。{link_start} 履修単位を取得しましょう "
+"{link_end} "
 
 #: lms/templates/credit_notifications/credit_eligibility_email.html
 msgid ""
@@ -16305,7 +16340,7 @@ msgstr "講座単位があれば、大学のスタートや学位の取得、い
 
 #: lms/templates/credit_notifications/credit_eligibility_email.html
 msgid "There are 2 steps to getting course credit."
-msgstr ""
+msgstr "講座履修単位を取得するには二つの手続きが必要です。"
 
 #: lms/templates/credit_notifications/credit_eligibility_email.html
 msgid ""
@@ -16313,6 +16348,8 @@ msgid ""
 "dashboard{link_end} and clicking the {bold_start}Get Credit{bold_end} button"
 " below the course title."
 msgstr ""
+"クレジットの購入は {link_start}{platform_name} のダッシュボード {link_end} で講座名の下にある  "
+"{bold_start} クレジットを取得 {bold_end} ボタンをクリックします。"
 
 #: lms/templates/credit_notifications/credit_eligibility_email.html
 msgid ""
@@ -16321,6 +16358,8 @@ msgid ""
 "request an official academic transcript at the institution that granted the "
 "credit."
 msgstr ""
+"支払い手続きが完了したら、ダッシュボードへ戻り公式な学術成績証明書発行に対応している学会に請求をするために講座名の下にある {bold_start} "
+"取得単位要求 {bold_end} ボタンをクリックしてください。"
 
 #: lms/templates/credit_notifications/credit_eligibility_email.html
 msgid ""
@@ -16442,7 +16481,7 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Course details"
-msgstr ""
+msgstr "講座詳細"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "{course_number} {course_name} Home Page"
@@ -16478,27 +16517,27 @@ msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You must select a session by {expiration_date} to access the course."
-msgstr ""
+msgstr "この講座を利用するためには {expiration_date} までに授業を選択しておく必要があります。"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You must select a session to access the course."
-msgstr ""
+msgstr "講座にアクセスするためにはセッションを選択する必要があります。"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Change or Leave Session"
-msgstr ""
+msgstr "授業をやめるか変更する"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You can no longer change sessions."
-msgstr ""
+msgstr "現在授業を変更することはできません。"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "You can change sessions until {entitlement_expiration_date}."
-msgstr ""
+msgstr " {entitlement_expiration_date} までは授業を変更することができます。"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "I'm taking {course_name} online with {facebook_brand}. Check it out!"
-msgstr ""
+msgstr "私は {facebook_brand} で {course_name} を受講しています。すごく良いですよ！"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Share {course_name} on Facebook"
@@ -16510,7 +16549,7 @@ msgstr "Facebookでシェア"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "I'm taking {course_name} online with {twitter_brand}. Check it out!"
-msgstr ""
+msgstr "私は {twitter_brand} で {course_name} を受講しています。すごく良いですよ！"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Share {course_name} on Twitter"
@@ -16687,21 +16726,21 @@ msgstr "処理中にエラーが発生しました。{support_email}へお問い
 
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 msgid "Course options for {courseName}"
-msgstr ""
+msgstr " {courseName} の講座オプション"
 
 #: lms/templates/dashboard/_dashboard_show_consent.html
 msgid "Consent to share your data"
-msgstr ""
+msgstr "個人データの共有に同意"
 
 #: lms/templates/dashboard/_dashboard_show_consent.html
 msgid ""
 "To access this course, you must first consent to share your learning "
 "achievements with {enterprise_customer_name}."
-msgstr ""
+msgstr "この講座を利用するためには、{enterprise_customer_name} が受講の成績を共有することに同意する必要があります。"
 
 #: lms/templates/dashboard/_dashboard_show_consent.html
 msgid "View Consent"
-msgstr ""
+msgstr "同意内容を見る"
 
 #: lms/templates/dashboard/_dashboard_status_verification.html
 msgid "Current ID Verification Status: Approved"
@@ -17432,7 +17471,7 @@ msgstr "{platform_name} ホームページ"
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
-msgstr ""
+msgstr "オプションのメニュー"
 
 #: lms/templates/header/header.html lms/templates/navigation/navigation.html
 msgid ""
@@ -17444,7 +17483,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
-msgstr ""
+msgstr "新しいものを見つける"
 
 #: lms/templates/header/navbar-logo-header.html
 msgid "{name} Dashboard"
@@ -17453,7 +17492,7 @@ msgstr ""
 #: lms/templates/header/navbar-not-authenticated.html
 #: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
-msgstr ""
+msgstr "補足のリンク"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
@@ -18390,6 +18429,8 @@ msgid ""
 "open threads, and endorse responses. Their posts are marked as 'Community "
 "TA'. Only enrolled learners can be added as Community TAs."
 msgstr ""
+"コミュニティーTAはディスカッションの編纂をする講座運営チームを補助するコミュニティーのメンバーです。このメンバーはコホートやコース選択に属している受講者の投稿を見ることができ、投稿を編集したり削除したり、フラグをクリアしたり、スレッドを終了させたり再開させることができます。このメンバーの投稿には"
+" 'コミュニティTA' とマークされます。受講登録済受講者だけがコミュニティーTAとして参加することができます。"
 
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
 msgid "Add Community TA"
@@ -18531,7 +18572,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/special_exams.html
 msgid "Allowance Section"
-msgstr ""
+msgstr "Allowance Section"
 
 #: lms/templates/instructor/instructor_dashboard_2/special_exams.html
 msgid "Student Onboarding Status"
@@ -18565,7 +18606,7 @@ msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Learner's {platform_name} email address or username *"
-msgstr ""
+msgstr "受講者の{platform_name}のメールアドレスまたはユーザー名*"
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Learner email address or username"
@@ -18752,7 +18793,7 @@ msgstr "この問題に関して提出したタスクのステータスを表示
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/reports.html
 msgid "Note"
-msgstr ""
+msgstr "ノート"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2/problem_report.html
 msgid ""
@@ -19166,7 +19207,7 @@ msgstr "受講生サポート: 修了証"
 
 #: lms/templates/support/contact_us.html
 msgid "Contact {platform_name} Support"
-msgstr ""
+msgstr "{platform_name}サポートへの問い合わせ"
 
 #: lms/templates/support/enrollment.html
 msgid "Student Support: Enrollment"
@@ -19194,7 +19235,7 @@ msgstr ""
 
 #: lms/templates/support/manage_user.html
 msgid "Student Support: Manage User"
-msgstr ""
+msgstr "受講者サポート：ユーザー管理"
 
 #: lms/templates/support/program_enrollments_inspector.html
 msgid "Program Enrollments Inspector"
@@ -19250,7 +19291,7 @@ msgstr "本講座やこのフォームに関する質問は、{link_start}{mail_
 
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 msgid "Skeleton Page"
-msgstr ""
+msgstr "骨子のページ"
 
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
@@ -19367,6 +19408,7 @@ msgid "{span_start}(active){span_end}"
 msgstr "{span_start}(アクティブ){span_end}"
 
 #: lms/templates/wiki/includes/article_menu.html
+#: wiki/templates/wiki/includes/article_menu.html
 msgid "Changes"
 msgstr "変更"
 
@@ -19378,7 +19420,7 @@ msgstr "{span_start}アクティブ{span_end}"
 msgid "Course Wiki"
 msgstr "講座Wiki"
 
-#: lms/templates/wiki/includes/breadcrumbs.html
+#: lms/templates/wiki/includes/breadcrumbs.html wiki/templates/wiki/dir.html
 msgid "Add article"
 msgstr "記事を追加する"
 
@@ -19462,56 +19504,56 @@ msgstr ""
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Learn About Verified Certificates"
-msgstr ""
+msgstr "本人認証付き修了証について詳しく知る"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "{platform_name} Verified Certificate"
-msgstr ""
+msgstr "{platform_name} の本人認証付き修了証"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Why upgrade?"
-msgstr ""
+msgstr "なぜアップグレードするのでしょうか？"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Official proof of completion"
-msgstr ""
+msgstr "公式の修了証明"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Easily shareable certificate"
-msgstr ""
+msgstr "簡単に共用できる修了証"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Proven motivator to complete the course"
-msgstr ""
+msgstr "講座を修了できる意欲を証明"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid ""
 "Certificate purchases help {platform_name} continue to offer free courses"
-msgstr ""
+msgstr " {platform_name} の修了証購入ヘルプで無料講座の提供を続ける"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "How it works"
-msgstr ""
+msgstr "どのように働くのか"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Pay the Verified Certificate upgrade fee"
-msgstr ""
+msgstr "本人認証付き修了証へアップグレードする支払"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Verify your identity with a webcam and government-issued ID"
-msgstr ""
+msgstr "Webカメラと政府発行 ID で本人認証の確認を行う"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Study hard and pass the course"
-msgstr ""
+msgstr "一心に勉強して講座を修了"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Share your certificate with friends, employers, and others"
-msgstr ""
+msgstr "修了証を友人、雇用者、そのほかの人たちと共用"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "edX Learner Stories"
-msgstr ""
+msgstr "edX 受講者の声"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid ""
@@ -19522,7 +19564,7 @@ msgstr ""
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "{learner_name}, edX Learner"
-msgstr ""
+msgstr "{learner_name}、edX の受講者"
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid ""
@@ -19534,7 +19576,7 @@ msgstr ""
 
 #: openedx/features/course_experience/templates/course_experience/course-sock-fragment.html
 msgid "Upgrade ({course_price})"
-msgstr ""
+msgstr " ({course_price}) アップグレード"
 
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
 msgid "This course does not have any updates."
@@ -19584,15 +19626,15 @@ msgstr "リンク"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
 msgid "Completed {completion_date_html}"
-msgstr ""
+msgstr " {completion_date_html} に修了"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
 msgid "{course_mode} certificate"
-msgstr ""
+msgstr "{course_mode} の修了証"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
 msgid "You haven't earned any certificates yet."
-msgstr ""
+msgstr "まだ修了証を取得していません。"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
 msgid "Explore New Courses"
@@ -19604,16 +19646,21 @@ msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "My Profile"
-msgstr ""
+msgstr "プロフィール"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid ""
 "Build out your profile to personalize your identity on {platform_name}."
-msgstr ""
+msgstr " {platform_name}でプロフィールを作成してください。"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
-msgstr ""
+msgstr "エラーが発生しました。画面を再読込してください。"
+
+#: wiki/templates/wiki/accounts/login.html
+#: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
+msgid "Log in"
+msgstr "ログイン"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -19645,7 +19692,7 @@ msgstr "我々スタッフはエラーを記録し、できるだけ早く解決
 
 #: cms/templates/accessibility.html
 msgid "Studio Accessibility Policy"
-msgstr ""
+msgstr "Studio のアクセシビリティ・ポリシー"
 
 #: cms/templates/certificates.html
 msgid "Course Certificates"
@@ -20011,15 +20058,15 @@ msgstr "注: ページは一般公開されます。ページのURLを知って�
 
 #: cms/templates/edit-tabs.html
 msgid "Show this page"
-msgstr ""
+msgstr "このページを表示"
 
 #: cms/templates/edit-tabs.html
 msgid "Show/hide page"
-msgstr ""
+msgstr "ページを表示/非表示"
 
 #: cms/templates/edit-tabs.html
 msgid "This page cannot be reordered"
-msgstr ""
+msgstr "このページは並べ替えることができません。"
 
 #: cms/templates/edit-tabs.html
 msgid "You can add additional custom pages to your course."
@@ -20031,7 +20078,7 @@ msgstr "新しいページを追加"
 
 #: cms/templates/edit-tabs.html
 msgid "What are pages?"
-msgstr ""
+msgstr "ページとは？"
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -20039,6 +20086,8 @@ msgid ""
 "(Home, Course, Discussion, Wiki, and Progress) are followed by textbooks and"
 " custom pages that you create."
 msgstr ""
+"講座画面上部に各種ページが一覧表示されます。既定のページ (ホーム、講座、ディスカッション、Wiki、進捗) "
+"の後に、教科書およびあなたが作成したカスタムページが表示されます。"
 
 #: cms/templates/edit-tabs.html
 msgid ""
@@ -20046,16 +20095,17 @@ msgid ""
 "course content. For example, you can create pages for the grading policy, "
 "course slides, and a course calendar. "
 msgstr ""
+"補足の講座コンテンツを受講者に提供するには、カスタムページを作成・編集することができます。例えば、採点ポリシー、講座スライド、講座カレンダーなどのページを作ることができます。"
 
 #: cms/templates/edit-tabs.html
 msgid "How do pages look to students in my course?"
-msgstr ""
+msgstr "各種ページはどのように表示されますか？"
 
 #: cms/templates/edit-tabs.html
 msgid ""
 "Students see the default and custom pages at the top of your course and use "
 "these links to navigate."
-msgstr ""
+msgstr "受講者には既定ページおよびカスタムページが講座画面上部に表示され、リンクを使って移動できます。"
 
 #: cms/templates/edit-tabs.html
 msgid "See an example"
@@ -20063,7 +20113,7 @@ msgstr "例を見る"
 
 #: cms/templates/edit-tabs.html
 msgid "Pages in Your Course"
-msgstr ""
+msgstr "講座内の各種ページ"
 
 #: cms/templates/edit-tabs.html
 msgid "Preview of Pages in your course"
@@ -20075,6 +20125,8 @@ msgid ""
 "Course, Discussion, Wiki, and Progress) are followed by textbooks and custom"
 " pages."
 msgstr ""
+"画面上部のナビゲーションバーに表示される各種ページ。既定ページ (ホーム、講座、ディスカッション、Wiki、進捗) "
+"に続けて、教科書とカスタムページが表示されます。"
 
 #: cms/templates/edit-tabs.html cms/templates/howitworks.html
 msgid "close modal"
@@ -20325,19 +20377,19 @@ msgstr ""
 
 #: cms/templates/export.html cms/templates/import.html
 msgid "Course content and structure"
-msgstr ""
+msgstr "講座のコンテンツと構造"
 
 #: cms/templates/export.html cms/templates/import.html
 msgid "Course dates"
-msgstr ""
+msgstr "講座の期日"
 
 #: cms/templates/export.html cms/templates/import.html
 msgid "Grading policy"
-msgstr ""
+msgstr "成績評価のポリシー"
 
 #: cms/templates/export.html cms/templates/import.html
 msgid "Any group configurations"
-msgstr ""
+msgstr "グループの設定"
 
 #: cms/templates/export.html cms/templates/import.html
 msgid ""
@@ -20352,11 +20404,11 @@ msgstr ""
 #: cms/templates/export.html cms/templates/import.html
 msgid ""
 "Learner-specific content, such as learner grades and discussion forum data"
-msgstr ""
+msgstr "受講者の成績やディスカッションフォーラムのデータなど、受講者に関連するコンテンツ。"
 
 #: cms/templates/export.html cms/templates/import.html
 msgid "The course team"
-msgstr ""
+msgstr "その講座のチーム"
 
 #. Translators: ".tar.gz" is a file extension, and should not be translated
 #: cms/templates/export.html
@@ -20919,11 +20971,11 @@ msgstr "どのコンテンツがインポートされますか？"
 
 #: cms/templates/import.html
 msgid "The following content is imported."
-msgstr ""
+msgstr "以下のコンテンツがインポートされます。"
 
 #: cms/templates/import.html
 msgid "The following content is not imported."
-msgstr ""
+msgstr "以下のコンテンツはインポートされません。"
 
 #: cms/templates/import.html
 msgid "Warning: Importing while a course is running"
@@ -21254,7 +21306,7 @@ msgstr "講座をいつ閲覧可能にするかを管理する日"
 
 #: cms/templates/settings.html
 msgid "Course Start Date"
-msgstr ""
+msgstr "講座開始日"
 
 #: cms/templates/settings.html
 msgid "First day the course begins"
@@ -21270,7 +21322,7 @@ msgstr "(UTC)"
 
 #: cms/templates/settings.html
 msgid "Course End Date"
-msgstr ""
+msgstr "講座終了日"
 
 #: cms/templates/settings.html
 msgid "Last day your course is active"
@@ -21854,7 +21906,7 @@ msgstr "教科書について詳しく知る"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
-msgstr ""
+msgstr "講座のビデオ設定"
 
 #: cms/templates/videos_index_pagination.html
 msgid "Changing.."
@@ -22026,7 +22078,7 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_delete.html
 msgid "Confirm"
-msgstr ""
+msgstr "確認"
 
 #: cms/templates/maintenance/_announcement_edit.html
 msgid "Edit Announcement"
@@ -22038,11 +22090,11 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "previous"
-msgstr ""
+msgstr "前へ"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "next"
-msgstr ""
+msgstr "次へ"
 
 #: cms/templates/maintenance/_force_publish_course.html
 msgid "Required data to force publish course."
@@ -22112,22 +22164,14 @@ msgstr ""
 
 #: cms/templates/widgets/footer.html
 msgid "Policies"
-msgstr ""
+msgstr "ポリシー"
 
 #: cms/templates/widgets/footer.html
 msgid "Accessibility Accommodation Request"
-msgstr ""
+msgstr "アクセシビリティの便宜の要求"
 
 #: cms/templates/widgets/footer.html
 msgid "LMS"
-msgstr ""
-
-#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
-#. not translate any of these trademarks and company names.
-#: cms/templates/widgets/footer.html
-msgid ""
-"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-"{link_start}edX Inc.{link_end}"
 msgstr ""
 
 #: cms/templates/widgets/metadata-edit.html
@@ -22184,23 +22228,23 @@ msgstr "ラベル"
 
 #: cms/templates/widgets/sock.html
 msgid "Looking for help with {studio_name}?"
-msgstr ""
+msgstr "{studio_name}用ヘルプを探していますか？"
 
 #: cms/templates/widgets/sock.html
 msgid "Hide {studio_name} Help"
-msgstr ""
+msgstr "{studio_name}のヘルプを非表示"
 
 #: cms/templates/widgets/sock.html
 msgid "{studio_name} Documentation"
-msgstr ""
+msgstr "{studio_name}ドキュメント"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access documentation on http://docs.edx.org"
-msgstr ""
+msgstr "http://docs.edx.org のドキュメントにアクセス"
 
 #: cms/templates/widgets/sock_links.html
 msgid "edX Documentation"
-msgstr ""
+msgstr "edX ドキュメント"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
@@ -22212,23 +22256,23 @@ msgstr "Open edX Portal"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
+msgstr "edX101 に受講登録する: edX の講座制作の概要"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101"
-msgstr ""
+msgstr "edX101に受講登録する"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
+msgstr "StudioX に受講登録する: edX Studio での講座制作"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX"
-msgstr ""
+msgstr "StudioXに受講登録する"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Send an email to {email}"
-msgstr ""
+msgstr "{email} にメールを送る"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -22244,15 +22288,15 @@ msgstr "作成された"
 
 #: wiki/apps.py
 msgid "Wiki notifications"
-msgstr ""
+msgstr "Wiki 通知"
 
 #: wiki/apps.py
 msgid "Wiki images"
-msgstr ""
+msgstr "Wiki の画像"
 
 #: wiki/apps.py
 msgid "Wiki attachments"
-msgstr ""
+msgstr "Wiki の添付ファイル"
 
 #: wiki/forms.py
 msgid "Only localhost... muahahaha"
@@ -22700,56 +22744,57 @@ msgid ""
 "will loose their references to this file. The following articles reference "
 "this file:"
 msgstr ""
+"このファイルは、他の記事で参照されている可能性があります。これを削除すると、このファイルへの参照は失われます。このファイルを参照しているのは、以下の記事です:"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid "Delete it!"
-msgstr ""
+msgstr "とにかく削除！"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid "Remove"
-msgstr ""
+msgstr "削除"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid ""
 "You can remove a reference to a file, but it will retain its references on "
 "other articles."
-msgstr ""
+msgstr "ファイルへの参照を削除可能ですが、他の記事への参照は保持されます。"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 msgid "Remove reference"
-msgstr ""
+msgstr "参照を削除"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "History of"
-msgstr ""
+msgstr "履歴"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "User"
-msgstr ""
+msgstr "ユーザー"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "File"
-msgstr ""
+msgstr "ファイル"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Action"
-msgstr ""
+msgstr "操作"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "<em>No description</em>"
-msgstr ""
+msgstr "<em>説明がありません </em>"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Download"
-msgstr ""
+msgstr "ダウンロード"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/history.html
 msgid "Use this!"
-msgstr ""
+msgstr "これを使う！"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
 #, python-format
@@ -22762,10 +22807,13 @@ msgid ""
 "for the listed articles where necessary. This way of working is more "
 "efficient...."
 msgstr ""
+"添付ファイルを置き換えるとは、その場所で使用される新しいファイルを追加することを意味します。ファイルへのすべての参照は、アップロードしたものに置き換えられ、ファイルは"
+" "
+"<strong>%(filename)s</strong>としてダウンロードされます。この添付ファイルは他の記事で使用されているため、コンテンツを歪める可能性があることに注意してください。しかし、必要な場合、これを利用し、掲載記事の差し替えすることをためらう必要はありません。このやり方は、より効率が良い方法です...。"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
 msgid "Articles using"
-msgstr ""
+msgstr "使用している記事"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
 #, python-format
@@ -22774,58 +22822,60 @@ msgid ""
 "place. All references to the file will be replaced by the one you upload and"
 " the file will be downloaded as <strong>%(filename)s</strong>."
 msgstr ""
+"添付ファイルを置き換えるとは、その場所で使用される新しいファイルを追加することを意味します。ファイルへのすべての参照は、アップロードしたものに置き換えられ、ファイルは"
+" <strong>%(filename)s</strong>としてダウンロードされます。"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/replace.html
 #: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html
 msgid "Upload replacement"
-msgstr ""
+msgstr "差し替えるファイルをアップロード"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Add file to"
-msgstr ""
+msgstr "ファイルを追加する"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Add attachment from other article"
-msgstr ""
+msgstr "他の記事の添付を追加する"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Main article"
-msgstr ""
+msgstr "メインの記事"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Add to article"
-msgstr ""
+msgstr "記事に追加する"
 
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/search.html
 msgid "Your search did not return any results"
-msgstr ""
+msgstr "検索結果が得られませんでした"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid "Adding new articles"
-msgstr ""
+msgstr "新しい記事を追加"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid "An external link"
-msgstr ""
+msgstr "外部リンク"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid "Headers"
-msgstr ""
+msgstr "見出し"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid ""
 "Use these codes for headers and to automatically generate Tables of "
 "Contents."
-msgstr ""
+msgstr "見出しのためにこれらのコードを使いコンテンツの目次を自動生成する。"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid "Typography"
-msgstr ""
+msgstr "タイポグラフィー 『活字配置による表現』"
 
 #: wiki/plugins/help/templates/wiki/plugins/help/sidebar.html
 msgid "Lists"
-msgstr ""
+msgstr "一覧"
 
 #: wiki/plugins/images/forms.py
 #, python-format
@@ -22902,97 +22952,97 @@ msgstr "画像が追加されました：%s"
 msgid ""
 "The following images are available for this article. Copy the markdown tag "
 "to directly refer to an image from the article text."
-msgstr ""
+msgstr "以下の画像をこの記事のために利用可能です。マークダウンタグをコピーして記事本文から直接画像を参照します。"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Back to edit page"
-msgstr ""
+msgstr "編集する画面に戻る"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "No file"
-msgstr ""
+msgstr "ファイルがありません"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Upload new image"
-msgstr ""
+msgstr "新しい画像をアップロード"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Restore image"
-msgstr ""
+msgstr "画像を復元"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Remove image"
-msgstr ""
+msgstr "画像を削除"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Completely delete"
-msgstr ""
+msgstr "完全に削除"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "Revert to this version"
-msgstr ""
+msgstr "このバージョーンに戻す"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/index.html
 msgid "There are no images for this article."
-msgstr ""
+msgstr "この記事のための画像はありません。"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/purge.html
 #: wiki/templates/wiki/deleted.html
 msgid "Purge deletion"
-msgstr ""
+msgstr "完全削除"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/purge.html
 msgid "Purge image: Completely remove image file and all revisions."
-msgstr ""
+msgstr "完全削除：画像ファイルとすべてのバージョンを削除します。"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/purge.html
 msgid "Remove it completely!"
-msgstr ""
+msgstr "取り消しできない削除です！"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/render.html
 msgid "Image not found"
-msgstr ""
+msgstr "画像がみつかりません"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html
 msgid "Replace image"
-msgstr ""
+msgstr "画像を置き換え"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/revision_add.html
 msgid "Choose an image file to replace current image."
-msgstr ""
+msgstr "現在の画像と入れ替える画像ファイルを選択。"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Image id"
-msgstr ""
+msgstr "画像 id"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid "Insert"
-msgstr ""
+msgstr "挿入"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "No images found for this article"
-msgstr ""
+msgstr "この記事には画像がありません"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Manage images"
-msgstr ""
+msgstr "画像の管理"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Add new image"
-msgstr ""
+msgstr "新しい画像を追加する"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "Add image"
-msgstr ""
+msgstr "画像を追加する"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "You do not have permissions to add images."
-msgstr ""
+msgstr "画像を追加する権限がありません。"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid "How to use images"
-msgstr ""
+msgstr "画像の使い方"
 
 #: wiki/plugins/images/templates/wiki/plugins/images/sidebar.html
 msgid ""
@@ -23004,6 +23054,7 @@ msgid ""
 "Markdown in the caption. The markdown code syntax for images looks like "
 "this, possible values for align are left/center/right:"
 msgstr ""
+"画像をアップロードすると、この特定の記事にそれが添付されそこだけで使用されることになります。他のユーザが画像を置き換えることもできますが、古いバージョンも保持されています。素敵な解説文を添えた画像を公開したいかもしれませんね。その場合には、挿入ボタンを押下してコンテンツの右か左にフローティング表示される解説文入力の領域に書き込みます。解説文ではマークダウン書式を使うことができます。マークダウンの文法は、配置設定を左・中央・右にするなどのようにできます："
 
 #: wiki/plugins/links/wiki_plugin.py
 msgid "Links"
@@ -23011,19 +23062,23 @@ msgstr "リンク"
 
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid "Link to another wiki page"
-msgstr ""
+msgstr "他の Wiki ページへのリンク"
 
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid ""
 "Type in something from another wiki page's title and auto-complete will help"
 " you create a tag for you wiki link. Tags for links look like this:"
 msgstr ""
+"他の Wiki ページのタイトルの一部を入力して自動補完させることは Wiki "
+"のリンクのタグを作成する手助けになるでしょう。リンクのためのタグはこのようになります："
 
 #: wiki/plugins/links/templates/wiki/plugins/links/sidebar.html
 msgid ""
 "You can link to another website simply by inserting an address example.com "
 "or http://example.com or by using the markdown syntax:"
 msgstr ""
+"example.com や http://example.com "
+"のようなアドレス表記を記入したりマークダウン記法によって外部のウェブサイトへのリンクが簡単にできます："
 
 #: wiki/plugins/notifications/forms.py
 msgid "Notifications"
@@ -23067,66 +23122,66 @@ msgstr "作成された記事：%s"
 
 #: wiki/plugins/notifications/templates/wiki/plugins/notifications/menubaritem.html
 msgid "notifications"
-msgstr ""
+msgstr "通知"
 
 #: wiki/plugins/notifications/templates/wiki/plugins/notifications/menubaritem.html
 msgid "No notifications"
-msgstr ""
+msgstr "通知なし"
 
 #: wiki/plugins/notifications/templates/wiki/plugins/notifications/menubaritem.html
 msgid "Clear notifications list"
-msgstr ""
+msgstr "通知の一覧を消去"
 
 #: wiki/templates/wiki/base.html
 msgid "Search..."
-msgstr ""
+msgstr "検索…"
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Sign up"
-msgstr ""
+msgstr "サインアップ"
 
 #: wiki/templates/wiki/deleted.html
 msgid "Article deleted"
-msgstr ""
+msgstr "削除された記事"
 
 #: wiki/templates/wiki/deleted.html
 msgid "Article Deleted"
-msgstr ""
+msgstr "削除された記事"
 
 #: wiki/templates/wiki/deleted.html
 msgid "The article you were looking for has been deleted."
-msgstr ""
+msgstr "探していた記事は削除されていました。"
 
 #: wiki/templates/wiki/deleted.html
 msgid "You may restore this article and its children by clicking restore."
-msgstr ""
+msgstr "復元をチェックすることでこのアーティクルを復元できます。"
 
 #: wiki/templates/wiki/deleted.html
 msgid ""
 "You may remove this article and any children permanently and free their "
 "slugs by clicking the below button. This action cannot be undone."
-msgstr ""
+msgstr "下にあるボタンをクリックすることでこの記事とその下にある記事を跡形なく消去することができます。この操作は取り消すことができません。"
 
 #: wiki/templates/wiki/dir.html
 msgid "Listing articles in"
-msgstr ""
+msgstr "記事の一覧"
 
 #: wiki/templates/wiki/dir.html
 msgid "Up one level"
-msgstr ""
+msgstr "ひとつ上のレベルに移動"
 
 #: wiki/templates/wiki/dir.html
 msgid "clear"
-msgstr ""
+msgstr "クリア"
 
 #: wiki/templates/wiki/dir.html
 msgid "article,articles"
-msgstr ""
+msgstr "記事"
 
 #: wiki/templates/wiki/dir.html
 msgid "matches,match"
-msgstr ""
+msgstr "一致"
 
 #: wiki/templates/wiki/dir.html
 #, python-format
@@ -23135,7 +23190,7 @@ msgstr ""
 
 #: wiki/templates/wiki/dir.html
 msgid "is,are"
-msgstr ""
+msgstr "は"
 
 #: wiki/templates/wiki/dir.html
 #, python-format
@@ -23144,27 +23199,27 @@ msgstr ""
 
 #: wiki/templates/wiki/dir.html
 msgid "Last modified"
-msgstr ""
+msgstr "最終変更"
 
 #: wiki/templates/wiki/history.html
 msgid "no log message"
-msgstr ""
+msgstr "ログメッセージなし"
 
 #: wiki/templates/wiki/permission_denied.html
 msgid "Sorry, you don't have permission to view this page."
-msgstr ""
+msgstr "もうしわけありませんが、このページを購読する権限がありません。"
 
 #: wiki/templates/wiki/preview_inline.html
 msgid "Previewing revision"
-msgstr ""
+msgstr "改訂版をプレビュー中"
 
 #: wiki/templates/wiki/preview_inline.html
 msgid "Previewing merge between"
-msgstr ""
+msgstr "次の2つの合成版をプレビュー中"
 
 #: wiki/templates/wiki/preview_inline.html
 msgid "and"
-msgstr ""
+msgstr "および"
 
 #: wiki/templates/wiki/source.html
 msgid "Source of"
@@ -23172,31 +23227,31 @@ msgstr ""
 
 #: wiki/templates/wiki/source.html
 msgid "This article is currently locked for editing."
-msgstr ""
+msgstr "この記事は現在編集するためにロックされています"
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Please log in"
-msgstr ""
+msgstr "ログインしてください"
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Log me in..."
-msgstr ""
+msgstr "ログインさせてください。。。"
 
 #: wiki/templates/wiki/accounts/login.html
 msgid "Don't have an account?"
-msgstr ""
+msgstr "アカウントを持っていませんか？"
 
 #: wiki/templates/wiki/accounts/signup.html
 msgid "Sign me up..."
-msgstr ""
+msgstr "サインアップをさせてください。。。"
 
 #: wiki/templates/wiki/article/create_root.html
 msgid "Create root article"
-msgstr ""
+msgstr "ルートの記事を作成"
 
 #: wiki/templates/wiki/article/create_root.html
 msgid "Congratulations!"
-msgstr ""
+msgstr "おめでとうございます！"
 
 #: wiki/templates/wiki/article/create_root.html
 msgid ""
@@ -23204,14 +23259,16 @@ msgid ""
 " create the first one, the root article. In the beginning, it will only be "
 "editable by administrators, but you can define permissions after."
 msgstr ""
+"django-wiki "
+"を既にインストールしてあります。。。しかし記事がひとつもありません。そこで最初の記事、ルートの記事を作成する時となっています。開始するにあたり、管理者権限でなければこれを編集することはできませんが、あとから権限を設定することができます。"
 
 #: wiki/templates/wiki/article/create_root.html
 msgid "Root article"
-msgstr ""
+msgstr "ルートの記事"
 
 #: wiki/templates/wiki/article/create_root.html
 msgid "Create root"
-msgstr ""
+msgstr "ルートを作成"
 
 #: wiki/templates/wiki/includes/anonymous_blocked.html
 #, python-format
@@ -23219,14 +23276,16 @@ msgid ""
 "You need to <a href=\"%(login_url)s\">log in</a> or <a "
 "href=\"%(signup_url)s\">sign up</a> to use this function."
 msgstr ""
+"この機能を使用するには、<a href=\"%(login_url)s\">ログイン</a> 、または <a "
+"href=\"%(signup_url)s\">サインアップ</a>が必要です。"
 
 #: wiki/templates/wiki/includes/anonymous_blocked.html
 msgid "You need to log in og sign up to use this function."
-msgstr ""
+msgstr "この機能を使用するには、ログイン、または サインアップが必要です。"
 
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View Source"
-msgstr ""
+msgstr "ソースを見る"
 
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "Sub-articles for"
@@ -23234,23 +23293,23 @@ msgstr ""
 
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "No sub-articles"
-msgstr ""
+msgstr "副記事なし"
 
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "...and more"
-msgstr ""
+msgstr "。。。の他に"
 
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "Browse articles in this level"
-msgstr ""
+msgstr "このレベルの記事をブラウズする"
 
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "New article next to"
-msgstr ""
+msgstr "継続する新しい記事"
 
 #: wiki/templates/wiki/includes/breadcrumbs.html
 msgid "New article below"
-msgstr ""
+msgstr "下に続く新しい記事"
 
 #: wiki/templates/wiki/includes/revision_info.html
 msgid "by"
@@ -23258,11 +23317,11 @@ msgstr ""
 
 #: wiki/templates/wiki/includes/revision_info.html
 msgid "restored"
-msgstr ""
+msgstr "復旧済み"
 
 #: wiki/templates/wiki/includes/revision_info.html
 msgid "unlocked"
-msgstr ""
+msgstr "ロックされていません"
 
 #: wiki/views/accounts.py
 msgid "You are now sign up... and now you can sign in!"
@@ -23379,8 +23438,17 @@ msgstr ""
 #~ msgid "Contact Us"
 #~ msgstr "お問い合わせ"
 
+#~ msgid "Sign In"
+#~ msgstr "サインイン"
+
 #~ msgid "Course Run"
 #~ msgstr "Course Run"
+
+#~ msgid "Dismiss"
+#~ msgstr "閉じる"
+
+#~ msgid "Drag and Drop"
+#~ msgstr "ドラッグアンドドロップ"
 
 #~ msgid "Grading"
 #~ msgstr "採点"
@@ -23390,6 +23458,9 @@ msgstr ""
 
 #~ msgid "Advanced Settings"
 #~ msgstr "詳細設定"
+
+#~ msgid "Checklists"
+#~ msgstr "チェックリスト"
 
 #~ msgid "Tools"
 #~ msgstr "ツール"
@@ -23494,6 +23565,12 @@ msgstr ""
 
 #~ msgid "Learn more about Course Re-runs"
 #~ msgstr "講座の再開講について詳しく知る"
+
+#~ msgid "Course Outline"
+#~ msgstr "講座アウトライン"
+
+#~ msgid "Warning"
+#~ msgstr "警告"
 
 #~ msgid "Pages"
 #~ msgstr "ページ"
@@ -23803,6 +23880,9 @@ msgstr ""
 #~ msgid "Outline"
 #~ msgstr "アウトライン"
 
+#~ msgid "Publisher"
+#~ msgstr "Publisher"
+
 #~ msgid "Import"
 #~ msgstr "インポート"
 
@@ -23824,8 +23904,32 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "登録"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "{display_name}に追加される条件を満たすすべてのコンテンツを表示しています。各受講者にはリストからランダムに選ばれた{max_count}個のコンポーネントが割り当てられます。"
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "例: username@domain.com"
+
+#~ msgid ""
+#~ "edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+#~ "{link_start}edX Inc.{link_end}"
+#~ msgstr ""
+#~ "edX と Open edX、ならびに edX と Open edX のロゴは、{link_start}edX Inc.{link_end} "
+#~ "の登録商標です"
+
+#~ msgid "New Unit"
+#~ msgstr "新しい単元"
+
+#~ msgid "Copy"
+#~ msgstr "コピー"
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "以下の組織から支援されています"
@@ -23939,9 +24043,6 @@ msgstr ""
 #~ msgid "Already registered?"
 #~ msgstr "登録済ですか？"
 
-#~ msgid "Log in"
-#~ msgstr "ログイン"
-
 #~ msgid "Next Steps"
 #~ msgstr "次の手順"
 
@@ -24020,3 +24121,9 @@ msgstr ""
 
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "著作権に関してはこちらへ！"
+
+#~ msgid "Collapse All"
+#~ msgstr "すべてを閉じる"
+
+#~ msgid "Videos"
+#~ msgstr "動画"

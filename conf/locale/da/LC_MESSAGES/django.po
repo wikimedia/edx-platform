@@ -48,7 +48,7 @@
 # Pia Jensen, 2023
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -56,9 +56,9 @@
 # inger sølle <inger@soellingvraa.dk>, 2015
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Pia Jensen, 2023
@@ -67,7 +67,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Pia Jensen, 2023\n"
 "Language-Team: Danish (https://app.transifex.com/open-edx/teams/6205/da/)\n"
@@ -8102,6 +8102,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -13514,6 +13516,21 @@ msgstr "Kurser"
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Reports"
 msgstr "Rapporter"
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
 
 #. #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
 #. Translators: This is the status for a video that the servers have
@@ -27482,17 +27499,47 @@ msgstr "Klik på knappen \"Start Proctored Exam\" nedenfor for at fortsætte."
 #~ msgid "You do not have access to this dependency block."
 #~ msgstr "Du har ikke adgang til denne afhængighedsblok."
 
+#~ msgid "It works! Powered by the Open edX{registered_trademark} Platform"
+#~ msgstr "Det virker! Drevet af Open edX {registered_trademark} platformen"
+
 #~ msgid "Learn more about this course"
 #~ msgstr "Lær mere om dette kursus"
+
+#~ msgid "Go to course"
+#~ msgstr "Gå til kursus"
 
 #~ msgid "Enroll in this course"
 #~ msgstr "Tilmeld dig dette kursus"
 
+#~ msgid "New Unit"
+#~ msgstr "Ny enhed"
+
+#~ msgid "Paste as new unit"
+#~ msgstr "Indsæt som ny enhed"
+
+#~ msgid "Paste Component"
+#~ msgstr "Indsæt komponent"
+
+#~ msgid "From:"
+#~ msgstr "Fra:"
+
+#~ msgid "What's in my clipboard?"
+#~ msgstr "Hvad er der i mit udklipsholder?"
+
 #~ msgid "Reset Problems"
 #~ msgstr "Nulstil problemer"
 
+#~ msgid "Share this video"
+#~ msgstr "Del denne video"
+
+#~ msgid "Share on {site}"
+#~ msgstr "Del på {site}"
+
 #~ msgid "Copy"
 #~ msgstr "Kopier"
+
+#~ msgid "How is the transcript quality ?"
+#~ msgstr "Hvordan er kvaliteten af transskriptionen?"
 
 #~ msgid "Percent sign (%)"
 #~ msgstr "Procenttegn (%)"
@@ -27563,6 +27610,24 @@ msgstr "Klik på knappen \"Start Proctored Exam\" nedenfor for at fortsætte."
 #~ "kan der angives ekstra kolonner: kohorte- og kursustilstand i nævnte "
 #~ "rækkefølge. Disse ekstra kolonner kan være tomme."
 
+#~ msgid "Limited Staff"
+#~ msgstr "Begrænset personale"
+
+#~ msgid ""
+#~ "Course team members with the Limited Staff role help you manage your course."
+#~ " Limited Staff can enroll and unenroll learners, as well as modify their "
+#~ "grades and access all course data. Limited Staff don't have access to your "
+#~ "course in Studio. You can only give course team roles to enrolled users."
+#~ msgstr ""
+#~ "Kursusteammedlemmer med rollen med begrænset personale hjælper dig med at "
+#~ "administrere dit kursus. Begrænset personale kan til- og afmelde elever, "
+#~ "samt ændre deres karakterer og få adgang til alle kursusdata. Begrænset "
+#~ "personale har ikke adgang til dit kursus i Studio. Du kan kun give "
+#~ "kursusholdsroller til tilmeldte brugere."
+
+#~ msgid "Add Limited Staff"
+#~ msgstr "Tilføj begrænset personale"
+
 #~ msgid "To use the email tool, visit the"
 #~ msgstr "For at bruge e-mail-værktøjet, besøg"
 
@@ -27575,6 +27640,25 @@ msgstr "Klik på knappen \"Start Proctored Exam\" nedenfor for at fortsætte."
 #~ msgstr ""
 #~ "Du kan inkludere nøgleord i dine beskeder. Se {start_link}dokumentationen "
 #~ "{end_link} for en liste over tilgængelige søgeord."
+
+#~ msgid "There was an error when loading this module!"
+#~ msgstr "Der opstod en fejl under indlæsning af dette modul!"
+
+#~ msgid ""
+#~ "This module is available only for users who are signed into {platform}. "
+#~ "Kindly sign in and refresh this page to load the content."
+#~ msgstr ""
+#~ "Dette modul er kun tilgængeligt for brugere, der er logget ind på {platform}"
+#~ " . Log venligst ind og opdater denne side for at indlæse indholdet."
+
+#~ msgid "NOTE:"
+#~ msgstr "BEMÆRK:"
+
+#~ msgid ""
+#~ "The email used to sign into this platform and {platform} should be the same."
+#~ msgstr ""
+#~ "E-mailen, der bruges til at logge ind på denne platform og {platform} skal "
+#~ "være den samme."
 
 #~ msgid ""
 #~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
@@ -27845,11 +27929,14 @@ msgstr "Klik på knappen \"Start Proctored Exam\" nedenfor for at fortsætte."
 #~ msgid "Select this problem"
 #~ msgstr "Vælg dette problem"
 
+#~ msgid "Manage Tags"
+#~ msgstr "Administrer tags"
+
 #~ msgid "Manage Access"
 #~ msgstr "Administrer adgang"
 
-#~ msgid "Manage tags"
-#~ msgstr "Administrer tags"
-
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopier til udklipsholder"
+
+#~ msgid "Videos"
+#~ msgstr "Videoer"

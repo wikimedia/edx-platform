@@ -34,26 +34,27 @@
 # LTMC Latvijas Tiesnešu mācību centrs <ltmc.training@gmail.com>, 2019
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Waheed Ahmed <waheed@edx.org>, 2019
+# Transifex Bot <>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
-"Last-Translator: Waheed Ahmed <waheed@edx.org>, 2019\n"
+"Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Latvian (https://app.transifex.com/open-edx/teams/6205/lv/)\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
@@ -189,6 +190,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -1140,7 +1143,7 @@ msgid "Advanced"
 msgstr "Padziļināts"
 
 #: cms/djangoapps/contentstore/views/entrance_exam.py
-#: lms/djangoapps/courseware/tabs.py
+#: lms/djangoapps/courseware/tabs.py cms/templates/settings.html
 msgid "Entrance Exam"
 msgstr "Sākuma eksāmens"
 
@@ -1383,9 +1386,11 @@ msgstr ""
 msgid "{currency_symbol}{price}"
 msgstr "{currency_symbol}{price}"
 
+#. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: This refers to the cost of the course. In this case, the
 #. course costs nothing so it is free.
 #: common/djangoapps/course_modes/models.py
+#: lms/templates/course_modes/track_selection.html
 msgid "Free"
 msgstr "Bezmaksas"
 
@@ -4010,7 +4015,7 @@ msgstr ""
 "sertifikātus pirms beidzas kurss, ja viņi ir izpildījuši sertifikātu "
 "piešķiršanas prasības."
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Certificates Display Behavior"
 msgstr "Sertifikātu atspoguļošanas režīms"
 
@@ -6988,10 +6993,9 @@ msgstr ""
 "Atmaksas pieprasījums tika iniciēts lietotājam {username} ({email}). Lai "
 "apstrādātu šo pieprasījumu, lūdzu, apmeklējiet saiti(-es) tālāk."
 
-#: lms/djangoapps/course_goals/models.py
 #: lms/templates/course_modes/track_selection.html
 msgid "Earn a certificate"
-msgstr ""
+msgstr "Nopelniet sertifikātu"
 
 #: lms/djangoapps/course_goals/models.py
 msgid "Complete the course"
@@ -7796,6 +7800,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -10453,6 +10459,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.html
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/upsell_cta.txt
+#: lms/templates/course_modes/track_selection.html
 msgid "Upgrade Now"
 msgstr "Jaunināt tagad"
 
@@ -12916,6 +12923,21 @@ msgstr "Mani kursi"
 msgid "Reports"
 msgstr "Atskaites"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
 msgstr "Kursa komandas lietotājs neeksistē"
@@ -13348,11 +13370,13 @@ msgstr ""
 msgid "Vertical"
 msgstr "Vertikāls"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: cms/templates/course_outline.html lms/templates/ccx/schedule.html
 #: lms/templates/seq_module.html
 msgid "Section"
 msgstr "Segments"
 
+#: cms/djangoapps/contentstore/views/helpers.py
 #: lms/templates/ccx/schedule.html
 msgid "Subsection"
 msgstr "Apakšsegments"
@@ -13671,7 +13695,7 @@ msgstr ""
 
 #: cms/djangoapps/contentstore/views/videos.py
 msgid "Status"
-msgstr ""
+msgstr "Statuss"
 
 #. Translators: This is the suggested filename when downloading the URL
 #. listing for videos uploaded through Studio
@@ -14040,11 +14064,6 @@ msgstr ""
 #: cms/templates/course-create-rerun.html
 #: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
 msgid "Learn more about Course Re-runs"
-msgstr ""
-
-#: cms/templates/course_outline.html
-#: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-msgid "Course Outline"
 msgstr ""
 
 #: cms/templates/course_outline.html
@@ -15158,19 +15177,6 @@ msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr ""
 "Atslēgas ir derīgas ierobežotu laika posmu. Vai atslēgas derīgums ir "
 "beidzies?"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -23052,7 +23058,7 @@ msgstr ""
 
 #: cms/templates/settings.html
 msgid "Course Start Date"
-msgstr ""
+msgstr "Kursa sākuma datums"
 
 #: cms/templates/settings.html
 msgid "First day the course begins"
@@ -23068,7 +23074,7 @@ msgstr ""
 
 #: cms/templates/settings.html
 msgid "Course End Date"
-msgstr ""
+msgstr "Kursa beigu datums"
 
 #: cms/templates/settings.html
 msgid "Last day your course is active"
@@ -23813,11 +23819,11 @@ msgstr ""
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "previous"
-msgstr ""
+msgstr "iepriekšējais"
 
 #: cms/templates/maintenance/_announcement_index.html
 msgid "next"
-msgstr ""
+msgstr "nākamais"
 
 #: cms/templates/maintenance/_force_publish_course.html
 msgid "Required data to force publish course."
@@ -23958,23 +23964,23 @@ msgstr ""
 
 #: cms/templates/widgets/sock.html
 msgid "Looking for help with {studio_name}?"
-msgstr ""
+msgstr "Nepieciešama palīdzība ar {studio_name}?"
 
 #: cms/templates/widgets/sock.html
 msgid "Hide {studio_name} Help"
-msgstr ""
+msgstr "Paslēpt {studio_name} palīdzību"
 
 #: cms/templates/widgets/sock.html
 msgid "{studio_name} Documentation"
-msgstr ""
+msgstr "{studio_name} dokumentācija"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access documentation on http://docs.edx.org"
-msgstr ""
+msgstr "Piekļūt dokumentācijai http://docs.edx.org"
 
 #: cms/templates/widgets/sock_links.html
 msgid "edX Documentation"
-msgstr ""
+msgstr "edX dokumentācija"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
@@ -23986,23 +23992,23 @@ msgstr ""
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr ""
+msgstr "Reģistrējies edX101: Pārskats par edX kursa izveidošanu"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in edX101"
-msgstr ""
+msgstr "Reģistrēties edX101"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr ""
+msgstr "Reģistrējies StudioX: Kursa izveide ar edX Studio"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Enroll in StudioX"
-msgstr ""
+msgstr "Reģistrēties StudioX"
 
 #: cms/templates/widgets/sock_links.html
 msgid "Send an email to {email}"
-msgstr ""
+msgstr "Nosūtīt e-pastu uz {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -25138,11 +25144,17 @@ msgstr ""
 #~ msgid "Our mailing address is"
 #~ msgstr "Mūsu pasta adrese ir"
 
+#~ msgid "Drag and Drop"
+#~ msgstr "Vilkt un nomest"
+
 #~ msgid "Tools"
 #~ msgstr "Rīki"
 
 #~ msgid "Move"
 #~ msgstr "Pārvietot"
+
+#~ msgid "Course Outline"
+#~ msgstr "Kursa strukturējums"
 
 #~ msgid "Create"
 #~ msgstr "Izveidot"
@@ -25153,8 +25165,32 @@ msgstr ""
 #~ msgid "Sign Up"
 #~ msgstr "Reģistrēties"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "Parāda visu atbilstošo saturu, ko ir iespējams pievienot {display_name}. "
+#~ "Katram studentam tiks piesaistīts {max_count} nejauši izvēlēts komponents no"
+#~ " šī saraksta."
+#~ msgstr[1] ""
+#~ "Parāda visu atbilstošo saturu, ko ir iespējams pievienot {display_name}. "
+#~ "Katram studentam tiks piesaistīti {max_count} nejauši izvēlēti komponenti no"
+#~ " šī saraksta."
+#~ msgstr[2] ""
+#~ "Parāda visu atbilstošo saturu, ko ir iespējams pievienot {display_name}. "
+#~ "Katram studentam tiks piesaistīti {max_count} nejauši izvēlēti komponenti no"
+#~ " šī saraksta."
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "piemērs: username@domain.com"
+
+#~ msgid "Copy"
+#~ msgstr "Kopēt"
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "Atbalsta šādas organizācijas"
@@ -25367,3 +25403,6 @@ msgstr ""
 
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "Ievietojiet Jūsu autortiesību tekstu šeit!"
+
+#~ msgid "Collapse All"
+#~ msgstr "Sakļaut"

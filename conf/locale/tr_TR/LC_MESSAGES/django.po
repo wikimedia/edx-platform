@@ -112,7 +112,7 @@
 # Yasar Celep <yasar.celep@hotmail.com>, 2017
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -123,9 +123,9 @@
 # a56fc07028489bb2b53400de33ba6a83, 2014
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Ali Işıngör <ali@artistanbul.io>, 2021
@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Ali Işıngör <ali@artistanbul.io>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/open-edx/teams/6205/tr_TR/)\n"
@@ -272,6 +272,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -8203,6 +8205,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -13641,6 +13645,21 @@ msgstr "Dersler"
 msgid "Reports"
 msgstr "Raporlar"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #. #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
 #. Translators: This is the status for a video that the servers have
 #. successfully processed
@@ -16098,18 +16117,6 @@ msgstr "E-posta istemciniz URL'i iki satıra mı ayırdı?"
 #: lms/templates/invalid_email_key.html
 msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr "Anahtarlar kısıtlı bir zaman dilimi için geçerlidir. Süresi mi geçti?"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -27648,6 +27655,23 @@ msgstr ""
 #~ msgid "Dump courses to CourseGraph (override cache)"
 #~ msgstr "Dersleri CourseGraph'a dökün (önbelleği geçersizleştirin)"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "{display_name} içine eklenmeye uygun tüm eşleşen içerikler  "
+#~ "gösterilmektedir. Her öğrenciye bu listeden rastgele seçilen {max_count} "
+#~ "bileşen atanacaktır."
+#~ msgstr[1] ""
+#~ "{display_name} içine eklenmeye uygun tüm eşleşen içerikler  "
+#~ "gösterilmektedir. Her öğrenciye bu listeden rastgele seçilen {max_count} "
+#~ "bileşen atanacaktır."
+
 #~ msgid "You do not have access to this dependency block."
 #~ msgstr "Bu bağımlılık block'una erişim hakkınız yok."
 
@@ -27689,6 +27713,9 @@ msgstr ""
 
 #~ msgid "Copy"
 #~ msgstr "Kopyala"
+
+#~ msgid "How is the transcript quality ?"
+#~ msgstr "Transkript kalitesi nasıl?"
 
 #~ msgid "Percent sign (%)"
 #~ msgstr "Yüzde simgesi (%)"
@@ -28025,6 +28052,12 @@ msgstr ""
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "Telif Hakları metninizi buraya koyun!"
 
+#~ msgid "Files"
+#~ msgstr "Dosyalar"
+
+#~ msgid "Collapse All"
+#~ msgstr "Tümünü Kapa"
+
 #~ msgid " Learn more"
 #~ msgstr " Daha fazlasını öğren"
 
@@ -28055,3 +28088,9 @@ msgstr ""
 
 #~ msgid "Manage Access"
 #~ msgstr "Erişimi Yönet"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Panoya Kopyala"
+
+#~ msgid "Videos"
+#~ msgstr "Videolar"

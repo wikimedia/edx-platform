@@ -106,7 +106,7 @@
 # Rui Ribeiro <info@nau.edu.pt>, 2018-2019
 # #-#-#-#-#  wiki.po (edx-platform)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
 #
 # Translators:
@@ -132,9 +132,9 @@
 # Rui Ribeiro <info@nau.edu.pt>, 2019
 # #-#-#-#-#  edx_proctoring_proctortrack.po (0.1a)  #-#-#-#-#
 # edX translation file
-# Copyright (C) 2023 edX
+# Copyright (C) 2024 edX
 # This file is distributed under the GNU AFFERO GENERAL PUBLIC LICENSE.
-# EdX Team <info@edx.org>, 2023.
+# EdX Team <info@edx.org>, 2024.
 #
 # Translators:
 # Cátia Lopes <catia.lopes@bridgelk.com>, 2019
@@ -143,7 +143,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-15 05:37+0000\n"
+"POT-Creation-Date: 2024-01-29 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Cátia Lopes <catia.lopes@bridgelk.com>, 2019\n"
 "Language-Team: Portuguese (Portugal) (https://app.transifex.com/open-edx/teams/6205/pt_PT/)\n"
@@ -281,6 +281,8 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #, python-format
 msgid "This email was automatically sent from %(platform_name)s to %(email)s"
 msgstr ""
@@ -8179,6 +8181,8 @@ msgstr ""
 
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.html
 #: lms/djangoapps/discussion/templates/discussion/edx_ace/responsenotification/email/body.txt
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadmentionnotification/email/body.txt
 msgid "View discussion"
@@ -13632,6 +13636,21 @@ msgstr "Cursos"
 msgid "Reports"
 msgstr "Relatórios"
 
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
 #: lms/templates/courseware/course_about.html
 msgid "Course is full"
 msgstr "O curso está completo"
@@ -15257,19 +15276,6 @@ msgstr "O seu cliente de e-mail separou o URL em duas linhas?"
 msgid "The keys are valid for a limited amount of time. Has the key expired?"
 msgstr ""
 "As chaves são válidas por um período de tempo limitado. A chave expirou?"
-
-#: lms/templates/library-block-author-preview-header.html
-msgid ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} component drawn randomly from this "
-"list."
-msgid_plural ""
-"Showing all matching content eligible to be added into {display_name}. Each "
-"student will be assigned {max_count} components drawn randomly from this "
-"list."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
 
 #. Translators:  "External resource" means that this learning module is hosted
 #. on a platform external to the edX LMS
@@ -27413,6 +27419,27 @@ msgstr "Clique no botão \"Começar o Exame Vigiado\" para continuar."
 #~ msgid "Sign Up"
 #~ msgstr "Registar-se"
 
+#~ msgid ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} component drawn randomly from this "
+#~ "list."
+#~ msgid_plural ""
+#~ "Showing all matching content eligible to be added into {display_name}. Each "
+#~ "student will be assigned {max_count} components drawn randomly from this "
+#~ "list."
+#~ msgstr[0] ""
+#~ "A mostrar todos os conteúdos correspondentes elegíveis para serem "
+#~ "adicionados em {display_name}. A cada estudante será atribuído {max_count} "
+#~ "componente retirado aleatoriamente desta lista."
+#~ msgstr[1] ""
+#~ "A mostrar todos os conteúdos correspondentes elegíveis para serem "
+#~ "adicionados em {display_name}. A cada estudante serão atribuídos {max_count}"
+#~ " componentes retirados aleatoriamente desta lista."
+#~ msgstr[2] ""
+#~ "A mostrar todos os conteúdos correspondentes elegíveis para serem "
+#~ "adicionados em {display_name}. A cada estudante serão atribuídos {max_count}"
+#~ " componentes retirados aleatoriamente desta lista."
+
 #~ msgid "example: username@domain.com"
 #~ msgstr "exemplo: utilizador@dominio.com"
 
@@ -27432,8 +27459,14 @@ msgstr "Clique no botão \"Começar o Exame Vigiado\" para continuar."
 #~ msgid "Enroll in this course"
 #~ msgstr "Inscreva-se neste curso"
 
+#~ msgid "New Unit"
+#~ msgstr "Nova Unidade"
+
 #~ msgid "Reset Problems"
 #~ msgstr "Redefinir problemas"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
 
 #~ msgid "Percent sign (%)"
 #~ msgstr "Sinal de percentagem (%)"
@@ -27732,6 +27765,9 @@ msgstr "Clique no botão \"Começar o Exame Vigiado\" para continuar."
 #~ msgid "Put your Copyright Text here!"
 #~ msgstr "Coloque aqui o seu Texto de Direitos de Autor!"
 
+#~ msgid "Collapse All"
+#~ msgstr "Colapsar Tudo"
+
 #~ msgid " Learn more"
 #~ msgstr "Saiba mais"
 
@@ -27764,3 +27800,6 @@ msgstr "Clique no botão \"Começar o Exame Vigiado\" para continuar."
 
 #~ msgid "Manage Access"
 #~ msgstr "Gerir o Acesso"
+
+#~ msgid "Videos"
+#~ msgstr "Vídeos"
