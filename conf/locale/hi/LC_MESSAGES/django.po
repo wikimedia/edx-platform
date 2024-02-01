@@ -29,7 +29,7 @@
 # Sarina Canelake <sarina@tcril.org>, 2014
 # CHANDRA SHEKHAR SHARMA <shekharsharma041@gmail.com>, 2014
 # Tim McCormack, 2023
-# Yagnesh nayi, 2023
+# Yagnesh nayi, 2023-2024
 # #-#-#-#-#  django-studio.po (edx-platform)  #-#-#-#-#
 # edX translation file.
 # Copyright (C) 2024 EdX
@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-01-29 05:37+0000\n"
+"POT-Creation-Date: 2024-02-01 05:37+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Manish Manish <manish@manprax.com>, 2020\n"
 "Language-Team: Hindi (https://app.transifex.com/open-edx/teams/6205/hi/)\n"
@@ -1157,6 +1157,21 @@ msgstr ""
 
 #: openedx/core/lib/license/templates/license.html
 msgid "CC-by-sa 4.0"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#, python-format
+msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(thread_username)s created a post: %(thread_title)s:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s Created a post."
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -6957,8 +6972,9 @@ msgid "Financial Assistance"
 msgstr "वित्तीय सहायता"
 
 #: lms/djangoapps/courseware/courses.py
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 msgid "Assignment"
-msgstr "असाइन्मंट "
+msgstr ""
 
 #: lms/djangoapps/courseware/courses.py
 msgid "Open Response Assessment"
@@ -6978,7 +6994,7 @@ msgstr "स्टाफ मूल्यांकन "
 
 #: lms/djangoapps/courseware/courses.py
 msgid "Submission"
-msgstr "सबमीस्न "
+msgstr "सबमिशन"
 
 #: lms/djangoapps/courseware/courses.py
 msgid ""
@@ -7254,7 +7270,7 @@ msgstr ""
 
 #: lms/djangoapps/courseware/plugins.py
 msgid "Calculator"
-msgstr "कैल्कुलेटर "
+msgstr "कैलक्यूलेटर"
 
 #: lms/djangoapps/courseware/plugins.py
 msgid "Provide an in-course calculator for simple and complex calculations."
@@ -7262,7 +7278,7 @@ msgstr ""
 
 #: lms/djangoapps/courseware/plugins.py
 msgid "Proctoring"
-msgstr "प्रोक्तोरिंग "
+msgstr "प्रॉक्टरिंग "
 
 #: lms/djangoapps/courseware/plugins.py
 msgid ""
@@ -8051,7 +8067,7 @@ msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Attachments archive is being created."
-msgstr "अटैचमेंट्स अर्चिव बनाया जा रहा है |"
+msgstr "अनुलग्नक संग्रह तैयार हो रहा है।"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
@@ -9668,7 +9684,7 @@ msgstr "सत्यापन पुनः प्रस्तुत करें
 #: lms/templates/verify_student/edx_ace/verificationexpiry/email/body.txt
 #, python-format
 msgid "ID verification FAQ : %(help_center_link)s "
-msgstr "आइ डी वेरीफीकस्न एफ़ ए क्यू :%(help_center_link)s"
+msgstr "आईडी सत्यापन FAQ: %(help_center_link)s"
 
 #: lms/templates/verify_student/edx_ace/verificationexpiry/email/subject.txt
 #, python-format
@@ -12173,10 +12189,12 @@ msgid ""
 "This content is only accessible to registered learners. Sign in or register "
 "to view it."
 msgstr ""
+"यह सामग्री केवल पंजीकृत शिक्षार्थियों के लिए ही पहुंच योग्य है। इसे देखने के"
+" लिए साइन इन करें या रजिस्टर करें।"
 
 #: openedx/core/djangoapps/xblock/runtime/mixin.py
 msgid "This content is only accessible to enrolled learners. "
-msgstr ""
+msgstr "यह सामग्री केवल नामांकित शिक्षार्थियों के लिए ही पहुंच योग्य है।"
 
 #: openedx/core/lib/api/view_utils.py
 #, python-brace-format
@@ -12249,15 +12267,15 @@ msgstr ""
 
 #: openedx/features/calendar_sync/plugins.py
 msgid "Calendar Sync"
-msgstr ""
+msgstr "कैलेंडर सिंक"
 
 #: openedx/features/calendar_sync/plugins.py
 msgid "Unsubscribe from calendar updates"
-msgstr ""
+msgstr "कैलेंडर अपडेट से सदस्यता समाप्त करें"
 
 #: openedx/features/calendar_sync/plugins.py
 msgid "Subscribe to calendar updates"
-msgstr ""
+msgstr "कैलेंडर अपडेट की सदस्यता लें"
 
 #: openedx/features/calendar_sync/utils.py
 #, python-brace-format
@@ -12271,6 +12289,9 @@ msgid ""
 "complete your self-paced course. This schedule for {course} will help you "
 "stay on track!"
 msgstr ""
+"एक शेड्यूल पर टिके रहना यह सुनिश्चित करने का सबसे अच्छा तरीका है कि आप अपना "
+"स्व-गति पाठ्यक्रम सफलतापूर्वक पूरा कर लें। {course} का यह शेड्यूल आपको ट्रैक"
+" पर बने रहने में मदद करेगा!"
 
 #: openedx/features/calendar_sync/utils.py
 msgid ""
@@ -12278,6 +12299,10 @@ msgid ""
 "course from your instructor will be automatically reflected. You can remove "
 "the course from your calendar at any time."
 msgstr ""
+"एक बार जब आप अपने पाठ्यक्रम के शेड्यूल को अपने कैलेंडर के साथ समन्वयित कर "
+"लेते हैं, तो आपके प्रशिक्षक से पाठ्यक्रम के बारे में कोई भी अपडेट स्वचालित "
+"रूप से प्रतिबिंबित होगा। आप किसी भी समय अपने कैलेंडर से पाठ्यक्रम हटा सकते "
+"हैं।"
 
 #: openedx/features/calendar_sync/utils.py
 #, python-brace-format
@@ -12289,6 +12314,8 @@ msgid ""
 "You have successfully shifted your course schedule and your calendar is up "
 "to date."
 msgstr ""
+"आपने सफलतापूर्वक अपना पाठ्यक्रम शेड्यूल बदल लिया है और आपका कैलेंडर अद्यतित "
+"है।"
 
 #: lms/templates/support/feature_based_enrollments.html
 msgid "Enabled As Of"
@@ -12300,6 +12327,8 @@ msgid ""
 "If the configuration is Enabled, then all enrollments created after this "
 "date and time (user local time) will be affected."
 msgstr ""
+"यदि कॉन्फ़िगरेशन सक्षम है, तो इस दिनांक और समय (उपयोगकर्ता स्थानीय समय) के "
+"बाद बनाए गए सभी नामांकन प्रभावित होंगे।"
 
 #: openedx/features/content_type_gating/models.py
 msgid "Studio Override Enabled"
@@ -12384,7 +12413,7 @@ msgstr ""
 
 #: openedx/features/course_experience/api/v1/views.py
 msgid "'course_key' is required."
-msgstr ""
+msgstr "'कोर्स_की' आवश्यक है।"
 
 #: openedx/features/course_experience/api/v1/views.py
 msgid "View all dates"
@@ -12470,6 +12499,11 @@ msgid ""
 " the course is in, then the more specific context overrides the more general"
 " context."
 msgstr ""
+"ये पहली खरीद छूट के लिए प्रतिशत को कॉन्फ़िगर करने के लिए संदर्भ को परिभाषित "
+"करते हैं। यदि कई संदर्भ किसी पाठ्यक्रम पर लागू होते हैं (उदाहरण के लिए, यदि "
+"कॉन्फ़िगरेशन विशेष रूप से पाठ्यक्रम के लिए निर्दिष्ट किया गया है, और उस "
+"संगठन के लिए जिसमें पाठ्यक्रम है, तो अधिक विशिष्ट संदर्भ ओवरराइड हो जाता है "
+"अधिक सामान्य सन्दर्भ।"
 
 #: openedx/features/discounts/utils.py
 #, python-brace-format
@@ -12477,16 +12511,20 @@ msgid ""
 "{s_sr}Original price: {s_op}{original_price}{e_p}, discount price: "
 "{e_sr}{formatted_discount_price}"
 msgstr ""
+"{s_sr}मूल कीमत: {s_op}{original_price}{e_p}, छूट कीमत: "
+"{e_sr}{formatted_discount_price}"
 
 #: openedx/features/enterprise_support/admin/forms.py
 msgid "CSV File"
-msgstr ""
+msgstr "सीएसवी फ़ाइल"
 
 #: openedx/features/enterprise_support/admin/forms.py
 msgid ""
 "CSV file should have 3 columns having names lms_user_id, course_id, "
 "opportunity_id"
 msgstr ""
+"CSV फ़ाइल में 3 कॉलम होने चाहिए जिनके नाम lms_user_id, course_id, "
+"Opportunity_id हों"
 
 #: openedx/features/enterprise_support/admin/views.py
 #, python-brace-format
@@ -12494,6 +12532,9 @@ msgid ""
 "Enrollment attributes were not updated for records at following line numbers"
 " in csv because no enrollment found for these records: {error_line_numbers}"
 msgstr ""
+"सीएसवी में निम्नलिखित लाइन नंबरों पर रिकॉर्ड के लिए नामांकन विशेषताएँ अपडेट "
+"नहीं की गईं क्योंकि इन रिकॉर्ड के लिए कोई नामांकन नहीं मिला: "
+"{error_line_numbers}"
 
 #: openedx/features/enterprise_support/api.py
 #, python-brace-format
@@ -12608,27 +12649,12 @@ msgstr "पाठ्यक्रम का नाम"
 #: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 #: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Courses"
-msgstr "कौरसेस"
+msgstr "पाठ्यक्रम"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Reports"
 msgstr "रिपोर्ट्स"
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
-#, python-format
-msgid "%(thread_username)s created a post: <b>%(thread_title)s</b>:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-#, python-format
-msgid "%(thread_username)s created a post: %(thread_title)s:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
-#, python-format
-msgid "%(platform_name)s -> %(created_by)s Created a post."
-msgstr ""
 
 #: lms/templates/courseware/course_about.html
 msgid "Course is full"
@@ -25047,6 +25073,9 @@ msgstr "क्लिक ऑन द \"स्टार्ट प्रोक्ट
 #~ msgid "Ready"
 #~ msgstr "तैयार"
 
+#~ msgid "Blank Problem"
+#~ msgstr "रिक्त समस्या"
+
 #~ msgid "Invalid data"
 #~ msgstr "अमान्य डाटा"
 
@@ -25057,7 +25086,7 @@ msgstr "क्लिक ऑन द \"स्टार्ट प्रोक्ट
 #~ msgstr "अभी अनामांकित अक्षम कर दिया गया है"
 
 #~ msgid "Security"
-#~ msgstr "सेक्युर्टी "
+#~ msgstr "सुरक्षा"
 
 #~ msgid "Proctored Exam"
 #~ msgstr "प्रोक्टेड परीक्षा"
