@@ -20,6 +20,13 @@ from openedx.core.djangoapps.site_configuration.models import SiteConfiguration
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from lms.djangoapps.grades.api import CourseGradeFactory
 from common.djangoapps.student.views import get_course_enrollments, get_org_black_and_whitelist_for_site
+from openedx.core.djangoapps.django_comment_common.models import (
+    FORUM_ROLE_ADMINISTRATOR,
+    FORUM_ROLE_COMMUNITY_TA,
+    FORUM_ROLE_GROUP_MODERATOR,
+    FORUM_ROLE_MODERATOR,
+    Role
+)
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -67,35 +74,40 @@ def is_discussion_notification_configured_for_site(site, post_id):
         return False
     return True
 
-
-def get_course_instructors_list(post_id):
+def get_users_with_forum_roles(post_id):
     """
-    Get a list of unique user objects representing both instructors and staff members for a course.
+    Fetches a QuerySet of unique user objects associated with specified forum roles within a course.
+
+    This function is designed to identify users who have been assigned specific forum roles, such as Administrator, Community TA, Group Moderator, and Moderator, within the context of a given course.
 
     Args:
-        context: The context or environment in which the function is called.
-        post_id (str): The identifier for the course.
+        post_id (str): The unique identifier for the course.
 
     Returns:
-        list: A list of unique user objects representing instructors and staff members.
+        QuerySet: A QuerySet of unique user objects associated with the specified forum roles.
 
-    Example:
-        users = get_course_instructors_list(context, "course_id")
+    Example Usage:
+        users = get_users_with_forum_roles("course-v1:ExampleX+Subject101+2023")
     """
     course_key = CourseKey.from_string(post_id)
-    log.info("course_key check %s", course_key)
+    log.info(f"Fetching users with forum roles for course_key: {course_key}")
 
-    instructors = set(CourseInstructorRole(course_key).users_with_role())
-    staff_members = set(CourseStaffRole(course_key).users_with_role())
+    # List of forum role names to include
+    forum_role_names = [
+        FORUM_ROLE_ADMINISTRATOR,
+        FORUM_ROLE_COMMUNITY_TA,
+        FORUM_ROLE_GROUP_MODERATOR,
+        FORUM_ROLE_MODERATOR,
+    ]
 
-    # Combine instructors and staff members, ensuring uniqueness
-    users_set = instructors.union(staff_members)
+    # Fetch Role instances that match the specified forum role names for the course
+    roles = Role.objects.filter(name__in=forum_role_names, course_id=course_key)
 
-    # Convert the set to a list
-    users_list = list(users_set)
+    # Collect all users associated with these roles, ensuring uniqueness
+    users = User.objects.filter(roles__in=roles).distinct()
 
-    log.info("Unique list of instructors and staff members: %s", users_list)
-    return users_list
+    log.info(f"Found {users.count()} users associated with forum roles in course {course_key}")
+    return users
 
 
 def get_mentioned_users_list(input_string, users_list=None):
