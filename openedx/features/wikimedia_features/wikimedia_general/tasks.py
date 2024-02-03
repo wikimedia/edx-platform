@@ -11,7 +11,7 @@ from openedx.features.wikimedia_features.email.utils import (
 )
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     get_mentioned_users_list,
-    get_course_instructors_list,
+    get_users_with_forum_roles,
 )
 
 log = getLogger(__name__)
@@ -56,7 +56,7 @@ def send_thread_creation_email_task(context, is_thread, post_id):
     """
     log.info("Initiated task to send thread mention notifications.")
 
-    users_list = get_course_instructors_list(post_id)
+    users_list = get_users_with_forum_roles(post_id)
 
     if users_list:
         receipients = [user.email for user in users_list]
