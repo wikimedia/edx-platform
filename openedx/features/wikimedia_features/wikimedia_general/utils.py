@@ -27,6 +27,9 @@ from openedx.core.djangoapps.django_comment_common.models import (
     FORUM_ROLE_MODERATOR,
     Role
 )
+from lms.djangoapps.courseware.courses import get_course_with_access
+from lms.djangoapps.discussion.django_comment_client.utils import (
+    add_courseware_context)
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -301,6 +304,28 @@ def get_updated_studio_filter_meanings(courses):
             studio_filters_meanings[studio_filter]['terms'] = studio_filters[studio_filter]
     return studio_filters_meanings
 
+
+def add_courseware_info(data, user, current_site, course_key):
+    """
+    Enriches the provided data dictionary with courseware information for a given post by constructing a fully qualified courseware URL.
+
+    This function retrieves course access for the specified user and course, adds additional context related to courseware based on the post data, and updates the post data with a complete URL to the courseware.
+
+    Args:
+        data (dict): The data dictionary containing information about a discussion post, which will be enriched with courseware URL information.
+        user (User): The user object for whom the course access is being checked.
+        current_site (Site): The current site object representing the domain on which the course is hosted.
+        course_key (CourseKey): The key of the course to which the post belongs.
+
+    Returns:
+        None: Directly modifies the 'data' dictionary, adding the 'courseware_url' key and 'courseware_title' key  with the complete URL as its value.
+    """
+    course = get_course_with_access(user, 'load', course_key)
+    add_courseware_context([data], course, user)
+    if 'courseware_url' in data:
+        scheme = 'https' if settings.HTTPS == 'on' else 'http'
+        base_url = f"{scheme}://{current_site.domain}"
+        data["courseware_url"] = f"{base_url}{data['courseware_url']}"
 
 WIKI_LMS_FILTER_MAPPINGS = {
     'paced_type': get_paced_type,
