@@ -2,6 +2,10 @@
 {% block content %}
     {% blocktrans trimmed %}{{ thread_username }} created a post: {{ thread_title }}:{% endblocktrans %}
     {{ thread_body }}
+    {% if courseware_url %}
     {% trans "View discussion" %} -> {{ post_link }}
+    {% else %}
+    {% trans "View discussion" %} -> {{ courseware_url }}
+    {% endif %}
     {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
 {% endblock %}

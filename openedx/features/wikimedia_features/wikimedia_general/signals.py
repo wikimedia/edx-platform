@@ -17,7 +17,8 @@ from openedx.core.djangoapps.django_comment_common.signals import (
 from openedx.core.djangoapps.theming.helpers import get_current_site
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
-    is_discussion_notification_configured_for_site
+    is_discussion_notification_configured_for_site,
+    get_courseware_info
 )
 from openedx.features.wikimedia_features.wikimedia_general.tasks import send_thread_mention_email_task, send_thread_creation_email_task
 from openedx.features.wikimedia_features.email.utils import (
@@ -25,6 +26,7 @@ from openedx.features.wikimedia_features.email.utils import (
     update_context_with_comment,
     build_discussion_notification_context
 )
+
 
 logger = getLogger(__name__)
 
@@ -82,7 +84,6 @@ def send_thread_mention_email_notification(sender, user, post, **kwargs):
         'site': current_site,
         'is_thread': is_thread
     }
-
     if is_thread:
         update_context_with_thread(context, post)
     else:
@@ -107,7 +108,6 @@ def send_new_post_email_notification_to_instructors(sender, user, post,**kwargs)
         None
     """
     current_site = get_current_site()
-
     if current_site is None:
         current_site = Site.objects.get_current()
 
@@ -119,12 +119,17 @@ def send_new_post_email_notification_to_instructors(sender, user, post,**kwargs)
 
     post_id = post.course_id
     course_key = CourseKey.from_string(post.course_id)
-    
+    data = post.to_dict()
+    get_courseware_info(data, user, current_site, course_key)
     context = {
         'course_id': course_key,
         'site': current_site,
-        'is_thread': True
+        'is_thread': True,
     }
+    if 'courseware_url' in data:
+        context['courseware_url'] = data['courseware_url']
+    if 'courseware_title' in data:
+        context['courseware_title'] = data['courseware_title']
     
     update_context_with_thread(context, post)
     message_context = build_discussion_notification_context(context)
@@ -132,5 +137,3 @@ def send_new_post_email_notification_to_instructors(sender, user, post,**kwargs)
     send_thread_creation_email_task.delay(message_context, True, post_id)
     
     logger.info("signal successful;")
-
-
