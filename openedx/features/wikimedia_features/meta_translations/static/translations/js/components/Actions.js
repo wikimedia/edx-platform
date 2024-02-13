@@ -5,29 +5,35 @@ import useUpdate from '../hooks/useUpdate';
 function Actions (props) {
 
   const { approved, versionStatus, enableApproveButton, destinationFlag, approveAll, setApproveAll, context } = props;
-  const { applied, applied_version, versions } = versionStatus
+  const { applied, applied_version, versions } = versionStatus;
 
   const { approveCourseOutline, updateTranslation,
     updateTranslationToInitialState, applyCourseVersion, approveRecursiveCourseOutline } = useUpdate(context);
 
-  const [buttonsVisibility, setButtonsVisibility] = React.useState({apply: false, approve: true, approveAll: false})
+  const [buttonsVisibility, setButtonsVisibility] = React.useState({apply: false, approve: true, approveAll: false});
 
-  const [selectedOption, setSelectedOption] = React.useState({value:-1, label: context.META_DATA.options_tags.pending})
+  const [selectedOption, setSelectedOption] = React.useState({value:-1, label: context.META_DATA.options_tags.pending});
 
-  const [options, setOptions]  = React.useState({})
+  const [options, setOptions]  = React.useState({});
 
-  const [enableApplyButton, setEnableApplyButton] = React.useState(false)
+  const [enableApplyButton, setEnableApplyButton] = React.useState(false);
 
-  const [applyTrigger, setApplyTrigger] = React.useState(false)
+  const [applyTrigger, setApplyTrigger] = React.useState(false);
 
   const approveTitle = (!destinationFlag ? context.META_DATA.approve_button.disabled :
                         !enableApproveButton ? context.META_DATA.approve_button.incomplete :
-                        approved ? context.META_DATA.approve_button.approved : context.META_DATA.approve_button.approve)
+                        approved ? context.META_DATA.approve_button.approved : context.META_DATA.approve_button.approve);
 
   const applyTitle = (!destinationFlag ? context.META_DATA.apply_button.disabled :
                       !enableApplyButton ? context.META_DATA.apply_button.applied :
-                      context.META_DATA.apply_button.apply)
+                      context.META_DATA.apply_button.apply);
 
+  const reset_states = () => {
+    setButtonsVisibility({apply: false, approve: true, approveAll: false});
+    setSelectedOption({value:-1, label: context.META_DATA.options_tags.pending});
+    setEnableApplyButton(false);
+    setApplyTrigger(false);
+  }
 
   const updateOptionsFromVersion = () => {
     let newOptions = {
@@ -49,11 +55,13 @@ function Actions (props) {
 
   useEffect(() => {
     setButtonsVisibility((prevState)=> ({...prevState, approveAll: approveAll}));
-  }, [approveAll])
+  }, [approveAll]);
 
   useEffect(() => {
-    updateOptionsFromVersion(approved);
-    if (approved && !applyTrigger) {
+    updateOptionsFromVersion();
+    if (!applied_version) {
+      reset_states();
+    } else if (approved && !applyTrigger) {
       let last_element = versions.slice(-1)[0]
       setSelectedOption({value: last_element.id, label: last_element.date});
       setButtonsVisibility((prevState)=> ({...prevState, apply: true, approve: false}));
@@ -76,7 +84,7 @@ function Actions (props) {
         setButtonsVisibility((prevState)=> ({...prevState, apply: false, approve: true}));
       }
     }
-  };
+  }
 
   const handleApply = (e) => {
     e.stopPropagation();
