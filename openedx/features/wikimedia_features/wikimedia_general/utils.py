@@ -305,7 +305,7 @@ def get_updated_studio_filter_meanings(courses):
     return studio_filters_meanings
 
 
-def get_courseware_info(data, user, current_site, course_key):
+def add_courseware_info(data, user, current_site, course_key):
     """
     Enriches the provided data dictionary with courseware information for a given post by constructing a fully qualified courseware URL.
 

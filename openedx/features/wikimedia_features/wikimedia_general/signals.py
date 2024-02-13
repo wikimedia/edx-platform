@@ -18,7 +18,7 @@ from openedx.core.djangoapps.theming.helpers import get_current_site
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 from openedx.features.wikimedia_features.wikimedia_general.utils import (
     is_discussion_notification_configured_for_site,
-    get_courseware_info
+    add_courseware_info
 )
 from openedx.features.wikimedia_features.wikimedia_general.tasks import send_thread_mention_email_task, send_thread_creation_email_task
 from openedx.features.wikimedia_features.email.utils import (
@@ -120,20 +120,19 @@ def send_new_post_email_notification_to_instructors(sender, user, post,**kwargs)
     post_id = post.course_id
     course_key = CourseKey.from_string(post.course_id)
     data = post.to_dict()
-    get_courseware_info(data, user, current_site, course_key)
+    add_courseware_info(data, user, current_site, course_key)
     context = {
         'course_id': course_key,
         'site': current_site,
         'is_thread': True,
     }
-    if 'courseware_url' in data:
-        context['courseware_url'] = data['courseware_url']
-    if 'courseware_title' in data:
-        context['courseware_title'] = data['courseware_title']
     
     update_context_with_thread(context, post)
     message_context = build_discussion_notification_context(context)
-    
+
+    if 'courseware_url' in data:
+        message_context['post_link'] = data['courseware_url']
+
     send_thread_creation_email_task.delay(message_context, True, post_id)
     
     logger.info("signal successful;")
