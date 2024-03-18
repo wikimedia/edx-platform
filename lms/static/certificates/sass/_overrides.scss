@@ -67,7 +67,12 @@
     background: #fff url("../images/certificate-bg.jpeg") 100% 0 no-repeat;
     background-size: auto 100%;
     padding: 2.9rem 0 0.6rem 3.9rem;
+    .rtl & {
+        background-position: 0 0;
+        padding: 2.9rem 3.9rem 0.6rem 0;
+    }
 }
+
 
 .accomplishment-rendering {
 
@@ -103,6 +108,9 @@
         margin: 0;
         padding: 0;
         border: 0;
+        .rtl & {
+            text-align: right;
+        }
     }
 
     .accomplishment-signatories {
@@ -219,6 +227,10 @@
         max-width: 8.4rem;
         margin: auto 0 2rem;
     }
+
+    .rtl & {
+        padding: 0 1.5rem 0 0;
+    }
 }
 
 .logo-box {
@@ -267,6 +279,7 @@
     .main-content {
         flex: 0 0 70%;
         max-width: 70%;
+        flex-direction: column;
     }
 
     .side-area {
