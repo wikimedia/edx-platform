@@ -230,9 +230,8 @@ def list_all_courses_enrollment_data():
     courses = get_visible_courses()
     courses_data = []
 
-
     for course in courses:
-        
+
         parent_course_url = ''
         parent_course_title = ''
         try:
@@ -241,7 +240,7 @@ def list_all_courses_enrollment_data():
             parent_course_title = get_course_by_id(course_traslation.base_course_id).display_name
         except CourseTranslation.DoesNotExist:
             pass
-        
+
         total_learners_completed, total_learners_enrolled, completed_percentage = \
             get_course_enrollment_and_completion_stats(course.id)
         courses_data.append({
@@ -254,12 +253,11 @@ def list_all_courses_enrollment_data():
             "total_learners_completed": total_learners_completed,
             "completed_percentage": completed_percentage,
         })
-    
+
     return courses_data
 
 
-
-def list_quarterly_courses_enrollement_data(quarter):
+def list_quarterly_courses_enrollment_data(quarter):
     """
     Get course reports
     """

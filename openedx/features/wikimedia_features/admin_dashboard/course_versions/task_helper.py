@@ -16,7 +16,7 @@ from openedx.features.wikimedia_features.admin_dashboard.course_versions.utils i
     list_all_courses_enrollment_data,
     list_version_report_info_per_course,
     list_version_report_info_total,
-    list_quarterly_courses_enrollement_data
+    list_quarterly_courses_enrollment_data,
 )
 
 
@@ -114,7 +114,9 @@ def upload_course_versions_csv_to_report_store(rows, error_rows, course_key, tim
     tracker_emit(csv_name)
 
 
-def upload_all_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course_id_str, task_input, action_name, user_ids):
+def upload_all_courses_enrollment_csv(
+    _xmodule_instance_args, _entry_id, course_id_str, task_input, action_name, user_ids
+):
     """
     Generate a CSV file containing information of all courses enrollments.
     """
@@ -127,7 +129,7 @@ def upload_all_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course
 
     # Compute result table and format it
     query_features = task_input.get('features')
-    csv_type = task_input.get('csv_type', "all_enrollement_stats")
+    csv_type = task_input.get("csv_type", "all_enrollments_stats")
 
     query_features_names = [
         'Course URL', 'Course title', 'Course available since', 'Parent course URL', 'Parent course title', 'Total learners enrolled', 'Total learners completed', 'Percentage of learners who completed the course',
@@ -147,7 +149,7 @@ def upload_all_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course
     # Perform the upload
     report_store = ReportStore.from_config('GRADES_DOWNLOAD')
 
-    csv_name = "all_courses_enrollements"
+    csv_name = "all_courses_enrollments"
     report_name = '{csv_name}_{timestamp_str}.csv'.format(
         csv_name=csv_name,
         timestamp_str=start_date.strftime('%Y-%m-%d-%H%M')
@@ -157,7 +159,9 @@ def upload_all_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course
     return task_progress.update_task_state(extra_meta=current_step)
 
 
-def upload_quarterly_courses_enrollement_csv(_xmodule_instance_args, _entry_id, course_id_str, task_input, action_name, user_ids):
+def upload_quarterly_courses_enrollment_csv(
+    _xmodule_instance_args, _entry_id, course_id_str, task_input, action_name, user_ids
+):
     """
     Generate a CSV file containing information of quarterly courses enrollments.
     """
@@ -182,7 +186,7 @@ def upload_quarterly_courses_enrollement_csv(_xmodule_instance_args, _entry_id, 
     else:
         quarter = get_last_quarter()
 
-    data = list_quarterly_courses_enrollement_data(quarter)
+    data = list_quarterly_courses_enrollment_data(quarter)
 
     header, rows = format_dictlist(data, query_features)
 
@@ -196,7 +200,7 @@ def upload_quarterly_courses_enrollement_csv(_xmodule_instance_args, _entry_id, 
 
     # Perform the upload
     report_store = ReportStore.from_config('GRADES_DOWNLOAD')
-    csv_name = f"courses_enrollements({quarter[0]}-{quarter[1]})"
+    csv_name = f"courses_enrollments({quarter[0]}-{quarter[1]})"
     report_name = '{csv_name}_{timestamp_str}.csv'.format(
         csv_name=csv_name,
         timestamp_str=start_date.strftime('%Y-%m-%d-%H%M')
