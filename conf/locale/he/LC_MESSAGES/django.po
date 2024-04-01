@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-02-15 05:37+0000\n"
+"POT-Creation-Date: 2024-04-01 11:49+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Hebrew (https://app.transifex.com/open-edx/teams/6205/he/)\n"
@@ -130,7 +130,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: MediaWiki 1.42.0-alpha; Translate 2023-12-01\n"
 "X-POT-Import-Date: 2024-01-01 07:33:29+0000\n"
@@ -1154,6 +1154,13 @@ msgstr ""
 msgid "The status for any active tasks appears in the list below."
 msgstr "מצב המשימות הפעילות, אם יש כאלה, מופיע ברשימה להלן."
 
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+#: lms/djangoapps/instructor/views/api.py
+#: lms/djangoapps/instructor_task/api_helper.py
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
+msgid "enrollment"
+msgstr ""
+
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Generate an all time report of enrolment/completion for all courses."
 msgstr ""
@@ -1193,6 +1200,11 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
 #, python-format
 msgid "%(platform_name)s -> %(created_by)s Created a post."
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid "%(platform_name)s -> %(created_by)s created a post."
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -1524,7 +1536,6 @@ msgid_plural "%(count)d student accounts were unlocked."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/student/admin.py
 #, python-brace-format
@@ -2374,7 +2385,6 @@ msgid_plural ""
 msgstr[0] "הקובץ חייב להסתיים עם התוסף '{file_types}'."
 msgstr[1] "הקובץ חייב להסתיים באחד מהתוספים הבאים: '{file_types}'."
 msgstr[2] "הקובץ חייב להסתיים באחד מהתוספים הבאים: '{file_types}'."
-msgstr[3] "הקובץ חייב להסתיים באחד מהתוספים הבאים: '{file_types}'."
 
 #: common/djangoapps/util/file.py
 #, python-brace-format
@@ -2413,7 +2423,6 @@ msgid_plural "at least %(min_length)d characters"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2426,7 +2435,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2436,7 +2444,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2445,7 +2452,6 @@ msgid_plural "This password must contain at least %(min_alphabetic)d letters."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2454,7 +2460,6 @@ msgid_plural "Your password must contain at least %(min_alphabetic)d letters."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2463,7 +2468,6 @@ msgid_plural "%(num)d letters"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2472,7 +2476,6 @@ msgid_plural "This password must contain at least %(min_numeric)d numbers."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2481,7 +2484,6 @@ msgid_plural "Your password must contain at least %(min_numeric)d numbers."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2490,7 +2492,6 @@ msgid_plural "%(num)d numbers"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2500,7 +2501,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2510,7 +2510,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2519,7 +2518,6 @@ msgid_plural "%(num)d uppercase letters"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2529,7 +2527,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2539,7 +2536,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2548,7 +2544,6 @@ msgid_plural "%(num)d lowercase letters"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2559,7 +2554,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2570,7 +2564,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2579,7 +2572,6 @@ msgid_plural "%(num)d punctuation marks"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2588,7 +2580,6 @@ msgid_plural "This password must contain at least %(min_symbol)d symbols."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2597,7 +2588,6 @@ msgid_plural "Your password must contain at least %(min_symbol)d symbols."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/util/password_policy_validators.py
 #, python-format
@@ -2606,7 +2596,6 @@ msgid_plural "%(num)d symbols"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: common/djangoapps/xblock_django/admin.py
 msgid ""
@@ -3453,7 +3442,6 @@ msgid_plural "Incorrect ({progress} points)"
 msgstr[0] "(נקודה שגויה {progress})"
 msgstr[1] "({progress} נקודות שגויות)"
 msgstr[2] "({progress} נקודות שגויות)"
-msgstr[3] "({progress} נקודות שגויות)"
 
 #: common/lib/xmodule/xmodule/capa_module.py
 #, python-brace-format
@@ -3462,7 +3450,6 @@ msgid_plural "Correct ({progress} points)"
 msgstr[0] "(נקודה נכונה {progress})"
 msgstr[1] "({progress} נקודות נכונות)"
 msgstr[2] "({progress} נקודות נכונות)"
-msgstr[3] "({progress} נקודות נכונות)"
 
 #: common/lib/xmodule/xmodule/capa_module.py
 #, python-brace-format
@@ -3471,7 +3458,6 @@ msgid_plural "Partially correct ({progress} points)"
 msgstr[0] "נקודה נכונה חלקית ({progress})"
 msgstr[1] " ({progress} נקודות נכונות חלקית)"
 msgstr[2] " ({progress} נקודות נכונות חלקית)"
-msgstr[3] " ({progress} נקודות נכונות חלקית)"
 
 #: common/lib/xmodule/xmodule/capa_module.py
 msgid "Partially Correct"
@@ -3510,7 +3496,6 @@ msgid_plural "{num_hour} hours"
 msgstr[0] "{num_hour} שעה"
 msgstr[1] "{num_hour} שעות"
 msgstr[2] "{num_hour} שעות"
-msgstr[3] "{num_hour} שעות"
 
 #: common/lib/xmodule/xmodule/capa_module.py
 #, python-brace-format
@@ -3519,7 +3504,6 @@ msgid_plural "{num_minute} minutes"
 msgstr[0] "{num_minute} דקה"
 msgstr[1] "{num_minute} דקות"
 msgstr[2] "{num_minute} דקות"
-msgstr[3] "{num_minute} דקות"
 
 #: common/lib/xmodule/xmodule/capa_module.py
 #, python-brace-format
@@ -3528,7 +3512,6 @@ msgid_plural "{num_second} seconds"
 msgstr[0] "{num_second} שניה"
 msgstr[1] "{num_second} שניות"
 msgstr[2] "{num_second} שניות"
-msgstr[3] "{num_second} שניות"
 
 #: common/lib/xmodule/xmodule/capa_module.py
 msgid "Problem needs to be reset prior to save."
@@ -4741,7 +4724,6 @@ msgid_plural "The specified library is configured to fetch {count} problems, "
 msgstr[0] "הספריה שצוינה מוגדרת למשיכת בעיה {count}, "
 msgstr[1] "הספרייה שצוינה מוגדרת למשיכת {count}בעיות, "
 msgstr[2] "הספרייה שצוינה מוגדרת למשיכת {count}בעיות, "
-msgstr[3] "הספרייה שצוינה מוגדרת למשיכת {count}בעיות, "
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 #, python-brace-format
@@ -4750,7 +4732,6 @@ msgid_plural "but there are only {actual} matching problems."
 msgstr[0] "אך יש רק בעיית התאמה {actual}."
 msgstr[1] "אך יש רק {actual} בעיות התאמה."
 msgstr[2] "אך יש רק {actual} בעיות התאמה."
-msgstr[3] "אך יש רק {actual} בעיות התאמה."
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Edit the library configuration."
@@ -5537,7 +5518,6 @@ msgid_plural ""
 msgstr[0] "אין קובצי תמלול המשויכים לשפה {lang}."
 msgstr[1] "אין קבצי תמלול המשוייכים ל- {lang} שפות."
 msgstr[2] "אין קבצי תמלול המשוייכים ל- {lang} שפות."
-msgstr[3] "אין קבצי תמלול המשוייכים ל- {lang} שפות."
 
 #: common/lib/xmodule/xmodule/video_module/video_module.py
 msgid ""
@@ -6943,7 +6923,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: lms/djangoapps/course_goals/templates/course_goals/edx_ace/goalreminder/email/body.html
 msgid ""
@@ -7032,7 +7011,6 @@ msgid_plural "({number} Questions)"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: lms/djangoapps/course_home_api/outline/views.py
 #, python-brace-format
@@ -8001,12 +7979,6 @@ msgid "Country"
 msgstr "מדינה"
 
 #: lms/djangoapps/instructor/views/api.py
-#: lms/djangoapps/instructor_task/api_helper.py
-#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api_helper.py
-msgid "enrollment"
-msgstr ""
-
-#: lms/djangoapps/instructor/views/api.py
 msgid "The file must contain a 'cohort' column containing cohort names."
 msgstr "על הקובץ להכיל טור 'קבוצת לימוד' המכיל את שמות קבוצות הלימוד."
 
@@ -8448,7 +8420,6 @@ msgid_plural "{num_emails} sent"
 msgstr[0] "{num_emails} נשלחו"
 msgstr[1] "{num_emails} נשלחו"
 msgstr[2] "{num_emails} נשלחו"
-msgstr[3] "{num_emails} נשלחו"
 
 #: lms/djangoapps/instructor/views/instructor_task_helpers.py
 #, python-brace-format
@@ -8457,7 +8428,6 @@ msgid_plural "{num_emails} failed"
 msgstr[0] "{num_emails} נכשלו"
 msgstr[1] "{num_emails} נכשלו"
 msgstr[2] "{num_emails} נכשלו"
-msgstr[3] "{num_emails} נכשלו"
 
 #: lms/djangoapps/instructor/views/instructor_task_helpers.py
 msgid "Complete"
@@ -12588,7 +12558,6 @@ msgid_plural "Try again ({attempts} attempts remaining)"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: openedx/features/personalized_learner_schedules/call_to_action.py
 #, python-brace-format
@@ -12627,11 +12596,6 @@ msgstr "קורסים"
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Reports"
 msgstr "דוחות"
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
-#, python-format
-msgid "%(platform_name)s -> %(created_by)s created a post."
-msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -13808,7 +13772,6 @@ msgid_plural "%s discussions started"
 msgstr[0] "דיון %s החל"
 msgstr[1] "%s דיונים שהחלו"
 msgstr[2] "%s דיונים שהחלו"
-msgstr[3] "%s דיונים שהחלו"
 
 #: lms/djangoapps/discussion/templates/discussion/discussion_profile_page.html
 #: lms/templates/discussion/_user_profile.html
@@ -13818,7 +13781,6 @@ msgid_plural "%s comments"
 msgstr[0] "תגובה %s"
 msgstr[1] "%s תגובות"
 msgstr[2] "%s תגובות"
-msgstr[3] "%s תגובות"
 
 #: lms/djangoapps/discussion/templates/discussion/maintenance_fragment.html
 msgid "Discussion unavailable"
@@ -14402,7 +14364,6 @@ msgid_plural "You have used {num_used} of {num_total} attempts"
 msgstr[0] "השתמשת בניסיון {num_used} מתוך {num_total}"
 msgstr[1] "השתמשת ב-{num_used} מתוך {num_total} ניסיונות"
 msgstr[2] "השתמשת ב-{num_used} מתוך {num_total} ניסיונות"
-msgstr[3] "השתמשת ב-{num_used} מתוך {num_total} ניסיונות"
 
 #: lms/templates/problem.html
 msgid ""
@@ -17138,7 +17099,6 @@ msgid_plural "You only have {days} days left to verify for this course."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
 msgid "Almost there!"
@@ -24785,9 +24745,6 @@ msgstr "יש ללחוץ על הכפתור „התחלת מבחן תחת פיקו
 #~ "מציג את כל התוכן התואם ושניתן להוסיף ל{display_name}. לכל סטודנט יוקצו "
 #~ "{max_count} רכיבים שנשלפו באופן אקראי מרשימה זו."
 #~ msgstr[2] ""
-#~ "מציג את כל התוכן התואם ושניתן להוסיף ל{display_name}. לכל סטודנט יוקצו "
-#~ "{max_count} רכיבים שנשלפו באופן אקראי מרשימה זו."
-#~ msgstr[3] ""
 #~ "מציג את כל התוכן התואם ושניתן להוסיף ל{display_name}. לכל סטודנט יוקצו "
 #~ "{max_count} רכיבים שנשלפו באופן אקראי מרשימה זו."
 

@@ -7,7 +7,7 @@
 
   
   django.pluralidx = function(n) {
-    const v = (n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;
+    const v = (n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;
     if (typeof v === 'boolean') {
       return v ? 1 : 0;
     } else {
@@ -56,7 +56,6 @@
     " Member": [
       "\u05d7\u05d1\u05e8",
       "\u05d7\u05d1\u05e8\u05d9\u05dd",
-      "\u05d7\u05d1\u05e8\u05d9\u05dd",
       "\u05d7\u05d1\u05e8\u05d9\u05dd"
     ],
     " Your Proctoring Session Has Started ": "\u05de\u05e4\u05d2\u05e9 \u05d4\u05e4\u05d9\u05e7\u05d5\u05d7 \u05e9\u05dc\u05da \u05d4\u05ea\u05d7\u05d9\u05dc.",
@@ -72,7 +71,6 @@
     "%(errorCount)s error found in form.": [
       "\u05e9\u05d2\u05d9\u05d0\u05d4 %(errorCount)s \u05e0\u05de\u05e6\u05d0\u05d4 \u05d1\u05d8\u05d5\u05e4\u05e1.",
       "%(errorCount)s \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05e0\u05de\u05e6\u05d0\u05d5 \u05d1\u05d8\u05d5\u05e4\u05e1.",
-      "%(errorCount)s \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05e0\u05de\u05e6\u05d0\u05d5 \u05d1\u05d8\u05d5\u05e4\u05e1.",
       "%(errorCount)s \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05e0\u05de\u05e6\u05d0\u05d5 \u05d1\u05d8\u05d5\u05e4\u05e1."
     ],
     "%(field)s can only contain up to %(count)d characters.": "%(field)s \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05db\u05d9\u05dc \u05e8\u05e7 \u05e2\u05d3 %(count)d \u05ea\u05d5\u05d5\u05d9\u05dd.",
@@ -82,32 +80,27 @@
     "%(sel)s of %(cnt)s selected": [
       "%(sel)s \u05de %(cnt)s \u05e0\u05d1\u05d7\u05e8\u05d5\u05ea",
       "%(sel)s \u05de %(cnt)s \u05e0\u05d1\u05d7\u05e8\u05d5\u05ea",
-      "%(sel)s \u05de %(cnt)s \u05e0\u05d1\u05d7\u05e8\u05d5\u05ea",
       "%(sel)s \u05de %(cnt)s \u05e0\u05d1\u05d7\u05e8\u05d5\u05ea"
     ],
     "%(type)s Component Template Menu": "%(type)s \u05ea\u05e4\u05e8\u05d9\u05d8 \u05dc\u05ea\u05d1\u05e0\u05d9\u05ea \u05e8\u05db\u05d9\u05d1",
     "%d day": [
       "\u05d9\u05d5\u05dd",
       "\u05d9\u05d5\u05de\u05d9\u05d9\u05dd",
-      "%d \u05d9\u05d5\u05dd",
       "%d \u05d9\u05de\u05d9\u05dd"
     ],
     "%d minute": [
       "\u05d3\u05e7\u05d4",
-      "%d \u05d3\u05e7\u05d5\u05ea",
       "%d \u05d3\u05e7\u05d5\u05ea",
       "%d \u05d3\u05e7\u05d5\u05ea"
     ],
     "%d month": [
       "\u05d7\u05d5\u05d3\u05e9",
       "\u05d7\u05d5\u05d3\u05e9\u05d9\u05dd",
-      "%d \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd",
       "%d \u05d7\u05d5\u05d3\u05e9\u05d9\u05dd"
     ],
     "%d year": [
       "\u05e9\u05e0\u05d4",
       "\u05e9\u05e0\u05ea\u05d9\u05d9\u05dd",
-      "%d \u05e9\u05e0\u05d4",
       "%d \u05e9\u05e0\u05d9\u05dd"
     ],
     "%s ago": "\u05dc\u05e4\u05e0\u05d9 %s",
@@ -125,7 +118,6 @@
     "(Staff)": "(\u05e6\u05d5\u05d5\u05ea)",
     "(contains %(student_count)s student)": [
       "(\u05db\u05d5\u05dc\u05dc\u05ea \u05e1\u05d8\u05d5\u05d3\u05e0\u05d8 %(student_count)s)",
-      "(\u05db\u05d5\u05dc\u05dc\u05ea %(student_count)s \u05e1\u05d8\u05d5\u05d3\u05e0\u05d8\u05d9\u05dd)",
       "(\u05db\u05d5\u05dc\u05dc\u05ea %(student_count)s \u05e1\u05d8\u05d5\u05d3\u05e0\u05d8\u05d9\u05dd)",
       "(\u05db\u05d5\u05dc\u05dc\u05ea %(student_count)s \u05e1\u05d8\u05d5\u05d3\u05e0\u05d8\u05d9\u05dd)"
     ],
@@ -440,7 +432,6 @@
     "Contact Us": "\u05e6\u05d5\u05e8 \u05e7\u05e9\u05e8",
     "Contains {count} group": [
       "\u05db\u05d5\u05dc\u05dc \u05e7\u05d1\u05d5\u05e6\u05d4 {count}",
-      "\u05db\u05d5\u05dc\u05dc {count} \u05e7\u05d1\u05d5\u05e6\u05d5\u05ea",
       "\u05db\u05d5\u05dc\u05dc {count} \u05e7\u05d1\u05d5\u05e6\u05d5\u05ea",
       "\u05db\u05d5\u05dc\u05dc {count} \u05e7\u05d1\u05d5\u05e6\u05d5\u05ea"
     ],
@@ -1088,12 +1079,10 @@
     "Note: You are %s hour ahead of server time.": [
       "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d4 \u05dc\u05e4\u05e0\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea.",
       "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d5\u05ea \u05dc\u05e4\u05e0\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea.",
-      "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d5\u05ea \u05dc\u05e4\u05e0\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea.",
       "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d5\u05ea \u05dc\u05e4\u05e0\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea."
     ],
     "Note: You are %s hour behind server time.": [
       "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d4 \u05d0\u05d7\u05e8\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea.",
-      "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d5\u05ea \u05d0\u05d7\u05e8\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea.",
       "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d5\u05ea \u05d0\u05d7\u05e8\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea.",
       "\u05d4\u05e2\u05e8\u05d4: \u05d0\u05ea/\u05d4 %s \u05e9\u05e2\u05d5\u05ea \u05d0\u05d7\u05e8\u05d9 \u05d6\u05de\u05df \u05d4\u05e9\u05e8\u05ea."
     ],
@@ -1421,7 +1410,6 @@
     "Showing all responses": "\u05de\u05e8\u05d0\u05d4 \u05d0\u05ea \u05db\u05dc \u05d4\u05ea\u05d2\u05d5\u05d1\u05d5\u05ea ",
     "Showing first response": [
       "\u05de\u05e6\u05d9\u05d2 \u05ea\u05d2\u05d5\u05d1\u05d4 \u05e8\u05d0\u05e9\u05d5\u05e0\u05d4",
-      "\u05de\u05e6\u05d9\u05d2 {numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u05e8\u05d0\u05e9\u05d5\u05e0\u05d5\u05ea",
       "\u05de\u05e6\u05d9\u05d2 {numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u05e8\u05d0\u05e9\u05d5\u05e0\u05d5\u05ea",
       "\u05de\u05e6\u05d9\u05d2 {numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u05e8\u05d0\u05e9\u05d5\u05e0\u05d5\u05ea"
     ],
@@ -1884,7 +1872,6 @@
     "Viewing %s course": [
       "\u05de\u05e6\u05d9\u05d2 \u05e7\u05d5\u05e8\u05e1 %s",
       "\u05de\u05e6\u05d9\u05d2 %s \u05e7\u05d5\u05e8\u05e1\u05d9\u05dd",
-      "\u05de\u05e6\u05d9\u05d2 %s \u05e7\u05d5\u05e8\u05e1\u05d9\u05dd",
       "\u05de\u05e6\u05d9\u05d2 %s \u05e7\u05d5\u05e8\u05e1\u05d9\u05dd"
     ],
     "Visibility": "\u05ea\u05e6\u05d5\u05d2\u05d4",
@@ -2053,7 +2040,6 @@
     "about %d hour": [
       "\u05e9\u05e2\u05d4 \u05d1\u05e2\u05e8\u05da",
       "\u05e9\u05e2\u05ea\u05d9\u05d9\u05dd \u05d1\u05e2\u05e8\u05da",
-      "%d \u05e9\u05e2\u05d5\u05ea \u05d1\u05e2\u05e8\u05da",
       "%d \u05e9\u05e2\u05d5\u05ea \u05d1\u05e2\u05e8\u05da"
     ],
     "about a minute": "\u05d1\u05e2\u05e8\u05da \u05d3\u05e7\u05d4",
@@ -2144,7 +2130,6 @@
     "there is currently {numVotes} vote": [
       "\u05db\u05e8\u05d2\u05e2 \u05d9\u05e9 \u05e7\u05d5\u05dc {numVotes}",
       "\u05db\u05e8\u05d2\u05e2 \u05d9\u05e9 {numVotes} \u05e7\u05d5\u05dc\u05d5\u05ea",
-      "\u05db\u05e8\u05d2\u05e2 \u05d9\u05e9 {numVotes} \u05e7\u05d5\u05dc\u05d5\u05ea",
       "\u05db\u05e8\u05d2\u05e2 \u05d9\u05e9 {numVotes} \u05e7\u05d5\u05dc\u05d5\u05ea"
     ],
     "title_word_{uniqueId}": "title_word_{uniqueId}",
@@ -2173,18 +2158,15 @@
     "{numResponses} other response": [
       "\u05ea\u05d2\u05d5\u05d1\u05d4 \u05e0\u05d5\u05e1\u05e4\u05ea {numResponses}",
       "{numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u05e0\u05d5\u05e1\u05e4\u05d5\u05ea",
-      "{numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u05e0\u05d5\u05e1\u05e4\u05d5\u05ea",
       "{numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea \u05e0\u05d5\u05e1\u05e4\u05d5\u05ea"
     ],
     "{numResponses} response": [
       "\u05ea\u05d2\u05d5\u05d1\u05d4 {numResponses}",
       "{numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea",
-      "{numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea",
       "{numResponses} \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea"
     ],
     "{numVotes} Vote": [
       "\u05e7\u05d5\u05dc {numVotes}",
-      "{numVotes} \u05e7\u05d5\u05dc\u05d5\u05ea",
       "{numVotes} \u05e7\u05d5\u05dc\u05d5\u05ea",
       "{numVotes} \u05e7\u05d5\u05dc\u05d5\u05ea"
     ],
@@ -2199,7 +2181,6 @@
     "{start_strong}{total}{end_strong} words submitted in total.": "{start_strong}{total}{end_strong} \u05e1\u05da \u05db\u05dc \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05e0\u05e9\u05dc\u05d7\u05d5.",
     "{team_count} Team": [
       "\u05e6\u05d5\u05d5\u05ea",
-      "%(team_count)s \u05e6\u05d5\u05d5\u05ea\u05d9\u05dd",
       "%(team_count)s \u05e6\u05d5\u05d5\u05ea\u05d9\u05dd",
       "{team_count} \u05e6\u05d5\u05d5\u05ea\u05d9\u05dd"
     ],
