@@ -125,7 +125,7 @@ class WikimediaProgressFragmentView(EdxFragmentView):
         course_outline_context = get_course_outline_block_tree(request, course_id, user)
         self._update_context_with_score_and_progress(course_outline_context, grade_dict)
         html = render_to_string(
-            "progress_tab/wikimedia_progress_fragment.html",
+            "wikimedia_general/wikimedia_progress_fragment.html",
             {
                 "course_id": course_id,
                 "data": course_outline_context,
