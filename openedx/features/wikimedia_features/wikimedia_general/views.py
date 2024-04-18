@@ -5,8 +5,9 @@ from openedx.core.djangoapps.plugin_api.views import EdxFragmentView
 from completion.models import BlockCompletion
 from openedx.features.course_experience.utils import get_course_outline_block_tree
 from lms.djangoapps.courseware.courses import get_course_blocks_completion_summary, get_course_with_access
+from lms.djangoapps.courseware.views.views import get_cert_data
 from lms.djangoapps.grades.api import CourseGradeFactory
-
+from common.djangoapps.student.models import CourseEnrollment
 
 class WikimediaProgressFragmentView(EdxFragmentView):
     """
@@ -70,7 +71,7 @@ class WikimediaProgressFragmentView(EdxFragmentView):
             # Mark Excluded xblocks as completed
             if block.get('type') in ['discussion']:
                 block.update({'complete': True, 'is_excluded_block': True})
-            
+
             if block.get('complete'):
                 progress = 100
 
@@ -108,6 +109,8 @@ class WikimediaProgressFragmentView(EdxFragmentView):
         course_key = CourseKey.from_string(course_id)
         user = request.user
         show_score_tab = False
+        cert_data = None
+        enrollment_mode, _ = CourseEnrollment.enrollment_mode_for_user(user, course_key)
 
         try:
             course = get_course_with_access(request.user, 'load', course_key, check_if_enrolled=True)     
@@ -115,19 +118,20 @@ class WikimediaProgressFragmentView(EdxFragmentView):
                 show_score_tab = course.enable_score_tab_on_progress_page
             course_grade = CourseGradeFactory().read(user, course)
             grade_dict = self._get_grade_dict(course_grade)
+            cert_data = get_cert_data(user, course, enrollment_mode, course_grade)
         except Exception as err:
             grade_dict = {}
 
-        course_outline_context = get_course_outline_block_tree(
-            request, course_id, request.user
-        )
+        course_outline_context = get_course_outline_block_tree(request, course_id, user)
         self._update_context_with_score_and_progress(course_outline_context, grade_dict)
         html = render_to_string(
-            'wikimedia_general/wikimedia_progress_fragment.html',
+            "wikimedia_general/wikimedia_progress_fragment.html",
             {
+                "course_id": course_id,
                 "data": course_outline_context,
                 "show_score_tab": show_score_tab,
-            }
+                "certificate_data": cert_data,
+            },
         )
 
         fragment = Fragment(html)

@@ -5,12 +5,50 @@
 <%namespace name='static' file='../static_content.html'/>
 
 <%!
+from django.urls import reverse
 from django.utils.translation import ugettext as _
+from lms.djangoapps.certificates.data import CertificateStatuses
 %>
+
+<%block name="js_extra">
+<script type="text/javascript" src="${static.url('js/courseware/certificates_api.js')}"></script>
+</%block>
+
 <div class="progress-content page-content-container">
 
   <div class="page-content">
     <div class="page-content-main" id="main-progress">
+      <div class="wrapper-msg wrapper-auto-cert">
+        <div id="errors-info" class="errors-info"></div>
+          <%block name="certificate_block">
+            %if certificate_data:
+            <div class="auto-cert-message" id="course-success">
+              <div class="has-actions container">
+                <% post_url = reverse('generate_user_cert', args=[course_id]) %>
+                <div class="row">
+                  <div class="col col-md-6 col-lg-8">
+                    <div class="msg-content">
+                      <h3 class="hd hd-4 title">${_(certificate_data.title)}</h3>
+                      <p class="copy">${_(certificate_data.msg)}</p>
+                    </div>  
+                  </div>
+                  <div class="col col-md-6 col-lg-4">
+                    <div class="msg-actions">
+                      %if certificate_data.cert_web_view_url:
+                        <a class="btn btn-primary" href="${certificate_data.cert_web_view_url}" rel="noopener" target="_blank">${_("View Certificate")} <span class="sr">${_("Opens in a new browser window")}</span></a>
+                        %elif certificate_data.cert_status == CertificateStatuses.downloadable and certificate_data.download_url:
+                        <a class="btn btn-primary" href="${certificate_data.download_url}" rel="noopener" target="_blank">${_("Download Your Certificate")} <span class="sr">${_("Opens in a new browser window")}</span></a>
+                        %elif certificate_data.cert_status == CertificateStatuses.requesting:
+                        <button class="btn btn-primary generate_certs" data-endpoint="${post_url}" id="btn_generate_cert">${_('Request Certificate')}</button>
+                      %endif
+                    </div>    
+                  </div>
+                </div>
+              </div>
+            </div>
+            %endif
+          </%block>
+      </div>
       % for section in data.get('children', []):
       <div class="card section">
         <div class="card-body">
