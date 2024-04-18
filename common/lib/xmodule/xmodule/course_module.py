@@ -681,10 +681,10 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
     # until we get grade integration set up.
     # Explicit comparison to True because we always want to return a bool.
     hide_progress_tab = Boolean(
-        display_name=_("Hide Progress Tab"),
-        help=_("Allows hiding of the progress tab."),
+        display_name=_("Hide Score Tab"),
+        help=_("Allows hiding of the score tab."),
         scope=Scope.settings,
-        deprecated=True
+        default=True
     )
 
     display_organization = String(
