@@ -221,7 +221,7 @@ def _update_context_with_basic_info(context, course_id, platform_name, configura
     context['certificate_verify_urltext'] = _("Validate this certificate for yourself")
 
     # Translators:  This text describes (at a high level) the mission and charter the edX platform and organization
-    context['company_about_description'] = _("{platform_name} offers interactive online classes and MOOCs.").format(
+    context['company_about_description'] = _("{platform_name}, hosted by the Wikimedia Foundation, is a dedicated learning platform for the Wikimedia movement").format(
         platform_name=platform_name)
 
     context['company_about_title'] = _("About {platform_name}").format(platform_name=platform_name)
