@@ -37,7 +37,7 @@ setup(
             "teams = lms.djangoapps.teams.plugins:TeamsTab",
             "textbooks = lms.djangoapps.courseware.tabs:TextbookTabs",
             "wiki = lms.djangoapps.course_wiki.tab:WikiTab",
-            "wikimedia_progress_tab = openedx.features.wikimedia_features.wikimedia_general.tab:WikimediaProgressTab",
+            "wikimedia_progress_tab = openedx.features.wikimedia_features.progress_tab.tab:WikimediaProgressTab",
         ],
         "openedx.course_app": [
             "calculator = lms.djangoapps.courseware.plugins:CalculatorCourseApp",
