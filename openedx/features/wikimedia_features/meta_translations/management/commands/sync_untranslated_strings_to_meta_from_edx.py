@@ -19,7 +19,7 @@ from openedx.features.wikimedia_features.meta_translations.models import (
     CourseTranslation, CourseBlock, CourseBlockData, MetaCronJobInfo
 )
 from openedx.features.wikimedia_features.meta_translations.meta_client import WikiMetaClient
-from openedx.features.wikimedia_features.meta_translations.utils import get_course_description_by_id
+from openedx.features.wikimedia_features.meta_translations.utils import get_course_description_by_id, get_studio_component_name
 
 log = getLogger(__name__)
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
@@ -68,7 +68,7 @@ class Command(BaseCommand):
         log.info('Total number of updated blocks: {}'.format(self._RESULT.get("updated_blocks_count")))
         log.info('Total blocks updated successfully: {}'.format(self._RESULT.get("success_updated_pages_count")))
 
-    def _create_request_dict_for_block(self, base_course, block, base_course_language, base_course_name, base_course_description):
+    def _create_request_dict_for_block(self, base_course, block, block_data, base_course_language, base_course_name, base_course_description):
         """
         Returns request dict required for update pages API of Wiki Meta
         {
@@ -91,12 +91,17 @@ class Command(BaseCommand):
         description = '{} in {} - {}'.format(
             block.block_type, base_course_name, base_course_description
         )
+        
+        label = "{} - {}: {}".format(
+            base_course_name, get_studio_component_name(block.block_type), block_data.filter(data_type="display_name")[0].data
+        )
 
         request["@metadata"] = {
             "sourceLanguage": base_course_language,
             "priorityLanguages": json.loads(block.lang),
             "allowOnlyPriorityLanguages": True,
-            "description": description
+            "description": description,
+            "label": label
         }
         return request
 
@@ -143,7 +148,7 @@ class Command(BaseCommand):
                 block_data = block.courseblockdata_set.all()
                 if block_data.filter(Q(content_updated=True) | Q(mapping_updated=True)).exists():
                     request_arguments = self._create_request_dict_for_block(
-                        base_course, block, base_course_language, base_course_name, base_course_description
+                        base_course, block, block_data, base_course_language, base_course_name, base_course_description
                     )
                     for data in block_data:
                         if data.parsed_keys:

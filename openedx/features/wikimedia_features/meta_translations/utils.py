@@ -217,3 +217,16 @@ def update_course_translations():
             updated_blocks+=1
             block.save()
     log.info('Updated Course Blocks: {}'.format(updated_blocks))
+
+def get_studio_component_name(block_type):
+    """
+    Get block type names we see in studio i.e vertical -> unit, sequential -> subsection.
+    """
+    block_type_mapping = {
+        "course": "course title",
+        "chapter": "section",
+        "sequential": "subsection",
+        "vertical": "unit",
+    }
+
+    return block_type_mapping.get(block_type, block_type)
