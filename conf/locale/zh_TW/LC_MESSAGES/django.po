@@ -180,7 +180,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-15 05:38+0000\n"
+"POT-Creation-Date: 2024-05-07 14:08+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/open-edx/teams/6205/zh_TW/)\n"
@@ -4059,12 +4059,12 @@ msgid "Allows specification of an external link to replace discussion forums."
 msgstr "允許指定的外部連結取代討論區。"
 
 #: common/lib/xmodule/xmodule/course_module.py
-msgid "Hide Progress Tab"
-msgstr "隱藏進度頁面"
+msgid "Hide Score Tab"
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
-msgid "Allows hiding of the progress tab."
-msgstr "允許隱藏進度頁面。"
+msgid "Allows hiding of the score tab."
+msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Organization Display String"
@@ -4384,6 +4384,15 @@ msgstr ""
 msgid ""
 "Enter CSS resource URLs you want to be loaded globally throughout the course"
 " pages."
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\", \"font-open-sans\", \"font-noto-kufi-arabic\", \"font-montserrat\", and \"font-source-sans-pro\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
 msgstr ""
 
 #: cms/templates/certificates.html cms/templates/group_configurations.html
@@ -6073,6 +6082,7 @@ msgstr "捐款"
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
 #: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "關於"
 
@@ -6479,8 +6489,10 @@ msgstr "為自己驗證此證書"
 #. the edX platform and organization
 #: lms/djangoapps/certificates/views/webview.py
 #, python-brace-format
-msgid "{platform_name} offers interactive online classes and MOOCs."
-msgstr "{platform_name} 提供線上互動課程和MOOCs課程。"
+msgid ""
+"{platform_name}, hosted by the Wikimedia Foundation, is a dedicated learning"
+" platform for the Wikimedia movement"
+msgstr ""
 
 #: lms/djangoapps/certificates/views/webview.py
 #, python-brace-format
@@ -7085,7 +7097,7 @@ msgid "Disable the dynamic upgrade deadline for this organization."
 msgstr ""
 
 #: lms/djangoapps/courseware/plugins.py
-#: openedx/features/wikimedia_features/wikimedia_general/tab.py
+#: openedx/features/wikimedia_features/progress_tab/tab.py
 #: lms/templates/peer_grading/peer_grading.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
@@ -16186,22 +16198,26 @@ msgid "Course Progress for '{username}' ({email})"
 msgstr "'{username}'的課程進度 ({email})"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "查看證書"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "在新的瀏覽器視窗中開啟"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "申請證書"
@@ -19674,6 +19690,17 @@ msgstr ""
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
 msgid "An error occurred. Try loading the page again."
 msgstr "發生錯誤。請嘗試再次載入頁面。"
+
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
+msgid ""
+"WikiLearn, hosted by the Wikimedia Foundation, is a dedicated learning "
+"platform for the Wikimedia movement. It offers a comprehensive range of "
+"self-paced and instructor-led courses aimed at capacity building and "
+"leadership development within the Wikimedia community. Courses on WikiLearn "
+"are collaboratively developed by and for Wikimedians with a commitment to "
+"accessibility and diversity. For inquiries, contact the Community "
+"Development team at "
+msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
@@ -23401,6 +23428,15 @@ msgstr ""
 
 #~ msgid "Dismiss"
 #~ msgstr "忽略"
+
+#~ msgid "{platform_name} offers interactive online classes and MOOCs."
+#~ msgstr "{platform_name} 提供線上互動課程和MOOCs課程。"
+
+#~ msgid "Hide Progress Tab"
+#~ msgstr "隱藏進度頁面"
+
+#~ msgid "Allows hiding of the progress tab."
+#~ msgstr "允許隱藏進度頁面。"
 
 #~ msgid "Drag and Drop"
 #~ msgstr "拖放"
