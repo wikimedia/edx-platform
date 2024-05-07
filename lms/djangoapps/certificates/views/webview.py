@@ -158,7 +158,7 @@ def _update_certificate_context(context, course, course_overview, user_certifica
     )
 
     # Translators: This text fragment appears after the signatures (displayed in a small font) on the certificate
-    context['certificate_info'] = _("Certificate Info")
+    context['certificate_info'] = _("")
 
 
 def _update_context_with_basic_info(context, course_id, platform_name, configuration):
