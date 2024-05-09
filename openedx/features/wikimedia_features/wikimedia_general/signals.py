@@ -35,8 +35,9 @@ from cms.djangoapps.contentstore.exceptions import AssetSizeTooLargeException
 
 logger = getLogger(__name__)
 
-@receiver(SignalHandler.course_published)
-def upload_course_default_image(sender, course_key, **kwargs):
+@receiver(post_save, sender=CourseOverview)
+def upload_course_default_image(sender, instance, created, **kwargs):
+    course_key=instance.id
     file_path = finders.find('images/course_default_image/images_course_image.jpg')
     
     try:
