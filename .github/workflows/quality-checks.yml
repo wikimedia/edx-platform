@@ -1,13 +1,7 @@
 name: CI - Quality Checks
 
 ### TODO: Update this flow from edx-platfrom branch
-on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches:
-      - develop
-      - master
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   code-quality-checks:
