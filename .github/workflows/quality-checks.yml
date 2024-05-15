@@ -8,9 +8,21 @@ on:
       - develop
       - master
 jobs:
-  quality-checks:
-    name: Quality Checks
+  
+  code-quality-checks:
+    name: Code Quality Checks
     runs-on: ubuntu-latest
+    
     steps:
       - name: Dummy Test
-        run: echo 'Add quality checks here'
+        run: echo 'Add code quality checks here'
+
+  local-translations-check:
+    name: Local Translation Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
