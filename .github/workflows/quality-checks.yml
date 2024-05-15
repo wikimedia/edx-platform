@@ -1,7 +1,15 @@
 name: CI - Quality Checks
 
 ### TODO: Update this flow from edx-platfrom branch
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      tags:
+          description: 'Test scenario tags'
+          required: false
+          type: boolean
+          defualt: false
+
 
 jobs:
   code-quality-checks:
