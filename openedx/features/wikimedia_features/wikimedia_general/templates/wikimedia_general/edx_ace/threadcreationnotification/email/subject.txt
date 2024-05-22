@@ -1,2 +1,6 @@
 {% load i18n %}
-{% blocktrans %}{{ platform_name }} -> {{ created_by }} created a post.{% endblocktrans %}
+{% with course_name=contexts.0.course_name created_by=contexts.0.created_by %}
+    {% blocktrans %}
+         Weekly digest for course {{course_name}}.
+    {% endblocktrans %}
+{% endwith %}

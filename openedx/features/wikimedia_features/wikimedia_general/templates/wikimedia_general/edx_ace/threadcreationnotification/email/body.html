@@ -2,33 +2,50 @@
 
 {% load i18n %}
 {% load static %}
+
 {% block content %}
 <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
     <tr>
         <td>
-            <p>
-                {% blocktrans trimmed %}
-                    {{ thread_username }} created a post: <b>{{ thread_title }}</b>:
-                {% endblocktrans %}
+            <h2 style="color: rgba(0,0,0,.85);">
+                {% blocktrans %}Weekly Discussion Summary{% endblocktrans %}
+            </h2>
+            <p style="color: rgba(0,0,0,.75);">
+                {% blocktrans %}Discussion posts created this week:{% endblocktrans %}
             </p>
-            <div style="border-left: 1px solid rgba(0,0,0,0.25);
-                    padding: 1px 1px 1px 15px;
-                    margin: 20px 20px 30px 30px;
-                    color: rgba(0,0,0,.75);">
+            {% for ctx in contexts %}
+            <div style="background-color: #f9f9f9; border: 1px solid #e8e5e5; padding: 20px; margin-bottom: 20px;">
+                <p style="border-bottom: 1px solid rgba(0,0,0,0.25); padding-bottom: 10px; margin-bottom: 0; color: rgba(0,0,0,.85);">
+                    {% with created_by=ctx.created_by thread_title=ctx.thread_title|default:"Discussion Post" %}
+                        {% blocktrans trimmed %}
+                            {{ created_by }} created a post: <strong>{{ thread_title }}</strong>
+                        {% endblocktrans %}
+                    {% endwith %}
+                </p>
+                
+                <div style="border-left: 1px solid rgba(0,0,0,0.25); padding: 10px 15px; margin-top: 0; color: rgba(0,0,0,.75); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    {{ ctx.thread_body|safe }}
+                </div>
+                <p style="color: rgba(0,0,0,.75); margin-top: 10px; font-weight: bold;">
+                    {% with thread_created_at=ctx.thread_created_at %}
+                    {% blocktrans %}Posted on: {{ thread_created_at }}{% endblocktrans %}
+                    {% endwith %}
+                </p>
 
-                {{ thread_body|safe}}
+                {% trans "View discussion" as course_cta_text %}
+                {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=ctx.post_link %}
 
             </div>
+            {% endfor %}
 
-            {% trans "View discussion" as course_cta_text %}
-            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=post_link %}
-            
             {% block google_analytics_pixel %}
                 <img src="{{ ga_tracking_pixel_url }}" alt="" role="presentation" aria-hidden="true" style="display: block;"/>
             {% endblock %}
-
+            
             <p style="color: rgba(0,0,0,.75);">
-                {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+                {% with platform_name=contexts.0.platform_name email=contexts.0.email %}
+                    {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+                {% endwith %}
                 <br />
             </p>
         </td>

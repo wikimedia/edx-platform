@@ -1,7 +1,22 @@
 {% load i18n %}
 {% block content %}
-    {% blocktrans trimmed %}{{ thread_username }} created a post: {{ thread_title }}:{% endblocktrans %}
-    {{ thread_body }}
-    {% trans "View discussion" %} -> {{ post_link }}
-    {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+    <h2>{% blocktrans %}Weekly Discussion Summary{% endblocktrans %}</h2>
+    <p>{% blocktrans %}Discussion posts created this week:{% endblocktrans %}</p>
+    {% for ctx in contexts %}
+        <p>
+            {% with created_by=ctx.created_by thread_title=ctx.thread_title|default:"Discussion Post" %}
+                {% blocktrans trimmed %}
+                    {{ created_by }} created a post: <b>{{ thread_title }}</b>
+                {% endblocktrans %}
+            {% endwith %}
+        </p>
+        <p>{{ ctx.thread_body }}</p>
+        <p><b>Posted on: {{ ctx.thread_created_at }}</b></p>
+        <p>View discussion -> <a href="{{ ctx.post_link }}">{{ ctx.post_link }}</a></p>
+    {% endfor %}
+    <p>
+        {% with platform_name=contexts.0.platform_name email=contexts.0.email %}
+            {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
+        {% endwith %}
+    </p>
 {% endblock %}

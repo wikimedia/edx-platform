@@ -107,8 +107,11 @@ def send_thread_mention_email_notification(sender, user, post, **kwargs):
     if not is_discussion_notification_configured_for_site(current_site, post.id):
         return
     course_key = CourseKey.from_string(post.course_id)
+    # course_overview = CourseOverview.get_from_id(post.course_id)
+    # course_name = course_overview.display_name
     context = {
         'course_id': course_key,
+        # 'course_name':course_name,
         'site': current_site,
         'is_thread': is_thread
     }
@@ -119,48 +122,3 @@ def send_thread_mention_email_notification(sender, user, post, **kwargs):
         update_context_with_comment(context, post)
     message_context = build_discussion_notification_context(context)
     send_thread_mention_email_task.delay(post.body, message_context, is_thread)
-
-@receiver(thread_created)
-def send_new_post_email_notification_to_instructors(sender, user, post,**kwargs):
-    """
-    Sends email notification to course instructors when a new discussion post is created.
-
-    Args:
-        sender: The sender of the signal.
-        user: The user who created the post.
-        post: The newly created discussion post.
-        current_site: The current site of the discussion
-        **kwargs: Additional keyword arguments.
-
-    Returns:
-        None
-    """
-    current_site = get_current_site()
-    if current_site is None:
-        current_site = Site.objects.get_current()
-
-    if post.type != 'thread':
-        return
-
-    if not is_discussion_notification_configured_for_site(current_site, post.id):
-        return
-
-    post_id = post.course_id
-    course_key = CourseKey.from_string(post.course_id)
-    data = post.to_dict()
-    add_courseware_info(data, user, current_site, course_key)
-    context = {
-        'course_id': course_key,
-        'site': current_site,
-        'is_thread': True,
-    }
-    
-    update_context_with_thread(context, post)
-    message_context = build_discussion_notification_context(context)
-
-    if 'courseware_url' in data:
-        message_context['post_link'] = data['courseware_url']
-
-    send_thread_creation_email_task.delay(message_context, True, post_id)
-    
-    logger.info("signal successful;")
