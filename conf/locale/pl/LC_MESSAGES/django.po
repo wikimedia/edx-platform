@@ -1,4 +1,4 @@
-# #-#-#-#-#  wm-django.po (0.1a)  #-#-#-#-#
+# #-#-#-#-#  wm-django.po (WikiLearn - Backend)  #-#-#-#-#
 # Translation of WikiLearn - Backend to Polish (polski)
 # Exported from translatewiki.net
 #
@@ -159,7 +159,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-15 05:38+0000\n"
+"POT-Creation-Date: 2024-05-15 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Marcin Miłek, 2022\n"
 "Language-Team: Polish (https://app.transifex.com/open-edx/teams/6205/pl/)\n"
@@ -169,8 +169,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: MediaWiki 1.42.0-alpha; Translate 2023-12-01\n"
-"X-POT-Import-Date: 2024-01-01 07:33:29+0000\n"
+"X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-04-24\n"
+"X-POT-Import-Date: 2024-04-15 06:30:23+0000\n"
+"X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
@@ -1240,6 +1241,43 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
 #, python-format
 msgid "%(platform_name)s -> %(created_by)s created a post."
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
+msgid ""
+"WikiLearn, hosted by the Wikimedia Foundation, is a dedicated learning "
+"platform for the Wikimedia movement. It offers a comprehensive range of "
+"self-paced and instructor-led courses aimed at capacity building and "
+"leadership development within the Wikimedia community. Courses on WikiLearn "
+"are collaboratively developed by and for Wikimedians with a commitment to "
+"accessibility and diversity. For inquiries, contact the Community "
+"Development team at "
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Hide Score Tab"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\", \"font-open-sans\", \"font-noto-kufi-arabic\", \"font-montserrat\", and \"font-source-sans-pro\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
+#. Translators:  This text describes (at a high level) the mission and charter
+#. the edX platform and organization
+#: lms/djangoapps/certificates/views/webview.py
+#, python-brace-format
+msgid ""
+"{platform_name}, hosted by the Wikimedia Foundation, is a dedicated learning"
+" platform for the Wikimedia movement"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Allows hiding of the score tab."
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -4320,14 +4358,6 @@ msgstr ""
 "Pozwala na wywołanie zewnętrznego odnośnika w miejscu forum dyskusyjnego."
 
 #: common/lib/xmodule/xmodule/course_module.py
-msgid "Hide Progress Tab"
-msgstr "Ukryj pasek postępu"
-
-#: common/lib/xmodule/xmodule/course_module.py
-msgid "Allows hiding of the progress tab."
-msgstr "Pozwala na ukrycie paska postępu."
-
-#: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Organization Display String"
 msgstr "Wyświetlana nazwa podmiotu organizującego kurs"
 
@@ -6577,6 +6607,7 @@ msgstr "Przekaż darowiznę"
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
 #: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Na karcie"
 
@@ -7008,13 +7039,6 @@ msgstr ""
 #: lms/djangoapps/certificates/views/webview.py
 msgid "Validate this certificate for yourself"
 msgstr "Potwierdź ten certyfikat dla siebie"
-
-#. Translators:  This text describes (at a high level) the mission and charter
-#. the edX platform and organization
-#: lms/djangoapps/certificates/views/webview.py
-#, python-brace-format
-msgid "{platform_name} offers interactive online classes and MOOCs."
-msgstr "{platform_name} oferuje interaktywną edukację online i kursy MOOC."
 
 #: lms/djangoapps/certificates/views/webview.py
 #, python-brace-format
@@ -7657,7 +7681,7 @@ msgid "Disable the dynamic upgrade deadline for this organization."
 msgstr ""
 
 #: lms/djangoapps/courseware/plugins.py
-#: openedx/features/wikimedia_features/wikimedia_general/tab.py
+#: openedx/features/wikimedia_features/progress_tab/tab.py
 #: lms/templates/peer_grading/peer_grading.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
@@ -17465,22 +17489,26 @@ msgid "Course Progress for '{username}' ({email})"
 msgstr "Postęp kursu dla '{username}' ({email})"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Wyświetl certyfikat"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "Otworzy się w nowym oknie przeglądarki"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "Zażądaj certyfikatu"
@@ -25541,11 +25569,20 @@ msgstr ""
 #~ msgid "Course Run"
 #~ msgstr "Edycja kursu"
 
+#~ msgid "{platform_name} offers interactive online classes and MOOCs."
+#~ msgstr "{platform_name} oferuje interaktywną edukację online i kursy MOOC."
+
 #~ msgid "My Account"
 #~ msgstr "Moje konto"
 
 #~ msgid "Our mailing address is"
 #~ msgstr "Nasz adres kontaktowy to"
+
+#~ msgid "Hide Progress Tab"
+#~ msgstr "Ukryj pasek postępu"
+
+#~ msgid "Allows hiding of the progress tab."
+#~ msgstr "Pozwala na ukrycie paska postępu."
 
 #~ msgid ""
 #~ "Non writable git url provided. Expecting something like: "

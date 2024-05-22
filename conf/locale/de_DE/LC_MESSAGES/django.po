@@ -179,7 +179,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-15 05:38+0000\n"
+"POT-Creation-Date: 2024-05-15 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Stefania Trabucchi <stefania.trabucchi@abstract-technology.de>, 2019\n"
 "Language-Team: German (Germany) (https://app.transifex.com/open-edx/teams/6205/de_DE/)\n"
@@ -1257,6 +1257,43 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
 #, python-format
 msgid "%(platform_name)s -> %(created_by)s created a post."
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
+msgid ""
+"WikiLearn, hosted by the Wikimedia Foundation, is a dedicated learning "
+"platform for the Wikimedia movement. It offers a comprehensive range of "
+"self-paced and instructor-led courses aimed at capacity building and "
+"leadership development within the Wikimedia community. Courses on WikiLearn "
+"are collaboratively developed by and for Wikimedians with a commitment to "
+"accessibility and diversity. For inquiries, contact the Community "
+"Development team at "
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Hide Score Tab"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\", \"font-open-sans\", \"font-noto-kufi-arabic\", \"font-montserrat\", and \"font-source-sans-pro\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
+#. Translators:  This text describes (at a high level) the mission and charter
+#. the edX platform and organization
+#: lms/djangoapps/certificates/views/webview.py
+#, python-brace-format
+msgid ""
+"{platform_name}, hosted by the Wikimedia Foundation, is a dedicated learning"
+" platform for the Wikimedia movement"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Allows hiding of the score tab."
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -4391,14 +4428,6 @@ msgstr ""
 "ersetzen."
 
 #: common/lib/xmodule/xmodule/course_module.py
-msgid "Hide Progress Tab"
-msgstr "Verstecke den Fortschrittsreiter"
-
-#: common/lib/xmodule/xmodule/course_module.py
-msgid "Allows hiding of the progress tab."
-msgstr "Verstecken des Fortschrittsreiters erlauben."
-
-#: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Organization Display String"
 msgstr "Anzeigestring der Kursorganisation"
 
@@ -6779,6 +6808,7 @@ msgstr "Spende"
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
 #: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Über"
 
@@ -7220,15 +7250,6 @@ msgstr ""
 #: lms/djangoapps/certificates/views/webview.py
 msgid "Validate this certificate for yourself"
 msgstr "Überprüfen Sie dieses Zertifikat selbst"
-
-#. Translators:  This text describes (at a high level) the mission and charter
-#. the edX platform and organization
-#: lms/djangoapps/certificates/views/webview.py
-#, python-brace-format
-msgid "{platform_name} offers interactive online classes and MOOCs."
-msgstr ""
-"Die {platform_name} bietet interaktive online Workshops zur Medienkompetenz "
-"an."
 
 #: lms/djangoapps/certificates/views/webview.py
 #, python-brace-format
@@ -7883,7 +7904,7 @@ msgstr ""
 "Organisation."
 
 #: lms/djangoapps/courseware/plugins.py
-#: openedx/features/wikimedia_features/wikimedia_general/tab.py
+#: openedx/features/wikimedia_features/progress_tab/tab.py
 #: lms/templates/peer_grading/peer_grading.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
@@ -18085,22 +18106,26 @@ msgid "Course Progress for '{username}' ({email})"
 msgstr "Kursfortschritt für '{username}' ({email})"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Zertifikat anschauen"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "In einem neuen Browser Fenster öffnen"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "Zertifikat anfordern"
@@ -26298,8 +26323,19 @@ msgstr ""
 #~ msgid "Organization"
 #~ msgstr "Organsation"
 
+#~ msgid "{platform_name} offers interactive online classes and MOOCs."
+#~ msgstr ""
+#~ "Die {platform_name} bietet interaktive online Workshops zur Medienkompetenz "
+#~ "an."
+
 #~ msgid "Our mailing address is"
 #~ msgstr "Unsere Postanschrift lautet"
+
+#~ msgid "Hide Progress Tab"
+#~ msgstr "Verstecke den Fortschrittsreiter"
+
+#~ msgid "Allows hiding of the progress tab."
+#~ msgstr "Verstecken des Fortschrittsreiters erlauben."
 
 #~ msgid ""
 #~ "Non writable git url provided. Expecting something like: "

@@ -298,7 +298,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-15 05:38+0000\n"
+"POT-Creation-Date: 2024-05-15 05:39+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Albeiro Gonzalez <albeiro.gonzalez@edunext.co>, 2019\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/open-edx/teams/6205/es_419/)\n"
@@ -1376,6 +1376,43 @@ msgstr ""
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
 #, python-format
 msgid "%(platform_name)s -> %(created_by)s created a post."
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
+msgid ""
+"WikiLearn, hosted by the Wikimedia Foundation, is a dedicated learning "
+"platform for the Wikimedia movement. It offers a comprehensive range of "
+"self-paced and instructor-led courses aimed at capacity building and "
+"leadership development within the Wikimedia community. Courses on WikiLearn "
+"are collaboratively developed by and for Wikimedians with a commitment to "
+"accessibility and diversity. For inquiries, contact the Community "
+"Development team at "
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Hide Score Tab"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid ""
+"\n"
+"            Select course family in which you want to display your course.\n"
+"            Available options are \"font-trebuchet\", \"font-open-sans\", \"font-noto-kufi-arabic\", \"font-montserrat\", and \"font-source-sans-pro\".\n"
+"            If value is invalid or empty the default font-family will be \"Helvetica Neue\".\n"
+"            "
+msgstr ""
+
+#. Translators:  This text describes (at a high level) the mission and charter
+#. the edX platform and organization
+#: lms/djangoapps/certificates/views/webview.py
+#, python-brace-format
+msgid ""
+"{platform_name}, hosted by the Wikimedia Foundation, is a dedicated learning"
+" platform for the Wikimedia movement"
+msgstr ""
+
+#: common/lib/xmodule/xmodule/course_module.py
+msgid "Allows hiding of the score tab."
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -4553,14 +4590,6 @@ msgstr ""
 "discusión"
 
 #: common/lib/xmodule/xmodule/course_module.py
-msgid "Hide Progress Tab"
-msgstr "Ocultar barra de progreso"
-
-#: common/lib/xmodule/xmodule/course_module.py
-msgid "Allows hiding of the progress tab."
-msgstr "Permitir ocultar la barra de progreso"
-
-#: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Organization Display String"
 msgstr "Nombre de la organización para mostrar"
 
@@ -6972,6 +7001,7 @@ msgstr "Donar"
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
 #: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Acerca de"
 
@@ -7402,13 +7432,6 @@ msgstr ""
 #: lms/djangoapps/certificates/views/webview.py
 msgid "Validate this certificate for yourself"
 msgstr "Validar este certificado usted mismo"
-
-#. Translators:  This text describes (at a high level) the mission and charter
-#. the edX platform and organization
-#: lms/djangoapps/certificates/views/webview.py
-#, python-brace-format
-msgid "{platform_name} offers interactive online classes and MOOCs."
-msgstr "{platform_name} ofrece clases en línea interactivas y cursos MOOC."
 
 #: lms/djangoapps/certificates/views/webview.py
 #, python-brace-format
@@ -8085,7 +8108,7 @@ msgstr ""
 " esta organización."
 
 #: lms/djangoapps/courseware/plugins.py
-#: openedx/features/wikimedia_features/wikimedia_general/tab.py
+#: openedx/features/wikimedia_features/progress_tab/tab.py
 #: lms/templates/peer_grading/peer_grading.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
@@ -18326,22 +18349,26 @@ msgstr ""
 "Progreso del curso para el estudiante '{username}' con el correo ({email})"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Ver certificado"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "Se abrirá en una nueva ventana del navegador"
 
 #: lms/templates/courseware/progress.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
 #: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "Solicitar certificado"
@@ -26606,6 +26633,9 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 #~ "Un certificado {cert_type} también indica que la identidad del alumno ha "
 #~ "sido verificada y es válida."
 
+#~ msgid "{platform_name} offers interactive online classes and MOOCs."
+#~ msgstr "{platform_name} ofrece clases en línea interactivas y cursos MOOC."
+
 #~ msgid "Practice Exam"
 #~ msgstr "Examen de practica"
 
@@ -27292,6 +27322,12 @@ msgstr "Seleccione la opción \"Empezar examen supervisado\" abajo para continua
 
 #~ msgid "Settings for discussions plugins."
 #~ msgstr "Configuraciones para plug-ins de discusiones. "
+
+#~ msgid "Hide Progress Tab"
+#~ msgstr "Ocultar barra de progreso"
+
+#~ msgid "Allows hiding of the progress tab."
+#~ msgstr "Permitir ocultar la barra de progreso"
 
 #~ msgid "Content block identifier (location) of entrance exam."
 #~ msgstr ""
