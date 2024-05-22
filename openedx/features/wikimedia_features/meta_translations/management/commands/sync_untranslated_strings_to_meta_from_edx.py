@@ -92,7 +92,7 @@ class Command(BaseCommand):
             block.block_type, base_course_name, base_course_description
         )
         
-        label = "{} - {}: {}".format(
+        label = "WikiLearn - {} - {}: {}".format(
             base_course_name, get_studio_component_name(block.block_type), block_data.filter(data_type="display_name")[0].data
         )
 
