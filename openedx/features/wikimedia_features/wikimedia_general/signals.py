@@ -35,26 +35,28 @@ from cms.djangoapps.contentstore.exceptions import AssetSizeTooLargeException
 
 logger = getLogger(__name__)
 
-@receiver(SignalHandler.course_published)
-def upload_course_default_image(sender, course_key, **kwargs):
-    file_path = finders.find('images/course_default_image/images_course_image.jpg')
-    
-    try:
-        if os.path.exists(file_path):
-            with open(file_path, 'rb') as file:
-                content_type, _ = mimetypes.guess_type(file_path)
-                django_file = SimpleUploadedFile(name=os.path.basename(file_path),
-                                                 content=file.read(),
-                                                 content_type=content_type)
-                from cms.djangoapps.contentstore.views.assets import update_course_run_asset
-                content = update_course_run_asset(course_key, django_file)
-                logger.info("File processing completed for course: %s", course_key)
-        else:
-            logger.error("File does not exist at path: %s", file_path)
-    except AssetSizeTooLargeException as e:
-        logger.error("Asset size too large for course %s: %s", course_key, str(e))
-    except Exception as e:
-        logger.error("Error processing file for course %s: %s", course_key, str(e))
+@receiver(post_save, sender=CourseOverview)
+def upload_course_default_image(sender, instance, created, **kwargs):
+    if created:
+        course_key=instance.id
+        file_path = finders.find('images/course_default_image/images_course_image.jpg')
+        
+        try:
+            if os.path.exists(file_path):
+                with open(file_path, 'rb') as file:
+                    content_type, _ = mimetypes.guess_type(file_path)
+                    django_file = SimpleUploadedFile(name=os.path.basename(file_path),
+                                                    content=file.read(),
+                                                    content_type=content_type)
+                    from cms.djangoapps.contentstore.views.assets import update_course_run_asset
+                    content = update_course_run_asset(course_key, django_file)
+                    logger.info("File processing completed for course: %s", course_key)
+            else:
+                logger.error("File does not exist at path: %s", file_path)
+        except AssetSizeTooLargeException as e:
+            logger.error("Asset size too large for course %s: %s", course_key, str(e))
+        except Exception as e:
+            logger.error("Error processing file for course %s: %s", course_key, str(e))
     
 @receiver(post_save, sender=CourseOverview)
 def create_default_course_mode(sender, instance, created, **kwargs):
