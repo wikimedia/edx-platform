@@ -1746,7 +1746,7 @@ LANGUAGES = [
 
     ('am', 'አማርኛ'),  # Amharic
     ('ar', 'العربية'),  # Arabic
-    ('ar-ma', '(العربية (المغرب'),  # Arabic Moroccan
+    ('ar-ma', 'العربية (المغرب)'),  # Arabic Moroccan
     ('az', 'azərbaycanca'),  # Azerbaijani
     ('bg-bg', 'български (България)'),  # Bulgarian (Bulgaria)
     ('bn-bd', 'বাংলা (বাংলাদেশ)'),  # Bengali (Bangladesh)
