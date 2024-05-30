@@ -46,7 +46,7 @@
       </tr>
       <% if (window.ENABLE_FORUM_DAILY_DIGEST) {%>
           <tr class="helpgrid-row helpgrid-row-notification">
-            <th scope="row" class="row-title"><%- gettext('Receive updates') %></td>
+            <th scope="row" class="row-title"><%- gettext('Receive daily updates') %></td>
             <td class="row-item-full" colspan="3">
               <label for="email-setting-checkbox">
                 <span class="sr"><%- gettext("Toggle Notifications Setting") %></span>
@@ -59,6 +59,19 @@
             </td>
           </tr>
       <% } %>
+            <tr class="helpgrid-row helpgrid-row-notification">
+    <th scope="row" class="row-title"><%- gettext('Receive weekly updates') %></th>
+    <td class="row-item-full" colspan="3">
+        <label for="weekly-email-setting-checkbox">
+            <span class="sr"><%- gettext("Toggle Weekly Notifications Setting") %></span>
+            <span class="notification-checkbox">
+                <input type="checkbox" id="weekly-email-setting-checkbox" class="email-setting" name="weekly-email-notification"/>
+                <span class="icon fa fa-envelope" aria-hidden="true"></span>
+            </span>
+        </label>
+        <span class="row-description"><%- gettext("Check this box to receive a weekly email digest notifying you about new, unread activity from posts you are following.") %></span>
+    </td>
+</tr>
     </table>
   <% } %>
 </div>

@@ -77,8 +77,11 @@ handler500 = static_template_view_views.render_500
 
 notification_prefs_urls = [
     path('notification_prefs/enable/', notification_prefs_views.ajax_enable),
+    path('notification_prefs/enable_weekly/', notification_prefs_views.ajax_enable_weekly),
     path('notification_prefs/disable/', notification_prefs_views.ajax_disable),
+    path('notification_prefs/disable_weekly/', notification_prefs_views.ajax_disable_weekly),
     path('notification_prefs/status/', notification_prefs_views.ajax_status),
+    path('notification_prefs/weekly_status/', notification_prefs_views.weekly_ajax_status),
 
     re_path(
         r'^notification_prefs/unsubscribe/(?P<token>[a-zA-Z0-9-_=]+)/',

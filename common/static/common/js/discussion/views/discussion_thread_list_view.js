@@ -597,9 +597,21 @@
 
             DiscussionThreadListView.prototype.updateEmailNotifications = function() {
                 var $checkbox, checked, urlName;
-                $checkbox = $('input.email-setting');
+                $checkbox = $('#email-setting-checkbox');
                 checked = $checkbox.prop('checked');
                 urlName = (checked) ? 'enable_notifications' : 'disable_notifications';
+                DiscussionUtil.safeAjax({
+                    url: DiscussionUtil.urlFor(urlName),
+                    type: 'POST',
+                    error: function() {
+                        $checkbox.prop('checked', !checked);
+                    }
+                });
+            };
+            DiscussionThreadListView.prototype.updateWeeklyEmailNotifications = function() {
+                var $checkbox = $('#weekly-email-setting-checkbox');
+                var checked = $checkbox.prop('checked');
+                var urlName = (checked) ? 'enable_weekly_notifications' : 'disable_weekly_notifications';
                 DiscussionUtil.safeAjax({
                     url: DiscussionUtil.urlFor(urlName),
                     type: 'POST',

@@ -137,12 +137,16 @@
                 this.$('.forum-nav-thread-list a').removeClass('is-active').find('.sr')
                   .remove();
                 this.setupForumDigestSettings(window.user.get('id'));
+                this.setupWeeklyDigestSettings(window.user.get('id'));
             },
+
+            
+
             setupForumDigestSettings: function(userId) {
                 if (window.ENABLE_FORUM_DAILY_DIGEST === false) {
                     return;
                 }
-                this.$('input.email-setting').bind('click', this.discussionThreadListView.updateEmailNotifications);
+                this.$('#email-setting-checkbox').bind('click', this.discussionThreadListView.updateEmailNotifications);
                 this.getUserNotificationSettings(userId);
             },
 
@@ -151,7 +155,22 @@
                     url: DiscussionUtil.urlFor('notifications_status', userId),
                     type: 'GET',
                     success: function(response) {
-                        $('input.email-setting').prop('checked', response.status);
+                        $('#email-setting-checkbox').prop('checked', response.status);
+                    }
+                });
+            },
+
+            setupWeeklyDigestSettings: function(userId) {
+                this.$('#weekly-email-setting-checkbox').bind('click', this.discussionThreadListView.updateWeeklyEmailNotifications);
+                this.getUserWeeklyNotificationSettings(userId);
+            },
+            
+            getUserWeeklyNotificationSettings: function(userId) {
+                DiscussionUtil.safeAjax({
+                    url: DiscussionUtil.urlFor('weekly_notifications_status', userId),
+                    type: 'GET',
+                    success: function(response) {
+                        $('#weekly-email-setting-checkbox').prop('checked', response.status);
                     }
                 });
             },
