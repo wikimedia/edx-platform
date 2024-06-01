@@ -42,7 +42,20 @@ def send_weekly_digest_ace_message(request_user, request_site, dest_email, conte
         contexts - List of context dictionaries for each message
         message_class - The ACE message type class to be used for sending the email
     """
-    unified_context = {'contexts': contexts}
+    # Preprocess the contexts to group by location
+    grouped_contexts = {}
+    for context in contexts:
+        location = context.get('location', 'General Discussion')
+        if location not in grouped_contexts:
+            grouped_contexts[location] = []
+        grouped_contexts[location].append(context)
+    
+    # Flatten the grouped contexts into a list
+    sorted_contexts = []
+    for location, context_list in grouped_contexts.items():
+        sorted_contexts.extend(context_list)
+    
+    unified_context = {'contexts': sorted_contexts}
 
     with emulate_http_request(site=request_site, user=request_user):
         message = message_class().personalize(
@@ -57,6 +70,7 @@ def send_weekly_digest_ace_message(request_user, request_site, dest_email, conte
         except Exception as e:
             logger.error('Error sending email to %s with unified contexts. Error: %s', dest_email, e)
             return False
+
 
 def send_ace_message(request_user, request_site, dest_email, context, message_class):
     with emulate_http_request(site=request_site, user=request_user):

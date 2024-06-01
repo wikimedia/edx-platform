@@ -35,6 +35,10 @@ from common.djangoapps.student.models import (
 )
 from openedx.core.djangoapps.user_api.models import UserPreference
 from lms.djangoapps.discussion.notification_prefs import WEEKLY_NOTIFICATION_PREF_KEY
+from opaque_keys.edx.keys import CourseKey, UsageKey, i4xEncoder
+from opaque_keys import InvalidKeyError
+from xmodule.modulestore.django import modulestore
+from django.http import Http404
 
 
 log = logging.getLogger(__name__)
@@ -312,6 +316,33 @@ def get_updated_studio_filter_meanings(courses):
             studio_filters_meanings[studio_filter]['terms'] = studio_filters[studio_filter]
     return studio_filters_meanings
 
+def _get_item_in_course(usage_key):
+    """
+    Helper method for getting the old location, containing course,
+    item, lms_link, and preview_lms_link for a given locator.
+
+    Verifies that the caller has permission to access this item.
+    """
+    # usage_key's course_key may have an empty run property
+    usage_key = usage_key.replace(course_key=modulestore().fill_in_run(usage_key.course_key))
+
+    course_key = usage_key.course_key
+
+    course = modulestore().get_course(course_key)
+    item = modulestore().get_item(usage_key, depth=1)
+    
+    return course, item
+
+def get_parent_xblock(xblock):
+    """
+    Returns the xblock that is the parent of the specified xblock, or None if it has no parent.
+    """
+    locator = xblock.location
+    parent_location = modulestore().get_parent_location(locator)
+
+    if parent_location is None:
+        return None
+    return modulestore().get_item(parent_location)
 
 def add_courseware_info(data, user, current_site, course_key):
     """
@@ -326,15 +357,37 @@ def add_courseware_info(data, user, current_site, course_key):
         course_key (CourseKey): The key of the course to which the post belongs.
 
     Returns:
-        None: Directly modifies the 'data' dictionary, adding the 'courseware_url' key and 'courseware_title' key  with the complete URL as its value.
+        None: Directly modifies the 'data' dictionary, adding the 'courseware_url' key and 'courseware_title' key with the complete URL as its value.
     """
+
     course = get_course_with_access(user, 'load', course_key)
     add_courseware_context([data], course, user)
+    
     if 'courseware_url' in data:
         scheme = 'https' if settings.HTTPS == 'on' else 'http'
         base_url = f"{scheme}://{current_site.domain}"
         data["courseware_url"] = f"{base_url}{data['courseware_url']}"
+        
+        # Extract the block_id from the courseware_url
+        block_id = data["courseware_url"].split('/jump_to/')[-1]
+        data["courseware_block_id"] = block_id
+        
+        try:
+            usage_key = UsageKey.from_string(block_id)
+        except InvalidKeyError:
+            raise Http404
 
+        with modulestore().bulk_operations(usage_key.course_key):
+            xcourse, xblock = _get_item_in_course(usage_key)
+            parent = get_parent_xblock(xblock)
+            data["unit_name"] = getattr(parent, 'display_name', 'Unknown Unit Name')
+    else:
+        log.warning("courseware_url key not found in data dictionary")
+
+    if 'courseware_title' in data:
+        data["courseware_title"] = data['courseware_title']
+    if 'location' in data:
+        data["location"] = data['location']
 WIKI_LMS_FILTER_MAPPINGS = {
     'paced_type': get_paced_type,
     'enrollment_type': get_enrollment_type,

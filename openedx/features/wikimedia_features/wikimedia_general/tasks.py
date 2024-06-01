@@ -19,6 +19,7 @@ from openedx.features.wikimedia_features.wikimedia_general.utils import (
     get_mentioned_users_list,
     get_course_users_with_preference,
     is_discussion_notification_configured_for_site,
+    add_courseware_info
 )
 
 import markdown
@@ -113,6 +114,7 @@ def send_weekly_digest_new_post_notification_to_instructors(threads):
         course_key = CourseKey.from_string(post.course_id)
         data = post.to_dict()
         
+        
         context = {
             'course_id': course_key,
             'site': current_site,
@@ -121,9 +123,20 @@ def send_weekly_digest_new_post_notification_to_instructors(threads):
         
         update_context_with_thread(context, post)
         message_context = build_discussion_notification_context(context)
-
+        user_id = message_context['thread_author_id']
+        user = User.objects.get(id=user_id)
+        log.info("user object is :%s",user)
+        add_courseware_info(data, user, current_site, course_key)
         if 'courseware_url' in data:
             message_context['post_link'] = data['courseware_url']
+        if 'courseware_title' in data:
+            message_context['courseware_title'] = data['courseware_title']  # Adding the courseware title to message context
+        if 'location' in data:
+            message_context['location'] = data['location']
+        if 'unit_name' in data:
+            message_context['unit_name'] = data['unit_name']
+        if 'courseware_block_id' in data:
+            message_context['courseware_block_id'] = data['courseware_block_id']
 
         contexts.append(context)
         message_contexts.append(message_context)
