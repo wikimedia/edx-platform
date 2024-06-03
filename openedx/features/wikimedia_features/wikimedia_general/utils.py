@@ -316,22 +316,6 @@ def get_updated_studio_filter_meanings(courses):
             studio_filters_meanings[studio_filter]['terms'] = studio_filters[studio_filter]
     return studio_filters_meanings
 
-def _get_item_in_course(usage_key):
-    """
-    Helper method for getting the old location, containing course,
-    item, lms_link, and preview_lms_link for a given locator.
-
-    Verifies that the caller has permission to access this item.
-    """
-    # usage_key's course_key may have an empty run property
-    usage_key = usage_key.replace(course_key=modulestore().fill_in_run(usage_key.course_key))
-
-    course_key = usage_key.course_key
-
-    course = modulestore().get_course(course_key)
-    item = modulestore().get_item(usage_key, depth=1)
-    
-    return course, item
 
 def get_parent_xblock(xblock):
     """
@@ -343,6 +327,7 @@ def get_parent_xblock(xblock):
     if parent_location is None:
         return None
     return modulestore().get_item(parent_location)
+
 
 def add_courseware_info(data, user, current_site, course_key):
     """
@@ -377,10 +362,9 @@ def add_courseware_info(data, user, current_site, course_key):
         except InvalidKeyError:
             raise Http404
 
-        with modulestore().bulk_operations(usage_key.course_key):
-            xcourse, xblock = _get_item_in_course(usage_key)
-            parent = get_parent_xblock(xblock)
-            data["unit_name"] = getattr(parent, 'display_name', 'Unknown Unit Name')
+        xblock = modulestore().get_item(usage_key)
+        parent = get_parent_xblock(xblock)
+        data["unit_name"] = getattr(parent, 'display_name', 'Unknown Unit Name')
     else:
         log.warning("courseware_url key not found in data dictionary")
 

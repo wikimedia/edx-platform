@@ -214,10 +214,10 @@ def send_weekly_digest_notification(message_type, notification_context, subject,
     })
 
     for email in dest_emails:
+        common_context.update({ 'email': email})
         email_context = {
             'common_context': common_context,
             'thread_contexts': thread_contexts,
-            'email': email
         }
         try:
             send_weekly_digest_ace_message(request_user, current_site, email, email_context, message_class=MESSAGE_TYPES[message_type])
