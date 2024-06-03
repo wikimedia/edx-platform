@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-05-15 05:39+0000\n"
+"POT-Creation-Date: 2024-06-03 10:33+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Hebrew (https://app.transifex.com/open-edx/teams/6205/he/)\n"
@@ -134,7 +134,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-04-24\n"
-"X-POT-Import-Date: 2024-04-15 06:30:23+0000\n"
+"X-POT-Import-Date: 2024-05-15 06:30:33+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -352,11 +352,6 @@ msgstr "דו\"ח גרסת הקורס (מצטבר)"
 #: cms/templates/settings.html
 msgid "Course Direction Flag"
 msgstr "דגל כיוון הקורס"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
-#, python-format
-msgid "%(subject)s"
-msgstr ""
 
 #: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "No Translated Course Found!"
@@ -1335,9 +1330,14 @@ msgstr "מזהה סרטון וידאו"
 #. yet reached the point in its processing by the servers where its
 #. duration is determined.
 #: cms/djangoapps/contentstore/views/videos.py
-#: openedx/core/djangoapps/api_admin/models.py
+#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
 msgid "Pending"
 msgstr "בהמתנה"
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Organization"
+msgstr "ארגון"
 
 #: cms/envs/common.py lms/djangoapps/instructor/views/api.py
 #: lms/envs/common.py
@@ -1421,6 +1421,8 @@ msgstr "אתה רשום במסלול קוד אתי"
 #: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/static_templates/honor.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "כולל תעודה"
 
@@ -1556,6 +1558,7 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login_form.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "סיסמה"
 
@@ -2965,8 +2968,14 @@ msgstr "חלה בעיה בתשובת הצוות עבור בעיה זו: גבול
 #. answers.
 #. Translators: Separator used in StringResponse to display multiple answers.
 #. Example: "Answer: Answer_1 or Answer_2 or Answer_3".
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: this is the last choice of a number of choices of how to log
+#. in
+#. to the site.
 #: common/lib/capa/capa/responsetypes.py
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "או"
 
@@ -3423,7 +3432,7 @@ msgstr ""
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Submit"
 msgstr "הגש"
 
@@ -4345,7 +4354,7 @@ msgstr ""
 "מדיה חברתית יוכלו לקשר אליה. על כתובות האתר להיות מוסמכות לחלוטין. לדוגמה: "
 "http://www.edx.org/course/Introduction-to-MOOCs-ITM001"
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Course Language"
 msgstr "שפת הקורס"
 
@@ -4667,6 +4676,7 @@ msgid "Any Type"
 msgstr "כל סוג"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
+#: cms/templates/widgets/header.html
 msgid "Library"
 msgstr "ספריה"
 
@@ -5132,6 +5142,9 @@ msgstr ""
 " קשר עם moocsupport@mathworks.com"
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
 msgid "Group Configurations"
 msgstr "הגדרות קבוצה"
 
@@ -5482,9 +5495,6 @@ msgstr "בית"
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "קורס"
 
@@ -5496,6 +5506,9 @@ msgstr ""
 #: lms/templates/oauth2_provider/authorize.html
 #: openedx/core/djangoapps/user_api/admin.py
 #: openedx/features/wikimedia_features/messenger/views.py
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: cms/templates/videos_index_pagination.html
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -5904,12 +5917,12 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html
+#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Close"
 msgstr "סגור"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -5930,7 +5943,6 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr ""
 
@@ -5941,7 +5953,6 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -5959,7 +5970,6 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -6072,6 +6082,14 @@ msgid ""
 "this request, please contact us immediately. Contact information is listed "
 "at:"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"We keep a log of old e-mails, so if this request was unintentional, we can "
+"investigate."
+msgstr ""
+"אנו מתעדים הודעות דואר אלקטרוני, כך שאם בקשה זו אינה מכוונת, נוכל לחקור את "
+"הנושא."
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -6322,13 +6340,24 @@ msgstr ""
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Open edX' is a trademark, please keep this untranslated.
 #. See http://openedx.org for more information.
-#: lms/djangoapps/branding/api.py
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: 'Open edX' is a brand, please keep this untranslated. See
+#. http://openedx.org for more information.
+#: lms/djangoapps/branding/api.py cms/templates/widgets/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Powered by Open edX"
 msgstr "מופעל על ידי Open edX"
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/blog.html
 msgid "Blog"
 msgstr "בלוג"
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
+msgid "Contact Us"
+msgstr "צור קשר"
 
 #: lms/djangoapps/branding/api.py
 msgid "Help Center"
@@ -6345,8 +6374,9 @@ msgstr "תרום"
 
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "אודות"
 
@@ -6356,14 +6386,19 @@ msgid "{platform_name} for Business"
 msgstr "{platform_name} לעסקים"
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/contact.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "צור קשר"
 
 #: lms/djangoapps/branding/api.py
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Careers"
 msgstr "קריירות"
 
-#: lms/djangoapps/branding/api.py
+#: lms/djangoapps/branding/api.py themes/red-theme/lms/templates/footer.html
 msgid "News"
 msgstr "חדשות"
 
@@ -6377,7 +6412,10 @@ msgstr "תנאי השירות וקוד אתי"
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Privacy Policy"
 msgstr "מדיניות פרטיות"
 
@@ -6391,6 +6429,9 @@ msgstr "מדיניות נגישות"
 #: lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "תנאי השימוש"
 
@@ -6701,6 +6742,7 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr "כל הזכויות שמורות"
 
@@ -7402,6 +7444,7 @@ msgstr ""
 #. Translators: 'Textbooks' refers to the tab in the course that leads to the
 #. course' textbooks
 #: lms/djangoapps/courseware/plugins.py lms/djangoapps/courseware/tabs.py
+#: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Textbooks"
 msgstr "ספרי לימוד"
 
@@ -7554,7 +7597,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "כניסה"
 
@@ -7941,6 +7984,7 @@ msgstr ""
 #: lms/djangoapps/instructor/views/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "מגדר"
 
@@ -7949,6 +7993,7 @@ msgid "Level of Education"
 msgstr "רמת השכלה"
 
 #: lms/djangoapps/instructor/views/api.py
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Mailing Address"
 msgstr "כתובת למשלוח דואר"
 
@@ -7992,11 +8037,13 @@ msgstr "צוות"
 #: openedx/core/djangoapps/user_api/accounts/settings_views.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "עיר"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "מדינה"
 
@@ -8370,7 +8417,8 @@ msgid "Special Exams"
 msgstr "מבחנים מיוחדים"
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
-#: lms/djangoapps/support/views/index.py
+#: lms/djangoapps/support/views/index.py cms/templates/certificates.html
+#: cms/templates/export.html cms/templates/widgets/header.html
 msgid "Certificates"
 msgstr "תעודות"
 
@@ -8492,6 +8540,8 @@ msgstr "הארכת תאריך היעד חייבת להיות מאוחרת יות
 #: lms/djangoapps/instructor/views/tools.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "שם מלא"
 
@@ -8796,6 +8846,7 @@ msgstr "(מתוך {total})"
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "תכניות"
 
@@ -9584,8 +9635,6 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
-#: themes/edx-platform/wikilearn/cms/templates/base.html
-#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "דלג לתוכן ראשי"
 
@@ -9781,6 +9830,7 @@ msgstr "מחק מאמר"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -9821,9 +9871,7 @@ msgstr "אתה עומד למחוק את המאמר. נא אשר."
 
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-#: wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "עריכה"
@@ -9849,6 +9897,8 @@ msgstr "תצוגה מקדימה של Wiki"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "חלון פתוח"
 
@@ -10104,9 +10154,8 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/stanford-style/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "חיפוש"
@@ -10210,48 +10259,52 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr ""
 
+#: cms/templates/widgets/header.html
+msgid "Sign In"
+msgstr "התחבר/י"
+
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -10260,7 +10313,6 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -10325,7 +10377,7 @@ msgid ""
 "Comma-separated list of usernames which will be able to view this catalog."
 msgstr "רשימה מופרדת בפסיקים של שמות משתמשים שיקבלו גישה לצפייה בקטלוג זה."
 
-#: openedx/core/djangoapps/api_admin/models.py
+#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
 msgid "Denied"
 msgstr "נדחתה"
 
@@ -10360,7 +10412,6 @@ msgstr ""
 
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "סימניות"
 
@@ -10492,6 +10543,11 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Course Run"
+msgstr "מחזור לימודים"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -11308,6 +11364,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -11317,6 +11374,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -11345,6 +11403,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -11846,7 +11905,8 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Register"
 msgstr "הירשם"
 
@@ -12052,6 +12112,8 @@ msgstr "זה השם שיופיע בכל תעודות הסיום שלך"
 #. meant to hold the user's public username.
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "שם משתמש באנגלית ובלי רווחים"
 
@@ -12408,7 +12470,6 @@ msgstr ""
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "עדכונים"
 
@@ -12595,10 +12656,13 @@ msgstr ""
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr ""
 
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
+#, python-format
+msgid "%(subject)s"
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "שם הקורס"
 
@@ -12608,9 +12672,7 @@ msgstr "שם הקורס"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Courses"
 msgstr "קורסים"
 
@@ -12618,6 +12680,10 @@ msgstr "קורסים"
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Reports"
 msgstr "דוחות"
+
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Our mailing address is"
+msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -13521,17 +13587,11 @@ msgstr "העמוד לא נמצא"
 msgid "Page not found"
 msgstr "העמוד לא נמצא"
 
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
-
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "תוכן"
 
@@ -13540,7 +13600,6 @@ msgstr "תוכן"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
@@ -13553,21 +13612,11 @@ msgstr "הגדרות"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "טוען"
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "מספר הקורס"
 
@@ -13576,50 +13625,25 @@ msgid "Error:"
 msgstr "שגיאה:"
 
 #: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Organization and Library Settings"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Show all courses in organization:"
-msgstr ""
-
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "For example, MITx"
-msgstr ""
-
-#: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "ארגון"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "מספר הקורס"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "מחזור לימודים של קורס:"
 
-#: cms/templates/index.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid "Archived Courses"
-msgstr ""
-
-#: cms/templates/settings.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-msgid ""
-"Identify the course language here. This is used to assist users find courses"
-" that are taught in a specific language. It is also used to localize the "
-"'From:' field in bulk emails."
-msgstr ""
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: username@domain.com"
+msgstr "לדוגמה: username@domain.com"
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -13630,19 +13654,8 @@ msgid "Requirements"
 msgstr "דרישות"
 
 #: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "פרטים"
 
@@ -13650,7 +13663,6 @@ msgstr "פרטים"
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "הצג"
@@ -13668,20 +13680,27 @@ msgid "Reset"
 msgstr "אתחל"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "משפטי"
+
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
+msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "שפת הקורס"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "חשבון"
 
@@ -13690,8 +13709,7 @@ msgstr "חשבון"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "עזרה"
@@ -13704,7 +13722,6 @@ msgstr "שם"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "התנתק"
 
@@ -13855,17 +13872,14 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "למד עוד"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "מתחיל"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "מתחיל: {date}"
 
@@ -13875,19 +13889,19 @@ msgstr "הצג את כל הקורסים"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Dashboard"
 msgstr "אזור אישי"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "אינך רשום עדיין באף קורס."
 
@@ -13895,6 +13909,7 @@ msgstr "אינך רשום עדיין באף קורס."
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr "קטלוג קורסים"
 
@@ -13903,16 +13918,16 @@ msgstr "קטלוג קורסים"
 msgid "Activate your account!"
 msgstr "הפעלת החשבון שלך!"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "שגיאות בטעינת קורס"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "חפש את קורסיך"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Clear search"
 msgstr "נקה חיפוש"
 
@@ -13920,7 +13935,7 @@ msgstr "נקה חיפוש"
 msgid "Skip to list of announcements"
 msgstr "דילוג לרשימת ההודעות"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -13939,15 +13954,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr "להמשיך אל {platform_name}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "הגדרות דואר אלקטרוני עבור {course_number}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "קבל דואר מהקורס"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "שמור הגדרות"
 
@@ -13956,6 +13971,8 @@ msgstr "שמור הגדרות"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "ביטול הרשמה"
 
@@ -14105,7 +14122,6 @@ msgid "External Authentication failed"
 msgstr "אימות חיצוני נכשל"
 
 #: lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr "לוגו ארגון"
 
@@ -14127,6 +14143,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "מידע דרוש"
 
@@ -14173,8 +14191,7 @@ msgstr ""
 "המשימה הזו, הציון שלך יהיה זמין ב-{link_start}progress page{link_end}."
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
+#: themes/stanford-style/lms/templates/index.html
 msgid "Search for a course"
 msgstr "חפש קורס"
 
@@ -14422,6 +14439,8 @@ msgstr ""
 "המשלוח. "
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "דואר אלקטרוני"
 
@@ -14508,6 +14527,7 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr "{start_li}ברוך בואך{end_li} {name}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "הכנס שם משתמש:"
 
@@ -14524,14 +14544,19 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "המטרות להרשמה ל{platform_name}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "אני מסכים {link_start}לתנאי שימוש{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "אני מסכים {link_start}לקוד האתי{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "צור חשבון"
 
@@ -14705,7 +14730,6 @@ msgstr ""
 "{undo_link_start}באפשרותך לבטל את המנוי{link_end}."
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "לוח בקרה של:"
 
@@ -14719,7 +14743,6 @@ msgstr "אפשרויות נוספות"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr "אפשרויות נוספות"
 
@@ -15902,6 +15925,7 @@ msgid "Download student grades"
 msgstr "הורד ציוני הסטודנט"
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "הדפס או שתף את תעודתך:"
 
@@ -15915,6 +15939,7 @@ msgstr "פרסם בפייסבוק"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "שתף בטוויטר"
 
@@ -15923,6 +15948,7 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "צייץ את ההישג הזה. חלון קופץ."
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "הוסף לפרופיל בלינדאין"
 
@@ -16012,31 +16038,40 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "המשך לתעודה מאומתת"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr "הירשם ל{course_name} | בחר מסלול"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "מצטערים, אירעה שגיאה בתהליך ההרשמה"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "השג נקודות זכות אקדמיות עם תעודה מאומתת"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -16048,10 +16083,12 @@ msgstr ""
 "אקדמיות, לקדם את הקריירה שלך או לחזק את בקשותיך לבתי הספר."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -16060,40 +16097,47 @@ msgstr ""
 " הקורס. "
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "יתרונותיה של תעודה מאומתת"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
 msgstr "{b_start}רשמי:{b_end} קבל תעודה חתומה בידי מדריך עם סמל המוסד"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -16104,28 +16148,33 @@ msgstr ""
 " בהגשותיך לבתי הספר."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
 msgstr "{b_start}רשמי:{b_end} קבל תעודה חתומה בידי מדריך עם סמל המוסד"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
 msgstr "{b_start}מעודד הנעה: {b_end}הענק לעצמך תמריץ נוסף להשלים את הקורס"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "בחן את הקורס הזה"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
@@ -16134,10 +16183,12 @@ msgstr ""
 "המבחנים והפורומים."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "‏‫בחן את הקורס הזה (ללא תעודה)"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -16145,6 +16196,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -16152,6 +16204,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -16159,6 +16212,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -16258,7 +16312,6 @@ msgstr "{span_start}פרק נוכחי{span_end}"
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "תאריך הגשה {date}"
 
@@ -16281,6 +16334,7 @@ msgstr "אתה רשום לקורס זה"
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "צפייה בקורס"
 
@@ -16334,6 +16388,7 @@ msgid "enroll"
 msgstr "הירשם"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "שתף עם חברים ובני משפחה!"
 
@@ -16350,6 +16405,7 @@ msgid "Take a course with {platform} online"
 msgstr "למד קורס זה באופן מקוון עם {platform}"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "צייץ על הרשמתך לקורס זה"
 
@@ -16358,11 +16414,11 @@ msgid "Post a Facebook message to say you've enrolled in this course"
 msgstr "פרסם בפייסבוק הודעה על הרשמתךלקורס זה"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr "שלח למישהו הודעת דואר אלקטרוני על הרשמתך לקורס זה"
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr "מקום נוכחי"
 
@@ -16370,13 +16426,10 @@ msgstr "מקום נוכחי"
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "לתשומת ליבך"
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "חומרי הקורס"
 
@@ -16393,25 +16446,21 @@ msgid "Show Earlier Course Updates"
 msgstr "הצג עדכונים מוקדמים יותר של הקורס"
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr "רשימת הקורסים"
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr "מקד את חיפושך"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} לומדה"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "שירותי הקורס"
 
@@ -16429,17 +16478,14 @@ msgstr ""
 "האפשרי."
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "חיפוש קורסים"
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "לא נוסף תוכן לקורס זה"
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16449,7 +16495,6 @@ msgstr ""
 "הציון הנוכחי שלך הוא {current_score}%."
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "ציונך הוא {current_score}%. עברת את מבחן הכניסה."
 
@@ -16527,6 +16572,7 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "המשך בקורס"
 
@@ -16666,12 +16712,10 @@ msgid "Starts on {}"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number} התקדמות"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "צפה בתהליך מתן הציונים בסטודיו"
 
@@ -16681,41 +16725,34 @@ msgstr "התקדמות הקורס עבור '{username}' ({email})"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "הצג תעודה"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr " נפתח בחלון דפדפן חדש. "
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "בקש תעודה"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "דרישות לנקודות זכות בקורס"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr "{student_name}, אינך זכאי יותר לקבל נקודות זכות בקורס זה."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -16724,103 +16761,83 @@ msgstr ""
 "לוח הבקרה שלך {a_end} על מנת לרכוש נקודות זכות לקורס."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr "{student_name}, עמדת בדרישות לקבלת נקודות זכות."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "מידע אודות דרישות קבלת נקודות זכות בקורס"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "display_name"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "האימות נשלח"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "האימות נכשל"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "האימות נדחה"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr "הושלם ב- {date} "
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "בקרוב"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "פחות"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "פרטים על כל פרק"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{earned} מתוך {total} נקודות אפשריות"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "ציוני בעיות:"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "ציוני תרגול:"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "אין ציוני בעיות בפרק זה"
 
@@ -17076,6 +17093,7 @@ msgid "Share {course_name} on Facebook"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "שתף בפייסבוק"
 
@@ -17912,6 +17930,9 @@ msgstr "תודה,"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
+#: themes/stanford-style/lms/templates/embargo/default_courseware.html
+#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
+#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "קורס זה אינו זמין במדינתך"
 
@@ -18033,7 +18054,6 @@ msgid "{platform_name} Home Page"
 msgstr "{platform_name} עמוד הבית"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr ""
 
@@ -18046,6 +18066,7 @@ msgstr ""
 "ממליצים מאוד על השימוש ב-{chrome_link} או ב-{ff_link}."
 
 #: lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr "קורסים"
 
@@ -18054,34 +18075,29 @@ msgid "{name} Dashboard"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "How it Works"
 msgstr "כיצד זה עובד"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "בתי ספר"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "פרופיל"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "היסטוריית הזמנות"
 
@@ -19524,6 +19540,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "הקורסים שלי"
 
@@ -19802,10 +19819,12 @@ msgid ""
 msgstr ""
 
 #: lms/templates/static_templates/faq.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "שאלות נפוצות"
 
 #: lms/templates/static_templates/jobs.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "משרות"
 
@@ -20303,6 +20322,7 @@ msgid "You haven't earned any certificates yet."
 msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "חקור קורסים חדשים"
 
@@ -20323,10 +20343,407 @@ msgstr "צרו את הפרופיל שלכם כדי להתאים אישית את 
 msgid "An error occurred. Try loading the page again."
 msgstr "אירעה שגיאה. נסה לטעון שוב את העמוד."
 
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid ""
+"Access Course Staff Support on the Partner Portal to submit or review "
+"support tickets"
+msgstr ""
+
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "edX Partner Portal"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid ""
+"Browse recently launched courses and see what's new in your favorite "
+"subjects."
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Take advantage of free coaching!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Get Started"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Page Footer"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "edX Home Page"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Connect"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "© {year} edX Inc. All rights reserved."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid "About edX Verified Certificates"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid ""
+"An edX Verified Certificate signifies that the learner has agreed to abide "
+"by the edX honor code and completed all of the required tasks of this course"
+" under its guidelines, as well as having their photo ID checked to verify "
+"their identity."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid "About edX"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid ""
+"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
+"the world's best universities, including MIT, Harvard, Berkeley, University "
+"of Texas, and many others. edX is a mission driven initiative created by "
+"founding partners Harvard and MIT."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Congratulations, {user_name}!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid ""
+"You worked hard to earn your certificate from "
+"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
+"and family to get the word out about what you mastered in "
+"{accomplishment_course_title}."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Share this certificate on Facebook (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Tweet this certificate (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print this certificate"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid "edX Inc."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid ""
+"All rights reserved except where noted. edX, Open edX and the edX and Open "
+"edX logos are registered trademarks of edX Inc."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
+"help fund affordable education to everyone globally."
+msgstr ""
+
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
+"certificates to help fund free education for everyone globally"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Find Courses"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Schools & Partners"
+msgstr ""
+
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+"Code{honor_link_end}"
+msgstr ""
+"{tos_link_start}תנאי שימוש {tos_link_end}{honor_link_start}קוד אתי "
+"{honor_link_end}"
+
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Copyright"
+msgstr "כל הזכויות שמורות"
+
+#: themes/stanford-style/lms/templates/footer.html
+msgid "Copyright {year}. All rights reserved."
+msgstr "זכויות שמורות {year} . כל הזכויות שמורות."
+
+#: themes/stanford-style/lms/templates/index.html
+msgid "For anyone, anywhere, anytime"
+msgstr "לכולם, בכל מקום, בכל זמן"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"We're sorry, but this version of your browser is not supported. Try again "
+"using a different browser or a newer version of your browser."
+msgstr ""
+"מצטערים, אך גרסת דפדפן זו אינה נתמכת. נסה שוב באמצעות דפדפן אחר או גרסה חדשה"
+" יותר של הדפדפן שלך."
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "The following errors occurred while processing your registration:"
+msgstr "הטעויות הבאות התרחשו בתהליך הרשמתך:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Sign up with {provider_name}"
+msgstr "הירשם עם {provider_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Create your own {platform_name} account below"
+msgstr "צור למטה חשבון {platform_name} משלך "
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"Required fields are noted by <strong class=\"indicator\">bold text and an "
+"asterisk (*)</strong>."
+msgstr ""
+"שדות חובה מסומנים באמצעות<strong class=\"indicator\">טקסט מודגש וכוכבית "
+"(*)</strong>."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "You've successfully signed in with {selected_provider}."
+msgstr "נרשמת בהצלחה עם {selected_provider}."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"We just need a little more information before you start learning with "
+"{platform_name}."
+msgstr "אנו זקוקים למידע נוסף לפני שתתחיל ללמוד עם {platform_name}. "
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please complete the following fields to register for an account. "
+msgstr "כדי ליצור חשבון חדש, נא מלא את השדות הבאים."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: Jane Doe"
+msgstr "דוגמה: שלום שלום"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Your legal name, used for any certificates you earn."
+msgstr "שמך החוקי ישמש בכל תעודה שתונפק עבורך"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: JaneDoe"
+msgstr "דוגמה: שלום שלום"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Will be shown in any discussions or forums you participate in"
+msgstr "יוצג בכל הדיונים או פורומים שבהם אתה משתתף"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "cannot be changed later"
+msgstr "לא ניתן לשנות לאחר מכן"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Welcome {username}"
+msgstr "ברוך הבא {username}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Enter a Public Display Name:"
+msgstr "הכנס שם קמפוס:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Public Display Name"
+msgstr "שם קמפוס"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Additional Personal Information"
+msgstr "מידע אישי נוסף"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: New York"
+msgstr "דוגמה: תל אביב"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Highest Level of Education Completed"
+msgstr "רמת ההשכלה"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Year of Birth"
+msgstr "שנת לידה"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please share with us your reasons for registering with {platform_name}"
+msgstr "נא שתף אותנו בסיבות לרישום ל{platform_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Account Acknowledgements"
+msgstr "אישורי חשבון"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Preferences for {platform_name}"
+msgstr "העדפות ל{platform_name}"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update my {platform_name} Account"
+msgstr "עדכן את חשבון {platform_name} שלי"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Processing your account information"
+msgstr "מעבד את מידע החשבון שלך"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Welcome {username}!  Please set your preferences below"
+msgstr "ברוכים הבאים {username}! נא הגדר למטה את העדפותיך"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"Required fields are noted by {strong_indicator}bold text and an asterisk "
+"(*).{strong_close}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update My Account"
+msgstr "עדכן את החשבון שלי"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Registration Help"
+msgstr "עזרה בתהליך הרישום"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Already registered?"
+msgstr "רשום כבר?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "התחבר"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Next Steps"
+msgstr "הצעדים הבאים"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"You will receive an activation email.  You must click on the activation link"
+" to complete the process.  Don't see the email?  Check your spam folder and "
+"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+"able to receive email from your courses."
+msgstr ""
+"לאחר הרישום תישלח אלייך הודעת דואר אלקטרוני שתכלול את קישור ההפעלה של "
+"החשבון. עלייך ללחוץ על הקישור על מנת לסיים את תהליך ההרשמה. לא קיבלת את "
+"ההודעה? אנא בדוק את תיקיית דואר הזבל בתיבת הדואר האלקטרוני שלך ואשר קבלת "
+"הודעות מ-class.stanford.edu, אחרת לא תוכל לקבל הודעות דואר אלקטרוני "
+"מהקורסים."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need Help?"
+msgstr "זקוק לעזרה?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need help in registering with {platform_name}?"
+msgstr "צריך עזרה ברישום ל{platform_name}?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "View our FAQs for answers to commonly asked questions."
+msgstr "לתשובות, פנה לרשימת ה'שאלות הנפוצות' שלנו."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"Once registered, most questions can be answered in the course specific "
+"discussion forums or through the FAQs."
+msgstr ""
+"לאחר הרישום, ניתן למצוא תשובות לרוב השאלות בפורומים או בעמוד \"שאלות "
+"נפוצות\"."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid "Thank you for signing up for {platform_name}."
+msgstr "תודה רבה על שנרשמת ל{platform_name}."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid ""
+"Change your life and start learning today by activating your {platform_name}"
+" account. Click on the link below or copy and paste it into your browser's "
+"address bar."
+msgstr ""
+"שנה את חייך והתחל ללמוד היום באמצעות הפעלת חשבון {platform_name} שלך. לחץ על"
+" הקישור המצורף או העתק והדבק אותו לתוך שורת הכתובת של הדפדפן שלך."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"If you didn't request this, you don't need to do anything; you won't receive"
+" any more email from us. Please do not reply to this e-mail; if you require "
+"assistance, check the about section of the {platform_name} Courses web site."
+msgstr ""
+"אם לא ביקשת זאת, אין צורך לעשות דבר; לא תקבל עוד הודעות מאיתנו. בבקשה אל "
+"תגיבו להודעה זו; אם אתם זקוקים לעזרה, בדקו את עמוד העזרה באתר "
+"{platform_name}. "
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"This is to confirm that you changed the e-mail associated with "
+"{platform_name} from {old_email} to {new_email}. If you did not make this "
+"request, please contact us at"
+msgstr ""
+"זוהי הודעה לאשר כי החלפת את כתובת הדואר האלקטרוני המקושרת לחשבון "
+"{platform_name} מ-{old_email} ל-{new_email}. אם לא ביקשת את השינוי הנ\"ל אנא"
+" צור עמנו קשר ב-"
+
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"We received a request to change the e-mail associated with your "
+"{platform_name} account from {old_email} to {new_email}. If this is correct,"
+" please confirm your new e-mail address by visiting:"
+msgstr ""
+"התקבלה בקשה לשנות את כתובת הדואר האלקטרוני המקושרת לחשבון {platform_name} "
+"שלך מ-{old_email} ל-{new_email}. אם זה אכן נכון, נא אשר את כתובת הדואר "
+"האלקטרוני החדשה שלך באמצעות ביקור ב:"
+
+#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
+msgid ""
+"We are sorry. Our course staff did not approve your request to change your "
+"name from {old_name} to {new_name}. If you need further assistance, please "
+"e-mail the tech support at {email}"
+msgstr ""
+"אנחנו מתנצלים, צוות הקורס שלנו לא אישר את בקשתך לשינוי שמך מ-{old_name} "
+"ל-{new_name}. אם אתה זקוק לעזרה נוספת, אנא שלח הודעת דואר אלקטרוני לסיוע  "
+"הטכני ב-{email}"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Terms of Service here!"
+msgstr "מקם כאן את תנאי השירות שלך!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Privacy Policy here!"
+msgstr "מקם כאן את מדיניות הפרטיות שלך!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Honor Code here!"
+msgstr "מקם כאן את הקוד האתי שלך!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Copyright Text here!"
+msgstr "מקם כאן את טקסט זכויות היוצרים שלך!"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -20361,6 +20778,10 @@ msgstr ""
 
 #: cms/templates/accessibility.html
 msgid "Studio Accessibility Policy"
+msgstr ""
+
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+msgid "Files & Uploads"
 msgstr ""
 
 #: cms/templates/certificates.html
@@ -20443,13 +20864,70 @@ msgstr "למידע נוסף על תעודות"
 msgid "Details & Schedule"
 msgstr "פרטים ולוח זמנים"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Grading"
+msgstr "ציונים"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/manage_users.html cms/templates/settings.html
+#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
+#: cms/templates/widgets/header.html
+msgid "Course Team"
+msgstr "צוות הקורס"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Advanced Settings"
+msgstr "הגדרות מתקדמות"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr ""
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr "רשימות פעולות לביצוע"
+
+#: cms/templates/checklists.html cms/templates/export.html
+#: cms/templates/export_git.html cms/templates/import.html
+#: cms/templates/widgets/header.html
+msgid "Tools"
+msgstr "כלים"
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Duplicate"
+msgstr "שכפל"
+
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "שכפל רכיב זה"
 
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr "העברה"
+
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "מחק רכיב זה"
+
+#: cms/templates/component.html cms/templates/edit-tabs.html
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Drag to reorder"
+msgstr "גרור לסידור מחדש"
+
+#: cms/templates/container.html cms/templates/course-create-rerun.html
+#: cms/templates/course_info.html cms/templates/course_outline.html
+#: cms/templates/edit-tabs.html cms/templates/index.html
+#: cms/templates/library.html cms/templates/manage_users.html
+#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
+#: cms/templates/videos_index.html
+msgid "Page Actions"
+msgstr "פעולות עמוד"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -20531,6 +21009,146 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a Course Rerun of:"
+msgstr "צור מחזור לימודים חדש עבור:"
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a re-run of a course"
+msgstr "צור מחזור לימודים חדש"
+
+#: cms/templates/course-create-rerun.html
+msgid "You are creating a re-run from:"
+msgstr "אתה יוצר מחזור לימודים חדש עבור:"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Provide identifying information for this re-run of the course. The original "
+"course is not affected in any way by a re-run."
+msgstr ""
+"ספק מידע מזהה עבור מחזור לימודים חדש של הקורס. הקורס המקורי לא יושפע ממחזור "
+"הלימודים החדש."
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Note: Together, the organization, course number, and course run must "
+"uniquely identify this new course instance."
+msgstr ""
+"הערה: הארגון, מספר הקורס והרצת הקורס יחד חייבים לזהות באופן ייחודי את המקרה "
+"של קורס חדש זה."
+
+#: cms/templates/course-create-rerun.html
+msgid "Required Information to Create a re-run of a course"
+msgstr "מידע הדרוש ליצירת מחזור לימודים חדש לקורס"
+
+#. Translators: This is an example name for a new course, seen when
+#. filling out the form to create a new course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. Introduction to Computer Science"
+msgstr "לדוגמה: מבוא למדעי המחשב"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The public display name for the new course. (This name is often the same as "
+"the original course name.)"
+msgstr ""
+"שם הקמפוס החדש עבור הקורס החדש (שם זה יהיה לעיתים קרובות זהה לשם המקורי של "
+"הקורס)"
+
+#. Translators: This is an example for the name of the organization sponsoring
+#. a course, seen when filling out the form to create a new course. The
+#. organization name cannot contain spaces.
+#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
+#. when user put no data into this field.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. UniversityX or OrganizationX"
+msgstr "לדוגמה: אוניברסיטהX או ארגוןX"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The name of the organization sponsoring the new course. (This name is often "
+"the same as the original organization name.)"
+msgstr ""
+"שם הארגון של הארגון במסגרתו מתקיים הקורס החדש (לעיתים קרובות, שם זה יהיה זהה"
+" לשם של הארגון המקורי). "
+
+#: cms/templates/course-create-rerun.html
+msgid "Note: No spaces or special characters are allowed."
+msgstr "הערה: לא ניתן להשתמש ברווחים או בתווים מיוחדים."
+
+#. Translators: This is an example for the number used to identify a course,
+#. seen when filling out the form to create a new course. The number here is
+#. short for "Computer Science 101". It can contain letters but cannot contain
+#. spaces.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. CS101"
+msgstr "לדוגמה: CS101"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
+"המספר הייחודי המזהה את הקורס החדש בתוך הארגון. (מספר זה יהיה זהה למספר הקורס"
+" המקורי ולא ישתנה)."
+
+#. Translators: This is an example for the "run" used to identify different
+#. instances of a course, seen when filling out the form to create a new
+#. course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. 2014_T1"
+msgstr "לדוגמה: 2014_T1"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The term in which the new course will run. (This value is often different "
+"than the original course run value.)"
+msgstr ""
+"הסמסטר בו יועבר הקורס החדש. (לרוב, ערך זה יהיה שונה מהערך של הקורס המקורי)"
+
+#: cms/templates/course-create-rerun.html
+msgid "Create Re-run"
+msgstr "צור הרצה נוספת"
+
+#: cms/templates/course-create-rerun.html
+msgid "When will my course re-run start?"
+msgstr "מתי יתחיל מחזור הלימודים החדש של הקורס שלי?"
+
+#: cms/templates/course-create-rerun.html
+msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+msgstr "הוגדר כי מועד תחילת הקורס החדש הינו 1 בינואר 2030 בחצות (UTC). "
+
+#: cms/templates/course-create-rerun.html
+msgid "What transfers from the original course?"
+msgstr "מה עובר מהקורס המקורי?"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The new course has the same course outline and content as the original "
+"course. All problems, videos, announcements, and other files are duplicated "
+"to the new course."
+msgstr ""
+"לקורס החדש יש את אותו המתווה והתוכן כמו לקורס המקורי. כל הבעיות, סרטונים, "
+"הודעות ושאר הקבצים שוכפלו לקורס החדש."
+
+#: cms/templates/course-create-rerun.html
+msgid "What does not transfer from the original course?"
+msgstr "מה אינו עובר מהקורס המקורי?"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"You are the only member of the new course's staff. No students are enrolled "
+"in the course, and there is no student data. There is no content in the "
+"discussion topics or wiki."
+msgstr ""
+"אתה החבר היחיד בצוות הקורס החדש. אין סטודנטים הרשומים לקורס ואין מידע אודות "
+"הסטודנטים. אין תוכן בדיונים או ב-Wiki.  "
+
+#: cms/templates/course-create-rerun.html
+msgid "Learn more about Course Re-runs"
+msgstr "למד עוד אודות מחזורי לימודים חדשים"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -20731,6 +21349,13 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "למידע נוסף על הגדרות הנראוּת של התוכן"
+
+#. Translators: Pages refer to the tabs that appear in the top navigation of
+#. each course.
+#: cms/templates/edit-tabs.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+msgid "Pages"
+msgstr "עמודים"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -21127,6 +21752,10 @@ msgstr "למידע נוסף אודות יצוא קורס"
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "יצא קורס למערכת GIT"
+
+#: cms/templates/export_git.html cms/templates/widgets/header.html
+msgid "Export to Git"
+msgstr "יצא ל-GIT"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -21737,6 +22366,384 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "למידע נוסף אודות יבוא קורס"
 
+#: cms/templates/index.html
+msgid "New Course"
+msgstr "קורס חדש"
+
+#: cms/templates/index.html
+msgid "Email staff to create course"
+msgstr "כתוב הודעת דואר אלקטרוני לצוות ע ליצירת קורס"
+
+#: cms/templates/index.html
+msgid "New Library"
+msgstr "ספריה חדשה"
+
+#: cms/templates/index.html
+msgid "Please correct the highlighted fields below."
+msgstr "נא תקן את השדות המודגשים מטה"
+
+#: cms/templates/index.html
+msgid "Create a New Course"
+msgstr "צור קורס חדש"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Course"
+msgstr "מידע חובה הדרוש על מנת ליצור קורס חדש"
+
+#: cms/templates/index.html
+msgid ""
+"The public display name for your course. This cannot be changed, but you can"
+" set a different display name in Advanced Settings later."
+msgstr ""
+"זהו שם התצוגה הציבורי עבור הקורס שלך. לא ניתן לשנות אותו אולם ניתן לקבוע שם "
+"תצוגה אחר תחת הגדרות מתקדמות."
+
+#: cms/templates/index.html
+msgid ""
+"The name of the organization sponsoring the course. {strong_start}Note: The "
+"organization name is part of the course URL.{strong_end} This cannot be "
+"changed, but you can set a different display name in Advanced Settings "
+"later."
+msgstr ""
+"שם הארגון שמממן את הקורס. {strong_start}הערה: שם הארגון הוא חלק מכתובת האתר "
+"של הקורס.{strong_end} לא ניתן לשנות זאת, אך תוכל מאוחר יותר להגדיר שם תצוגה "
+"שונה בהגדרות המתקדמות."
+
+#: cms/templates/index.html
+msgid ""
+"The unique number that identifies your course within your organization. "
+"{strong_start}Note: This is part of your course URL, so no spaces or special"
+" characters are allowed and it cannot be changed.{strong_end}"
+msgstr ""
+"המספר הייחודי המזהה את הקורס שלך בתוך הארגון. {strong_start}הערה: מספר זה "
+"הוא חלק מכתובת האתר של הקורס, לכן לא ניתן להוסיף רווחים או תווים מיוחדים ולא"
+" ניתן לשנותו.{strong_end}"
+
+#: cms/templates/index.html
+msgid ""
+"The term in which your course will run. {strong_start}Note: This is part of "
+"your course URL, so no spaces or special characters are allowed and it "
+"cannot be changed.{strong_end}"
+msgstr ""
+"המושג שלפיו הקורס יופעל. {strong_start}הערה: מספר זה הוא חלק מכתובת האתר של "
+"הקורס, לכן לא ניתן להוסיף רווחים או תווים מיוחדים ולא ניתן "
+"לשנותו.{strong_end}"
+
+#: cms/templates/index.html
+msgid "Create"
+msgstr "צור"
+
+#: cms/templates/index.html
+msgid "Create a New Library"
+msgstr "צור ספריה חדשה"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Library"
+msgstr "מידע חובה הדרוש על מנת ליצור ספריה חדשה"
+
+#: cms/templates/index.html
+msgid "Library Name"
+msgstr "שם ספריה"
+
+#. Translators: This is an example name for a new content library, seen when
+#. filling out the form to create a new library.
+#. (A library is a collection of content or problems.)
+#: cms/templates/index.html
+msgid "e.g. Computer Science Problems"
+msgstr "לדוגמה: בעיות במדעי המחשב"
+
+#: cms/templates/index.html
+msgid "The public display name for your library."
+msgstr "שם התצוגה הציבורי עבור הספריה שלך"
+
+#: cms/templates/index.html
+msgid "The public organization name for your library."
+msgstr "שם הארגון הציבורי עבור הספריה שלך "
+
+#: cms/templates/index.html
+msgid "This cannot be changed."
+msgstr "לא ניתן לשנות זאת."
+
+#: cms/templates/index.html
+msgid "Library Code"
+msgstr "קוד ספריה"
+
+#. Translators: This is an example for the "code" used to identify a library,
+#. seen when filling out the form to create a new library. This example is
+#. short
+#. for "Computer Science Problems". The example number may contain letters
+#. but must not contain spaces.
+#: cms/templates/index.html
+msgid "e.g. CSPROB"
+msgstr "לדוגמה CSPROB"
+
+#: cms/templates/index.html
+msgid ""
+"The unique code that identifies this library. {strong_start}Note: This is "
+"part of your library URL, so no spaces or special characters are "
+"allowed.{strong_end} This cannot be changed."
+msgstr ""
+"הקוד הייחודי המזהה ספריה זו. {strong_start}הערה: מספר זה הוא חלק מכתובת האתר"
+" של הספריה, לכן לא ניתן להוסיף רווחים או תווים מיוחדים.{strong_end} לא ניתן "
+"לשנות זאת."
+
+#: cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "For example, MITx"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Courses Being Processed"
+msgstr "הקורס בתהליך עיבוד"
+
+#: cms/templates/index.html
+msgid "This course run is currently being created."
+msgstr "מחזור לימודים זה נוצר כעת."
+
+#. Translators: This is a status message, used to inform the user of
+#. what the system is doing. This status means that the user has
+#. requested to re-run an existing course, and the system is currently
+#. in the process of duplicating and configuring the existing course
+#. so that it can be re-run.
+#: cms/templates/index.html
+msgid "Configuring as re-run"
+msgstr "הגדר כמחזור לימודים חדש"
+
+#: cms/templates/index.html
+msgid ""
+"The new course will be added to your course list in 5-10 minutes. Return to "
+"this page or {link_start}refresh it{link_end} to update the course list. The"
+" new course will need some manual configuration."
+msgstr ""
+"הקורס החדש יתווסף לרשימת הקורסים שלך תוך 5-10 דקות. חזור לעמוד זה או "
+"{link_start}רענן אותו{link_end}על מנת לעדכן את רשימת הקורסים. יהיה צורך "
+"במספר תצורות ידניות בקורס החדש."
+
+#. Translators: This is a status message for the course re-runs feature.
+#. When a course admin indicates that a course should be re-run, the system
+#. needs to process the request and prepare the new course. The status of
+#. the process will follow this text.
+#: cms/templates/index.html
+msgid "This re-run processing status:"
+msgstr "סטטוס עיבוד שידור חוזר זה:"
+
+#: cms/templates/index.html
+msgid "Configuration Error"
+msgstr "שגיאת תצורה"
+
+#: cms/templates/index.html
+msgid ""
+"A system error occurred while your course was being processed. Please go to "
+"the original course to try the re-run again, or contact your PM for "
+"assistance."
+msgstr ""
+"אירעה שגיאת מערכת במהלך עיבוד הקורס. נא גש לקורס המקורי ונסה שוב ליצור מחזור"
+" לימודים חדש או צור קשר עם מנהל הפרויקט שלך על מנת לקבל עזרה. "
+
+#: cms/templates/index.html
+msgid "Archived Courses"
+msgstr ""
+
+#: cms/templates/index.html
+msgid "Libraries"
+msgstr "ספריות"
+
+#: cms/templates/index.html
+msgid "Are you staff on an existing {studio_name} course?"
+msgstr "האם אתה חבר צוות בקורס קיים ב{studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"The course creator must give you access to the course. Contact the course "
+"creator or administrator for the course you are helping to author."
+msgstr ""
+"יוצר הקורס חייב להעניק לך גישה לקורס. צור קשר עם יוצר הקורס או המנהל בנוגע "
+"לקורס שהינך עוזר לכתוב."
+
+#: cms/templates/index.html
+msgid "Create Your First Course"
+msgstr "צור את הקורס הראשון שלך"
+
+#: cms/templates/index.html
+msgid "Your new course is just a click away!"
+msgstr "הקורס החדש שלך במרחק לחיצה!"
+
+#: cms/templates/index.html
+msgid "Becoming a Course Creator in {studio_name}"
+msgstr "הפוך ליוצר קורס ב{studio_name}"
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team will evaluate your request and provide you feedback within 24 hours "
+"during the work week."
+msgstr ""
+"{studio_name} הוא פתרון מתארח לשותפי xConsortium ולאורחינו הנבחרים. קורסים "
+"בהם הינך חבר צוות מופיעים לעיל על מנת שתוכל לערוך אותם, בעוד שזכויות יוצר "
+"הקורס מוענקות בידי {platform_name}. הצוות שלנו יבחן את בקשתך ויספק לך משוב "
+"תוך 24 שעות במהלך שבוע העסקים."
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status:"
+msgstr "מצב בקשת יוצר הקורס:"
+
+#: cms/templates/index.html
+msgid "Request the Ability to Create Courses"
+msgstr "בקש את היכולת ליצור קורסים"
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status"
+msgstr "מצב בקשתך להיות יוצר קורסים"
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is has completed evaluating your request."
+msgstr ""
+"{studio_name} הוא פתרון מתארח לשותפי xConsortium ולאורחינו הנבחרים.  קורסים "
+"בהם אתה חבר צוות מופיעים לעיל על מנת שתוכל לערוך אותם, בעוד שזכויות יוצר "
+"הקורס מוענקות בידי {platform_name}. הצוות שלנו השלים את הערכת בקשתך."
+
+#: cms/templates/index.html
+msgid "Your Course Creator request is:"
+msgstr "בקשת הרשאות יצירת קורסים שלך:"
+
+#: cms/templates/index.html
+msgid ""
+"Your request did not meet the criteria/guidelines specified by "
+"{platform_name} Staff."
+msgstr "הבקשה שלך לא עמדה בקריטריונים/הנחיות של צוות {platform_name}. "
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is currently  evaluating your request."
+msgstr ""
+"{studio_name} הוא פתרון מתארח לשותפי xConsortium ולאורחינו הנבחרים  קורסים "
+"בהם אתה חבר צוות מופיעים לעיל על מנת שתוכל לערוך אותם, בעוד שזכויות יוצר "
+"הקורס מוענקות בידי {platform_name}. הצוות שלנו מעריך כרגע את בקשתך."
+
+#: cms/templates/index.html
+msgid ""
+"Your request is currently being reviewed by {platform_name} staff and should"
+" be updated shortly."
+msgstr "בקשתך נבחנת כרגע על-ידי צוות {platform_name} ותעודכן בקרוב."
+
+#: cms/templates/index.html
+msgid "Were you expecting to see a particular library here?"
+msgstr "האם ציפית למצוא ספריה מסוימת כאן?"
+
+#: cms/templates/index.html
+msgid ""
+"The library creator must give you access to the library. Contact the library"
+" creator or administrator for the library you are helping to author."
+msgstr ""
+"על יוצר הספריה לתת לך גישה לספריה. צור קשר עם יוצר הספריה או מנהלה על מנת "
+"לקבל הרשאות עריכה."
+
+#: cms/templates/index.html
+msgid "Create Your First Library"
+msgstr "צור את הספריה הראשונה שלך"
+
+#: cms/templates/index.html
+msgid ""
+"Libraries hold a pool of components that can be re-used across multiple "
+"courses. Create your first library with the click of a button!"
+msgstr ""
+"ספריות מחזיקות מאגר רכיבים שניתן לעשות בהם שימוש חוזר על פני מספר רב של "
+"קורסים. צור את הספריה הראשונה שלך בלחיצת כפתור!"
+
+#: cms/templates/index.html
+msgid "New to {studio_name}?"
+msgstr "משתמש חדש ב{studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"Click Help in the upper-right corner to get more information about the "
+"{studio_name} page you are viewing. You can also use the links at the bottom"
+" of the page to access our continually updated documentation and other "
+"{studio_name} resources."
+msgstr ""
+"לחץ על עזרה בפינה שמאלית עליונה על מנת לקבל מידע נוסף על העמוד שאתה צופה "
+"ב{studio_name}. ניתן גם להשתמש בקישורים בתחתית העמוד על מנת לגשת למסמכים "
+"המתעדכנים באופן קבוע ומשאבים אחרים ב{studio_name}."
+
+#: cms/templates/index.html
+msgid "Getting Started with {studio_name}"
+msgstr "כיצד מתחילים לעבוד עם {studio_name}"
+
+#: cms/templates/index.html
+msgid "Can I create courses in {studio_name}?"
+msgstr "האם אני יכול ליצור קורסים ב{studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must {link_start}contact "
+"{platform_name} staff to help you create a course{link_end}."
+msgstr ""
+"על מנת ליצור קורסים ב-{studio_name}, עליך {link_start}ליצור קשר "
+"{platform_name} עם הצוות שיעזור לך ליצור קורס{link_end}."
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must have course creator "
+"privileges to create your own course."
+msgstr ""
+"על מנת ליצור קורסים ב-{studio_name}, עליך לקבל זכויות של יוצר קורס על מנת "
+"ליצור קורס משלך."
+
+#: cms/templates/index.html
+msgid ""
+"Your request to author courses in {studio_name} has been denied. Please "
+"{link_start}contact {platform_name} Staff with further questions{link_end}."
+msgstr ""
+"בקשתך לכתוב קורסים ב-{studio_name} נדחתה. לשאלות נוספות, {link_start}צור קשר"
+" {platform_name} עם הצוות{link_end}."
+
+#: cms/templates/index.html
+msgid "Thanks for signing up, {name}!"
+msgstr "{name}, תודה שנרשמת!"
+
+#: cms/templates/index.html
+msgid "We need to verify your email address"
+msgstr "עלינו לאמת את כתובת הדואר האלקטרוני שלך"
+
+#: cms/templates/index.html
+msgid ""
+"Almost there! In order to complete your sign up we need you to verify your "
+"email address ({email}). An activation message and next steps should be "
+"waiting for you there."
+msgstr ""
+"כמעט סיימת! על מנת להשלים את הרשמתך, עליך לאמת את כתובת הדוא\"ל "
+"שלך({email}). הודעת הפעלה ופירוט השלבים הבאים תמתין לך שם."
+
+#: cms/templates/index.html
+msgid "Need help?"
+msgstr "זקוק לעזרה?"
+
+#: cms/templates/index.html
+msgid ""
+"Please check your Junk or Spam folders in case our email isn't in your "
+"INBOX. Still can't find the verification email? Request help via the link "
+"below."
+msgstr ""
+"בדוק את תיקיית דואר הזבל במקרה שהודעת הדואר האלקטרוני שלנו אינה בתיבת הדואר "
+"הנכנס. לא מצליח עדיין למצוא את הודעת הדואר האלקטרוני לאימות? בקש עזרה "
+"באמצעות הקישור שלהלן."
+
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "תוכן הספריה"
@@ -21880,6 +22887,10 @@ msgstr ""
 msgid "Library User Access"
 msgstr "גישת משתמש לספריה"
 
+#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
+msgid "User Access"
+msgstr "גישת משתמשים"
+
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "הענק גישה לספריה זו"
@@ -21940,6 +22951,10 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "הגדרות לוח זמנים ופרטי קורס"
+
+#: cms/templates/settings.html cms/templates/widgets/header.html
+msgid "Schedule & Details"
+msgstr "לוח זמנים ופרטי קורס"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -22199,6 +23214,13 @@ msgstr "פרטי הקורס"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "ספק מידע שימושי על הקורס שלך"
+
+#: cms/templates/settings.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -22660,6 +23682,22 @@ msgstr ""
 "יש באפשרותך ליצור סוגי מטלות כגון: שיעורי בית, מעבדות, בחנים ומבחנים ולפרט "
 "את משקל כל סוג מטלה בציון. "
 
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Expand or Collapse"
+msgstr "הרחב או כווץ"
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "This block contains multiple components."
+msgstr "בלוק זה מכיל רכיבים רבים"
+
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr ""
@@ -22699,6 +23737,10 @@ msgstr ""
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "למידע נוסף על הספרי לימוד"
+
+#: cms/templates/videos_index.html cms/templates/widgets/header.html
+msgid "Video Uploads"
+msgstr "העלאות סרטונים"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -22976,13 +24018,49 @@ msgstr ""
 msgid "LMS"
 msgstr ""
 
-#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
-#. not translate any of these trademarks and company names.
-#: cms/templates/widgets/footer.html
-msgid ""
-"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-"{link_start}edX Inc.{link_end}"
-msgstr ""
+#: cms/templates/widgets/header.html
+msgid "Current Course:"
+msgstr "קורס נוכחי:"
+
+#: cms/templates/widgets/header.html
+msgid "Course Navigation"
+msgstr "ניווט קורסים"
+
+#: cms/templates/widgets/header.html
+msgid "Outline"
+msgstr "מתווה"
+
+#: cms/templates/widgets/header.html
+msgid "Publisher"
+msgstr "מוציא לאור"
+
+#: cms/templates/widgets/header.html
+msgid "Import"
+msgstr "ייבא"
+
+#: cms/templates/widgets/header.html
+msgid "Export"
+msgstr "ייצא"
+
+#: cms/templates/widgets/header.html
+msgid "Current Library:"
+msgstr "ספריה נוכחית:"
+
+#: cms/templates/widgets/header.html
+msgid "Language preference"
+msgstr "העדפת שפה"
+
+#: cms/templates/widgets/header.html
+msgid "Account Navigation"
+msgstr "ניווט בחשבון"
+
+#: cms/templates/widgets/header.html
+msgid "Contextual Online Help"
+msgstr "עזרה מקוונת לפי הקשר"
+
+#: cms/templates/widgets/header.html
+msgid "Sign Up"
+msgstr "הרשמה"
 
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
@@ -23036,26 +24114,6 @@ msgstr ""
 msgid "Label"
 msgstr "תווית"
 
-#: cms/templates/widgets/sock.html
-msgid "Looking for help with {studio_name}?"
-msgstr "זקוק לעזרה עם {studio_name}?"
-
-#: cms/templates/widgets/sock.html
-msgid "Hide {studio_name} Help"
-msgstr "הסתר עזרה של {studio_name}"
-
-#: cms/templates/widgets/sock.html
-msgid "{studio_name} Documentation"
-msgstr "מסמכי {studio_name}"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Access documentation on http://docs.edx.org"
-msgstr "גישה לתיעוד בכתובת http://docs.edx.org"
-
-#: cms/templates/widgets/sock_links.html
-msgid "edX Documentation"
-msgstr "מסמכי edX"
-
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "קבל גישה לפורטל edX הפתוח"
@@ -23063,26 +24121,6 @@ msgstr "קבל גישה לפורטל edX הפתוח"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "פתח Edx פורטל"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr "הירשם ל-edX101: סקירה כללית של יצירת קורס edX"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101"
-msgstr "רישום ל-edX101"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr "הירשם ל-StudioX: יצירת קורס באמצעות edX Studio"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX"
-msgstr "הירשם ל-StudioX"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Send an email to {email}"
-msgstr "שלח הודעת דואר אלקטרוני ל-{email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -24246,25 +25284,6 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr "יש ללחוץ על הכפתור „התחלת מבחן תחת פיקוד” להלן כדי להמשיך."
 
-#~ msgid "Organization"
-#~ msgstr "ארגון"
-
-#~ msgid ""
-#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
-#~ "investigate."
-#~ msgstr ""
-#~ "אנו מתעדים הודעות דואר אלקטרוני, כך שאם בקשה זו אינה מכוונת, נוכל לחקור את "
-#~ "הנושא."
-
-#~ msgid "Contact Us"
-#~ msgstr "צור קשר"
-
-#~ msgid "Sign In"
-#~ msgstr "התחבר/י"
-
-#~ msgid "Course Run"
-#~ msgstr "מחזור לימודים"
-
 #~ msgid "Dismiss"
 #~ msgstr "ביטול"
 
@@ -24286,484 +25305,44 @@ msgstr "יש ללחוץ על הכפתור „התחלת מבחן תחת פיקו
 #~ msgid "Your clipboard is empty or invalid."
 #~ msgstr "לוח הגזירים שלך ריק או שגוי."
 
-#~ msgid "Grading"
-#~ msgstr "ציונים"
-
-#~ msgid "Course Team"
-#~ msgstr "צוות הקורס"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "הגדרות מתקדמות"
-
-#~ msgid "Checklists"
-#~ msgstr "רשימות פעולות לביצוע"
-
-#~ msgid "Tools"
-#~ msgstr "כלים"
-
-#~ msgid "Duplicate"
-#~ msgstr "שכפל"
-
-#~ msgid "Move"
-#~ msgstr "העברה"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "גרור לסידור מחדש"
-
-#~ msgid "Page Actions"
-#~ msgstr "פעולות עמוד"
-
-#~ msgid "Create a Course Rerun of:"
-#~ msgstr "צור מחזור לימודים חדש עבור:"
-
-#~ msgid "Create a re-run of a course"
-#~ msgstr "צור מחזור לימודים חדש"
-
-#~ msgid "You are creating a re-run from:"
-#~ msgstr "אתה יוצר מחזור לימודים חדש עבור:"
-
-#~ msgid ""
-#~ "Provide identifying information for this re-run of the course. The original "
-#~ "course is not affected in any way by a re-run."
-#~ msgstr ""
-#~ "ספק מידע מזהה עבור מחזור לימודים חדש של הקורס. הקורס המקורי לא יושפע ממחזור "
-#~ "הלימודים החדש."
-
-#~ msgid ""
-#~ "Note: Together, the organization, course number, and course run must "
-#~ "uniquely identify this new course instance."
-#~ msgstr ""
-#~ "הערה: הארגון, מספר הקורס והרצת הקורס יחד חייבים לזהות באופן ייחודי את המקרה "
-#~ "של קורס חדש זה."
-
-#~ msgid "Required Information to Create a re-run of a course"
-#~ msgstr "מידע הדרוש ליצירת מחזור לימודים חדש לקורס"
-
-#~ msgid "e.g. Introduction to Computer Science"
-#~ msgstr "לדוגמה: מבוא למדעי המחשב"
-
-#~ msgid ""
-#~ "The public display name for the new course. (This name is often the same as "
-#~ "the original course name.)"
-#~ msgstr ""
-#~ "שם הקמפוס החדש עבור הקורס החדש (שם זה יהיה לעיתים קרובות זהה לשם המקורי של "
-#~ "הקורס)"
-
-#~ msgid "e.g. UniversityX or OrganizationX"
-#~ msgstr "לדוגמה: אוניברסיטהX או ארגוןX"
-
-#~ msgid ""
-#~ "The name of the organization sponsoring the new course. (This name is often "
-#~ "the same as the original organization name.)"
-#~ msgstr ""
-#~ "שם הארגון של הארגון במסגרתו מתקיים הקורס החדש (לעיתים קרובות, שם זה יהיה זהה"
-#~ " לשם של הארגון המקורי). "
-
-#~ msgid "Note: No spaces or special characters are allowed."
-#~ msgstr "הערה: לא ניתן להשתמש ברווחים או בתווים מיוחדים."
-
-#~ msgid "e.g. CS101"
-#~ msgstr "לדוגמה: CS101"
-
-#~ msgid ""
-#~ "The unique number that identifies the new course within the organization.  "
-#~ "(This number will be the same as the original course number and cannot be "
-#~ "changed.)"
-#~ msgstr ""
-#~ "המספר הייחודי המזהה את הקורס החדש בתוך הארגון. (מספר זה יהיה זהה למספר הקורס"
-#~ " המקורי ולא ישתנה)."
-
-#~ msgid "e.g. 2014_T1"
-#~ msgstr "לדוגמה: 2014_T1"
-
-#~ msgid ""
-#~ "The term in which the new course will run. (This value is often different "
-#~ "than the original course run value.)"
-#~ msgstr ""
-#~ "הסמסטר בו יועבר הקורס החדש. (לרוב, ערך זה יהיה שונה מהערך של הקורס המקורי)"
-
-#~ msgid "Create Re-run"
-#~ msgstr "צור הרצה נוספת"
-
-#~ msgid "When will my course re-run start?"
-#~ msgstr "מתי יתחיל מחזור הלימודים החדש של הקורס שלי?"
-
-#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-#~ msgstr "הוגדר כי מועד תחילת הקורס החדש הינו 1 בינואר 2030 בחצות (UTC). "
-
-#~ msgid "What transfers from the original course?"
-#~ msgstr "מה עובר מהקורס המקורי?"
-
-#~ msgid ""
-#~ "The new course has the same course outline and content as the original "
-#~ "course. All problems, videos, announcements, and other files are duplicated "
-#~ "to the new course."
-#~ msgstr ""
-#~ "לקורס החדש יש את אותו המתווה והתוכן כמו לקורס המקורי. כל הבעיות, סרטונים, "
-#~ "הודעות ושאר הקבצים שוכפלו לקורס החדש."
-
-#~ msgid "What does not transfer from the original course?"
-#~ msgstr "מה אינו עובר מהקורס המקורי?"
-
-#~ msgid ""
-#~ "You are the only member of the new course's staff. No students are enrolled "
-#~ "in the course, and there is no student data. There is no content in the "
-#~ "discussion topics or wiki."
-#~ msgstr ""
-#~ "אתה החבר היחיד בצוות הקורס החדש. אין סטודנטים הרשומים לקורס ואין מידע אודות "
-#~ "הסטודנטים. אין תוכן בדיונים או ב-Wiki.  "
-
-#~ msgid "Learn more about Course Re-runs"
-#~ msgstr "למד עוד אודות מחזורי לימודים חדשים"
-
 #~ msgid "Course Outline"
 #~ msgstr "מתווה קורס"
 
 #~ msgid "Warning"
 #~ msgstr "אזהרה"
 
-#~ msgid "Pages"
-#~ msgstr "עמודים"
-
-#~ msgid "Export to Git"
-#~ msgstr "יצא ל-GIT"
-
 #~ msgid "{studio_name} Home"
 #~ msgstr "עמוד הבית  {studio_name} "
 
-#~ msgid "New Course"
-#~ msgstr "קורס חדש"
+#~ msgid "Looking for help with {studio_name}?"
+#~ msgstr "זקוק לעזרה עם {studio_name}?"
 
-#~ msgid "Email staff to create course"
-#~ msgstr "כתוב הודעת דואר אלקטרוני לצוות ע ליצירת קורס"
+#~ msgid "Hide {studio_name} Help"
+#~ msgstr "הסתר עזרה של {studio_name}"
 
-#~ msgid "New Library"
-#~ msgstr "ספריה חדשה"
+#~ msgid "{studio_name} Documentation"
+#~ msgstr "מסמכי {studio_name}"
 
-#~ msgid "Please correct the highlighted fields below."
-#~ msgstr "נא תקן את השדות המודגשים מטה"
+#~ msgid "Access documentation on http://docs.edx.org"
+#~ msgstr "גישה לתיעוד בכתובת http://docs.edx.org"
 
-#~ msgid "Create a New Course"
-#~ msgstr "צור קורס חדש"
+#~ msgid "edX Documentation"
+#~ msgstr "מסמכי edX"
 
-#~ msgid "Required Information to Create a New Course"
-#~ msgstr "מידע חובה הדרוש על מנת ליצור קורס חדש"
+#~ msgid "Enroll in edX101: Overview of Creating an edX Course"
+#~ msgstr "הירשם ל-edX101: סקירה כללית של יצירת קורס edX"
 
-#~ msgid ""
-#~ "The public display name for your course. This cannot be changed, but you can"
-#~ " set a different display name in Advanced Settings later."
-#~ msgstr ""
-#~ "זהו שם התצוגה הציבורי עבור הקורס שלך. לא ניתן לשנות אותו אולם ניתן לקבוע שם "
-#~ "תצוגה אחר תחת הגדרות מתקדמות."
+#~ msgid "Enroll in edX101"
+#~ msgstr "רישום ל-edX101"
 
-#~ msgid ""
-#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
-#~ "organization name is part of the course URL.{strong_end} This cannot be "
-#~ "changed, but you can set a different display name in Advanced Settings "
-#~ "later."
-#~ msgstr ""
-#~ "שם הארגון שמממן את הקורס. {strong_start}הערה: שם הארגון הוא חלק מכתובת האתר "
-#~ "של הקורס.{strong_end} לא ניתן לשנות זאת, אך תוכל מאוחר יותר להגדיר שם תצוגה "
-#~ "שונה בהגדרות המתקדמות."
+#~ msgid "Enroll in StudioX: Creating a Course with edX Studio"
+#~ msgstr "הירשם ל-StudioX: יצירת קורס באמצעות edX Studio"
 
-#~ msgid ""
-#~ "The unique number that identifies your course within your organization. "
-#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
-#~ " characters are allowed and it cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "המספר הייחודי המזהה את הקורס שלך בתוך הארגון. {strong_start}הערה: מספר זה "
-#~ "הוא חלק מכתובת האתר של הקורס, לכן לא ניתן להוסיף רווחים או תווים מיוחדים ולא"
-#~ " ניתן לשנותו.{strong_end}"
+#~ msgid "Enroll in StudioX"
+#~ msgstr "הירשם ל-StudioX"
 
-#~ msgid ""
-#~ "The term in which your course will run. {strong_start}Note: This is part of "
-#~ "your course URL, so no spaces or special characters are allowed and it "
-#~ "cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "המושג שלפיו הקורס יופעל. {strong_start}הערה: מספר זה הוא חלק מכתובת האתר של "
-#~ "הקורס, לכן לא ניתן להוסיף רווחים או תווים מיוחדים ולא ניתן "
-#~ "לשנותו.{strong_end}"
-
-#~ msgid "Create"
-#~ msgstr "צור"
-
-#~ msgid "Create a New Library"
-#~ msgstr "צור ספריה חדשה"
-
-#~ msgid "Required Information to Create a New Library"
-#~ msgstr "מידע חובה הדרוש על מנת ליצור ספריה חדשה"
-
-#~ msgid "Library Name"
-#~ msgstr "שם ספריה"
-
-#~ msgid "e.g. Computer Science Problems"
-#~ msgstr "לדוגמה: בעיות במדעי המחשב"
-
-#~ msgid "The public display name for your library."
-#~ msgstr "שם התצוגה הציבורי עבור הספריה שלך"
-
-#~ msgid "The public organization name for your library."
-#~ msgstr "שם הארגון הציבורי עבור הספריה שלך "
-
-#~ msgid "This cannot be changed."
-#~ msgstr "לא ניתן לשנות זאת."
-
-#~ msgid "Library Code"
-#~ msgstr "קוד ספריה"
-
-#~ msgid "e.g. CSPROB"
-#~ msgstr "לדוגמה CSPROB"
-
-#~ msgid ""
-#~ "The unique code that identifies this library. {strong_start}Note: This is "
-#~ "part of your library URL, so no spaces or special characters are "
-#~ "allowed.{strong_end} This cannot be changed."
-#~ msgstr ""
-#~ "הקוד הייחודי המזהה ספריה זו. {strong_start}הערה: מספר זה הוא חלק מכתובת האתר"
-#~ " של הספריה, לכן לא ניתן להוסיף רווחים או תווים מיוחדים.{strong_end} לא ניתן "
-#~ "לשנות זאת."
-
-#~ msgid "Courses Being Processed"
-#~ msgstr "הקורס בתהליך עיבוד"
-
-#~ msgid "This course run is currently being created."
-#~ msgstr "מחזור לימודים זה נוצר כעת."
-
-#~ msgid "Configuring as re-run"
-#~ msgstr "הגדר כמחזור לימודים חדש"
-
-#~ msgid ""
-#~ "The new course will be added to your course list in 5-10 minutes. Return to "
-#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
-#~ " new course will need some manual configuration."
-#~ msgstr ""
-#~ "הקורס החדש יתווסף לרשימת הקורסים שלך תוך 5-10 דקות. חזור לעמוד זה או "
-#~ "{link_start}רענן אותו{link_end}על מנת לעדכן את רשימת הקורסים. יהיה צורך "
-#~ "במספר תצורות ידניות בקורס החדש."
-
-#~ msgid "This re-run processing status:"
-#~ msgstr "סטטוס עיבוד שידור חוזר זה:"
-
-#~ msgid "Configuration Error"
-#~ msgstr "שגיאת תצורה"
-
-#~ msgid ""
-#~ "A system error occurred while your course was being processed. Please go to "
-#~ "the original course to try the re-run again, or contact your PM for "
-#~ "assistance."
-#~ msgstr ""
-#~ "אירעה שגיאת מערכת במהלך עיבוד הקורס. נא גש לקורס המקורי ונסה שוב ליצור מחזור"
-#~ " לימודים חדש או צור קשר עם מנהל הפרויקט שלך על מנת לקבל עזרה. "
-
-#~ msgid "Libraries"
-#~ msgstr "ספריות"
-
-#~ msgid "Are you staff on an existing {studio_name} course?"
-#~ msgstr "האם אתה חבר צוות בקורס קיים ב{studio_name}?"
-
-#~ msgid ""
-#~ "The course creator must give you access to the course. Contact the course "
-#~ "creator or administrator for the course you are helping to author."
-#~ msgstr ""
-#~ "יוצר הקורס חייב להעניק לך גישה לקורס. צור קשר עם יוצר הקורס או המנהל בנוגע "
-#~ "לקורס שהינך עוזר לכתוב."
-
-#~ msgid "Create Your First Course"
-#~ msgstr "צור את הקורס הראשון שלך"
-
-#~ msgid "Your new course is just a click away!"
-#~ msgstr "הקורס החדש שלך במרחק לחיצה!"
-
-#~ msgid "Becoming a Course Creator in {studio_name}"
-#~ msgstr "הפוך ליוצר קורס ב{studio_name}"
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team will evaluate your request and provide you feedback within 24 hours "
-#~ "during the work week."
-#~ msgstr ""
-#~ "{studio_name} הוא פתרון מתארח לשותפי xConsortium ולאורחינו הנבחרים. קורסים "
-#~ "בהם הינך חבר צוות מופיעים לעיל על מנת שתוכל לערוך אותם, בעוד שזכויות יוצר "
-#~ "הקורס מוענקות בידי {platform_name}. הצוות שלנו יבחן את בקשתך ויספק לך משוב "
-#~ "תוך 24 שעות במהלך שבוע העסקים."
-
-#~ msgid "Your Course Creator Request Status:"
-#~ msgstr "מצב בקשת יוצר הקורס:"
-
-#~ msgid "Request the Ability to Create Courses"
-#~ msgstr "בקש את היכולת ליצור קורסים"
-
-#~ msgid "Your Course Creator Request Status"
-#~ msgstr "מצב בקשתך להיות יוצר קורסים"
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team is has completed evaluating your request."
-#~ msgstr ""
-#~ "{studio_name} הוא פתרון מתארח לשותפי xConsortium ולאורחינו הנבחרים.  קורסים "
-#~ "בהם אתה חבר צוות מופיעים לעיל על מנת שתוכל לערוך אותם, בעוד שזכויות יוצר "
-#~ "הקורס מוענקות בידי {platform_name}. הצוות שלנו השלים את הערכת בקשתך."
-
-#~ msgid "Your Course Creator request is:"
-#~ msgstr "בקשת הרשאות יצירת קורסים שלך:"
-
-#~ msgid ""
-#~ "Your request did not meet the criteria/guidelines specified by "
-#~ "{platform_name} Staff."
-#~ msgstr "הבקשה שלך לא עמדה בקריטריונים/הנחיות של צוות {platform_name}. "
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team is currently  evaluating your request."
-#~ msgstr ""
-#~ "{studio_name} הוא פתרון מתארח לשותפי xConsortium ולאורחינו הנבחרים  קורסים "
-#~ "בהם אתה חבר צוות מופיעים לעיל על מנת שתוכל לערוך אותם, בעוד שזכויות יוצר "
-#~ "הקורס מוענקות בידי {platform_name}. הצוות שלנו מעריך כרגע את בקשתך."
-
-#~ msgid ""
-#~ "Your request is currently being reviewed by {platform_name} staff and should"
-#~ " be updated shortly."
-#~ msgstr "בקשתך נבחנת כרגע על-ידי צוות {platform_name} ותעודכן בקרוב."
-
-#~ msgid "Were you expecting to see a particular library here?"
-#~ msgstr "האם ציפית למצוא ספריה מסוימת כאן?"
-
-#~ msgid ""
-#~ "The library creator must give you access to the library. Contact the library"
-#~ " creator or administrator for the library you are helping to author."
-#~ msgstr ""
-#~ "על יוצר הספריה לתת לך גישה לספריה. צור קשר עם יוצר הספריה או מנהלה על מנת "
-#~ "לקבל הרשאות עריכה."
-
-#~ msgid "Create Your First Library"
-#~ msgstr "צור את הספריה הראשונה שלך"
-
-#~ msgid ""
-#~ "Libraries hold a pool of components that can be re-used across multiple "
-#~ "courses. Create your first library with the click of a button!"
-#~ msgstr ""
-#~ "ספריות מחזיקות מאגר רכיבים שניתן לעשות בהם שימוש חוזר על פני מספר רב של "
-#~ "קורסים. צור את הספריה הראשונה שלך בלחיצת כפתור!"
-
-#~ msgid "New to {studio_name}?"
-#~ msgstr "משתמש חדש ב{studio_name}?"
-
-#~ msgid ""
-#~ "Click Help in the upper-right corner to get more information about the "
-#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
-#~ " of the page to access our continually updated documentation and other "
-#~ "{studio_name} resources."
-#~ msgstr ""
-#~ "לחץ על עזרה בפינה שמאלית עליונה על מנת לקבל מידע נוסף על העמוד שאתה צופה "
-#~ "ב{studio_name}. ניתן גם להשתמש בקישורים בתחתית העמוד על מנת לגשת למסמכים "
-#~ "המתעדכנים באופן קבוע ומשאבים אחרים ב{studio_name}."
-
-#~ msgid "Getting Started with {studio_name}"
-#~ msgstr "כיצד מתחילים לעבוד עם {studio_name}"
-
-#~ msgid "Can I create courses in {studio_name}?"
-#~ msgstr "האם אני יכול ליצור קורסים ב{studio_name}?"
-
-#~ msgid ""
-#~ "In order to create courses in {studio_name}, you must {link_start}contact "
-#~ "{platform_name} staff to help you create a course{link_end}."
-#~ msgstr ""
-#~ "על מנת ליצור קורסים ב-{studio_name}, עליך {link_start}ליצור קשר "
-#~ "{platform_name} עם הצוות שיעזור לך ליצור קורס{link_end}."
-
-#~ msgid ""
-#~ "In order to create courses in {studio_name}, you must have course creator "
-#~ "privileges to create your own course."
-#~ msgstr ""
-#~ "על מנת ליצור קורסים ב-{studio_name}, עליך לקבל זכויות של יוצר קורס על מנת "
-#~ "ליצור קורס משלך."
-
-#~ msgid ""
-#~ "Your request to author courses in {studio_name} has been denied. Please "
-#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
-#~ msgstr ""
-#~ "בקשתך לכתוב קורסים ב-{studio_name} נדחתה. לשאלות נוספות, {link_start}צור קשר"
-#~ " {platform_name} עם הצוות{link_end}."
-
-#~ msgid "Thanks for signing up, {name}!"
-#~ msgstr "{name}, תודה שנרשמת!"
-
-#~ msgid "We need to verify your email address"
-#~ msgstr "עלינו לאמת את כתובת הדואר האלקטרוני שלך"
-
-#~ msgid ""
-#~ "Almost there! In order to complete your sign up we need you to verify your "
-#~ "email address ({email}). An activation message and next steps should be "
-#~ "waiting for you there."
-#~ msgstr ""
-#~ "כמעט סיימת! על מנת להשלים את הרשמתך, עליך לאמת את כתובת הדוא\"ל "
-#~ "שלך({email}). הודעת הפעלה ופירוט השלבים הבאים תמתין לך שם."
-
-#~ msgid "Need help?"
-#~ msgstr "זקוק לעזרה?"
-
-#~ msgid ""
-#~ "Please check your Junk or Spam folders in case our email isn't in your "
-#~ "INBOX. Still can't find the verification email? Request help via the link "
-#~ "below."
-#~ msgstr ""
-#~ "בדוק את תיקיית דואר הזבל במקרה שהודעת הדואר האלקטרוני שלנו אינה בתיבת הדואר "
-#~ "הנכנס. לא מצליח עדיין למצוא את הודעת הדואר האלקטרוני לאימות? בקש עזרה "
-#~ "באמצעות הקישור שלהלן."
-
-#~ msgid "User Access"
-#~ msgstr "גישת משתמשים"
-
-#~ msgid "Schedule & Details"
-#~ msgstr "לוח זמנים ופרטי קורס"
-
-#~ msgid "Expand or Collapse"
-#~ msgstr "הרחב או כווץ"
-
-#~ msgid "This block contains multiple components."
-#~ msgstr "בלוק זה מכיל רכיבים רבים"
-
-#~ msgid "Video Uploads"
-#~ msgstr "העלאות סרטונים"
-
-#~ msgid "Current Course:"
-#~ msgstr "קורס נוכחי:"
-
-#~ msgid "Course Navigation"
-#~ msgstr "ניווט קורסים"
-
-#~ msgid "Outline"
-#~ msgstr "מתווה"
-
-#~ msgid "Publisher"
-#~ msgstr "מוציא לאור"
-
-#~ msgid "Import"
-#~ msgstr "ייבא"
-
-#~ msgid "Export"
-#~ msgstr "ייצא"
-
-#~ msgid "Current Library:"
-#~ msgstr "ספריה נוכחית:"
-
-#~ msgid "Language preference"
-#~ msgstr "העדפת שפה"
-
-#~ msgid "Account Navigation"
-#~ msgstr "ניווט בחשבון"
-
-#~ msgid "Contextual Online Help"
-#~ msgstr "עזרה מקוונת לפי הקשר"
-
-#~ msgid "Sign Up"
-#~ msgstr "הרשמה"
+#~ msgid "Send an email to {email}"
+#~ msgstr "שלח הודעת דואר אלקטרוני ל-{email}"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
@@ -24782,9 +25361,6 @@ msgstr "יש ללחוץ על הכפתור „התחלת מבחן תחת פיקו
 #~ msgstr[2] ""
 #~ "מציג את כל התוכן התואם ושניתן להוסיף ל{display_name}. לכל סטודנט יוקצו "
 #~ "{max_count} רכיבים שנשלפו באופן אקראי מרשימה זו."
-
-#~ msgid "example: username@domain.com"
-#~ msgstr "לדוגמה: username@domain.com"
 
 #~ msgid "You do not have access to this dependency block."
 #~ msgstr "אין לך גישה לבלוק התלות הזה."
@@ -24839,209 +25415,6 @@ msgstr "יש ללחוץ על הכפתור „התחלת מבחן תחת פיקו
 
 #~ msgid "You are not yet eligible for a certificate."
 #~ msgstr "עדיין לא מגיעה לך תעודה."
-
-#~ msgid ""
-#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
-#~ "Code{honor_link_end}"
-#~ msgstr ""
-#~ "{tos_link_start}תנאי שימוש {tos_link_end}{honor_link_start}קוד אתי "
-#~ "{honor_link_end}"
-
-#~ msgid "Copyright"
-#~ msgstr "כל הזכויות שמורות"
-
-#~ msgid "Copyright {year}. All rights reserved."
-#~ msgstr "זכויות שמורות {year} . כל הזכויות שמורות."
-
-#~ msgid "For anyone, anywhere, anytime"
-#~ msgstr "לכולם, בכל מקום, בכל זמן"
-
-#~ msgid ""
-#~ "We're sorry, but this version of your browser is not supported. Try again "
-#~ "using a different browser or a newer version of your browser."
-#~ msgstr ""
-#~ "מצטערים, אך גרסת דפדפן זו אינה נתמכת. נסה שוב באמצעות דפדפן אחר או גרסה חדשה"
-#~ " יותר של הדפדפן שלך."
-
-#~ msgid "The following errors occurred while processing your registration:"
-#~ msgstr "הטעויות הבאות התרחשו בתהליך הרשמתך:"
-
-#~ msgid "Sign up with {provider_name}"
-#~ msgstr "הירשם עם {provider_name}"
-
-#~ msgid "Create your own {platform_name} account below"
-#~ msgstr "צור למטה חשבון {platform_name} משלך "
-
-#~ msgid ""
-#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
-#~ "asterisk (*)</strong>."
-#~ msgstr ""
-#~ "שדות חובה מסומנים באמצעות<strong class=\"indicator\">טקסט מודגש וכוכבית "
-#~ "(*)</strong>."
-
-#~ msgid "You've successfully signed in with {selected_provider}."
-#~ msgstr "נרשמת בהצלחה עם {selected_provider}."
-
-#~ msgid ""
-#~ "We just need a little more information before you start learning with "
-#~ "{platform_name}."
-#~ msgstr "אנו זקוקים למידע נוסף לפני שתתחיל ללמוד עם {platform_name}. "
-
-#~ msgid "Please complete the following fields to register for an account. "
-#~ msgstr "כדי ליצור חשבון חדש, נא מלא את השדות הבאים."
-
-#~ msgid "example: Jane Doe"
-#~ msgstr "דוגמה: שלום שלום"
-
-#~ msgid "Your legal name, used for any certificates you earn."
-#~ msgstr "שמך החוקי ישמש בכל תעודה שתונפק עבורך"
-
-#~ msgid "example: JaneDoe"
-#~ msgstr "דוגמה: שלום שלום"
-
-#~ msgid "Will be shown in any discussions or forums you participate in"
-#~ msgstr "יוצג בכל הדיונים או פורומים שבהם אתה משתתף"
-
-#~ msgid "cannot be changed later"
-#~ msgstr "לא ניתן לשנות לאחר מכן"
-
-#~ msgid "Welcome {username}"
-#~ msgstr "ברוך הבא {username}"
-
-#~ msgid "Enter a Public Display Name:"
-#~ msgstr "הכנס שם קמפוס:"
-
-#~ msgid "Public Display Name"
-#~ msgstr "שם קמפוס"
-
-#~ msgid "Additional Personal Information"
-#~ msgstr "מידע אישי נוסף"
-
-#~ msgid "example: New York"
-#~ msgstr "דוגמה: תל אביב"
-
-#~ msgid "Highest Level of Education Completed"
-#~ msgstr "רמת ההשכלה"
-
-#~ msgid "Year of Birth"
-#~ msgstr "שנת לידה"
-
-#~ msgid "Please share with us your reasons for registering with {platform_name}"
-#~ msgstr "נא שתף אותנו בסיבות לרישום ל{platform_name}"
-
-#~ msgid "Account Acknowledgements"
-#~ msgstr "אישורי חשבון"
-
-#~ msgid "Preferences for {platform_name}"
-#~ msgstr "העדפות ל{platform_name}"
-
-#~ msgid "Update my {platform_name} Account"
-#~ msgstr "עדכן את חשבון {platform_name} שלי"
-
-#~ msgid "Processing your account information"
-#~ msgstr "מעבד את מידע החשבון שלך"
-
-#~ msgid "Welcome {username}!  Please set your preferences below"
-#~ msgstr "ברוכים הבאים {username}! נא הגדר למטה את העדפותיך"
-
-#~ msgid "Update My Account"
-#~ msgstr "עדכן את החשבון שלי"
-
-#~ msgid "Registration Help"
-#~ msgstr "עזרה בתהליך הרישום"
-
-#~ msgid "Already registered?"
-#~ msgstr "רשום כבר?"
-
-#~ msgid "Next Steps"
-#~ msgstr "הצעדים הבאים"
-
-#~ msgid ""
-#~ "You will receive an activation email.  You must click on the activation link"
-#~ " to complete the process.  Don't see the email?  Check your spam folder and "
-#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
-#~ "able to receive email from your courses."
-#~ msgstr ""
-#~ "לאחר הרישום תישלח אלייך הודעת דואר אלקטרוני שתכלול את קישור ההפעלה של "
-#~ "החשבון. עלייך ללחוץ על הקישור על מנת לסיים את תהליך ההרשמה. לא קיבלת את "
-#~ "ההודעה? אנא בדוק את תיקיית דואר הזבל בתיבת הדואר האלקטרוני שלך ואשר קבלת "
-#~ "הודעות מ-class.stanford.edu, אחרת לא תוכל לקבל הודעות דואר אלקטרוני "
-#~ "מהקורסים."
-
-#~ msgid "Need Help?"
-#~ msgstr "זקוק לעזרה?"
-
-#~ msgid "Need help in registering with {platform_name}?"
-#~ msgstr "צריך עזרה ברישום ל{platform_name}?"
-
-#~ msgid "View our FAQs for answers to commonly asked questions."
-#~ msgstr "לתשובות, פנה לרשימת ה'שאלות הנפוצות' שלנו."
-
-#~ msgid ""
-#~ "Once registered, most questions can be answered in the course specific "
-#~ "discussion forums or through the FAQs."
-#~ msgstr ""
-#~ "לאחר הרישום, ניתן למצוא תשובות לרוב השאלות בפורומים או בעמוד \"שאלות "
-#~ "נפוצות\"."
-
-#~ msgid "Thank you for signing up for {platform_name}."
-#~ msgstr "תודה רבה על שנרשמת ל{platform_name}."
-
-#~ msgid ""
-#~ "Change your life and start learning today by activating your {platform_name}"
-#~ " account. Click on the link below or copy and paste it into your browser's "
-#~ "address bar."
-#~ msgstr ""
-#~ "שנה את חייך והתחל ללמוד היום באמצעות הפעלת חשבון {platform_name} שלך. לחץ על"
-#~ " הקישור המצורף או העתק והדבק אותו לתוך שורת הכתובת של הדפדפן שלך."
-
-#~ msgid ""
-#~ "If you didn't request this, you don't need to do anything; you won't receive"
-#~ " any more email from us. Please do not reply to this e-mail; if you require "
-#~ "assistance, check the about section of the {platform_name} Courses web site."
-#~ msgstr ""
-#~ "אם לא ביקשת זאת, אין צורך לעשות דבר; לא תקבל עוד הודעות מאיתנו. בבקשה אל "
-#~ "תגיבו להודעה זו; אם אתם זקוקים לעזרה, בדקו את עמוד העזרה באתר "
-#~ "{platform_name}. "
-
-#~ msgid ""
-#~ "This is to confirm that you changed the e-mail associated with "
-#~ "{platform_name} from {old_email} to {new_email}. If you did not make this "
-#~ "request, please contact us at"
-#~ msgstr ""
-#~ "זוהי הודעה לאשר כי החלפת את כתובת הדואר האלקטרוני המקושרת לחשבון "
-#~ "{platform_name} מ-{old_email} ל-{new_email}. אם לא ביקשת את השינוי הנ\"ל אנא"
-#~ " צור עמנו קשר ב-"
-
-#~ msgid ""
-#~ "We received a request to change the e-mail associated with your "
-#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
-#~ " please confirm your new e-mail address by visiting:"
-#~ msgstr ""
-#~ "התקבלה בקשה לשנות את כתובת הדואר האלקטרוני המקושרת לחשבון {platform_name} "
-#~ "שלך מ-{old_email} ל-{new_email}. אם זה אכן נכון, נא אשר את כתובת הדואר "
-#~ "האלקטרוני החדשה שלך באמצעות ביקור ב:"
-
-#~ msgid ""
-#~ "We are sorry. Our course staff did not approve your request to change your "
-#~ "name from {old_name} to {new_name}. If you need further assistance, please "
-#~ "e-mail the tech support at {email}"
-#~ msgstr ""
-#~ "אנחנו מתנצלים, צוות הקורס שלנו לא אישר את בקשתך לשינוי שמך מ-{old_name} "
-#~ "ל-{new_name}. אם אתה זקוק לעזרה נוספת, אנא שלח הודעת דואר אלקטרוני לסיוע  "
-#~ "הטכני ב-{email}"
-
-#~ msgid "Put your Terms of Service here!"
-#~ msgstr "מקם כאן את תנאי השירות שלך!"
-
-#~ msgid "Put your Privacy Policy here!"
-#~ msgstr "מקם כאן את מדיניות הפרטיות שלך!"
-
-#~ msgid "Put your Honor Code here!"
-#~ msgstr "מקם כאן את הקוד האתי שלך!"
-
-#~ msgid "Put your Copyright Text here!"
-#~ msgstr "מקם כאן את טקסט זכויות היוצרים שלך!"
 
 #~ msgid "Collapse All"
 #~ msgstr "כווץ הכל"
