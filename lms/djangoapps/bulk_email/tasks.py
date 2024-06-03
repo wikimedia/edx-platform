@@ -556,6 +556,8 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
                 [email],
                 connection=connection
             )
+            if hasattr(settings, 'DEFAULT_REPLY_TO_EMAIL'):
+                email_msg.reply_to = [settings.DEFAULT_REPLY_TO_EMAIL]
             email_msg.attach_alternative(html_msg, 'text/html')
 
             # Throttle if we have gotten the rate limiter.  This is not very high-tech,

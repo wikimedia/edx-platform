@@ -147,3 +147,19 @@ docker_push: docker_tag docker_auth ## push to docker hub
 	docker push "openedx/edx-platform:${GITHUB_SHA}"
 	docker push 'openedx/edx-platform:latest-newrelic'
 	docker push "openedx/edx-platform:${GITHUB_SHA}-newrelic"
+
+localize:
+	curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+	export PATH="$PWD:$PATH"
+	export TX_HOSTNAME="https://rest.api.transifex.com"
+	python manage.py cms translatewiki pull_transifex_translations
+	make extract_translations
+	python manage.py cms translatewiki msgmerge
+	python manage.py cms translatewiki update_from_version
+	python manage.py cms translatewiki remove_bad_msgstr
+	paver i18n_fastgenerate
+	msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-django.po -o conf/locale/en/LC_MESSAGES/wm-django.po
+	msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-djangojs.po -o conf/locale/en/LC_MESSAGES/wm-djangojs.po
+	django-admin.py compilemessages
+	i18n_tool validate
+
