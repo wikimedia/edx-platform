@@ -37,7 +37,7 @@ from common.djangoapps import third_party_auth
 # Note that this lives in LMS, so this dependency should be refactored.
 # TODO Have the discussions code subscribe to the REGISTER_USER signal instead.
 from common.djangoapps.student.helpers import get_next_url_for_login_page, get_redirect_url_with_host
-from lms.djangoapps.discussion.notification_prefs.views import enable_notifications
+from lms.djangoapps.discussion.notification_prefs.views import enable_notifications,enable_weekly_notifications
 from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.user_api import accounts as accounts_settings
@@ -249,6 +249,7 @@ def create_account_with_params(request, params):
     if settings.FEATURES.get('ENABLE_DISCUSSION_EMAIL_DIGEST'):
         try:
             enable_notifications(user)
+            enable_weekly_notifications(user)
         except Exception:  # pylint: disable=broad-except
             log.exception(f"Enable discussion notifications failed for user {user.id}.")
 

@@ -20,7 +20,7 @@ from django.http import Http404, HttpResponse
 from django.views.decorators.http import require_GET, require_POST
 
 from common.djangoapps.edxmako.shortcuts import render_to_response
-from lms.djangoapps.discussion.notification_prefs import NOTIFICATION_PREF_KEY
+from lms.djangoapps.discussion.notification_prefs import NOTIFICATION_PREF_KEY,WEEKLY_NOTIFICATION_PREF_KEY
 from openedx.core.djangoapps.user_api.models import UserPreference
 from openedx.core.djangoapps.user_api.preferences.api import delete_user_preference
 
@@ -102,7 +102,7 @@ class UsernameCipher:
 def enable_notifications(user):
     """
     Enable notifications for a user.
-    Currently only used for daily forum digests.
+    Currently only used for weekly forum digests.
     """
     # Calling UserPreference directly because this method is called from a couple of places,
     # and it is not clear that user is always the user initiating the request.
@@ -114,6 +114,18 @@ def enable_notifications(user):
         }
     )
 
+
+def enable_weekly_notifications(user):
+    """
+    Enable weekly notifications for a user.
+    """
+    UserPreference.objects.get_or_create(
+        user=user,
+        key=WEEKLY_NOTIFICATION_PREF_KEY,
+        defaults={
+            "value": UsernameCipher.encrypt(user.username)
+        }
+    )
 
 @require_POST
 def ajax_enable(request):
@@ -132,6 +144,22 @@ def ajax_enable(request):
 
     return HttpResponse(status=204)
 
+@require_POST
+def ajax_enable_weekly(request):
+    """
+    A view that enables weekly notifications for the authenticated user
+
+    This view should be invoked by an AJAX POST call. It returns status 204
+    (no content) or an error. If weekly notifications were already enabled for this
+    user, this has no effect. Otherwise, a preference is created with the
+    unsubscribe token (an encryption of the username) as the value.
+    """
+    if not request.user.is_authenticated:
+        raise PermissionDenied
+
+    enable_weekly_notifications(request.user)
+
+    return HttpResponse(status=204)
 
 @require_POST
 def ajax_disable(request):
@@ -148,6 +176,37 @@ def ajax_disable(request):
 
     return HttpResponse(status=204)
 
+@require_POST
+def ajax_disable_weekly(request):
+    """
+    A view that disables notifications for the authenticated user
+
+    This view should be invoked by an AJAX POST call. It returns status 204
+    (no content) or an error.
+    """
+    if not request.user.is_authenticated:
+        raise PermissionDenied
+
+    delete_user_preference(request.user, WEEKLY_NOTIFICATION_PREF_KEY)
+
+    return HttpResponse(status=204)
+
+@require_GET
+def weekly_ajax_status(request):
+    """
+    A view that retrieves notifications status for the authenticated user.
+
+    This view should be invoked by an AJAX GET call. It returns status 200,
+    with a JSON-formatted payload, or an error.
+    """
+    if not request.user.is_authenticated:
+        raise PermissionDenied
+
+    qs = UserPreference.objects.filter(
+        user=request.user,
+        key=WEEKLY_NOTIFICATION_PREF_KEY
+    )
+    return HttpResponse(json.dumps({"status": len(qs)}), content_type="application/json")  # lint-amnesty, pylint: disable=http-response-with-content-type-json, http-response-with-json-dumps
 
 @require_GET
 def ajax_status(request):

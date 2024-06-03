@@ -1,7 +1,31 @@
 {% load i18n %}
 {% block content %}
-    {% blocktrans trimmed %}{{ thread_username }} created a post: {{ thread_title }}:{% endblocktrans %}
-    {{ thread_body }}
-    {% trans "View discussion" %} -> {{ post_link }}
+    {% blocktrans %}Weekly Discussion Summary{% endblocktrans %}
+    
+    {% blocktrans %}Discussion posts created this week:{% endblocktrans %}
+    
+    {% for location_group in grouped_thread_contexts %}
+        {% with num_posts=location_group.threads|length %}
+            {% blocktrans trimmed %}
+                {{ num_posts }} posts created at {{ location_group.unit_name }}
+            {% endblocktrans %}
+        {% endwith %}
+        
+        {% for ctx in location_group.threads %}
+            {% with thread_title=ctx.thread_title|default:"Discussion Post" %}
+                {% blocktrans trimmed %}
+                    {{ ctx.created_by }} created a post: <b>{{ thread_title }}</b>
+                {% endblocktrans %}
+            {% endwith %}
+            {{ ctx.thread_body|safe }}
+            <b>{% blocktrans %}Posted on{% endblocktrans %}: {{ ctx.thread_created_at }}</b>
+            {% blocktrans %}View discussion{% endblocktrans %} -> {{ ctx.post_link }}
+        {% endfor %}
+        
+        {% with course_cta_text="View discussions" %}
+            {% blocktrans %}Return to course{% endblocktrans %} -> {{ location_group.first_post_link }}
+        {% endwith %}
+    {% endfor %}
+    
     {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
 {% endblock %}

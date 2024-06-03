@@ -30,6 +30,16 @@ from openedx.core.djangoapps.django_comment_common.models import (
 from lms.djangoapps.courseware.courses import get_course_with_access
 from lms.djangoapps.discussion.django_comment_client.utils import (
     add_courseware_context)
+from common.djangoapps.student.models import (
+     CourseEnrollment
+)
+from openedx.core.djangoapps.user_api.models import UserPreference
+from lms.djangoapps.discussion.notification_prefs import WEEKLY_NOTIFICATION_PREF_KEY
+from opaque_keys.edx.keys import CourseKey, UsageKey, i4xEncoder
+from opaque_keys import InvalidKeyError
+from xmodule.modulestore.django import modulestore
+from django.http import Http404
+
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -77,40 +87,42 @@ def is_discussion_notification_configured_for_site(site, post_id):
         return False
     return True
 
-def get_users_with_forum_roles(post_id):
+def get_course_users_with_preference(post_id):
     """
-    Fetches a QuerySet of unique user objects associated with specified forum roles within a course.
+    Fetches users associated with a course who have a specific subscribed to weekly digest.
 
-    This function is designed to identify users who have been assigned specific forum roles, such as Administrator, Community TA, Group Moderator, and Moderator, within the context of a given course.
+    This function combines all active students, instructors, and staff members associated with a course and filters them based on whether they have a specific user preference (identified by preference_key) set to true.
 
     Args:
         post_id (str): The unique identifier for the course.
+        preference_key (str): The user preference key to filter users by (e.g., 'WEEKLY_NOTIFICATION_PREF_KEY').
 
     Returns:
-        QuerySet: A QuerySet of unique user objects associated with the specified forum roles.
-
-    Example Usage:
-        users = get_users_with_forum_roles("course-v1:ExampleX+Subject101+2023")
+        list: A list of User objects who have the specified preference set. These users include students, instructors, and staff.
     """
     course_key = CourseKey.from_string(post_id)
     log.info(f"Fetching users with forum roles for course_key: {course_key}")
 
-    # List of forum role names to include
-    forum_role_names = [
-        FORUM_ROLE_ADMINISTRATOR,
-        FORUM_ROLE_COMMUNITY_TA,
-        FORUM_ROLE_GROUP_MODERATOR,
-        FORUM_ROLE_MODERATOR,
-    ]
+    enrollments = CourseEnrollment.objects.filter(
+        course_id=course_key,
+        is_active=True
+    ).select_related('user')
+    
+    # Extract the User objects from the enrollments
+    enrolled_users = {enrollment.user for enrollment in enrollments}
 
-    # Fetch Role instances that match the specified forum role names for the course
-    roles = Role.objects.filter(name__in=forum_role_names, course_id=course_key)
+    # Fetch instructors and staff members
+    instructors = set(CourseInstructorRole(course_key).users_with_role())
+    staff_members = set(CourseStaffRole(course_key).users_with_role())
 
-    # Collect all users associated with these roles, ensuring uniqueness
-    users = User.objects.filter(roles__in=roles).distinct()
+    # Combine all sets to ensure uniqueness
+    users_set = enrolled_users.union(instructors, staff_members)
+    users_with_preference = [user for user in users_set if UserPreference.has_value(user, WEEKLY_NOTIFICATION_PREF_KEY)]
 
-    log.info(f"Found {users.count()} users associated with forum roles in course {course_key}")
-    return users
+    # Convert the set to a list
+    users_list = list(users_with_preference)
+
+    return users_list
 
 
 def get_mentioned_users_list(input_string, users_list=None):
@@ -305,6 +317,18 @@ def get_updated_studio_filter_meanings(courses):
     return studio_filters_meanings
 
 
+def get_parent_xblock(xblock):
+    """
+    Returns the xblock that is the parent of the specified xblock, or None if it has no parent.
+    """
+    locator = xblock.location
+    parent_location = modulestore().get_parent_location(locator)
+
+    if parent_location is None:
+        return None
+    return modulestore().get_item(parent_location)
+
+
 def add_courseware_info(data, user, current_site, course_key):
     """
     Enriches the provided data dictionary with courseware information for a given post by constructing a fully qualified courseware URL.
@@ -318,15 +342,36 @@ def add_courseware_info(data, user, current_site, course_key):
         course_key (CourseKey): The key of the course to which the post belongs.
 
     Returns:
-        None: Directly modifies the 'data' dictionary, adding the 'courseware_url' key and 'courseware_title' key  with the complete URL as its value.
+        None: Directly modifies the 'data' dictionary, adding the 'courseware_url' key and 'courseware_title' key with the complete URL as its value.
     """
+
     course = get_course_with_access(user, 'load', course_key)
     add_courseware_context([data], course, user)
+    
     if 'courseware_url' in data:
         scheme = 'https' if settings.HTTPS == 'on' else 'http'
         base_url = f"{scheme}://{current_site.domain}"
         data["courseware_url"] = f"{base_url}{data['courseware_url']}"
+        
+        # Extract the block_id from the courseware_url
+        block_id = data["courseware_url"].split('/jump_to/')[-1]
+        data["courseware_block_id"] = block_id
+        
+        try:
+            usage_key = UsageKey.from_string(block_id)
+        except InvalidKeyError:
+            raise Http404
 
+        xblock = modulestore().get_item(usage_key)
+        parent = get_parent_xblock(xblock)
+        data["unit_name"] = getattr(parent, 'display_name', 'Unknown Unit Name')
+    else:
+        log.warning("courseware_url key not found in data dictionary")
+
+    if 'courseware_title' in data:
+        data["courseware_title"] = data['courseware_title']
+    if 'location' in data:
+        data["location"] = data['location']
 WIKI_LMS_FILTER_MAPPINGS = {
     'paced_type': get_paced_type,
     'enrollment_type': get_enrollment_type,

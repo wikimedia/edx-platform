@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.db import connection
 from django.http import HttpResponse
 from django.urls import reverse
+from django.http import Http404
 from django.utils.deprecation import MiddlewareMixin
 from opaque_keys.edx.keys import CourseKey, UsageKey, i4xEncoder
 from pytz import UTC
@@ -37,6 +38,9 @@ from openedx.core.lib.courses import get_course_by_id
 from xmodule.modulestore.django import modulestore
 from xmodule.partitions.partitions import ENROLLMENT_TRACK_PARTITION_ID
 from xmodule.partitions.partitions_service import PartitionService
+from opaque_keys import InvalidKeyError
+from xmodule.modulestore.django import modulestore
+
 
 log = logging.getLogger(__name__)
 
@@ -733,8 +737,42 @@ def add_courseware_context(content_list, course, user, id_map=None):
 
             url = reverse('jump_to', kwargs={"course_id": str(course.id),
                           "location": location})
+            try:
+                usage_key = UsageKey.from_string(location)
+            except InvalidKeyError:  # Raise Http404 on invalid 'usage_key_string'
+                raise Http404  # lint-amnesty, pylint: disable=raise-missing-from
+            with modulestore().bulk_operations(usage_key.course_key):
+                xcourse, xblock = _get_item_in_course(usage_key)
+            block_id=extract_block_id(location)
+            log.info("the item object is following,%s : ", xcourse, xblock)
+            content.update({"courseware_url": url, "courseware_title": title,"location":block_id})
 
-            content.update({"courseware_url": url, "courseware_title": title})
+
+def _get_item_in_course(usage_key):
+    """
+    Helper method for getting the old location, containing course,
+    item, lms_link, and preview_lms_link for a given locator.
+
+    Verifies that the caller has permission to access this item.
+    """
+    # usage_key's course_key may have an empty run property
+    usage_key = usage_key.replace(course_key=modulestore().fill_in_run(usage_key.course_key))
+
+    course_key = usage_key.course_key
+
+    course = modulestore().get_course(course_key)
+    item = modulestore().get_item(usage_key, depth=1)
+    
+    return course, item
+
+
+def extract_block_id(usage_key_string):
+    try:
+        usage_key = UsageKey.from_string(usage_key_string)
+        block_id = usage_key.block_id
+        return block_id
+    except InvalidKeyError:
+        raise ValueError(f"Invalid UsageKey string: {usage_key_string}")
 
 
 def prepare_content(content, course_key, is_staff=False, discussion_division_enabled=None, group_names_by_id=None):

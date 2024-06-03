@@ -178,3 +178,15 @@ def _get_thread_url(context):  # lint-amnesty, pylint: disable=missing-function-
         'id': context['thread_id'],
     }
     return urljoin(base_url, permalink(thread_content))
+
+
+def _get_thread_url_weekly_digest(thread_context,common_context):
+    scheme = 'https' if settings.HTTPS == 'on' else 'http'
+    base_url = '{}://{}'.format(scheme, common_context['site'])
+    thread_content = {
+        'type': 'thread',
+        'course_id': common_context['course_id'],
+        'commentable_id': thread_context['thread_commentable_id'],
+        'id': thread_context['thread_id'],
+    }
+    return urljoin(base_url, permalink(thread_content))

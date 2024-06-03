@@ -116,7 +116,10 @@
                 threads: '/courses/' + $$course_id + '/discussion/forum',
                 enable_notifications: '/notification_prefs/enable/',
                 disable_notifications: '/notification_prefs/disable/',
+                enable_weekly_notifications:'/notification_prefs/enable_weekly/',
+                disable_weekly_notifications: '/notification_prefs/disable_weekly/',
                 notifications_status: '/notification_prefs/status/',
+                weekly_notifications_status:'/notification_prefs/weekly_status/',
                 user_search: '/messenger/api/v0/user/?search=' + param
             }[name];
         };

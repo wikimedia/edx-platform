@@ -2,27 +2,56 @@
 
 {% load i18n %}
 {% load static %}
+
 {% block content %}
 <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
     <tr>
         <td>
-            <p>
-                {% blocktrans trimmed %}
-                    {{ thread_username }} created a post: <b>{{ thread_title }}</b>:
-                {% endblocktrans %}
+            <h2 style="color: rgba(0,0,0,.85);">
+                {% blocktrans %}Weekly Discussion Summary{% endblocktrans %}
+            </h2>
+            <p style="color: rgba(0,0,0,.75);">
+                {% blocktrans %}Discussion posts created this week:{% endblocktrans %}
             </p>
-            <div style="border-left: 1px solid rgba(0,0,0,0.25);
-                    padding: 1px 1px 1px 15px;
-                    margin: 20px 20px 30px 30px;
-                    color: rgba(0,0,0,.75);">
-
-                {{ thread_body|safe}}
-
-            </div>
-
-            {% trans "View discussion" as course_cta_text %}
-            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=post_link %}
             
+            {% for location_group in grouped_thread_contexts %}
+                <div style="background-color: #f9f9f9; border: 1px solid #e8e5e5; padding: 20px; margin-bottom: 20px;">
+                    <p style="color: rgba(0,0,0,.75);">
+                        <strong>{{ location_group.threads|length }}</strong> {% blocktrans %}posts created at{% endblocktrans %} <strong>{{ location_group.unit_name }}</strong>
+                    </p>
+                    <div style="border-left: 1px solid rgba(0,0,0,0.25); padding: 10px 15px; margin-top: 0; color: rgba(0,0,0,.75); overflow: hidden;">
+                        <ul class="discussion-list" style="color: rgba(0,0,0,.75); list-style-type: none; padding-left: 0;">
+                            {% for ctx in location_group.threads %}
+                                <li {% if forloop.counter > 5 %}class="hidden"{% endif %}>
+                                    {% if location_group.location == 'General Discussion' %}
+                                        <a href="{{ ctx.post_link }}" style="color: #007bff;">
+                                            <strong class="truncate">{{ ctx.thread_title }}</strong>
+                                        </a>
+                                    {% else %}
+                                        <strong class="truncate">{{ ctx.thread_title }}</strong>
+                                    {% endif %}
+                                    - 
+                                    <span>{{ ctx.thread_created_at }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% if location_group.threads|length > 5 %}
+                        <a href="#" class="show-more" style="color: rgba(0,0,0,.75);" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show more{% endblocktrans %}</a>
+                        <a href="#" class="show-less" style="color: rgba(0,0,0,.75); display: none;" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show less{% endblocktrans %}</a>
+                    {% endif %}
+                    <p style="margin-top: 10px;">
+                        {% if location_group.location == 'General Discussion' %}
+                            {% trans "View discussions" as course_cta_text %}
+                            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=location_group.base_url|add:"/threads" %}
+                        {% else %}
+                            {% trans "View discussions" as course_cta_text %}
+                            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=location_group.courseware_url %}
+                        {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
+
             {% block google_analytics_pixel %}
                 <img src="{{ ga_tracking_pixel_url }}" alt="" role="presentation" aria-hidden="true" style="display: block;"/>
             {% endblock %}
@@ -34,4 +63,32 @@
         </td>
     </tr>
 </table>
+
+<script type="text/javascript">
+function toggleVisibility(element) {
+    var listItems = element.closest('div').querySelectorAll('.discussion-list li');
+    var showMore = element.closest('div').querySelector('.show-more');
+    var showLess = element.closest('div').querySelector('.show-less');
+    for (var i = 0; i < listItems.length; i++) {
+        if (i >= 5) {
+            listItems[i].classList.toggle('hidden');
+        }
+    }
+    showMore.style.display = showMore.style.display === 'none' ? 'inline' : 'none';
+    showLess.style.display = showLess.style.display === 'none' ? 'inline' : 'none';
+}
+</script>
+
+<style>
+.hidden {
+    display: none;
+}
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px; /* adjust based on your layout */
+    display: inline-block;
+}
+</style>
 {% endblock %}
