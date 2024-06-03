@@ -25,10 +25,10 @@
                                 <li {% if forloop.counter > 5 %}class="hidden"{% endif %}>
                                     {% if location_group.location == 'General Discussion' %}
                                         <a href="{{ ctx.post_link }}" style="color: #007bff;">
-                                            <strong>{{ ctx.thread_title }}</strong>
+                                            <strong class="truncate">{{ ctx.thread_title }}</strong>
                                         </a>
                                     {% else %}
-                                        <strong>{{ ctx.thread_title }}</strong>
+                                        <strong class="truncate">{{ ctx.thread_title }}</strong>
                                     {% endif %}
                                     - 
                                     <span>{{ ctx.thread_created_at }}</span>
@@ -82,6 +82,13 @@ function toggleVisibility(element) {
 <style>
 .hidden {
     display: none;
+}
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px; /* adjust based on your layout */
+    display: inline-block;
 }
 </style>
 {% endblock %}

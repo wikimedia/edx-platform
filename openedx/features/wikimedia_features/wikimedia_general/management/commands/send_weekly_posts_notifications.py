@@ -44,7 +44,7 @@ class Command(BaseCommand):
             query_params = {
                 'course_id': str(course.id),
                 'page': 1,
-                'per_page': 20  # Adjust based on expected volume
+                'per_page': 10000  # Adjust based on expected volume
             }
 
             threads = self.get_threads(query_params, one_week_ago)
