@@ -14,66 +14,42 @@
                 {% blocktrans %}Discussion posts created this week:{% endblocktrans %}
             </p>
             
-            {% regroup contexts by location as location_groups %}
-            
-            {% for location_group in location_groups %}
-                {% if location_group.grouper %}
-                    {% with unit_name=location_group.list.0.unit_name %}
-                    <div style="background-color: #f9f9f9; border: 1px solid #e8e5e5; padding: 20px; margin-bottom: 20px;">
-                        <p style="color: rgba(0,0,0,.75);">
-                            <strong>{{ location_group.list|length }}</strong> {% blocktrans %}posts created at{% endblocktrans %} <strong>{{ unit_name }}</strong>
-                        </p>
-                        <div style="border-left: 1px solid rgba(0,0,0,0.25); padding: 10px 15px; margin-top: 0; color: rgba(0,0,0,.75); overflow: hidden;">
-                            <ul class="discussion-list" style="color: rgba(0,0,0,.75); list-style-type: none; padding-left: 0;">
-                                {% for ctx in location_group.list %}
-                                    <li {% if forloop.counter > 5 %}class="hidden"{% endif %}>
-                                        <strong>{{ ctx.thread_title }}</strong> - 
-                                        <span>{{ ctx.thread_created_at }}</span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        {% if location_group.list|length > 5 %}
-                            <a href="#" class="show-more" style="color: rgba(0,0,0,.75);" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show more{% endblocktrans %}</a>
-                            <a href="#" class="show-less" style="color: rgba(0,0,0,.75); display: none;" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show less{% endblocktrans %}</a>
-                        {% endif %}
-                        <p style="margin-top: 10px;">
-                            {% trans "View discussions" as course_cta_text %}
-                            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=location_group.list.0.post_link %}
-                        </p>
-                    </div>
-                    {% endwith %}
-                {% else %}
-                    {% with full_url=location_group.list.0.post_link %}
-                    {% with base_url=full_url|cut:"/threads" %}
-                    <div style="background-color: #f9f9f9; border: 1px solid #e8e5e5; padding: 20px; margin-bottom: 20px;">
-                        <p style="color: rgba(0,0,0,.75);">
-                            <strong>{{ location_group.list|length }}</strong> {% blocktrans %}posts created at <strong>General Discussion</strong>{% endblocktrans %}
-                        </p>
-                        <div style="border-left: 1px solid rgba(0,0,0,0.25); padding: 10px 15px; margin-top: 0; color: rgba(0,0,0,.75); overflow: hidden;">
-                            <ul class="discussion-list" style="color: rgba(0,0,0,.75); list-style-type: none; padding-left: 0;">
-                                {% for ctx in location_group.list %}
-                                    <li {% if forloop.counter > 5 %}class="hidden"{% endif %}>
+            {% for location_group in grouped_thread_contexts %}
+                <div style="background-color: #f9f9f9; border: 1px solid #e8e5e5; padding: 20px; margin-bottom: 20px;">
+                    <p style="color: rgba(0,0,0,.75);">
+                        <strong>{{ location_group.threads|length }}</strong> {% blocktrans %}posts created at{% endblocktrans %} <strong>{{ location_group.unit_name }}</strong>
+                    </p>
+                    <div style="border-left: 1px solid rgba(0,0,0,0.25); padding: 10px 15px; margin-top: 0; color: rgba(0,0,0,.75); overflow: hidden;">
+                        <ul class="discussion-list" style="color: rgba(0,0,0,.75); list-style-type: none; padding-left: 0;">
+                            {% for ctx in location_group.threads %}
+                                <li {% if forloop.counter > 5 %}class="hidden"{% endif %}>
+                                    {% if location_group.location == 'General Discussion' %}
                                         <a href="{{ ctx.post_link }}" style="color: #007bff;">
                                             <strong>{{ ctx.thread_title }}</strong>
-                                        </a> - 
-                                        <span>{{ ctx.thread_created_at }}</span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        {% if location_group.list|length > 5 %}
-                            <a href="#" class="show-more" style="color: rgba(0,0,0,.75);" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show more{% endblocktrans %}</a>
-                            <a href="#" class="show-less" style="color: rgba(0,0,0,.75); display: none;" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show less{% endblocktrans %}</a>
-                        {% endif %}
-                        <p style="margin-top: 10px;">
-                            {% trans "View discussions" as course_cta_text %}
-                            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=base_url|add:"/threads" %}
-                        </p>
+                                        </a>
+                                    {% else %}
+                                        <strong>{{ ctx.thread_title }}</strong>
+                                    {% endif %}
+                                    - 
+                                    <span>{{ ctx.thread_created_at }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    {% endwith %}
-                    {% endwith %}
-                {% endif %}
+                    {% if location_group.threads|length > 5 %}
+                        <a href="#" class="show-more" style="color: rgba(0,0,0,.75);" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show more{% endblocktrans %}</a>
+                        <a href="#" class="show-less" style="color: rgba(0,0,0,.75); display: none;" onclick="toggleVisibility(this); return false;">{% blocktrans %}Show less{% endblocktrans %}</a>
+                    {% endif %}
+                    <p style="margin-top: 10px;">
+                        {% if location_group.location == 'General Discussion' %}
+                            {% trans "View discussions" as course_cta_text %}
+                            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=location_group.base_url|add:"/threads" %}
+                        {% else %}
+                            {% trans "View discussions" as course_cta_text %}
+                            {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_cta_text course_cta_url=location_group.courseware_url %}
+                        {% endif %}
+                    </p>
+                </div>
             {% endfor %}
 
             {% block google_analytics_pixel %}
@@ -81,9 +57,7 @@
             {% endblock %}
 
             <p style="color: rgba(0,0,0,.75);">
-                {% with platform_name=contexts.0.platform_name email=contexts.0.email %}
-                    {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
-                {% endwith %}
+                {% blocktrans %}This email was automatically sent from {{ platform_name }} to {{ email }}{% endblocktrans %}
                 <br />
             </p>
         </td>

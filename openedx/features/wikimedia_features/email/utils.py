@@ -32,31 +32,49 @@ MESSAGE_TYPES = {
   'report_ready': message_types.ReportReadyNotification,
   'thread_creation': message_types.ThreadCreationNotification
 }
-def send_weekly_digest_ace_message(request_user, request_site, dest_email, contexts, message_class):
+def send_weekly_digest_ace_message(request_user, request_site, dest_email, notification_context, message_class):
     """
     Send a single ACE message that includes a list of contexts.
     Arguments:
         request_user - User object of the sender
         request_site - Site object representing the current site
         dest_email - Destination email address
-        contexts - List of context dictionaries for each message
+        notification_context - Dictionary containing common context and a list of thread contexts
         message_class - The ACE message type class to be used for sending the email
     """
-    # Preprocess the contexts to group by location
+    
+    # Ensure notification_context is a dictionary
+    if not isinstance(notification_context, dict):
+        logger.error("notification_context should be a dictionary")
+        return
+
+    common_context = notification_context.get('common_context', {})
+    thread_contexts = notification_context.get('thread_contexts', [])
+    
+    if not isinstance(thread_contexts, list):
+        logger.error("thread_contexts should be a list of dictionaries")
+        return
+
+    # Preprocess the thread_contexts to group by location
     grouped_contexts = {}
-    for context in contexts:
+    for context in thread_contexts:
         location = context.get('location', 'General Discussion')
         if location not in grouped_contexts:
-            grouped_contexts[location] = []
-        grouped_contexts[location].append(context)
+            grouped_contexts[location] = {
+                'unit_name': context.get('unit_name', 'General Discussion'),
+                'first_post_link': context.get('post_link', '#'),
+                'courseware_url': context.get('courseware_url', '#'),
+                'threads': [],
+                'base_url': context.get('post_link').rsplit('/threads', 1)[0] if location == 'General Discussion' else None,
+            }
+        grouped_contexts[location]['threads'].append(context)
     
     # Flatten the grouped contexts into a list
-    sorted_contexts = []
-    for location, context_list in grouped_contexts.items():
-        sorted_contexts.extend(context_list)
+    sorted_contexts = [{'location': loc, 'unit_name': data['unit_name'], 'first_post_link': data['first_post_link'], 'courseware_url': data['courseware_url'], 'threads': data['threads'], 'base_url': data['base_url']} for loc, data in grouped_contexts.items()]
     
-    unified_context = {'contexts': sorted_contexts}
-
+    # Merge common context into the unified context
+    unified_context = {**common_context, 'grouped_thread_contexts': sorted_contexts}
+    
     with emulate_http_request(site=request_site, user=request_user):
         message = message_class().personalize(
             recipient=Recipient(lms_user_id=0, email_address=dest_email),
@@ -70,6 +88,7 @@ def send_weekly_digest_ace_message(request_user, request_site, dest_email, conte
         except Exception as e:
             logger.error('Error sending email to %s with unified contexts. Error: %s', dest_email, e)
             return False
+
 
 
 def send_ace_message(request_user, request_site, dest_email, context, message_class):
@@ -144,17 +163,16 @@ def send_notification(message_type, data, subject, dest_emails, request_user=Non
             return_value = False
 
     return return_value
-
-def send_weekly_digest_notification(message_type, data_list, subject, dest_emails, request_user=None, current_site=None):
+def send_weekly_digest_notification(message_type, notification_context, subject, dest_emails, request_user=None, current_site=None):
     """
-    Sends an weekly digest email of all threads created in a week to a list of recipients based on the specified data.
+    Sends a weekly digest email of all threads created in a week to a list of recipients based on the specified data.
 
-    This function iterates over each item in the data_list, updates the context for the email template,
+    This function iterates over each item in the thread_contexts, updates the context for the email template,
     and sends an email to each recipient. It logs errors for any invalid data formats or issues in sending emails.
 
     Args:
         message_type (str): The key used to select the specific ACE message object from MESSAGE_TYPES.
-        data_list (list of dict): A list of dictionaries, each containing context/data for the email template.
+        notification_context (dict): A dictionary containing common context and a list of thread contexts.
         subject (str): The subject line of the email to be sent.
         dest_emails (list of str): A list of email addresses to which the emails will be sent.
         request_user (User, optional): The user from whose context the email is sent. Defaults to the EMAIL_ADMIN user if not provided.
@@ -178,55 +196,49 @@ def send_weekly_digest_notification(message_type, data_list, subject, dest_email
             )
             return False
 
-    contexts = []
-    content = []
+    common_context = notification_context.get('common_context', {})
+    thread_contexts = notification_context.get('thread_contexts', [])
 
-    for data in data_list:
-        print("Data to be updated:", data)
-        if not isinstance(data, dict):
-            logger.error(f"Invalid data format: {data}")
-            continue
+    base_root_url = current_site.configuration.get_value('LMS_ROOT_URL')
+    platform_name = current_site.configuration.get_value('platform_name')
+    logo_url = current_site.configuration.get_value('DEFAULT_EMAIL_LOGO_URL', settings.DEFAULT_EMAIL_LOGO_URL)
+    messenger_url = u'{base_url}{messenger_path}'.format(base_url=base_root_url, messenger_path=reverse("messenger:messenger_home"))
 
-        data.update({'subject': subject})
-        message_context = get_base_template_context(current_site)
-        message_context.update(data)
-
-        message_class = MESSAGE_TYPES[message_type]
-        return_value = True
-
-        base_root_url = current_site.configuration.get_value('LMS_ROOT_URL')
-
-        message_context.update({
-            "site_name": current_site.configuration.get_value('platform_name'),
-            "logo_url": current_site.configuration.get_value('DEFAULT_EMAIL_LOGO_URL', settings.DEFAULT_EMAIL_LOGO_URL),
-            "messenger_url": u'{base_url}{messenger_path}'.format(base_url=base_root_url, messenger_path=reverse("messenger:messenger_home"))
-        })
-
-        content.append(message_context)
-        contexts.append(message_context)
+    base_template_context = get_base_template_context(current_site)
+    common_context.update(base_template_context)
+    common_context.update({
+        'subject': subject,
+        'site_name': platform_name,
+        'logo_url': logo_url,
+        'messenger_url': messenger_url
+    })
 
     for email in dest_emails:
-        for message_context in contexts:
-            message_context.update({
-                "email": email
-            })
+        email_context = {
+            'common_context': common_context,
+            'thread_contexts': thread_contexts,
+            'email': email
+        }
         try:
-            send_weekly_digest_ace_message(request_user, current_site, email,contexts, message_class)
+            send_weekly_digest_ace_message(request_user, current_site, email, email_context, message_class=MESSAGE_TYPES[message_type])
             logger.info(
                 'Email has been sent to "%s" for content %s.',
                 email,
-                json.dumps(content)
+                json.dumps(email_context)
             )
         except Exception as e:
             logger.error(
                 'Unable to send an email to %s for content "%s"',
                 email,
-                json.dumps(content)
+                json.dumps(email_context)
             )
             logger.error(e)
-            return_value = False
+            return False
 
-    return return_value
+    return True
+
+
+
 
 def update_context_with_thread(context, thread):
     thread_author = User.objects.get(id=thread.user_id)
@@ -293,13 +305,13 @@ def send_thread_mention_email(receivers, context, is_thread=True):
 
     send_notification(key, context, "", receivers)
 
-def send_thread_creation_email(receivers, contexts, is_thread=True):
+def send_thread_creation_email(receivers, notification_context, is_thread=True):
     """
     Dispatches email notifications for newly created threads or posts.
 
     Args:
         receivers (list of str): Email addresses to receive notifications.
-        contexts (list of dict): Context information for each email, including thread details.
+        notification_context (dict): Context information including common context and thread-specific contexts.
         is_thread (bool, optional): True if notifying about threads, adjusts email content. Defaults to True.
 
     Sends an email to each address in receivers for each context provided. The function logs the action and uses 
@@ -308,11 +320,11 @@ def send_thread_creation_email(receivers, contexts, is_thread=True):
     logger.info("Sending thread creation emails to users: {}".format(receivers))
     key = "thread_creation"
 
-    for context in contexts:
+    for context in notification_context['thread_contexts']:
         if is_thread:
             created_by = context.get("thread_username")
             context.update({
                 "created_by": created_by,
             })
-    send_weekly_digest_notification(key, contexts, "", receivers)
 
+    send_weekly_digest_notification(key, notification_context, "", receivers)

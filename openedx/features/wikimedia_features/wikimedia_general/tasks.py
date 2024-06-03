@@ -1,4 +1,5 @@
 from logging import getLogger
+import markdown
 
 from celery import task
 from celery_utils.logged_task import LoggedTask
@@ -21,8 +22,10 @@ from openedx.features.wikimedia_features.wikimedia_general.utils import (
     is_discussion_notification_configured_for_site,
     add_courseware_info
 )
+from openedx.core.djangoapps.ace_common.template_context import get_base_template_context
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 
-import markdown
+from lms.djangoapps.discussion.tasks import _get_thread_url_weekly_digest
 
 log = getLogger(__name__)
 
@@ -100,8 +103,13 @@ def send_weekly_digest_new_post_notification_to_instructors(threads):
     if current_site is None:
         current_site = Site.objects.get_current()
     
-    contexts = []
-    message_contexts = []
+    common_context = {
+        'course_id': None,
+        'site': current_site.domain,  # Convert current_site to string
+        'is_thread': True,
+    }
+
+    thread_contexts = []
 
     for post in threads:
         if post.type != 'thread':
@@ -112,42 +120,49 @@ def send_weekly_digest_new_post_notification_to_instructors(threads):
 
         post_id = post.course_id
         course_key = CourseKey.from_string(post.course_id)
+        common_context['course_id'] = str(course_key)  # Convert CourseKey to string
         data = post.to_dict()
-        
-        
-        context = {
-            'course_id': course_key,
-            'site': current_site,
-            'is_thread': True,
-        }
-        
-        update_context_with_thread(context, post)
-        message_context = build_discussion_notification_context(context)
-        user_id = message_context['thread_author_id']
-        user = User.objects.get(id=user_id)
-        log.info("user object is :%s",user)
-        add_courseware_info(data, user, current_site, course_key)
-        if 'courseware_url' in data:
-            message_context['post_link'] = data['courseware_url']
-        if 'courseware_title' in data:
-            message_context['courseware_title'] = data['courseware_title']  # Adding the courseware title to message context
-        if 'location' in data:
-            message_context['location'] = data['location']
-        if 'unit_name' in data:
-            message_context['unit_name'] = data['unit_name']
-        if 'courseware_block_id' in data:
-            message_context['courseware_block_id'] = data['courseware_block_id']
 
-        contexts.append(context)
-        message_contexts.append(message_context)
+        thread_context = {}
+        update_context_with_thread(thread_context, post)
+        
+        user_id = thread_context['thread_author_id']
+        user = User.objects.get(id=user_id)
+        log.info("User object is: %s", user)
+        add_courseware_info(data, user, current_site, course_key)
+
+        if 'courseware_url' in data:
+            thread_context['courseware_url'] = data['courseware_url']
+        if 'courseware_title' in data:
+            thread_context['courseware_title'] = data['courseware_title']
+        if 'location' in data:
+            thread_context['location'] = data['location']
+        if 'unit_name' in data:
+            thread_context['unit_name'] = data['unit_name']
+        if 'courseware_block_id' in data:
+            thread_context['courseware_block_id'] = data['courseware_block_id']
+        
+        # site = thread_context['site']
+        context = get_base_template_context(current_site)
+        context.update(thread_context)
+        context.update({
+            'site_id': current_site.id,
+            'post_link': _get_thread_url_weekly_digest(thread_context,common_context)
+        })
+
+        thread_contexts.append(context)
 
         log.info(f"Prepared notification for thread ID: {post.id}, Title: {post.title}")
+    common_context.pop('site')
+    common_context['course_name'] = CourseOverview.get_from_id(common_context.pop('course_id')).display_name
+    if thread_contexts:
+        # Send a single dictionary with common context and list of thread contexts
+        notification_context = {
+            'common_context': common_context,
+            'thread_contexts': thread_contexts,
+        }
 
-    if message_contexts:
-        # Assumes send_thread_creation_email_task can handle lists of contexts and post IDs
-        send_thread_creation_email_task.delay(message_contexts, True, post_id)
+        send_thread_creation_email_task.delay(notification_context, True, post_id)
         log.info("Notifications queued for recent threads.")
-
     else:
         log.info("No recent threads to notify.")
-
