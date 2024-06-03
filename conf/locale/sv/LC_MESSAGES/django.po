@@ -80,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-05-15 05:39+0000\n"
+"POT-Creation-Date: 2024-06-03 10:33+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Emil Örberg <emil.orberg@live.se>, 2023\n"
 "Language-Team: Swedish (https://app.transifex.com/open-edx/teams/6205/sv/)\n"
@@ -91,7 +91,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-04-24\n"
-"X-POT-Import-Date: 2024-04-15 06:30:23+0000\n"
+"X-POT-Import-Date: 2024-05-15 06:30:33+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -314,11 +314,6 @@ msgstr "Kursversionsrapport (aggregera)"
 #: cms/templates/settings.html
 msgid "Course Direction Flag"
 msgstr "Kursriktningsflagga"
-
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
-#, python-format
-msgid "%(subject)s"
-msgstr ""
 
 #: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "No Translated Course Found!"
@@ -1296,6 +1291,15 @@ msgstr "namn"
 msgid "Video ID"
 msgstr ""
 
+#: cms/templates/index.html
+msgid "Pending"
+msgstr "Avvaktan"
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Organization"
+msgstr "Organisation"
+
 #: cms/envs/common.py lms/djangoapps/instructor/views/api.py
 #: lms/envs/common.py
 msgid "Language"
@@ -1373,6 +1377,8 @@ msgid "You're enrolled as an honor code student"
 msgstr ""
 
 #: lms/templates/static_templates/honor.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "Förtroendekod"
 
@@ -1477,6 +1483,7 @@ msgid "Account recovery"
 msgstr ""
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "Lösenord"
 
@@ -2818,7 +2825,12 @@ msgid ""
 "There was a problem with the staff answer to this problem: empty boundary."
 msgstr ""
 
+#. Translators: this is the last choice of a number of choices of how to log
+#. in
+#. to the site.
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "eller"
 
@@ -3251,7 +3263,7 @@ msgstr ""
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Submit"
 msgstr "Lämna"
 
@@ -4091,6 +4103,10 @@ msgid ""
 "http://www.edx.org/course/Introduction-to-MOOCs-ITM001"
 msgstr ""
 
+#: cms/templates/settings.html
+msgid "Course Language"
+msgstr "Kursspråk"
+
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Specify the language of your course."
 msgstr ""
@@ -4385,6 +4401,10 @@ msgstr ""
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Any Type"
 msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Library"
+msgstr "Bibliotek"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Select the library from which you want to draw content."
@@ -4807,6 +4827,12 @@ msgid ""
 "moocsupport@mathworks.com"
 msgstr ""
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Group Configurations"
+msgstr "Gruppkonfigurationer"
+
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 msgid ""
 "Enter the configurations that govern how students are grouped together."
@@ -5125,15 +5151,18 @@ msgstr ""
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Kurs"
 
 #: common/lib/xmodule/xmodule/templates/library-sourced-block-studio-view.html
 msgid "Save and Import"
 msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: cms/templates/videos_index_pagination.html
+msgid "Cancel"
+msgstr "Avbryt"
 
 #: common/lib/xmodule/xmodule/video_module/transcripts_utils.py
 #, python-brace-format
@@ -5484,12 +5513,12 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html
+#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Close"
 msgstr "Stänga"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -5510,7 +5539,6 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr ""
 
@@ -5521,7 +5549,6 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -5539,7 +5566,6 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -5650,6 +5676,14 @@ msgid ""
 "this request, please contact us immediately. Contact information is listed "
 "at:"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"We keep a log of old e-mails, so if this request was unintentional, we can "
+"investigate."
+msgstr ""
+"Vi behåller en logg av gamla e-postmeddelanden, så om den här förfrågan var "
+"oavsiktlig kan vi undersöka."
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -5896,9 +5930,23 @@ msgid ""
 "their respective logos are registered trademarks of edX Inc."
 msgstr ""
 
+#. Translators: 'Open edX' is a brand, please keep this untranslated. See
+#. http://openedx.org for more information.
+#: cms/templates/widgets/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid "Powered by Open edX"
+msgstr "Drivs av Open edX"
+
 #: lms/templates/static_templates/blog.html
 msgid "Blog"
 msgstr "blogg"
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
+msgid "Contact Us"
+msgstr "Kontakta oss"
 
 #: lms/djangoapps/branding/api.py
 msgid "Help Center"
@@ -5913,8 +5961,9 @@ msgid "Donate"
 msgstr "Donera"
 
 #: lms/templates/footer.html lms/templates/static_templates/about.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Handla om"
 
@@ -5924,16 +5973,32 @@ msgid "{platform_name} for Business"
 msgstr ""
 
 #: lms/templates/static_templates/contact.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "Kontakta"
 
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
+msgid "Careers"
+msgstr "Karriärer"
+
+#: themes/red-theme/lms/templates/footer.html
+msgid "News"
+msgstr "Nyheter"
+
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
 msgid "Terms of Service & Honor Code"
 msgstr ""
 
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Privacy Policy"
 msgstr "Integritetspolicy"
 
@@ -5942,6 +6007,9 @@ msgid "Accessibility Policy"
 msgstr ""
 
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "Användarvillkor"
 
@@ -6231,6 +6299,7 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr ""
 
@@ -6903,6 +6972,10 @@ msgstr "Framsteg"
 msgid "Keep learners engaged and on track throughout the course."
 msgstr ""
 
+#: cms/templates/textbooks.html cms/templates/widgets/header.html
+msgid "Textbooks"
+msgstr "Läroböcker"
+
 #: lms/djangoapps/courseware/plugins.py
 msgid ""
 "Create and manage a library of course readings, textbooks, and chapters."
@@ -7050,7 +7123,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "Logga in"
 
@@ -7410,12 +7483,17 @@ msgid "Birth Year"
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "Kön"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Level of Education"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Mailing Address"
+msgstr "Postadress"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Goals"
@@ -7451,10 +7529,12 @@ msgid "Team"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "Stad"
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "Land"
 
@@ -7810,6 +7890,11 @@ msgstr ""
 msgid "Special Exams"
 msgstr ""
 
+#: cms/templates/certificates.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+msgid "Certificates"
+msgstr "Kurscertifikat"
+
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
 msgid "Please Enter the numeric value for the course price"
 msgstr ""
@@ -7919,6 +8004,8 @@ msgid "An extended due date must be later than the original due date."
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "Fullständiga namn"
 
@@ -8219,6 +8306,7 @@ msgstr ""
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "program"
 
@@ -8982,8 +9070,6 @@ msgid ""
 msgstr ""
 
 #: cms/templates/base.html lms/templates/main.html
-#: themes/edx-platform/wikilearn/cms/templates/base.html
-#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Hoppa till huvudinnehållet"
 
@@ -9172,6 +9258,7 @@ msgstr "Gå tillbaka"
 msgid "Delete article"
 msgstr "Ta bort artikeln"
 
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -9212,9 +9299,7 @@ msgstr "Du tar bort en artikel. Var god bekräfta."
 
 #: cms/templates/component.html cms/templates/container.html
 #: cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-#: wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "Redigera"
@@ -9237,6 +9322,8 @@ msgstr ""
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "fönster öppet"
 
@@ -9484,9 +9571,8 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/stanford-style/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Sök"
@@ -9577,48 +9663,52 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr ""
 
+#: cms/templates/widgets/header.html
+msgid "Sign In"
+msgstr "Logga in"
+
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -9627,7 +9717,6 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -9690,6 +9779,10 @@ msgid ""
 "Comma-separated list of usernames which will be able to view this catalog."
 msgstr ""
 
+#: cms/templates/index.html
+msgid "Denied"
+msgstr "Nekad"
+
 #: openedx/core/djangoapps/api_admin/models.py
 #: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Approved"
@@ -9721,7 +9814,6 @@ msgstr ""
 
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Bokmärken"
 
@@ -9849,6 +9941,11 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Course Run"
+msgstr "Kurskörning"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -10638,6 +10735,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -10647,6 +10745,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -10675,6 +10774,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -11159,7 +11259,8 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Register"
 msgstr "Registrera"
 
@@ -11360,6 +11461,8 @@ msgid "This name will be used on any certificates that you earn."
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "Officiellt användarnamn"
 
@@ -11516,7 +11619,6 @@ msgid ""
 msgstr ""
 
 #: openedx/core/lib/xblock_builtin/xblock_discussion/xblock_discussion/__init__.py
-#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Category"
 msgstr ""
 
@@ -11707,7 +11809,6 @@ msgstr ""
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "uppdateringar"
 
@@ -11893,10 +11994,13 @@ msgstr ""
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr ""
 
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
+#, python-format
+msgid "%(subject)s"
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "Kursnamn"
 
@@ -11906,9 +12010,7 @@ msgstr "Kursnamn"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Courses"
 msgstr "Kurser"
 
@@ -11916,6 +12018,10 @@ msgstr "Kurser"
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Reports"
 msgstr "rapporter"
+
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Our mailing address is"
+msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -12853,17 +12959,11 @@ msgstr "Sidan hittas inte"
 msgid "Page not found"
 msgstr "Den begärda sidan hittades inte"
 
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
-
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "Innehåll"
 
@@ -12872,7 +12972,6 @@ msgstr "Innehåll"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
@@ -12885,14 +12984,11 @@ msgstr "Inställningar"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "Läser in"
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "Kursnummer"
 
@@ -12902,21 +12998,24 @@ msgstr "Fel:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "Organisation:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "Kursnummer:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "Kurskörning:"
+
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: username@domain.com"
+msgstr "Exempel: Användarnamn@domän.com"
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -12927,19 +13026,8 @@ msgid "Requirements"
 msgstr "Krav"
 
 #: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "detaljer"
 
@@ -12947,7 +13035,6 @@ msgstr "detaljer"
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "Se"
@@ -12965,20 +13052,29 @@ msgid "Reset"
 msgstr "Återställa"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "Rättslig"
+
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
+msgstr ""
+"edX, Open edX och edX- och Open edX-logotyperna är registrerade varumärken "
+"som tillhör {link_start}edX Inc.{link_end}"
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "Välj språk"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "Konto"
 
@@ -12987,8 +13083,7 @@ msgstr "Konto"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Hjälpa"
@@ -13001,7 +13096,6 @@ msgstr "namn"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "Logga ut"
 
@@ -13160,17 +13254,14 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "LÄR MER"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "startar"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "Börjar: {date}"
 
@@ -13180,19 +13271,19 @@ msgstr "Visa alla kurser"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Dashboard"
 msgstr "Kontrollpanel"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr "resultat som framgångsrikt fylls i,"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr "Klicka för att ladda alla anmälda kurser"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "Du är inte inskriven i några kurser än."
 
@@ -13200,6 +13291,7 @@ msgstr "Du är inte inskriven i några kurser än."
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr "Utforska kurser"
 
@@ -13208,16 +13300,16 @@ msgstr "Utforska kurser"
 msgid "Activate your account!"
 msgstr "Aktivera ditt konto!"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "Kursfyllningsfel"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "Sök i dina kurser"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Clear search"
 msgstr "Rensa sökningen"
 
@@ -13225,7 +13317,7 @@ msgstr "Rensa sökningen"
 msgid "Skip to list of announcements"
 msgstr "Hoppa till listan över tillkännagivanden"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -13247,15 +13339,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr "Fortsätt till {platform_name}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "E-postinställningar för {course_number}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "Ta emot kursemail"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "Spara inställningar"
 
@@ -13264,6 +13356,8 @@ msgstr "Spara inställningar"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "avregistrera"
 
@@ -13412,7 +13506,6 @@ msgid "External Authentication failed"
 msgstr "Extern autentisering misslyckades"
 
 #: lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr "organisationens logotyp"
 
@@ -13434,6 +13527,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "obligatorisk information"
 
@@ -13483,8 +13578,7 @@ msgstr ""
 "tillgänglig på framsidasidan {link_start} {link_end}."
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
+#: themes/stanford-style/lms/templates/index.html
 msgid "Search for a course"
 msgstr "Sök kurs"
 
@@ -13734,6 +13828,8 @@ msgstr ""
 "kommer att regleras av deras användarvillkor och integritetspolicy."
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "E-post"
 
@@ -13822,6 +13918,7 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr "{start_li}Välkommen{end_li} {name}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "Ange ett offentligt användarnamn:"
 
@@ -13838,14 +13935,19 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "Mål när du registrerar dig för {platform_name}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "Jag godkänner {link_start} användarvillkor {link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "Jag godkänner {link_start} uppförandekoden {link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "Skapa mitt konto"
 
@@ -14022,7 +14124,6 @@ msgstr ""
 "prenumerera på nytt {link_end}."
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "Kontrollpanel för:"
 
@@ -14036,7 +14137,6 @@ msgstr "Fler alternativ"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr "Fler inställningar"
 
@@ -15463,6 +15563,7 @@ msgid "Download student grades"
 msgstr "Hämta studentkvaliteter"
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "Skriv ut eller dela ditt certifikat:"
 
@@ -15476,6 +15577,7 @@ msgstr "Posta på Facebook"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "Dela på Twitter"
 
@@ -15484,6 +15586,7 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "Tweet detta resultat. Pop-up fönster."
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "Lägg till på LinkedIn profil"
 
@@ -15585,31 +15688,40 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr "Följ det verifierade spåret"
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "Fortsätt ett verifierat certifikat"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr "Logga in {course_name} | Välj ditt spår"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "Tyvärr, det uppstod ett fel när du försökte anmäla dig"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr "Skaffa akademisk poäng med det verifierade spåret"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "Fortsätt akademiskt kredit med ett verifierat certifikat"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -15622,10 +15734,12 @@ msgstr ""
 "karriär eller stärka dina skolans ansökningar."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr "Fördelar med Verified Track"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -15634,6 +15748,7 @@ msgstr ""
 " ha avslutat kursen"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
@@ -15643,6 +15758,7 @@ msgstr ""
 "dig."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
@@ -15651,6 +15767,7 @@ msgstr ""
 " uppgifter och projekt."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
@@ -15659,10 +15776,12 @@ msgstr ""
 "eller lägg upp det direkt på LinkedIn."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "Fördelar med ett verifierat certifikat"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -15671,6 +15790,7 @@ msgstr ""
 " logotyp"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
@@ -15679,6 +15799,7 @@ msgstr ""
 "eller lägg upp det direkt på LinkedIn"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -15690,6 +15811,7 @@ msgstr ""
 "applikationer."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -15698,6 +15820,7 @@ msgstr ""
 " logotyp"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
@@ -15706,6 +15829,7 @@ msgstr ""
 "eller lägg upp det direkt på LinkedIn"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
@@ -15714,10 +15838,12 @@ msgstr ""
 "slutföra kursen"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "Granska denna kurs"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
@@ -15726,10 +15852,12 @@ msgstr ""
 "aktiviteter, tester och forum."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "Granska denna kurs (inget certifikat)"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -15740,6 +15868,7 @@ msgstr ""
 "uppgifter eller obegränsad kursåtkomst.{b_end}"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -15750,6 +15879,7 @@ msgstr ""
 "uppgifter.{b_end}"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -15760,6 +15890,7 @@ msgstr ""
 "kursåtkomst.{b_end}"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -15873,7 +16004,6 @@ msgstr "{span_start}aktuelt avsnitt{span_end}"
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "förfallodatum {date}"
 
@@ -15896,6 +16026,7 @@ msgstr "Du är med i kursen"
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "Visa kurs"
 
@@ -15950,6 +16081,7 @@ msgid "enroll"
 msgstr "skriva in"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "Dela med vänner och familj!"
 
@@ -15967,6 +16099,7 @@ msgid "Take a course with {platform} online"
 msgstr "Ta en kurs med {platform} online"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "Tweet att du har skrivit in i kursen"
 
@@ -15977,11 +16110,11 @@ msgstr ""
 " kurs"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr "Maila någon att säga att du har anmält dig till den här kursen"
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr "nuvarande position"
 
@@ -15989,13 +16122,10 @@ msgstr "nuvarande position"
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "behöver uppmärksamhet"
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "Kursmaterial"
 
@@ -16012,25 +16142,21 @@ msgid "Show Earlier Course Updates"
 msgstr "Visa tidigare kursuppdateringar"
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr "Lista över kurser"
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr "Förfina din sökning"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} Kursmaterial"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Kurshjälpmedel"
 
@@ -16048,17 +16174,14 @@ msgstr ""
 "personal jobbar på att fixa det så snart som möjligt."
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Kurssökning"
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Inget innehåll har lagts till i kursen"
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16068,7 +16191,6 @@ msgstr ""
 "högre på den här tentamen. Ditt nuvarande poäng är {current_score}%."
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "Din poäng är {current_score}%. Du har gått in på tentamen."
 
@@ -16146,6 +16268,7 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "Återuppta kurs"
 
@@ -16287,12 +16410,10 @@ msgid "Starts on {}"
 msgstr "Börjar {}"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number} Framsteg"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "Visa betyg i studio"
 
@@ -16302,42 +16423,35 @@ msgstr "Kursförlopp för '{användarnamn}' ({email})"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Se certifikat"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "Öppnas i ett nytt webbläsarfönster"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "Förfrågningsintyg"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "Krav på bankkrediter"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr ""
 "{student_name}, du är inte längre berättigad till kredit i denna kurs."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -16346,62 +16460,50 @@ msgstr ""
 "till kontrollpanelen {a_end} för att köpa kurskredit."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr "{student_name}, du har ännu inte uppfyllt kraven på kredit."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "Information om kurskreditkrav"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "DISPLAY_NAME"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "Verifiering inskickad"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "Verifiering misslyckades"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "Verifiering avvisades"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr "Avslutad senast den {date}"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "kommande"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "Mindre"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "Detaljer för varje kapitel"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{earned} av {total} möjliga poäng"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
@@ -16409,42 +16511,34 @@ msgstr ""
 " 0."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr "Sektionsklass har överskridits."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "Problemresultat:"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "Övningsresultat:"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr "Problemresultat är dolda fram till förfallodagen."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr "Övningsresultat är dolda fram till förfallodagen."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr "Problemresultat är dolda."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr "Övningsresultat är dolda."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "Inga problemresultat i det här avsnittet"
 
@@ -16719,6 +16813,7 @@ msgid "Share {course_name} on Facebook"
 msgstr "Dela {course_name} på Facebook"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "Dela på Facebook"
 
@@ -17603,6 +17698,9 @@ msgstr "Tack,"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
+#: themes/stanford-style/lms/templates/embargo/default_courseware.html
+#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
+#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "Denna kurs är inte tillgänglig i ditt land"
 
@@ -17731,7 +17829,6 @@ msgid "{platform_name} Home Page"
 msgstr "{platform_name} Hemsida"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr "Meny"
 
@@ -17744,6 +17841,7 @@ msgstr ""
 "rekommenderar starkt att du använder {chrome_link} eller {ff_link}."
 
 #: lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr "Upptäck nya"
 
@@ -17752,34 +17850,29 @@ msgid "{name} Dashboard"
 msgstr "{name} instrumentpanel"
 
 #: lms/templates/header/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr "Kompletterande länkar"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "How it Works"
 msgstr "Hur det fungerar"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "skolor"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "Profil"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "Beställningshistorik"
 
@@ -19325,6 +19418,7 @@ msgstr ""
 "inskrivna elever."
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "Mina kurser"
 
@@ -19629,10 +19723,12 @@ msgstr ""
 "inte tillåta dig att komma åt den här kursen för närvarande."
 
 #: lms/templates/static_templates/faq.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "FAQ"
 
 #: lms/templates/static_templates/jobs.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "jobb"
 
@@ -20151,6 +20247,7 @@ msgid "You haven't earned any certificates yet."
 msgstr "Du har inte fått några kurscertifikat än."
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "Utforska nya kurser"
 
@@ -20171,10 +20268,413 @@ msgstr "Bygg ut din profil för att anpassa din identitet på {platform_name}."
 msgid "An error occurred. Try loading the page again."
 msgstr "Det uppstod ett fel. Försök att ladda sidan på nytt"
 
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid ""
+"Access Course Staff Support on the Partner Portal to submit or review "
+"support tickets"
+msgstr ""
+
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "edX Partner Portal"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid ""
+"Browse recently launched courses and see what's new in your favorite "
+"subjects."
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Take advantage of free coaching!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Get Started"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Page Footer"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "edX Home Page"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Connect"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "© {year} edX Inc. All rights reserved."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid "About edX Verified Certificates"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid ""
+"An edX Verified Certificate signifies that the learner has agreed to abide "
+"by the edX honor code and completed all of the required tasks of this course"
+" under its guidelines, as well as having their photo ID checked to verify "
+"their identity."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid "About edX"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid ""
+"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
+"the world's best universities, including MIT, Harvard, Berkeley, University "
+"of Texas, and many others. edX is a mission driven initiative created by "
+"founding partners Harvard and MIT."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Congratulations, {user_name}!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid ""
+"You worked hard to earn your certificate from "
+"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
+"and family to get the word out about what you mastered in "
+"{accomplishment_course_title}."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Share this certificate on Facebook (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Tweet this certificate (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print this certificate"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid "edX Inc."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid ""
+"All rights reserved except where noted. edX, Open edX and the edX and Open "
+"edX logos are registered trademarks of edX Inc."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
+"help fund affordable education to everyone globally."
+msgstr ""
+
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
+"certificates to help fund free education for everyone globally"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Find Courses"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Schools & Partners"
+msgstr ""
+
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+"Code{honor_link_end}"
+msgstr ""
+"{tos_link_start} användarvillkor {tos_link_end} och {honor_link_start} "
+"uppförandekod {honor_link_end}"
+
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Copyright"
+msgstr "upphovsrätt"
+
+#: themes/stanford-style/lms/templates/footer.html
+msgid "Copyright {year}. All rights reserved."
+msgstr "Upphovsrätt {year}. Alla rättigheter förbehållna."
+
+#: themes/stanford-style/lms/templates/index.html
+msgid "For anyone, anywhere, anytime"
+msgstr "För någon, var som helst, när som helst"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"We're sorry, but this version of your browser is not supported. Try again "
+"using a different browser or a newer version of your browser."
+msgstr ""
+"Vi beklagar, men den här versionen av din webbläsare stöds inte. Försök igen"
+" med en annan webbläsare eller en nyare version av din webbläsare."
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "The following errors occurred while processing your registration:"
+msgstr "Följande fel inträffade under behandlingen av din registrering:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Sign up with {provider_name}"
+msgstr "Registrera dig med {provider_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Create your own {platform_name} account below"
+msgstr "Skapa ditt eget {platform_name} konto nedan"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"Required fields are noted by <strong class=\"indicator\">bold text and an "
+"asterisk (*)</strong>."
+msgstr ""
+"Obligatoriska fält är markerade med <strong class=\"indicator\">fetstil och "
+"en asterisk (*)</strong>."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "You've successfully signed in with {selected_provider}."
+msgstr "Du har lyckats logga in med {selected_provider}."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"We just need a little more information before you start learning with "
+"{platform_name}."
+msgstr ""
+"Vi behöver bara lite mer information innan du börjar lära dig med "
+"{platform_name}."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please complete the following fields to register for an account. "
+msgstr "Vänligen fyll i följande fält för att registrera dig för ett konto."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: Jane Doe"
+msgstr "Exempel: Jane Doe"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Your legal name, used for any certificates you earn."
+msgstr "Ditt juridiska namn, används för alla certifikat du tjänar."
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: JaneDoe"
+msgstr "Exempel: JaneDoe"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Will be shown in any discussions or forums you participate in"
+msgstr "Kommer att visas i alla diskussioner eller forum du deltar i"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "cannot be changed later"
+msgstr "Kan inte ändras senare"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Welcome {username}"
+msgstr "Välkommen {username}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Enter a Public Display Name:"
+msgstr "Ange ett offentligt visningsnamn:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Public Display Name"
+msgstr "Public Display Name"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Additional Personal Information"
+msgstr "Ytterligare personuppgifter"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: New York"
+msgstr "Exempel: New York"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Highest Level of Education Completed"
+msgstr "Högsta utbildningsnivå slutförd"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Year of Birth"
+msgstr "Födelseår"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please share with us your reasons for registering with {platform_name}"
+msgstr ""
+"Vänligen dela med oss ​​dina skäl för att registrera dig med {platform_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Account Acknowledgements"
+msgstr "Konto bekräftelser"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Preferences for {platform_name}"
+msgstr "Inställningar för {platform_name}"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update my {platform_name} Account"
+msgstr "Uppdatera mitt {platform_name} konto"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Processing your account information"
+msgstr "Bearbetar din kontoinformation"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Welcome {username}!  Please set your preferences below"
+msgstr "Välkommen {username}! Ange dina preferenser nedan"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"Required fields are noted by {strong_indicator}bold text and an asterisk "
+"(*).{strong_close}"
+msgstr ""
+"Obligatoriska fält är markerade med {strong_indicator}fet text och en "
+"asterisk (*).{strong_close}"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update My Account"
+msgstr "Uppdatera mitt konto"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Registration Help"
+msgstr "Registreringshjälp"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Already registered?"
+msgstr "Redan registrerad?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "Logga in"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Next Steps"
+msgstr "Nästa steg"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"You will receive an activation email.  You must click on the activation link"
+" to complete the process.  Don't see the email?  Check your spam folder and "
+"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+"able to receive email from your courses."
+msgstr ""
+"Du kommer att få ett aktiverings-e-postmeddelande. Du måste klicka på "
+"aktiveringslänken för att slutföra processen. Ser du inte e-postmeddelandet?"
+" Kontrollera din spammapp och markera e-post från class.stanford.edu som "
+"&quot;inte spam&quot;, eftersom du vill kunna ta emot e-post från dina "
+"kurser."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need Help?"
+msgstr "Behövs hjälp?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need help in registering with {platform_name}?"
+msgstr "Behöver du hjälp med att registrera dig med {platform_name}?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "View our FAQs for answers to commonly asked questions."
+msgstr "Se våra vanliga frågor för svar på vanliga frågor."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"Once registered, most questions can be answered in the course specific "
+"discussion forums or through the FAQs."
+msgstr ""
+"När du är registrerad kan de flesta frågor besvaras i kursspecifika "
+"diskussionsforum eller genom vanliga frågor."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid "Thank you for signing up for {platform_name}."
+msgstr "Tack för att du anmält dig till {platform_name}."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid ""
+"Change your life and start learning today by activating your {platform_name}"
+" account. Click on the link below or copy and paste it into your browser's "
+"address bar."
+msgstr ""
+"Byt ditt liv och börja lära dig idag genom att aktivera ditt {platform_name}"
+" konto. Klicka på länken nedan eller kopiera och klistra in den i "
+"webbläsarens adressfält."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"If you didn't request this, you don't need to do anything; you won't receive"
+" any more email from us. Please do not reply to this e-mail; if you require "
+"assistance, check the about section of the {platform_name} Courses web site."
+msgstr ""
+"Om du inte begärde det behöver du inte göra någonting. Du kommer inte att få"
+" mer email från oss. Var god och svara ej på detta mail; Om du behöver "
+"hjälp, kolla om avsnittet på webbplatsen {platform_name} Kurser."
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"This is to confirm that you changed the e-mail associated with "
+"{platform_name} from {old_email} to {new_email}. If you did not make this "
+"request, please contact us at"
+msgstr ""
+"Detta bekräftar att du har ändrat det e-postmeddelande som är kopplat till "
+"{platform_name} från {old_email} till {new_email}. Om du inte gjorde denna "
+"förfrågan, kontakta oss på"
+
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"We received a request to change the e-mail associated with your "
+"{platform_name} account from {old_email} to {new_email}. If this is correct,"
+" please confirm your new e-mail address by visiting:"
+msgstr ""
+"Vi har fått en förfrågan om att ändra det e-postmeddelande som är kopplat "
+"till ditt {platform_name} -konto från {old_email} till {new_email}. Om det "
+"här är korrekt, bekräfta din nya e-postadress genom att besöka:"
+
+#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
+msgid ""
+"We are sorry. Our course staff did not approve your request to change your "
+"name from {old_name} to {new_name}. If you need further assistance, please "
+"e-mail the tech support at {email}"
+msgstr ""
+"Vi är ledsna. Vår kurspersonal godkände inte din förfrågan om att ändra ditt"
+" namn från {old_name} till {new_name}. Om du behöver mer hjälp, skicka "
+"e-post till teknisk support på {email}"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Terms of Service here!"
+msgstr "Sätt dina användarvillkor här!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Privacy Policy here!"
+msgstr "Sätt din integritetspolicy här!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Honor Code here!"
+msgstr "Sätt din ära kod här!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Copyright Text here!"
+msgstr "Sätt din Copyright Text här!"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -20211,6 +20711,10 @@ msgstr ""
 #: cms/templates/accessibility.html
 msgid "Studio Accessibility Policy"
 msgstr "Studios tillgänglighetspolicy"
+
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+msgid "Files & Uploads"
+msgstr ""
 
 #: cms/templates/certificates.html
 msgid "Course Certificates"
@@ -20296,13 +20800,70 @@ msgstr "Läs mer om certifikat"
 msgid "Details & Schedule"
 msgstr "Detaljer och schema"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Grading"
+msgstr "Betygsättning"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/manage_users.html cms/templates/settings.html
+#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
+#: cms/templates/widgets/header.html
+msgid "Course Team"
+msgstr "Kursteam"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Advanced Settings"
+msgstr "Avancerade inställningar"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr "Proctored Exam Settings"
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr "Checklistor"
+
+#: cms/templates/checklists.html cms/templates/export.html
+#: cms/templates/export_git.html cms/templates/import.html
+#: cms/templates/widgets/header.html
+msgid "Tools"
+msgstr "Verktyg"
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Duplicate"
+msgstr "Duplicera"
+
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "Kopiera denna komponent"
 
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr "Flytta"
+
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "Ta bort den här komponenten"
+
+#: cms/templates/component.html cms/templates/edit-tabs.html
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Drag to reorder"
+msgstr "Dra för att omordna"
+
+#: cms/templates/container.html cms/templates/course-create-rerun.html
+#: cms/templates/course_info.html cms/templates/course_outline.html
+#: cms/templates/edit-tabs.html cms/templates/index.html
+#: cms/templates/library.html cms/templates/manage_users.html
+#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
+#: cms/templates/videos_index.html
+msgid "Page Actions"
+msgstr "Sidhanteringar"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -20389,6 +20950,149 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a Course Rerun of:"
+msgstr "Skapa en kursåterställning av:"
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a re-run of a course"
+msgstr "Skapa en omkörning av en kurs"
+
+#: cms/templates/course-create-rerun.html
+msgid "You are creating a re-run from:"
+msgstr "Du skapar en återkörning från:"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Provide identifying information for this re-run of the course. The original "
+"course is not affected in any way by a re-run."
+msgstr ""
+"Ange identifierande information för denna omkörning av kursen. Den "
+"ursprungliga kursen påverkas inte på något sätt av en re-run."
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Note: Together, the organization, course number, and course run must "
+"uniquely identify this new course instance."
+msgstr ""
+"Obs! Organisationen, kursnumret och kursutbudet måste tillsammans unikt "
+"identifiera denna nya kursinstans."
+
+#: cms/templates/course-create-rerun.html
+msgid "Required Information to Create a re-run of a course"
+msgstr "Obligatorisk information för att skapa en omkörning av en kurs"
+
+#. Translators: This is an example name for a new course, seen when
+#. filling out the form to create a new course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. Introduction to Computer Science"
+msgstr "T.ex. Introduktion till datavetenskap"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The public display name for the new course. (This name is often the same as "
+"the original course name.)"
+msgstr ""
+"Det offentliga visningsnamnet för den nya kursen. (Detta namn är ofta "
+"detsamma som det ursprungliga kursnamnet.)"
+
+#. Translators: This is an example for the name of the organization sponsoring
+#. a course, seen when filling out the form to create a new course. The
+#. organization name cannot contain spaces.
+#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
+#. when user put no data into this field.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. UniversityX or OrganizationX"
+msgstr "T.ex. UniversityX eller OrganizationX"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The name of the organization sponsoring the new course. (This name is often "
+"the same as the original organization name.)"
+msgstr ""
+"Namnet på organisationen som sponsrar den nya kursen. (Detta namn är ofta "
+"detsamma som det ursprungliga organisationsnamnet.)"
+
+#: cms/templates/course-create-rerun.html
+msgid "Note: No spaces or special characters are allowed."
+msgstr "Obs! Inga mellanslag eller specialtecken är tillåtna."
+
+#. Translators: This is an example for the number used to identify a course,
+#. seen when filling out the form to create a new course. The number here is
+#. short for "Computer Science 101". It can contain letters but cannot contain
+#. spaces.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. CS101"
+msgstr "T.ex. CS101"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
+"Det unika numret som identifierar den nya kursen inom organisationen. (Detta"
+" nummer kommer att vara detsamma som det ursprungliga kursnumret och kan "
+"inte ändras.)"
+
+#. Translators: This is an example for the "run" used to identify different
+#. instances of a course, seen when filling out the form to create a new
+#. course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. 2014_T1"
+msgstr "T.ex. 2014_T1"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The term in which the new course will run. (This value is often different "
+"than the original course run value.)"
+msgstr ""
+"Termen där den nya kursen kommer att springa. (Detta värde är ofta "
+"annorlunda än det ursprungliga kursvärdet.)"
+
+#: cms/templates/course-create-rerun.html
+msgid "Create Re-run"
+msgstr "Skapa Re-run"
+
+#: cms/templates/course-create-rerun.html
+msgid "When will my course re-run start?"
+msgstr "När kommer min kurs att starta igen?"
+
+#: cms/templates/course-create-rerun.html
+msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+msgstr "Den nya kursen startar den 1 januari 2030 vid midnatt (UTC)."
+
+#: cms/templates/course-create-rerun.html
+msgid "What transfers from the original course?"
+msgstr "Vilka överföringar från den ursprungliga kursen?"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The new course has the same course outline and content as the original "
+"course. All problems, videos, announcements, and other files are duplicated "
+"to the new course."
+msgstr ""
+"Den nya kursen har samma kursplan och innehåll som originalkurs. Alla "
+"problem, videor, meddelanden och andra filer kopieras till den nya kursen."
+
+#: cms/templates/course-create-rerun.html
+msgid "What does not transfer from the original course?"
+msgstr "Vad överförs inte från den ursprungliga kursen?"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"You are the only member of the new course's staff. No students are enrolled "
+"in the course, and there is no student data. There is no content in the "
+"discussion topics or wiki."
+msgstr ""
+"Du är den enda medlemmen i den nya kursens personal. Inga studenter är "
+"inskrivna i kursen, och det finns inga studentuppgifter. Det finns inget "
+"innehåll i diskussionsämnena eller wiki."
+
+#: cms/templates/course-create-rerun.html
+msgid "Learn more about Course Re-runs"
+msgstr "Läs mer om kursåtergångar"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -20602,6 +21306,13 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "Läs mer om inställningar för innehålls synlighet"
+
+#. Translators: Pages refer to the tabs that appear in the top navigation of
+#. each course.
+#: cms/templates/edit-tabs.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+msgid "Pages"
+msgstr "Sidor"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -21018,6 +21729,10 @@ msgstr "Läs mer om att exportera en kurs"
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "Exportera kurs till Git"
+
+#: cms/templates/export_git.html cms/templates/widgets/header.html
+msgid "Export to Git"
+msgstr "Exportera till Git"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -21678,6 +22393,397 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "Läs mer om att importera en kurs"
 
+#: cms/templates/index.html
+msgid "New Course"
+msgstr "Ny kurs"
+
+#: cms/templates/index.html
+msgid "Email staff to create course"
+msgstr "E-postpersonal att skapa kurs"
+
+#: cms/templates/index.html
+msgid "New Library"
+msgstr "Nytt bibliotek"
+
+#: cms/templates/index.html
+msgid "Please correct the highlighted fields below."
+msgstr "Rensa de markerade fälten nedan."
+
+#: cms/templates/index.html
+msgid "Create a New Course"
+msgstr "Skapa en ny kurs"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Course"
+msgstr "Obligatorisk information för att skapa en ny kurs"
+
+#: cms/templates/index.html
+msgid ""
+"The public display name for your course. This cannot be changed, but you can"
+" set a different display name in Advanced Settings later."
+msgstr ""
+"Det offentliga visningsnamnet för din kurs. Det här kan inte ändras, men du "
+"kan ange ett annat visningsnamn i Avancerade inställningar senare."
+
+#: cms/templates/index.html
+msgid ""
+"The name of the organization sponsoring the course. {strong_start}Note: The "
+"organization name is part of the course URL.{strong_end} This cannot be "
+"changed, but you can set a different display name in Advanced Settings "
+"later."
+msgstr ""
+"Namnet på organisationen som sponsrar kursen. {strong_start} Obs! "
+"Organisationsnamnet är en del av kursadressen. {strong_end} Det här kan inte"
+" ändras, men du kan ange ett annat visningsnamn i Avancerade inställningar "
+"senare."
+
+#: cms/templates/index.html
+msgid ""
+"The unique number that identifies your course within your organization. "
+"{strong_start}Note: This is part of your course URL, so no spaces or special"
+" characters are allowed and it cannot be changed.{strong_end}"
+msgstr ""
+"Det unika numret som identifierar din kurs inom din organisation. "
+"{strong_start} Obs: Det här är en del av din kursadress, så inga mellanslag "
+"eller specialtecken är tillåtna och det kan inte ändras. {strong_end}"
+
+#: cms/templates/index.html
+msgid ""
+"The term in which your course will run. {strong_start}Note: This is part of "
+"your course URL, so no spaces or special characters are allowed and it "
+"cannot be changed.{strong_end}"
+msgstr ""
+"Termen där din kurs kommer att köras. {strong_start} Obs: Det här är en del "
+"av din kursadress, så inga mellanslag eller specialtecken är tillåtna och "
+"det kan inte ändras. {strong_end}"
+
+#: cms/templates/index.html
+msgid "Create"
+msgstr "Skapa"
+
+#: cms/templates/index.html
+msgid "Create a New Library"
+msgstr "Skapa ett nytt bibliotek"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Library"
+msgstr "Obligatorisk information för att skapa ett nytt bibliotek"
+
+#: cms/templates/index.html
+msgid "Library Name"
+msgstr "Bibliotekets namn"
+
+#. Translators: This is an example name for a new content library, seen when
+#. filling out the form to create a new library.
+#. (A library is a collection of content or problems.)
+#: cms/templates/index.html
+msgid "e.g. Computer Science Problems"
+msgstr "t.ex. datavetenskapsproblem"
+
+#: cms/templates/index.html
+msgid "The public display name for your library."
+msgstr "Det offentliga visningsnamnet för ditt bibliotek."
+
+#: cms/templates/index.html
+msgid "The public organization name for your library."
+msgstr "Den offentliga organisationsnamnet för ditt bibliotek."
+
+#: cms/templates/index.html
+msgid "This cannot be changed."
+msgstr "Detta kan inte ändras."
+
+#: cms/templates/index.html
+msgid "Library Code"
+msgstr "Bibliotekskod"
+
+#. Translators: This is an example for the "code" used to identify a library,
+#. seen when filling out the form to create a new library. This example is
+#. short
+#. for "Computer Science Problems". The example number may contain letters
+#. but must not contain spaces.
+#: cms/templates/index.html
+msgid "e.g. CSPROB"
+msgstr "t.ex. CSPROB"
+
+#: cms/templates/index.html
+msgid ""
+"The unique code that identifies this library. {strong_start}Note: This is "
+"part of your library URL, so no spaces or special characters are "
+"allowed.{strong_end} This cannot be changed."
+msgstr ""
+"Den unika koden som identifierar det här biblioteket. {strong_start} Obs! "
+"Det här är en del av ditt webbadress i biblioteket, så det är inte tillåtet "
+"att lägga till mellanslag eller specialtecken. {strong_end} Det här kan inte"
+" ändras."
+
+#: cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr "Organisations- och biblioteksinställningar"
+
+#: cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr "Visa alla kurser i organisationen:"
+
+#: cms/templates/index.html
+msgid "For example, MITx"
+msgstr "Till exempel, MITx"
+
+#: cms/templates/index.html
+msgid "Courses Being Processed"
+msgstr "Kurser som behandlas"
+
+#: cms/templates/index.html
+msgid "This course run is currently being created."
+msgstr "Kursutbudet skapas för närvarande."
+
+#. Translators: This is a status message, used to inform the user of
+#. what the system is doing. This status means that the user has
+#. requested to re-run an existing course, and the system is currently
+#. in the process of duplicating and configuring the existing course
+#. so that it can be re-run.
+#: cms/templates/index.html
+msgid "Configuring as re-run"
+msgstr "Konfigurera som åter körning"
+
+#: cms/templates/index.html
+msgid ""
+"The new course will be added to your course list in 5-10 minutes. Return to "
+"this page or {link_start}refresh it{link_end} to update the course list. The"
+" new course will need some manual configuration."
+msgstr ""
+"Den nya kursen läggs till i din kurslista på 5-10 minuter. Återgå till den "
+"här sidan eller {link_start} uppdatera den {link_end} för att uppdatera "
+"kurslistan. Den nya kursen behöver lite manuell konfiguration."
+
+#. Translators: This is a status message for the course re-runs feature.
+#. When a course admin indicates that a course should be re-run, the system
+#. needs to process the request and prepare the new course. The status of
+#. the process will follow this text.
+#: cms/templates/index.html
+msgid "This re-run processing status:"
+msgstr "Den här återställningsbehandlingsstatusen:"
+
+#: cms/templates/index.html
+msgid "Configuration Error"
+msgstr "Konfigurationsfel"
+
+#: cms/templates/index.html
+msgid ""
+"A system error occurred while your course was being processed. Please go to "
+"the original course to try the re-run again, or contact your PM for "
+"assistance."
+msgstr ""
+"Ett systemfel inträffade när kursen behandlades. Gå till den ursprungliga "
+"kursen för att försöka återköra igen, eller kontakta din PM för hjälp."
+
+#: cms/templates/index.html
+msgid "Archived Courses"
+msgstr "Arkiverade kurser"
+
+#: cms/templates/index.html
+msgid "Libraries"
+msgstr "bibliotek"
+
+#: cms/templates/index.html
+msgid "Are you staff on an existing {studio_name} course?"
+msgstr "Är du anställd på en befintlig {studio_name} kurs?"
+
+#: cms/templates/index.html
+msgid ""
+"The course creator must give you access to the course. Contact the course "
+"creator or administrator for the course you are helping to author."
+msgstr ""
+"Kursansvarig måste ge dig tillgång till kursen. Kontakta kursens upphovsman "
+"eller administratör för kursen du hjälper till författare."
+
+#: cms/templates/index.html
+msgid "Create Your First Course"
+msgstr "Skapa din första kurs"
+
+#: cms/templates/index.html
+msgid "Your new course is just a click away!"
+msgstr "Din nya kurs är bara ett klick bort!"
+
+#: cms/templates/index.html
+msgid "Becoming a Course Creator in {studio_name}"
+msgstr "Bli en kursskapare i {studio_name}"
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team will evaluate your request and provide you feedback within 24 hours "
+"during the work week."
+msgstr ""
+"{studio_name} är en värdlösning för våra xConsortium-partners och utvalda "
+"gäster. Kurser där du är en lagmedlem visas ovan för att du ska redigera, "
+"medan kursens skaparbehörighet beviljas av {platform_name}. Vårt team kommer"
+" att utvärdera din förfrågan och ge dig feedback inom 24 timmar under "
+"arbetsveckan."
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status:"
+msgstr "Din begäran om kursupphovsrör:"
+
+#: cms/templates/index.html
+msgid "Request the Ability to Create Courses"
+msgstr "Be om förmåga att skapa kurser"
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status"
+msgstr "Din kurs Creator Request Status"
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is has completed evaluating your request."
+msgstr ""
+"{studio_name} är en värdlösning för våra xConsortium-partners och utvalda "
+"gäster. Kurser där du är en lagmedlem visas ovan för att du ska redigera, "
+"medan kursens skaparbehörighet beviljas av {platform_name}. Vårt team har "
+"slutfört utvärderingen av din förfrågan."
+
+#: cms/templates/index.html
+msgid "Your Course Creator request is:"
+msgstr "Din beställningsbegäran är:"
+
+#: cms/templates/index.html
+msgid ""
+"Your request did not meet the criteria/guidelines specified by "
+"{platform_name} Staff."
+msgstr ""
+"Din förfrågan uppfyllde inte de kriterier / riktlinjer som anges av "
+"{platform_name} Staff."
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is currently  evaluating your request."
+msgstr ""
+"{studio_name} är en värdlösning för våra xConsortium-partners och utvalda "
+"gäster. Kurser där du är en lagmedlem visas ovan för att du ska redigera, "
+"medan kursens skaparbehörighet beviljas av {platform_name}. Vårt team "
+"utvärderar din begäran för närvarande."
+
+#: cms/templates/index.html
+msgid ""
+"Your request is currently being reviewed by {platform_name} staff and should"
+" be updated shortly."
+msgstr ""
+"Din förfrågan granskas för närvarande av {platform_name} personal och bör "
+"uppdateras inom kort."
+
+#: cms/templates/index.html
+msgid "Were you expecting to see a particular library here?"
+msgstr "Förväntade du dig att se ett visst bibliotek här?"
+
+#: cms/templates/index.html
+msgid ""
+"The library creator must give you access to the library. Contact the library"
+" creator or administrator for the library you are helping to author."
+msgstr ""
+"Biblioteksskaparen måste ge dig tillgång till biblioteket. Kontakta "
+"bibliotekets upphovsman eller administratör för biblioteket som du hjälper "
+"till författaren."
+
+#: cms/templates/index.html
+msgid "Create Your First Library"
+msgstr "Skapa ditt första bibliotek"
+
+#: cms/templates/index.html
+msgid ""
+"Libraries hold a pool of components that can be re-used across multiple "
+"courses. Create your first library with the click of a button!"
+msgstr ""
+"Bibliotek innehåller en pool av komponenter som kan återanvändas över flera "
+"kurser. Skapa ditt första bibliotek med ett klick!"
+
+#: cms/templates/index.html
+msgid "New to {studio_name}?"
+msgstr "Nytt till {studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"Click Help in the upper-right corner to get more information about the "
+"{studio_name} page you are viewing. You can also use the links at the bottom"
+" of the page to access our continually updated documentation and other "
+"{studio_name} resources."
+msgstr ""
+"Klicka på Hjälp i övre högra hörnet för att få mer information om den "
+"{studio_name} -sidan du tittar på. Du kan också använda länkarna längst ner "
+"på sidan för att få tillgång till vår kontinuerligt uppdaterade "
+"dokumentation och andra {studio_name} resurser."
+
+#: cms/templates/index.html
+msgid "Getting Started with {studio_name}"
+msgstr "Komma igång med {studio_name}"
+
+#: cms/templates/index.html
+msgid "Can I create courses in {studio_name}?"
+msgstr "Kan jag skapa kurser i {studio_name}?"
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must {link_start}contact "
+"{platform_name} staff to help you create a course{link_end}."
+msgstr ""
+"För att skapa kurser i {studio_name} måste du {link_start} kontakta "
+"{platform_name} personal för att hjälpa dig att skapa en kurs {link_end}."
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must have course creator "
+"privileges to create your own course."
+msgstr ""
+"För att skapa kurser i {studio_name} måste du ha kursskapare privilegier för"
+" att skapa en egen kurs."
+
+#: cms/templates/index.html
+msgid ""
+"Your request to author courses in {studio_name} has been denied. Please "
+"{link_start}contact {platform_name} Staff with further questions{link_end}."
+msgstr ""
+"Din begäran om författarkurser i {studio_name} har blivit nekad. Vänligen "
+"{link_start} kontakta {platform_name} Medarbetare med ytterligare frågor "
+"{link_end}."
+
+#: cms/templates/index.html
+msgid "Thanks for signing up, {name}!"
+msgstr "Tack för att du anmält dig, {name}!"
+
+#: cms/templates/index.html
+msgid "We need to verify your email address"
+msgstr "Vi måste verifiera din e-postadress"
+
+#: cms/templates/index.html
+msgid ""
+"Almost there! In order to complete your sign up we need you to verify your "
+"email address ({email}). An activation message and next steps should be "
+"waiting for you there."
+msgstr ""
+"Nästan där! För att slutföra din anmälan behöver vi dig att verifiera din "
+"e-postadress ({email}). Ett aktiveringsmeddelande och nästa steg borde vänta"
+" på dig där."
+
+#: cms/templates/index.html
+msgid "Need help?"
+msgstr "Behövs hjälp?"
+
+#: cms/templates/index.html
+msgid ""
+"Please check your Junk or Spam folders in case our email isn't in your "
+"INBOX. Still can't find the verification email? Request help via the link "
+"below."
+msgstr ""
+"Vänligen kolla dina skräp eller skräppostmappar om vår e-post inte finns i "
+"din INBOX. Kan du fortfarande inte hitta verifierings-e-postmeddelandet? Be "
+"om hjälp via länken nedan."
+
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "Innehållsbibliotek"
@@ -21826,6 +22932,10 @@ msgstr ""
 msgid "Library User Access"
 msgstr "Bibliotek Användaråtkomst"
 
+#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
+msgid "User Access"
+msgstr "Användaråtkomst"
+
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "Ge tillgång till detta bibliotek"
@@ -21889,6 +22999,10 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "Schema och detaljer Inställningar"
+
+#: cms/templates/settings.html cms/templates/widgets/header.html
+msgid "Schedule & Details"
+msgstr "Schema och detaljer"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -22167,6 +23281,16 @@ msgstr "kursinnehåll"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "Ge användbar information om din kurs"
+
+#: cms/templates/settings.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
+"Identifiera kursspråket här. Detta används för att hjälpa användare att "
+"hitta kurser som lärs på ett visst språk. Det används också för att "
+"lokalisera fältet &quot;Från:&quot; i bulkmail."
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -22639,6 +23763,22 @@ msgstr ""
 "Du kan också skapa uppdragstyper, till exempel läxor, labs, frågesporter och"
 " tentor, och ange hur mycket av en elevs betyg varje uppgiftstyp är värt."
 
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Expand or Collapse"
+msgstr "Expand eller Collapse"
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "This block contains multiple components."
+msgstr "Detta block innehåller flera komponenter."
+
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr "Sidor och resurser"
@@ -22679,6 +23819,10 @@ msgstr ""
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "Läs mer om läroböcker"
+
+#: cms/templates/videos_index.html cms/templates/widgets/header.html
+msgid "Video Uploads"
+msgstr "Video uppladdningar"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -22979,6 +24123,50 @@ msgstr "Begäran om tillgänglighetsboende"
 msgid "LMS"
 msgstr "LMS"
 
+#: cms/templates/widgets/header.html
+msgid "Current Course:"
+msgstr "Nuvarande kurs:"
+
+#: cms/templates/widgets/header.html
+msgid "Course Navigation"
+msgstr "Kursnavigering"
+
+#: cms/templates/widgets/header.html
+msgid "Outline"
+msgstr "Översikt"
+
+#: cms/templates/widgets/header.html
+msgid "Publisher"
+msgstr "Utgivare"
+
+#: cms/templates/widgets/header.html
+msgid "Import"
+msgstr "Importera"
+
+#: cms/templates/widgets/header.html
+msgid "Export"
+msgstr "Exportera"
+
+#: cms/templates/widgets/header.html
+msgid "Current Library:"
+msgstr "Nuvarande bibliotek:"
+
+#: cms/templates/widgets/header.html
+msgid "Language preference"
+msgstr "Språkinställningar"
+
+#: cms/templates/widgets/header.html
+msgid "Account Navigation"
+msgstr "Account Navigation"
+
+#: cms/templates/widgets/header.html
+msgid "Contextual Online Help"
+msgstr "Kontextuell onlinehjälp"
+
+#: cms/templates/widgets/header.html
+msgid "Sign Up"
+msgstr "Bli Medlem"
+
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
 msgstr "Starta Latex Source Compiler"
@@ -23031,26 +24219,6 @@ msgstr "Markdown Hjälp"
 msgid "Label"
 msgstr "Märka"
 
-#: cms/templates/widgets/sock.html
-msgid "Looking for help with {studio_name}?"
-msgstr "Letar du efter hjälp med {studio_name}?"
-
-#: cms/templates/widgets/sock.html
-msgid "Hide {studio_name} Help"
-msgstr "Dölj {studio_name} Hjälp"
-
-#: cms/templates/widgets/sock.html
-msgid "{studio_name} Documentation"
-msgstr "{studio_name} Dokumentation"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Access documentation on http://docs.edx.org"
-msgstr "Åtkomstdokumentation på http://docs.edx.org"
-
-#: cms/templates/widgets/sock_links.html
-msgid "edX Documentation"
-msgstr "edX Dokumentation"
-
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "Öppna Open EdX Portal"
@@ -23058,26 +24226,6 @@ msgstr "Öppna Open EdX Portal"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "Öppna edX Portal"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr "Anmäl dig till edX101: Översikt över att skapa en edX-kurs"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101"
-msgstr "Anmäl dig till edX101"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr "Anmäl dig i StudioX: Skapa en kurs med edX Studio"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX"
-msgstr "Anmäl dig i StudioX"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Send an email to {email}"
-msgstr "Skicka ett mail till {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -24301,61 +25449,6 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr "Klicka på knappen \"Starta Proctored Exam\" nedan för att fortsätta."
 
-#~ msgid "Pending"
-#~ msgstr "Avvaktan"
-
-#~ msgid "Organization"
-#~ msgstr "Organisation"
-
-#~ msgid "Course Language"
-#~ msgstr "Kursspråk"
-
-#~ msgid "Library"
-#~ msgstr "Bibliotek"
-
-#~ msgid "Group Configurations"
-#~ msgstr "Gruppkonfigurationer"
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
-
-#~ msgid ""
-#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
-#~ "investigate."
-#~ msgstr ""
-#~ "Vi behåller en logg av gamla e-postmeddelanden, så om den här förfrågan var "
-#~ "oavsiktlig kan vi undersöka."
-
-#~ msgid "Powered by Open edX"
-#~ msgstr "Drivs av Open edX"
-
-#~ msgid "Contact Us"
-#~ msgstr "Kontakta oss"
-
-#~ msgid "Careers"
-#~ msgstr "Karriärer"
-
-#~ msgid "News"
-#~ msgstr "Nyheter"
-
-#~ msgid "Textbooks"
-#~ msgstr "Läroböcker"
-
-#~ msgid "Mailing Address"
-#~ msgstr "Postadress"
-
-#~ msgid "Certificates"
-#~ msgstr "Kurscertifikat"
-
-#~ msgid "Sign In"
-#~ msgstr "Logga in"
-
-#~ msgid "Denied"
-#~ msgstr "Nekad"
-
-#~ msgid "Course Run"
-#~ msgstr "Kurskörning"
-
 #~ msgid "Dismiss"
 #~ msgstr "Avfärda"
 
@@ -24396,524 +25489,44 @@ msgstr "Klicka på knappen \"Starta Proctored Exam\" nedan för att fortsätta."
 #~ msgid "Enqueued dumps for {} course(s)."
 #~ msgstr "Köade dumpar för {} kurs(er)."
 
-#~ msgid "Grading"
-#~ msgstr "Betygsättning"
-
-#~ msgid "Course Team"
-#~ msgstr "Kursteam"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Avancerade inställningar"
-
-#~ msgid "Proctored Exam Settings"
-#~ msgstr "Proctored Exam Settings"
-
-#~ msgid "Checklists"
-#~ msgstr "Checklistor"
-
-#~ msgid "Tools"
-#~ msgstr "Verktyg"
-
-#~ msgid "Duplicate"
-#~ msgstr "Duplicera"
-
-#~ msgid "Move"
-#~ msgstr "Flytta"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Dra för att omordna"
-
-#~ msgid "Page Actions"
-#~ msgstr "Sidhanteringar"
-
-#~ msgid "Create a Course Rerun of:"
-#~ msgstr "Skapa en kursåterställning av:"
-
-#~ msgid "Create a re-run of a course"
-#~ msgstr "Skapa en omkörning av en kurs"
-
-#~ msgid "You are creating a re-run from:"
-#~ msgstr "Du skapar en återkörning från:"
-
-#~ msgid ""
-#~ "Provide identifying information for this re-run of the course. The original "
-#~ "course is not affected in any way by a re-run."
-#~ msgstr ""
-#~ "Ange identifierande information för denna omkörning av kursen. Den "
-#~ "ursprungliga kursen påverkas inte på något sätt av en re-run."
-
-#~ msgid ""
-#~ "Note: Together, the organization, course number, and course run must "
-#~ "uniquely identify this new course instance."
-#~ msgstr ""
-#~ "Obs! Organisationen, kursnumret och kursutbudet måste tillsammans unikt "
-#~ "identifiera denna nya kursinstans."
-
-#~ msgid "Required Information to Create a re-run of a course"
-#~ msgstr "Obligatorisk information för att skapa en omkörning av en kurs"
-
-#~ msgid "e.g. Introduction to Computer Science"
-#~ msgstr "T.ex. Introduktion till datavetenskap"
-
-#~ msgid ""
-#~ "The public display name for the new course. (This name is often the same as "
-#~ "the original course name.)"
-#~ msgstr ""
-#~ "Det offentliga visningsnamnet för den nya kursen. (Detta namn är ofta "
-#~ "detsamma som det ursprungliga kursnamnet.)"
-
-#~ msgid "e.g. UniversityX or OrganizationX"
-#~ msgstr "T.ex. UniversityX eller OrganizationX"
-
-#~ msgid ""
-#~ "The name of the organization sponsoring the new course. (This name is often "
-#~ "the same as the original organization name.)"
-#~ msgstr ""
-#~ "Namnet på organisationen som sponsrar den nya kursen. (Detta namn är ofta "
-#~ "detsamma som det ursprungliga organisationsnamnet.)"
-
-#~ msgid "Note: No spaces or special characters are allowed."
-#~ msgstr "Obs! Inga mellanslag eller specialtecken är tillåtna."
-
-#~ msgid "e.g. CS101"
-#~ msgstr "T.ex. CS101"
-
-#~ msgid ""
-#~ "The unique number that identifies the new course within the organization.  "
-#~ "(This number will be the same as the original course number and cannot be "
-#~ "changed.)"
-#~ msgstr ""
-#~ "Det unika numret som identifierar den nya kursen inom organisationen. (Detta"
-#~ " nummer kommer att vara detsamma som det ursprungliga kursnumret och kan "
-#~ "inte ändras.)"
-
-#~ msgid "e.g. 2014_T1"
-#~ msgstr "T.ex. 2014_T1"
-
-#~ msgid ""
-#~ "The term in which the new course will run. (This value is often different "
-#~ "than the original course run value.)"
-#~ msgstr ""
-#~ "Termen där den nya kursen kommer att springa. (Detta värde är ofta "
-#~ "annorlunda än det ursprungliga kursvärdet.)"
-
-#~ msgid "Create Re-run"
-#~ msgstr "Skapa Re-run"
-
-#~ msgid "When will my course re-run start?"
-#~ msgstr "När kommer min kurs att starta igen?"
-
-#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-#~ msgstr "Den nya kursen startar den 1 januari 2030 vid midnatt (UTC)."
-
-#~ msgid "What transfers from the original course?"
-#~ msgstr "Vilka överföringar från den ursprungliga kursen?"
-
-#~ msgid ""
-#~ "The new course has the same course outline and content as the original "
-#~ "course. All problems, videos, announcements, and other files are duplicated "
-#~ "to the new course."
-#~ msgstr ""
-#~ "Den nya kursen har samma kursplan och innehåll som originalkurs. Alla "
-#~ "problem, videor, meddelanden och andra filer kopieras till den nya kursen."
-
-#~ msgid "What does not transfer from the original course?"
-#~ msgstr "Vad överförs inte från den ursprungliga kursen?"
-
-#~ msgid ""
-#~ "You are the only member of the new course's staff. No students are enrolled "
-#~ "in the course, and there is no student data. There is no content in the "
-#~ "discussion topics or wiki."
-#~ msgstr ""
-#~ "Du är den enda medlemmen i den nya kursens personal. Inga studenter är "
-#~ "inskrivna i kursen, och det finns inga studentuppgifter. Det finns inget "
-#~ "innehåll i diskussionsämnena eller wiki."
-
-#~ msgid "Learn more about Course Re-runs"
-#~ msgstr "Läs mer om kursåtergångar"
-
 #~ msgid "Course Outline"
 #~ msgstr "Kursplan"
 
 #~ msgid "Warning"
 #~ msgstr "Varning"
 
-#~ msgid "Pages"
-#~ msgstr "Sidor"
-
-#~ msgid "Export to Git"
-#~ msgstr "Exportera till Git"
-
 #~ msgid "{studio_name} Home"
 #~ msgstr "{studio_name} Hem"
 
-#~ msgid "New Course"
-#~ msgstr "Ny kurs"
+#~ msgid "Looking for help with {studio_name}?"
+#~ msgstr "Letar du efter hjälp med {studio_name}?"
 
-#~ msgid "Email staff to create course"
-#~ msgstr "E-postpersonal att skapa kurs"
+#~ msgid "Hide {studio_name} Help"
+#~ msgstr "Dölj {studio_name} Hjälp"
 
-#~ msgid "New Library"
-#~ msgstr "Nytt bibliotek"
+#~ msgid "{studio_name} Documentation"
+#~ msgstr "{studio_name} Dokumentation"
 
-#~ msgid "Please correct the highlighted fields below."
-#~ msgstr "Rensa de markerade fälten nedan."
+#~ msgid "Access documentation on http://docs.edx.org"
+#~ msgstr "Åtkomstdokumentation på http://docs.edx.org"
 
-#~ msgid "Create a New Course"
-#~ msgstr "Skapa en ny kurs"
+#~ msgid "edX Documentation"
+#~ msgstr "edX Dokumentation"
 
-#~ msgid "Required Information to Create a New Course"
-#~ msgstr "Obligatorisk information för att skapa en ny kurs"
+#~ msgid "Enroll in edX101: Overview of Creating an edX Course"
+#~ msgstr "Anmäl dig till edX101: Översikt över att skapa en edX-kurs"
 
-#~ msgid ""
-#~ "The public display name for your course. This cannot be changed, but you can"
-#~ " set a different display name in Advanced Settings later."
-#~ msgstr ""
-#~ "Det offentliga visningsnamnet för din kurs. Det här kan inte ändras, men du "
-#~ "kan ange ett annat visningsnamn i Avancerade inställningar senare."
+#~ msgid "Enroll in edX101"
+#~ msgstr "Anmäl dig till edX101"
 
-#~ msgid ""
-#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
-#~ "organization name is part of the course URL.{strong_end} This cannot be "
-#~ "changed, but you can set a different display name in Advanced Settings "
-#~ "later."
-#~ msgstr ""
-#~ "Namnet på organisationen som sponsrar kursen. {strong_start} Obs! "
-#~ "Organisationsnamnet är en del av kursadressen. {strong_end} Det här kan inte"
-#~ " ändras, men du kan ange ett annat visningsnamn i Avancerade inställningar "
-#~ "senare."
+#~ msgid "Enroll in StudioX: Creating a Course with edX Studio"
+#~ msgstr "Anmäl dig i StudioX: Skapa en kurs med edX Studio"
 
-#~ msgid ""
-#~ "The unique number that identifies your course within your organization. "
-#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
-#~ " characters are allowed and it cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "Det unika numret som identifierar din kurs inom din organisation. "
-#~ "{strong_start} Obs: Det här är en del av din kursadress, så inga mellanslag "
-#~ "eller specialtecken är tillåtna och det kan inte ändras. {strong_end}"
+#~ msgid "Enroll in StudioX"
+#~ msgstr "Anmäl dig i StudioX"
 
-#~ msgid ""
-#~ "The term in which your course will run. {strong_start}Note: This is part of "
-#~ "your course URL, so no spaces or special characters are allowed and it "
-#~ "cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "Termen där din kurs kommer att köras. {strong_start} Obs: Det här är en del "
-#~ "av din kursadress, så inga mellanslag eller specialtecken är tillåtna och "
-#~ "det kan inte ändras. {strong_end}"
-
-#~ msgid "Create"
-#~ msgstr "Skapa"
-
-#~ msgid "Create a New Library"
-#~ msgstr "Skapa ett nytt bibliotek"
-
-#~ msgid "Required Information to Create a New Library"
-#~ msgstr "Obligatorisk information för att skapa ett nytt bibliotek"
-
-#~ msgid "Library Name"
-#~ msgstr "Bibliotekets namn"
-
-#~ msgid "e.g. Computer Science Problems"
-#~ msgstr "t.ex. datavetenskapsproblem"
-
-#~ msgid "The public display name for your library."
-#~ msgstr "Det offentliga visningsnamnet för ditt bibliotek."
-
-#~ msgid "The public organization name for your library."
-#~ msgstr "Den offentliga organisationsnamnet för ditt bibliotek."
-
-#~ msgid "This cannot be changed."
-#~ msgstr "Detta kan inte ändras."
-
-#~ msgid "Library Code"
-#~ msgstr "Bibliotekskod"
-
-#~ msgid "e.g. CSPROB"
-#~ msgstr "t.ex. CSPROB"
-
-#~ msgid ""
-#~ "The unique code that identifies this library. {strong_start}Note: This is "
-#~ "part of your library URL, so no spaces or special characters are "
-#~ "allowed.{strong_end} This cannot be changed."
-#~ msgstr ""
-#~ "Den unika koden som identifierar det här biblioteket. {strong_start} Obs! "
-#~ "Det här är en del av ditt webbadress i biblioteket, så det är inte tillåtet "
-#~ "att lägga till mellanslag eller specialtecken. {strong_end} Det här kan inte"
-#~ " ändras."
-
-#~ msgid "Organization and Library Settings"
-#~ msgstr "Organisations- och biblioteksinställningar"
-
-#~ msgid "Show all courses in organization:"
-#~ msgstr "Visa alla kurser i organisationen:"
-
-#~ msgid "For example, MITx"
-#~ msgstr "Till exempel, MITx"
-
-#~ msgid "Courses Being Processed"
-#~ msgstr "Kurser som behandlas"
-
-#~ msgid "This course run is currently being created."
-#~ msgstr "Kursutbudet skapas för närvarande."
-
-#~ msgid "Configuring as re-run"
-#~ msgstr "Konfigurera som åter körning"
-
-#~ msgid ""
-#~ "The new course will be added to your course list in 5-10 minutes. Return to "
-#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
-#~ " new course will need some manual configuration."
-#~ msgstr ""
-#~ "Den nya kursen läggs till i din kurslista på 5-10 minuter. Återgå till den "
-#~ "här sidan eller {link_start} uppdatera den {link_end} för att uppdatera "
-#~ "kurslistan. Den nya kursen behöver lite manuell konfiguration."
-
-#~ msgid "This re-run processing status:"
-#~ msgstr "Den här återställningsbehandlingsstatusen:"
-
-#~ msgid "Configuration Error"
-#~ msgstr "Konfigurationsfel"
-
-#~ msgid ""
-#~ "A system error occurred while your course was being processed. Please go to "
-#~ "the original course to try the re-run again, or contact your PM for "
-#~ "assistance."
-#~ msgstr ""
-#~ "Ett systemfel inträffade när kursen behandlades. Gå till den ursprungliga "
-#~ "kursen för att försöka återköra igen, eller kontakta din PM för hjälp."
-
-#~ msgid "Archived Courses"
-#~ msgstr "Arkiverade kurser"
-
-#~ msgid "Libraries"
-#~ msgstr "bibliotek"
-
-#~ msgid "Are you staff on an existing {studio_name} course?"
-#~ msgstr "Är du anställd på en befintlig {studio_name} kurs?"
-
-#~ msgid ""
-#~ "The course creator must give you access to the course. Contact the course "
-#~ "creator or administrator for the course you are helping to author."
-#~ msgstr ""
-#~ "Kursansvarig måste ge dig tillgång till kursen. Kontakta kursens upphovsman "
-#~ "eller administratör för kursen du hjälper till författare."
-
-#~ msgid "Create Your First Course"
-#~ msgstr "Skapa din första kurs"
-
-#~ msgid "Your new course is just a click away!"
-#~ msgstr "Din nya kurs är bara ett klick bort!"
-
-#~ msgid "Becoming a Course Creator in {studio_name}"
-#~ msgstr "Bli en kursskapare i {studio_name}"
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team will evaluate your request and provide you feedback within 24 hours "
-#~ "during the work week."
-#~ msgstr ""
-#~ "{studio_name} är en värdlösning för våra xConsortium-partners och utvalda "
-#~ "gäster. Kurser där du är en lagmedlem visas ovan för att du ska redigera, "
-#~ "medan kursens skaparbehörighet beviljas av {platform_name}. Vårt team kommer"
-#~ " att utvärdera din förfrågan och ge dig feedback inom 24 timmar under "
-#~ "arbetsveckan."
-
-#~ msgid "Your Course Creator Request Status:"
-#~ msgstr "Din begäran om kursupphovsrör:"
-
-#~ msgid "Request the Ability to Create Courses"
-#~ msgstr "Be om förmåga att skapa kurser"
-
-#~ msgid "Your Course Creator Request Status"
-#~ msgstr "Din kurs Creator Request Status"
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team is has completed evaluating your request."
-#~ msgstr ""
-#~ "{studio_name} är en värdlösning för våra xConsortium-partners och utvalda "
-#~ "gäster. Kurser där du är en lagmedlem visas ovan för att du ska redigera, "
-#~ "medan kursens skaparbehörighet beviljas av {platform_name}. Vårt team har "
-#~ "slutfört utvärderingen av din förfrågan."
-
-#~ msgid "Your Course Creator request is:"
-#~ msgstr "Din beställningsbegäran är:"
-
-#~ msgid ""
-#~ "Your request did not meet the criteria/guidelines specified by "
-#~ "{platform_name} Staff."
-#~ msgstr ""
-#~ "Din förfrågan uppfyllde inte de kriterier / riktlinjer som anges av "
-#~ "{platform_name} Staff."
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team is currently  evaluating your request."
-#~ msgstr ""
-#~ "{studio_name} är en värdlösning för våra xConsortium-partners och utvalda "
-#~ "gäster. Kurser där du är en lagmedlem visas ovan för att du ska redigera, "
-#~ "medan kursens skaparbehörighet beviljas av {platform_name}. Vårt team "
-#~ "utvärderar din begäran för närvarande."
-
-#~ msgid ""
-#~ "Your request is currently being reviewed by {platform_name} staff and should"
-#~ " be updated shortly."
-#~ msgstr ""
-#~ "Din förfrågan granskas för närvarande av {platform_name} personal och bör "
-#~ "uppdateras inom kort."
-
-#~ msgid "Were you expecting to see a particular library here?"
-#~ msgstr "Förväntade du dig att se ett visst bibliotek här?"
-
-#~ msgid ""
-#~ "The library creator must give you access to the library. Contact the library"
-#~ " creator or administrator for the library you are helping to author."
-#~ msgstr ""
-#~ "Biblioteksskaparen måste ge dig tillgång till biblioteket. Kontakta "
-#~ "bibliotekets upphovsman eller administratör för biblioteket som du hjälper "
-#~ "till författaren."
-
-#~ msgid "Create Your First Library"
-#~ msgstr "Skapa ditt första bibliotek"
-
-#~ msgid ""
-#~ "Libraries hold a pool of components that can be re-used across multiple "
-#~ "courses. Create your first library with the click of a button!"
-#~ msgstr ""
-#~ "Bibliotek innehåller en pool av komponenter som kan återanvändas över flera "
-#~ "kurser. Skapa ditt första bibliotek med ett klick!"
-
-#~ msgid "New to {studio_name}?"
-#~ msgstr "Nytt till {studio_name}?"
-
-#~ msgid ""
-#~ "Click Help in the upper-right corner to get more information about the "
-#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
-#~ " of the page to access our continually updated documentation and other "
-#~ "{studio_name} resources."
-#~ msgstr ""
-#~ "Klicka på Hjälp i övre högra hörnet för att få mer information om den "
-#~ "{studio_name} -sidan du tittar på. Du kan också använda länkarna längst ner "
-#~ "på sidan för att få tillgång till vår kontinuerligt uppdaterade "
-#~ "dokumentation och andra {studio_name} resurser."
-
-#~ msgid "Getting Started with {studio_name}"
-#~ msgstr "Komma igång med {studio_name}"
-
-#~ msgid "Can I create courses in {studio_name}?"
-#~ msgstr "Kan jag skapa kurser i {studio_name}?"
-
-#~ msgid ""
-#~ "In order to create courses in {studio_name}, you must {link_start}contact "
-#~ "{platform_name} staff to help you create a course{link_end}."
-#~ msgstr ""
-#~ "För att skapa kurser i {studio_name} måste du {link_start} kontakta "
-#~ "{platform_name} personal för att hjälpa dig att skapa en kurs {link_end}."
-
-#~ msgid ""
-#~ "In order to create courses in {studio_name}, you must have course creator "
-#~ "privileges to create your own course."
-#~ msgstr ""
-#~ "För att skapa kurser i {studio_name} måste du ha kursskapare privilegier för"
-#~ " att skapa en egen kurs."
-
-#~ msgid ""
-#~ "Your request to author courses in {studio_name} has been denied. Please "
-#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
-#~ msgstr ""
-#~ "Din begäran om författarkurser i {studio_name} har blivit nekad. Vänligen "
-#~ "{link_start} kontakta {platform_name} Medarbetare med ytterligare frågor "
-#~ "{link_end}."
-
-#~ msgid "Thanks for signing up, {name}!"
-#~ msgstr "Tack för att du anmält dig, {name}!"
-
-#~ msgid "We need to verify your email address"
-#~ msgstr "Vi måste verifiera din e-postadress"
-
-#~ msgid ""
-#~ "Almost there! In order to complete your sign up we need you to verify your "
-#~ "email address ({email}). An activation message and next steps should be "
-#~ "waiting for you there."
-#~ msgstr ""
-#~ "Nästan där! För att slutföra din anmälan behöver vi dig att verifiera din "
-#~ "e-postadress ({email}). Ett aktiveringsmeddelande och nästa steg borde vänta"
-#~ " på dig där."
-
-#~ msgid "Need help?"
-#~ msgstr "Behövs hjälp?"
-
-#~ msgid ""
-#~ "Please check your Junk or Spam folders in case our email isn't in your "
-#~ "INBOX. Still can't find the verification email? Request help via the link "
-#~ "below."
-#~ msgstr ""
-#~ "Vänligen kolla dina skräp eller skräppostmappar om vår e-post inte finns i "
-#~ "din INBOX. Kan du fortfarande inte hitta verifierings-e-postmeddelandet? Be "
-#~ "om hjälp via länken nedan."
-
-#~ msgid "User Access"
-#~ msgstr "Användaråtkomst"
-
-#~ msgid "Schedule & Details"
-#~ msgstr "Schema och detaljer"
-
-#~ msgid ""
-#~ "Identify the course language here. This is used to assist users find courses"
-#~ " that are taught in a specific language. It is also used to localize the "
-#~ "'From:' field in bulk emails."
-#~ msgstr ""
-#~ "Identifiera kursspråket här. Detta används för att hjälpa användare att "
-#~ "hitta kurser som lärs på ett visst språk. Det används också för att "
-#~ "lokalisera fältet &quot;Från:&quot; i bulkmail."
-
-#~ msgid "Expand or Collapse"
-#~ msgstr "Expand eller Collapse"
-
-#~ msgid "This block contains multiple components."
-#~ msgstr "Detta block innehåller flera komponenter."
-
-#~ msgid "Video Uploads"
-#~ msgstr "Video uppladdningar"
-
-#~ msgid "Current Course:"
-#~ msgstr "Nuvarande kurs:"
-
-#~ msgid "Course Navigation"
-#~ msgstr "Kursnavigering"
-
-#~ msgid "Outline"
-#~ msgstr "Översikt"
-
-#~ msgid "Publisher"
-#~ msgstr "Utgivare"
-
-#~ msgid "Import"
-#~ msgstr "Importera"
-
-#~ msgid "Export"
-#~ msgstr "Exportera"
-
-#~ msgid "Current Library:"
-#~ msgstr "Nuvarande bibliotek:"
-
-#~ msgid "Language preference"
-#~ msgstr "Språkinställningar"
-
-#~ msgid "Account Navigation"
-#~ msgstr "Account Navigation"
-
-#~ msgid "Contextual Online Help"
-#~ msgstr "Kontextuell onlinehjälp"
-
-#~ msgid "Sign Up"
-#~ msgstr "Bli Medlem"
+#~ msgid "Send an email to {email}"
+#~ msgstr "Skicka ett mail till {email}"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
@@ -24931,16 +25544,6 @@ msgstr "Klicka på knappen \"Starta Proctored Exam\" nedan för att fortsätta."
 #~ "Visar alla matchande innehåll som är kvalificerade att läggas till i "
 #~ "{display_name}. Varje elev får tilldelas {max_count} komponenter "
 #~ "slumpmässigt från den här listan."
-
-#~ msgid "example: username@domain.com"
-#~ msgstr "Exempel: Användarnamn@domän.com"
-
-#~ msgid ""
-#~ "edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-#~ "{link_start}edX Inc.{link_end}"
-#~ msgstr ""
-#~ "edX, Open edX och edX- och Open edX-logotyperna är registrerade varumärken "
-#~ "som tillhör {link_start}edX Inc.{link_end}"
 
 #~ msgid "You do not have access to this dependency block."
 #~ msgstr "Du har inte tillgång till detta beroendeblock."
@@ -25039,220 +25642,6 @@ msgstr "Klicka på knappen \"Starta Proctored Exam\" nedan för att fortsätta."
 #~ msgstr ""
 #~ "Du kan inkludera nyckelord i dina meddelanden. För en lista över "
 #~ "tillgängliga sökord, se {start_link}dokumentationen{end_link}."
-
-#~ msgid ""
-#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
-#~ "Code{honor_link_end}"
-#~ msgstr ""
-#~ "{tos_link_start} användarvillkor {tos_link_end} och {honor_link_start} "
-#~ "uppförandekod {honor_link_end}"
-
-#~ msgid "Copyright"
-#~ msgstr "upphovsrätt"
-
-#~ msgid "Copyright {year}. All rights reserved."
-#~ msgstr "Upphovsrätt {year}. Alla rättigheter förbehållna."
-
-#~ msgid "For anyone, anywhere, anytime"
-#~ msgstr "För någon, var som helst, när som helst"
-
-#~ msgid ""
-#~ "We're sorry, but this version of your browser is not supported. Try again "
-#~ "using a different browser or a newer version of your browser."
-#~ msgstr ""
-#~ "Vi beklagar, men den här versionen av din webbläsare stöds inte. Försök igen"
-#~ " med en annan webbläsare eller en nyare version av din webbläsare."
-
-#~ msgid "The following errors occurred while processing your registration:"
-#~ msgstr "Följande fel inträffade under behandlingen av din registrering:"
-
-#~ msgid "Sign up with {provider_name}"
-#~ msgstr "Registrera dig med {provider_name}"
-
-#~ msgid "Create your own {platform_name} account below"
-#~ msgstr "Skapa ditt eget {platform_name} konto nedan"
-
-#~ msgid ""
-#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
-#~ "asterisk (*)</strong>."
-#~ msgstr ""
-#~ "Obligatoriska fält är markerade med <strong class=\"indicator\">fetstil och "
-#~ "en asterisk (*)</strong>."
-
-#~ msgid "You've successfully signed in with {selected_provider}."
-#~ msgstr "Du har lyckats logga in med {selected_provider}."
-
-#~ msgid ""
-#~ "We just need a little more information before you start learning with "
-#~ "{platform_name}."
-#~ msgstr ""
-#~ "Vi behöver bara lite mer information innan du börjar lära dig med "
-#~ "{platform_name}."
-
-#~ msgid "Please complete the following fields to register for an account. "
-#~ msgstr "Vänligen fyll i följande fält för att registrera dig för ett konto."
-
-#~ msgid "example: Jane Doe"
-#~ msgstr "Exempel: Jane Doe"
-
-#~ msgid "Your legal name, used for any certificates you earn."
-#~ msgstr "Ditt juridiska namn, används för alla certifikat du tjänar."
-
-#~ msgid "example: JaneDoe"
-#~ msgstr "Exempel: JaneDoe"
-
-#~ msgid "Will be shown in any discussions or forums you participate in"
-#~ msgstr "Kommer att visas i alla diskussioner eller forum du deltar i"
-
-#~ msgid "cannot be changed later"
-#~ msgstr "Kan inte ändras senare"
-
-#~ msgid "Welcome {username}"
-#~ msgstr "Välkommen {username}"
-
-#~ msgid "Enter a Public Display Name:"
-#~ msgstr "Ange ett offentligt visningsnamn:"
-
-#~ msgid "Public Display Name"
-#~ msgstr "Public Display Name"
-
-#~ msgid "Additional Personal Information"
-#~ msgstr "Ytterligare personuppgifter"
-
-#~ msgid "example: New York"
-#~ msgstr "Exempel: New York"
-
-#~ msgid "Highest Level of Education Completed"
-#~ msgstr "Högsta utbildningsnivå slutförd"
-
-#~ msgid "Year of Birth"
-#~ msgstr "Födelseår"
-
-#~ msgid "Please share with us your reasons for registering with {platform_name}"
-#~ msgstr ""
-#~ "Vänligen dela med oss ​​dina skäl för att registrera dig med {platform_name}"
-
-#~ msgid "Account Acknowledgements"
-#~ msgstr "Konto bekräftelser"
-
-#~ msgid "Preferences for {platform_name}"
-#~ msgstr "Inställningar för {platform_name}"
-
-#~ msgid "Update my {platform_name} Account"
-#~ msgstr "Uppdatera mitt {platform_name} konto"
-
-#~ msgid "Processing your account information"
-#~ msgstr "Bearbetar din kontoinformation"
-
-#~ msgid "Welcome {username}!  Please set your preferences below"
-#~ msgstr "Välkommen {username}! Ange dina preferenser nedan"
-
-#~ msgid ""
-#~ "Required fields are noted by {strong_indicator}bold text and an asterisk "
-#~ "(*).{strong_close}"
-#~ msgstr ""
-#~ "Obligatoriska fält är markerade med {strong_indicator}fet text och en "
-#~ "asterisk (*).{strong_close}"
-
-#~ msgid "Update My Account"
-#~ msgstr "Uppdatera mitt konto"
-
-#~ msgid "Registration Help"
-#~ msgstr "Registreringshjälp"
-
-#~ msgid "Already registered?"
-#~ msgstr "Redan registrerad?"
-
-#~ msgid "Next Steps"
-#~ msgstr "Nästa steg"
-
-#~ msgid ""
-#~ "You will receive an activation email.  You must click on the activation link"
-#~ " to complete the process.  Don't see the email?  Check your spam folder and "
-#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
-#~ "able to receive email from your courses."
-#~ msgstr ""
-#~ "Du kommer att få ett aktiverings-e-postmeddelande. Du måste klicka på "
-#~ "aktiveringslänken för att slutföra processen. Ser du inte e-postmeddelandet?"
-#~ " Kontrollera din spammapp och markera e-post från class.stanford.edu som "
-#~ "&quot;inte spam&quot;, eftersom du vill kunna ta emot e-post från dina "
-#~ "kurser."
-
-#~ msgid "Need Help?"
-#~ msgstr "Behövs hjälp?"
-
-#~ msgid "Need help in registering with {platform_name}?"
-#~ msgstr "Behöver du hjälp med att registrera dig med {platform_name}?"
-
-#~ msgid "View our FAQs for answers to commonly asked questions."
-#~ msgstr "Se våra vanliga frågor för svar på vanliga frågor."
-
-#~ msgid ""
-#~ "Once registered, most questions can be answered in the course specific "
-#~ "discussion forums or through the FAQs."
-#~ msgstr ""
-#~ "När du är registrerad kan de flesta frågor besvaras i kursspecifika "
-#~ "diskussionsforum eller genom vanliga frågor."
-
-#~ msgid "Thank you for signing up for {platform_name}."
-#~ msgstr "Tack för att du anmält dig till {platform_name}."
-
-#~ msgid ""
-#~ "Change your life and start learning today by activating your {platform_name}"
-#~ " account. Click on the link below or copy and paste it into your browser's "
-#~ "address bar."
-#~ msgstr ""
-#~ "Byt ditt liv och börja lära dig idag genom att aktivera ditt {platform_name}"
-#~ " konto. Klicka på länken nedan eller kopiera och klistra in den i "
-#~ "webbläsarens adressfält."
-
-#~ msgid ""
-#~ "If you didn't request this, you don't need to do anything; you won't receive"
-#~ " any more email from us. Please do not reply to this e-mail; if you require "
-#~ "assistance, check the about section of the {platform_name} Courses web site."
-#~ msgstr ""
-#~ "Om du inte begärde det behöver du inte göra någonting. Du kommer inte att få"
-#~ " mer email från oss. Var god och svara ej på detta mail; Om du behöver "
-#~ "hjälp, kolla om avsnittet på webbplatsen {platform_name} Kurser."
-
-#~ msgid ""
-#~ "This is to confirm that you changed the e-mail associated with "
-#~ "{platform_name} from {old_email} to {new_email}. If you did not make this "
-#~ "request, please contact us at"
-#~ msgstr ""
-#~ "Detta bekräftar att du har ändrat det e-postmeddelande som är kopplat till "
-#~ "{platform_name} från {old_email} till {new_email}. Om du inte gjorde denna "
-#~ "förfrågan, kontakta oss på"
-
-#~ msgid ""
-#~ "We received a request to change the e-mail associated with your "
-#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
-#~ " please confirm your new e-mail address by visiting:"
-#~ msgstr ""
-#~ "Vi har fått en förfrågan om att ändra det e-postmeddelande som är kopplat "
-#~ "till ditt {platform_name} -konto från {old_email} till {new_email}. Om det "
-#~ "här är korrekt, bekräfta din nya e-postadress genom att besöka:"
-
-#~ msgid ""
-#~ "We are sorry. Our course staff did not approve your request to change your "
-#~ "name from {old_name} to {new_name}. If you need further assistance, please "
-#~ "e-mail the tech support at {email}"
-#~ msgstr ""
-#~ "Vi är ledsna. Vår kurspersonal godkände inte din förfrågan om att ändra ditt"
-#~ " namn från {old_name} till {new_name}. Om du behöver mer hjälp, skicka "
-#~ "e-post till teknisk support på {email}"
-
-#~ msgid "Put your Terms of Service here!"
-#~ msgstr "Sätt dina användarvillkor här!"
-
-#~ msgid "Put your Privacy Policy here!"
-#~ msgstr "Sätt din integritetspolicy här!"
-
-#~ msgid "Put your Honor Code here!"
-#~ msgstr "Sätt din ära kod här!"
-
-#~ msgid "Put your Copyright Text here!"
-#~ msgstr "Sätt din Copyright Text här!"
 
 #~ msgid "Collapse All"
 #~ msgstr "Kollapsa alla"
