@@ -160,6 +160,8 @@ class ProblemTransformer(WikiTransformer):
         problem = etree.XML(raw_data, parser=parser)
         tree = etree.ElementTree(problem)
         data_dict = {}
+        # TODO move component type attribute list to settings so
+        # in future we can add more components and attributes for translation 
         is_text_input = problem.xpath("/problem/stringresponse")
         for e in problem.iter("*"):
             if is_text_input and e.get("answer"):
