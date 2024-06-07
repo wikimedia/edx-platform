@@ -10,7 +10,7 @@
      */
     var CUSTOM_FONTS, STANDARD_FONTS, _getFonts;
 
-    CUSTOM_FONTS = "Default='Open Sans', Verdana, Arial, Helvetica, sans-serif;";
+    CUSTOM_FONTS = "Default='Open Sans', Verdana, Arial, Helvetica, sans-serif;" + "Noto Kufi Arabic='Noto Kufi Arabic', Verdana, Arial, Helvetica, sans-serif;" + "Source Sans Pro='Source Sans Pro', Verdana, Arial, Helvetica, sans-serif;" + "Montserrat='Montserrat', Verdana, Arial, Helvetica, sans-serif;" ;
 
     /*
     list of standard tinyMCE fonts: http://www.tinymce.com/wiki.php/Configuration:font_formats
