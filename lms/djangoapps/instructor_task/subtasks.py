@@ -136,6 +136,8 @@ class SubtaskStatus:
       'retried_withmax' : number of times the subtask has been retried for conditions that
           should have a maximum count applied
       'state' : celery state of the subtask (e.g. QUEUING, PROGRESS, RETRY, FAILURE, SUCCESS)
+      'failure_details' : list of tuples (email, name, reason) for each failed recipient
+      'skip_details' : list of tuples (email, name, reason) for each skipped recipient
 
     Object is not JSON-serializable, so to_dict and from_dict methods are provided so that
     it can be passed as a serializable argument to tasks (and be reconstituted within such tasks).
@@ -145,7 +147,7 @@ class SubtaskStatus:
     Also, we should count up "not attempted" separately from attempted/failed.
     """
 
-    def __init__(self, task_id, attempted=None, succeeded=0, failed=0, skipped=0, retried_nomax=0, retried_withmax=0, state=None):  # lint-amnesty, pylint: disable=line-too-long
+    def __init__(self, task_id, attempted=None, succeeded=0, failed=0, skipped=0, retried_nomax=0, retried_withmax=0, state=None, failure_details=None, skip_details=None):  # lint-amnesty, pylint: disable=line-too-long
         """Construct a SubtaskStatus object."""
         self.task_id = task_id
         if attempted is not None:
@@ -158,6 +160,8 @@ class SubtaskStatus:
         self.retried_nomax = retried_nomax
         self.retried_withmax = retried_withmax
         self.state = state if state is not None else QUEUING
+        self.failure_details = []
+        self.skip_details = []
 
     @classmethod
     def from_dict(cls, d):
@@ -200,6 +204,14 @@ class SubtaskStatus:
         """Returns the number of retries of any kind."""
         return self.retried_nomax + self.retried_withmax
 
+    def add_failure_detail(self, email,reason):
+        """Add a failure detail."""
+        self.failure_details.append((email,reason))
+
+    def add_skip_detail(self, email,reason):
+        """Add a skip detail."""
+        self.skip_details.append((email,reason))
+
     def __repr__(self):
         """Return print representation of a SubtaskStatus object."""
         return f'SubtaskStatus<{self.to_dict()!r}>'
@@ -207,7 +219,6 @@ class SubtaskStatus:
     def __str__(self):
         """Return unicode version of a SubtaskStatus object representation."""
         return str(repr(self))
-
 
 def initialize_subtask_info(entry, action_name, total_num, subtask_id_list):
     """
@@ -247,7 +258,10 @@ def initialize_subtask_info(entry, action_name, total_num, subtask_id_list):
         'succeeded': 0,
         'total': total_num,
         'duration_ms': int(0),
-        'start_time': time()
+        'start_time': time(),
+        'skip_details':[],
+        'failure_details':[]
+
     }
     entry.task_output = InstructorTask.create_output_for_success(task_progress)
     entry.task_state = PROGRESS
@@ -261,7 +275,9 @@ def initialize_subtask_info(entry, action_name, total_num, subtask_id_list):
         'total': num_subtasks,
         'succeeded': 0,
         'failed': 0,
-        'status': subtask_status
+        'status': subtask_status,
+        'skip_details':[],
+        'failure_details':[]
     }
     entry.subtasks = json.dumps(subtask_dict)
 
@@ -549,7 +565,7 @@ def _update_subtask_status(entry_id, current_task_id, new_subtask_status):
         # retry.
         new_state = new_subtask_status.state
         if new_subtask_status is not None and new_state in READY_STATES:
-            for statname in ['attempted', 'succeeded', 'failed', 'skipped']:
+            for statname in ['attempted', 'succeeded', 'failed', 'skipped','skip_details', 'failure_details']:
                 task_progress[statname] += getattr(new_subtask_status, statname)
 
         # Figure out if we're actually done (i.e. this is the last task to complete).

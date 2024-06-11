@@ -135,6 +135,8 @@ def get_task_completion_info(instructor_task):  # lint-amnesty, pylint: disable=
     # key, and simply sum them.
     num_succeeded = task_output.get('updated', 0) + task_output.get('succeeded', 0)
     num_skipped = task_output.get('skipped', 0)
+    failure_info = task_output.get('failure_details', [])
+    skip_info = task_output.get('skip_details', [])
 
     student = None
     problem_url = None
@@ -219,8 +221,25 @@ def get_task_completion_info(instructor_task):  # lint-amnesty, pylint: disable=
     if student is None and num_attempted != num_total:
         # Translators: {total} is a count.  This message is appended to task progress status messages.
         msg_format += _(" (out of {total})")
+    
+    detailed_failure_msg = ""
+    detailed_skip_msg = ""
 
-    # Update status in task result object itself:
+    if failure_info:
+        detailed_failure_msg = "Detailed Failures: " + ", ".join([f"{email}: {reason}" for email, reason in failure_info])
+
+    if skip_info:
+        detailed_skip_msg = "Detailed Skips: " + ", ".join([f"{reason}: {email}" for email, reason in skip_info])
+
+    if detailed_failure_msg and detailed_skip_msg:
+        detailed_msg = detailed_failure_msg + "; " + detailed_skip_msg
+    elif detailed_failure_msg:
+        detailed_msg = detailed_failure_msg
+    elif detailed_skip_msg:
+        detailed_msg = detailed_skip_msg
+    else:
+        detailed_msg = "No detailed failure or skip information available."
+
     message = msg_format.format(
         action=action_name,
         succeeded=num_succeeded,
@@ -228,5 +247,6 @@ def get_task_completion_info(instructor_task):  # lint-amnesty, pylint: disable=
         total=num_total,
         skipped=num_skipped,
         student=student
-    )
+    ) + f" {detailed_msg}"
+
     return (succeeded, message)
