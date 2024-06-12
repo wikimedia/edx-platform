@@ -135,7 +135,7 @@
                 name: gettext('Task Progress'),
                 minWidth: 120,
                 formatter: function(row, cell, value, columnDef, dataContext) {
-                    return `<div style="overflow-y: auto; overflow-x: hidden; height: 100px; max-height: 100px;">${value}</div>`;
+                    return '<div style="overflow-y: auto; overflow-x: hidden; height: 100%; max-height: 100px;">' + value + '</div>';
                 }
 
             }
