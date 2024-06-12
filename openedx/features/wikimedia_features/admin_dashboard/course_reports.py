@@ -82,6 +82,7 @@ def section_data_download(course, access):
         'course_version_report_url': reverse('admin_dashboard:course_version_report', kwargs={'course_id': str(course_key)}),
         'courses_enrollments_csv_url': reverse('admin_dashboard:courses_enrollment_report'),
         'all_courses_enrollments_csv_url': reverse('admin_dashboard:all_courses_enrollment_report'),
+        'user_pref_lang_csv_url': reverse('admin_dashboard:user_pref_lang_report'),
     }
     if not access.get('data_researcher'):
         section_data['is_hidden'] = True
