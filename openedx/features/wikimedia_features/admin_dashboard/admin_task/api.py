@@ -227,7 +227,7 @@ def user_pref_lang_report(request):
         report_type="Users Preferred Language Report"
     )
     task_input = {
-        'features': ["username", "pref_lang"],
+        'features': ["username", "dark_lang", "pref_lang"],
         'csv_type': report_type,
     }
 

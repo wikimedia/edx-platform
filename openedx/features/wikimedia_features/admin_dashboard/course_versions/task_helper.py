@@ -227,7 +227,7 @@ def upload_user_pref_lang_csv(
     query_features = task_input.get('features')
 
     query_features_names = [
-        'Username', 'Selected Language'
+        'Username', 'Selected Language', 'Preferred Language'
     ]
 
     data = list_user_pref_lang()
