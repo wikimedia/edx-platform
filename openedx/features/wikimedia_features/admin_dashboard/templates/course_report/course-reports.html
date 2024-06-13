@@ -119,7 +119,7 @@
         </tr>
         <tr class="course-version-report">
           <td>
-            <span class="text">${_("Course Version Report (Detailed - Per Course)")}</span>
+            <span class="text">${_("Course version report (detailed - per course)")}</span>
           </td>
           <td></td>
           <td class="action">
@@ -135,7 +135,7 @@
         </tr>
         <tr class="course-version-report">
           <td>
-            <span class="text">${_("Course Version Report (Aggregate)")}</span>
+            <span class="text">${_("Course version report (aggregate)")}</span>
           </td>
           <td></td>
           <td class="action">
@@ -169,7 +169,7 @@
         </tr>
         <tr class="all-courses-report">
           <td>
-            <span class="text">${_("Quarterly Courses enrollment Report")}</span>
+            <span class="text">${_("Quarterly courses enrollment report")}</span>
             <span class="info-text">${_("Generate a report for last quarter enrollments of all courses.")}</span>
           </td>
           <td class="d-flex align-items-center p-3">
@@ -195,7 +195,7 @@
         </tr>
         <tr class="all-courses-report">
           <td>
-            <span class="text">${_("All Courses enrollment Report")}</span>
+            <span class="text">${_("All courses enrollment report")}</span>
             <span class="info-text">${_("Generate an all time report of enrollment/completion for all courses.")}</span>
           </td>
           <td></td>
@@ -205,6 +205,21 @@
               class="btn btn-primary"
               value="${_("Generate Courses Enrollment Report")}"
               data-endpoint="${ section_data['key']['all_courses_enrollments_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Users preferred language report")}</span>
+            <span class="info-text">${_("Generate a report on users preferred lanugage. Displays N/A for users who have not selected a lanugage")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="user-pref-lang-csv"
+              class="btn btn-primary"
+              value="${_("Generate Users Preferred Language Report")}"
+              data-endpoint="${ section_data['key']['user_pref_lang_csv_url'] }"
             >${_("Generate")}</button>
           </td>
         </tr>

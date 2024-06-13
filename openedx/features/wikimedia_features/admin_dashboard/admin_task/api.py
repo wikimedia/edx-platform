@@ -24,6 +24,7 @@ from openedx.features.wikimedia_features.admin_dashboard.tasks import (
     task_course_version_report,
     task_courses_enrollment_report,
     task_all_courses_enrollment_report,
+    task_user_pref_lang_report,
 )
 from openedx.features.wikimedia_features.admin_dashboard.course_versions import task_helper
 
@@ -187,7 +188,7 @@ def all_courses_enrollment_report(request):
 @cache_control(no_cache=True, no_store=True, must_revalidate=True)
 def courses_enrollment_report(request):
     """
-    Handles request to generate CSV of base course versions info for all translated reruns.
+    Handles request to generate CSV of stats of all courses enrollments.
     """
     report_type = _("enrollment")
 
@@ -210,6 +211,27 @@ def courses_enrollment_report(request):
         request, query_features, report_type, task_courses_enrollment_report, options
     )
 
+    return JsonResponse({"status": success_status})
+
+
+@transaction.non_atomic_requests
+@require_POST
+@ensure_csrf_cookie
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+def user_pref_lang_report(request):
+    """
+    Handles request to generate CSV of users preferred language.
+    """
+    report_type = _("user_pref_lang")
+    success_status = SUCCESS_MESSAGE_TEMPLATE.format(
+        report_type="Users Preferred Language Report"
+    )
+    task_input = {
+        'features': ["username", "dark_lang", "pref_lang"],
+        'csv_type': report_type,
+    }
+
+    submit_task(request, report_type, task_user_pref_lang_report, 'all_courses', task_input, "")
     return JsonResponse({"status": success_status})
 
 
