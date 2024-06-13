@@ -489,8 +489,18 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
     # that existed at that time, and we don't need to keep checking for changes
     # in the Optout list.
     if subtask_status.get_retry_count() == 0:
-        to_list, num_optout = _filter_optouts_from_recipients(to_list, course_email.course_id)
+        filtered_to_list, num_optout = _filter_optouts_from_recipients(to_list, course_email.course_id)
         subtask_status.increment(skipped=num_optout)
+        
+        # Retrieve the list of opt-outs by comparing the original to_list and the filtered_to_list
+        optout_list = [recipient for recipient in to_list if recipient not in filtered_to_list]
+        
+        for recipient in optout_list:
+            skip_reason = "Opt-out by"
+            subtask_status.add_skip_detail(recipient['email'], skip_reason)
+        
+        # Now, filtered_to_list contains recipients who didn't opt out
+        to_list = filtered_to_list
 
     course_title = global_email_context['course_title']
     course_language = global_email_context['course_language']
@@ -529,12 +539,14 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
                 total_recipients_failed += 1
                 log.info(
                     "BulkEmail ==> Email address %s contains non-ascii characters. Skipping sending "
-                    "email to %s, EmailId: %s ",
+                    "email to %s, EmailId: %s ",    
                     email,
                     current_recipient['profile__name'],
                     email_id
                 )
                 subtask_status.increment(failed=1)
+                failure_reason = "Non-ASCII characters in email address"
+                subtask_status.add_failure_detail(email, failure_reason)
                 continue
 
             email_context['email'] = email
@@ -612,6 +624,8 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
                         exc.smtp_error
                     )
                     subtask_status.increment(failed=1)
+                    failure_reason = f"SMTPDataError: {exc.smtp_error}"
+                    subtask_status.add_failure_detail(email,failure_reason)
 
             except SINGLE_EMAIL_FAILURE_ERRORS as exc:
                 # This will fall through and not retry the message.
@@ -628,6 +642,8 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
                     exc
                 )
                 subtask_status.increment(failed=1)
+                failure_reason = f"Single email failure: {exc}"
+                subtask_status.add_failure_detail(email, failure_reason)
 
             else:
                 total_recipients_successful += 1
