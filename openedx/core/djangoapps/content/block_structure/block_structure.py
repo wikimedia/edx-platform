@@ -296,6 +296,8 @@ class FieldData:
         self.fields = {}
 
     def __getattr__(self, field_name):
+        logger.debug(f"Attempting to access field '{field_name}' in BlockStructure.")
+
         if self._is_own_field(field_name):
             return super().__getattr__(field_name)  # lint-amnesty, pylint: disable=no-member
         try:
