@@ -188,7 +188,7 @@ def all_courses_enrollment_report(request):
 @cache_control(no_cache=True, no_store=True, must_revalidate=True)
 def courses_enrollment_report(request):
     """
-    Handles request to generate CSV of base course versions info for all translated reruns.
+    Handles request to generate CSV of stats of all courses enrollments.
     """
     report_type = _("enrollment")
 
