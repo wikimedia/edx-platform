@@ -324,6 +324,10 @@
         let data_url = $(this).attr('data-endpoint');
         AjaxCall(data_url);
     })
+    $("[name='user-pref-lang-csv']").click(function() {
+        let data_url = $(this).attr('data-endpoint');
+        AjaxCall(data_url);
+    })
     $(document).ready(function() {
         endpoint = '/wikimedia/list_all_courses_report_downloads';
         ReportDownloads();

@@ -14,6 +14,7 @@ from openedx.features.wikimedia_features.admin_dashboard.course_versions.utils i
     get_last_quarter,
     get_quarter_dates,
     list_all_courses_enrollment_data,
+    list_user_pref_lang,
     list_version_report_info_per_course,
     list_version_report_info_total,
     list_quarterly_courses_enrollment_data,
@@ -201,6 +202,49 @@ def upload_quarterly_courses_enrollment_csv(
     # Perform the upload
     report_store = ReportStore.from_config('GRADES_DOWNLOAD')
     csv_name = f"courses_enrollments({quarter[0]}-{quarter[1]})"
+    report_name = '{csv_name}_{timestamp_str}.csv'.format(
+        csv_name=csv_name,
+        timestamp_str=start_date.strftime('%Y-%m-%d-%H%M')
+    )
+    report_store.store_rows(course_id_str, report_name, rows)
+
+    return task_progress.update_task_state(extra_meta=current_step)
+
+def upload_user_pref_lang_csv(
+    _xmodule_instance_args, _entry_id, course_id_str, task_input, action_name, user_ids
+):
+    """
+    Generate a CSV file containing information of users preferred language.
+    """
+    start_time = time()
+    start_date = datetime.now(UTC)
+    num_reports = 1
+    task_progress = TaskProgress(action_name, num_reports, start_time)
+    current_step = {'step': 'Getting User preferences'}
+    task_progress.update_task_state(extra_meta=current_step)
+
+    # Compute result table and format it
+    query_features = task_input.get('features')
+
+    query_features_names = [
+        'Username', 'Selected Language', 'Preferred Language'
+    ]
+
+    data = list_user_pref_lang()
+
+    header, rows = format_dictlist(data, query_features)
+
+    task_progress.attempted = task_progress.succeeded = len(rows)
+    task_progress.skipped = task_progress.total - task_progress.attempted
+
+    rows.insert(0, query_features_names)
+
+    current_step = {'step': 'Uploading CSV'}
+    task_progress.update_task_state(extra_meta=current_step)
+
+    # Perform the upload
+    report_store = ReportStore.from_config('GRADES_DOWNLOAD')
+    csv_name = f"user_pref_lang"
     report_name = '{csv_name}_{timestamp_str}.csv'.format(
         csv_name=csv_name,
         timestamp_str=start_date.strftime('%Y-%m-%d-%H%M')

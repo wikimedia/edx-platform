@@ -86,7 +86,7 @@ class ProblemTransformer(WikiTransformer):
         """
         required_fields = ['xml_data', 'encodings']
         if not self.validate_keys(required_fields, data):
-            raise Exception('{} are required in problem meta_data'.format())
+            raise Exception('{} are required in problem meta_data'.format(required_fields))
         return True
 
     def _convert_xpath_to_meta_key_format(self, path):
@@ -119,6 +119,15 @@ class ProblemTransformer(WikiTransformer):
             converted_path = converted_path[:start] + "[" + converted_path[end-1] + "]" + converted_path[end:]
         return "/{}".format(converted_path.replace('.','/'))
 
+    def _get_element_by_xpath(self, root, xpath):
+        """
+        Return element by xpath
+        """
+        element = root.xpath(xpath)
+        if not element:
+            raise Exception("{} not found in xml_data".format(xpath))
+        return element[0]
+    
     def raw_data_to_meta_data(self, raw_data):
         """
         Convert raw_data of problem (xml) to the meta_data of problem component (dict)
@@ -151,8 +160,16 @@ class ProblemTransformer(WikiTransformer):
         problem = etree.XML(raw_data, parser=parser)
         tree = etree.ElementTree(problem)
         data_dict = {}
+        # TODO move component type attribute list to settings so
+        # in future we can add more components and attributes for translation 
+        is_text_input = problem.xpath("/problem/stringresponse")
         for e in problem.iter("*"):
-            if e.text:
+            if is_text_input and e.get("answer"):
+                converted_xpath = self._convert_xpath_to_meta_key_format(
+                    tree.getpath(e)
+                )
+                data_dict.update({converted_xpath: e.get("answer").strip()})
+            elif e.text:
                 # have to convert xpath as Meta server only allows '_', '.' and '-' for data keys.
                 converted_xpath = self._convert_xpath_to_meta_key_format(tree.getpath(e))
                 data_dict.update({converted_xpath: e.text.strip()})
@@ -206,11 +223,13 @@ class ProblemTransformer(WikiTransformer):
             problem = etree.XML(xml_data, parser=parser)
             for key, value in encodings.items():
                 xpath = self._convert_meta_key_format_to_xpath(key)
-                element = problem.xpath(xpath)
-                if element:
-                    element[0].text = value
+                element = self._get_element_by_xpath(problem, xpath)
+                
+                if element.get("answer"):
+                    element.set("answer", value)
                 else:
-                    raise Exception('{} not found in xml_data'.format(key))
+                    element.text = value
+
         return etree.tostring(problem)
 
 class VideoTranscriptTransformer(WikiTransformer):

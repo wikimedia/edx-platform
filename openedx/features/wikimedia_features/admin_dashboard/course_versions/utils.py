@@ -4,17 +4,27 @@ import calendar
 from django.test import RequestFactory
 from django.contrib.auth import get_user_model
 from django.conf import settings
+from django.db.models import OuterRef, Subquery, Value, TextField
+from django.db.models.functions import Coalesce
 
 from common.djangoapps.student.models import CourseEnrollment
+
 from lms.djangoapps.branding import get_visible_courses
 from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.grades.api import CourseGradeFactory
 
+from openedx.core.djangoapps.dark_lang import DARK_LANGUAGE_KEY
+from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
+from openedx.core.djangoapps.user_api.models import UserPreference
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-from edx_proctoring.api import get_last_exam_completion_date
 from openedx.features.wikimedia_features.wikimedia_general.utils import get_course_enrollment_and_completion_stats
 
+from edx_proctoring.api import get_last_exam_completion_date
+
+from logging import getLogger
+
+log = getLogger(__name__)
 User = get_user_model()
 
 
@@ -294,3 +304,50 @@ def list_quarterly_courses_enrollment_data(quarter):
                 'student_blocked': 'N' if user.is_active else 'Y',
             })
     return courses_data
+
+
+def list_user_pref_lang():
+    """
+    Retrieve the preferred language of all users.
+
+    Returns:
+    list: A list of dictionaries, each containing a username and their preferred language.
+          Example:
+          [
+              {'username': 'user1', 'pref_lang': 'ar-ma'},
+              {'username': 'user2', 'pref_lang': 'N/A'},
+              ...
+          ]
+    """    
+    # Subquery to get the preference value for each user
+    user_pref_subquery = UserPreference.objects.filter(
+        user=OuterRef('pk'),
+        key=LANGUAGE_KEY
+    ).values('value')[:1]
+    user_dark_subquery = UserPreference.objects.filter(
+        user=OuterRef('pk'),
+        key=DARK_LANGUAGE_KEY
+    ).values('value')[:1]
+
+    # Annotate users with their preference value or 'N/A' if not set
+    users_with_prefs = User.objects.annotate(
+        pref_lang=Coalesce(
+            Subquery(user_pref_subquery, output_field=TextField()), Value("N/A", output_field=TextField())
+        )
+    ).annotate(
+        dark_lang=Coalesce(
+            Subquery(user_dark_subquery, output_field=TextField()), Value("N/A", output_field=TextField())
+        )
+    )
+
+    pref_lang_data = []
+
+    for user in users_with_prefs:
+        pref_lang = {
+            'username': user.username,
+            'dark_lang': user.dark_lang,
+            'pref_lang': user.pref_lang
+        }
+        pref_lang_data.append(pref_lang)
+
+    return pref_lang_data
