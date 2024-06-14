@@ -46,12 +46,9 @@ class CourseGradeFactory:
         or course_key should be provided.
         """
         course_data = CourseData(user, course, collected_block_structure, course_structure, course_key)
-        log.debug(f"Reading CourseGrade for user {user.id} and course {course_data.course_key}")
-
         try:
             return self._read(user, course_data)
         except PersistentCourseGrade.DoesNotExist:
-            log.warning(f"PersistentCourseGrade does not exist for user {user.id} and course {course_data.course_key}")
             if assume_zero_if_absent(course_data.course_key):
                 return self._create_zero(user, course_data)
             elif create_if_needed:
@@ -143,33 +140,26 @@ class CourseGradeFactory:
         """
         log.debug('Grades: CreateZero, %s, User: %s', str(course_data), user.id)
         return ZeroCourseGrade(user, course_data)
-    
+
     @staticmethod
     def _read(user, course_data):
         """
         Returns a CourseGrade object based on stored grade information
         for the given user and course.
         """
-        log.debug(f"Attempting to read PersistentCourseGrade for user {user.id} and course {course_data.course_key}")
-
         if not should_persist_grades(course_data.course_key):
-            log.warning(f"Grades should not be persisted for course {course_data.course_key}")
             raise PersistentCourseGrade.DoesNotExist
 
-        try:
-            persistent_grade = PersistentCourseGrade.read(user.id, course_data.course_key)
-            log.debug('Grades: Read, %s, User: %s, %s', str(course_data), user.id, persistent_grade)
+        persistent_grade = PersistentCourseGrade.read(user.id, course_data.course_key)
+        log.debug('Grades: Read, %s, User: %s, %s', str(course_data), user.id, persistent_grade)
 
-            return CourseGrade(
-                user,
-                course_data,
-                persistent_grade.percent_grade,
-                persistent_grade.letter_grade,
-                persistent_grade.letter_grade != ''
-            )
-        except PersistentCourseGrade.DoesNotExist:
-            log.error(f"Failed to read PersistentCourseGrade for user {user.id} and course {course_data.course_key}")
-            raise
+        return CourseGrade(
+            user,
+            course_data,
+            persistent_grade.percent_grade,
+            persistent_grade.letter_grade,
+            persistent_grade.letter_grade != ''
+        )
 
     @staticmethod
     def _update(user, course_data, force_update_subsections=False, send_grade_signals=True):

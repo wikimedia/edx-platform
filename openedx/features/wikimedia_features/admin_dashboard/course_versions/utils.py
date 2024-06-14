@@ -243,7 +243,8 @@ def list_all_courses_enrollment_data():
     for course in courses:
         parent_course_url = ''
         parent_course_title = ''
-        log.info(f" processing data for course with course ID {course.id}:")
+        log.info(f"Processing data for course with course ID {course.id}:")
+
         try:
             course_translation = CourseTranslation.objects.get(course_id=course.id)
             parent_course_url = get_cms_course_url(str(course_translation.base_course_id))
@@ -258,22 +259,25 @@ def list_all_courses_enrollment_data():
         try:
             total_learners_completed, total_learners_enrolled, completed_percentage = \
                 get_course_enrollment_and_completion_stats(course.id)
-            courses_data.append({
-                'course_url': get_cms_course_url(str(course.id)),
-                'course_title': course.display_name,
-                'available_since': course.enrollment_start.strftime("%Y-%m-%d") if course.enrollment_start else '',
-                "parent_course_url": parent_course_url,
-                "parent_course_title": parent_course_title,
-                "total_learners_enrolled": total_learners_enrolled,
-                "total_learners_completed": total_learners_completed,
-                "completed_percentage": completed_percentage,
-            })
         except Exception as e:
             log.error(f"An error occurred while fetching enrollment data for course ID {course.id}: {e}")
             log.info(f"Skipping course ID {course.id} due to the above error.")
             continue
 
+        # Append outside the try block
+        courses_data.append({
+            'course_url': get_cms_course_url(str(course.id)),
+            'course_title': course.display_name,
+            'available_since': course.enrollment_start.strftime("%Y-%m-%d") if course.enrollment_start else '',
+            "parent_course_url": parent_course_url,
+            "parent_course_title": parent_course_title,
+            "total_learners_enrolled": total_learners_enrolled,
+            "total_learners_completed": total_learners_completed,
+            "completed_percentage": completed_percentage,
+        })
+
     return courses_data
+
 
 
 def list_quarterly_courses_enrollment_data(quarter):
