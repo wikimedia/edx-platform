@@ -234,7 +234,7 @@ def get_task_completion_info(instructor_task):  # lint-amnesty, pylint: disable=
     detailed_msg = "; ".join(filter(None, [detailed_failure_msg, detailed_skip_msg]))
 
     if not detailed_msg:
-        detailed_msg = "No detailed failure or skip information availablew."
+        detailed_msg = "No detailed failure or skip information available."
 
     message = msg_format.format(
         action=action_name,
