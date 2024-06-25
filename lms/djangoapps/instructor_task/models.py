@@ -71,7 +71,7 @@ class InstructorTask(models.Model):
     task_input = models.TextField()
     task_id = models.CharField(max_length=255, db_index=True)  # max_length from celery_taskmeta
     task_state = models.CharField(max_length=50, null=True, db_index=True)  # max_length from celery_taskmeta
-    task_output = models.CharField(max_length=1024, null=True)
+    task_output = models.TextField(null=True)
     requester = models.ForeignKey(User, db_index=True, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True)
