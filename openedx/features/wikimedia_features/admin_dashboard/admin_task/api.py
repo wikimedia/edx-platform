@@ -25,6 +25,7 @@ from openedx.features.wikimedia_features.admin_dashboard.tasks import (
     task_courses_enrollment_report,
     task_all_courses_enrollment_report,
     task_user_pref_lang_report,
+    task_users_enrollment_info_report,
 )
 from openedx.features.wikimedia_features.admin_dashboard.course_versions import task_helper
 
@@ -233,6 +234,27 @@ def user_pref_lang_report(request):
     }
 
     submit_task(request, report_type, task_user_pref_lang_report, 'all_courses', task_input, "")
+    return JsonResponse({"status": success_status})
+
+
+@transaction.non_atomic_requests
+@require_POST
+@ensure_csrf_cookie
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+def users_enrollment_report(request):
+    """
+    Handles request to generate CSV of all users enrollments info.
+    """
+    report_type = _("all_users_enrollment")
+    success_status = SUCCESS_MESSAGE_TEMPLATE.format(
+        report_type="Users Enrollments Report"
+    )
+    task_input = {
+        'features': ["username", "enrollments_count", "completions_count"],
+        'csv_type': report_type,
+    }
+
+    submit_task(request, report_type, task_users_enrollment_info_report, 'all_courses', task_input, "")
     return JsonResponse({"status": success_status})
 
 

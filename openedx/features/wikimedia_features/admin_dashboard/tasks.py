@@ -37,6 +37,7 @@ from openedx.features.wikimedia_features.admin_dashboard.course_versions.task_he
     upload_quarterly_courses_enrollment_csv,
     upload_all_courses_enrollment_csv,
     upload_user_pref_lang_csv,
+    upload_users_enrollment_info_csv,
 )
 from openedx.features.wikimedia_features.email.utils import send_notification
 
@@ -130,7 +131,7 @@ def task_courses_enrollment_report(entry_id, xmodule_instance_args, user_id):
 @set_code_owner_attribute
 def task_user_pref_lang_report(entry_id, xmodule_instance_args, user_id):
     """
-    Generate a course enrollment report for users preferred languages and push the results to an S3 bucket for download.
+    Generate a report for users preferred languages and push the results to an S3 bucket for download.
     """
     # Translators: This is a past-tense verb that is inserted into task progress messages as {action}.
     action_name = ugettext_noop('generated')
@@ -139,6 +140,24 @@ def task_user_pref_lang_report(entry_id, xmodule_instance_args, user_id):
         xmodule_instance_args.get('task_id'), entry_id, action_name
     )    
     task_fn = partial(upload_user_pref_lang_csv, xmodule_instance_args)
+    return run_main_task(entry_id, task_fn, action_name, user_id)
+
+
+@shared_task(base=BaseAdminReportTask)
+@set_code_owner_attribute
+def task_users_enrollment_info_report(entry_id, xmodule_instance_args, user_id):
+    """
+    Generate a report for users enrollments and course completions.
+    """
+    # Translators: This is a past-tense verb that is inserted into task progress messages as {action}.
+    action_name = ugettext_noop("generated")
+    TASK_LOG.info(
+        "Task: %s, AdminReportTask ID: %s, Task type: %s, Preparing for task execution",
+        xmodule_instance_args.get("task_id"),
+        entry_id,
+        action_name,
+    )
+    task_fn = partial(upload_users_enrollment_info_csv, xmodule_instance_args)
     return run_main_task(entry_id, task_fn, action_name, user_id)
 
 

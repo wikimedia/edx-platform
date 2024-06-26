@@ -31,9 +31,6 @@ from openedx.core.djangoapps.django_comment_common.models import (
 from lms.djangoapps.courseware.courses import get_course_with_access
 from lms.djangoapps.discussion.django_comment_client.utils import (
     add_courseware_context)
-from common.djangoapps.student.models import (
-     CourseEnrollment
-)
 from openedx.core.djangoapps.user_api.models import UserPreference
 from lms.djangoapps.discussion.notification_prefs import WEEKLY_NOTIFICATION_PREF_KEY
 from opaque_keys.edx.keys import CourseKey, UsageKey, i4xEncoder
@@ -260,6 +257,17 @@ def get_course_enrollment_and_completion_stats(course_id) -> dict:
         "total_learners_enrolled": enrollment_count,
         "completed_percentage": completed_percentage,
     }
+
+
+def get_user_course_completions(user, user_enrollments):
+    total_completions = 0
+
+    for enrollment in user_enrollments:
+        course = getattr(enrollment, 'course', None)
+        if course and is_course_completed(user, course.id):
+            total_completions += 1
+
+    return total_completions
 
 
 def get_paced_type(self_paced):

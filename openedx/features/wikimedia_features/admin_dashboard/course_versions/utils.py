@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.db.models import OuterRef, Subquery, Value, TextField
 from django.db.models.functions import Coalesce
+from django.db.models import Prefetch
 
 from common.djangoapps.student.models import CourseEnrollment
 
@@ -18,7 +19,7 @@ from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.user_api.models import UserPreference
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-from openedx.features.wikimedia_features.wikimedia_general.utils import get_course_enrollment_and_completion_stats
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_course_enrollment_and_completion_stats, get_user_course_completions
 
 from edx_proctoring.api import get_last_exam_completion_date
 
@@ -237,7 +238,7 @@ def list_all_courses_enrollment_data():
     Get all courses enrollment report
     """
 
-    courses = get_visible_courses()
+    courses = CourseOverview.objects.all()
     courses_data = []
 
     for course in courses:
@@ -278,7 +279,6 @@ def list_all_courses_enrollment_data():
         })
 
     return courses_data
-
 
 
 def list_quarterly_courses_enrollment_data(quarter):
@@ -365,3 +365,27 @@ def list_user_pref_lang():
         pref_lang_data.append(pref_lang)
 
     return pref_lang_data
+
+
+def list_users_enrollments():
+
+    users_with_course_enrollments = User.objects.prefetch_related("courseenrollment_set__course").filter(
+        courseenrollment__is_active=1
+    ).distinct()
+
+    users_enrollments_data = []
+
+    for user in users_with_course_enrollments:
+        user_enrollments = user.courseenrollment_set.all()
+        user_completions = get_user_course_completions(user, user_enrollments)
+        user_enrollments_count = user_enrollments.count()
+
+        users_enrollments_data.append(
+            {
+                "username": user.username,
+                "enrollments_count": user_enrollments_count,
+                "completions_count": user_completions,
+            }
+        )
+
+    return users_enrollments_data
