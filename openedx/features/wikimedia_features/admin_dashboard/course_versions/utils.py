@@ -257,7 +257,7 @@ def list_all_courses_enrollment_data():
             continue
 
         try:
-            total_learners_completed, total_learners_enrolled, completed_percentage = \
+            course_completion_stats = \
                 get_course_enrollment_and_completion_stats(course.id)
         except Exception as e:
             log.error(f"An error occurred while fetching enrollment data for course ID {course.id}: {e}")
@@ -271,9 +271,10 @@ def list_all_courses_enrollment_data():
             'available_since': course.enrollment_start.strftime("%Y-%m-%d") if course.enrollment_start else '',
             "parent_course_url": parent_course_url,
             "parent_course_title": parent_course_title,
-            "total_learners_enrolled": total_learners_enrolled,
-            "total_learners_completed": total_learners_completed,
-            "completed_percentage": completed_percentage,
+            "total_learners_enrolled": course_completion_stats["total_learners_enrolled"],
+            "total_learners_completed": course_completion_stats["total_learners_completed"],
+            "completed_percentage": course_completion_stats["completed_percentage"],
+            "total_cert_generated": course_completion_stats["total_cert_generated"],
         })
 
     return courses_data

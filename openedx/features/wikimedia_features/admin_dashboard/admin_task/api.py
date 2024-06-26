@@ -174,6 +174,7 @@ def all_courses_enrollment_report(request):
         "total_learners_enrolled",
         "total_learners_completed",
         "completed_percentage",
+        "total_cert_generated",
     ]
     submit_courses_enrollment_report(
         request, query_features, report_type, task_all_courses_enrollment_report
