@@ -1,5 +1,8 @@
 <%page args="section_data" expression_filter="h"/>
-<%! from django.utils.translation import ugettext as _ %>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+%>
 %if section_data['access']['staff'] or section_data['access']['instructor']:
 <div class="action-type-container">
     %if section_data.get('writable_gradebook_url') or section_data.get('is_small_course'):
@@ -13,9 +16,12 @@
         <br><br>
         <span name="gradebook-link"><a href="${ section_data['spoc_gradebook_url'] }" class="gradebook-link"> ${_("View Gradebook")} </a></span>
     %endif
-        <br><br>
-        <hr>
+    <br><br>
     %endif
+    <label>${_("Click to generate a CSV grade report for all currently enrolled students.")}</label>
+    <br><br>
+    <input type="button" name="calculate-grades-csv" class="async-report-btn" value="${_("Generate Grade Report")}" data-endpoint="${ section_data['calculate_grades_csv_url'] }"/>
+    <hr>
 </div>
 
 <div class="student-enrollment-status-container action-type-container">
@@ -230,8 +236,32 @@
 </div>
 %endif
 %endif
+<div class="reports-download-container action-type-container">
+    <div class="request-response msg msg-confirm copy" id="report-request-response"></div>
+    <div class="request-response-error msg msg-error copy" id="report-request-response-error"></div>
+    <br>
+    <h3 class="hd hd-3">${_("Reports Available for Download")}</h3>
+    <p>
+    ${_("The reports listed below are available for download, identified by UTC date and time of generation.")}
+    </p>
+
+    ## Translators: a table of URL links to report files appears after this sentence.
+    <p>
+        ${Text(_("{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data secure, you cannot save or email these links for direct access. Copies of links expire within 5 minutes.{li_end}{li_start}Report files are deleted 90 days after generation. If you will need access to old reports, download and store the files, in accordance with your institution's data security policies.{li_end}{ul_end}")).format(
+            strong_start=HTML("<strong>"),
+            strong_end=HTML("</strong>"),
+            ul_start=HTML("<ul>"),
+            ul_end=HTML("</ul>"),
+            li_start=HTML("<li>"),
+            li_end=HTML("</li>"),
+        )}
+    </p><br>
+
+    <div class="report-downloads-table" id="report-downloads-table" data-endpoint="${ section_data['list_report_downloads_url'] }" ></div>
+</div>
 
 %if settings.FEATURES.get('ENABLE_INSTRUCTOR_BACKGROUND_TASKS'):
+<hr>
 <div class="running-tasks-container action-type-container">
     <h4 class="hd hd-4">${_("Pending Tasks")}</h4>
     <div class="running-tasks-section">

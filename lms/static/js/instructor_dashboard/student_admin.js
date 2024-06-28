@@ -2,7 +2,7 @@
 
 (function() {
     'use strict';
-    var PendingInstructorTasks, createTaskListTable, findAndAssert, statusAjaxError;
+    var PendingInstructorTasks, ReportDownloads, createTaskListTable, findAndAssert, statusAjaxError;
 
     statusAjaxError = function() {
         return window.InstructorDashboard.util.statusAjaxError.apply(this, arguments);
@@ -16,6 +16,10 @@
         return window.InstructorDashboard.util.PendingInstructorTasks;
     };
 
+    ReportDownloads = function() {
+        return window.InstructorDashboard.util.ReportDownloads;
+    };
+
     findAndAssert = function($root, selector) {
         var item, msg;
         item = $root.find(selector);
@@ -26,7 +30,6 @@
             return item;
         }
     };
-
     this.StudentAdmin = (function() {
         function StudentAdmin($section) {
             var studentadmin = this;
@@ -65,7 +68,11 @@
             this.$btn_rescore_problem_if_higher_all = this.$section.find("input[name='rescore-problem-all-if-higher']");
             this.$btn_task_history_all = this.$section.find("input[name='task-history-all']");
             this.$table_task_history_all = this.$section.find('.task-history-all-table');
+            this.report_downloads = new (ReportDownloads())(this.$section);
             this.instructor_tasks = new (PendingInstructorTasks())(this.$section);
+            this.$reports = this.$section.find('.reports-download-container');
+            this.$reports_request_response = this.$reports.find('.request-response');
+            this.$reports_request_response_error = this.$reports.find('.request-response-error');
             this.$request_err_enrollment_status = findAndAssert(this.$section, '.student-enrollment-status-container .request-response-error');
             this.$request_err_progress = findAndAssert(this.$section, '.student-progress-container .request-response-error');
             this.$request_err_grade = findAndAssert(this.$section, '.student-grade-container .request-response-error');
@@ -73,6 +80,8 @@
             this.$request_response_error_all = this.$section.find('.course-specific-container .request-response-error');
             this.$enrollment_status_link = findAndAssert(this.$section, 'a.enrollment-status-link');
             this.$enrollment_status = findAndAssert(this.$section, '.student-enrollment-status');
+            this.$async_report_btn = this.$section.find("input[class='async-report-btn']");
+            this.clear_display();
             this.$enrollment_status_link.click(function(e) {
                 var errorMessage, fullErrorMessage, uniqStudentIdentifier;
                 e.preventDefault();
@@ -476,6 +485,33 @@
                     })
                 });
             });
+            this.$async_report_btn.click(function(e) {
+                var url = $(e.target).data('endpoint');
+                var errorMessage = '';
+                studentadmin.clear_display();
+                return $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: url,
+                    error: function(error) {
+                        if (error.responseText) {
+                            errorMessage = JSON.parse(error.responseText);
+                        } else if (e.target.name === 'calculate-grades-csv') {
+                            errorMessage = gettext('Error generating grades. Please try again.');
+                        }
+                        studentadmin.$reports_request_response_error.text(errorMessage);
+                        return studentadmin.$reports_request_response_error.css({
+                            display: 'block'
+                        });
+                    },
+                    success: function(data) {
+                        studentadmin.$reports_request_response.text(data.status);
+                        return $('.msg-confirm').css({
+                            display: 'block'
+                        });
+                    }
+                });
+            });
         }
 
         StudentAdmin.prototype.rescore_problem_single = function(onlyIfHigher) {
@@ -686,11 +722,24 @@
         };
 
         StudentAdmin.prototype.onClickTitle = function() {
-            return this.instructor_tasks.task_poller.start();
+            this.clear_display();
+            this.instructor_tasks.task_poller.start();
+            return this.report_downloads.downloads_poller.start();
         };
 
         StudentAdmin.prototype.onExit = function() {
-            return this.instructor_tasks.task_poller.stop();
+            this.instructor_tasks.task_poller.stop();
+            return this.report_downloads.downloads_poller.stop();
+        };
+        StudentAdmin.prototype.clear_display = function() {
+            this.$reports_request_response.empty();
+            this.$reports_request_response_error.empty();
+            $('.msg-confirm').css({
+                display: 'none'
+            });
+            return $('.msg-error').css({
+                display: 'none'
+            });
         };
 
         return StudentAdmin;
