@@ -146,7 +146,7 @@ def instructor_dashboard_2(request, course_id):  # lint-amnesty, pylint: disable
             sections_content.append(_section_discussions_management(course, access))
         sections.extend(sections_content)
 
-    if access['data_researcher']:
+    if access['data_researcher'] or access['staff'] or access['instructor']:
         sections.append(_section_data_download(course, access))
 
     analytics_dashboard_message = None

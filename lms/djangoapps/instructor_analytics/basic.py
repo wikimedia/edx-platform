@@ -52,7 +52,7 @@ SALE_ORDER_FEATURES = ('id', 'company_name', 'company_contact_name', 'company_co
 AVAILABLE_FEATURES = STUDENT_FEATURES + PROFILE_FEATURES + PROGRAM_ENROLLMENT_FEATURES
 COURSE_REGISTRATION_FEATURES = ('code', 'course_id', 'created_by', 'created_at', 'is_valid')
 COUPON_FEATURES = ('code', 'course_id', 'percentage_discount', 'description', 'expiration_date', 'is_active')
-CERTIFICATE_FEATURES = ('course_id', 'mode', 'status', 'grade', 'created_date', 'is_active', 'error_reason')
+CERTIFICATE_FEATURES = ('course_id', 'mode', 'status', 'grade', 'created_date', 'is_active', 'error_reason', 'download_url')
 
 UNAVAILABLE = "[unavailable]"
 
@@ -80,6 +80,7 @@ def issued_certificates(course_key, features):
     for data in generated_certificates:
         data['report_run_date'] = report_run_date
         data['course_id'] = str(data['course_id'])
+
 
     return generated_certificates
 
