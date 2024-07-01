@@ -52,7 +52,7 @@ SALE_ORDER_FEATURES = ('id', 'company_name', 'company_contact_name', 'company_co
 AVAILABLE_FEATURES = STUDENT_FEATURES + PROFILE_FEATURES + PROGRAM_ENROLLMENT_FEATURES
 COURSE_REGISTRATION_FEATURES = ('code', 'course_id', 'created_by', 'created_at', 'is_valid')
 COUPON_FEATURES = ('code', 'course_id', 'percentage_discount', 'description', 'expiration_date', 'is_active')
-CERTIFICATE_FEATURES = ('course_id', 'mode', 'status', 'grade', 'created_date', 'is_active', 'error_reason', 'download_url')
+CERTIFICATE_FEATURES = ('course_id', 'mode', 'status', 'grade', 'created_date', 'is_active', 'error_reason', 'download_url', 'name', 'grade', 'user')
 
 UNAVAILABLE = "[unavailable]"
 
@@ -74,12 +74,16 @@ def issued_certificates(course_key, features):
     generated_certificates = list(GeneratedCertificate.eligible_certificates.filter(
         course_id=course_key,
         status=CertificateStatuses.downloadable
-    ).values(*certificate_features).annotate(total_issued_certificate=Count('mode')))
+    ).values(*certificate_features))
 
     # Report run date
     for data in generated_certificates:
         data['report_run_date'] = report_run_date
-        data['course_id'] = str(data['course_id'])
+        user_id = data.pop('user', None)
+        if user_id:
+            user = User.objects.get(id=user_id)
+            data['user'] = user.username
+
 
 
     return generated_certificates

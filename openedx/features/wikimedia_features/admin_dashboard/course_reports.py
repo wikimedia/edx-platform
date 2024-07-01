@@ -108,6 +108,6 @@ def section_data_download(course, access):
         'user_pref_lang_csv_url': reverse('admin_dashboard:user_pref_lang_report'),
         'users_enrollment_url': reverse('admin_dashboard:users_enrollment_report'),
     }
-    if not access.get('data_researcher'):
+    if not (access.get('data_researcher') or access.get('staff') or access.get('instructor')):
         section_data['is_hidden'] = True
     return section_data
