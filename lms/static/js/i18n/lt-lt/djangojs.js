@@ -774,7 +774,6 @@
     "Re-run Course": "Pakartoti kurs\u0105",
     "Reason": "Prie\u017eastis",
     "Reason field should not be left blank.": "Sprendimo laukas neturi b\u016bti paliktas tu\u0161\u010dias",
-    "Receive updates": "Gaukite atnaujinimus",
     "Recent Activity": "Naujausia veikla",
     "Redo": "Gr\u0105\u017einti",
     "Redo (Ctrl+Shift+Z)": "Atstatyti (Ctrl+Shift+Z)",

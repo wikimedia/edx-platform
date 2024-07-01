@@ -1269,7 +1269,6 @@
     "Reason": "\u539f\u56e0",
     "Reason field should not be left blank.": "\u539f\u56e0\u4e0d\u80fd\u4e3a\u7a7a\u3002",
     "Reason for change:": "\u53d8\u66f4\u539f\u56e0\uff1a",
-    "Receive updates": "\u63a5\u6536\u66f4\u65b0",
     "Recent Activity": "\u8fd1\u671f\u6d3b\u52a8",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "\u5efa\u8bae\u56fe\u7247\u5206\u8fa8\u7387\u4e3a{imageResolution}\uff0c\u56fe\u7247\u6587\u4ef6\u5c3a\u5bf8\u4e0d\u5f97\u8d85\u8fc7{maxFileSize}\uff0c\u53ea\u652f\u6301\u4ee5\u4e0b\u683c\u5f0f{supportedImageFormats}\u3002",
     "Recover my password": "\u6062\u590d\u6211\u7684\u5bc6\u7801",

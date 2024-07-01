@@ -1348,7 +1348,6 @@
     "Reason": "Pow\u00f3d",
     "Reason field should not be left blank.": "Pole powodu nie powinno pozosta\u0107 puste.",
     "Reason for change:": "Pow\u00f3d zmiany:",
-    "Receive updates": "Otrzymuj powiadomienia",
     "Recent Activity": "Ostatnia aktywno\u015b\u0107",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "Zalecana rozdzielczo\u015b\u0107 obrazka wynosi {imageResolution}, maksymalna wielko\u015b\u0107 pliku to {maxFileSize}, a jego format musi by\u0107 jednym z nast\u0119puj\u0105cych: {supportedImageFormats}.",
     "Recover my password": "Odzyskaj has\u0142o",

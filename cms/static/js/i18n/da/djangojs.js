@@ -1316,7 +1316,6 @@
     "Reason": "\u00c5rsag",
     "Reason field should not be left blank.": "\u00c5rsagsfelt m\u00e5 ikke v\u00e6re tomt.",
     "Reason for change:": "\u00c5rsag til change :",
-    "Receive updates": "Modtag updates",
     "Recent Activity": "Seneste aktivitet",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "Den anbefalede billedopl\u00f8sning er {imageResolution} , den maksimale billedfilst\u00f8rrelse skal v\u00e6re {maxFileSize} , og formatet skal v\u00e6re {supportedImageFormats} .",
     "Recover my password": "Gendan My Password",

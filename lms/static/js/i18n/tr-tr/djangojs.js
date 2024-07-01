@@ -1426,7 +1426,6 @@
     "Reason": "Neden",
     "Reason field should not be left blank.": "Sebep alan\u0131 bo\u015f b\u0131rak\u0131lmamal\u0131d\u0131r.",
     "Reason for change:": "De\u011fi\u015fim nedeni:",
-    "Receive updates": "G\u00fcncellemeleri al",
     "Recent Activity": "Son Etkinlik",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "Tavsiye edilen g\u00f6rsel \u00e7\u00f6z\u00fcn\u00fcrl\u00fc\u011f\u00fc {imageResolution}, maksimum g\u00f6rsel dosya boyutu {maxFileSize} ve {supportedImageFormats} formatlar\u0131ndan birisi olmal\u0131d\u0131r.",
     "Recover my password": "Parolam\u0131 kurtar",
