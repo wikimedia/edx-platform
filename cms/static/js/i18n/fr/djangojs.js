@@ -1542,7 +1542,6 @@
     "Reason": "Motif",
     "Reason field should not be left blank.": "Le champ Raison ne doit pas \u00eatre laiss\u00e9 vide.",
     "Reason for change:": "Raison du changement : ",
-    "Receive updates": "Recevoir les mises \u00e0 jour",
     "Recent Activity": "Activit\u00e9 r\u00e9cente",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "La r\u00e9solution d'image conseill\u00e9e est de {imageResolution}, le fichier d'image ne devrait pas faire plus de {maxFileSize}, et les formats accept\u00e9s sont {supportedImageFormats}.",
     "Recover my password": "R\u00e9cup\u00e9rer mon mot de passe",
