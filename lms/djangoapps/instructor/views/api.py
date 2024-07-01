@@ -1233,12 +1233,13 @@ def get_issued_certificates(request, course_id):
     course_key = CourseKey.from_string(course_id)
     csv_required = request.GET.get('csv', 'false')
 
-    query_features = ['course_id', 'mode', 'total_issued_certificate', 'report_run_date']
+    query_features = ['user', 'grade', 'mode', 'created_date', 'verify_uuid']
     query_features_names = [
-        ('course_id', _('CourseID')),
+        ('user', _('Username')),
+        ('grade', _('Grade')),
         ('mode', _('Certificate Type')),
-        ('total_issued_certificate', _('Total Certificates Issued')),
-        ('report_run_date', _('Date Report Run'))
+        ('created_date', _('Certificate Creation Date')),
+        ('verify_uuid', _('Certificate link'))
     ]
     certificates_data = instructor_analytics_basic.issued_certificates(course_key, query_features)
     if csv_required.lower() == 'true':
@@ -2342,6 +2343,38 @@ def _list_report_downloads(request, course_id):
             for name, url in report_store.links_for(course_id) if report_name is None or name == report_name
         ]
     }
+    return JsonResponse(response_payload)
+
+
+@require_POST
+@ensure_csrf_cookie
+def list_report_downloads_student_admin(request, course_id):
+    """
+    List grade CSV files that are available for download for this course.
+    """
+    return _list_report_downloads_student_admin(request=request, course_id=course_id)
+
+
+@cache_control(no_cache=True, no_store=True, must_revalidate=True)
+@require_course_permission(permissions.CAN_RESEARCH)
+def _list_report_downloads_student_admin(request, course_id):
+    """
+    List grade CSV files that are available for download for this course for student admins.
+
+    Internal function with common code shared between DRF and functional views.
+    """
+    course_id = CourseKey.from_string(course_id)
+    report_store = ReportStore.from_config(config_name="GRADES_DOWNLOAD")
+    report_names = ["grade_report"]
+    course_run = course_id.run # because filenames don't have course version
+    
+    response_payload = {"downloads": []}
+    for name, url in report_store.links_for(course_id):
+        if any(f"{course_run}_{report_name}" in name for report_name in report_names):
+            response_payload["downloads"].append(
+                dict(name=name, url=url, link=HTML('<a href="{}">{}</a>').format(HTML(url), Text(name)))
+            )
+    
     return JsonResponse(response_payload)
 
 

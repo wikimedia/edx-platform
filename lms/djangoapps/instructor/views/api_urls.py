@@ -65,6 +65,7 @@ urlpatterns = [
 
     # Grade downloads...
     path('list_report_downloads', api.list_report_downloads, name='list_report_downloads'),
+    path('list_report_downloads_student_admin', api.list_report_downloads_student_admin, name='list_report_downloads_student_admin'),
     path('calculate_grades_csv', api.calculate_grades_csv, name='calculate_grades_csv'),
     path('problem_grade_report', api.problem_grade_report, name='problem_grade_report'),
 
