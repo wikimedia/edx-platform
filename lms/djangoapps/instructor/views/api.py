@@ -1233,13 +1233,13 @@ def get_issued_certificates(request, course_id):
     course_key = CourseKey.from_string(course_id)
     csv_required = request.GET.get('csv', 'false')
 
-    query_features = ['user', 'grade', 'mode', 'created_date', 'download_url']
+    query_features = ['user', 'grade', 'mode', 'created_date', 'verify_uuid']
     query_features_names = [
         ('user', _('Username')),
         ('grade', _('Grade')),
         ('mode', _('Certificate Type')),
         ('created_date', _('Certificate Creation Date')),
-        ('download_url', _('Certificate link'))
+        ('verify_uuid', _('Certificate link'))
     ]
     certificates_data = instructor_analytics_basic.issued_certificates(course_key, query_features)
     if csv_required.lower() == 'true':

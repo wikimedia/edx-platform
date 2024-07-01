@@ -28,7 +28,7 @@ from lms.djangoapps.program_enrollments.api import fetch_program_enrollments_by_
 from lms.djangoapps.verify_student.services import IDVerificationService
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangolib.markup import HTML, Text
-
+from openedx.core.djangoapps.theming.helpers import get_current_site
 log = logging.getLogger(__name__)
 
 
@@ -52,7 +52,7 @@ SALE_ORDER_FEATURES = ('id', 'company_name', 'company_contact_name', 'company_co
 AVAILABLE_FEATURES = STUDENT_FEATURES + PROFILE_FEATURES + PROGRAM_ENROLLMENT_FEATURES
 COURSE_REGISTRATION_FEATURES = ('code', 'course_id', 'created_by', 'created_at', 'is_valid')
 COUPON_FEATURES = ('code', 'course_id', 'percentage_discount', 'description', 'expiration_date', 'is_active')
-CERTIFICATE_FEATURES = ('course_id', 'mode', 'status', 'grade', 'created_date', 'is_active', 'error_reason', 'download_url', 'name', 'grade', 'user')
+CERTIFICATE_FEATURES = ('course_id', 'mode', 'status', 'grade', 'created_date', 'is_active', 'error_reason', 'download_url', 'name', 'grade', 'user', 'verify_uuid')
 
 UNAVAILABLE = "[unavailable]"
 
@@ -76,7 +76,6 @@ def issued_certificates(course_key, features):
         status=CertificateStatuses.downloadable
     ).values(*certificate_features))
 
-    # Report run date
     for data in generated_certificates:
         data['report_run_date'] = report_run_date
         user_id = data.pop('user', None)
@@ -84,10 +83,21 @@ def issued_certificates(course_key, features):
             user = User.objects.get(id=user_id)
             data['user'] = user.username
 
-
+        verify_uuid = data.pop('verify_uuid', None)
+        if verify_uuid:
+            certificate_url = generate_certificate_url(verify_uuid)
+            data['verify_uuid'] = certificate_url
 
     return generated_certificates
 
+def generate_certificate_url(verify_uuid):
+    """
+    Generate the certificate URL based on the verify_uuid.
+    """
+    current_site = get_current_site()
+    scheme = 'https' if settings.HTTPS == 'on' else 'http'
+    base_url = f"{scheme}://{current_site.domain}"
+    return f"{base_url}/certificates/{verify_uuid}"
 
 def enrolled_students_features(course_key, features):
     """
