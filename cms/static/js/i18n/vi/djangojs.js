@@ -1226,7 +1226,6 @@
     "Reason": "L\u00fd do",
     "Reason field should not be left blank.": "Vui l\u00f2ng \u0111i\u1ec1n v\u00e0o m\u1ee5c L\u00fd do.",
     "Reason for change:": "L\u00fd do thay \u0111\u1ed5i:",
-    "Receive updates": "Nh\u1eadn th\u00f4ng b\u00e1o khi c\u00f3 b\u00e0i \u0111\u0103ng m\u1edbi",
     "Recent Activity": "Ho\u1ea1t \u0111\u1ed9ng g\u1ea7n \u0111\u00e2y",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "\u0110\u1ed9 ph\u00e2n gi\u1ea3i \u0111\u01b0\u1ee3c \u0111\u1ec1 ngh\u1ecb l\u00e0 {imageResolution}, n\u00ean k\u00edch th\u01b0\u1edbc t\u1ec7p \u1ea3nh t\u1ed1i \u0111a ph\u1ea3i l\u00e0 {maxFileSize} v\u00e0 \u0111\u1ecbnh d\u1ea1ng ph\u1ea3i l\u00e0 m\u1ed9t trong {supportedImageFormats}.",
     "Recover my password": "Kh\u00f4i ph\u1ee5c m\u1eadt kh\u1ea9u",

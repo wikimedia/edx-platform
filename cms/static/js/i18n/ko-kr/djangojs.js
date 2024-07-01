@@ -1263,7 +1263,6 @@
     "Reason": "\uc774\uc720",
     "Reason field should not be left blank.": "\uc774\uc720\ub97c \uc785\ub825\ud558\ub294 \ud544\ub4dc\ub294 \ube44\uc6cc\ub458 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.",
     "Reason for change:": "\ubcc0\uacbd \uc0ac\uc720:",
-    "Receive updates": "\uc5c5\ub370\uc774\ud2b8\ub97c \ubc1b\uc73c\uc138\uc694",
     "Recent Activity": "\ucd5c\uadfc \ud65c\ub3d9",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "\ucd94\ucc9c\ud558\ub294 \uc774\ubbf8\uc9c0 \ud574\uc0c1\ub3c4\ub294 {imageResolution} \uc774\uace0, \ucd5c\ub300 \ud30c\uc77c \ud06c\uae30\ub294 {maxFileSize}, \ud615\uc2dd\uc740 \ub2e4\uc74c\uc758 \ud55c\uac00\uc9c0\uc5ec\uc57c \ud569\ub2c8\ub2e4 {supportedImageFormats}.",
     "Recover my password": "\ub098\uc758 \ube44\ubc00 \ubc88\ud638 \ubcf5\uad6c",

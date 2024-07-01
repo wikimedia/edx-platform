@@ -1481,7 +1481,6 @@
     "Reason": "Motivo ",
     "Reason field should not be left blank.": "Il campo Reason non deve essere lasciato vuoto.",
     "Reason for change:": "Motivo della modifica: ",
-    "Receive updates": "Ricevi aggiornamenti ",
     "Recent Activity": "Attivit\u00e0 recente",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "La risoluzione consigliata per l'immagine \u00e8 {imageResolution}, la dimensione massima del file dell'immagine deve essere {maxFileSize} e il formato deve essere uno tra {supportedImageFormats}. ",
     "Recover my password": "Recupera password",

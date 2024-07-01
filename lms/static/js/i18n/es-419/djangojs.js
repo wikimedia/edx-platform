@@ -1508,7 +1508,6 @@
     "Reason": "Raz\u00f3n",
     "Reason field should not be left blank.": "El campo de Raz\u00f3n no pude dejarse vac\u00edo.",
     "Reason for change:": "Motivo del cambio:",
-    "Receive updates": "Recibir notificaciones",
     "Recent Activity": "Actividad Reciente",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "La resoluci\u00f3n recomendada de la imagen es {imageResolution}, el m\u00e1ximo tama\u00f1o del archivo de la imagen deber\u00eda ser {maxFileSize} y el formato debe ser uno de {supportedImageFormats}.",
     "Recover my password": "Recuperar mi contrase\u00f1a",

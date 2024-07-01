@@ -906,7 +906,6 @@
     "Ready To Submit": "Preparat per enviar",
     "Reason": "Ra\u00f3",
     "Reason for change:": "Motiu del canvi:",
-    "Receive updates": "Rebeu actualitzacions",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "La resoluci\u00f3 d'imatge recomanada \u00e9s {imageResolution}, la mida del fitxer d'imatge m\u00e0xima ha de ser {maxFileSize} i el format ha de ser {supportedImageFormats}.",
     "Recover my password": "Recuperar la meva contrasenya",
     "Redo (Ctrl+Shift+Z)": "Refer (Ctrl+Shift+Z)",

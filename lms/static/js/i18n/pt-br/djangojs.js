@@ -1314,7 +1314,6 @@
     "Reason": "Raz\u00e3o",
     "Reason field should not be left blank.": "O campo de motivo n\u00e3o deve ser deixado em branco.",
     "Reason for change:": "Motivo para altera\u00e7\u00e3o:",
-    "Receive updates": "Receber atualiza\u00e7\u00f5es",
     "Recent Activity": "Atividade recente",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "A resolu\u00e7\u00e3o de imagem recomendada \u00e9 {imageResolution}, o tamanho m\u00e1ximo do arquivo de imagem deve ser {maxFileSize} e o formato deve ser um dos {supportedImageFormats}.",
     "Recover my password": "Recuperar minha senha",
