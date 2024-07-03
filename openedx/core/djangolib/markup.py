@@ -5,6 +5,7 @@ Utilities for use in Mako markup.
 
 import markupsafe
 import bleach
+import re
 from lxml.html.clean import Cleaner
 from mako.filters import decode
 
@@ -13,6 +14,14 @@ from mako.filters import decode
 # it isn't already escaped.
 Text = markupsafe.escape                        # pylint: disable=invalid-name
 
+
+class HTMLCleaner(Cleaner):
+    _is_url = re.compile(r"^(?:https?|ftp|file)://", re.I).search
+    def _remove_javascript_link(self, link: str):
+        if self._is_url(link.strip()):
+            return link
+        super()._remove_javascript_link(link)
+        
 
 def HTML(html):                                 # pylint: disable=invalid-name
     """
@@ -70,6 +79,6 @@ def clean_dangerous_html(html):
     """
     if not html:
         return html
-    cleaner = Cleaner(style=True, inline_style=False, safe_attrs_only=False)
+    cleaner = HTMLCleaner(style=True, inline_style=False, safe_attrs_only=False)
     html = cleaner.clean_html(html)
     return HTML(html)
