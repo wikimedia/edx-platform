@@ -1149,7 +1149,6 @@
     "Ready To Submit": "Siap untuk mengirimkan",
     "Reason": "Alasan",
     "Reason field should not be left blank.": "Kolom alasan tidak boleh kosong.",
-    "Receive updates": "Menerima update",
     "Recent Activity": "Aktivitas Terbaru",
     "Recover my password": "Pulihkan kata kunci Anda",
     "Recovery Email Address": "Alamat Email Cadangan",

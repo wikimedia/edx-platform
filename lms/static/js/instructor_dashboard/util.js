@@ -517,6 +517,7 @@
             $tablePlaceholder = $('<div/>', {
                 class: 'slickgrid'
             });
+            $tablePlaceholder.css("height", "300px");
             this.$report_downloads_table.append($tablePlaceholder);
             grid = new Slick.Grid($tablePlaceholder, reportDownloadsData, columns, options);
             grid.onClick.subscribe(function(event) {

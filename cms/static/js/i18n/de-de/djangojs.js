@@ -1377,7 +1377,6 @@
     "Reason": "Grund",
     "Reason field should not be left blank.": "Das Ursachenfeld sollte nicht leer gelassen sein.",
     "Reason for change:": "Grund f\u00fcr die \u00c4nderung:",
-    "Receive updates": "Updates empfangen",
     "Recent Activity": "K\u00fcrzliche Aktivit\u00e4t",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "Empfohlene Bildaufl\u00f6sung ist {imageResolution}, maximale Bilddateigr\u00f6\u00dfe sollte {maxFileSize} sein und das Format muss eines von {supportedImageFormats} sein.",
     "Recover my password": "Mein Passwort wiederherstellen",

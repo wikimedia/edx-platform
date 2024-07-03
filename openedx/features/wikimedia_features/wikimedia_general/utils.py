@@ -13,6 +13,7 @@ from django.test import RequestFactory
 from django.contrib.auth import get_user_model
 from common.djangoapps.student.models import CourseEnrollment
 from common.djangoapps.student.roles import CourseInstructorRole, CourseStaffRole
+from lms.djangoapps.certificates.models import GeneratedCertificate
 from opaque_keys.edx.keys import CourseKey
 
 from openedx.features.course_experience.utils import get_course_outline_block_tree
@@ -30,9 +31,6 @@ from openedx.core.djangoapps.django_comment_common.models import (
 from lms.djangoapps.courseware.courses import get_course_with_access
 from lms.djangoapps.discussion.django_comment_client.utils import (
     add_courseware_context)
-from common.djangoapps.student.models import (
-     CourseEnrollment
-)
 from openedx.core.djangoapps.user_api.models import UserPreference
 from lms.djangoapps.discussion.notification_prefs import WEEKLY_NOTIFICATION_PREF_KEY
 from opaque_keys.edx.keys import CourseKey, UsageKey, i4xEncoder
@@ -162,6 +160,11 @@ def is_course_completed(user, course_key):
         course_key = CourseKey.from_string(course_key)
     return CourseGradeFactory().read(user, course_key=course_key).summary['grade'] == 'Pass'
 
+def is_certificate_generated(user, course_key):
+    if isinstance(course_key, str):
+        course_key = CourseKey.from_string(course_key)
+    return GeneratedCertificate.objects.filter(user=user, course_id=course_key).exists()
+
 
 def get_user_completed_course_keys(user):
     """
@@ -230,23 +233,41 @@ def get_users_course_completion_stats(users, users_enrollments, course_keys):
 
 
 def get_course_enrollment_and_completion_stats(course_id) -> dict:
-    """Returns the count of student completed the provided course
-    """
+    """Returns the count of student completed the provided course"""
     enrollments = CourseEnrollment.objects.filter(
-            course_id=course_id,
-            is_active=True,
-        )
+        course_id=course_id,
+        is_active=True,
+    )
 
-    total_students_completed = 0
+    total_learners_completed = 0
+    total_cert_generated = 0
     for enrollment in enrollments:
         user = User.objects.get(id=enrollment.user_id)
         if is_course_completed(user, course_id):
-            total_students_completed += 1
+            total_learners_completed += 1
+        if is_certificate_generated(user, course_id):
+            total_cert_generated += 1
 
     enrollment_count = enrollments.count()
-    percentage_completed = (total_students_completed/enrollment_count) * 100 if enrollment_count else 0
+    completed_percentage = (total_learners_completed / enrollment_count) * 100 if enrollment_count else 0
 
-    return (total_students_completed, enrollment_count, percentage_completed)
+    return {
+        "total_learners_completed": total_learners_completed,
+        "total_cert_generated": total_cert_generated,
+        "total_learners_enrolled": enrollment_count,
+        "completed_percentage": completed_percentage,
+    }
+
+
+def get_user_course_completions(user, user_enrollments):
+    total_completions = 0
+
+    for enrollment in user_enrollments:
+        course = getattr(enrollment, 'course', None)
+        if course and is_course_completed(user, course.id):
+            total_completions += 1
+
+    return total_completions
 
 
 def get_paced_type(self_paced):

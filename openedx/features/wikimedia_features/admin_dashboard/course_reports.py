@@ -11,7 +11,9 @@ from django.urls import reverse
 from common.djangoapps.edxmako.shortcuts import render_to_response
 from common.djangoapps.util.cache import cache_if_anonymous
 from lms.djangoapps.courseware.access import has_access
-from lms.djangoapps.courseware.courses import get_course_by_id, get_courses
+from lms.djangoapps.courseware.courses import get_course_by_id
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+from openedx.core.lib.api.view_utils import LazySequence
 
 
 def require_user_permission():
@@ -42,6 +44,27 @@ def course_reports(request):
     courses_list = []
     sections = {"key": {}}
 
+    def get_courses(user=None):
+        """
+        Retrieve a list of courses that a user has access to based on their permissions.
+
+        This function filters the list of all available courses to include only those
+        that the specified user has access to in the 'staff', 'instructor' or Global user role.
+
+        Args:
+            user (optional): The user for whom the course access is being checked. 
+
+        Returns:
+            LazySequence: A lazily evaluated sequence of courses that the user has access to.
+                        The sequence's length is estimated based on the total count of courses.
+        """
+        permissions = ['staff', 'instructor']
+        courses = CourseOverview.objects.all()
+        return LazySequence(
+            (c for c in courses if any(has_access(user, p, c) for p in permissions)),
+            est_len=courses.count()
+        )
+    
     courses_list = get_courses(request.user)
     course = get_course_by_id(courses_list[0].id, depth=0)
 
@@ -83,7 +106,8 @@ def section_data_download(course, access):
         'courses_enrollments_csv_url': reverse('admin_dashboard:courses_enrollment_report'),
         'all_courses_enrollments_csv_url': reverse('admin_dashboard:all_courses_enrollment_report'),
         'user_pref_lang_csv_url': reverse('admin_dashboard:user_pref_lang_report'),
+        'users_enrollment_url': reverse('admin_dashboard:users_enrollment_report'),
     }
-    if not access.get('data_researcher'):
+    if not (access.get('data_researcher') or access.get('staff') or access.get('instructor')):
         section_data['is_hidden'] = True
     return section_data

@@ -146,7 +146,7 @@ def instructor_dashboard_2(request, course_id):  # lint-amnesty, pylint: disable
             sections_content.append(_section_discussions_management(course, access))
         sections.extend(sections_content)
 
-    if access['data_researcher']:
+    if access['data_researcher'] or access['staff'] or access['instructor']:
         sections.append(_section_data_download(course, access))
 
     analytics_dashboard_message = None
@@ -563,6 +563,10 @@ def _section_student_admin(course, access):
             kwargs={'course_id': str(course_key)}
         ),
         'spoc_gradebook_url': reverse('spoc_gradebook', kwargs={'course_id': str(course_key)}),
+        'calculate_grades_csv_url': reverse('calculate_grades_csv', kwargs={'course_id': str(course_key)}),
+        'list_report_downloads_url': reverse(
+            'list_report_downloads_student_admin', kwargs={'course_id': str(course_key)}
+        ),
     }
     if is_writable_gradebook_enabled(course_key) and settings.WRITABLE_GRADEBOOK_URL:
         section_data['writable_gradebook_url'] = f'{settings.WRITABLE_GRADEBOOK_URL}/{str(course_key)}'
@@ -628,7 +632,7 @@ def _section_data_download(course, access):
         ),
         'export_ora2_summary_url': reverse('export_ora2_summary', kwargs={'course_id': str(course_key)}),
     }
-    if not access.get('data_researcher'):
+    if not (access.get('data_researcher') or access.get('staff') or access.get('instructor')):
         section_data['is_hidden'] = True
     return section_data
 

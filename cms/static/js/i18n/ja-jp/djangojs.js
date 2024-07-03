@@ -1178,7 +1178,6 @@
     "Reason": "\u7406\u7531",
     "Reason field should not be left blank.": "\u7406\u7531\u6b04\u306f\u7a7a\u6b04\u3067\u306f\u3044\u3051\u307e\u305b\u3093\u3002",
     "Reason for change:": "\u5909\u66f4\u7406\u7531:",
-    "Receive updates": "\u66f4\u65b0\u60c5\u5831\u3092\u53d7\u3051\u53d6\u308b",
     "Recent Activity": "\u6700\u8fd1\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "\u63a8\u5968\u753b\u50cf\u89e3\u50cf\u5ea6\u306f{imageResolution}\u3001\u753b\u50cf\u306e\u6700\u5927\u30d5\u30a1\u30a4\u30eb\u30b5\u30a4\u30ba\u306f{maxFileSize}\u3001\u30d5\u30a9\u30fc\u30de\u30c3\u30c8\u306f{supportedImageFormats}\u306e\u3044\u305a\u308c\u304b\u3067\u306a\u3051\u308c\u3070\u3044\u3051\u307e\u305b\u3093\u3002",
     "Recovery Email Address": "\u5fa9\u65e7\u9023\u7d61\u7528\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9",

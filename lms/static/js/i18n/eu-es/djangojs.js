@@ -888,7 +888,6 @@
     "Ready To Submit": "Bidaltzeko prest",
     "Reason": "Arrazoia",
     "Reason for change:": "Aldatzeko arrazoia:",
-    "Receive updates": "Jaso eguneraketak",
     "Recent Activity": "Duela gutxiko aktibitatea",
     "Recover my password": "Berreskuratu nire pasahitza",
     "Recovery Email Address": "Berreskuratu ahal izateko posta elektronikoa",

@@ -1296,7 +1296,6 @@
     "Reason": "Anledning",
     "Reason field should not be left blank.": "Anledningsf\u00e4lt ska inte l\u00e4mnas tomt.",
     "Reason for change:": "Anledning till f\u00f6r\u00e4ndring:",
-    "Receive updates": "Ta emot uppdateringar",
     "Recent Activity": "senaste aktivitet",
     "Recommended image resolution is {imageResolution}, maximum image file size should be {maxFileSize} and format must be one of {supportedImageFormats}.": "Rekommenderad bilduppl\u00f6sning \u00e4r {imageResolution}, maximal bildfilstorlek b\u00f6r vara {maxFileSize} och formatet m\u00e5ste vara ett av {supportedImageFormats}.",
     "Recover my password": "\u00c5terst\u00e4ll mitt l\u00f6senord",

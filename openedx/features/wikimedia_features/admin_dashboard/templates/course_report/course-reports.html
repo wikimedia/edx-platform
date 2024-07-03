@@ -34,6 +34,78 @@
         </tr>
       </thead>
       <tbody>
+
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Quarterly courses enrollment report")}</span>
+            <span class="info-text">${_("Generate a report for last quarter enrollments of all courses.")}</span>
+          </td>
+          <td class="d-flex align-items-center p-3">
+            <select name="enrollment-year" id="select-enrollment-year" class="quarterly-selector">
+              <option value="">${_("Select Year")}</option>
+              %for year in year_options:
+                <option value=${year}>${year}</option>
+              %endfor
+            </select>
+            <select name="enrollment-quarter" id="select-enrollment-quarter" class="ml-1 quarterly-selector">
+              <option value="">${_("Select Quarter")}</option>
+            </select>
+          </td>
+          <td class="action">
+
+            <button
+              name="courses-enrollments-csv"
+              class="btn btn-primary"
+              value="${_("Generate Average Grade Report")}"
+              data-endpoint="${ section_data['key']['courses_enrollments_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("All courses enrollment report")}</span>
+            <span class="info-text">${_("Generate an all time report of enrollment/completion for all courses.")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="all-courses-enrollments-csv"
+              class="btn btn-primary"
+              value="${_("Generate Courses Enrollment Report")}"
+              data-endpoint="${ section_data['key']['all_courses_enrollments_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Users preferred language report")}</span>
+            <span class="info-text">${_("Generate a report on users preferred lanugage. Displays N/A for users who have not selected a lanugage")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="user-pref-lang-csv"
+              class="btn btn-primary"
+              value="${_("Generate Users Preferred Language Report")}"
+              data-endpoint="${ section_data['key']['user_pref_lang_csv_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("All Users enrollment report")}</span>
+            <span class="info-text">${_("Generates a report on users enrollments and their completed courses")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="users-enrollment-csv"
+              class="btn btn-primary"
+              value="${_("Generate Users Enrollment Report")}"
+              data-endpoint="${ section_data['key']['users_enrollment_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
         <tr class="single-course-report">
           <td>
             <span class="text">${_("List profile information for enrolled students")}</span>
@@ -165,62 +237,6 @@
               data-endpoint="${ section_data['key']['average_calculate_grades_csv_url'] }"
             >${_("Generate")}</button>
             </div>
-          </td>
-        </tr>
-        <tr class="all-courses-report">
-          <td>
-            <span class="text">${_("Quarterly courses enrollment report")}</span>
-            <span class="info-text">${_("Generate a report for last quarter enrollments of all courses.")}</span>
-          </td>
-          <td class="d-flex align-items-center p-3">
-            <select name="enrollment-year" id="select-enrollment-year" class="quarterly-selector">
-              <option value="">${_("Select Year")}</option>
-              %for year in year_options:
-                <option value=${year}>${year}</option>
-              %endfor
-            </select>
-            <select name="enrollment-quarter" id="select-enrollment-quarter" class="ml-1 quarterly-selector">
-              <option value="">${_("Select Quarter")}</option>
-            </select>
-          </td>
-          <td class="action">
-
-            <button
-              name="courses-enrollments-csv"
-              class="btn btn-primary"
-              value="${_("Generate Average Grade Report")}"
-              data-endpoint="${ section_data['key']['courses_enrollments_csv_url'] }"
-            >${_("Generate")}</button>
-          </td>
-        </tr>
-        <tr class="all-courses-report">
-          <td>
-            <span class="text">${_("All courses enrollment report")}</span>
-            <span class="info-text">${_("Generate an all time report of enrollment/completion for all courses.")}</span>
-          </td>
-          <td></td>
-          <td class="action">
-            <button
-              name="all-courses-enrollments-csv"
-              class="btn btn-primary"
-              value="${_("Generate Courses Enrollment Report")}"
-              data-endpoint="${ section_data['key']['all_courses_enrollments_csv_url'] }"
-            >${_("Generate")}</button>
-          </td>
-        </tr>
-        <tr class="all-courses-report">
-          <td>
-            <span class="text">${_("Users preferred language report")}</span>
-            <span class="info-text">${_("Generate a report on users preferred lanugage. Displays N/A for users who have not selected a lanugage")}</span>
-          </td>
-          <td></td>
-          <td class="action">
-            <button
-              name="user-pref-lang-csv"
-              class="btn btn-primary"
-              value="${_("Generate Users Preferred Language Report")}"
-              data-endpoint="${ section_data['key']['user_pref_lang_csv_url'] }"
-            >${_("Generate")}</button>
           </td>
         </tr>
       </tbody>
