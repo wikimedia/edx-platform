@@ -20,7 +20,6 @@ class MessengerConfig(AppConfig):
         PluginSettings.CONFIG: {
             ProjectType.LMS: {
                 SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: 'settings.common'},
-                SettingsType.TEST: {PluginSettings.RELATIVE_PATH: 'settings.test'},
             }
         }
     }
