@@ -16,9 +16,42 @@ Text = markupsafe.escape                        # pylint: disable=invalid-name
 
 
 class HTMLCleaner(Cleaner):
-    _is_url = re.compile(r"^(?:https?|ftp|file)://", re.I).search
+    """
+    HTMLCleaner extends lxml.html.clean.Cleaner to sanitize HTML content while preserving valid URLs
+    and removing unsafe JavaScript links.
+
+    Attributes:
+    -----------
+    _is_url : Callable[[str], Optional[re.Match]]
+        A regular expression pattern used to identify valid URLs. This pattern matches strings that
+        start with 'http', 'https', 'ftp', or 'file' schemes, case-insensitively.
+    """
     def _remove_javascript_link(self, link: str):
-        if self._is_url(link.strip()):
+        """
+        Checks if the given link is a valid URL. If it is, the link is returned unchanged.
+        Otherwise, the method delegates to the parent class's method to remove the JavaScript link.
+
+        Parameters:
+        -----------
+        link : str
+            The hyperlink (href attribute value) to be checked and potentially sanitized.
+
+        Returns:
+        --------
+        Optional[str]
+            The original link if it is a valid URL; otherwise, the result of the parent class's method
+            to handle the link.
+
+        Example:
+        --------
+        'https://www.example.com/javascript:something'   Valid
+        'javascript:alert("hello")' Invalid
+        'http://example.com/path/to/page'   Valid
+        'ftp://ftp.example.com/resource'   Valid
+        'file://localhost/path/to/file'   Valid
+        """
+        is_url = re.compile(r"^(?:https?|ftp|file)://", re.I).search(link.strip())
+        if is_url:
             return link
         super()._remove_javascript_link(link)
         
