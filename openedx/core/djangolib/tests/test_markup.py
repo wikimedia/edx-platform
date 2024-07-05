@@ -158,49 +158,35 @@ class FormatHtmlTest(unittest.TestCase):
         assert not html_soup.find('blink')
         assert not html_soup.find('object')
 
-
+@ddt.ddt
 class TestHTMLCleaner(unittest.TestCase):
     """
     Tests that Url links are being cleaned properly and no useful link is removed.
     """
 
     def setUp(self):
-        self.cleaner = HTMLCleaner(style=True, inline_style=False, safe_attrs_only=False)
+        self.cleaner = HTMLCleaner()
 
-    def test_valid_urls(self):
-        https_url = "https://example.com"
-        http_url = "http://example.com/path/to/page"
-        ftp_url = "ftp://ftp.example.com/resource"
-        file_url = "file://localhost/path/to/file"
-
-        cleaned_url = self.cleaner._remove_javascript_link(https_url)
-        self.assertEqual(cleaned_url, https_url)
-
-        cleaned_url = self.cleaner._remove_javascript_link(http_url)
-        self.assertEqual(cleaned_url, http_url)
-
-        cleaned_url = self.cleaner._remove_javascript_link(ftp_url)
-        self.assertEqual(cleaned_url, ftp_url)
-
-        cleaned_url = self.cleaner._remove_javascript_link(file_url)
-        self.assertEqual(cleaned_url, file_url)
-
-    def test_javascript_link(self):
-        cleaned_url = self.cleaner._remove_javascript_link("javascript:alert('Hello')")
-        self.assertIsNone(cleaned_url)
-
-    def test_mixed_case_scheme(self):
+    @ddt.data(
+        "https://example.com/data:something", # Javascript cannot be executed this way so these urls are safe.
+        "http://example.com/path/to/page",
+        "ftp://ftp.example.com/resource",
+        "file://localhost/path/to/file",
+    )
+    def test_valid_urls(self, url):
         """
-        Javascript can be executed this way so this code should be removed.
+        Test that valid URLs are preserved.
         """
-        url = "javascript:alert('hello') https://example.com"
-        cleaned_url = self.cleaner._remove_javascript_link(url)
-        self.assertIsNone(cleaned_url)
-
-    def test_sub_scheme_match(self):
-        """
-        Javascript cannot be executed this way so these urls are safe.
-        """
-        url = "https://example.com/data:something"
         cleaned_url = self.cleaner._remove_javascript_link(url)
         self.assertEqual(cleaned_url, url)
+
+    @ddt.data(
+        "javascript:alert('Hello')",
+        "mocha:some_code https://example.com", # Javascript can be executed this way so this code should be removed.
+    )
+    def test_javascript_is_removed(self, url):
+        """
+        Test that malicious Javascript is removed.
+        """
+        cleaned_url = self.cleaner._remove_javascript_link(url)
+        self.assertEqual(cleaned_url, '')

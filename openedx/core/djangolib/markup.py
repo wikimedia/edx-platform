@@ -17,43 +17,35 @@ Text = markupsafe.escape                        # pylint: disable=invalid-name
 
 class HTMLCleaner(Cleaner):
     """
-    HTMLCleaner extends lxml.html.clean.Cleaner to sanitize HTML content while preserving valid URLs
-    and removing unsafe JavaScript links.
-
-    Attributes:
-    -----------
-    _is_url : Callable[[str], Optional[re.Match]]
-        A regular expression pattern used to identify valid URLs. This pattern matches strings that
-        start with 'http', 'https', 'ftp', or 'file' schemes, case-insensitively.
+    HTMLCleaner extends lxml.html.clean.Cleaner to sanitize HTML content while preserving
+    valid URLs and removing unsafe JavaScript links.
     """
     def _remove_javascript_link(self, link: str):
         """
-        Checks if the given link is a valid URL. If it is, the link is returned unchanged.
-        Otherwise, the method delegates to the parent class's method to remove the JavaScript link.
+        Overrides the parent class's method to preserve valid URLs.
 
-        Parameters:
-        -----------
-        link : str
-            The hyperlink (href attribute value) to be checked and potentially sanitized.
+        This method uses a regular expression to identify valid URLs that start with 'http', 'https',
+        'ftp', or 'file' schemes. If the link is a valid URL, it is returned unchanged. Otherwise,
+        the parent class's method is used to remove the JavaScript link.
+
+        Args:
+            link (str): The hyperlink (href attribute value) to be checked and potentially sanitized.
 
         Returns:
-        --------
-        Optional[str]
-            The original link if it is a valid URL; otherwise, the result of the parent class's method
-            to handle the link.
+            str: The original link or empty string.
 
-        Example:
-        --------
-        'https://www.example.com/javascript:something'   Valid
-        'javascript:alert("hello")' Invalid
-        'http://example.com/path/to/page'   Valid
-        'ftp://ftp.example.com/resource'   Valid
-        'file://localhost/path/to/file'   Valid
+        Examples:
+            Valid URLs:
+                'https://www.example.com/javascript:something'
+                'file://localhost/path/to/file'
+            Invalid URLs:
+                'javascript:alert("hello")'
+                'javascript:alert("hello") https://www.example.com/page'
         """
         is_url = re.compile(r"^(?:https?|ftp|file)://", re.I).search(link.strip())
         if is_url:
             return link
-        super()._remove_javascript_link(link)
+        return super()._remove_javascript_link(link)
         
 
 def HTML(html):                                 # pylint: disable=invalid-name
