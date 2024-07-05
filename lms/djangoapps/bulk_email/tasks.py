@@ -455,7 +455,8 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
         'failed' count above.
     """
     # Get information from current task's request:
-    parent_task_id = InstructorTask.objects.get(pk=entry_id).task_id
+    parent_task = InstructorTask.objects.select_related('requester').get(pk=entry_id)
+    parent_task_id = parent_task.task_id
     task_id = subtask_status.task_id
     total_recipients = len(to_list)
     recipient_num = 0
@@ -568,8 +569,8 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
                 [email],
                 connection=connection
             )
-            if hasattr(settings, 'DEFAULT_REPLY_TO_EMAIL'):
-                email_msg.reply_to = [settings.DEFAULT_REPLY_TO_EMAIL]
+            if parent_task.requester.email:
+                email_msg.reply_to = parent_task.requester.email
             email_msg.attach_alternative(html_msg, 'text/html')
 
             # Throttle if we have gotten the rate limiter.  This is not very high-tech,
