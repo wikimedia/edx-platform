@@ -570,7 +570,7 @@ def _send_course_email(entry_id, email_id, to_list, global_email_context, subtas
                 connection=connection
             )
             if parent_task.requester.email:
-                email_msg.reply_to = parent_task.requester.email
+                email_msg.reply_to = [parent_task.requester.email]
             email_msg.attach_alternative(html_msg, 'text/html')
 
             # Throttle if we have gotten the rate limiter.  This is not very high-tech,
