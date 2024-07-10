@@ -5,6 +5,7 @@ Utilities for use in Mako markup.
 
 import markupsafe
 import bleach
+import re
 from lxml.html.clean import Cleaner
 from mako.filters import decode
 
@@ -13,6 +14,39 @@ from mako.filters import decode
 # it isn't already escaped.
 Text = markupsafe.escape                        # pylint: disable=invalid-name
 
+
+class HTMLCleaner(Cleaner):
+    """
+    HTMLCleaner extends lxml.html.clean.Cleaner to sanitize HTML content while preserving
+    valid URLs and removing unsafe JavaScript links.
+    """
+    def _remove_javascript_link(self, link: str):
+        """
+        Overrides the parent class's method to preserve valid URLs.
+
+        This method uses a regular expression to identify valid URLs that start with 'http', 'https',
+        'ftp', or 'file' schemes. If the link is a valid URL, it is returned unchanged. Otherwise,
+        the parent class's method is used to remove the JavaScript link.
+
+        Args:
+            link (str): The hyperlink (href attribute value) to be checked and potentially sanitized.
+
+        Returns:
+            str: The original link or empty string.
+
+        Examples:
+            Valid URLs:
+                'https://www.example.com/javascript:something'
+                'file://localhost/path/to/file'
+            Invalid URLs:
+                'javascript:alert("hello")'
+                'javascript:alert("hello") https://www.example.com/page'
+        """
+        is_url = re.compile(r"^(?:https?|ftp|file)://", re.I).search(link.strip())
+        if is_url:
+            return link
+        return super()._remove_javascript_link(link)
+        
 
 def HTML(html):                                 # pylint: disable=invalid-name
     """
@@ -70,6 +104,6 @@ def clean_dangerous_html(html):
     """
     if not html:
         return html
-    cleaner = Cleaner(style=True, inline_style=False, safe_attrs_only=False)
+    cleaner = HTMLCleaner(style=True, inline_style=False, safe_attrs_only=False)
     html = cleaner.clean_html(html)
     return HTML(html)

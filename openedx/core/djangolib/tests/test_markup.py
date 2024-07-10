@@ -11,7 +11,7 @@ from django.utils.translation import gettext as _
 from django.utils.translation import ngettext
 from mako.template import Template
 
-from openedx.core.djangolib.markup import HTML, Text, strip_all_tags_but_br
+from openedx.core.djangolib.markup import HTML, HTMLCleaner, Text, strip_all_tags_but_br
 
 
 @ddt.ddt
@@ -157,3 +157,36 @@ class FormatHtmlTest(unittest.TestCase):
         assert not html_soup.find('form')
         assert not html_soup.find('blink')
         assert not html_soup.find('object')
+
+@ddt.ddt
+class TestHTMLCleaner(unittest.TestCase):
+    """
+    Tests that Url links are being cleaned properly and no useful link is removed.
+    """
+
+    def setUp(self):
+        self.cleaner = HTMLCleaner()
+
+    @ddt.data(
+        "https://example.com/data:something", # Javascript cannot be executed this way so these urls are safe.
+        "http://example.com/path/to/page",
+        "ftp://ftp.example.com/resource",
+        "file://localhost/path/to/file",
+    )
+    def test_valid_urls(self, url):
+        """
+        Test that valid URLs are preserved.
+        """
+        cleaned_url = self.cleaner._remove_javascript_link(url)
+        self.assertEqual(cleaned_url, url)
+
+    @ddt.data(
+        "javascript:alert('Hello')",
+        "mocha:some_code https://example.com", # Javascript can be executed this way so this code should be removed.
+    )
+    def test_javascript_is_removed(self, url):
+        """
+        Test that malicious Javascript is removed.
+        """
+        cleaned_url = self.cleaner._remove_javascript_link(url)
+        self.assertEqual(cleaned_url, '')
