@@ -17,6 +17,3 @@ class BaseMessageType(MessageType):  # lint-amnesty, pylint: disable=missing-cla
         
         if from_address:
             self.options.update({'from_address': from_address})  # pylint: disable=no-member
-        
-        if hasattr(settings, 'DEFAULT_REPLY_TO_EMAIL'):
-            self.options.update({'reply_to': [settings.DEFAULT_REPLY_TO_EMAIL]})
