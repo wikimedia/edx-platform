@@ -156,9 +156,16 @@ def get_user_enrollments_course_keys(user):
 
 
 def is_course_completed(user, course_key):
+    """
+    Returns whether the user has completed the course. If there is a problem while getting the grade, returns False.
+    """
     if isinstance(course_key, str):
         course_key = CourseKey.from_string(course_key)
-    return CourseGradeFactory().read(user, course_key=course_key).summary['grade'] == 'Pass'
+    try:
+        return CourseGradeFactory().read(user, course_key=course_key).summary['grade'] == 'Pass'
+    except Exception:
+        log.info(f"Unable to read course grade for user {user} and course {course_key}")
+        return False
 
 def is_certificate_generated(user, course_key):
     if isinstance(course_key, str):
