@@ -170,6 +170,12 @@ urlpatterns = [
 
     # Update session view
     path('lang_pref/session_language', lang_pref_views.update_session_language, name='session_language'),
+    path('lang_pref/released_languages', lang_pref_views.get_released_languages, name='released_languages'),
+    path(
+        'lang_pref/language_selector_is_enabled',
+        lang_pref_views.get_language_selector_is_enabled,
+        name='language_selector_is_enabled',
+    ),
 
     # Multiple course modes and identity verification
     path(
