@@ -98,7 +98,7 @@ class FormDescription:
     ALLOWED_TYPES = ["text", "email", "select", "textarea", "checkbox", "plaintext", "password", "hidden"]
 
     ALLOWED_RESTRICTIONS = {
-        "text": ["min_length", "max_length"],
+        "text": ["min_length", "max_length", "readonly"],
         "password": ["min_length", "max_length", "min_upper", "min_lower",
                      "min_punctuation", "min_symbol", "min_numeric", "min_alphabetic"],
         "email": ["min_length", "max_length", "readonly"],
