@@ -34,21 +34,18 @@ class Command(BaseCommand):
 
     def award_badges_for_course(self, course_id):
         LOGGER.info("Fetching certificates for course_id: %s", course_id)
-        generated_certificates = GeneratedCertificate.eligible_certificates.filter(
+        generated_certificates = GeneratedCertificate.eligible_certificates.select_related('user').filter(
             course_id=course_id,
             status=CertificateStatuses.downloadable
-        ).values('user')
-
+        )
+        course_key = CourseKey.from_string(course_id)
         if not generated_certificates:
             LOGGER.info("No certificates found for course_id: %s", course_id)
             return
-
         for certificate in generated_certificates:
-            user_id = certificate['user']
-            if user_id:
+            user = certificate.user
+            if user:
                 try:
-                    user = User.objects.get(id=user_id)
-                    course_key = CourseKey.from_string(course_id)
                     course_badge_check(user, course_key)
                     LOGGER.info("Awarded badge to user %s for the  course %s", user.username, course_id)
                 except User.DoesNotExist:
