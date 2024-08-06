@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-07-01 09:42+0000\n"
+"POT-Creation-Date: 2024-08-06 09:10+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Mongolian (https://app.transifex.com/open-edx/teams/6205/mn/)\n"
@@ -6453,8 +6453,13 @@ msgstr ""
 msgid "Could not find problem with this location."
 msgstr ""
 
+#: lms/templates/api_admin/catalogs/search.html
+#: lms/templates/ccx/enrollment.html lms/templates/staff_problem_info.html
+msgid "Username"
+msgstr "Хэрэглэгчийн нэр "
+
 #: lms/djangoapps/instructor/views/api.py
-msgid "CourseID"
+msgid "Grade"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
@@ -6462,11 +6467,11 @@ msgid "Certificate Type"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
-msgid "Total Certificates Issued"
+msgid "Certificate Creation Date"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
-msgid "Date Report Run"
+msgid "Certificate link"
 msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
@@ -6478,11 +6483,6 @@ msgstr ""
 #: lms/djangoapps/instructor/views/api.py
 msgid "User ID"
 msgstr ""
-
-#: lms/templates/api_admin/catalogs/search.html
-#: lms/templates/ccx/enrollment.html lms/templates/staff_problem_info.html
-msgid "Username"
-msgstr "Хэрэглэгчийн нэр "
 
 #: lms/templates/ccx/enrollment.html
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
@@ -10117,10 +10117,9 @@ msgstr ""
 
 #: openedx/core/djangoapps/user_api/accounts/__init__.py
 msgid ""
-"Usernames can only contain letters, numerals, and @/./+/-/_ characters."
+"Usernames must not contain the following symbols: #, <, >, [, ], |, {, }, /,"
+" \\, :, @"
 msgstr ""
-"Хэрэглэгчийн нэр зөвхөн үсэг, тоо, болон @/./+/-/_ тэмдэгтүүдийг агуулсан "
-"байна."
 
 #. Translators: This message is shown to users who attempt to create a new
 #. account using
@@ -11256,6 +11255,10 @@ msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
 msgid "user_pref_lang"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "all_users_enrollment"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/admin_dashboard/edx_ace/reportreadynotification/email/body.html
@@ -18184,6 +18187,55 @@ msgstr ""
 "олон дарснаар мэдээллийг гаргах хугацааг мэдэгдэхүйц нэмэгдүүлнэ. "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+msgid ""
+"Click to generate a CSV grade report for all currently enrolled students."
+msgstr ""
+"Одоо элссэн байгаа бүх оюутны CSV дүнгийн мэдээллийг гаргаж авахын тулд "
+"дарах."
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+msgid "Generate Grade Report"
+msgstr "Дүнгийн мэдээллийг Гаргаж авах "
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate Problem Grade Report"
+msgstr "Асуудлын зэрэглэлийг бий болгох"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate ORA Data Report"
+msgstr "ORA Өгөгдлийн тайлан гаргах"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate ORA Summary Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid ""
+"Click to generate a ZIP file that contains all submission texts and "
+"attachments."
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate Submission Files Archive"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/data_download_2/certificates.html
+msgid "Click to list certificates that are issued for this course:"
+msgstr "Энэ курсэд олгогдсон сертификатуудыг жагсаахын тулд дарна уу:"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "View Certificates Issued"
+msgstr "Гаргасан сертификатуудыг харах"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Download CSV of Certificates Issued"
+msgstr "Гаргасан Сертификатын CSV татаж авах"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
 msgid ""
 "Click to generate a CSV file of all students enrolled in this course, along "
 "with profile information such as email address and username:"
@@ -18263,19 +18315,6 @@ msgstr ""
 "системийн администратортоо хандаж болно.  "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
-#: lms/templates/instructor/instructor_dashboard_2/data_download_2/certificates.html
-msgid "Click to list certificates that are issued for this course:"
-msgstr "Энэ курсэд олгогдсон сертификатуудыг жагсаахын тулд дарна уу:"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "View Certificates Issued"
-msgstr "Гаргасан сертификатуудыг харах"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Download CSV of Certificates Issued"
-msgstr "Гаргасан Сертификатын CSV татаж авах"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
 msgid ""
 "For smaller courses, click to list profile information for enrolled students"
 " directly on this page:"
@@ -18288,46 +18327,14 @@ msgid "List enrolled students' profile information"
 msgstr "Элссэн оюутнуудын профайл мэдээллийн жагсаалт "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
-#: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
-msgid ""
-"Click to generate a CSV grade report for all currently enrolled students."
-msgstr ""
-"Одоо элссэн байгаа бүх оюутны CSV дүнгийн мэдээллийг гаргаж авахын тулд "
-"дарах."
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate Grade Report"
-msgstr "Дүнгийн мэдээллийг Гаргаж авах "
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate Problem Grade Report"
-msgstr "Асуудлын зэрэглэлийг бий болгох"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate ORA Data Report"
-msgstr "ORA Өгөгдлийн тайлан гаргах"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate ORA Summary Report"
-msgstr ""
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid ""
-"Click to generate a ZIP file that contains all submission texts and "
-"attachments."
-msgstr ""
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate Submission Files Archive"
-msgstr ""
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Reports Available for Download"
 msgstr "Мэдээллийг Татахад Бэлэн "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "The reports listed below are available for download, identified by UTC date "
@@ -18346,6 +18353,7 @@ msgstr ""
 "дараагийн мэдээлэл ороод явна. Мэдээллийг өдөрт хэд хэдэн удаа гаргадаг. "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
@@ -20203,11 +20211,69 @@ msgid "Options"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "List profile information for enrolled students"
+msgid "Quarterly courses enrollment report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate a report for last quarter enrollments of all courses."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Select Year"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Select Quarter"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Average Grade Report"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Generate"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "All courses enrollment report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate an all time report of enrollment/completion for all courses."
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Courses Enrollment Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Users preferred language report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid ""
+"Generate a report on users preferred lanugage. Displays N/A for users who "
+"have not selected a lanugage"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Users Preferred Language Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "All Users enrollment report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generates a report on users enrollments and their completed courses"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Users Enrollment Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "List profile information for enrolled students"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
@@ -20240,52 +20306,6 @@ msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid "Different grading schemes can affect the comparison."
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate Average Grade Report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Quarterly courses enrollment report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate a report for last quarter enrollments of all courses."
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Select Year"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Select Quarter"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "All courses enrollment report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate an all time report of enrollment/completion for all courses."
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate Courses Enrollment Report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Users preferred language report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid ""
-"Generate a report on users preferred lanugage. Displays N/A for users who "
-"have not selected a lanugage"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate Users Preferred Language Report"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
@@ -24189,6 +24209,12 @@ msgstr ""
 
 #~ msgid "Course Run"
 #~ msgstr "Хичээлийн Хугацаа"
+
+#~ msgid ""
+#~ "Usernames can only contain letters, numerals, and @/./+/-/_ characters."
+#~ msgstr ""
+#~ "Хэрэглэгчийн нэр зөвхөн үсэг, тоо, болон @/./+/-/_ тэмдэгтүүдийг агуулсан "
+#~ "байна."
 
 #~ msgid "Our mailing address is"
 #~ msgstr "Манай шуудангийн хаяг:"
