@@ -49,6 +49,6 @@ class Command(BaseCommand):
                     course_badge_check(user, course_key)
                     LOGGER.info("Awarded badge to user %s for the  course %s", user.username, course_id)
                 except User.DoesNotExist:
-                    LOGGER.error("User with id %s does not exist", user_id)
+                    LOGGER.error("User with id %s does not exist", user.username)
                 except Exception as e:
-                    LOGGER.error("An error occurred while processing user %s: %s", user_id, str(e), exc_info=True)
+                    LOGGER.error("An error occurred while processing user %s: %s", user.username, str(e), exc_info=True)
