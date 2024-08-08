@@ -4,8 +4,10 @@ from logging import getLogger
 
 from django.contrib.auth import get_user_model
 from django.db.models import F, Value, Case, When, CharField
+from django.db.models.query import QuerySet
 from django.db.models.functions import Concat
 from django.core.management.base import BaseCommand
+
 
 log = getLogger(__name__)
 User = get_user_model()
@@ -35,8 +37,13 @@ class Command(BaseCommand):
 
         if usernames:
             users = users.filter(username__in=usernames)
+        
+        total = users.count()
 
-        self._update_user_with_wikimedia_username(users)
+        log.info("Syncing %s users with wikimedia usernames", total)
+
+        stats = self._update_user_with_wikimedia_username(users)
+        self._print_stats(total, stats)
 
     def _get_tpa_users(self):
         """
@@ -64,19 +71,33 @@ class Command(BaseCommand):
 
         return users
 
-    def _update_user_with_wikimedia_username(self, users: list[User]):
+    def _update_user_with_wikimedia_username(self, users: QuerySet[User]) -> dict:
         """
         Checks if "wiki_username" was the original username provided by Wikimedia
         and updates the Wikilearn username with it.
         """
         total = len(users)
+        stats = {
+            "correct_username": 0,
+            "updated_username": 0,
+            "skipped_username": 0,
+        }
         for i, user in enumerate(users):
             index = i + 1
-            if self._username_exists(user.wiki_username):
+            if self._username_exists(user.username):
+                # This check is to avoid updating username if it is already same as Wikimedia's.
+                log.info(f'{index}/{total}: SKIPPED: {user.username} is CORRECT')
+                stats["correct_username"] += 1
+            elif self._username_exists(user.wiki_username):
+                log.info(f"{index}/{total}: UPDATING: {user.username} with {user.wiki_username}")
                 self._update_user(user)
-                log.info(f"{index}/{total}: UPDATED {user.username} with {user.wiki_username}")
+                stats["updated_username"] += 1
             else:
-                log.info(f'{index}/{total}: SKIPPED {user["username"]}')
+                # This means both the username and our guess (first_name+last_name) is wrong.
+                log.info(f'{index}/{total}: SKIPPED: {user.username}')
+                stats["skipped_username"] += 1
+        
+        return stats
 
     def _username_exists(self, username: str) -> bool:
         """
@@ -92,3 +113,9 @@ class Command(BaseCommand):
     def _update_user(self, user: User):
         user.username = user.wiki_username
         user.save()
+
+    def _print_stats(self, total: int, stats: dict):
+        log.info(f"Total mismatched users: {total}")
+        log.info(f"Correct usernames: {stats['correct_username']}")
+        log.info(f"Updated usernames: {stats['updated_username']}")
+        log.info(f"Skipped usernames: {stats['skipped_username']}")
