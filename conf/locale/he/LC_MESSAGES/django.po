@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2024-07-01 09:42+0000\n"
+"POT-Creation-Date: 2024-08-06 09:10+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Hebrew (https://app.transifex.com/open-edx/teams/6205/he/)\n"
@@ -133,8 +133,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-04-24\n"
-"X-POT-Import-Date: 2024-06-03 12:30:37+0000\n"
+"X-Generator: MediaWiki 1.43.0-alpha; Translate 2024-07-16\n"
+"X-POT-Import-Date: 2024-07-01 10:41:32+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -1236,6 +1236,88 @@ msgstr ""
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Allows hiding of the score tab."
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
+#, python-format
+msgid ""
+"\n"
+"         Weekly digest for course: %(course_name)s.\n"
+"    "
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid ""
+"Generate a report on users preferred lanugage. Displays N/A for users who "
+"have not selected a lanugage"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+msgid "Weekly Discussion Summary"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Users preferred language report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Generate Users Preferred Language Report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+msgid "posts created at"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+msgid "View discussions"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course version report (aggregate)"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Quarterly courses enrollment report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+msgid "Show less"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
+msgid "user_pref_lang"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(num_posts)s posts created at %(location_group.unit_name)s"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "All courses enrollment report"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+msgid "Return to course"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+#, python-format
+msgid "%(ctx.created_by)s created a post: <b>%(thread_title)s</b>"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+msgid "Discussion posts created this week:"
+msgstr ""
+
+#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
+msgid "Posted on"
+msgstr ""
+
+#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
+msgid "Course version report (detailed - per course)"
 msgstr ""
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
@@ -7871,20 +7953,28 @@ msgid "Could not find problem with this location."
 msgstr "לא ניתן למצוא את הבעיה במיקום זה."
 
 #: lms/djangoapps/instructor/views/api.py
-msgid "CourseID"
-msgstr "מזהה קורס"
+#: lms/djangoapps/instructor/views/tools.py
+#: openedx/core/djangoapps/schedules/admin.py
+#: lms/templates/api_admin/catalogs/search.html
+#: lms/templates/ccx/enrollment.html lms/templates/staff_problem_info.html
+msgid "Username"
+msgstr "שם משתמש"
+
+#: lms/djangoapps/instructor/views/api.py
+msgid "Grade"
+msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Certificate Type"
 msgstr "סוג תעודה"
 
 #: lms/djangoapps/instructor/views/api.py
-msgid "Total Certificates Issued"
-msgstr "סך כל התעודות שהונפקו"
+msgid "Certificate Creation Date"
+msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
-msgid "Date Report Run"
-msgstr "תאריך הרצת הדוח"
+msgid "Certificate link"
+msgstr ""
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/djangoapps/instructor_task/api_helper.py
@@ -7895,14 +7985,6 @@ msgstr ""
 #: lms/djangoapps/instructor/views/api.py
 msgid "User ID"
 msgstr "מזהה משתמש"
-
-#: lms/djangoapps/instructor/views/api.py
-#: lms/djangoapps/instructor/views/tools.py
-#: openedx/core/djangoapps/schedules/admin.py
-#: lms/templates/api_admin/catalogs/search.html
-#: lms/templates/ccx/enrollment.html lms/templates/staff_problem_info.html
-msgid "Username"
-msgstr "שם משתמש"
 
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: This label appears above a field on the login form
@@ -11455,7 +11537,8 @@ msgstr ""
 
 #: openedx/core/djangoapps/user_api/accounts/__init__.py
 msgid ""
-"Usernames can only contain letters, numerals, and @/./+/-/_ characters."
+"Usernames must not contain the following symbols: #, <, >, [, ], |, {, }, /,"
+" \\, :, @"
 msgstr ""
 
 #. Translators: This message is shown to users who attempt to create a new
@@ -12590,7 +12673,7 @@ msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/admin_task/api.py
-msgid "user_pref_lang"
+msgid "all_users_enrollment"
 msgstr ""
 
 #: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
@@ -12622,57 +12705,9 @@ msgstr "קורסים"
 msgid "Reports"
 msgstr "דוחות"
 
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-msgid "Weekly Discussion Summary"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-msgid "Discussion posts created this week:"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
-msgid "posts created at"
-msgstr ""
-
 #: lms/templates/course_modes/fbe.html
 msgid "Show more"
 msgstr "להציג עוד"
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
-msgid "Show less"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
-msgid "View discussions"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-#, python-format
-msgid "%(num_posts)s posts created at %(location_group.unit_name)s"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-#, python-format
-msgid "%(ctx.created_by)s created a post: <b>%(thread_title)s</b>"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-msgid "Posted on"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.txt
-msgid "Return to course"
-msgstr ""
-
-#: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/subject.txt
-#, python-format
-msgid ""
-"\n"
-"         Weekly digest for course: %(course_name)s.\n"
-"    "
-msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -18418,6 +18453,53 @@ msgstr ""
 " להאטה משמעותית בתהליך.  "
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+msgid ""
+"Click to generate a CSV grade report for all currently enrolled students."
+msgstr "לחץ על מנת לייצר דוח ציונים ב-CSV של כל הסטודנטים הרשומים כעת."
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
+msgid "Generate Grade Report"
+msgstr "יצר דוח ציונים"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate Problem Grade Report"
+msgstr "צור דוח דירוג בעיות"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate ORA Data Report"
+msgstr "צור דוח נתוני ORA."
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate ORA Summary Report"
+msgstr ""
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid ""
+"Click to generate a ZIP file that contains all submission texts and "
+"attachments."
+msgstr "כדי להוריד במרוכז את כל ההגשות והקבצים המצורפים לחץ - צור קובץ ZIP"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Generate Submission Files Archive"
+msgstr "יצירת ארכיון קבצי הגשה"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/data_download_2/certificates.html
+msgid "Click to list certificates that are issued for this course:"
+msgstr "לחץ על מנת ליצור רשימת תעודות המנופקות עבור קורס זה:"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "View Certificates Issued"
+msgstr "הצג את התעודות שהונפקו"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
+msgid "Download CSV of Certificates Issued"
+msgstr "הורד קובץ CSV של תעודות שהונפקו"
+
+#: lms/templates/instructor/instructor_dashboard_2/data_download.html
 msgid ""
 "Click to generate a CSV file of all students enrolled in this course, along "
 "with profile information such as email address and username:"
@@ -18492,19 +18574,6 @@ msgstr ""
 "בעיה, או לפנות למנהל האתר שלכם כדי להגדיל את המגבלה על מספר התגובות."
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
-#: lms/templates/instructor/instructor_dashboard_2/data_download_2/certificates.html
-msgid "Click to list certificates that are issued for this course:"
-msgstr "לחץ על מנת ליצור רשימת תעודות המנופקות עבור קורס זה:"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "View Certificates Issued"
-msgstr "הצג את התעודות שהונפקו"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Download CSV of Certificates Issued"
-msgstr "הורד קובץ CSV של תעודות שהונפקו"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
 msgid ""
 "For smaller courses, click to list profile information for enrolled students"
 " directly on this page:"
@@ -18517,44 +18586,14 @@ msgid "List enrolled students' profile information"
 msgstr "צור רשימת פרטי הפרופיל של סטודנטים שנרשמו"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
-#: lms/templates/instructor/instructor_dashboard_2/data_download_2/grading.html
-msgid ""
-"Click to generate a CSV grade report for all currently enrolled students."
-msgstr "לחץ על מנת לייצר דוח ציונים ב-CSV של כל הסטודנטים הרשומים כעת."
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate Grade Report"
-msgstr "יצר דוח ציונים"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate Problem Grade Report"
-msgstr "צור דוח דירוג בעיות"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate ORA Data Report"
-msgstr "צור דוח נתוני ORA."
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate ORA Summary Report"
-msgstr ""
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid ""
-"Click to generate a ZIP file that contains all submission texts and "
-"attachments."
-msgstr "כדי להוריד במרוכז את כל ההגשות והקבצים המצורפים לחץ - צור קובץ ZIP"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
-msgid "Generate Submission Files Archive"
-msgstr "יצירת ארכיון קבצי הגשה"
-
-#: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "Reports Available for Download"
 msgstr "דוחות זמינים להורדה"
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
 #: lms/templates/instructor/instructor_dashboard_2/data_download_2.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "The reports listed below are available for download, identified by UTC date "
@@ -18573,6 +18612,7 @@ msgstr ""
 "הדו\"ח מופק מספר פעמים ביום."
 
 #: lms/templates/instructor/instructor_dashboard_2/data_download.html
+#: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
 msgid ""
 "{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
@@ -20375,33 +20415,15 @@ msgid "An error occurred. Try loading the page again."
 msgstr "אירעה שגיאה. נסה לטעון שוב את העמוד."
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Course version report (detailed - per course)"
+msgid "All Users enrollment report"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Course version report (aggregate)"
+msgid "Generates a report on users enrollments and their completed courses"
 msgstr ""
 
 #: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Quarterly courses enrollment report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "All courses enrollment report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Users preferred language report"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid ""
-"Generate a report on users preferred lanugage. Displays N/A for users who "
-"have not selected a lanugage"
-msgstr ""
-
-#: openedx/features/wikimedia_features/admin_dashboard/templates/course_report/course-reports.html
-msgid "Generate Users Preferred Language Report"
+msgid "Generate Users Enrollment Report"
 msgstr ""
 
 #: wiki/templates/wiki/accounts/login.html
@@ -24351,6 +24373,15 @@ msgstr "יש ללחוץ על הכפתור „התחלת מבחן תחת פיקו
 
 #~ msgid "{platform_name} offers interactive online classes and MOOCs."
 #~ msgstr "{platform_name} מציעה כיתות מקוונות אינטראקטיביות וקורסי MOOC."
+
+#~ msgid "CourseID"
+#~ msgstr "מזהה קורס"
+
+#~ msgid "Total Certificates Issued"
+#~ msgstr "סך כל התעודות שהונפקו"
+
+#~ msgid "Date Report Run"
+#~ msgstr "תאריך הרצת הדוח"
 
 #~ msgid "Hide Progress Tab"
 #~ msgstr "הסתר כרטיסיית התקדמות"
