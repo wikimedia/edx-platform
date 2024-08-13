@@ -3,7 +3,8 @@ import requests
 from logging import getLogger
 
 from django.contrib.auth import get_user_model
-from django.db.models import F, Value, Case, When, CharField
+from django.db import IntegrityError
+from django.db.models import OuterRef, Exists, F, Value, Case, When, CharField
 from django.db.models.query import QuerySet
 from django.db.models.functions import Concat
 from django.core.management.base import BaseCommand
@@ -14,11 +15,14 @@ User = get_user_model()
 
 class Command(BaseCommand):
     """
-    Django management command to sync user usernames with Wikimedia usernames.
-
-    This command matches the usernames in the local database with the Wikimedia
-    usernames, and updates the local usernames if they differ from the ones provided
-    by Wikimedia.
+    Django management command to sync user usernames with guessed usernames, which is a combination of the first and last names, under the following conditions:
+        * The guessed username did not match any user on Wikilearn.
+        * The current username did not match any user on Wikimedia.
+        * The guessed username matched a profile on Wikimedia.
+    The command will not update users under these conditions:
+        * The Wikilearn username matches a different profile on Wikimedia.
+        * The guessed username does not match any user on Wikimedia.
+    Please note that there is a rare scenario where the guessed username might match a user on Wikimedia, which could lead to unexpected behavior.
     """
 
     help = "Matches the usernames with Wikimedia and updates the changed ones in Wikilearn"
@@ -75,6 +79,7 @@ class Command(BaseCommand):
         Returns:
             QuerySet[User]: A queryset of users to be processed.
         """
+        matching_users = User.objects.filter(username=OuterRef("wiki_username"))
         users = (
             User.objects.select_related("profile")
             .annotate(
@@ -87,9 +92,11 @@ class Command(BaseCommand):
             )
             .exclude(first_name__isnull=True)
             .exclude(first_name="")
-            .exclude(
-                username=F("wiki_username")
-            )  # Because no point in updating username with wiki_username later if it is already same.
+            # The following exclude ensures that no users are selected whose `wiki_username` matches any existing `username`.
+            # This is crucial for two reasons:
+            # 1. Avoid Duplication Error: If we try to update a user's `username` to a `wiki_username` that matches another user's existing `username`, it would cause a unique constraint violation in the database.
+            # 2. Self-Match Redundancy: Because no point in updating username with wiki_username later if it is already same.
+            .exclude(Exists(matching_users))
         )
 
         return users
@@ -116,16 +123,16 @@ class Command(BaseCommand):
             "correct_username": 0,
             "updated_username": 0,
             "skipped_username": 0,
+            "errors": 0,
             "updated_users": [],
         }
         for i, user in enumerate(users):
             index = i + 1
             if self._username_exists(user.username):
                 # This check is to avoid updating username if it is already correct according to Wikimedia.
-                log.info(f"{index}/{total}: SKIPPED: {user.username} is CORRECT")
+                log.info(f"{index}/{total}: SKIPPED: {user.username} EXISTS")
                 stats["correct_username"] += 1
             elif self._username_exists(user.wiki_username):
-                log.info(f"{index}/{total}: UPDATING: {user.username} with {user.wiki_username}")
                 user_values = {
                     "username": user.username,
                     "wiki_username": user.wiki_username,
@@ -133,10 +140,12 @@ class Command(BaseCommand):
                     "email": user.email,
                 }
 
-                self._update_user(user)
-
-                stats["updated_username"] += 1
-                stats["updated_users"].append(user_values)
+                if self._update_user(user):
+                    log.info(f"{index}/{total}: UPDATED: {user_values['username']} with {user_values['wiki_username']}")
+                    stats["updated_username"] += 1
+                    stats["updated_users"].append(user_values)
+                else:
+                    stats["errors"] += 1
             else:
                 # This means both the username and the computed wiki_username are incorrect.
                 log.info(f"{index}/{total}: SKIPPED: {user.username}")
@@ -161,15 +170,20 @@ class Command(BaseCommand):
 
         return ERROR_MSG not in response.text
 
-    def _update_user(self, user: User):
+    def _update_user(self, user: User) -> bool:
         """
         Updates the username of a user in the local database.
 
         Arguments:
             user (User): The user object whose username is to be updated.
         """
-        user.username = user.wiki_username
-        user.save()
+        try:
+            user.username = user.wiki_username
+            user.save()
+            return True
+        except IntegrityError:
+            log.exception(f"Error updating user {user.username} with {user.wiki_username}.")
+            return False
 
     def _print_stats(self, total: int, stats: dict):
         """
@@ -183,4 +197,5 @@ class Command(BaseCommand):
         log.info(f"Correct usernames: {stats['correct_username']}")
         log.info(f"Updated usernames: {stats['updated_username']}")
         log.info(f"Skipped usernames: {stats['skipped_username']}")
+        log.info(f"Errors: {stats['errors']}")
         log.info(f"Updated users: {stats['updated_users']}")
