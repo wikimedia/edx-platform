@@ -70,12 +70,12 @@ def get_authenticated_header_tabs(user):
             "url": reverse('messenger:messenger_home'),
         })
 
-    if user.is_superuser:
-        header_tabs.append(
-            {
-                "id": "sysadmin",
-                "name": _('Sysadmin'),
-                "url": reverse('sysadmin:sysadmin'),
-            }
-        )
+    # if user.is_superuser:
+    #     header_tabs.append(
+    #         {
+    #             "id": "sysadmin",
+    #             "name": _('Sysadmin'),
+    #             "url": reverse('sysadmin:sysadmin'),
+    #         }
+    #     )
     return header_tabs
