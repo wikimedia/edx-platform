@@ -6,7 +6,7 @@ from django.conf import settings
 
 from openedx.features.wikimedia_features.admin_dashboard.course_reports import course_reports
 from openedx.features.wikimedia_features.admin_dashboard.admin_task.api import (
-    average_calculate_grades_csv, progress_report_csv, course_version_report, courses_enrollment_report, all_courses_enrollment_report, user_pref_lang_report, users_enrollment_report
+    average_calculate_grades_csv, progress_report_csv, course_version_report, courses_enrollment_report, all_courses_enrollment_report, user_pref_lang_report, users_enrollment_report, enrollment_activity_report
 )
 
 app_name = 'admin_dashboard'
@@ -51,6 +51,11 @@ urlpatterns = [
         r'^users_enrollment_report',
         users_enrollment_report,
         name='users_enrollment_report'
+    ),
+    url(
+        r'^enrollment_activity_report',
+        enrollment_activity_report,
+        name='enrollment_activity_report'
     ),
     url(r'', course_reports, name='course_reports'),
 ]

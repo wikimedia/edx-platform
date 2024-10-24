@@ -13,7 +13,7 @@ from django.test import RequestFactory
 from django.contrib.auth import get_user_model
 from common.djangoapps.student.models import CourseEnrollment
 from common.djangoapps.student.roles import CourseInstructorRole, CourseStaffRole
-from lms.djangoapps.certificates.models import GeneratedCertificate
+from lms.djangoapps.certificates.models import GeneratedCertificate, CertificateStatuses
 from opaque_keys.edx.keys import CourseKey
 
 from openedx.features.course_experience.utils import get_course_outline_block_tree
@@ -153,6 +153,15 @@ def get_user_enrollments_course_keys(user):
     course_enrollments_keys = [enrollment.course_id for enrollment in course_enrollments]
     
     return course_enrollments_keys
+
+
+def get_course_completion_date(user, course_key):
+    if isinstance(course_key, str):
+        course_key = CourseKey.from_string(course_key)
+    cert = GeneratedCertificate.certificate_for_student(user, course_key)
+    if cert is not None and CertificateStatuses.is_passing_status(cert.status):
+        return cert.created_date
+    return None
 
 
 def is_course_completed(user, course_key):

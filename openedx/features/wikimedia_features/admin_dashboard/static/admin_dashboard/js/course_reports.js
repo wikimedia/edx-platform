@@ -320,6 +320,7 @@
         let quarter = $('#select-enrollment-quarter').val()
         AjaxCall(url_for_courses_enrollment_report, {year: Number(year), quarter: Number(quarter)});
     })
+    // TODO: (edly) combine similar triggers under one function
     $("[name='all-courses-enrollments-csv']").click(function() {
         let data_url = $(this).attr('data-endpoint');
         AjaxCall(data_url);
@@ -329,6 +330,10 @@
         AjaxCall(data_url);
     })
     $("[name='users-enrollment-csv']").click(function() {
+        let data_url = $(this).attr('data-endpoint');
+        AjaxCall(data_url);
+    })
+    $("[name='enrollment-activity-csv']").click(function() {
         let data_url = $(this).attr('data-endpoint');
         AjaxCall(data_url);
     })
