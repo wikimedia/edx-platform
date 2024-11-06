@@ -364,12 +364,15 @@ def list_user_pref_lang():
 
     return pref_lang_data
 
+def get_users_with_enrollments():
+    return User.objects.prefetch_related("courseenrollment_set__course").filter(
+        courseenrollment__is_active=1
+    ).distinct()
+
 
 def list_users_enrollments():
 
-    users_with_course_enrollments = User.objects.prefetch_related("courseenrollment_set__course").filter(
-        courseenrollment__is_active=1
-    ).distinct()
+    users_with_course_enrollments = get_users_with_enrollments()
 
     users_enrollments_data = []
 
@@ -391,9 +394,7 @@ def list_users_enrollments():
 
 def list_enrollment_activity():
     date_format = "%Y-%m-%d"
-    users_with_course_enrollments = User.objects.prefetch_related("courseenrollment_set__course").filter(
-        courseenrollment__is_active=1
-    ).distinct()
+    users_with_course_enrollments = get_users_with_enrollments()
 
     enrollments_activity_data = []
 
@@ -406,6 +407,8 @@ def list_enrollment_activity():
             except CourseOverview.DoesNotExist:
                 log.info(f"CourseOverview with ID {enrollment.course_id} does not exist")
                 continue
+            except Exception as e:
+                raise e
             course_completion_date = get_course_completion_date(user, course.id)
             enrollments_activity_data.append(
                 {
