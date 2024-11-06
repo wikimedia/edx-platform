@@ -6,11 +6,9 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.db.models import OuterRef, Subquery, Value, TextField
 from django.db.models.functions import Coalesce
-from django.db.models import Prefetch
 
 from common.djangoapps.student.models import CourseEnrollment
 
-from lms.djangoapps.branding import get_visible_courses
 from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.grades.api import CourseGradeFactory
 
