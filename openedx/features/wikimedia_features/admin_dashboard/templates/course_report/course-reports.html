@@ -106,6 +106,21 @@
             >${_("Generate")}</button>
           </td>
         </tr>
+        <tr class="all-courses-report">
+          <td>
+            <span class="text">${_("Enrollment activity report")}</span>
+            <span class="info-text">${_("Generates an expanded report of user's enrollments and course completion dates")}</span>
+          </td>
+          <td></td>
+          <td class="action">
+            <button
+              name="enrollment-activity-csv"
+              class="btn btn-primary"
+              value="${_("Generate Users Enrollment Report")}"
+              data-endpoint="${ section_data['key']['enrollment_activity_url'] }"
+            >${_("Generate")}</button>
+          </td>
+        </tr>
         <tr class="single-course-report">
           <td>
             <span class="text">${_("List profile information for enrolled students")}</span>

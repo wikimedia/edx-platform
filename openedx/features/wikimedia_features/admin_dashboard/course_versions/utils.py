@@ -6,11 +6,9 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.db.models import OuterRef, Subquery, Value, TextField
 from django.db.models.functions import Coalesce
-from django.db.models import Prefetch
 
 from common.djangoapps.student.models import CourseEnrollment
 
-from lms.djangoapps.branding import get_visible_courses
 from lms.djangoapps.courseware.courses import get_course_by_id
 from lms.djangoapps.grades.api import CourseGradeFactory
 
@@ -19,7 +17,7 @@ from openedx.core.djangoapps.lang_pref import LANGUAGE_KEY
 from openedx.core.djangoapps.user_api.models import UserPreference
 from openedx.features.wikimedia_features.meta_translations.models import CourseTranslation
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
-from openedx.features.wikimedia_features.wikimedia_general.utils import get_course_enrollment_and_completion_stats, get_user_course_completions
+from openedx.features.wikimedia_features.wikimedia_general.utils import get_course_completion_date, get_course_enrollment_and_completion_stats, get_user_course_completions
 
 from edx_proctoring.api import get_last_exam_completion_date
 
@@ -366,12 +364,15 @@ def list_user_pref_lang():
 
     return pref_lang_data
 
+def get_users_with_enrollments():
+    return User.objects.prefetch_related("courseenrollment_set__course").filter(
+        courseenrollment__is_active=1
+    ).distinct()
+
 
 def list_users_enrollments():
 
-    users_with_course_enrollments = User.objects.prefetch_related("courseenrollment_set__course").filter(
-        courseenrollment__is_active=1
-    ).distinct()
+    users_with_course_enrollments = get_users_with_enrollments()
 
     users_enrollments_data = []
 
@@ -389,3 +390,33 @@ def list_users_enrollments():
         )
 
     return users_enrollments_data
+
+
+def list_enrollment_activity():
+    date_format = "%Y-%m-%d"
+    users_with_course_enrollments = get_users_with_enrollments()
+
+    enrollments_activity_data = []
+
+    for user in users_with_course_enrollments:
+        user_enrollments = user.courseenrollment_set.all()
+        for enrollment in user_enrollments:
+            log.info("find me: " + str(enrollment.id))
+            try:
+                course = enrollment.course
+            except CourseOverview.DoesNotExist:
+                log.info(f"CourseOverview with ID {enrollment.course_id} does not exist")
+                continue
+            except Exception as e:
+                raise e
+            course_completion_date = get_course_completion_date(user, course.id)
+            enrollments_activity_data.append(
+                {
+                    "username": user.username,
+                    "course_title": course.display_name,
+                    "enrollment_date": enrollment.created.strftime(date_format),
+                    "completion_date": course_completion_date.strftime(date_format) if course_completion_date else 'N/A',
+                }
+            )
+
+    return enrollments_activity_data
