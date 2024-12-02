@@ -135,7 +135,7 @@ def upload_all_courses_enrollment_csv(
     csv_type = task_input.get("csv_type", "all_enrollments_stats")
 
     query_features_names = [
-        'Course URL', 'Course title', 'Course available since', 'Parent course URL', 'Parent course title', 'Total learners enrolled', 'Total learners completed', 'Percentage of learners who completed the course', 'Certificates Generated',
+        'Course URL', 'Course title', 'Course available since', 'Course Archived Date', 'Parent course URL', 'Parent course title', 'Total learners enrolled', 'Total learners completed', 'Percentage of learners who completed the course', 'Certificates Generated',
     ]
     data = list_all_courses_enrollment_data()
 

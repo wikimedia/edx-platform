@@ -171,6 +171,7 @@ def all_courses_enrollment_report(request):
         "course_url",
         "course_title",
         "available_since",
+        "archived_date",
         "parent_course_url",
         "parent_course_title",
         "total_learners_enrolled",
