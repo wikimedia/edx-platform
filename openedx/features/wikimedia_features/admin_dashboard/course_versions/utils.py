@@ -265,9 +265,10 @@ def list_all_courses_enrollment_data():
 
         # Append outside the try block
         courses_data.append({
-            'course_url': get_cms_course_url(str(course.id)),
-            'course_title': course.display_name,
-            'available_since': course.enrollment_start.strftime("%Y-%m-%d") if course.enrollment_start else '',
+            "course_url": get_cms_course_url(str(course.id)),
+            "course_title": course.display_name,
+            "available_since": course.enrollment_start.strftime("%Y-%m-%d") if course.enrollment_start else '',
+            "archived_date": course.end.strftime("%Y-%m-%d") if course.has_ended() else '',
             "parent_course_url": parent_course_url,
             "parent_course_title": parent_course_title,
             "total_learners_enrolled": course_completion_stats["total_learners_enrolled"],
