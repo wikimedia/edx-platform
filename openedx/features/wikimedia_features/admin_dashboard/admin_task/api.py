@@ -170,7 +170,8 @@ def all_courses_enrollment_report(request):
     query_features = [
         "course_url",
         "course_title",
-        "available_since",
+        "start_date",
+        "enrollment_date",
         "archived_date",
         "parent_course_url",
         "parent_course_title",
