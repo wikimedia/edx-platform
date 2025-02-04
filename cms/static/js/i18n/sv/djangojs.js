@@ -75,6 +75,10 @@
       "%d minut",
       "%d minuter"
     ],
+    "%d month": [
+      "%d m\u00e5nad",
+      "%d m\u00e5nader"
+    ],
     "%d year": [
       "%d \u00e5r",
       "%d \u00e5r"
