@@ -68,12 +68,6 @@ class Command(BaseCommand):
         log.info('Total number of updated blocks: {}'.format(self._RESULT.get("updated_blocks_count")))
         log.info('Total blocks updated successfully: {}'.format(self._RESULT.get("success_updated_pages_count")))
 
-    def normalize_language_code(self, languages):
-        """
-        Meta Wiki does not support '_' in language code.
-        """
-        return [lang.replace('_', '-').lower() for lang in languages]
-
     def _create_request_dict_for_block(self, base_course, block, block_data, base_course_language, base_course_name, base_course_description):
         """
         Returns request dict required for update pages API of Wiki Meta
@@ -102,12 +96,9 @@ class Command(BaseCommand):
             base_course_name, get_studio_component_name(block.block_type), block_data.filter(data_type="display_name")[0].data
         )
 
-        original_priority_languages = json.loads(block.lang)
-        normalized_priority_languages = self.normalize_language_code(original_priority_languages)
-
         request["@metadata"] = {
             "sourceLanguage": base_course_language,
-            "priorityLanguages": normalized_priority_languages,
+            "priorityLanguages": [WikiMetaClient.normalize_language_code(lang) for lang in json.loads(block.lang)],
             "allowOnlyPriorityLanguages": True,
             "description": description,
             "label": label
