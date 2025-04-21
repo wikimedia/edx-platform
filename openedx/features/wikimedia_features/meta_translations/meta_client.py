@@ -69,13 +69,20 @@ class WikiMetaClient(object):
         if title:
             return "{}/{}".format(self._BASE_REDIRECT_URL, title)
 
+    @staticmethod
+    def normalize_language_code(language_code):
+        """
+        This is because meta api expects hyphen instead of underscore.
+        """
+        return language_code.replace('_', '-').lower()
+
     def get_expected_message_group_redirect_url(self, source_page_title, target_language):
         """
         Returns expected redirect url of meta server from where user can translate content.
         Term "expected" is used as we are not sure if message groups for translation have been created or not.
         """
         url = "{}/Special:Translate?group={}-{}&language={}".format(
-            self._BASE_REDIRECT_URL, self._MCGROUP_PREFIX, urllib.parse.quote(source_page_title), target_language
+            self._BASE_REDIRECT_URL, self._MCGROUP_PREFIX, urllib.parse.quote(source_page_title), WikiMetaClient.normalize_language_code(target_language)
         )
         return url
 

@@ -127,8 +127,12 @@ class Command(BaseCommand):
             target_block = translation_obj.target_block
             source_block_key = str(source_block.block_id)
             if not target_block.is_source():
-                target_language = get_course_by_id(target_block.course_id).language
-                source_language = get_course_by_id(source_block.course_id).language
+                target_language = WikiMetaClient.normalize_language_code(
+                    get_course_by_id(target_block.course_id).language
+                )
+                source_language = WikiMetaClient.normalize_language_code(
+                    get_course_by_id(source_block.course_id).language
+                )
                 if source_block_key in data_dict:
                     data_dict[source_block_key]["target_block_versions"][target_language] = str(target_block.block_id)
                 else:
@@ -398,13 +402,13 @@ class Command(BaseCommand):
                 if block.translated != is_translated:
                     block.translated = is_block_translated(block)
                     block.save()
-                    
+
                     log.info(
                         "CourseBlock translated status have been updated for block_id {} translated: {}".format(
                             block.block_id, is_translated,
                         )
                     )
-    
+
     def update_info(self):
         """
         Adds entry to MetaCronJobInfo
@@ -414,7 +418,7 @@ class Command(BaseCommand):
             MetaCronJobInfo.objects.create(fetched_date = datetime.now(), sent_date = latest_info.sent_date)
         except MetaCronJobInfo.DoesNotExist:
             MetaCronJobInfo.objects.create(fetched_date = datetime.now())
-            
+
     def handle(self, *args, **options):
         data_dict = self._get_request_data_dict()
 

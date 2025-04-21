@@ -98,7 +98,7 @@ class Command(BaseCommand):
 
         request["@metadata"] = {
             "sourceLanguage": base_course_language,
-            "priorityLanguages": json.loads(block.lang),
+            "priorityLanguages": [WikiMetaClient.normalize_language_code(lang) for lang in json.loads(block.lang)],
             "allowOnlyPriorityLanguages": True,
             "description": description,
             "label": label
