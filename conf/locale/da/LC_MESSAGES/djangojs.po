@@ -53,7 +53,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-07 09:07+0000\n"
+"POT-Creation-Date: 2025-05-07 09:21+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Pia Jensen, 2023\n"
 "Language-Team: Danish (http://app.transifex.com/open-edx/edx-platform/language/da/)\n"
@@ -64,7 +64,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: MediaWiki 1.44.0-alpha; Translate 2025-03-15\n"
-"X-POT-Import-Date: 2025-03-04 10:30:24+0000\n"
+"X-POT-Import-Date: 2025-04-07 10:30:35+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -231,6 +231,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid ""
 "Welcome to edX! Before you get started, please take a few minutes to fill-in"
 " the additional information below to help us understand a bit more about "
@@ -262,6 +263,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid "Section {currentPage} of {totalPages}"
 msgstr ""
 
@@ -360,7 +362,12 @@ msgstr ""
 msgid "Add Allowance"
 msgstr ""
 
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
+msgid "You have access to the {enterpriseName} dashboard"
+msgstr "Du har adgang til {enterpriseName} dashboardet"
+
 #: common/static/bundles/CourseGoals.js
+#: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
 msgid ""
 "There was an error in setting your goal, please reload the page and try "
 "again."
@@ -469,6 +476,7 @@ msgstr "Slet"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 #: common/static/common/js/components/utils/view_utils.js
 #: lms/static/js/Markdown.Editor.js
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
 #: cms/templates/js/add-xblock-component-menu-problem.underscore
 #: cms/templates/js/add-xblock-component-menu.underscore
@@ -652,14 +660,6 @@ msgstr "Fejl"
 #: common/lib/xmodule/xmodule/js/public/js/library_content_edit.js
 msgid "Updating with latest library content"
 msgstr "Opdaterer med det seneste biblioteksindhold"
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Loading..."
-msgstr "Indlæser..."
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Selected blocks"
-msgstr "Udvalgte blokke"
 
 #: common/lib/xmodule/xmodule/assets/library_source_block/public/js/library_source_block.js
 msgid "Unable to update settings"
@@ -1584,7 +1584,6 @@ msgstr "Nyt vindue"
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: lms/static/js/demographics_collection/Wizard.jsx
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
 #: common/static/common/templates/discussion/templates.underscore
@@ -2364,10 +2363,6 @@ msgid "Navigate up"
 msgstr "Naviger op"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
-msgid "Browsing"
-msgstr "Gennemse"
-
-#: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Select"
 msgstr "Vælg"
 
@@ -2909,29 +2904,9 @@ msgstr ""
 "kursusrelaterede spørgsmål i diskussionsforumet, hvor kursuspersonalet kan "
 "svare direkte."
 
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Details"
-msgstr "Detaljer"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "the more quickly and helpfully we can respond!"
-msgstr "jo hurtigere og mere hjælpsomt kan vi svare!"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Create Support Ticket"
-msgstr "Opret support sag"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "What can we help you with, {username}?"
-msgstr "Hvad kan vi hjælpe dig med, {username}?"
-
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Sign in to {platform} so we can help you better."
 msgstr "Log ind på {platform}, så vi kan hjælpe dig bedre."
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-msgid "Need help logging in?"
-msgstr "Har du brug for hjælp til at logge ind?"
 
 #: lms/djangoapps/support/static/support/jsx/single_support_form.jsx
 msgid ""
@@ -3839,58 +3814,6 @@ msgstr "Kom igang"
 msgid "Help make edX better for everyone!"
 msgstr "Hjælp med at gøre edX bedre for alle!"
 
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Why does edX collect this information?"
-msgstr "Hvorfor indsamler edX disse oplysninger?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"An error occurred while attempting to retrieve or save the information "
-"below. Please try again later."
-msgstr ""
-"Der opstod en fejl under forsøget på at hente eller gemme oplysningerne "
-"nedenfor. Prøv igen senere."
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What was the total combined income, during the last 12 months, of all "
-"members of your family? "
-msgstr ""
-"Hvad var den samlede samlede indkomst i løbet af de sidste 12 måneder for "
-"alle medlemmer af din familie?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
-"National Guard?"
-msgstr ""
-"Har du nogensinde tjent i aktiv tjeneste i de amerikanske væbnede styrker, "
-"reserver eller nationalgarden?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What is the highest level of education that you have achieved so far?"
-msgstr "Hvad er det højeste uddannelsesniveau, du har opnået hidtil?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What is the highest level of education that any of your parents or guardians"
-" have achieved?"
-msgstr ""
-"Hvad er det højeste uddannelsesniveau, som nogen af dine forældre eller "
-"værger har opnået?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Select employment status"
-msgstr "Vælg ansættelsesstatus"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you currently work in?"
-msgstr "Hvilken branche arbejder du i i øjeblikket?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you want to work in?"
-msgstr "Hvilken branche vil du arbejde i?"
-
 #: lms/static/js/demographics_collection/MultiselectDropdown.jsx
 msgid "Clear all"
 msgstr "Slet alt"
@@ -3902,22 +3825,6 @@ msgstr "demografisk spørgeskema"
 #: lms/static/js/demographics_collection/Wizard.jsx
 msgid "close questionnaire"
 msgstr "tæt spørgeskema"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "finish later"
-msgstr "afslutte senere"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Return to my dashboard"
-msgstr "Vend tilbage til mit dashboard"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Finish later"
-msgstr "Afslut senere"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "next page"
-msgstr "næste side"
 
 #: lms/static/js/discovery/views/search_form.js
 #, javascript-format
@@ -6291,37 +6198,6 @@ msgstr "Fejl ved import af kursus"
 msgid "There was an error with the upload"
 msgstr "Der opstod en fejl med uploaden"
 
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Organization:"
-msgstr "Organisation:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Number:"
-msgstr "Kursusnummer:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Run:"
-msgstr "Kursusløb:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "(Read-only)"
-msgstr "(Læs kun)"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Re-run Course"
-msgstr "Kør kursus igen"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-#: cms/templates/js/show-textbook.underscore
-msgid "View Live"
-msgstr "Se live"
-
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
 msgstr "Intern serverfejl."
@@ -7629,6 +7505,10 @@ msgstr "Ny {component_type}"
 #: cms/static/js/xblock_asides/structured_tags.js
 msgid "Updating Tags"
 msgstr "Opdatering af tags"
+
+#: cms/templates/js/show-textbook.underscore
+msgid "View Live"
+msgstr "Se live"
 
 #: lms/static/js/student_account/views/account_settings_view.js
 msgid "Account Information"
@@ -11961,9 +11841,6 @@ msgstr "Brug aktuel transskription"
 #~ msgid "Select level of education"
 #~ msgstr "Vælg uddannelsesniveau"
 
-#~ msgid "You have access to the {enterpriseName} dashboard"
-#~ msgstr "Du har adgang til {enterpriseName} dashboardet"
-
 #~ msgid "Select guardian education"
 #~ msgstr "Vælg værgeuddannelse"
 
@@ -11972,6 +11849,60 @@ msgstr "Brug aktuel transskription"
 
 #~ msgid "Select current industry"
 #~ msgstr "Vælg den aktuelle branche"
+
+#~ msgid "Browsing"
+#~ msgstr "Gennemse"
+
+#~ msgid "Details"
+#~ msgstr "Detaljer"
+
+#~ msgid "the more quickly and helpfully we can respond!"
+#~ msgstr "jo hurtigere og mere hjælpsomt kan vi svare!"
+
+#~ msgid "Create Support Ticket"
+#~ msgstr "Opret support sag"
+
+#~ msgid "What can we help you with, {username}?"
+#~ msgstr "Hvad kan vi hjælpe dig med, {username}?"
+
+#~ msgid "Need help logging in?"
+#~ msgstr "Har du brug for hjælp til at logge ind?"
+
+#~ msgid "Why does edX collect this information?"
+#~ msgstr "Hvorfor indsamler edX disse oplysninger?"
+
+#~ msgid ""
+#~ "An error occurred while attempting to retrieve or save the information "
+#~ "below. Please try again later."
+#~ msgstr ""
+#~ "Der opstod en fejl under forsøget på at hente eller gemme oplysningerne "
+#~ "nedenfor. Prøv igen senere."
+
+#~ msgid ""
+#~ "What was the total combined income, during the last 12 months, of all "
+#~ "members of your family? "
+#~ msgstr ""
+#~ "Hvad var den samlede samlede indkomst i løbet af de sidste 12 måneder for "
+#~ "alle medlemmer af din familie?"
+
+#~ msgid ""
+#~ "Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
+#~ "National Guard?"
+#~ msgstr ""
+#~ "Har du nogensinde tjent i aktiv tjeneste i de amerikanske væbnede styrker, "
+#~ "reserver eller nationalgarden?"
+
+#~ msgid "finish later"
+#~ msgstr "afslutte senere"
+
+#~ msgid "Return to my dashboard"
+#~ msgstr "Vend tilbage til mit dashboard"
+
+#~ msgid "Finish later"
+#~ msgstr "Afslut senere"
+
+#~ msgid "next page"
+#~ msgstr "næste side"
 
 #~ msgid "Cohort assignment not allowed: {email_or_username}"
 #~ msgstr "cohort Assignment ikke tilladt: {email_or_username}"
@@ -12064,6 +11995,21 @@ msgstr "Brug aktuel transskription"
 
 #~ msgid "Before proceeding, please {htmlStart}{emailMsg}{htmlEnd}."
 #~ msgstr "Før du fortsætter, Please {htmlStart} {emailMsg} {htmlEnd} ."
+
+#~ msgid "Organization:"
+#~ msgstr "Organisation:"
+
+#~ msgid "Course Number:"
+#~ msgstr "Kursusnummer:"
+
+#~ msgid "Course Run:"
+#~ msgstr "Kursusløb:"
+
+#~ msgid "(Read-only)"
+#~ msgstr "(Læs kun)"
+
+#~ msgid "Re-run Course"
+#~ msgstr "Kør kursus igen"
 
 #~ msgid "You must have at least one undroppable <%- types %> assignment."
 #~ msgstr "Du skal have mindst én &lt;%- types %&gt;-tildeling, der kan fjernes."
@@ -12168,11 +12114,13 @@ msgstr "Brug aktuel transskription"
 #~ "Brug for hjælp? Tjek {a_start} Learner Help Center {span_start} {icon} "
 #~ "{span_end} {a_end} for at fejlfinde problemer eller kontakte support"
 
+#, python-format
 #~ msgid ""
 #~ "You have successfully completed all the requirements for the %(title)s "
 #~ "%(type)s."
 #~ msgstr "Du har opfyldt alle kravene til %(title)s %(type)s ."
 
+#, python-format
 #~ msgid ""
 #~ "Track and plan your progress through the %(count)s course(s) in this "
 #~ "program. To complete the program, you must earn a verified certificate for "
@@ -12205,9 +12153,11 @@ msgstr "Brug aktuel transskription"
 #~ "{subscriptionPrice} abonnement efter prøveperiodens udløb. Cancel når som "
 #~ "helst."
 
+#, python-format
 #~ msgid "Transform your %(org)s %(type)s into a full master’s degree"
 #~ msgstr "Forvandl din %(org)s %(type)s til en fuld mastergrad"
 
+#, python-format
 #~ msgid ""
 #~ "Successful completion of %(org)s %(program)s credential can be applied "
 #~ "towards flexible, rigorous, and affordable masters degrees from the world’s "
@@ -12217,6 +12167,7 @@ msgstr "Brug aktuel transskription"
 #~ " anvendes til fleksible, stringente og overkommelige mastergrader fra "
 #~ "verdens førende universiteter."
 
+#, python-format
 #~ msgid ""
 #~ "Track and plan your progress through the %(count)s courses in this program. "
 #~ "To complete the program, you must earn a verified certificate for each "
@@ -12270,6 +12221,7 @@ msgstr "Brug aktuel transskription"
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopier til udklipsholder"
 
+#, python-format
 #~ msgid ""
 #~ "This subsection is configured as \\\"%(gradingType)s\\\", which doesn't "
 #~ "exist in the current grading policy."
@@ -12277,6 +12229,7 @@ msgstr "Brug aktuel transskription"
 #~ "Denne undersektion er konfigureret som \\\" %(gradingType)s \\\", hvilket "
 #~ "ikke findes i den aktuelle karakterpolitik."
 
+#, python-format
 #~ msgid "Paste %(xblock_type)s"
 #~ msgstr "Indsæt %(xblock_type)s"
 

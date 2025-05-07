@@ -234,7 +234,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-07 09:07+0000\n"
+"POT-Creation-Date: 2025-05-07 09:21+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Cecilia Liu, 2023\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/open-edx/edx-platform/language/zh_CN/)\n"
@@ -408,6 +408,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid ""
 "Welcome to edX! Before you get started, please take a few minutes to fill-in"
 " the additional information below to help us understand a bit more about "
@@ -439,6 +440,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid "Section {currentPage} of {totalPages}"
 msgstr ""
 
@@ -548,6 +550,7 @@ msgid "Add Allowance"
 msgstr ""
 
 #: common/static/bundles/EnterpriseLearnerPortalModal.js
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 msgid "You have access to the {enterpriseName} dashboard"
 msgstr ""
 
@@ -557,6 +560,7 @@ msgid "Select guardian education"
 msgstr ""
 
 #: common/static/bundles/CourseGoals.js
+#: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
 msgid ""
 "There was an error in setting your goal, please reload the page and try "
 "again."
@@ -665,6 +669,7 @@ msgstr "删除"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 #: common/static/common/js/components/utils/view_utils.js
 #: lms/static/js/Markdown.Editor.js
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
 #: cms/templates/js/add-xblock-component-menu-problem.underscore
 #: cms/templates/js/add-xblock-component-menu.underscore
@@ -848,14 +853,6 @@ msgstr "错误"
 #: common/lib/xmodule/xmodule/js/public/js/library_content_edit.js
 msgid "Updating with latest library content"
 msgstr "更新最新的库内容"
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Loading..."
-msgstr ""
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Selected blocks"
-msgstr ""
 
 #: common/lib/xmodule/xmodule/assets/library_source_block/public/js/library_source_block.js
 msgid "Unable to update settings"
@@ -1770,7 +1767,6 @@ msgstr "新建窗口"
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: lms/static/js/demographics_collection/Wizard.jsx
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
 #: common/static/common/templates/discussion/templates.underscore
@@ -2528,10 +2524,6 @@ msgid "Navigate up"
 msgstr "向上导航"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
-msgid "Browsing"
-msgstr "浏览"
-
-#: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Select"
 msgstr "选择"
 
@@ -3043,29 +3035,9 @@ msgstr ""
 "我们支持团队很高兴能协作 edX "
 "平台。当课程人员在课程中有专门的具体作业问题、评分或程序的专业知识时可以到论坛上发布有关课程的问题，将会得到课程人员的回答。"
 
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Details"
-msgstr "细节"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "the more quickly and helpfully we can respond!"
-msgstr "我们越能快速并有效地帮助到您！"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Create Support Ticket"
-msgstr "创建支持任务"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "What can we help you with, {username}?"
-msgstr "亲爱的{username}，有什么可以帮助您？"
-
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Sign in to {platform} so we can help you better."
 msgstr "请登录{platform}，以获得更好的帮助。"
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-msgid "Need help logging in?"
-msgstr "登录时需要帮助？"
 
 #: lms/djangoapps/support/static/support/jsx/single_support_form.jsx
 msgid ""
@@ -3889,50 +3861,6 @@ msgstr "开始"
 msgid "Help make edX better for everyone!"
 msgstr "帮助edX 为每个人变得更好!"
 
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Why does edX collect this information?"
-msgstr "为什么edX 收集这些信息?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"An error occurred while attempting to retrieve or save the information "
-"below. Please try again later."
-msgstr "在在尝试获取/保存信息时发生了一个错误。 请稍后再试。"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What was the total combined income, during the last 12 months, of all "
-"members of your family? "
-msgstr "在过去的12个月中，您家庭所有人的总收入是多少？"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
-"National Guard?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What is the highest level of education that you have achieved so far?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What is the highest level of education that any of your parents or guardians"
-" have achieved?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Select employment status"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you currently work in?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you want to work in?"
-msgstr ""
-
 #: lms/static/js/demographics_collection/MultiselectDropdown.jsx
 msgid "Clear all"
 msgstr ""
@@ -3944,22 +3872,6 @@ msgstr ""
 #: lms/static/js/demographics_collection/Wizard.jsx
 msgid "close questionnaire"
 msgstr ""
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "finish later"
-msgstr ""
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Return to my dashboard"
-msgstr ""
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Finish later"
-msgstr ""
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "next page"
-msgstr "下一页"
 
 #: lms/static/js/discovery/views/search_form.js
 #, javascript-format
@@ -6086,37 +5998,6 @@ msgstr "导入课程时出错"
 msgid "There was an error with the upload"
 msgstr "文件上传错误"
 
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Organization:"
-msgstr "组织机构："
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Number:"
-msgstr "课程编号："
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Run:"
-msgstr "课程长度："
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "(Read-only)"
-msgstr "（只读）"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Re-run Course"
-msgstr "重启课程"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-#: cms/templates/js/show-textbook.underscore
-msgid "View Live"
-msgstr "在线查看"
-
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
 msgstr "内部服务器出错"
@@ -7336,6 +7217,10 @@ msgstr "新建 {component_type}"
 #: cms/static/js/xblock_asides/structured_tags.js
 msgid "Updating Tags"
 msgstr "更新标签中"
+
+#: cms/templates/js/show-textbook.underscore
+msgid "View Live"
+msgstr "在线查看"
 
 #: lms/static/js/student_account/views/account_settings_view.js
 msgid "Account Information"
@@ -11180,9 +11065,59 @@ msgstr "使用当前字幕"
 #~ "connection. Try refreshing the page or making sure you are online."
 #~ msgstr "此情况可能由于服务器错误或者您的网络连接错误导致。尝试刷新页面或者确保网络畅通。"
 
+#~ msgid "Browsing"
+#~ msgstr "浏览"
+
+#~ msgid "Details"
+#~ msgstr "细节"
+
+#~ msgid "the more quickly and helpfully we can respond!"
+#~ msgstr "我们越能快速并有效地帮助到您！"
+
+#~ msgid "Create Support Ticket"
+#~ msgstr "创建支持任务"
+
+#~ msgid "What can we help you with, {username}?"
+#~ msgstr "亲爱的{username}，有什么可以帮助您？"
+
+#~ msgid "Need help logging in?"
+#~ msgstr "登录时需要帮助？"
+
+#~ msgid "Why does edX collect this information?"
+#~ msgstr "为什么edX 收集这些信息?"
+
+#~ msgid ""
+#~ "An error occurred while attempting to retrieve or save the information "
+#~ "below. Please try again later."
+#~ msgstr "在在尝试获取/保存信息时发生了一个错误。 请稍后再试。"
+
+#~ msgid ""
+#~ "What was the total combined income, during the last 12 months, of all "
+#~ "members of your family? "
+#~ msgstr "在过去的12个月中，您家庭所有人的总收入是多少？"
+
+#~ msgid "next page"
+#~ msgstr "下一页"
+
+#~ msgid "Organization:"
+#~ msgstr "组织机构："
+
+#~ msgid "Course Number:"
+#~ msgstr "课程编号："
+
+#~ msgid "Course Run:"
+#~ msgstr "课程长度："
+
+#~ msgid "(Read-only)"
+#~ msgstr "（只读）"
+
+#~ msgid "Re-run Course"
+#~ msgstr "重启课程"
+
 #~ msgid "Dismiss"
 #~ msgstr "解散"
 
+#, python-format
 #~ msgid "Prerequisite: %(prereq_display_name)s"
 #~ msgstr "先决条件: %(prereq_display_name)s"
 
@@ -11221,6 +11156,7 @@ msgstr "使用当前字幕"
 #~ msgid "Timed Exam"
 #~ msgstr "计时测验"
 
+#, python-format
 #~ msgid "Collapse/Expand this %(xblock_type)s"
 #~ msgstr "折叠／扩展该%(xblock_type)s"
 
@@ -11266,6 +11202,7 @@ msgstr "使用当前字幕"
 #~ msgid "You haven't added any content to this course yet."
 #~ msgstr "您尚未向该课程添加任何内容。"
 
+#, python-format
 #~ msgid "Click to add a new %(xblock_type)s"
 #~ msgstr "点击添加一个新%(xblock_type)s"
 

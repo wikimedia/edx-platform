@@ -115,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-07 09:07+0000\n"
+"POT-Creation-Date: 2025-05-07 09:21+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Ilaria Botti <ilabotti@gmail.com>, 2022\n"
 "Language-Team: Italian (Italy) (http://app.transifex.com/open-edx/edx-platform/language/it_IT/)\n"
@@ -289,6 +289,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid ""
 "Welcome to edX! Before you get started, please take a few minutes to fill-in"
 " the additional information below to help us understand a bit more about "
@@ -320,6 +321,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid "Section {currentPage} of {totalPages}"
 msgstr ""
 
@@ -418,7 +420,12 @@ msgstr ""
 msgid "Add Allowance"
 msgstr ""
 
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
+msgid "You have access to the {enterpriseName} dashboard"
+msgstr "Hai accesso alla dashboard {enterpriseName}"
+
 #: common/static/bundles/CourseGoals.js
+#: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
 msgid ""
 "There was an error in setting your goal, please reload the page and try "
 "again."
@@ -517,6 +524,7 @@ msgstr "Cancella"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 #: common/static/common/js/components/utils/view_utils.js
 #: lms/static/js/Markdown.Editor.js
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
 #: cms/templates/js/add-xblock-component-menu-problem.underscore
 #: cms/templates/js/add-xblock-component-menu.underscore
@@ -700,14 +708,6 @@ msgstr "Errore"
 #: common/lib/xmodule/xmodule/js/public/js/library_content_edit.js
 msgid "Updating with latest library content"
 msgstr "Aggiornamento con gli ultimi contenuti della libreria"
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Loading..."
-msgstr ""
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Selected blocks"
-msgstr ""
 
 #: common/lib/xmodule/xmodule/assets/library_source_block/public/js/library_source_block.js
 msgid "Unable to update settings"
@@ -1640,7 +1640,6 @@ msgstr "Nuova finestra"
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: lms/static/js/demographics_collection/Wizard.jsx
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
 #: common/static/common/templates/discussion/templates.underscore
@@ -2431,10 +2430,6 @@ msgid "Navigate up"
 msgstr "Naviga su"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
-msgid "Browsing"
-msgstr "Navigazione"
-
-#: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Select"
 msgstr "Selezionare"
 
@@ -2998,29 +2993,9 @@ msgstr ""
 "Pubblica tutte le domande relative al corso all'interno del forum di "
 "discussione dove lo staff del corso potrà rispondere direttamente. "
 
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Details"
-msgstr "Dettagli"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "the more quickly and helpfully we can respond!"
-msgstr "il più velocemente ed utilmente potremo rispondere!"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Create Support Ticket"
-msgstr "Crea Ticket di Supporto"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "What can we help you with, {username}?"
-msgstr "In che cosa possiamo aiutarti, {username}?"
-
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Sign in to {platform} so we can help you better."
 msgstr "Accedi a {platform} in modo da consentirci di aiutarti meglio."
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-msgid "Need help logging in?"
-msgstr "Hai bisogno di aiuto per accedere?"
 
 #: lms/djangoapps/support/static/support/jsx/single_support_form.jsx
 msgid ""
@@ -3946,56 +3921,6 @@ msgstr "Introduzione"
 msgid "Help make edX better for everyone!"
 msgstr "Aiutaci a rendere edX migliore per tutti!"
 
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Why does edX collect this information?"
-msgstr "Perché edX raccoglie queste informazioni?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"An error occurred while attempting to retrieve or save the information "
-"below. Please try again later."
-msgstr ""
-"Si è verificato un errore durante il tentativo di recuperare o salvare le "
-"informazioni seguenti. Prova di nuovo più tardi."
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What was the total combined income, during the last 12 months, of all "
-"members of your family? "
-msgstr ""
-"Qual è stato il reddito totale complessivo, negli ultimi 12 mesi, di tutti i"
-" membri della tua famiglia? "
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
-"National Guard?"
-msgstr ""
-"Hai mai prestato servizio attivo nelle forze armate, nelle riserve o nella "
-"guardia nazionale degli Stati Uniti? "
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What is the highest level of education that you have achieved so far?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What is the highest level of education that any of your parents or guardians"
-" have achieved?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Select employment status"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you currently work in?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you want to work in?"
-msgstr ""
-
 #: lms/static/js/demographics_collection/MultiselectDropdown.jsx
 msgid "Clear all"
 msgstr "Cancella tutto"
@@ -4007,22 +3932,6 @@ msgstr "questionario demografico"
 #: lms/static/js/demographics_collection/Wizard.jsx
 msgid "close questionnaire"
 msgstr "chiudi questionario"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "finish later"
-msgstr "termina più tardi"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Return to my dashboard"
-msgstr "Torna alla mia dashboard"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Finish later"
-msgstr "Termina più tardi"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "next page"
-msgstr "pagina successiva "
 
 #: lms/static/js/discovery/views/search_form.js
 #, javascript-format
@@ -6439,37 +6348,6 @@ msgstr "Errore nell'importazione del corso"
 msgid "There was an error with the upload"
 msgstr "Si è verificato un errore durante il caricamento"
 
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Organization:"
-msgstr "Organizzazione:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Number:"
-msgstr "Numero Corso"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Run:"
-msgstr "Avanzamento Corso:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "(Read-only)"
-msgstr "(Sola lettura)"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Re-run Course"
-msgstr "Riesegui il corso"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-#: cms/templates/js/show-textbook.underscore
-msgid "View Live"
-msgstr "Vedi Live"
-
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
 msgstr "Errore server interno."
@@ -7794,6 +7672,10 @@ msgstr "Nuovo {component_type}"
 #: cms/static/js/xblock_asides/structured_tags.js
 msgid "Updating Tags"
 msgstr "Aggiornare le Tag"
+
+#: cms/templates/js/show-textbook.underscore
+msgid "View Live"
+msgstr "Vedi Live"
 
 #: lms/static/js/student_account/views/account_settings_view.js
 msgid "Account Information"
@@ -12013,9 +11895,6 @@ msgstr "Utilizza trascrizione corrente"
 #~ msgid "Select level of education"
 #~ msgstr "Seleziona un livello di istruzione"
 
-#~ msgid "You have access to the {enterpriseName} dashboard"
-#~ msgstr "Hai accesso alla dashboard {enterpriseName}"
-
 #~ msgid "Select guardian education"
 #~ msgstr "Seleziona livello di istruzione del tutore"
 
@@ -12032,6 +11911,60 @@ msgstr "Utilizza trascrizione corrente"
 #~ "L'errore può essere conseguenza di un errore nei nostri server o nella tua "
 #~ "connessione Internet. Prova a ricaricare la pagina e assicurati di essere "
 #~ "online."
+
+#~ msgid "Browsing"
+#~ msgstr "Navigazione"
+
+#~ msgid "Details"
+#~ msgstr "Dettagli"
+
+#~ msgid "the more quickly and helpfully we can respond!"
+#~ msgstr "il più velocemente ed utilmente potremo rispondere!"
+
+#~ msgid "Create Support Ticket"
+#~ msgstr "Crea Ticket di Supporto"
+
+#~ msgid "What can we help you with, {username}?"
+#~ msgstr "In che cosa possiamo aiutarti, {username}?"
+
+#~ msgid "Need help logging in?"
+#~ msgstr "Hai bisogno di aiuto per accedere?"
+
+#~ msgid "Why does edX collect this information?"
+#~ msgstr "Perché edX raccoglie queste informazioni?"
+
+#~ msgid ""
+#~ "An error occurred while attempting to retrieve or save the information "
+#~ "below. Please try again later."
+#~ msgstr ""
+#~ "Si è verificato un errore durante il tentativo di recuperare o salvare le "
+#~ "informazioni seguenti. Prova di nuovo più tardi."
+
+#~ msgid ""
+#~ "What was the total combined income, during the last 12 months, of all "
+#~ "members of your family? "
+#~ msgstr ""
+#~ "Qual è stato il reddito totale complessivo, negli ultimi 12 mesi, di tutti i"
+#~ " membri della tua famiglia? "
+
+#~ msgid ""
+#~ "Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
+#~ "National Guard?"
+#~ msgstr ""
+#~ "Hai mai prestato servizio attivo nelle forze armate, nelle riserve o nella "
+#~ "guardia nazionale degli Stati Uniti? "
+
+#~ msgid "finish later"
+#~ msgstr "termina più tardi"
+
+#~ msgid "Return to my dashboard"
+#~ msgstr "Torna alla mia dashboard"
+
+#~ msgid "Finish later"
+#~ msgstr "Termina più tardi"
+
+#~ msgid "next page"
+#~ msgstr "pagina successiva "
 
 #~ msgid "Cohort assignment not allowed: {email_or_username}"
 #~ msgstr "Assegnazione di coorte non consentita: {email_or_username}"
@@ -12134,6 +12067,21 @@ msgstr "Utilizza trascrizione corrente"
 #~ msgid "Before proceeding, please {htmlStart}{emailMsg}{htmlEnd}."
 #~ msgstr "Prima di procedere, per favore {htmlStart}{emailMsg}{htmlEnd}."
 
+#~ msgid "Organization:"
+#~ msgstr "Organizzazione:"
+
+#~ msgid "Course Number:"
+#~ msgstr "Numero Corso"
+
+#~ msgid "Course Run:"
+#~ msgstr "Avanzamento Corso:"
+
+#~ msgid "(Read-only)"
+#~ msgstr "(Sola lettura)"
+
+#~ msgid "Re-run Course"
+#~ msgstr "Riesegui il corso"
+
 #~ msgid "You must have at least one undroppable <%- types %> assignment."
 #~ msgstr ""
 #~ "Devi avere almeno un&#39;assegnazione &lt;%-types %&gt; non eliminabile."
@@ -12176,6 +12124,7 @@ msgstr "Utilizza trascrizione corrente"
 #~ msgid "Dismiss"
 #~ msgstr "Chiudi"
 
+#, python-format
 #~ msgid "Prerequisite: %(prereq_display_name)s"
 #~ msgstr "Prerequisito: %(prereq_display_name)s"
 
@@ -12217,6 +12166,7 @@ msgstr "Utilizza trascrizione corrente"
 #~ msgid "Timed Exam"
 #~ msgstr "Esame a Tempo"
 
+#, python-format
 #~ msgid "Collapse/Expand this %(xblock_type)s"
 #~ msgstr "Comprimi/Espandi questo %(xblock_type)s"
 
@@ -12262,6 +12212,7 @@ msgstr "Utilizza trascrizione corrente"
 #~ msgid "You haven't added any content to this course yet."
 #~ msgstr "Non è stato ancora aggiunto alcun contenuto a questo corso."
 
+#, python-format
 #~ msgid "Click to add a new %(xblock_type)s"
 #~ msgstr "Fai clic per aggiungere un nuovo %(xblock_type)s"
 
@@ -12331,11 +12282,13 @@ msgstr "Utilizza trascrizione corrente"
 #~ "studenti{span_start}{icon}{span_end}{a_end} per risolvere problemi o "
 #~ "contattare l&#39;assistenza"
 
+#, python-format
 #~ msgid ""
 #~ "You have successfully completed all the requirements for the %(title)s "
 #~ "%(type)s."
 #~ msgstr "Hai completato con successo tutti i requisiti per %(title)s %(type)s."
 
+#, python-format
 #~ msgid ""
 #~ "Track and plan your progress through the %(count)s course(s) in this "
 #~ "program. To complete the program, you must earn a verified certificate for "
@@ -12368,9 +12321,11 @@ msgstr "Utilizza trascrizione corrente"
 #~ "{subscriptionPrice} abbonamento al termine del periodo di prova. Annulla in "
 #~ "qualsiasi momento."
 
+#, python-format
 #~ msgid "Transform your %(org)s %(type)s into a full master’s degree"
 #~ msgstr "Trasforma il tuo %(org)s %(type)s in un master completo"
 
+#, python-format
 #~ msgid ""
 #~ "Successful completion of %(org)s %(program)s credential can be applied "
 #~ "towards flexible, rigorous, and affordable masters degrees from the world’s "
@@ -12380,6 +12335,7 @@ msgstr "Utilizza trascrizione corrente"
 #~ "essere applicato per master flessibili, rigorosi e convenienti dalle "
 #~ "principali università del mondo."
 
+#, python-format
 #~ msgid ""
 #~ "Track and plan your progress through the %(count)s courses in this program. "
 #~ "To complete the program, you must earn a verified certificate for each "
@@ -12433,6 +12389,7 @@ msgstr "Utilizza trascrizione corrente"
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Copia negli appunti"
 
+#, python-format
 #~ msgid ""
 #~ "This subsection is configured as \\\"%(gradingType)s\\\", which doesn't "
 #~ "exist in the current grading policy."
@@ -12441,6 +12398,7 @@ msgstr "Utilizza trascrizione corrente"
 #~ "class='notranslate'>%(gradingType)s</span> \\&quot;, che non esiste "
 #~ "nell&#39;attuale politica di valutazione."
 
+#, python-format
 #~ msgid "Paste %(xblock_type)s"
 #~ msgstr "Incolla %(xblock_type)s"
 
