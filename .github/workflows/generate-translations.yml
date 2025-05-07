@@ -171,6 +171,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: 'gitflow/auto-generated-translations'
+          base: develop
           commit-message: 'Add changed translation files'
           add-paths: |
             conf/locale/**/LC_MESSAGES/wm-django.po
