@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-07 09:07+0000\n"
+"POT-Creation-Date: 2025-05-07 09:21+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Manish Manish <manish@manprax.com>, 2021\n"
 "Language-Team: Hindi (http://app.transifex.com/open-edx/edx-platform/language/hi/)\n"
@@ -90,7 +90,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: MediaWiki 1.44.0-alpha; Translate 2025-03-15\n"
-"X-POT-Import-Date: 2025-03-04 10:30:24+0000\n"
+"X-POT-Import-Date: 2025-04-07 10:30:35+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -257,6 +257,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid ""
 "Welcome to edX! Before you get started, please take a few minutes to fill-in"
 " the additional information below to help us understand a bit more about "
@@ -288,6 +289,7 @@ msgstr ""
 
 #: common/static/bundles/DemographicsCollectionBanner.js
 #: common/static/bundles/DemographicsCollectionModal.js
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid "Section {currentPage} of {totalPages}"
 msgstr ""
 
@@ -386,7 +388,12 @@ msgstr ""
 msgid "Add Allowance"
 msgstr ""
 
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
+msgid "You have access to the {enterpriseName} dashboard"
+msgstr "आपके पास {enterpriseName} डैशबोर्ड तक पहुंच है"
+
 #: common/static/bundles/CourseGoals.js
+#: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
 msgid ""
 "There was an error in setting your goal, please reload the page and try "
 "again."
@@ -485,6 +492,7 @@ msgstr "नष्ट करें"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 #: common/static/common/js/components/utils/view_utils.js
 #: lms/static/js/Markdown.Editor.js
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
 #: cms/templates/js/add-xblock-component-menu-problem.underscore
 #: cms/templates/js/add-xblock-component-menu.underscore
@@ -668,14 +676,6 @@ msgstr "त्रुटि"
 #: common/lib/xmodule/xmodule/js/public/js/library_content_edit.js
 msgid "Updating with latest library content"
 msgstr "नवीनतम पुस्तकालय सामग्री के साथ अद्यतन करना"
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Loading..."
-msgstr ""
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Selected blocks"
-msgstr ""
 
 #: common/lib/xmodule/xmodule/assets/library_source_block/public/js/library_source_block.js
 msgid "Unable to update settings"
@@ -1601,7 +1601,6 @@ msgstr "नयी खिड़की"
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: lms/static/js/demographics_collection/Wizard.jsx
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
 #: common/static/common/templates/discussion/templates.underscore
@@ -2386,10 +2385,6 @@ msgid "Navigate up"
 msgstr "ऊपर जाएँ"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
-msgid "Browsing"
-msgstr "ब्राउज़िंग"
-
-#: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Select"
 msgstr "चुनते हैं"
 
@@ -2950,30 +2945,9 @@ msgstr ""
 "प्रोपर प्रोसिड्रेस का ईच कोर्स में| कृपया सभी कोर्स ऋलेटेड कुएस्स्न्स और "
 "डिस्कस्न फॉरम जहा कोर्स स्टाफ सीधा जवाब देसकते है वह पोस्ट करे|"
 
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Details"
-msgstr "ब्योरा"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "the more quickly and helpfully we can respond!"
-msgstr ""
-"আপনি যত তাড়াতাড়ি আমাদের জানাবেন আমরা ততো তাড়াতাড়ি আপনারা সাহায্য করতে পারবো!"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Create Support Ticket"
-msgstr "সাপোর্ট টিকিট তৈরী করুন "
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "What can we help you with, {username}?"
-msgstr "हम आपके सहायता कैसे कर सकते हैं, {username}?"
-
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Sign in to {platform} so we can help you better."
 msgstr "{platform} में साइन इन करें ताकि हम आपकी बेहतर मदद कर सकें।"
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-msgid "Need help logging in?"
-msgstr "লগিন করার জন্য সাহায্য চাই? "
 
 #: lms/djangoapps/support/static/support/jsx/single_support_form.jsx
 msgid ""
@@ -3880,54 +3854,6 @@ msgstr "गेट स्टारटेड "
 msgid "Help make edX better for everyone!"
 msgstr "हेल्प करे edX को सभी के लिए बहतर बनाने में! "
 
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Why does edX collect this information?"
-msgstr "क्यू edX ये इन्फोर्मेस्न कलेक्ट करता है? "
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"An error occurred while attempting to retrieve or save the information "
-"below. Please try again later."
-msgstr ""
-"নিচের তথ্য উদ্ধার বা সংরক্ষণ করার চেষ্টার সময় একটি ত্রুটি পাওয়া গিয়েছে । "
-"অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What was the total combined income, during the last 12 months, of all "
-"members of your family? "
-msgstr "আপনার পুরো ফ্যামিলি মেম্বারের লাস্ট 12 মাসের মোট ইনকাম কত? "
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
-"National Guard?"
-msgstr ""
-"আপনি কি কখনো যুক্তরাষ্ট্র  আর্মড ফোর্স -এ,  রিজার্ভ বা ন্যাশনাল গার্ডের "
-"ডিউটি করেছেন? "
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What is the highest level of education that you have achieved so far?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What is the highest level of education that any of your parents or guardians"
-" have achieved?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Select employment status"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you currently work in?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you want to work in?"
-msgstr ""
-
 #: lms/static/js/demographics_collection/MultiselectDropdown.jsx
 msgid "Clear all"
 msgstr "क्लियर ऑल "
@@ -3939,22 +3865,6 @@ msgstr "डेमोग्राफिक्स क्वेस्चनइर"
 #: lms/static/js/demographics_collection/Wizard.jsx
 msgid "close questionnaire"
 msgstr "क्लोज़ क्वेस्चनइर"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "finish later"
-msgstr "फिनिश लेटर "
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Return to my dashboard"
-msgstr "मेरे दशबोर्ड पर रिटर्न करे "
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Finish later"
-msgstr "फिनिश लेटर "
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "next page"
-msgstr "अगला पृष्ठ"
 
 #: lms/static/js/discovery/views/search_form.js
 #, javascript-format
@@ -6306,37 +6216,6 @@ msgstr "आयात करने में त्रुटि"
 msgid "There was an error with the upload"
 msgstr "अपलोड करने में त्रुटि हुई"
 
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Organization:"
-msgstr "संगठन:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Number:"
-msgstr "पाठ्यक्रम संख्या:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Run:"
-msgstr "कोर्स रन:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "(Read-only)"
-msgstr "(एकमात्र पढ़ने के लिए)"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Re-run Course"
-msgstr "कोर्स फिर से चलाएं"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-#: cms/templates/js/show-textbook.underscore
-msgid "View Live"
-msgstr "सीधे देखें"
-
 #: cms/static/js/maintenance/force_publish_course.js
 msgid "Internal Server Error."
 msgstr "आंतरिक सर्वर त्रुटि।"
@@ -7641,6 +7520,10 @@ msgstr "नया {component_type}"
 #: cms/static/js/xblock_asides/structured_tags.js
 msgid "Updating Tags"
 msgstr "अद्यतन टैग"
+
+#: cms/templates/js/show-textbook.underscore
+msgid "View Live"
+msgstr "सीधे देखें"
 
 #: lms/static/js/student_account/views/account_settings_view.js
 msgid "Account Information"
@@ -11795,9 +11678,6 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ msgid "Select level of education"
 #~ msgstr "शिक्षा के स्तर का चयन करें"
 
-#~ msgid "You have access to the {enterpriseName} dashboard"
-#~ msgstr "आपके पास {enterpriseName} डैशबोर्ड तक पहुंच है"
-
 #~ msgid "Select guardian education"
 #~ msgstr "अभिभावक शिक्षा का चयन करें"
 
@@ -11814,6 +11694,59 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ "यह इस वजह से हो सकता है कि हमारी सर्वर में या आपके इंटरनेट कनेक्शन में कोई "
 #~ "त्रुटि है। पृष्ठ को रिफ्रेश करने या सुनिश्चित करने की कोशिश करें कि आप "
 #~ "ऑनलाइन हैं।"
+
+#~ msgid "Browsing"
+#~ msgstr "ब्राउज़िंग"
+
+#~ msgid "Details"
+#~ msgstr "ब्योरा"
+
+#~ msgid "the more quickly and helpfully we can respond!"
+#~ msgstr ""
+#~ "আপনি যত তাড়াতাড়ি আমাদের জানাবেন আমরা ততো তাড়াতাড়ি আপনারা সাহায্য করতে পারবো!"
+
+#~ msgid "Create Support Ticket"
+#~ msgstr "সাপোর্ট টিকিট তৈরী করুন "
+
+#~ msgid "What can we help you with, {username}?"
+#~ msgstr "हम आपके सहायता कैसे कर सकते हैं, {username}?"
+
+#~ msgid "Need help logging in?"
+#~ msgstr "লগিন করার জন্য সাহায্য চাই? "
+
+#~ msgid "Why does edX collect this information?"
+#~ msgstr "क्यू edX ये इन्फोर्मेस्न कलेक्ट करता है? "
+
+#~ msgid ""
+#~ "An error occurred while attempting to retrieve or save the information "
+#~ "below. Please try again later."
+#~ msgstr ""
+#~ "নিচের তথ্য উদ্ধার বা সংরক্ষণ করার চেষ্টার সময় একটি ত্রুটি পাওয়া গিয়েছে । "
+#~ "অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
+
+#~ msgid ""
+#~ "What was the total combined income, during the last 12 months, of all "
+#~ "members of your family? "
+#~ msgstr "আপনার পুরো ফ্যামিলি মেম্বারের লাস্ট 12 মাসের মোট ইনকাম কত? "
+
+#~ msgid ""
+#~ "Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
+#~ "National Guard?"
+#~ msgstr ""
+#~ "আপনি কি কখনো যুক্তরাষ্ট্র  আর্মড ফোর্স -এ,  রিজার্ভ বা ন্যাশনাল গার্ডের "
+#~ "ডিউটি করেছেন? "
+
+#~ msgid "finish later"
+#~ msgstr "फिनिश लेटर "
+
+#~ msgid "Return to my dashboard"
+#~ msgstr "मेरे दशबोर्ड पर रिटर्न करे "
+
+#~ msgid "Finish later"
+#~ msgstr "फिनिश लेटर "
+
+#~ msgid "next page"
+#~ msgstr "अगला पृष्ठ"
 
 #~ msgid "Cohort assignment not allowed: {email_or_username}"
 #~ msgstr "समूह असाइनमेंट की अनुमति नहीं: {email_or_username}"
@@ -11907,6 +11840,21 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ msgid "Before proceeding, please {htmlStart}{emailMsg}{htmlEnd}."
 #~ msgstr "प्रारम्भ करने से पहले, कृपया {htmlStart}{emailMsg}{htmlEnd}।"
 
+#~ msgid "Organization:"
+#~ msgstr "संगठन:"
+
+#~ msgid "Course Number:"
+#~ msgstr "पाठ्यक्रम संख्या:"
+
+#~ msgid "Course Run:"
+#~ msgstr "कोर्स रन:"
+
+#~ msgid "(Read-only)"
+#~ msgstr "(एकमात्र पढ़ने के लिए)"
+
+#~ msgid "Re-run Course"
+#~ msgstr "कोर्स फिर से चलाएं"
+
 #~ msgid "You must have at least one undroppable <%- types %> assignment."
 #~ msgstr ""
 #~ "आपके पास कम से कम एक न छोड़ने योग्य <%- types %> असाइनमेंट होना चाहिए।"
@@ -11950,6 +11898,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ msgid "Dismiss"
 #~ msgstr "ख़ारिज करें"
 
+#, python-format
 #~ msgid "Prerequisite: %(prereq_display_name)s"
 #~ msgstr "शर्त:%(prereq_display_name)s"
 
@@ -11989,6 +11938,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ msgid "Timed Exam"
 #~ msgstr "समय पर परीक्षा"
 
+#, python-format
 #~ msgid "Collapse/Expand this %(xblock_type)s"
 #~ msgstr "इसे संक्षिप्त करें / विस्तृत करें%(xblock_type)s"
 
@@ -12034,6 +11984,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ msgid "You haven't added any content to this course yet."
 #~ msgstr "आपने इस पाठ्यक्रम में अभी तक कोई सामग्री नहीं जोड़ी है।"
 
+#, python-format
 #~ msgid "Click to add a new %(xblock_type)s"
 #~ msgstr "एक नया जोड़ने के लिए क्लिक करें%(xblock_type)s"
 
@@ -12101,6 +12052,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ "{a_start} शिक्षार्थी सहायता केंद्र {span_start} {icon} {span_end} {a_end} "
 #~ "देखें"
 
+#, python-format
 #~ msgid ""
 #~ "You have successfully completed all the requirements for the %(title)s "
 #~ "%(type)s."
@@ -12108,6 +12060,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ "आपने %(title)s %(type)s के लिए सभी आवश्यकताओं को सफलतापूर्वक पूरा कर लिया "
 #~ "है।"
 
+#, python-format
 #~ msgid ""
 #~ "Track and plan your progress through the %(count)s course(s) in this "
 #~ "program. To complete the program, you must earn a verified certificate for "
@@ -12140,9 +12093,11 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ "परीक्षण समाप्त होने के बाद {subscriptionPrice} सदस्यता। किसी भी समय रद्द "
 #~ "करें."
 
+#, python-format
 #~ msgid "Transform your %(org)s %(type)s into a full master’s degree"
 #~ msgstr "अपने %(org)s %(type)s पूर्ण मास्टर डिग्री में बदलें"
 
+#, python-format
 #~ msgid ""
 #~ "Successful completion of %(org)s %(program)s credential can be applied "
 #~ "towards flexible, rigorous, and affordable masters degrees from the world’s "
@@ -12152,6 +12107,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ "विश्वविद्यालयों से लचीली, कठोर और किफायती मास्टर डिग्री के लिए लागू किया जा "
 #~ "सकता है।"
 
+#, python-format
 #~ msgid ""
 #~ "Track and plan your progress through the %(count)s courses in this program. "
 #~ "To complete the program, you must earn a verified certificate for each "
@@ -12205,6 +12161,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "क्लिपबोर्ड पर कॉपी करें"
 
+#, python-format
 #~ msgid ""
 #~ "This subsection is configured as \\\"%(gradingType)s\\\", which doesn't "
 #~ "exist in the current grading policy."
@@ -12212,6 +12169,7 @@ msgstr "वर्तमान ट्रांस्क्रिप्ट का 
 #~ "यह उपधारा \\&quot; %(gradingType)s \\&quot; के रूप में कॉन्फ़िगर की गई है, "
 #~ "जो वर्तमान ग्रेडिंग नीति में मौजूद नहीं है।"
 
+#, python-format
 #~ msgid "Paste %(xblock_type)s"
 #~ msgstr "%(xblock_type)s चिपकाएँ"
 

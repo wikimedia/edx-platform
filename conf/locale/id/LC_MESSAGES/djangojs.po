@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-07 09:07+0000\n"
+"POT-Creation-Date: 2025-05-07 09:21+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Faizar Septiawan <faizarsangster@gmail.com>, 2023\n"
 "Language-Team: Indonesian (http://app.transifex.com/open-edx/edx-platform/language/id/)\n"
@@ -148,6 +148,7 @@ msgstr "Hapus"
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
 #: common/static/common/js/components/utils/view_utils.js
 #: lms/static/js/Markdown.Editor.js
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
 #: cms/templates/js/add-xblock-component-menu-problem.underscore
 #: cms/templates/js/add-xblock-component-menu.underscore
@@ -331,14 +332,6 @@ msgstr "Kesalahan"
 #: common/lib/xmodule/xmodule/js/public/js/library_content_edit.js
 msgid "Updating with latest library content"
 msgstr "Mengupdate dengan konten library terakhir"
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Loading..."
-msgstr ""
-
-#: common/lib/xmodule/xmodule/assets/library_source_block/LibrarySourcedBlockPicker.jsx
-msgid "Selected blocks"
-msgstr ""
 
 #: common/lib/xmodule/xmodule/assets/library_source_block/public/js/library_source_block.js
 msgid "Unable to update settings"
@@ -1257,7 +1250,6 @@ msgstr "Window baru"
 #. Translators: this is a message from the raw HTML editor displayed in the
 #. browser when a user needs to edit HTML
 #: common/lib/xmodule/xmodule/js/src/html/edit.js
-#: lms/static/js/demographics_collection/Wizard.jsx
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
 #: common/static/common/templates/discussion/templates.underscore
@@ -2039,10 +2031,6 @@ msgid "Navigate up"
 msgstr "Navigasi naik"
 
 #: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
-msgid "Browsing"
-msgstr "Jelajah"
-
-#: common/static/common/js/components/BlockBrowser/components/BlockBrowser/BlockBrowser.jsx
 msgid "Select"
 msgstr "Pilih"
 
@@ -2580,29 +2568,9 @@ msgid ""
 "within the Discussion Forum where the Course Staff can directly respond."
 msgstr ""
 
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Details"
-msgstr "Detil"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "the more quickly and helpfully we can respond!"
-msgstr ""
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "Create Support Ticket"
-msgstr "Buat Tiket Dukungan"
-
-#: lms/djangoapps/support/static/support/jsx/logged_in_user.jsx
-msgid "What can we help you with, {username}?"
-msgstr "Ada yang bisa kami bantu, {username}?"
-
 #: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
 msgid "Sign in to {platform} so we can help you better."
 msgstr "Masuk ke {platform} supaya kami dapat membantumu lebih baik."
-
-#: lms/djangoapps/support/static/support/jsx/logged_out_user.jsx
-msgid "Need help logging in?"
-msgstr "Butuh bantuan untuk masuk?"
 
 #: lms/djangoapps/support/static/support/jsx/single_support_form.jsx
 msgid ""
@@ -3501,55 +3469,19 @@ msgid "Get started"
 msgstr "Mulai"
 
 #: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
+msgid "Section {currentPage} of {totalPages}"
+msgstr ""
+
+#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid "Help make edX better for everyone!"
 msgstr "Bantu jadikan edX lebih baik untuk semua orang!"
 
 #: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Why does edX collect this information?"
-msgstr "Why does edX collect this information?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
 msgid ""
-"An error occurred while attempting to retrieve or save the information "
-"below. Please try again later."
-msgstr ""
-"Terjadi kesalahan saat mencoba mengambil atau menyimpan informasi di bawah "
-"ini. Silakan coba lagi nanti."
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What was the total combined income, during the last 12 months, of all "
-"members of your family? "
-msgstr ""
-"Berapa total penghasilan gabungan, selama 12 bulan terakhir, dari semua "
-"anggota keluarga Anda?"
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"Have you ever served on active duty in the U.S. Armed Forces, Reserves, or "
-"National Guard?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What is the highest level of education that you have achieved so far?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid ""
-"What is the highest level of education that any of your parents or guardians"
-" have achieved?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "Select employment status"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you currently work in?"
-msgstr ""
-
-#: lms/static/js/demographics_collection/DemographicsCollectionModal.jsx
-msgid "What industry do you want to work in?"
+"Welcome to edX! Before you get started, please take a few minutes to fill-in"
+" the additional information below to help us understand a bit more about "
+"your background. You can always edit this information later in Account "
+"Settings."
 msgstr ""
 
 #: lms/static/js/demographics_collection/MultiselectDropdown.jsx
@@ -3563,22 +3495,6 @@ msgstr "kuesioner demografi"
 #: lms/static/js/demographics_collection/Wizard.jsx
 msgid "close questionnaire"
 msgstr "kuesioner tertutup"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "finish later"
-msgstr "selesaikan nanti"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Return to my dashboard"
-msgstr "Kembali ke dasbor saya"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "Finish later"
-msgstr "Selesaikan nanti"
-
-#: lms/static/js/demographics_collection/Wizard.jsx
-msgid "next page"
-msgstr "halaman Selanjutnya"
 
 #: lms/static/js/discovery/views/search_form.js
 #, javascript-format
@@ -4656,6 +4572,10 @@ msgstr ""
 "tingkat sensitif dari Informasi data siswa"
 
 #: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
+msgid "You have access to the {enterpriseName} dashboard"
+msgstr ""
+
+#: lms/static/js/learner_dashboard/EnterpriseLearnerPortalModal.jsx
 msgid ""
 "To access the courses available to you through {enterpriseName}, visit the "
 "{enterpriseName} dashboard."
@@ -5577,6 +5497,12 @@ msgstr "Tandai halaman ini"
 msgid "Thank you for setting your course goal to {goal}!"
 msgstr ""
 
+#: openedx/features/course_experience/static/course_experience/js/CourseGoals.js
+msgid ""
+"There was an error in setting your goal, please reload the page and try "
+"again."
+msgstr ""
+
 #: openedx/features/course_experience/static/course_experience/js/CourseHome.js
 msgid "You have successfully updated your goal."
 msgstr ""
@@ -5887,37 +5813,6 @@ msgstr ""
 #: cms/static/js/features/import/views/import.js
 msgid "There was an error with the upload"
 msgstr "Terjadi kesalahan dengan unggahnya"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Organization:"
-msgstr "Organisasi:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Number:"
-msgstr "Nomor Kursus:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Course Run:"
-msgstr "Kursus Berjalan:"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "(Read-only)"
-msgstr "(Hanya baca)"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-msgid "Re-run Course"
-msgstr "Jalankan kembali Kursus"
-
-#: cms/static/js/features_jsx/studio/CourseOrLibraryListing.jsx
-#: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
-#: cms/templates/js/show-textbook.underscore
-msgid "View Live"
-msgstr "Tampilkan Live"
 
 #: cms/static/js/features_jsx/studio/WikiCourseListing.jsx
 msgid "Search Course by Name"
@@ -7236,6 +7131,10 @@ msgstr ""
 #: cms/static/js/xblock_asides/structured_tags.js
 msgid "Updating Tags"
 msgstr ""
+
+#: cms/templates/js/show-textbook.underscore
+msgid "View Live"
+msgstr "Tampilkan Live"
 
 #: lms/static/js/student_account/views/account_settings_view.js
 msgid "Account Information"
@@ -11310,6 +11209,38 @@ msgstr "Gunakan transkrip yang sekarang"
 #~ "Ini mungkin terjadi karena ada kesalahan di server kami atau koneksi "
 #~ "Internet Anda. Coba refresh halaman untuk memastikan Anda online."
 
+#~ msgid "Browsing"
+#~ msgstr "Jelajah"
+
+#~ msgid "Details"
+#~ msgstr "Detil"
+
+#~ msgid "Create Support Ticket"
+#~ msgstr "Buat Tiket Dukungan"
+
+#~ msgid "What can we help you with, {username}?"
+#~ msgstr "Ada yang bisa kami bantu, {username}?"
+
+#~ msgid "Need help logging in?"
+#~ msgstr "Butuh bantuan untuk masuk?"
+
+#~ msgid "Why does edX collect this information?"
+#~ msgstr "Why does edX collect this information?"
+
+#~ msgid ""
+#~ "An error occurred while attempting to retrieve or save the information "
+#~ "below. Please try again later."
+#~ msgstr ""
+#~ "Terjadi kesalahan saat mencoba mengambil atau menyimpan informasi di bawah "
+#~ "ini. Silakan coba lagi nanti."
+
+#~ msgid ""
+#~ "What was the total combined income, during the last 12 months, of all "
+#~ "members of your family? "
+#~ msgstr ""
+#~ "Berapa total penghasilan gabungan, selama 12 bulan terakhir, dari semua "
+#~ "anggota keluarga Anda?"
+
 #~ msgid "Select military status"
 #~ msgstr "Select military status"
 
@@ -11321,6 +11252,18 @@ msgstr "Gunakan transkrip yang sekarang"
 
 #~ msgid "Thank you! You’re helping make edX better for everyone."
 #~ msgstr "Terima kasih! Anda membantu membuat edX lebih baik untuk semua orang."
+
+#~ msgid "finish later"
+#~ msgstr "selesaikan nanti"
+
+#~ msgid "Return to my dashboard"
+#~ msgstr "Kembali ke dasbor saya"
+
+#~ msgid "Finish later"
+#~ msgstr "Selesaikan nanti"
+
+#~ msgid "next page"
+#~ msgstr "halaman Selanjutnya"
 
 #~ msgid "More opportunities for you"
 #~ msgstr "Lebih banyak peluang untuk Anda"
@@ -11335,6 +11278,21 @@ msgstr "Gunakan transkrip yang sekarang"
 #~ "Kami telah menambahkan 500+ peluang belajar untuk menciptakan salah satu "
 #~ "platform pembelajaran online gratis terlengkap di dunia."
 
+#~ msgid "Organization:"
+#~ msgstr "Organisasi:"
+
+#~ msgid "Course Number:"
+#~ msgstr "Nomor Kursus:"
+
+#~ msgid "Course Run:"
+#~ msgstr "Kursus Berjalan:"
+
+#~ msgid "(Read-only)"
+#~ msgstr "(Hanya baca)"
+
+#~ msgid "Re-run Course"
+#~ msgstr "Jalankan kembali Kursus"
+
 #~ msgid "You must have at least one undroppable <%- types %> assignment."
 #~ msgstr ""
 #~ "Anda harus memiliki setidaknya satu penugasan <%- types %> yang tidak dapat "
@@ -11343,6 +11301,7 @@ msgstr "Gunakan transkrip yang sekarang"
 #~ msgid "Dismiss"
 #~ msgstr "Abaikan"
 
+#, python-format
 #~ msgid "Prerequisite: %(prereq_display_name)s"
 #~ msgstr "Prasyarat: %(prereq_display_name)s"
 
@@ -11370,6 +11329,7 @@ msgstr "Gunakan transkrip yang sekarang"
 #~ msgid "Timed Exam"
 #~ msgstr "Ujian Terjadwal"
 
+#, python-format
 #~ msgid "Collapse/Expand this %(xblock_type)s"
 #~ msgstr "Runtuh/memperluas ini%(xblock_type)s"
 
@@ -11406,6 +11366,7 @@ msgstr "Gunakan transkrip yang sekarang"
 #~ msgid "You haven't added any content to this course yet."
 #~ msgstr "Anda belum menambahkan beberapa konten dalam kursus ini"
 
+#, python-format
 #~ msgid "Click to add a new %(xblock_type)s"
 #~ msgstr "Klik untuk menambah %(xblock_type)s yang baru"
 
