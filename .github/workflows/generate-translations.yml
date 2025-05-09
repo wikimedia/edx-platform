@@ -8,10 +8,16 @@ on:
         required: false
         default: 'develop'
 
+  # Scheduled trigger: first Monday of every month at 7AM (UTC) or 12PM (PKT)
+  schedule:
+    - cron: "0 7 1-7 * 1"
+
 jobs:
   generate-translations:
+    # Only run on the wm/localization branch
+    if: github.ref == 'refs/heads/wm/localization'
     name: Detect changed source and generate Transifex and Translatewiki translations
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     timeout-minutes: 30
 
     steps:
@@ -50,12 +56,12 @@ jobs:
           ref: ${{ inputs.theme_branch }}
           token: ${{ secrets.THEME_ACCESS_TOKEN }}
 
-      - name: Checkout master as feature branch does not exist
+      - name: Checkout develop branch as feature branch does not exist
         uses: actions/checkout@v3
         with:
           repository: wikimedia/wikilearn-edx-theme
           path: ./themes
-          ref: master
+          ref: develop
           token: ${{ secrets.THEME_ACCESS_TOKEN }}
         if: steps.clone-theme-repo.outcome == 'failure'
 
@@ -171,6 +177,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: 'gitflow/auto-generated-translations'
+          base: develop
           commit-message: 'Add changed translation files'
           add-paths: |
             conf/locale/**/LC_MESSAGES/wm-django.po
