@@ -8,9 +8,9 @@ on:
         required: false
         default: 'develop'
 
-  # Scheduled trigger: first Monday of every month at 7AM (UTC) or 12PM (PKT)
+  # Scheduled trigger: first day of every month at 7AM (UTC) or 12PM (PKT)
   schedule:
-    - cron: "0 7 1-7 * 1"
+    - cron: "0 7 1 * *"
 
 jobs:
   generate-translations:
