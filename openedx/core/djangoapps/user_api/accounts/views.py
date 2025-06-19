@@ -488,24 +488,16 @@ class AccountDeactivationView(APIView):
 class DeactivateLogoutView(APIView):
     """
     POST /api/user/v1/accounts/deactivate_logout/
-    {
-        "password": "example_password",
-    }
+    {}
 
     **POST Parameters**
 
-      A POST request must include the following parameter.
-
-      * password: Required. The current password of the user being deactivated.
+      A POST request with an empty body is sufficient for authenticated users.
 
     **POST Response Values**
 
-     If the request does not specify a username or submits a username
-     for a non-existent user, the request returns an HTTP 404 "Not Found"
-     response.
-
-     If a user who is not a superuser tries to deactivate a user,
-     the request returns an HTTP 403 "Forbidden" response.
+     If the user is not authenticated, the request returns an HTTP 401 
+     "Unauthorized" response.
 
      If the specified user is successfully deactivated, the request
      returns an HTTP 204 "No Content" response.
@@ -513,12 +505,12 @@ class DeactivateLogoutView(APIView):
      If an unanticipated error occurs, the request returns an
      HTTP 500 "Internal Server Error" response.
 
-    Allows an LMS user to take the following actions:
+    Allows an authenticated LMS user to take the following actions:
     -  Change the user's password permanently to Django's unusable password
     -  Log the user out
     - Create a row in the retirement table for that user
     """
-    authentication_classes = (JwtAuthentication, SessionAuthentication,)
+    authentication_classes = (SessionAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request):
@@ -530,10 +522,9 @@ class DeactivateLogoutView(APIView):
         """
         user_model = get_user_model()
         try:
-            # Get the username from the request and check that it exists
-            verify_user_password_response = self._verify_user_password(request)
-            if verify_user_password_response.status_code != status.HTTP_204_NO_CONTENT:
-                return verify_user_password_response
+            # Since we're removing password verification, we only need to ensure
+            # TODO: make password verfication conditional depending on wether the user account was created through 3rd party auth or not.
+            # the user is authenticated (handled by permission_classes)
             with transaction.atomic():
                 user_email = request.user.email
                 create_retirement_request_and_deactivate_account(request.user)

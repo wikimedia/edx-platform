@@ -49,7 +49,7 @@ export class StudentAccountDeletion extends React.Component {
     const showError = socialAuthConnected || !isActive;
 
     const socialAuthError = StringUtils.interpolate(
-      gettext('Before proceeding, please {htmlStart}unlink all social media accounts{htmlEnd}.'),
+      gettext('Before proceeding, please {htmlStart}unlink all linked accounts{htmlEnd}.'),
       {
         htmlStart: '<a href="https://support.edx.org/hc/en-us/articles/207206067" rel="noopener" target="_blank">',
         htmlEnd: '</a>',
