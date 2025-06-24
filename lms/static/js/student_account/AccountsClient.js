@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import Cookies from 'js-cookie';
 
-const deactivate = (password) => fetch('/api/user/v1/accounts/deactivate_logout/', {
+const deactivate = () => fetch('/api/user/v1/accounts/deactivate_logout/', {
   method: 'POST',
   credentials: 'same-origin',
   headers: {
@@ -9,7 +9,6 @@ const deactivate = (password) => fetch('/api/user/v1/accounts/deactivate_logout/
     'X-CSRFToken': Cookies.get('csrftoken'),
   },
   // URLSearchParams + polyfill doesn't work in IE11
-  body: `password=${encodeURIComponent(password)}`,
 }).then((response) => {
   if (response.ok) {
     return response;

@@ -13,13 +13,18 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
     super(props);
 
     this.deleteAccount = this.deleteAccount.bind(this);
-    this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
-    this.passwordFieldValidation = this.passwordFieldValidation.bind(this);
+    this.handleConfirmationInputChange = this.handleConfirmationInputChange.bind(this);
+    this.confirmationFieldValidation = this.confirmationFieldValidation.bind(this);
     this.handleConfirmationModalClose = this.handleConfirmationModalClose.bind(this);
+    
+    // The text user needs to type to confirm deletion
+    // TODO: This should be stored in a config file
+    this.confirmationText = 'DELETE_MY_ACCOUNT';
+    
     this.state = {
-      password: '',
-      passwordSubmitted: false,
-      passwordValid: true,
+      confirmationInput: '',
+      confirmationSubmitted: false,
+      confirmationValid: true,
       validationMessage: '',
       validationErrorDetails: '',
       accountQueuedForDeletion: false,
@@ -36,13 +41,13 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
 
   deleteAccount() {
     return this.setState(
-      { passwordSubmitted: true },
+      { confirmationSubmitted: true },
       () => (
-        deactivate(this.state.password)
+        deactivate()
           .then(() => this.setState({
             accountQueuedForDeletion: true,
             responseError: false,
-            passwordSubmitted: false,
+            confirmationSubmitted: false,
             validationMessage: '',
             validationErrorDetails: '',
           }))
@@ -52,30 +57,40 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
   }
 
   failedSubmission(error) {
-    const title = error.message === '403' ? gettext('Password is incorrect') : gettext('Unable to delete account');
-    const body = error.message === '403' ? gettext('Please re-enter your password.') : gettext('Sorry, there was an error trying to process your request. Please try again later.');
+    const title = gettext('Unable to delete account');
+    const body = gettext('Sorry, there was an error trying to process your request. Please try again later.');
 
     this.setState({
-      passwordSubmitted: false,
+      confirmationSubmitted: false,
       responseError: true,
-      passwordValid: false,
+      confirmationValid: false,
       validationMessage: title,
       validationErrorDetails: body,
     });
   }
 
-  handlePasswordInputChange(value) {
-    this.setState({ password: value });
+  handleConfirmationInputChange(value) {
+    this.setState({ confirmationInput: value });
+    this.confirmationFieldValidation(value);
   }
 
-  passwordFieldValidation(value) {
-    let feedback = { passwordValid: true };
+  confirmationFieldValidation(value) {
+    let feedback = { confirmationValid: true };
 
     if (value.length < 1) {
       feedback = {
-        passwordValid: false,
-        validationMessage: gettext('A Password is required'),
+        confirmationValid: false,
+        validationMessage: gettext('Confirmation text is required'),
         validationErrorDetails: '',
+      };
+    } else if (value !== this.confirmationText) {
+      feedback = {
+        confirmationValid: false,
+        validationMessage: gettext('Confirmation text does not match'),
+        validationErrorDetails: StringUtils.interpolate(
+          gettext('Please type "{confirmationText}" exactly as shown.'),
+          { confirmationText: this.confirmationText }
+        ),
       };
     }
 
@@ -84,9 +99,9 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
 
   renderConfirmationModal() {
     const {
-      passwordValid,
-      password,
-      passwordSubmitted,
+      confirmationValid,
+      confirmationInput,
+      confirmationSubmitted,
       responseError,
       validationErrorDetails,
       validationMessage,
@@ -123,6 +138,10 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
       },
     );
 
+    const confirmationInstructions = StringUtils.interpolate(
+      gettext('If you still wish to continue and delete your account, please type "{confirmationText}" in the box below:'),
+      { confirmationText: this.confirmationText }
+    );
 
     return (
       <div className="delete-confirmation-wrapper">
@@ -172,18 +191,18 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
                 dismissible={false}
                 open
               />
-              <p className="next-steps">{ gettext('If you still wish to continue and delete your account, please enter your account password:') }</p>
+              <p className="next-steps">{ confirmationInstructions }</p>
               <InputText
-                name="confirm-password"
-                label="Password"
-                type="password"
-                className={['confirm-password-input']}
-                onBlur={this.passwordFieldValidation}
-                isValid={passwordValid}
+                name="confirm-deletion"
+                type="text"
+                className={['confirm-deletion-input']}
+                onBlur={this.confirmationFieldValidation}
+                isValid={confirmationValid}
                 validationMessage={validationMessage}
-                onChange={this.handlePasswordInputChange}
-                autoComplete="new-password"
+                onChange={this.handleConfirmationInputChange}
+                autoComplete="off"
                 themes={['danger']}
+                placeholder={gettext('Type confirmation text here')}
               />
             </div>
           )}
@@ -192,7 +211,7 @@ class StudentAccountDeletionConfirmationModal extends React.Component {
             <Button
               label={gettext('Yes, Delete')}
               onClick={this.deleteAccount}
-              disabled={password.length === 0 || passwordSubmitted}
+              disabled={confirmationInput.length === 0 || !confirmationValid || confirmationSubmitted}
             />,
           ]}
         />
