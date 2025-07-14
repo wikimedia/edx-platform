@@ -75,6 +75,10 @@
       "%d minut",
       "%d minuter"
     ],
+    "%d month": [
+      "%d m\u00e5nad",
+      "%d m\u00e5nader"
+    ],
     "%d year": [
       "%d \u00e5r",
       "%d \u00e5r"
@@ -103,7 +107,6 @@
     ": video upload complete.": ": videouppladdningen \u00e4r klar.",
     "<%- user %> already in exception list.": "<%- anv\u00e4ndare %> finns redan i undantagslistan.",
     "<%- user %> has been successfully added to the exception list. Click Generate Exception Certificate below to send the certificate.": "<%- anv\u00e4ndare %> har lagts till i undantagslistan. Klicka p\u00e5 Generera undantagscertifikat nedan f\u00f6r att skicka certifikatet.",
-    "A Password is required": "Ett l\u00f6senord kr\u00e4vs",
     "A driver's license, passport, or other government-issued ID with your name and photo": "Ett k\u00f6rkort, pass eller annan statligt utf\u00e4rdad legitimation med ditt namn och foto",
     "A highlight to look forward to this week.": "En h\u00f6jdpunkt att se fram emot denna vecka.",
     "A list of courses you have just enrolled in as a verified student": "En lista \u00f6ver kurser du just har anm\u00e4lt dig till som verifierad student",
@@ -287,7 +290,6 @@
     "Basic Account Information": "Kontoinst\u00e4llningar",
     "Be sure your entire face is inside the frame": "Se till att hela ditt ansikte \u00e4r innanf\u00f6r ramen",
     "Before proceeding, please confirm that your details match": "Innan du forts\u00e4tter, v\u00e4nligen bekr\u00e4fta att dina uppgifter matchar",
-    "Before proceeding, please {htmlStart}unlink all social media accounts{htmlEnd}.": "Innan du forts\u00e4tter {htmlStart}ta bort l\u00e4nken till alla sociala mediekonton{htmlEnd}.",
     "Before you upgrade to a certificate track, you must activate your account.": "Innan du uppgraderar till ett certifikatsp\u00e5r m\u00e5ste du aktivera ditt konto.",
     "Billing/Payment Options": "Fakturerings-/Betalningsalternativ",
     "Biography": "Biografi",
@@ -862,7 +864,6 @@
     "If you remove this transcript, the transcript will not be available for this component.": "Om du tar bort denna transkription kommer transkriptionen inte att vara tillg\u00e4nglig f\u00f6r den h\u00e4r komponenten.",
     "If you require assistance with taking either photo for submission, contact %(platformName)s support for additional suggestions.": "Om du beh\u00f6ver hj\u00e4lp med att ta endera bilden f\u00f6r inl\u00e4mning, kontakta %(platformName)s support f\u00f6r ytterligare f\u00f6rslag.",
     "If you select an option other than \"%(hide_label)s\", published units in this subsection become available to learners unless they are explicitly hidden.": "Om du v\u00e4ljer ett annat alternativ \u00e4n \"%(hide_label)s\", blir publicerade enheter i det h\u00e4r underavsnittet tillg\u00e4ngliga f\u00f6r elever om de inte \u00e4r explicit dolda.",
-    "If you still wish to continue and delete your account, please enter your account password:": "Om du fortfarande vill forts\u00e4tta och ta bort ditt konto, v\u00e4nligen ange ditt kontol\u00f6senord:",
     "If you use the Advanced Editor, this problem will be converted to XML and you will not be able to return to the Simple Editor Interface.\n\nProceed to the Advanced Editor and convert this problem to XML?": "Om du anv\u00e4nder den avancerade redigeraren kommer detta problem att konverteras till XML och du kommer inte att kunna \u00e5terg\u00e5 till den enkla redigeraren.\n\nVill du forts\u00e4tta till den avancerade redigeraren och konvertera detta problem till XML?",
     "Ignore": "Ignorera",
     "Ignore all": "Ignorera alla",
@@ -1159,7 +1160,6 @@
     "Password": "L\u00f6senord",
     "Password Status": "L\u00f6senordsstatus",
     "Password assistance": "L\u00f6senordshj\u00e4lp",
-    "Password is incorrect": "L\u00f6senord \u00e4r inkorrekt",
     "Passwords do not match.": "L\u00f6senorden matchar inte.",
     "Paste": "Klistra in",
     "Paste as text": "Klistra in som text",
@@ -1213,7 +1213,6 @@
     "Please note: Deletion of your account and personal data is permanent and cannot be undone. {platformName} will not be able to recover your account or the data that is deleted.": "Observera: Radering av ditt konto och personuppgifter \u00e4r permanent och kan inte \u00e5ngras. {platformName} kommer inte att kunna \u00e5terst\u00e4lla ditt konto eller data som raderas.",
     "Please provide a description of the link destination.": "Ange en beskrivning av l\u00e4nkdestinationen.",
     "Please provide a valid URL.": "Ange en giltig webbadress.",
-    "Please re-enter your password.": "V\u00e4nligen ange ditt l\u00f6senord igen.",
     "Please select a PDF file to upload.": "Var god v\u00e4lj en PDF-fil att ladda upp.",
     "Please select a file in .srt format.": "V\u00e4lj en fil i .srt-format.",
     "Please specify a reason.": "V\u00e4nligen ange en orsak.",
