@@ -14,8 +14,6 @@ on:
 
 jobs:
   generate-translations:
-    # Only run on the wm/localization branch
-    if: github.ref == 'refs/heads/wm/localization'
     name: Detect changed source and generate Transifex and Translatewiki translations
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -23,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: wm/localization
 
       - name: Set up python
         uses: actions/setup-python@v2
