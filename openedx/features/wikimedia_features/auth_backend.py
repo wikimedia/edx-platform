@@ -1,5 +1,6 @@
 import logging
 from django.utils.functional import cached_property
+from django.conf import settings
 from social_core.exceptions import AuthException
 from common.djangoapps.third_party_auth.identityserver3 import IdentityServer3
 
@@ -24,6 +25,15 @@ class WikimediaIdentityServer(IdentityServer3):
         # Truncate the firstname to max 30 characters. User model doesn't accepts firstname above 30 characters.
         firstname = firstname if len(firstname)<=30 else firstname[:30]
         return fullname, firstname, lastname
+
+    def auth_headers(self):
+        headers = super().auth_headers()
+        client = getattr(settings, "PLATFORM_NAME", "wikilearn")
+        site = getattr(settings, "LMS_ROOT_URL", "https://learn.wiki/")
+        contact_mail = getattr(settings, "CONTACT_EMAIL", "comdevteam@wikimedia.org")
+        headers['User-Agent'] = f'{client}/0.13 ({site}; {contact_mail})'
+        
+        return headers
 
     def get_user_details(self, response):
         """
