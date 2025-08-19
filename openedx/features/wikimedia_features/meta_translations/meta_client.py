@@ -4,6 +4,7 @@ Client to handle WikiMetaClient requests.
 import json
 import logging
 import requests
+import aiohttp
 import urllib.parse
 from django.conf import settings
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
@@ -158,9 +159,11 @@ class WikiMetaClient(object):
         """
         try:
             data = await response.json()
-        except ValueError:
+        except (aiohttp.ContentTypeError, ValueError, aiohttp.ClientError) as e:
             logger.error("Unable to extract json data from Meta response.")
-            logger.error(response.text)
+            logger.error(f"Error type: {type(e).__name__}, Error: {e}")
+            error_text = await response.text()
+            logger.error(f"Response content: {error_text}")
             data = None
 
         logger.info("For Meta request with data: {}, params: {}.".format(request_data, request_params))
