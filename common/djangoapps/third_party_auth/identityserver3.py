@@ -37,7 +37,18 @@ class IdentityServer3(BaseOAuth2):
         url = self.get_config().get_setting('user_info_url')
         # The access token returned from the service's token route.
         header = {"Authorization": "Bearer %s" % access_token}
-        return self.get_json(url, headers=header)
+        try:
+            return self.get_json(url, headers=header)
+        except Exception as e:
+            # self.get_json attaches response on the exception (if it’s HTTPError)
+            if hasattr(e, 'response') and e.response is not None:
+                print("DEBUG: Status code:", e.response.status_code)
+                print("DEBUG: Response headers:", e.response.headers)
+                try:
+                    print("DEBUG: JSON body:", e.response.json())
+                except Exception:
+                    print("DEBUG: Text body:", e.response.text)
+            raise   # re-raise so Open edX knows it failed
 
     def get_setting_if_exist(self, name, default):
         """
