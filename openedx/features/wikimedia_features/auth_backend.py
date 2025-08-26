@@ -34,6 +34,18 @@ class WikimediaIdentityServer(IdentityServer3):
         headers['User-Agent'] = f'{client}/0.13 ({site}; {contact_mail})'
         
         return headers
+    
+    def user_data(self, access_token, *args, **kwargs):
+        """
+        Consumes the access_token to get data about the user logged
+        into the service. Also, sets the headers for the authentication
+        APIs.
+        """
+        url = self.get_config().get_setting('user_info_url')
+        header = self.auth_headers()
+        # The access token returned from the service's token route.
+        header["Authorization"] = "Bearer %s" % access_token
+        return self.get_json(url, headers=header)
 
     def get_user_details(self, response):
         """
