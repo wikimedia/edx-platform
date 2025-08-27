@@ -185,8 +185,12 @@ class WikiMetaClient(object):
         """
         Handles all Meta API calls.
         """
-        logger.info("Sending Meta request with data: {}, params: {}.".format(data, params))
-        response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data)
+        client = getattr(settings, "PLATFORM_NAME", "wikilearn")
+        site = getattr(settings, "LMS_ROOT_URL", "https://learn.wiki/")
+        contact_mail = getattr(settings, "CONTACT_EMAIL", "comdevteam@wikimedia.org")
+        headers = {"User-Agent": f'{client}/0.13 ({site}; {contact_mail})'}
+        response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data, headers=headers)
+        logger.info("Sending Meta request with data: {}, params: {}, headers: {}.".format(data, params, headers))
         return await self.parse_response(params, data, response)
 
 
