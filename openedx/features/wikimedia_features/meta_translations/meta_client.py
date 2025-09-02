@@ -60,6 +60,13 @@ class WikiMetaClient(object):
             )
         )
 
+    @property
+    def wikimedia_user_agent(self):
+        client = getattr(settings, "PLATFORM_NAME", "wikilearn")
+        site = getattr(settings, "LMS_ROOT_URL", "https://learn.wiki/")
+        contact_mail = getattr(settings, "CONTACT_EMAIL", "comdevteam@wikimedia.org")
+        return f'{client}/0.13 ({site}; {contact_mail})'
+
     def get_page_redirect_url_for_title(self, title):
         """
         Returns page redirect url for given title.
@@ -185,8 +192,9 @@ class WikiMetaClient(object):
         """
         Handles all Meta API calls.
         """
-        logger.info("Sending Meta request with data: {}, params: {}.".format(data, params))
-        response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data)
+        headers = {'User-Agent': self.wikimedia_user_agent}
+        response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data, headers=headers)
+        logger.info("Sending Meta request with data: {}, params: {}, headers: {}.".format(data, params, headers))
         return await self.parse_response(params, data, response)
 
 
