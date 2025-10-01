@@ -53,7 +53,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-07-14 13:12+0000\n"
+"POT-Creation-Date: 2025-10-01 07:16+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Riina <ciairdabar@yahoo.com>, 2014-2015\n"
 "Language-Team: Lithuanian (Lithuania) (http://app.transifex.com/open-edx/edx-platform/language/lt_LT/)\n"
@@ -153,7 +153,6 @@ msgid "Course Blocks mapping"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
@@ -440,6 +439,33 @@ msgstr ""
 msgid "Receive weekly updates"
 msgstr ""
 
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
+msgid ""
+"If you still wish to continue and delete your account, please type "
+"\"{confirmationText}\" in the box below:"
+msgstr ""
+
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
+msgid "Type confirmation text here"
+msgstr ""
+
+#: lms/static/js/student_account/components/StudentAccountDeletion.jsx
+msgid ""
+"Before proceeding, please {htmlStart}unlink all linked accounts{htmlEnd}."
+msgstr ""
+
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
+msgid "Please type \"{confirmationText}\" exactly as shown."
+msgstr ""
+
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
+msgid "Confirmation text is required"
+msgstr ""
+
+#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
+msgid "Confirmation text does not match"
+msgstr ""
+
 #: cms/static/cms/js/xblock/cms.runtime.v1.js
 #: cms/static/js/certificates/views/signatory_details.js
 #: cms/static/js/models/section.js cms/static/js/utils/drag_and_drop.js
@@ -476,7 +502,6 @@ msgstr "Įrašoma"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Pašalinti"
 
@@ -5005,11 +5030,6 @@ msgid ""
 msgstr ""
 
 #: lms/static/js/student_account/components/StudentAccountDeletion.jsx
-msgid ""
-"Before proceeding, please {htmlStart}unlink all linked accounts{htmlEnd}."
-msgstr ""
-
-#: lms/static/js/student_account/components/StudentAccountDeletion.jsx
 msgid "Before proceeding, please {htmlStart}activate your account{htmlEnd}."
 msgstr ""
 
@@ -5066,18 +5086,6 @@ msgid ""
 msgstr ""
 
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
-msgid "Confirmation text is required"
-msgstr ""
-
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
-msgid "Confirmation text does not match"
-msgstr ""
-
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
-msgid "Please type \"{confirmationText}\" exactly as shown."
-msgstr ""
-
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
 msgid ""
 "You have selected “Delete my account.” Deletion of your account and personal"
 " data is permanent and cannot be undone. {platformName} will not be able to "
@@ -5089,16 +5097,6 @@ msgid ""
 "If you proceed, you will be unable to use this account to take courses on "
 "the {platformName} app, {siteName}, or any other site hosted by "
 "{platformName}."
-msgstr ""
-
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
-msgid ""
-"If you still wish to continue and delete your account, please type "
-"\"{confirmationText}\" in the box below:"
-msgstr ""
-
-#: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
-msgid "Type confirmation text here"
 msgstr ""
 
 #: lms/static/js/student_account/components/StudentAccountDeletionModal.jsx
@@ -6605,6 +6603,8 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr ""
 
 #: cms/static/js/views/modals/course_outline_modals.js
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Skelbti"
 
@@ -7293,55 +7293,10 @@ msgid "Actions"
 msgstr "Veiksmai"
 
 #: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Nesuplanuota"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Section Highlights"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr ""
 
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
@@ -8111,18 +8066,15 @@ msgid ""
 msgstr ""
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "SUŽINOTI DAUGIAU"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "Prasideda: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "Prasideda"
 
@@ -8837,7 +8789,6 @@ msgstr "Sukurti paskyrą"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "Prisijungti"
 
@@ -8879,84 +8830,69 @@ msgid "Create an Account"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "Prisijungti"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "arba prisijungti su"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "Prisijungti su %(providerName)s"
@@ -10075,6 +10011,130 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Contains staff only content"
+msgstr "Tik personalui skirtas turinys"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to live content"
+msgstr "Nepaskelbti tiesiogiai naudojamo turinio pakeitimai"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished units will not be released"
+msgstr "Nepaskelbti skyriai nebus rodomi"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to content that will release in the future"
+msgstr "Nepaskelbti turinio pakeitimai, kurie ateityje bus išleisti"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Ungraded"
+msgstr "Neįvertinta"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Practice proctored Exam"
+msgstr "Bandomasis stebimasis egzaminas"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctored Exam"
+msgstr "Stebimasis egzaminas"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Timed Exam"
+msgstr "Nustatyto laiko egzaminas"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr "Sutraukti / išplėsti %(xblock_type)s"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Display Name"
+msgstr "Rodyti pavadinimą"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Configure"
+msgstr "Konfigūruoti"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Duplicate"
+msgstr "Kopijuoti"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Drag to reorder"
+msgstr "Tempkite, norėdami pakeisti rikiavimą"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Release Status:"
+msgstr "Išleidimo būsena:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "Released:"
+msgstr "Išleista:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+msgid "Scheduled:"
+msgstr "Suplanuota:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+msgid "Section Highlights"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Graded as:"
+msgstr "Įvertinamas kaip:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Due:"
+msgstr "Pateikti iki:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after course end date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after due date"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "You haven't added any content to this course yet."
+msgstr "Prie šio kurso dar nepridėjote turinio."
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr "Spustelkite pridėti naujus %(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11257,68 +11317,6 @@ msgstr "Naudoti dabartinius titrus"
 
 #~ msgid "Dismiss"
 #~ msgstr "Pašalinti"
-
-#~ msgid "Contains staff only content"
-#~ msgstr "Tik personalui skirtas turinys"
-
-#~ msgid "Unpublished changes to live content"
-#~ msgstr "Nepaskelbti tiesiogiai naudojamo turinio pakeitimai"
-
-#~ msgid "Unpublished units will not be released"
-#~ msgstr "Nepaskelbti skyriai nebus rodomi"
-
-#~ msgid "Unpublished changes to content that will release in the future"
-#~ msgstr "Nepaskelbti turinio pakeitimai, kurie ateityje bus išleisti"
-
-#~ msgid "Ungraded"
-#~ msgstr "Neįvertinta"
-
-#~ msgid "Practice proctored Exam"
-#~ msgstr "Bandomasis stebimasis egzaminas"
-
-#~ msgid "Proctored Exam"
-#~ msgstr "Stebimasis egzaminas"
-
-#~ msgid "Timed Exam"
-#~ msgstr "Nustatyto laiko egzaminas"
-
-#, python-format
-#~ msgid "Collapse/Expand this %(xblock_type)s"
-#~ msgstr "Sutraukti / išplėsti %(xblock_type)s"
-
-#~ msgid "Display Name"
-#~ msgstr "Rodyti pavadinimą"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigūruoti"
-
-#~ msgid "Duplicate"
-#~ msgstr "Kopijuoti"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Tempkite, norėdami pakeisti rikiavimą"
-
-#~ msgid "Release Status:"
-#~ msgstr "Išleidimo būsena:"
-
-#~ msgid "Released:"
-#~ msgstr "Išleista:"
-
-#~ msgid "Scheduled:"
-#~ msgstr "Suplanuota:"
-
-#~ msgid "Graded as:"
-#~ msgstr "Įvertinamas kaip:"
-
-#~ msgid "Due:"
-#~ msgstr "Pateikti iki:"
-
-#~ msgid "You haven't added any content to this course yet."
-#~ msgstr "Prie šio kurso dar nepridėjote turinio."
-
-#, python-format
-#~ msgid "Click to add a new %(xblock_type)s"
-#~ msgstr "Spustelkite pridėti naujus %(xblock_type)s"
 
 #~ msgid "Receive updates"
 #~ msgstr "Gaukite atnaujinimus"
