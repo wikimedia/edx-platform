@@ -110,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-01 07:16+0000\n"
+"POT-Creation-Date: 2025-10-02 19:04+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Greek (https://app.transifex.com/open-edx/teams/6205/el/)\n"
@@ -120,8 +120,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: MediaWiki 1.45.0-alpha; Translate 2025-07-31\n"
-"X-POT-Import-Date: 2025-07-14 14:30:35+0000\n"
+"X-Generator: MediaWiki 1.44.0-alpha; Translate 2025-03-15\n"
+"X-POT-Import-Date: 2025-03-04 10:30:23+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -339,6 +339,11 @@ msgstr ""
 
 #: cms/templates/settings.html
 msgid "Course Direction Flag"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
+#, python-format
+msgid "%(subject)s"
 msgstr ""
 
 #: openedx/features/wikimedia_features/meta_translations/views.py
@@ -1529,6 +1534,8 @@ msgstr ""
 #: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/static_templates/honor.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "Κώδικας τιμής"
 
@@ -1641,6 +1648,7 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login_form.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "Κωδικός"
 
@@ -3041,7 +3049,12 @@ msgid ""
 "There was a problem with the staff answer to this problem: empty boundary."
 msgstr ""
 
+#. Translators: this is the last choice of a number of choices of how to log
+#. in
+#. to the site.
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "ή"
 
@@ -3482,6 +3495,7 @@ msgstr "Σωστή Απάντηση"
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Submit"
 msgstr "Υποβολή"
 
@@ -5756,7 +5770,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html
+#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -5941,6 +5956,14 @@ msgid ""
 "this request, please contact us immediately. Contact information is listed "
 "at:"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"We keep a log of old e-mails, so if this request was unintentional, we can "
+"investigate."
+msgstr ""
+"Σε κάθε περίπτωση διατηρούμε αρχείο με τα παλαιότερα e-mail και αν δεν "
+"θελήσατε εσείς αυτή την αλλαγή, μπορούμε να το διερευνήσουμε."
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -6189,9 +6212,23 @@ msgid ""
 "their respective logos are registered trademarks of edX Inc."
 msgstr ""
 
+#. Translators: 'Open edX' is a brand, please keep this untranslated. See
+#. http://openedx.org for more information.
+#: cms/templates/widgets/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid "Powered by Open edX"
+msgstr "Υποστηρίζεται από το Open edX"
+
 #: lms/templates/static_templates/blog.html
 msgid "Blog"
 msgstr "Ιστολόγιο"
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
+msgid "Contact Us"
+msgstr "Επικοινωνήστε μαζί μας"
 
 #: lms/djangoapps/branding/api.py
 msgid "Help Center"
@@ -6206,6 +6243,9 @@ msgid "Donate"
 msgstr "Συνεισφέρετε"
 
 #: lms/templates/footer.html lms/templates/static_templates/about.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Σχετικά με"
 
@@ -6215,8 +6255,20 @@ msgid "{platform_name} for Business"
 msgstr ""
 
 #: lms/templates/static_templates/contact.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "Επικοινωνία"
+
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
+msgid "Careers"
+msgstr "Καριέρες"
+
+#: themes/red-theme/lms/templates/footer.html
+msgid "News"
+msgstr "Νέα"
 
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 msgid "Terms of Service & Honor Code"
@@ -6224,6 +6276,10 @@ msgstr "Όροι χρήσης και Κώδικας τιμής"
 
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Privacy Policy"
 msgstr "Πολιτική προστασίας δεδομένων"
 
@@ -6237,6 +6293,9 @@ msgstr ""
 #: lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "Όροι χρήσης"
 
@@ -6526,6 +6585,7 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr "Με την επιφύλαξη κάθε νόμιμου δικαιώματος"
 
@@ -7357,6 +7417,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "Σύνδεση"
 
@@ -7725,12 +7786,17 @@ msgstr ""
 #: lms/djangoapps/instructor/views/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "Φύλο"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Level of Education"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Mailing Address"
+msgstr "Ταχυδρομική διεύθυνση"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Goals"
@@ -7766,10 +7832,12 @@ msgid "Team"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "Πόλη"
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "Χώρα"
 
@@ -8248,6 +8316,8 @@ msgstr ""
 #: lms/djangoapps/instructor/views/tools.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "Ονοματεπώνυμο"
 
@@ -8555,6 +8625,7 @@ msgstr "(από {total} συνολικά)"
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "Προγράμματα"
 
@@ -9574,6 +9645,8 @@ msgstr ""
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "παράθυρο ανοικτό"
 
@@ -9827,6 +9900,8 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/stanford-style/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Αναζήτηση"
@@ -9920,6 +9995,7 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr "Πηγαίνετε στην Αρχική Σελίδα του %(platform_name)s"
@@ -9929,35 +10005,42 @@ msgid "Sign In"
 msgstr "Σύνδεση"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -10998,6 +11081,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -11007,6 +11091,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -11035,6 +11120,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -11536,6 +11622,8 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Register"
 msgstr "Εγγραφείτε"
 
@@ -11764,6 +11852,8 @@ msgstr "Το ονοματεπώνυμο εμφανίζεται στις βεβα
 #. meant to hold the user's public username.
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "Ψευδώνυμο"
 
@@ -12307,11 +12397,6 @@ msgstr ""
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr ""
 
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
-#, python-format
-msgid "%(subject)s"
-msgstr ""
-
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
 msgid "Course Name"
@@ -12323,6 +12408,7 @@ msgstr "Τίτλος Μαθήματος"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Courses"
 msgstr "Μαθήματα"
 
@@ -12334,6 +12420,10 @@ msgstr "Αναφορές"
 #: lms/templates/course_modes/fbe.html
 msgid "Show more"
 msgstr "Δείτε περισσότερα"
+
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Our mailing address is"
+msgstr "Η διεύθυνση του ηλεκτρονικού ταχυδρομείου μας είναι"
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -13337,6 +13427,12 @@ msgstr "Κωδικός Μαθήματος:"
 msgid "Course Run:"
 msgstr "Εκτέλεση μαθήματος:"
 
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: username@domain.com"
+msgstr "π.χ.: epimenidis@gmail.com"
+
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
 msgstr "Διδάσκοντες"
@@ -13372,8 +13468,20 @@ msgid "Reset"
 msgstr "Επαναφορά"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "Νομικά"
+
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
+msgstr ""
+"edX, Open edX και τα λογότυπα edX και Open edX είναι σήματα κατατεθέντα της "
+"{link_start} edX Inc. {link_end}"
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
@@ -13390,7 +13498,9 @@ msgstr "Λογαριασμός"
 #: lms/templates/header/navbar-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: lms/templates/static_templates/help.html wiki/plugins/help/wiki_plugin.py
+#: lms/templates/static_templates/help.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Βοήθεια"
 
@@ -13577,18 +13687,19 @@ msgstr "Δείτε όλα τα μαθήματα"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Dashboard"
 msgstr "Μαθήματα"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr "αποτελέσματα συμπληρωμένα με επιτυχία,"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr "Κάντε κλικ για να φορτώσετε όλα τα εγγεγραμμένα μαθήματα"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "Δεν έχετε ακόμη εγγραφεί σε κάποιο από τα μαθήματα"
 
@@ -13596,6 +13707,7 @@ msgstr "Δεν έχετε ακόμη εγγραφεί σε κάποιο από �
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr "ΑΝΑΖΗΤΗΣΗ ΜΑΘΗΜΑΤΩΝ"
 
@@ -13604,15 +13716,16 @@ msgstr "ΑΝΑΖΗΤΗΣΗ ΜΑΘΗΜΑΤΩΝ"
 msgid "Activate your account!"
 msgstr "Ενεργοποιήστε το λογαριασμό σας!"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "Προέκυψαν σφάλματα κατά την φόρτωση του μαθήματος"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "Αναζήτηση στα μαθήματά σας"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Clear search"
 msgstr "Εκκαθάριση αναζήτησης"
 
@@ -13620,7 +13733,7 @@ msgstr "Εκκαθάριση αναζήτησης"
 msgid "Skip to list of announcements"
 msgstr "Μετάβαση στη λίστα ανακοινώσεων"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -13643,15 +13756,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr "Συνεχίστε στο {platform_name}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "Ρυθμίσεις E-mail για το μάθημα  {course_number}"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "Να λαμβάνω ενημερωτικά e-mails που αφορούν το μάθημα"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "Αποθήκευση ρυθμίσεων"
 
@@ -13660,6 +13773,8 @@ msgstr "Αποθήκευση ρυθμίσεων"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "Διαγραφή"
 
@@ -13833,6 +13948,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "Απαιτούμενες Πληροφορίες"
 
@@ -13882,6 +13999,7 @@ msgstr ""
 "δείτε τον βαθμό σας στην {link_start}σελίδα της προόδου{link_end} σας."
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
+#: themes/stanford-style/lms/templates/index.html
 msgid "Search for a course"
 msgstr "Αναζήτηση μαθήματος"
 
@@ -14139,6 +14257,8 @@ msgstr ""
 "από τους όρους παροχής υπηρεσιών και την πολιτική απορρήτου τους."
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "Ηλεκτρονικό ταχυδρομείο"
 
@@ -14229,6 +14349,7 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr "{start_li} Καλώς ορίσατε {end_li} {name}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "Εισάγετε ένα ψευδώνυμο"
 
@@ -14245,14 +14366,19 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "Στόχοι εγγραφής στο {platform_name}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "Συμφωνώ με τους {link_start}Όρους χρήσης{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "Συμφωνώ με τον {link_start}Κώδικα τιμής{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "Δημιουργία του λογαριασμού μου"
 
@@ -15920,6 +16046,7 @@ msgid "Download student grades"
 msgstr "Λήψη βαθμολογιών σπουδαστή"
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "Εκτυπώστε ή μοιραστείτε το πιστοποιητικό σας:"
 
@@ -15933,6 +16060,7 @@ msgstr "Κοινοποιήστε στο Facebook"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "Κοινοποιήστε στο Twitter"
 
@@ -15941,6 +16069,7 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "Tweetάρετε αυτό το επίτευγμα. Αναδυόμενο παράθυρο."
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "Προσθήκη στο προφίλ LinkedIn"
 
@@ -15959,6 +16088,10 @@ msgstr "Αρχική σελίδα {platform_name}"
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Noted by"
 msgstr "Σημειώθηκε από"
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Certificate of Achievement"
+msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
@@ -16045,31 +16178,40 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr "Ακολουθήστε την επαληθευμένη διαδρομή"
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "Επιδιώξτε ένα επαληθευμένο πιστοποιητικό"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr "Εγγραφείτε στο {course_name} | Επιλέξτε τη διαδρομή σας"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "Λυπούμαστε, προέκυψε σφάλμα κατά την προσπάθεια εγγραφής σας"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr "Ακολουθήστε την ακαδημαϊκή πίστωση με το επαληθευμένο κομμάτι"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "Συλλέξτε ακαδημαϊκές μονάδες με ένα επαληθευμένο πιστοποιητικό"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -16083,10 +16225,12 @@ msgstr ""
 "σχολικές σας αιτήσεις."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr "Πλεονεκτήματα του επαληθευμένου κομματιού"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -16095,6 +16239,7 @@ msgstr ""
 "μετά την επιτυχή ολοκλήρωση του μαθήματος"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
@@ -16104,6 +16249,7 @@ msgstr ""
 " μάθει."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
@@ -16112,6 +16258,7 @@ msgstr ""
 "μέσα από διαβαθμισμένες εργασίες και έργα."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
@@ -16120,10 +16267,12 @@ msgstr ""
 "βιογραφικό ή το βιογραφικό σας ή δημοσιεύστε το απευθείας στο LinkedIn."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "Πλεονεκτήματα ενός επαληθευμένου πιστοποιητικού"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -16132,6 +16281,7 @@ msgstr ""
 "διδάσκοντα με τον λογότυπο του ιδρύματος"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
@@ -16140,6 +16290,7 @@ msgstr ""
 "βιογραφικό ή το βιογραφικό σας ή δημοσιεύστε το απευθείας στο LinkedIn"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -16151,6 +16302,7 @@ msgstr ""
 "να υποβάλλετε το πιστοποιητικό σας στις σχολικές αιτήσεις."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -16159,6 +16311,7 @@ msgstr ""
 "διδάσκοντα με τον λογότυπο του ιδρύματος"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
@@ -16167,6 +16320,7 @@ msgstr ""
 "βιογραφικό ή το βιογραφικό σας ή δημοσιεύστε το απευθείας στο LinkedIn"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
@@ -16175,10 +16329,12 @@ msgstr ""
 "ολοκληρώσετε το μάθημα"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "Ακρόαση μαθήματος"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
@@ -16187,10 +16343,12 @@ msgstr ""
 "μαθήματος, τις δραστηριότητες, τις δοκιμές και τα φόρουμ."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "Ακρόαση αυτού του μαθήματος (Χωρίς πιστοποιητικό)"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -16201,6 +16359,7 @@ msgstr ""
 " εργασίες ή απεριόριστη πρόσβαση μαθημάτων. {b_end}"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -16211,6 +16370,7 @@ msgstr ""
 " εργασίες. {b_end}"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -16221,6 +16381,7 @@ msgstr ""
 "πρόσβαση μαθημάτων. {b_end}"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -16360,6 +16521,7 @@ msgstr "ΕΙΣΤΕ ΕΓΓΕΓΡΑΜΜΕΝΟΣ ΣΤΟ ΜΑΘΗΜΑ"
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "ΔΕΙΤΕ ΤΟ ΜΑΘΗΜΑ"
 
@@ -16414,6 +16576,7 @@ msgid "enroll"
 msgstr "εγγραφή"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "Ενημερώστε τους φίλους σας!"
 
@@ -16430,6 +16593,7 @@ msgid "Take a course with {platform} online"
 msgstr "Παρακολουθήστε ένα μάθημα με την {platform} στο διαδίκτυο"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "Tweetάρετε ότι έχετε εγγραφεί σε αυτό το μάθημα"
 
@@ -16440,6 +16604,7 @@ msgstr ""
 "μάθημα"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr ""
 "Στείλτε E-mail σε κάποιον για να του ανακοινώσετε ότι έχετε εγγραφεί σε αυτό"
@@ -16602,6 +16767,7 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "Επιστροφή στο υλικό μαθήματος"
 
@@ -17155,6 +17321,7 @@ msgid "Share {course_name} on Facebook"
 msgstr "Κοινοποιήστε το μάθημα {course_name} στο Facebook"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "Κοινοποιήστε στο Facebook"
 
@@ -18068,6 +18235,9 @@ msgstr "Ευχαριστούμε,"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
+#: themes/stanford-style/lms/templates/embargo/default_courseware.html
+#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
+#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "Το μάθημα δεν είναι διαθέσιμο στην χώρα σας"
 
@@ -18210,6 +18380,7 @@ msgstr ""
 "του {ff_link}."
 
 #: lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr "Αναζήτηση Μαθημάτων"
 
@@ -18223,6 +18394,7 @@ msgstr "Συμπληρωματικοί σύνδεσμοι"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "How it Works"
 msgstr "Πως δουλεύει"
 
@@ -19840,6 +20012,7 @@ msgstr ""
 " τους εγγεγραμμένους μαθητές."
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "Τα μαθήματά μου"
 
@@ -20151,10 +20324,12 @@ msgstr ""
 "τη στιγμή."
 
 #: lms/templates/static_templates/faq.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "Συχνές Ερωτήσεις"
 
 #: lms/templates/static_templates/jobs.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "Εργασίες"
 
@@ -20681,6 +20856,7 @@ msgid "You haven't earned any certificates yet."
 msgstr "Δεν έχετε αποκτήσει κάποια βεβαίωση μέχρι στιγμής."
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "Αναζήτηση Μαθημάτων"
 
@@ -20703,10 +20879,424 @@ msgstr ""
 msgid "An error occurred. Try loading the page again."
 msgstr "Προέκυψε σφάλμα. Προσπαθήστε να επαναφορτώσετε τη σελίδα."
 
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid ""
+"Access Course Staff Support on the Partner Portal to submit or review "
+"support tickets"
+msgstr ""
+
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "edX Partner Portal"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid ""
+"Browse recently launched courses and see what's new in your favorite "
+"subjects."
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Take advantage of free coaching!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Get Started"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Page Footer"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "edX Home Page"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Connect"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "© {year} edX Inc. All rights reserved."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid "About edX Verified Certificates"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid ""
+"An edX Verified Certificate signifies that the learner has agreed to abide "
+"by the edX honor code and completed all of the required tasks of this course"
+" under its guidelines, as well as having their photo ID checked to verify "
+"their identity."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid "About edX"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid ""
+"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
+"the world's best universities, including MIT, Harvard, Berkeley, University "
+"of Texas, and many others. edX is a mission driven initiative created by "
+"founding partners Harvard and MIT."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Congratulations, {user_name}!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid ""
+"You worked hard to earn your certificate from "
+"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
+"and family to get the word out about what you mastered in "
+"{accomplishment_course_title}."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Share this certificate on Facebook (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Tweet this certificate (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print this certificate"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid "edX Inc."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid ""
+"All rights reserved except where noted. edX, Open edX and the edX and Open "
+"edX logos are registered trademarks of edX Inc."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
+"help fund affordable education to everyone globally."
+msgstr ""
+
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
+"certificates to help fund free education for everyone globally"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Find Courses"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Schools & Partners"
+msgstr ""
+
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+"Code{honor_link_end}"
+msgstr ""
+"{tos_link_start}Όροι παροχής υπηρεσιών{tos_link_end} και "
+"{honor_link_start}κώδικας επαίνου{honor_link_end}"
+
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Copyright"
+msgstr "Πνευματική ιδιοκτησία"
+
+#: themes/stanford-style/lms/templates/footer.html
+msgid "Copyright {year}. All rights reserved."
+msgstr ""
+"Δικαίωμα πνευματικής ιδιοκτησίας {year}. Με την επιφύλαξη κάθε νόμιμου "
+"δικαιώματος"
+
+#: themes/stanford-style/lms/templates/index.html
+msgid "For anyone, anywhere, anytime"
+msgstr "Για οποιονδήποτε, οπουδήποτε, οποτεδήποτε"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"We're sorry, but this version of your browser is not supported. Try again "
+"using a different browser or a newer version of your browser."
+msgstr ""
+"Λυπούμαστε, αλλά αυτή η έκδοση του προγράμματος περιήγησής σας δεν "
+"υποστηρίζεται. Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικό πρόγραμμα "
+"περιήγησης ή νεότερη έκδοση του προγράμματος περιήγησής σας."
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "The following errors occurred while processing your registration:"
+msgstr ""
+"Παρουσιάστηκαν τα ακόλουθα σφάλματα κατά την διαδικασία της εγγραφής σας:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Sign up with {provider_name}"
+msgstr "Εγγραφείτε μέσω {provider_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Create your own {platform_name} account below"
+msgstr "Δημιούργησε τον λογαριασμό σου στο {platform_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"Required fields are noted by <strong class=\"indicator\">bold text and an "
+"asterisk (*)</strong>."
+msgstr ""
+"Τα υποχρεωτικά πεδία επισημαίνονται με<strong class=\"indicator\">έντονη "
+"γραφή και αστερίσκο(*)</strong>."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "You've successfully signed in with {selected_provider}."
+msgstr "Συνδεθήκατε επιτυχώς μέσω {selected_provider}."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"We just need a little more information before you start learning with "
+"{platform_name}."
+msgstr ""
+"Χρειαζόμαστε απλώς λίγες ακόμη πληροφορίες προτού αρχίσετε να μαθαίνετε με "
+"το {platform_name}."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please complete the following fields to register for an account. "
+msgstr "Παρακαλώ συμπληρώστε τα παρακάτω πεδία για να εγγραφείτε."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: Jane Doe"
+msgstr "π.χ.: Γιώργος Παπανικολάου"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Your legal name, used for any certificates you earn."
+msgstr ""
+"Απαιτείται για κάθε \"βεβαίωση παρακολούθησης\" που τυχόν θα αποκτήσετε. "
+"Πρέπει να είναι αληθές."
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: JaneDoe"
+msgstr "π.χ.: GeorgePapanikolaou"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Will be shown in any discussions or forums you participate in"
+msgstr "Θα εμφανίζεται σε όλες τις δημόσιες συζητήσεις"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "cannot be changed later"
+msgstr "δε μπορει να αλλαχτεί αργότερα"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Welcome {username}"
+msgstr "Καλωσορίσατε {username}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Enter a Public Display Name:"
+msgstr "Εισαγάγετε ένα δημόσια εμφανιζόμενο όνομα:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Public Display Name"
+msgstr "Δημόσια εμφανιζόμενο όνομα"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Additional Personal Information"
+msgstr "Πρόσθετες προσωπικές πληροφορίες"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: New York"
+msgstr "παράδειγμα: Νέα Υόρκη"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Highest Level of Education Completed"
+msgstr "Επίπεδο εκπαίδευσης"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Year of Birth"
+msgstr "Έτος γέννησης"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please share with us your reasons for registering with {platform_name}"
+msgstr ""
+"Παρακαλώ μοιραστείτε μαζί μας τους λόγους της εγγραφής σας στο "
+"{platform_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Account Acknowledgements"
+msgstr "Επιβεβαιώσεις λογαριασμού"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Preferences for {platform_name}"
+msgstr "Προτιμήσεις {platform_name}"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update my {platform_name} Account"
+msgstr "Ενημέρωση του Λογαριασμού μου στο {platform_name}"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Processing your account information"
+msgstr "Επεξεργασία των στοιχείων σας"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Welcome {username}!  Please set your preferences below"
+msgstr "Καλώς ορίσατε {username}! Ορίστε τις προτιμήσεις σας παρακάτω"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"Required fields are noted by {strong_indicator}bold text and an asterisk "
+"(*).{strong_close}"
+msgstr ""
+"Τα υποχρεωτικά πεδία σημειώνονται με έντονη γραφή {strong_indicator} και με "
+"αστερίσκο (*). {strong_close}"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update My Account"
+msgstr "Ενημέρωση Λογαριασμού"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Registration Help"
+msgstr "Βοήθεια Εγγραφής"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Already registered?"
+msgstr "Έχετε ήδη εγγραφεί; "
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "Σύνδεση"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Next Steps"
+msgstr "Επόμενα Βήματα"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"You will receive an activation email.  You must click on the activation link"
+" to complete the process.  Don't see the email?  Check your spam folder and "
+"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+"able to receive email from your courses."
+msgstr ""
+"Θα λάβετε ένα email ενεργοποίησης. Πρέπει να κάνετε κλικ στον σύνδεσμο "
+"ενεργοποίησης για να ολοκληρώσετε τη διαδικασία. Δε βλέπετε το email; "
+"Ελέγξτε τον φάκελο ανεπιθύμητης αλληλογραφίας και επισημάνετε τα μηνύματα "
+"ηλεκτρονικού ταχυδρομείου από class.stanford.edu ως «μη ανεπιθύμητα», καθώς "
+"θα θέλετε να μπορείτε να λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου από τα"
+" μαθήματά σας."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need Help?"
+msgstr "Χρειάζεστε βοήθεια;"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need help in registering with {platform_name}?"
+msgstr "Χρειάζεστε βοήθεια για την εγγραφή σας στο {platform_name};"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "View our FAQs for answers to commonly asked questions."
+msgstr ""
+"Δείτε τις Συχνές Ερωτήσεις για τις πιο συχνές απορίες και τις συνηθέστερες "
+"απαντήσεις σε αυτές."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"Once registered, most questions can be answered in the course specific "
+"discussion forums or through the FAQs."
+msgstr ""
+"Αφού εγγραφείτε θα βρείτε απαντήσεις για τα περισσότερα ερωτήματά σας είτε "
+"στα φόρα συζήτησης των μαθημάτων είτε στις Συχνές Ερωτήσεις."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid "Thank you for signing up for {platform_name}."
+msgstr "Σας ευχαριστούμε για την εγγραφή σας στο {platform_name}."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid ""
+"Change your life and start learning today by activating your {platform_name}"
+" account. Click on the link below or copy and paste it into your browser's "
+"address bar."
+msgstr ""
+"Ενεργοποιήστε το λογαριασμό σας στο {platform_name} πατώντας πάνω στο "
+"σύνδεσμο που ακολουθεί ή αντιγράφοντάς τον στην γραμμή διευθύνσεων του "
+"φυλλομετρητή σας."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"If you didn't request this, you don't need to do anything; you won't receive"
+" any more email from us. Please do not reply to this e-mail; if you require "
+"assistance, check the about section of the {platform_name} Courses web site."
+msgstr ""
+"Εάν τελικώς δεν επιθυμείτε να εγγραφείτε, δεν απαιτείται καμία επιπλέον "
+"ενέργεια από μέρους σας. Δεν χρειάζεται να απαντήσετε σε αυτό το μήνυμα ούτε"
+" και θα λάβετε κάποιο άλλο e-mail από εμάς. Εάν χρειάζεστε βοήθεια, δείτε "
+"τις \"Συχνές Ερωτήσεις\" στη σελίδα του {platform_name}. "
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"This is to confirm that you changed the e-mail associated with "
+"{platform_name} from {old_email} to {new_email}. If you did not make this "
+"request, please contact us at"
+msgstr ""
+"Το email αυτό σάς επιβεβαιώνει ότι έχετε αλλάξει το e-mail που σχετίζεται με"
+" το λογαριασμό σας {platform_name} από {old_email} σε {new_email}. Εάν δεν "
+"επιθυμείτε αυτή την αλλαγή παρακαλώ ενημερώστε μας στο"
+
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"We received a request to change the e-mail associated with your "
+"{platform_name} account from {old_email} to {new_email}. If this is correct,"
+" please confirm your new e-mail address by visiting:"
+msgstr ""
+"Λάβαμε ένα αίτημα για αλλαγή του email σας στο {platform_name} από "
+"{old_email} σε {new_email}. Εάν επιθυμείτε όντως αυτή την αλλαγή, "
+"επιβεβαιώστε τη νέα διεύθυνση email πατώντας πάνω στον παρακάτω σύνδεσμο:"
+
+#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
+msgid ""
+"We are sorry. Our course staff did not approve your request to change your "
+"name from {old_name} to {new_name}. If you need further assistance, please "
+"e-mail the tech support at {email}"
+msgstr ""
+"Λυπούμαστε. Το προσωπικό μαθημάτων μας δεν ενέκρινε το αίτημά σας να "
+"αλλάξετε το όνομά σας από {old_name} σε {new_name}. Εάν χρειάζεστε περαιτέρω"
+" βοήθεια, στείλτε email στην τεχνική υποστήριξη στη διεύθυνση {email}"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Terms of Service here!"
+msgstr "Βάλτε τους Όρους παροχής υπηρεσιών σας εδώ!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Privacy Policy here!"
+msgstr "Βάλτε την Πολιτική απορρήτου σας εδώ!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Honor Code here!"
+msgstr "Βάλτε τον Κώδικα τιμής σας εδώ!"
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Copyright Text here!"
+msgstr "Βάλτε το κείμενο Πνευματικών δικαιωμάτων σας εδώ!"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -24371,26 +24961,6 @@ msgstr "Βοήθεια Markdown"
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: cms/templates/widgets/sock.html
-msgid "Looking for help with {studio_name}?"
-msgstr "Αναζητάτε βοήθεια στο {studio_name};"
-
-#: cms/templates/widgets/sock.html
-msgid "Hide {studio_name} Help"
-msgstr "Απόκρυψη βοήθειας {studio_name} "
-
-#: cms/templates/widgets/sock.html
-msgid "{studio_name} Documentation"
-msgstr "Τεκμηρίωση του {studio_name}"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Access documentation on http://docs.edx.org"
-msgstr "Πρόσβαση στην τεκμηρίωση στο http://docs.edx.org"
-
-#: cms/templates/widgets/sock_links.html
-msgid "edX Documentation"
-msgstr "Τεκμηρίωση του edX"
-
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "Πρόσβαση στο Open edX Portal"
@@ -24398,26 +24968,6 @@ msgstr "Πρόσβαση στο Open edX Portal"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "Ανοίξτε το edX Portal"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr "Εγγραφείτε στο edX101: Επισκόπηση της δημιουργίας ενός μαθήματος edX"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101"
-msgstr "Εγγραφείτε στο edX101"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr "Εγγραφείτε στο StudioX: Δημιουργία μαθήματος με το edX Studio"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX"
-msgstr "Εγγραφή στο StudioX"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Send an email to {email}"
-msgstr "Στείλτε ένα email στο {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -25643,32 +26193,9 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
 
-#~ msgid ""
-#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
-#~ "investigate."
-#~ msgstr ""
-#~ "Σε κάθε περίπτωση διατηρούμε αρχείο με τα παλαιότερα e-mail και αν δεν "
-#~ "θελήσατε εσείς αυτή την αλλαγή, μπορούμε να το διερευνήσουμε."
-
-#~ msgid "Powered by Open edX"
-#~ msgstr "Υποστηρίζεται από το Open edX"
-
-#~ msgid "Contact Us"
-#~ msgstr "Επικοινωνήστε μαζί μας"
-
-#~ msgid "Careers"
-#~ msgstr "Καριέρες"
-
-#~ msgid "News"
-#~ msgstr "Νέα"
-
-#~ msgid "Mailing Address"
-#~ msgstr "Ταχυδρομική διεύθυνση"
-
 #~ msgid "Dismiss"
 #~ msgstr "Απόρριψη"
 
-#, python-brace-format
 #~ msgid ""
 #~ "Cohort name not found: {cohort}. Ignoring cohort assignment for all users."
 #~ msgstr ""
@@ -25687,9 +26214,6 @@ msgstr ""
 #~ msgid "Select your country or region of residence"
 #~ msgstr "Επιλέξτε τη χώρα ή την περιοχή διαμονής σας"
 
-#~ msgid "Our mailing address is"
-#~ msgstr "Η διεύθυνση του ηλεκτρονικού ταχυδρομείου μας είναι"
-
 #~ msgid "Course Outline"
 #~ msgstr "Υλικό μαθήματος"
 
@@ -25698,6 +26222,36 @@ msgstr ""
 
 #~ msgid "{studio_name} Home"
 #~ msgstr "Αρχική σελίδα {studio_name}"
+
+#~ msgid "Looking for help with {studio_name}?"
+#~ msgstr "Αναζητάτε βοήθεια στο {studio_name};"
+
+#~ msgid "Hide {studio_name} Help"
+#~ msgstr "Απόκρυψη βοήθειας {studio_name} "
+
+#~ msgid "{studio_name} Documentation"
+#~ msgstr "Τεκμηρίωση του {studio_name}"
+
+#~ msgid "Access documentation on http://docs.edx.org"
+#~ msgstr "Πρόσβαση στην τεκμηρίωση στο http://docs.edx.org"
+
+#~ msgid "edX Documentation"
+#~ msgstr "Τεκμηρίωση του edX"
+
+#~ msgid "Enroll in edX101: Overview of Creating an edX Course"
+#~ msgstr "Εγγραφείτε στο edX101: Επισκόπηση της δημιουργίας ενός μαθήματος edX"
+
+#~ msgid "Enroll in edX101"
+#~ msgstr "Εγγραφείτε στο edX101"
+
+#~ msgid "Enroll in StudioX: Creating a Course with edX Studio"
+#~ msgstr "Εγγραφείτε στο StudioX: Δημιουργία μαθήματος με το edX Studio"
+
+#~ msgid "Enroll in StudioX"
+#~ msgstr "Εγγραφή στο StudioX"
+
+#~ msgid "Send an email to {email}"
+#~ msgstr "Στείλτε ένα email στο {email}"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
@@ -25715,16 +26269,6 @@ msgstr ""
 #~ "Εμφάνιση όλου του αντίστοιχου περιεχομένου που είναι κατάλληλο για προσθήκη "
 #~ "στο {display_name}. Σε κάθε σπουδαστή θα εκχωρηθούν {max_count} στοιχεία που"
 #~ " έχουν σχεδιαστεί τυχαία από αυτήν τη λίστα."
-
-#~ msgid "example: username@domain.com"
-#~ msgstr "π.χ.: epimenidis@gmail.com"
-
-#~ msgid ""
-#~ "edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-#~ "{link_start}edX Inc.{link_end}"
-#~ msgstr ""
-#~ "edX, Open edX και τα λογότυπα edX και Open edX είναι σήματα κατατεθέντα της "
-#~ "{link_start} edX Inc. {link_end}"
 
 #~ msgid "You do not have access to this dependency block."
 #~ msgstr "Δεν έχετε πρόσβαση σε αυτό το μπλοκ εξάρτησης."
@@ -25895,231 +26439,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Το email που χρησιμοποιείται για τη σύνδεση σε αυτήν την πλατφόρμα και "
 #~ "{platform} θα πρέπει να είναι το ίδιο."
-
-#~ msgid ""
-#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
-#~ "Code{honor_link_end}"
-#~ msgstr ""
-#~ "{tos_link_start}Όροι παροχής υπηρεσιών{tos_link_end} και "
-#~ "{honor_link_start}κώδικας επαίνου{honor_link_end}"
-
-#~ msgid "Copyright"
-#~ msgstr "Πνευματική ιδιοκτησία"
-
-#~ msgid "Copyright {year}. All rights reserved."
-#~ msgstr ""
-#~ "Δικαίωμα πνευματικής ιδιοκτησίας {year}. Με την επιφύλαξη κάθε νόμιμου "
-#~ "δικαιώματος"
-
-#~ msgid "For anyone, anywhere, anytime"
-#~ msgstr "Για οποιονδήποτε, οπουδήποτε, οποτεδήποτε"
-
-#~ msgid ""
-#~ "We're sorry, but this version of your browser is not supported. Try again "
-#~ "using a different browser or a newer version of your browser."
-#~ msgstr ""
-#~ "Λυπούμαστε, αλλά αυτή η έκδοση του προγράμματος περιήγησής σας δεν "
-#~ "υποστηρίζεται. Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικό πρόγραμμα "
-#~ "περιήγησης ή νεότερη έκδοση του προγράμματος περιήγησής σας."
-
-#~ msgid "The following errors occurred while processing your registration:"
-#~ msgstr ""
-#~ "Παρουσιάστηκαν τα ακόλουθα σφάλματα κατά την διαδικασία της εγγραφής σας:"
-
-#~ msgid "Sign up with {provider_name}"
-#~ msgstr "Εγγραφείτε μέσω {provider_name}"
-
-#~ msgid "Create your own {platform_name} account below"
-#~ msgstr "Δημιούργησε τον λογαριασμό σου στο {platform_name}"
-
-#~ msgid ""
-#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
-#~ "asterisk (*)</strong>."
-#~ msgstr ""
-#~ "Τα υποχρεωτικά πεδία επισημαίνονται με<strong class=\"indicator\">έντονη "
-#~ "γραφή και αστερίσκο(*)</strong>."
-
-#~ msgid "You've successfully signed in with {selected_provider}."
-#~ msgstr "Συνδεθήκατε επιτυχώς μέσω {selected_provider}."
-
-#~ msgid ""
-#~ "We just need a little more information before you start learning with "
-#~ "{platform_name}."
-#~ msgstr ""
-#~ "Χρειαζόμαστε απλώς λίγες ακόμη πληροφορίες προτού αρχίσετε να μαθαίνετε με "
-#~ "το {platform_name}."
-
-#~ msgid "Please complete the following fields to register for an account. "
-#~ msgstr "Παρακαλώ συμπληρώστε τα παρακάτω πεδία για να εγγραφείτε."
-
-#~ msgid "example: Jane Doe"
-#~ msgstr "π.χ.: Γιώργος Παπανικολάου"
-
-#~ msgid "Your legal name, used for any certificates you earn."
-#~ msgstr ""
-#~ "Απαιτείται για κάθε \"βεβαίωση παρακολούθησης\" που τυχόν θα αποκτήσετε. "
-#~ "Πρέπει να είναι αληθές."
-
-#~ msgid "example: JaneDoe"
-#~ msgstr "π.χ.: GeorgePapanikolaou"
-
-#~ msgid "Will be shown in any discussions or forums you participate in"
-#~ msgstr "Θα εμφανίζεται σε όλες τις δημόσιες συζητήσεις"
-
-#~ msgid "cannot be changed later"
-#~ msgstr "δε μπορει να αλλαχτεί αργότερα"
-
-#~ msgid "Welcome {username}"
-#~ msgstr "Καλωσορίσατε {username}"
-
-#~ msgid "Enter a Public Display Name:"
-#~ msgstr "Εισαγάγετε ένα δημόσια εμφανιζόμενο όνομα:"
-
-#~ msgid "Public Display Name"
-#~ msgstr "Δημόσια εμφανιζόμενο όνομα"
-
-#~ msgid "Additional Personal Information"
-#~ msgstr "Πρόσθετες προσωπικές πληροφορίες"
-
-#~ msgid "example: New York"
-#~ msgstr "παράδειγμα: Νέα Υόρκη"
-
-#~ msgid "Highest Level of Education Completed"
-#~ msgstr "Επίπεδο εκπαίδευσης"
-
-#~ msgid "Year of Birth"
-#~ msgstr "Έτος γέννησης"
-
-#~ msgid "Please share with us your reasons for registering with {platform_name}"
-#~ msgstr ""
-#~ "Παρακαλώ μοιραστείτε μαζί μας τους λόγους της εγγραφής σας στο "
-#~ "{platform_name}"
-
-#~ msgid "Account Acknowledgements"
-#~ msgstr "Επιβεβαιώσεις λογαριασμού"
-
-#~ msgid "Preferences for {platform_name}"
-#~ msgstr "Προτιμήσεις {platform_name}"
-
-#~ msgid "Update my {platform_name} Account"
-#~ msgstr "Ενημέρωση του Λογαριασμού μου στο {platform_name}"
-
-#~ msgid "Processing your account information"
-#~ msgstr "Επεξεργασία των στοιχείων σας"
-
-#~ msgid "Welcome {username}!  Please set your preferences below"
-#~ msgstr "Καλώς ορίσατε {username}! Ορίστε τις προτιμήσεις σας παρακάτω"
-
-#~ msgid ""
-#~ "Required fields are noted by {strong_indicator}bold text and an asterisk "
-#~ "(*).{strong_close}"
-#~ msgstr ""
-#~ "Τα υποχρεωτικά πεδία σημειώνονται με έντονη γραφή {strong_indicator} και με "
-#~ "αστερίσκο (*). {strong_close}"
-
-#~ msgid "Update My Account"
-#~ msgstr "Ενημέρωση Λογαριασμού"
-
-#~ msgid "Registration Help"
-#~ msgstr "Βοήθεια Εγγραφής"
-
-#~ msgid "Already registered?"
-#~ msgstr "Έχετε ήδη εγγραφεί; "
-
-#~ msgid "Next Steps"
-#~ msgstr "Επόμενα Βήματα"
-
-#~ msgid ""
-#~ "You will receive an activation email.  You must click on the activation link"
-#~ " to complete the process.  Don't see the email?  Check your spam folder and "
-#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
-#~ "able to receive email from your courses."
-#~ msgstr ""
-#~ "Θα λάβετε ένα email ενεργοποίησης. Πρέπει να κάνετε κλικ στον σύνδεσμο "
-#~ "ενεργοποίησης για να ολοκληρώσετε τη διαδικασία. Δε βλέπετε το email; "
-#~ "Ελέγξτε τον φάκελο ανεπιθύμητης αλληλογραφίας και επισημάνετε τα μηνύματα "
-#~ "ηλεκτρονικού ταχυδρομείου από class.stanford.edu ως «μη ανεπιθύμητα», καθώς "
-#~ "θα θέλετε να μπορείτε να λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου από τα"
-#~ " μαθήματά σας."
-
-#~ msgid "Need Help?"
-#~ msgstr "Χρειάζεστε βοήθεια;"
-
-#~ msgid "Need help in registering with {platform_name}?"
-#~ msgstr "Χρειάζεστε βοήθεια για την εγγραφή σας στο {platform_name};"
-
-#~ msgid "View our FAQs for answers to commonly asked questions."
-#~ msgstr ""
-#~ "Δείτε τις Συχνές Ερωτήσεις για τις πιο συχνές απορίες και τις συνηθέστερες "
-#~ "απαντήσεις σε αυτές."
-
-#~ msgid ""
-#~ "Once registered, most questions can be answered in the course specific "
-#~ "discussion forums or through the FAQs."
-#~ msgstr ""
-#~ "Αφού εγγραφείτε θα βρείτε απαντήσεις για τα περισσότερα ερωτήματά σας είτε "
-#~ "στα φόρα συζήτησης των μαθημάτων είτε στις Συχνές Ερωτήσεις."
-
-#~ msgid "Thank you for signing up for {platform_name}."
-#~ msgstr "Σας ευχαριστούμε για την εγγραφή σας στο {platform_name}."
-
-#~ msgid ""
-#~ "Change your life and start learning today by activating your {platform_name}"
-#~ " account. Click on the link below or copy and paste it into your browser's "
-#~ "address bar."
-#~ msgstr ""
-#~ "Ενεργοποιήστε το λογαριασμό σας στο {platform_name} πατώντας πάνω στο "
-#~ "σύνδεσμο που ακολουθεί ή αντιγράφοντάς τον στην γραμμή διευθύνσεων του "
-#~ "φυλλομετρητή σας."
-
-#~ msgid ""
-#~ "If you didn't request this, you don't need to do anything; you won't receive"
-#~ " any more email from us. Please do not reply to this e-mail; if you require "
-#~ "assistance, check the about section of the {platform_name} Courses web site."
-#~ msgstr ""
-#~ "Εάν τελικώς δεν επιθυμείτε να εγγραφείτε, δεν απαιτείται καμία επιπλέον "
-#~ "ενέργεια από μέρους σας. Δεν χρειάζεται να απαντήσετε σε αυτό το μήνυμα ούτε"
-#~ " και θα λάβετε κάποιο άλλο e-mail από εμάς. Εάν χρειάζεστε βοήθεια, δείτε "
-#~ "τις \"Συχνές Ερωτήσεις\" στη σελίδα του {platform_name}. "
-
-#~ msgid ""
-#~ "This is to confirm that you changed the e-mail associated with "
-#~ "{platform_name} from {old_email} to {new_email}. If you did not make this "
-#~ "request, please contact us at"
-#~ msgstr ""
-#~ "Το email αυτό σάς επιβεβαιώνει ότι έχετε αλλάξει το e-mail που σχετίζεται με"
-#~ " το λογαριασμό σας {platform_name} από {old_email} σε {new_email}. Εάν δεν "
-#~ "επιθυμείτε αυτή την αλλαγή παρακαλώ ενημερώστε μας στο"
-
-#~ msgid ""
-#~ "We received a request to change the e-mail associated with your "
-#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
-#~ " please confirm your new e-mail address by visiting:"
-#~ msgstr ""
-#~ "Λάβαμε ένα αίτημα για αλλαγή του email σας στο {platform_name} από "
-#~ "{old_email} σε {new_email}. Εάν επιθυμείτε όντως αυτή την αλλαγή, "
-#~ "επιβεβαιώστε τη νέα διεύθυνση email πατώντας πάνω στον παρακάτω σύνδεσμο:"
-
-#~ msgid ""
-#~ "We are sorry. Our course staff did not approve your request to change your "
-#~ "name from {old_name} to {new_name}. If you need further assistance, please "
-#~ "e-mail the tech support at {email}"
-#~ msgstr ""
-#~ "Λυπούμαστε. Το προσωπικό μαθημάτων μας δεν ενέκρινε το αίτημά σας να "
-#~ "αλλάξετε το όνομά σας από {old_name} σε {new_name}. Εάν χρειάζεστε περαιτέρω"
-#~ " βοήθεια, στείλτε email στην τεχνική υποστήριξη στη διεύθυνση {email}"
-
-#~ msgid "Put your Terms of Service here!"
-#~ msgstr "Βάλτε τους Όρους παροχής υπηρεσιών σας εδώ!"
-
-#~ msgid "Put your Privacy Policy here!"
-#~ msgstr "Βάλτε την Πολιτική απορρήτου σας εδώ!"
-
-#~ msgid "Put your Honor Code here!"
-#~ msgstr "Βάλτε τον Κώδικα τιμής σας εδώ!"
-
-#~ msgid "Put your Copyright Text here!"
-#~ msgstr "Βάλτε το κείμενο Πνευματικών δικαιωμάτων σας εδώ!"
 
 #~ msgid "Files"
 #~ msgstr "Αρχεία"

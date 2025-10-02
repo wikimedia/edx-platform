@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-01 07:16+0000\n"
+"POT-Creation-Date: 2025-10-02 19:04+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Lithuanian (Lithuania) (https://app.transifex.com/open-edx/teams/6205/lt_LT/)\n"
@@ -1481,6 +1481,8 @@ msgid "You're enrolled as an honor code student"
 msgstr ""
 
 #: lms/templates/static_templates/honor.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "Sąžiningumo deklaracija"
 
@@ -1585,6 +1587,7 @@ msgid "Account recovery"
 msgstr ""
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "Slaptažodis"
 
@@ -2972,7 +2975,12 @@ msgid ""
 "There was a problem with the staff answer to this problem: empty boundary."
 msgstr ""
 
+#. Translators: this is the last choice of a number of choices of how to log
+#. in
+#. to the site.
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "arba"
 
@@ -3405,6 +3413,7 @@ msgstr ""
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Submit"
 msgstr "Pateikti"
 
@@ -5678,7 +5687,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html
+#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Close"
 msgstr "Uždaryti"
 
@@ -5842,6 +5852,14 @@ msgid ""
 "this request, please contact us immediately. Contact information is listed "
 "at:"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"We keep a log of old e-mails, so if this request was unintentional, we can "
+"investigate."
+msgstr ""
+"Mes vedame senų el. pašto adresų žurnalą, todėl jei šis prašymas buvo "
+"netyčinis, galėsime šį atvejį ištirti.  "
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -6088,9 +6106,23 @@ msgid ""
 "their respective logos are registered trademarks of edX Inc."
 msgstr ""
 
+#. Translators: 'Open edX' is a brand, please keep this untranslated. See
+#. http://openedx.org for more information.
+#: cms/templates/widgets/footer.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid "Powered by Open edX"
+msgstr "Naudojama Open edX platforma"
+
 #: lms/templates/static_templates/blog.html
 msgid "Blog"
 msgstr "Blog'as"
+
+#: cms/templates/widgets/sock_links.html
+#: themes/edx.org/cms/templates/widgets/sock.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
+msgid "Contact Us"
+msgstr "Susisiekite su mumis"
 
 #: lms/djangoapps/branding/api.py
 msgid "Help Center"
@@ -6105,6 +6137,9 @@ msgid "Donate"
 msgstr "Paremti"
 
 #: lms/templates/footer.html lms/templates/static_templates/about.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Apie"
 
@@ -6114,19 +6149,33 @@ msgid "{platform_name} for Business"
 msgstr ""
 
 #: lms/templates/static_templates/contact.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "Kontaktai"
 
 #: lms/djangoapps/branding/api.py
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Careers"
 msgstr ""
 
+#: themes/red-theme/lms/templates/footer.html
+msgid "News"
+msgstr "Naujienos"
+
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
 msgid "Terms of Service & Honor Code"
 msgstr ""
 
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Privacy Policy"
 msgstr "Privatumo politika"
 
@@ -6135,6 +6184,9 @@ msgid "Accessibility Policy"
 msgstr ""
 
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
+#: themes/red-theme/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "Naudojimosi sąlygos "
 
@@ -6424,6 +6476,7 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr ""
 
@@ -7255,6 +7308,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "Prisijungti"
 
@@ -7601,12 +7655,17 @@ msgid "Birth Year"
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "Lytis"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Level of Education"
 msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Mailing Address"
+msgstr "Pašto adresas"
 
 #: lms/djangoapps/instructor/views/api.py
 msgid "Goals"
@@ -7642,10 +7701,12 @@ msgid "Team"
 msgstr ""
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "Miestas"
 
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "Šalis"
 
@@ -8120,6 +8181,8 @@ msgid "An extended due date must be later than the original due date."
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "Vardas Pavardė"
 
@@ -8426,6 +8489,7 @@ msgstr ""
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr ""
 
@@ -9459,6 +9523,8 @@ msgstr "Vikio peržiūra"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "langas atidarytas"
 
@@ -9718,6 +9784,8 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/stanford-style/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Paieška"
@@ -9821,6 +9889,7 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr ""
@@ -9830,35 +9899,42 @@ msgid "Sign In"
 msgstr "Prisijungti"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -10890,6 +10966,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -10899,6 +10976,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -10927,6 +11005,7 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
+#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -11408,6 +11487,8 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Register"
 msgstr "Registruotis"
 
@@ -11608,6 +11689,8 @@ msgid "This name will be used on any certificates that you earn."
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "Viešas naudotojo vardas"
 
@@ -12154,6 +12237,7 @@ msgstr "Kurso pavadinimas"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Courses"
 msgstr "Kursai"
 
@@ -12165,6 +12249,10 @@ msgstr "Ataskaitos"
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
 #: lms/templates/course_modes/fbe.html
 msgid "Show more"
+msgstr ""
+
+#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+msgid "Our mailing address is"
 msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
@@ -13130,6 +13218,12 @@ msgstr "Kurso numeris:"
 msgid "Course Run:"
 msgstr "Kurso laikotarpis:"
 
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: username@domain.com"
+msgstr "pavyzdys: naudotojovardas@svetaine.com"
+
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
 msgstr "Lektoriai"
@@ -13165,8 +13259,18 @@ msgid "Reset"
 msgstr "Nustatyti iš naujo"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "Teisinė informacija"
+
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
+msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
@@ -13183,7 +13287,9 @@ msgstr "Paskyra"
 #: lms/templates/header/navbar-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: lms/templates/static_templates/help.html wiki/plugins/help/wiki_plugin.py
+#: lms/templates/static_templates/help.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Pagalba"
 
@@ -13362,18 +13468,19 @@ msgstr "Peržiūrėti visus kursus"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Dashboard"
 msgstr "Informacinis puslapis"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr ""
 
@@ -13381,6 +13488,7 @@ msgstr ""
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr ""
 
@@ -13389,15 +13497,16 @@ msgstr ""
 msgid "Activate your account!"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "Kursai negali būti pakrauti"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "Ieškokite savo kursų"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Clear search"
 msgstr "Trinti paiešką"
 
@@ -13405,7 +13514,7 @@ msgstr "Trinti paiešką"
 msgid "Skip to list of announcements"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -13424,15 +13533,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr ""
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "{course_number} el. pašto nustatymai"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "Gauti kurso el. laiškus"
 
-#: lms/templates/dashboard.html
+#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "Išsaugoti nustatymus"
 
@@ -13441,6 +13550,8 @@ msgstr "Išsaugoti nustatymus"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
+#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "Išregistruoti"
 
@@ -13611,6 +13722,8 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "Būtini duomenys"
 
@@ -13653,6 +13766,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
+#: themes/stanford-style/lms/templates/index.html
 msgid "Search for a course"
 msgstr "Ieškoti kurso"
 
@@ -13900,6 +14014,8 @@ msgstr ""
 "paslaugų teikimo sąlygomis ir privatumo politika. "
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "El. paštas"
 
@@ -13986,6 +14102,7 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr ""
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "Įveskite prisijungimo vardą:"
 
@@ -14002,14 +14119,19 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "Registravimosi į {platform_name} tikslai"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "Sutinku su {link_start}naudojimosi sąlygomis{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "Sutinku laikytis {link_start}sąžiningumo deklaracijos{link_end}"
 
 #: lms/templates/signup_modal.html
+#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "Sukurti paskyrą"
 
@@ -15315,6 +15437,7 @@ msgid "Download student grades"
 msgstr "Atsisiųsti kurso dalyvio įvertinimus"
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "Atsispausdinkite arba paskelbkite savo sertifikatą: "
 
@@ -15328,6 +15451,7 @@ msgstr "Skelbti Facebooke"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "Skelbti Twitteryje"
 
@@ -15336,6 +15460,7 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "Paskelbti apie šį pasiekimą Twitteryje. Iškylantysis langas."
 
 #: lms/templates/certificates/_accomplishment-banner.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "Pridėti prie LinkedIn profilio"
 
@@ -15354,6 +15479,10 @@ msgstr "{platform_name} pradžios puslapis"
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Noted by"
 msgstr "Pažymėjo:"
+
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Certificate of Achievement"
+msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
@@ -15430,31 +15559,40 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "Siekite tapatybe patvirtinto sertifikato"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "Atsiprašome, bandant jus užregistruoti įvyko klaida."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "Siekite tapatybe patvirtinto sertifikato akademinio kredito"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -15463,10 +15601,12 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -15475,28 +15615,33 @@ msgstr ""
 "baigę kursą"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "Tapatybe patvirtinto sertifikato privalumai"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -15505,12 +15650,14 @@ msgstr ""
 "sertifikatą su institucijos logotipu"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -15521,6 +15668,7 @@ msgstr ""
 "įsidarbinti ar pakilti karjeros laipteliu arba įstoti į mokymo įstaigą."
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -15529,12 +15677,14 @@ msgstr ""
 "sertifikatą su institucijos logotipu"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
@@ -15542,20 +15692,24 @@ msgstr ""
 "{b_start}Motyvuoja: {b_end}suteikite sau papildomą paskatą baigti kursą"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "Klausytis kurso nerenkant kreditų"
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -15563,6 +15717,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -15570,6 +15725,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -15577,6 +15733,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
+#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -15691,6 +15848,7 @@ msgstr "Jūs esate užsiregistravę į šį kursą"
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "Peržiūrėti kursą"
 
@@ -15745,6 +15903,7 @@ msgid "enroll"
 msgstr "registruotis"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "Pasidalinkite su draugais ir šeimos nariais!"
 
@@ -15761,6 +15920,7 @@ msgid "Take a course with {platform} online"
 msgstr "Pradėti {platform} kursą internetu"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "Parašykite žinutę Twitteryje, kad užsiregistravote į šį kursą"
 
@@ -15769,6 +15929,7 @@ msgid "Post a Facebook message to say you've enrolled in this course"
 msgstr "Parašykite žinutę Facebooke, kad užsiregistravote į šį kursą"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
+#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr ""
 "Parašykite kam nors el. laišką ir praneškite, kad užsiregistravote į šį "
@@ -15924,6 +16085,7 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
+#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr ""
 
@@ -16446,6 +16608,7 @@ msgid "Share {course_name} on Facebook"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "Skelbti Facebooke"
 
@@ -17310,6 +17473,9 @@ msgstr "Ačiū,"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
+#: themes/stanford-style/lms/templates/embargo/default_courseware.html
+#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
+#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "Šis kursas jūsų šalyje neprieinamas"
 
@@ -17432,6 +17598,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/header/navbar-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr ""
 
@@ -17445,6 +17612,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "How it Works"
 msgstr "Kaip tai veikia"
 
@@ -18883,6 +19051,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "Mano kursai"
 
@@ -19171,10 +19340,12 @@ msgid ""
 msgstr ""
 
 #: lms/templates/static_templates/faq.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "DUK"
 
 #: lms/templates/static_templates/jobs.html
+#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "Karjera"
 
@@ -19665,6 +19836,7 @@ msgid "You haven't earned any certificates yet."
 msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
+#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr ""
 
@@ -19685,10 +19857,413 @@ msgstr ""
 msgid "An error occurred. Try loading the page again."
 msgstr ""
 
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid ""
+"Access Course Staff Support on the Partner Portal to submit or review "
+"support tickets"
+msgstr ""
+
+#: themes/edx.org/cms/templates/widgets/sock.html
+msgid "edX Partner Portal"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid ""
+"Browse recently launched courses and see what's new in your favorite "
+"subjects."
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Take advantage of free coaching!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/dashboard.html
+msgid "Get Started"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Page Footer"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "edX Home Page"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "Connect"
+msgstr ""
+
+#: themes/edx.org/lms/templates/footer.html
+msgid "© {year} edX Inc. All rights reserved."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid "About edX Verified Certificates"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
+msgid ""
+"An edX Verified Certificate signifies that the learner has agreed to abide "
+"by the edX honor code and completed all of the required tasks of this course"
+" under its guidelines, as well as having their photo ID checked to verify "
+"their identity."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid "About edX"
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/certificates/_about-edx.html
+msgid ""
+"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
+"the world's best universities, including MIT, Harvard, Berkeley, University "
+"of Texas, and many others. edX is a mission driven initiative created by "
+"founding partners Harvard and MIT."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Congratulations, {user_name}!"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid ""
+"You worked hard to earn your certificate from "
+"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
+"and family to get the word out about what you mastered in "
+"{accomplishment_course_title}."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Share this certificate on Facebook (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Tweet this certificate (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
+msgid "Print this certificate"
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid "edX Inc."
+msgstr ""
+
+#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
+msgid ""
+"All rights reserved except where noted. edX, Open edX and the edX and Open "
+"edX logos are registered trademarks of edX Inc."
+msgstr ""
+
+#. Translators: This string will not be used in Open edX installations.
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
+"help fund affordable education to everyone globally."
+msgstr ""
+
+#: themes/edx.org/lms/templates/course_modes/choose.html
+msgid ""
+"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
+"certificates to help fund free education for everyone globally"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Find Courses"
+msgstr ""
+
+#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+msgid "Schools & Partners"
+msgstr ""
+
+#: themes/red-theme/lms/templates/footer.html
+msgid ""
+"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+"Code{honor_link_end}"
+msgstr ""
+"{tos_link_start}Naudojimosi sąlygos{tos_link_end} ir "
+"{honor_link_start}sąžiningumo deklaracija{honor_link_end}"
+
+#: themes/stanford-style/lms/templates/footer.html
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Copyright"
+msgstr "Autorinės teisės"
+
+#: themes/stanford-style/lms/templates/footer.html
+msgid "Copyright {year}. All rights reserved."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/index.html
+msgid "For anyone, anywhere, anytime"
+msgstr "Bet kam, bet kur, bet kada"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"We're sorry, but this version of your browser is not supported. Try again "
+"using a different browser or a newer version of your browser."
+msgstr ""
+"Atsiprašome, bet ši jūsų naršyklės versija nepalaikoma. Pabandykite dar "
+"kartą su kita naršykle arba naujesne savo naršyklės versija."
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "The following errors occurred while processing your registration:"
+msgstr "Klaidos, įvykusios apdorojant jūsų registraciją:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Sign up with {provider_name}"
+msgstr "Prisiregistruokite su {provider_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Create your own {platform_name} account below"
+msgstr "Sukurkite savo {platform_name} paskyrą žemiau"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"Required fields are noted by <strong class=\"indicator\">bold text and an "
+"asterisk (*)</strong>."
+msgstr ""
+"Būtini laukai yra pažymėti <strong class=\"indicator\">paryškintu šriftu bei"
+" žvaigždute (*)</strong>."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "You've successfully signed in with {selected_provider}."
+msgstr "Jūs sėkmingai prisijungėte su {selected_provider}."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid ""
+"We just need a little more information before you start learning with "
+"{platform_name}."
+msgstr ""
+"Prieš pradėdami mokytis {platform_name}, pateikite mums šiek tiek daugiau "
+"informacijos."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please complete the following fields to register for an account. "
+msgstr "Norėdami sukurti naują paskyrą, turite užpildyti nurodytus laukelius."
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: Jane Doe"
+msgstr "pavyzdys: Jonas Jonaitis"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Your legal name, used for any certificates you earn."
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "example: JaneDoe"
+msgstr "pavyzdys: JonasJonaitis"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Will be shown in any discussions or forums you participate in"
+msgstr "Bus matomas diskusijų ar forumų dalyviams"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "cannot be changed later"
+msgstr "vėliau nebus galima pakeisti"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Welcome {username}"
+msgstr "Sveiki {username}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Enter a Public Display Name:"
+msgstr "Įveskite viešai rodomą pavadinimą:"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Public Display Name"
+msgstr "Viešas pavadinimas"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Additional Personal Information"
+msgstr "Papildoma asmeninė Informacija"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "example: New York"
+msgstr "pavyzdys: Vilnius"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Highest Level of Education Completed"
+msgstr "Aukščiausias pasiektas išsilavinimas"
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Year of Birth"
+msgstr "Gimimo metai "
+
+#: themes/stanford-style/lms/templates/register-form.html
+msgid "Please share with us your reasons for registering with {platform_name}"
+msgstr ""
+"Pasidalinkite, dėl kokių priežasčių prisiregistravote prie {platform_name}"
+
+#: themes/stanford-style/lms/templates/register-form.html
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Account Acknowledgements"
+msgstr "Paskyros patvirtinimas"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Preferences for {platform_name}"
+msgstr "{platform_name} nustatymai"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update my {platform_name} Account"
+msgstr "Atnaujinti mano {platform_name} paskyrą"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Processing your account information"
+msgstr "Jūsų paskyros informacija apdorojama"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Welcome {username}!  Please set your preferences below"
+msgstr "Sveiki {username}!  Žemiau pasirinkite norimas parinktis"
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid ""
+"Required fields are noted by {strong_indicator}bold text and an asterisk "
+"(*).{strong_close}"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/register-shib.html
+msgid "Update My Account"
+msgstr "Atnaujinti mano paskyrą"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Registration Help"
+msgstr "Pagalba registruojantis "
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Already registered?"
+msgstr "Jau prisiregistravę?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "Prisijungti"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Next Steps"
+msgstr "Kiti etapai"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"You will receive an activation email.  You must click on the activation link"
+" to complete the process.  Don't see the email?  Check your spam folder and "
+"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+"able to receive email from your courses."
+msgstr ""
+"Netrukus gausite elektroninį laišką su aktyvavimo nuoroda, kurią paspaudus "
+"aktyvavimas bus baigtas. Negavote elektroninio laiško? Patikrinkite "
+"\"Šlamštas\" laiškų aplanką ir pažymėkite elektroninius laiškus, gautus nuo "
+"class.stanford.edu, \"Ne šlamštas\". Taip jūsų kurso elektroniniai laiškai "
+"galės pasiekti jūsų el. pašto dėžutę."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need Help?"
+msgstr "Reikia pagalbos?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "Need help in registering with {platform_name}?"
+msgstr "Reikia pagalbos registruojantis į {platform_name}?"
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid "View our FAQs for answers to commonly asked questions."
+msgstr ""
+"Apsilankykite mūsų DUK skiltyje, kur rasite atsakymus į dažnai užduodamus "
+"klausimus."
+
+#: themes/stanford-style/lms/templates/register-sidebar.html
+msgid ""
+"Once registered, most questions can be answered in the course specific "
+"discussion forums or through the FAQs."
+msgstr ""
+"Prisiregistravus, atsakymus į daugelį klausimų galima rasti kurso diskusijų "
+"forumuose arba DUK skiltyje."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid "Thank you for signing up for {platform_name}."
+msgstr "Dėkojame, kad prisiregistravote prie {platform_name}."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+msgid ""
+"Change your life and start learning today by activating your {platform_name}"
+" account. Click on the link below or copy and paste it into your browser's "
+"address bar."
+msgstr ""
+"Pakeiskite savo gyvenimą ir šiandien pradėkite mokytis suaktyvinę savo "
+"{platform_name} paskyrą. Spustelėkite žemiau esančią nuorodą arba galite "
+"nukopijuoti ir įklijuoti ją į savo naršyklės adreso juostą."
+
+#: themes/stanford-style/lms/templates/emails/activation_email.txt
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"If you didn't request this, you don't need to do anything; you won't receive"
+" any more email from us. Please do not reply to this e-mail; if you require "
+"assistance, check the about section of the {platform_name} Courses web site."
+msgstr ""
+"Jei to neprašėte, nieko nedarykite; daugiau el. laiškų jums nebesiųsime. "
+"Neatsakykite į šį laišką;  jei reikia pagalbos, apsilankykite "
+"{platform_name} internetinio puslapio \"Apie\" skiltyje."
+
+#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
+msgid ""
+"This is to confirm that you changed the e-mail associated with "
+"{platform_name} from {old_email} to {new_email}. If you did not make this "
+"request, please contact us at"
+msgstr ""
+"Patvirtiname, kad jūs pakeitėte el. pašto adresą, susietą su {platform_name}"
+" iš {old_email} į {new_email}. Jei jūs neprašėte pakeisti el. pašto adreso, "
+"susisiekite su mumis:"
+
+#: themes/stanford-style/lms/templates/emails/email_change.txt
+msgid ""
+"We received a request to change the e-mail associated with your "
+"{platform_name} account from {old_email} to {new_email}. If this is correct,"
+" please confirm your new e-mail address by visiting:"
+msgstr ""
+"Mes gavome prašymą pakeisti el. pašto adresą, susietą su jūsų "
+"{platform_name} paskyra iš {old_email} į {new_email}. Jei jūs prašėte "
+"pakeisti savo el. paštą, patvirtinkite naują el. pašto adresą apsilankę:"
+
+#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
+msgid ""
+"We are sorry. Our course staff did not approve your request to change your "
+"name from {old_name} to {new_name}. If you need further assistance, please "
+"e-mail the tech support at {email}"
+msgstr ""
+"Apgailestaujame, kursą administruojantis personalas nepritarė jūsų prašymui "
+"pakeisti savo vardą iš {old_name} į {new_name}. Jei jums reikia papildomos "
+"pagalbos, kreipkitės į techninę pagalbą el. paštu {email}."
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Terms of Service here!"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Privacy Policy here!"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Honor Code here!"
+msgstr ""
+
+#: themes/stanford-style/lms/templates/static_templates/tos.html
+msgid "Put your Copyright Text here!"
+msgstr ""
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -22995,14 +23570,6 @@ msgstr ""
 msgid "LMS"
 msgstr ""
 
-#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
-#. not translate any of these trademarks and company names.
-#: cms/templates/widgets/footer.html
-msgid ""
-"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-"{link_start}edX Inc.{link_end}"
-msgstr ""
-
 #: cms/templates/widgets/header.html
 msgid "Current Course:"
 msgstr "Dabartinis kursas:"
@@ -23099,26 +23666,6 @@ msgstr ""
 msgid "Label"
 msgstr "Etiketė"
 
-#: cms/templates/widgets/sock.html
-msgid "Looking for help with {studio_name}?"
-msgstr "Ar reikalinga pagalba dėl {studio_name}?"
-
-#: cms/templates/widgets/sock.html
-msgid "Hide {studio_name} Help"
-msgstr "Slėpti {studio_name} pagalbą"
-
-#: cms/templates/widgets/sock.html
-msgid "{studio_name} Documentation"
-msgstr "{studio_name} dokumentacija"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Access documentation on http://docs.edx.org"
-msgstr "Žiūrėti dokumentus http://docs.edx.org"
-
-#: cms/templates/widgets/sock_links.html
-msgid "edX Documentation"
-msgstr "edX dokumentai"
-
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "Prisijungti prie Open edX portalo"
@@ -23126,26 +23673,6 @@ msgstr "Prisijungti prie Open edX portalo"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "Open edX portalas"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101: Overview of Creating an edX Course"
-msgstr "Registruotis į kursą edX101: \"Kurso kūrimo edX aplinkoje apžvalga\""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in edX101"
-msgstr "Registruotis į edX101 kursą"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX: Creating a Course with edX Studio"
-msgstr "Registruotis į kursą StudioX: \"Kurso kūrimas edX Studio aplinkoje\""
-
-#: cms/templates/widgets/sock_links.html
-msgid "Enroll in StudioX"
-msgstr "Registruotis į kursą StudioX"
-
-#: cms/templates/widgets/sock_links.html
-msgid "Send an email to {email}"
-msgstr "Siųsti el. laišką adresu {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -24321,25 +24848,6 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
 
-#~ msgid ""
-#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
-#~ "investigate."
-#~ msgstr ""
-#~ "Mes vedame senų el. pašto adresų žurnalą, todėl jei šis prašymas buvo "
-#~ "netyčinis, galėsime šį atvejį ištirti.  "
-
-#~ msgid "Powered by Open edX"
-#~ msgstr "Naudojama Open edX platforma"
-
-#~ msgid "Contact Us"
-#~ msgstr "Susisiekite su mumis"
-
-#~ msgid "News"
-#~ msgstr "Naujienos"
-
-#~ msgid "Mailing Address"
-#~ msgstr "Pašto adresas"
-
 #~ msgid "Dismiss"
 #~ msgstr "Atsisakyti"
 
@@ -24351,6 +24859,36 @@ msgstr ""
 
 #~ msgid "{studio_name} Home"
 #~ msgstr "{studio_name} aplinkos pradžios puslapis"
+
+#~ msgid "Looking for help with {studio_name}?"
+#~ msgstr "Ar reikalinga pagalba dėl {studio_name}?"
+
+#~ msgid "Hide {studio_name} Help"
+#~ msgstr "Slėpti {studio_name} pagalbą"
+
+#~ msgid "{studio_name} Documentation"
+#~ msgstr "{studio_name} dokumentacija"
+
+#~ msgid "Access documentation on http://docs.edx.org"
+#~ msgstr "Žiūrėti dokumentus http://docs.edx.org"
+
+#~ msgid "edX Documentation"
+#~ msgstr "edX dokumentai"
+
+#~ msgid "Enroll in edX101: Overview of Creating an edX Course"
+#~ msgstr "Registruotis į kursą edX101: \"Kurso kūrimo edX aplinkoje apžvalga\""
+
+#~ msgid "Enroll in edX101"
+#~ msgstr "Registruotis į edX101 kursą"
+
+#~ msgid "Enroll in StudioX: Creating a Course with edX Studio"
+#~ msgstr "Registruotis į kursą StudioX: \"Kurso kūrimas edX Studio aplinkoje\""
+
+#~ msgid "Enroll in StudioX"
+#~ msgstr "Registruotis į kursą StudioX"
+
+#~ msgid "Send an email to {email}"
+#~ msgstr "Siųsti el. laišką adresu {email}"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
@@ -24377,9 +24915,6 @@ msgstr ""
 #~ "dalyviui bus priskirta {max_count} komponentų, atsitiktinai paimtų iš šio "
 #~ "sąrašo."
 
-#~ msgid "example: username@domain.com"
-#~ msgstr "pavyzdys: naudotojovardas@svetaine.com"
-
 #~ msgid "New Unit"
 #~ msgstr "Naujas skyrius"
 
@@ -24388,197 +24923,6 @@ msgstr ""
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "Palaiko šios organizacijos"
-
-#~ msgid ""
-#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
-#~ "Code{honor_link_end}"
-#~ msgstr ""
-#~ "{tos_link_start}Naudojimosi sąlygos{tos_link_end} ir "
-#~ "{honor_link_start}sąžiningumo deklaracija{honor_link_end}"
-
-#~ msgid "Copyright"
-#~ msgstr "Autorinės teisės"
-
-#~ msgid "For anyone, anywhere, anytime"
-#~ msgstr "Bet kam, bet kur, bet kada"
-
-#~ msgid ""
-#~ "We're sorry, but this version of your browser is not supported. Try again "
-#~ "using a different browser or a newer version of your browser."
-#~ msgstr ""
-#~ "Atsiprašome, bet ši jūsų naršyklės versija nepalaikoma. Pabandykite dar "
-#~ "kartą su kita naršykle arba naujesne savo naršyklės versija."
-
-#~ msgid "The following errors occurred while processing your registration:"
-#~ msgstr "Klaidos, įvykusios apdorojant jūsų registraciją:"
-
-#~ msgid "Sign up with {provider_name}"
-#~ msgstr "Prisiregistruokite su {provider_name}"
-
-#~ msgid "Create your own {platform_name} account below"
-#~ msgstr "Sukurkite savo {platform_name} paskyrą žemiau"
-
-#~ msgid ""
-#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
-#~ "asterisk (*)</strong>."
-#~ msgstr ""
-#~ "Būtini laukai yra pažymėti <strong class=\"indicator\">paryškintu šriftu bei"
-#~ " žvaigždute (*)</strong>."
-
-#~ msgid "You've successfully signed in with {selected_provider}."
-#~ msgstr "Jūs sėkmingai prisijungėte su {selected_provider}."
-
-#~ msgid ""
-#~ "We just need a little more information before you start learning with "
-#~ "{platform_name}."
-#~ msgstr ""
-#~ "Prieš pradėdami mokytis {platform_name}, pateikite mums šiek tiek daugiau "
-#~ "informacijos."
-
-#~ msgid "Please complete the following fields to register for an account. "
-#~ msgstr "Norėdami sukurti naują paskyrą, turite užpildyti nurodytus laukelius."
-
-#~ msgid "example: Jane Doe"
-#~ msgstr "pavyzdys: Jonas Jonaitis"
-
-#~ msgid "example: JaneDoe"
-#~ msgstr "pavyzdys: JonasJonaitis"
-
-#~ msgid "Will be shown in any discussions or forums you participate in"
-#~ msgstr "Bus matomas diskusijų ar forumų dalyviams"
-
-#~ msgid "cannot be changed later"
-#~ msgstr "vėliau nebus galima pakeisti"
-
-#~ msgid "Welcome {username}"
-#~ msgstr "Sveiki {username}"
-
-#~ msgid "Enter a Public Display Name:"
-#~ msgstr "Įveskite viešai rodomą pavadinimą:"
-
-#~ msgid "Public Display Name"
-#~ msgstr "Viešas pavadinimas"
-
-#~ msgid "Additional Personal Information"
-#~ msgstr "Papildoma asmeninė Informacija"
-
-#~ msgid "example: New York"
-#~ msgstr "pavyzdys: Vilnius"
-
-#~ msgid "Highest Level of Education Completed"
-#~ msgstr "Aukščiausias pasiektas išsilavinimas"
-
-#~ msgid "Year of Birth"
-#~ msgstr "Gimimo metai "
-
-#~ msgid "Please share with us your reasons for registering with {platform_name}"
-#~ msgstr ""
-#~ "Pasidalinkite, dėl kokių priežasčių prisiregistravote prie {platform_name}"
-
-#~ msgid "Account Acknowledgements"
-#~ msgstr "Paskyros patvirtinimas"
-
-#~ msgid "Preferences for {platform_name}"
-#~ msgstr "{platform_name} nustatymai"
-
-#~ msgid "Update my {platform_name} Account"
-#~ msgstr "Atnaujinti mano {platform_name} paskyrą"
-
-#~ msgid "Processing your account information"
-#~ msgstr "Jūsų paskyros informacija apdorojama"
-
-#~ msgid "Welcome {username}!  Please set your preferences below"
-#~ msgstr "Sveiki {username}!  Žemiau pasirinkite norimas parinktis"
-
-#~ msgid "Update My Account"
-#~ msgstr "Atnaujinti mano paskyrą"
-
-#~ msgid "Registration Help"
-#~ msgstr "Pagalba registruojantis "
-
-#~ msgid "Already registered?"
-#~ msgstr "Jau prisiregistravę?"
-
-#~ msgid "Next Steps"
-#~ msgstr "Kiti etapai"
-
-#~ msgid ""
-#~ "You will receive an activation email.  You must click on the activation link"
-#~ " to complete the process.  Don't see the email?  Check your spam folder and "
-#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
-#~ "able to receive email from your courses."
-#~ msgstr ""
-#~ "Netrukus gausite elektroninį laišką su aktyvavimo nuoroda, kurią paspaudus "
-#~ "aktyvavimas bus baigtas. Negavote elektroninio laiško? Patikrinkite "
-#~ "\"Šlamštas\" laiškų aplanką ir pažymėkite elektroninius laiškus, gautus nuo "
-#~ "class.stanford.edu, \"Ne šlamštas\". Taip jūsų kurso elektroniniai laiškai "
-#~ "galės pasiekti jūsų el. pašto dėžutę."
-
-#~ msgid "Need Help?"
-#~ msgstr "Reikia pagalbos?"
-
-#~ msgid "Need help in registering with {platform_name}?"
-#~ msgstr "Reikia pagalbos registruojantis į {platform_name}?"
-
-#~ msgid "View our FAQs for answers to commonly asked questions."
-#~ msgstr ""
-#~ "Apsilankykite mūsų DUK skiltyje, kur rasite atsakymus į dažnai užduodamus "
-#~ "klausimus."
-
-#~ msgid ""
-#~ "Once registered, most questions can be answered in the course specific "
-#~ "discussion forums or through the FAQs."
-#~ msgstr ""
-#~ "Prisiregistravus, atsakymus į daugelį klausimų galima rasti kurso diskusijų "
-#~ "forumuose arba DUK skiltyje."
-
-#~ msgid "Thank you for signing up for {platform_name}."
-#~ msgstr "Dėkojame, kad prisiregistravote prie {platform_name}."
-
-#~ msgid ""
-#~ "Change your life and start learning today by activating your {platform_name}"
-#~ " account. Click on the link below or copy and paste it into your browser's "
-#~ "address bar."
-#~ msgstr ""
-#~ "Pakeiskite savo gyvenimą ir šiandien pradėkite mokytis suaktyvinę savo "
-#~ "{platform_name} paskyrą. Spustelėkite žemiau esančią nuorodą arba galite "
-#~ "nukopijuoti ir įklijuoti ją į savo naršyklės adreso juostą."
-
-#~ msgid ""
-#~ "If you didn't request this, you don't need to do anything; you won't receive"
-#~ " any more email from us. Please do not reply to this e-mail; if you require "
-#~ "assistance, check the about section of the {platform_name} Courses web site."
-#~ msgstr ""
-#~ "Jei to neprašėte, nieko nedarykite; daugiau el. laiškų jums nebesiųsime. "
-#~ "Neatsakykite į šį laišką;  jei reikia pagalbos, apsilankykite "
-#~ "{platform_name} internetinio puslapio \"Apie\" skiltyje."
-
-#~ msgid ""
-#~ "This is to confirm that you changed the e-mail associated with "
-#~ "{platform_name} from {old_email} to {new_email}. If you did not make this "
-#~ "request, please contact us at"
-#~ msgstr ""
-#~ "Patvirtiname, kad jūs pakeitėte el. pašto adresą, susietą su {platform_name}"
-#~ " iš {old_email} į {new_email}. Jei jūs neprašėte pakeisti el. pašto adreso, "
-#~ "susisiekite su mumis:"
-
-#~ msgid ""
-#~ "We received a request to change the e-mail associated with your "
-#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
-#~ " please confirm your new e-mail address by visiting:"
-#~ msgstr ""
-#~ "Mes gavome prašymą pakeisti el. pašto adresą, susietą su jūsų "
-#~ "{platform_name} paskyra iš {old_email} į {new_email}. Jei jūs prašėte "
-#~ "pakeisti savo el. paštą, patvirtinkite naują el. pašto adresą apsilankę:"
-
-#~ msgid ""
-#~ "We are sorry. Our course staff did not approve your request to change your "
-#~ "name from {old_name} to {new_name}. If you need further assistance, please "
-#~ "e-mail the tech support at {email}"
-#~ msgstr ""
-#~ "Apgailestaujame, kursą administruojantis personalas nepritarė jūsų prašymui "
-#~ "pakeisti savo vardą iš {old_name} į {new_name}. Jei jums reikia papildomos "
-#~ "pagalbos, kreipkitės į techninę pagalbą el. paštu {email}."
 
 #~ msgid "Videos"
 #~ msgstr "Vaizdo įrašai"
