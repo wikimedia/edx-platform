@@ -67,7 +67,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-01 07:16+0000\n"
+"POT-Creation-Date: 2025-10-02 18:17+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Pia Jensen, 2023\n"
 "Language-Team: Danish (https://app.transifex.com/open-edx/teams/6205/da/)\n"
@@ -77,8 +77,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: MediaWiki 1.45.0-alpha; Translate 2025-07-31\n"
-"X-POT-Import-Date: 2025-07-14 14:30:35+0000\n"
+"X-Generator: MediaWiki 1.44.0-alpha; Translate 2025-03-15\n"
+"X-POT-Import-Date: 2025-03-04 10:30:23+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -307,6 +307,11 @@ msgstr ""
 
 #: cms/templates/settings.html
 msgid "Course Direction Flag"
+msgstr ""
+
+#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
+#, python-format
+msgid "%(subject)s"
 msgstr ""
 
 #: openedx/features/wikimedia_features/meta_translations/views.py
@@ -1420,12 +1425,15 @@ msgstr "Video ID"
 #. duration is determined.
 #: cms/djangoapps/contentstore/views/videos.py
 #: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Pending"
 msgstr "Afventer"
 
 #: cms/envs/common.py lms/envs/common.py
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization"
 msgstr "Organisation"
 
@@ -3588,6 +3596,7 @@ msgstr "Rigtigt svar"
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Submit"
 msgstr "Send"
 
@@ -4577,6 +4586,8 @@ msgstr ""
 "ITM001"
 
 #: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Language"
 msgstr "Kursussprog"
 
@@ -4937,6 +4948,7 @@ msgstr "Enhver type"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 #: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Library"
 msgstr "Bibliotek"
 
@@ -5443,6 +5455,7 @@ msgstr ""
 #: cms/templates/certificates.html cms/templates/group_configurations.html
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Group Configurations"
 msgstr "Gruppekonfiguration"
 
@@ -5822,6 +5835,9 @@ msgstr "Hjem"
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Kursus"
 
@@ -5836,6 +5852,8 @@ msgstr "Gem og importer"
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/manage_users.html cms/templates/manage_users_lib.html
 #: cms/templates/videos_index_pagination.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Cancel"
 msgstr "Annuller"
 
@@ -6259,6 +6277,7 @@ msgid "Close"
 msgstr "Luk"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -6284,6 +6303,7 @@ msgstr ""
 " du ikke vil kunne logge ind på din konto igen, før du har aktiveret den."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr "Aktiver din konto"
 
@@ -6294,6 +6314,7 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr "Nyd at lære med %(platform_name)s ."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -6317,6 +6338,7 @@ msgstr ""
 "e-mailadresse."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -6794,6 +6816,8 @@ msgstr "Donér"
 
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Om"
 
@@ -6824,6 +6848,7 @@ msgstr "Servicebetingelser & Æreskodeks"
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "Privacy Policy"
 msgstr "Privatlivspolitik"
 
@@ -7921,6 +7946,7 @@ msgstr "Hold eleverne engagerede og på sporet gennem hele forløbet."
 #. course' textbooks
 #: lms/djangoapps/courseware/plugins.py lms/djangoapps/courseware/tabs.py
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Textbooks"
 msgstr "Lærebøger"
 
@@ -8091,6 +8117,7 @@ msgstr "{sign_in_link} eller {register_link} ."
 #: openedx/features/course_experience/views/course_home_messages.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "Log ind"
 
@@ -8969,6 +8996,7 @@ msgstr "Specielle eksamener"
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
 #: lms/djangoapps/support/views/index.py cms/templates/certificates.html
 #: cms/templates/export.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Certificates"
 msgstr "Diplomer"
 
@@ -10267,6 +10295,8 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
+#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Fortsæt til indhold"
 
@@ -10479,6 +10509,7 @@ msgstr "Slet artikel"
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
 #: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -10519,7 +10550,9 @@ msgstr "Du er i færd med at slette en artikel. Bekræft venligst."
 
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "Rediger"
@@ -10810,6 +10843,9 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Søg"
@@ -10913,45 +10949,55 @@ msgid "ACE Common"
 msgstr "ACE Fælles"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr "Gå til %(platform_name)s hjemmeside"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Sign In"
 msgstr "Log ind"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr "%(platform_name)s på LinkedIn"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr "%(platform_name)s på Twitter"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr "%(platform_name)s på Facebook"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr "%(platform_name)s på Google Plus"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr "%(platform_name)s på Reddit"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr "Download iOS-appen i Apple Store"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr "Download Android-appen i Google Play Butik"
 
@@ -10960,6 +11006,7 @@ msgid "Our mailing address is:"
 msgstr "Vores postadresse er:"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr "Afmeld disse e-mails."
 
@@ -11032,6 +11079,7 @@ msgstr ""
 "Kommasepareret liste over brugernavne, som vil kunne se dette katalog."
 
 #: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Denied"
 msgstr "Afvist"
 
@@ -11071,6 +11119,7 @@ msgstr "'%s' er ikke et gyldigt omfang."
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Bogmærker"
 
@@ -11229,6 +11278,8 @@ msgstr ""
 #: openedx/core/djangoapps/config_model_utils/models.py
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run"
 msgstr "Kursusløb"
 
@@ -12730,6 +12781,7 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Register"
 msgstr "Registrer"
 
@@ -13061,6 +13113,7 @@ msgstr "{header_open}{title} {header_close}"
 #: cms/templates/course_outline.html cms/templates/index.html
 #: openedx/features/course_experience/templates/course_experience/latest-update-fragment.html
 #: openedx/features/course_experience/templates/course_experience/welcome-message-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Dismiss"
 msgstr "Fjern"
 
@@ -13134,6 +13187,7 @@ msgstr ""
 "En licens definerer, hvordan indholdet af denne blok kan deles og genbruges."
 
 #: openedx/core/lib/xblock_builtin/xblock_discussion/xblock_discussion/__init__.py
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Category"
 msgstr "Kategori"
 
@@ -13358,6 +13412,7 @@ msgstr "Deadlines blev nulstillet."
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "Opdateringer"
 
@@ -13587,14 +13642,11 @@ msgstr "Prøv igen (ubegrænsede forsøg)"
 msgid "You have used {attempts} of unlimited attempts for this problem."
 msgstr "Du har brugt {attempts} af ubegrænsede forsøg til dette problem."
 
-#: openedx/features/wikimedia_features/messenger/templates/messenger/edx_ace/pendingmessagesnotification/email/subject.txt
-#, python-format
-msgid "%(subject)s"
-msgstr ""
-
 #: openedx/features/wikimedia_features/meta_translations/views.py
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "Kursus navn"
 
@@ -13605,6 +13657,9 @@ msgstr "Kursus navn"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Courses"
 msgstr "Kurser"
 
@@ -13646,6 +13701,7 @@ msgstr "Kurset er overtegnet"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "Indlæser"
 
@@ -14574,11 +14630,17 @@ msgstr "Side ikke fundet"
 msgid "Page not found"
 msgstr "Side ikke fundet"
 
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Files & Uploads"
+msgstr "Filer og uploads"
+
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "Indhold"
 
@@ -14587,15 +14649,263 @@ msgstr "Indhold"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
 msgstr "Indstillinger"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Grading"
+msgstr "Bedømmelse"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/manage_users.html cms/templates/settings.html
+#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Course Team"
+msgstr "Kursushold"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Advanced Settings"
+msgstr "Avancerede indstillinger"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr "overvåget eksamensindstillinger"
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr "Tjeklister"
+
+#: cms/templates/checklists.html cms/templates/export.html
+#: cms/templates/export_git.html cms/templates/import.html
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Tools"
+msgstr "Værktøjer"
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Duplicate"
+msgstr "Duplikere"
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr "Bevæge sig"
+
+#: cms/templates/component.html cms/templates/edit-tabs.html
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Drag to reorder"
+msgstr "Træk for at omarrangere"
+
+#: cms/templates/container.html cms/templates/course-create-rerun.html
+#: cms/templates/course_info.html cms/templates/course_outline.html
+#: cms/templates/edit-tabs.html cms/templates/index.html
+#: cms/templates/library.html cms/templates/manage_users.html
+#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
+#: cms/templates/videos_index.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Page Actions"
+msgstr "Sidehandlinger"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a Course Rerun of:"
+msgstr "Opret en kursusgentagelse af:"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create a re-run of a course"
+msgstr "Opret en genkørsel af et kursus"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "You are creating a re-run from:"
+msgstr "Du opretter en genudsendelse fra:"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"Provide identifying information for this re-run of the course. The original "
+"course is not affected in any way by a re-run."
+msgstr ""
+"Angiv identificerende oplysninger til denne gentagelse af kurset. Den "
+"oprindelige bane påvirkes ikke på nogen måde af en genkørsel."
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"Note: Together, the organization, course number, and course run must "
+"uniquely identify this new course instance."
+msgstr ""
+"Bemærk: Tilsammen skal organisationen, kursusnummeret og kursusforløbet "
+"entydigt identificere denne nye kursusinstans."
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Required Information to Create a re-run of a course"
+msgstr "Nødvendige oplysninger for at oprette en genudførelse af et kursus"
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is an example name for a new course, seen when
+#. filling out the form to create a new course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "e.g. Introduction to Computer Science"
+msgstr "fx Introduktion til Datalogi"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The public display name for the new course. (This name is often the same as "
+"the original course name.)"
+msgstr ""
+"Det offentlige visningsnavn for det nye kursus. (Dette navn er ofte det "
+"samme som det originale kursusnavn.)"
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is an example for the name of the organization sponsoring
+#. a course, seen when filling out the form to create a new course. The
+#. organization name cannot contain spaces.
+#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
+#. when user put no data into this field.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "e.g. UniversityX or OrganizationX"
+msgstr "fx UniversityX eller OrganisationX"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The name of the organization sponsoring the new course. (This name is often "
+"the same as the original organization name.)"
+msgstr ""
+"Navnet på den organisation, der sponsorerer det nye kursus. (Dette navn er "
+"ofte det samme som det oprindelige organisationsnavn.)"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Note: No spaces or special characters are allowed."
+msgstr "Bemærk: Ingen mellemrum eller specialtegn er tilladt."
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "Kursus nr."
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is an example for the number used to identify a course,
+#. seen when filling out the form to create a new course. The number here is
+#. short for "Computer Science 101". It can contain letters but cannot contain
+#. spaces.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "e.g. CS101"
+msgstr "fx CS101"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
+"Det unikke nummer, der identificerer det nye kursus i organisationen. (Dette"
+" nummer vil være det samme som det oprindelige kursusnummer og kan ikke "
+"ændres.)"
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is an example for the "run" used to identify different
+#. instances of a course, seen when filling out the form to create a new
+#. course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "e.g. 2014_T1"
+msgstr "fx 2014_T1"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The term in which the new course will run. (This value is often different "
+"than the original course run value.)"
+msgstr ""
+"Den periode, hvor det nye kursus løber. (Denne værdi er ofte anderledes end "
+"den oprindelige kursuskørselsværdi.)"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Create Re-run"
+msgstr "Opret Re-run"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "When will my course re-run start?"
+msgstr "Hvornår starter mit kursus igen?"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+msgstr ""
+"Det nye kursus er indstillet til at starte den 1. januar 2030 ved midnat "
+"(UTC)."
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "What transfers from the original course?"
+msgstr "Hvad overføres fra det oprindelige kursus?"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The new course has the same course outline and content as the original "
+"course. All problems, videos, announcements, and other files are duplicated "
+"to the new course."
+msgstr ""
+"Det nye kursus har samme kursusoversigt og indhold som det oprindelige "
+"kursus. Alle problemer, videoer, meddelelser og andre filer duplikeres til "
+"det nye kursus."
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "What does not transfer from the original course?"
+msgstr "Hvad overføres ikke fra det oprindelige kursus?"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"You are the only member of the new course's staff. No students are enrolled "
+"in the course, and there is no student data. There is no content in the "
+"discussion topics or wiki."
+msgstr ""
+"Du er det eneste medlem af det nye kursuss personale. Ingen studerende er "
+"tilmeldt kurset, og der er ingen elevdata. Der er intet indhold i "
+"diskussionsemnerne eller wikien."
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid "Learn more about Course Re-runs"
+msgstr "Få mere at vide om kursusgentagelser"
 
 #: cms/templates/course_outline.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
@@ -14608,6 +14918,20 @@ msgstr "Kursusoversigt"
 msgid "Warning"
 msgstr "Advarsel"
 
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: Pages refer to the tabs that appear in the top navigation of
+#. each course.
+#: cms/templates/edit-tabs.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Pages"
+msgstr "sider"
+
+#: cms/templates/export_git.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Export to Git"
+msgstr "Eksporter til Git"
+
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
 msgstr "Fejl:"
@@ -14615,23 +14939,508 @@ msgstr "Fejl:"
 #: cms/templates/index.html cms/templates/widgets/user_dropdown.html
 #: openedx/features/wikimedia_features/meta_translations/templates/discover_courses.html
 #: openedx/features/wikimedia_features/meta_translations/templates/translations.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "{studio_name} Home"
 msgstr "{studio_name} Hjem"
 
 #: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "New Course"
+msgstr "Nyt kursus"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Email staff to create course"
+msgstr "E-mail personale til at oprette kursus"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "New Library"
+msgstr "Nyt bibliotek"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Please correct the highlighted fields below."
+msgstr "Ret venligst de fremhævede felter nedenfor."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Create a New Course"
+msgstr "Opret et nyt kursus"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Required Information to Create a New Course"
+msgstr "Nødvendige oplysninger for at oprette et nyt kursus"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The public display name for your course. This cannot be changed, but you can"
+" set a different display name in Advanced Settings later."
+msgstr ""
+"Det offentlige visningsnavn for dit kursus. Dette kan ikke ændres, men du "
+"kan angive et andet visningsnavn i Avancerede indstillinger senere."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The name of the organization sponsoring the course. {strong_start}Note: The "
+"organization name is part of the course URL.{strong_end} This cannot be "
+"changed, but you can set a different display name in Advanced Settings "
+"later."
+msgstr ""
+"Navnet på den organisation, der sponsorerer kurset. {strong_start}Bemærk: "
+"Organisationens navn er en del af kursets URL.{strong_end} Dette kan ikke "
+"ændres, men du kan angive et andet visningsnavn i Avancerede indstillinger "
+"senere."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The unique number that identifies your course within your organization. "
+"{strong_start}Note: This is part of your course URL, so no spaces or special"
+" characters are allowed and it cannot be changed.{strong_end}"
+msgstr ""
+"Det unikke nummer, der identificerer dit kursus i din organisation. "
+"{strong_start}Bemærk: Dette er en del af din kursuswebadresse, så der er "
+"ingen mellemrum eller specialtegn tilladt, og den kan ikke "
+"ændres.{strong_end}"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The term in which your course will run. {strong_start}Note: This is part of "
+"your course URL, so no spaces or special characters are allowed and it "
+"cannot be changed.{strong_end}"
+msgstr ""
+"Den periode, hvor dit kursus løber. {strong_start}Bemærk: Dette er en del af"
+" din kursuswebadresse, så der er ingen mellemrum eller specialtegn tilladt, "
+"og den kan ikke ændres.{strong_end}"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Create"
+msgstr "Opret"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Create a New Library"
+msgstr "Opret et nyt bibliotek"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Required Information to Create a New Library"
+msgstr "Nødvendige oplysninger for at oprette et nyt bibliotek"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Library Name"
+msgstr "Bibliotekets navn"
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is an example name for a new content library, seen when
+#. filling out the form to create a new library.
+#. (A library is a collection of content or problems.)
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "e.g. Computer Science Problems"
+msgstr "fx Computer Science Problemer"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "The public display name for your library."
+msgstr "Det offentlige visningsnavn for dit bibliotek."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "The public organization name for your library."
+msgstr "Den offentlige organisations navn for dit bibliotek."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "This cannot be changed."
+msgstr "Dette kan ikke ændres."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Library Code"
+msgstr "Bibliotekskode"
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is an example for the "code" used to identify a library,
+#. seen when filling out the form to create a new library. This example is
+#. short
+#. for "Computer Science Problems". The example number may contain letters
+#. but must not contain spaces.
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "e.g. CSPROB"
+msgstr "fx CSPROB"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The unique code that identifies this library. {strong_start}Note: This is "
+"part of your library URL, so no spaces or special characters are "
+"allowed.{strong_end} This cannot be changed."
+msgstr ""
+"Den unikke kode, der identificerer dette bibliotek. {strong_start}Bemærk: "
+"Dette er en del af dit biblioteks webadresse, så der er ingen mellemrum "
+"eller specialtegn tilladt.{strong_end} Dette kan ikke ændres."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr "Organisation og biblioteksindstillinger"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr "Vis alle kurser i organisationen:"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "For example, MITx"
+msgstr "For eksempel MITx"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Courses Being Processed"
+msgstr "Kurser under behandling"
+
+#: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "Organisation"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "Kursus nummer:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "Kursusløb:"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "This course run is currently being created."
+msgstr "Dette kursusforløb er ved at blive oprettet."
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is a status message, used to inform the user of
+#. what the system is doing. This status means that the user has
+#. requested to re-run an existing course, and the system is currently
+#. in the process of duplicating and configuring the existing course
+#. so that it can be re-run.
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Configuring as re-run"
+msgstr "Konfigurerer som genkørsel"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The new course will be added to your course list in 5-10 minutes. Return to "
+"this page or {link_start}refresh it{link_end} to update the course list. The"
+" new course will need some manual configuration."
+msgstr ""
+"Det nye kursus vil blive tilføjet til din kursusliste om 5-10 minutter. Vend"
+" tilbage til denne side eller {link_start}opdater den{link_end} for at "
+"opdatere kursuslisten. Det nye kursus skal konfigureres manuelt."
+
+#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
+#. Translators: This is a status message for the course re-runs feature.
+#. When a course admin indicates that a course should be re-run, the system
+#. needs to process the request and prepare the new course. The status of
+#. the process will follow this text.
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "This re-run processing status:"
+msgstr "Denne genkørende behandlingsstatus:"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Configuration Error"
+msgstr "Konfigurationsfejl"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"A system error occurred while your course was being processed. Please go to "
+"the original course to try the re-run again, or contact your PM for "
+"assistance."
+msgstr ""
+"Der opstod en systemfejl, mens dit kursus blev behandlet. Gå til det "
+"originale kursus for at prøve at køre igen, eller kontakt din PM for at få "
+"hjælp."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Archived Courses"
+msgstr "Arkiverede kurser"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Libraries"
+msgstr "Biblioteker"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Are you staff on an existing {studio_name} course?"
+msgstr "Er du personale på et eksisterende {studio_name}-kursus?"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The course creator must give you access to the course. Contact the course "
+"creator or administrator for the course you are helping to author."
+msgstr ""
+"Kursusopretteren skal give dig adgang til kurset. Kontakt kursusophavsmanden"
+" eller -administratoren for det kursus, du er med til at forfatte."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Create Your First Course"
+msgstr "Opret dit første kursus"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Your new course is just a click away!"
+msgstr "Dit nye kursus er kun et klik væk!"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Becoming a Course Creator in {studio_name}"
+msgstr "Bliv kursusskaber i {studio_name}"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team will evaluate your request and provide you feedback within 24 hours "
+"during the work week."
+msgstr ""
+"{studio_name} er en hostet løsning for vores xConsortium-partnere og "
+"udvalgte gæster. Kurser, som du er teammedlem for, vises ovenfor, så du kan "
+"redigere dem, mens rettigheder til at oprette kursus gives af "
+"{platform_name}. Vores team vil evaluere din anmodning og give dig feedback "
+"inden for 24 timer i løbet af arbejdsugen."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Your Course Creator Request Status:"
+msgstr "Status for din kursusopretteranmodning:"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Request the Ability to Create Courses"
+msgstr "Anmod om evnen til at oprette kurser"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Your Course Creator Request Status"
+msgstr "Status for din kursusopretteranmodning"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is has completed evaluating your request."
+msgstr ""
+"{studio_name} er en hostet løsning for vores xConsortium-partnere og "
+"udvalgte gæster. Kurser, som du er teammedlem for, vises ovenfor, så du kan "
+"redigere dem, mens rettigheder til at oprette kursus gives af "
+"{platform_name}. Vores team er færdig med at evaluere din anmodning."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Your Course Creator request is:"
+msgstr "Din anmodning om kursusskaber er:"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Your request did not meet the criteria/guidelines specified by "
+"{platform_name} Staff."
+msgstr ""
+"Din anmodning opfyldte ikke kriterierne/retningslinjerne specificeret af "
+"{platform_name} personale."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is currently  evaluating your request."
+msgstr ""
+"{studio_name} er en hostet løsning for vores xConsortium-partnere og "
+"udvalgte gæster. Kurser, som du er teammedlem for, vises ovenfor, så du kan "
+"redigere dem, mens rettigheder til at oprette kursus gives af "
+"{platform_name}. Vores team vurderer i øjeblikket din anmodning."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Your request is currently being reviewed by {platform_name} staff and should"
+" be updated shortly."
+msgstr ""
+"Din anmodning er i øjeblikket ved at blive gennemgået af {platform_name} "
+"personale og burde blive opdateret inden længe."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Were you expecting to see a particular library here?"
+msgstr "Havde du forventet at se et bestemt bibliotek her?"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"The library creator must give you access to the library. Contact the library"
+" creator or administrator for the library you are helping to author."
+msgstr ""
+"Bibliotekets skaber skal give dig adgang til biblioteket. Kontakt "
+"biblioteksopretteren eller administratoren for det bibliotek, du er med til "
+"at oprette."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Create Your First Library"
+msgstr "Opret dit første bibliotek"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Libraries hold a pool of components that can be re-used across multiple "
+"courses. Create your first library with the click of a button!"
+msgstr ""
+"Biblioteker har en pulje af komponenter, der kan genbruges på tværs af flere"
+" kurser. Opret dit første bibliotek med et klik på en knap!"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "New to {studio_name}?"
+msgstr "Ny på {studio_name}?"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Click Help in the upper-right corner to get more information about the "
+"{studio_name} page you are viewing. You can also use the links at the bottom"
+" of the page to access our continually updated documentation and other "
+"{studio_name} resources."
+msgstr ""
+"Klik på Hjælp i øverste højre hjørne for at få flere oplysninger om den "
+"{studio_name}-side, du ser. Du kan også bruge linkene nederst på siden for "
+"at få adgang til vores løbende opdaterede dokumentation og andre "
+"{studio_name} ressourcer."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Getting Started with {studio_name}"
+msgstr "Kom godt i gang med {studio_name}"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Can I create courses in {studio_name}?"
+msgstr "Kan jeg oprette kurser i {studio_name}?"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must {link_start}contact "
+"{platform_name} staff to help you create a course{link_end}."
+msgstr ""
+"For at oprette kurser i {studio_name} skal du {link_start}kontakte "
+"{platform_name} personale for at hjælpe dig med at oprette et "
+"kursus{link_end}."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must have course creator "
+"privileges to create your own course."
+msgstr ""
+"For at oprette kurser i {studio_name} skal du have kursusopretterrettigheder"
+" for at oprette dit eget kursus."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Your request to author courses in {studio_name} has been denied. Please "
+"{link_start}contact {platform_name} Staff with further questions{link_end}."
+msgstr ""
+"Din anmodning om at forfatte kurser i {studio_name} er blevet afvist. "
+"{link_start}Kontakt {platform_name} personale med yderligere "
+"spørgsmål{link_end}."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Thanks for signing up, {name}!"
+msgstr "Tak for din tilmelding, {name}!"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "We need to verify your email address"
+msgstr "Vi skal bekræfte din e-mailadresse"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Almost there! In order to complete your sign up we need you to verify your "
+"email address ({email}). An activation message and next steps should be "
+"waiting for you there."
+msgstr ""
+"Er der næsten! For at fuldføre din tilmelding skal du bekræfte din "
+"e-mailadresse ({email}). En aktiveringsmeddelelse og de næste trin skulle "
+"vente på dig der."
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Need help?"
+msgstr "Brug for hjælp?"
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Please check your Junk or Spam folders in case our email isn't in your "
+"INBOX. Still can't find the verification email? Request help via the link "
+"below."
+msgstr ""
+"Tjek venligst dine junk- eller spam-mapper, hvis vores e-mail ikke er i din "
+"INBOX. Kan du stadig ikke finde bekræftelsesmailen? Anmod om hjælp via "
+"nedenstående link."
+
+#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "User Access"
+msgstr "Brugeradgang"
+
+#: cms/templates/settings.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Schedule & Details"
+msgstr "Tidsplan og detaljer"
+
+#: cms/templates/settings.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
+"Identificer kursussproget her. Dette bruges til at hjælpe brugere med at "
+"finde kurser, der undervises på et bestemt sprog. Det bruges også til at "
+"lokalisere feltet 'Fra:' i massemails."
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -14642,18 +15451,45 @@ msgid "Requirements"
 msgstr "Forventede forudsætninger"
 
 #: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Expand or Collapse"
+msgstr "Udvid eller Skjul"
+
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr "Få adgang til indstillinger"
+
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr "Indstil adgang"
+
+#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "Detaljer"
+
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "This block contains multiple components."
+msgstr "Denne blok indeholder flere komponenter."
 
 #. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "Vis"
+
+#: cms/templates/videos_index.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Video Uploads"
+msgstr "Videouploads"
 
 #: cms/templates/maintenance/_announcement_edit.html
 #: lms/templates/problem.html lms/templates/word_cloud.html
@@ -14671,24 +15507,85 @@ msgstr "Nulstil"
 msgid "Legal"
 msgstr "Lovlig"
 
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Current Course:"
+msgstr "Nuværende kursus:"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Course Navigation"
+msgstr "Kursusnavigation"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Outline"
+msgstr "Omrids"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Publisher"
+msgstr "Forlægger"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Import"
+msgstr "Importere"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Export"
+msgstr "Eksport"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Current Library:"
+msgstr "Nuværende bibliotek:"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Language preference"
+msgstr "Sprogpræference"
+
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "Vælg sprog"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "Konto"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Account Navigation"
+msgstr "Kontonavigation"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Contextual Online Help"
+msgstr "Kontekstuel onlinehjælp"
 
 #: cms/templates/widgets/header.html
 #: lms/templates/header/navbar-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: lms/templates/static_templates/help.html wiki/plugins/help/wiki_plugin.py
+#: lms/templates/static_templates/help.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
+#: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Hjælp"
+
+#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Sign Up"
+msgstr "Tilmelde"
 
 #: cms/templates/widgets/tabs-aggregator.html
 #: lms/templates/courseware/static_tab.html
@@ -14698,6 +15595,7 @@ msgstr "navn"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "Log ud"
 
@@ -14854,14 +15752,17 @@ msgid "You do not have access to this dependency module."
 msgstr "Du har ikke adgang til dette afhængighedsmodul."
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "LÆR MERE"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "Start"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "Starter: {date}"
 
@@ -14871,6 +15772,7 @@ msgstr "Se alle kurser"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard"
 msgstr "Betjeningspanel"
 
@@ -14907,6 +15809,7 @@ msgid "Search Your Courses"
 msgstr "Søg efter dine kurser"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "Nulstil søgning"
 
@@ -15124,6 +16027,7 @@ msgid "External Authentication failed"
 msgstr "Ekstern Bekræftelse lykkedes ikke"
 
 #: lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr "organisations logo"
 
@@ -15194,6 +16098,8 @@ msgstr ""
 "tilgængelig på {link_start}fremskridtssiden {link_end} ."
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search for a course"
 msgstr "Søg efter et kursus"
 
@@ -15729,6 +16635,7 @@ msgstr ""
 "du {undo_link_start} tilmelde dig igen {link_end}."
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "Betjeningspanel for:"
 
@@ -15742,6 +16649,7 @@ msgstr "Flere muligheder"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr "Flere muligheder"
 
@@ -17568,6 +18476,7 @@ msgstr "{span_start}nuværende afsnit {span_end}"
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "frist: {date}"
 
@@ -17669,6 +18578,7 @@ msgid "Email someone to say you've enrolled in this course"
 msgstr "Send en e-mail og fortæl, at du har tilmeldt dig dette kursus"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr "Nuværende lokation"
 
@@ -17676,10 +18586,13 @@ msgstr "Nuværende lokation"
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "kræver opmærksomhed"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "Kursus Materiale"
 
@@ -17696,21 +18609,25 @@ msgid "Show Earlier Course Updates"
 msgstr "Vis tidligere kursusopdateringer"
 
 #: lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr "Kursus Liste"
 
 #: lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr "Indskrænk Din Søgning"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} Kursus"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Kursus Hjælpeværktøj"
 
@@ -17728,14 +18645,17 @@ msgstr ""
 "arbejder på at rette op på det så hurtigt som muligt."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Kursus Søgning"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Intet indhold til dette kursus"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -17745,6 +18665,7 @@ msgstr ""
 "højere på denne eksamen. Din nuværende score er {current_score} %."
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "Du har opnået {current_score}%. Du har bestået adgangsprøven."
 
@@ -17965,10 +18886,12 @@ msgid "Starts on {}"
 msgstr "Starter den {}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number} Udvikling"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "Se Karakter i studio"
 
@@ -17978,35 +18901,42 @@ msgstr "Kursusforløb for '{brugernavn}' ({email})"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Se Bevis"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "Åbner i et nyt browservindue"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr "Download dit Bevis"
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "Anmod om Bevis"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "Krav til Kursus Rabat"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr ""
 "{student_name}, du er ikke længere berettiget til rabat på dette kursus."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -18015,50 +18945,62 @@ msgstr ""
 " til dit betjeningspanel {a_end} for at købe kursuskredit."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr "{student_name}, du har endnu ikke opfyldt kravene for rabat."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "Information om kravene til kursusrabat"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "display_name"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "Bekræftelse Afgivet"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "Bekræftelse Lykkedes ikke"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "Bekræftelse Nægtet"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr "Udført af {date}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "Kommende"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "Mindre"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "Detaljer for hvert kapitel"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{earned} af {total} mulige points"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
@@ -18066,34 +19008,42 @@ msgstr ""
 "Eksamensresultat 0."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr "Sektionskarakteren er blevet tilsidesat."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "Problem Resultater:"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "Øvelses Resultater:"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr "Problemscore er skjult indtil forfaldsdatoen."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr "Øvelsesresultater er skjult indtil forfaldsdatoen."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr "Problemscore er skjult."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr "Øvelsesresultater er skjult."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "Ingen problem resultater i denne sektion"
 
@@ -19415,6 +20365,7 @@ msgid "{platform_name} Home Page"
 msgstr "{platform_name} Hjemmeside"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr "Indstillingsmenu"
 
@@ -19435,28 +20386,34 @@ msgid "{name} Dashboard"
 msgstr "{name} Dashboard"
 
 #: lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr "Supplerende links"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "How it Works"
 msgstr "Hvordan det Virker"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "Skoler"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr "Genoptag dit sidste kursus"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "Profil"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "Bestillings historik"
 
@@ -21906,10 +22863,6 @@ msgstr ""
 msgid "Studio Accessibility Policy"
 msgstr "Studietilgængelighedspolitik"
 
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr "Filer og uploads"
-
 #: cms/templates/certificates.html
 msgid "Course Certificates"
 msgstr "Kursusbeviser"
@@ -21994,70 +22947,13 @@ msgstr "Få mere at vide om certifikater"
 msgid "Details & Schedule"
 msgstr "Detaljer og tidsplan"
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Grading"
-msgstr "Bedømmelse"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/manage_users.html cms/templates/settings.html
-#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
-#: cms/templates/widgets/header.html
-msgid "Course Team"
-msgstr "Kursushold"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Advanced Settings"
-msgstr "Avancerede indstillinger"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr "overvåget eksamensindstillinger"
-
-#: cms/templates/checklists.html cms/templates/widgets/header.html
-msgid "Checklists"
-msgstr "Tjeklister"
-
-#: cms/templates/checklists.html cms/templates/export.html
-#: cms/templates/export_git.html cms/templates/import.html
-#: cms/templates/widgets/header.html
-msgid "Tools"
-msgstr "Værktøjer"
-
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Duplicate"
-msgstr "Duplikere"
-
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "Dupliker denne komponent"
 
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Move"
-msgstr "Bevæge sig"
-
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "Slet denne komponent"
-
-#: cms/templates/component.html cms/templates/edit-tabs.html
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Drag to reorder"
-msgstr "Træk for at omarrangere"
-
-#: cms/templates/container.html cms/templates/course-create-rerun.html
-#: cms/templates/course_info.html cms/templates/course_outline.html
-#: cms/templates/edit-tabs.html cms/templates/index.html
-#: cms/templates/library.html cms/templates/manage_users.html
-#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
-#: cms/templates/videos_index.html
-msgid "Page Actions"
-msgstr "Sidehandlinger"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -22147,152 +23043,6 @@ msgid ""
 msgstr ""
 "For at oprette et link til denne enhed fra en HTML-komponent i dette kursus "
 "skal du indtaste \"/jump_to_id/<location ID> \" som URL-værdi."
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a Course Rerun of:"
-msgstr "Opret en kursusgentagelse af:"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a re-run of a course"
-msgstr "Opret en genkørsel af et kursus"
-
-#: cms/templates/course-create-rerun.html
-msgid "You are creating a re-run from:"
-msgstr "Du opretter en genudsendelse fra:"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Provide identifying information for this re-run of the course. The original "
-"course is not affected in any way by a re-run."
-msgstr ""
-"Angiv identificerende oplysninger til denne gentagelse af kurset. Den "
-"oprindelige bane påvirkes ikke på nogen måde af en genkørsel."
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Note: Together, the organization, course number, and course run must "
-"uniquely identify this new course instance."
-msgstr ""
-"Bemærk: Tilsammen skal organisationen, kursusnummeret og kursusforløbet "
-"entydigt identificere denne nye kursusinstans."
-
-#: cms/templates/course-create-rerun.html
-msgid "Required Information to Create a re-run of a course"
-msgstr "Nødvendige oplysninger for at oprette en genudførelse af et kursus"
-
-#. Translators: This is an example name for a new course, seen when
-#. filling out the form to create a new course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. Introduction to Computer Science"
-msgstr "fx Introduktion til Datalogi"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The public display name for the new course. (This name is often the same as "
-"the original course name.)"
-msgstr ""
-"Det offentlige visningsnavn for det nye kursus. (Dette navn er ofte det "
-"samme som det originale kursusnavn.)"
-
-#. Translators: This is an example for the name of the organization sponsoring
-#. a course, seen when filling out the form to create a new course. The
-#. organization name cannot contain spaces.
-#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
-#. when user put no data into this field.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. UniversityX or OrganizationX"
-msgstr "fx UniversityX eller OrganisationX"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The name of the organization sponsoring the new course. (This name is often "
-"the same as the original organization name.)"
-msgstr ""
-"Navnet på den organisation, der sponsorerer det nye kursus. (Dette navn er "
-"ofte det samme som det oprindelige organisationsnavn.)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Note: No spaces or special characters are allowed."
-msgstr "Bemærk: Ingen mellemrum eller specialtegn er tilladt."
-
-#. Translators: This is an example for the number used to identify a course,
-#. seen when filling out the form to create a new course. The number here is
-#. short for "Computer Science 101". It can contain letters but cannot contain
-#. spaces.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. CS101"
-msgstr "fx CS101"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The unique number that identifies the new course within the organization.  "
-"(This number will be the same as the original course number and cannot be "
-"changed.)"
-msgstr ""
-"Det unikke nummer, der identificerer det nye kursus i organisationen. (Dette"
-" nummer vil være det samme som det oprindelige kursusnummer og kan ikke "
-"ændres.)"
-
-#. Translators: This is an example for the "run" used to identify different
-#. instances of a course, seen when filling out the form to create a new
-#. course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. 2014_T1"
-msgstr "fx 2014_T1"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The term in which the new course will run. (This value is often different "
-"than the original course run value.)"
-msgstr ""
-"Den periode, hvor det nye kursus løber. (Denne værdi er ofte anderledes end "
-"den oprindelige kursuskørselsværdi.)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create Re-run"
-msgstr "Opret Re-run"
-
-#: cms/templates/course-create-rerun.html
-msgid "When will my course re-run start?"
-msgstr "Hvornår starter mit kursus igen?"
-
-#: cms/templates/course-create-rerun.html
-msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-msgstr ""
-"Det nye kursus er indstillet til at starte den 1. januar 2030 ved midnat "
-"(UTC)."
-
-#: cms/templates/course-create-rerun.html
-msgid "What transfers from the original course?"
-msgstr "Hvad overføres fra det oprindelige kursus?"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The new course has the same course outline and content as the original "
-"course. All problems, videos, announcements, and other files are duplicated "
-"to the new course."
-msgstr ""
-"Det nye kursus har samme kursusoversigt og indhold som det oprindelige "
-"kursus. Alle problemer, videoer, meddelelser og andre filer duplikeres til "
-"det nye kursus."
-
-#: cms/templates/course-create-rerun.html
-msgid "What does not transfer from the original course?"
-msgstr "Hvad overføres ikke fra det oprindelige kursus?"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"You are the only member of the new course's staff. No students are enrolled "
-"in the course, and there is no student data. There is no content in the "
-"discussion topics or wiki."
-msgstr ""
-"Du er det eneste medlem af det nye kursuss personale. Ingen studerende er "
-"tilmeldt kurset, og der er ingen elevdata. Der er intet indhold i "
-"diskussionsemnerne eller wikien."
-
-#: cms/templates/course-create-rerun.html
-msgid "Learn more about Course Re-runs"
-msgstr "Få mere at vide om kursusgentagelser"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -22512,13 +23262,6 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "Få mere at vide om indstillinger for indholdssynlighed"
-
-#. Translators: Pages refer to the tabs that appear in the top navigation of
-#. each course.
-#: cms/templates/edit-tabs.html cms/templates/export.html
-#: cms/templates/widgets/header.html
-msgid "Pages"
-msgstr "sider"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -22933,10 +23676,6 @@ msgstr "Få mere at vide om eksport af et kursus"
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "Eksporter kursus til Git"
-
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr "Eksporter til Git"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -23598,398 +24337,6 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "Få mere at vide om import af et kursus"
 
-#: cms/templates/index.html
-msgid "New Course"
-msgstr "Nyt kursus"
-
-#: cms/templates/index.html
-msgid "Email staff to create course"
-msgstr "E-mail personale til at oprette kursus"
-
-#: cms/templates/index.html
-msgid "New Library"
-msgstr "Nyt bibliotek"
-
-#: cms/templates/index.html
-msgid "Please correct the highlighted fields below."
-msgstr "Ret venligst de fremhævede felter nedenfor."
-
-#: cms/templates/index.html
-msgid "Create a New Course"
-msgstr "Opret et nyt kursus"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Course"
-msgstr "Nødvendige oplysninger for at oprette et nyt kursus"
-
-#: cms/templates/index.html
-msgid ""
-"The public display name for your course. This cannot be changed, but you can"
-" set a different display name in Advanced Settings later."
-msgstr ""
-"Det offentlige visningsnavn for dit kursus. Dette kan ikke ændres, men du "
-"kan angive et andet visningsnavn i Avancerede indstillinger senere."
-
-#: cms/templates/index.html
-msgid ""
-"The name of the organization sponsoring the course. {strong_start}Note: The "
-"organization name is part of the course URL.{strong_end} This cannot be "
-"changed, but you can set a different display name in Advanced Settings "
-"later."
-msgstr ""
-"Navnet på den organisation, der sponsorerer kurset. {strong_start}Bemærk: "
-"Organisationens navn er en del af kursets URL. {strong_end} Dette kan ikke "
-"ændres, men du kan angive et andet visningsnavn i Avancerede indstillinger "
-"senere."
-
-#: cms/templates/index.html
-msgid ""
-"The unique number that identifies your course within your organization. "
-"{strong_start}Note: This is part of your course URL, so no spaces or special"
-" characters are allowed and it cannot be changed.{strong_end}"
-msgstr ""
-"Det unikke nummer, der identificerer dit kursus i din organisation. "
-"{strong_start}Bemærk: Dette er en del af din kursus-URL, så ingen mellemrum "
-"eller specialtegn er tilladt, og den kan ikke ændres. {strong_end}"
-
-#: cms/templates/index.html
-msgid ""
-"The term in which your course will run. {strong_start}Note: This is part of "
-"your course URL, so no spaces or special characters are allowed and it "
-"cannot be changed.{strong_end}"
-msgstr ""
-"Den periode, hvor dit kursus løber. {strong_start}Bemærk: Dette er en del af"
-" din kursus-URL, så ingen mellemrum eller specialtegn er tilladt, og den kan"
-" ikke ændres. {strong_end}"
-
-#: cms/templates/index.html
-msgid "Create"
-msgstr "Opret"
-
-#: cms/templates/index.html
-msgid "Create a New Library"
-msgstr "Opret et nyt bibliotek"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Library"
-msgstr "Nødvendige oplysninger for at oprette et nyt bibliotek"
-
-#: cms/templates/index.html
-msgid "Library Name"
-msgstr "Bibliotekets navn"
-
-#. Translators: This is an example name for a new content library, seen when
-#. filling out the form to create a new library.
-#. (A library is a collection of content or problems.)
-#: cms/templates/index.html
-msgid "e.g. Computer Science Problems"
-msgstr "fx Computer Science Problemer"
-
-#: cms/templates/index.html
-msgid "The public display name for your library."
-msgstr "Det offentlige visningsnavn for dit bibliotek."
-
-#: cms/templates/index.html
-msgid "The public organization name for your library."
-msgstr "Den offentlige organisations navn for dit bibliotek."
-
-#: cms/templates/index.html
-msgid "This cannot be changed."
-msgstr "Dette kan ikke ændres."
-
-#: cms/templates/index.html
-msgid "Library Code"
-msgstr "Bibliotekskode"
-
-#. Translators: This is an example for the "code" used to identify a library,
-#. seen when filling out the form to create a new library. This example is
-#. short
-#. for "Computer Science Problems". The example number may contain letters
-#. but must not contain spaces.
-#: cms/templates/index.html
-msgid "e.g. CSPROB"
-msgstr "fx CSPROB"
-
-#: cms/templates/index.html
-msgid ""
-"The unique code that identifies this library. {strong_start}Note: This is "
-"part of your library URL, so no spaces or special characters are "
-"allowed.{strong_end} This cannot be changed."
-msgstr ""
-"Den unikke kode, der identificerer dette bibliotek. {strong_start}Bemærk: "
-"Dette er en del af dit biblioteks webadresse, så ingen mellemrum eller "
-"specialtegn er tilladt. {strong_end} Dette kan ikke ændres."
-
-#: cms/templates/index.html
-msgid "Organization and Library Settings"
-msgstr "Organisation og biblioteksindstillinger"
-
-#: cms/templates/index.html
-msgid "Show all courses in organization:"
-msgstr "Vis alle kurser i organisationen:"
-
-#: cms/templates/index.html
-msgid "For example, MITx"
-msgstr "For eksempel MITx"
-
-#: cms/templates/index.html
-msgid "Courses Being Processed"
-msgstr "Kurser under behandling"
-
-#: cms/templates/index.html
-msgid "This course run is currently being created."
-msgstr "Dette kursusforløb er ved at blive oprettet."
-
-#. Translators: This is a status message, used to inform the user of
-#. what the system is doing. This status means that the user has
-#. requested to re-run an existing course, and the system is currently
-#. in the process of duplicating and configuring the existing course
-#. so that it can be re-run.
-#: cms/templates/index.html
-msgid "Configuring as re-run"
-msgstr "Konfigurerer som genkørsel"
-
-#: cms/templates/index.html
-msgid ""
-"The new course will be added to your course list in 5-10 minutes. Return to "
-"this page or {link_start}refresh it{link_end} to update the course list. The"
-" new course will need some manual configuration."
-msgstr ""
-"Det nye kursus vil blive tilføjet til din kursusliste om 5-10 minutter. Vend"
-" tilbage til denne side eller {link_start}opdater den {link_end} for at "
-"opdatere kursuslisten. Det nye kursus skal konfigureres manuelt."
-
-#. Translators: This is a status message for the course re-runs feature.
-#. When a course admin indicates that a course should be re-run, the system
-#. needs to process the request and prepare the new course. The status of
-#. the process will follow this text.
-#: cms/templates/index.html
-msgid "This re-run processing status:"
-msgstr "Denne genkørende behandlingsstatus:"
-
-#: cms/templates/index.html
-msgid "Configuration Error"
-msgstr "Konfigurationsfejl"
-
-#: cms/templates/index.html
-msgid ""
-"A system error occurred while your course was being processed. Please go to "
-"the original course to try the re-run again, or contact your PM for "
-"assistance."
-msgstr ""
-"Der opstod en systemfejl, mens dit kursus blev behandlet. Gå til det "
-"originale kursus for at prøve at køre igen, eller kontakt din PM for at få "
-"hjælp."
-
-#: cms/templates/index.html
-msgid "Archived Courses"
-msgstr "Arkiverede kurser"
-
-#: cms/templates/index.html
-msgid "Libraries"
-msgstr "Biblioteker"
-
-#: cms/templates/index.html
-msgid "Are you staff on an existing {studio_name} course?"
-msgstr "Er du personale på et eksisterende {studio_name} kursus?"
-
-#: cms/templates/index.html
-msgid ""
-"The course creator must give you access to the course. Contact the course "
-"creator or administrator for the course you are helping to author."
-msgstr ""
-"Kursusopretteren skal give dig adgang til kurset. Kontakt kursusophavsmanden"
-" eller -administratoren for det kursus, du er med til at forfatte."
-
-#: cms/templates/index.html
-msgid "Create Your First Course"
-msgstr "Opret dit første kursus"
-
-#: cms/templates/index.html
-msgid "Your new course is just a click away!"
-msgstr "Dit nye kursus er kun et klik væk!"
-
-#: cms/templates/index.html
-msgid "Becoming a Course Creator in {studio_name}"
-msgstr "At blive kursusskaber i {studio_name}"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team will evaluate your request and provide you feedback within 24 hours "
-"during the work week."
-msgstr ""
-"{studio_name} er en hostet løsning for vores xConsortium-partnere og "
-"udvalgte gæster. Kurser, som du er teammedlem for, vises ovenfor, så du kan "
-"redigere dem, mens rettigheder til at oprette kursus gives af "
-"{platform_name} . Vores team vil evaluere din anmodning og give dig feedback"
-" inden for 24 timer i løbet af arbejdsugen."
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status:"
-msgstr "Status for din kursusopretteranmodning:"
-
-#: cms/templates/index.html
-msgid "Request the Ability to Create Courses"
-msgstr "Anmod om evnen til at oprette kurser"
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status"
-msgstr "Status for din kursusopretteranmodning"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is has completed evaluating your request."
-msgstr ""
-"{studio_name} er en hostet løsning for vores xConsortium-partnere og "
-"udvalgte gæster. Kurser, som du er teammedlem for, vises ovenfor, så du kan "
-"redigere dem, mens rettigheder til at oprette kursus gives af "
-"{platform_name} . Vores team er færdig med at evaluere din anmodning."
-
-#: cms/templates/index.html
-msgid "Your Course Creator request is:"
-msgstr "Din anmodning om kursusskaber er:"
-
-#: cms/templates/index.html
-msgid ""
-"Your request did not meet the criteria/guidelines specified by "
-"{platform_name} Staff."
-msgstr ""
-"Din anmodning opfyldte ikke kriterierne/retningslinjerne specificeret af "
-"{platform_name} personale."
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is currently  evaluating your request."
-msgstr ""
-"{studio_name} er en hostet løsning for vores xConsortium-partnere og "
-"udvalgte gæster. Kurser, som du er teammedlem for, vises ovenfor, så du kan "
-"redigere dem, mens rettigheder til at oprette kursus gives af "
-"{platform_name} . Vores team er i øjeblikket ved at evaluere din anmodning."
-
-#: cms/templates/index.html
-msgid ""
-"Your request is currently being reviewed by {platform_name} staff and should"
-" be updated shortly."
-msgstr ""
-"Din anmodning er i øjeblikket ved at blive gennemgået af {platform_name} "
-"personale og burde blive opdateret inden længe."
-
-#: cms/templates/index.html
-msgid "Were you expecting to see a particular library here?"
-msgstr "Havde du forventet at se et bestemt bibliotek her?"
-
-#: cms/templates/index.html
-msgid ""
-"The library creator must give you access to the library. Contact the library"
-" creator or administrator for the library you are helping to author."
-msgstr ""
-"Bibliotekets skaber skal give dig adgang til biblioteket. Kontakt "
-"biblioteksopretteren eller administratoren for det bibliotek, du er med til "
-"at oprette."
-
-#: cms/templates/index.html
-msgid "Create Your First Library"
-msgstr "Opret dit første bibliotek"
-
-#: cms/templates/index.html
-msgid ""
-"Libraries hold a pool of components that can be re-used across multiple "
-"courses. Create your first library with the click of a button!"
-msgstr ""
-"Biblioteker har en pulje af komponenter, der kan genbruges på tværs af flere"
-" kurser. Opret dit første bibliotek med et klik på en knap!"
-
-#: cms/templates/index.html
-msgid "New to {studio_name}?"
-msgstr "Ny på {studio_name} ?"
-
-#: cms/templates/index.html
-msgid ""
-"Click Help in the upper-right corner to get more information about the "
-"{studio_name} page you are viewing. You can also use the links at the bottom"
-" of the page to access our continually updated documentation and other "
-"{studio_name} resources."
-msgstr ""
-"Klik på Hjælp i øverste højre hjørne for at få flere oplysninger om den "
-"{studio_name} -side, du ser. Du kan også bruge linkene nederst på siden for "
-"at få adgang til vores løbende opdaterede dokumentation og andre "
-"{studio_name} ressourcer."
-
-#: cms/templates/index.html
-msgid "Getting Started with {studio_name}"
-msgstr "Kom godt i gang med {studio_name}"
-
-#: cms/templates/index.html
-msgid "Can I create courses in {studio_name}?"
-msgstr "Kan jeg oprette kurser i {studio_name} ?"
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must {link_start}contact "
-"{platform_name} staff to help you create a course{link_end}."
-msgstr ""
-"For at oprette kurser i {studio_name} skal du {link_start}kontakte "
-"{platform_name} personale for at hjælpe dig med at oprette et kursus "
-"{link_end} ."
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must have course creator "
-"privileges to create your own course."
-msgstr ""
-"For at oprette kurser i {studio_name} skal du have kursusopretterrettigheder"
-" for at oprette dit eget kursus."
-
-#: cms/templates/index.html
-msgid ""
-"Your request to author courses in {studio_name} has been denied. Please "
-"{link_start}contact {platform_name} Staff with further questions{link_end}."
-msgstr ""
-"Din anmodning til forfatterkurser i {studio_name} er blevet afvist. "
-"{link_start}Kontakt {platform_name}-medarbejdere med yderligere spørgsmål "
-"{link_end} ."
-
-#: cms/templates/index.html
-msgid "Thanks for signing up, {name}!"
-msgstr "Tak for din tilmelding, {name} !"
-
-#: cms/templates/index.html
-msgid "We need to verify your email address"
-msgstr "Vi skal bekræfte din e-mailadresse"
-
-#: cms/templates/index.html
-msgid ""
-"Almost there! In order to complete your sign up we need you to verify your "
-"email address ({email}). An activation message and next steps should be "
-"waiting for you there."
-msgstr ""
-"Er der næsten! For at fuldføre din tilmelding skal du bekræfte din "
-"e-mailadresse ( {email} ). En aktiveringsmeddelelse og de næste trin skulle "
-"vente på dig der."
-
-#: cms/templates/index.html
-msgid "Need help?"
-msgstr "Brug for hjælp?"
-
-#: cms/templates/index.html
-msgid ""
-"Please check your Junk or Spam folders in case our email isn't in your "
-"INBOX. Still can't find the verification email? Request help via the link "
-"below."
-msgstr ""
-"Tjek venligst dine junk- eller spam-mapper, hvis vores e-mail ikke er i din "
-"INBOX. Kan du stadig ikke finde bekræftelsesmailen? Anmod om hjælp via "
-"nedenstående link."
-
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "Indholdsbibliotek"
@@ -24136,10 +24483,6 @@ msgstr ""
 msgid "Library User Access"
 msgstr "Bibliotek brugeradgang"
 
-#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
-msgid "User Access"
-msgstr "Brugeradgang"
-
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "Giv adgang til dette bibliotek"
@@ -24202,10 +24545,6 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "Indstillinger for tidsplan og detaljer"
-
-#: cms/templates/settings.html cms/templates/widgets/header.html
-msgid "Schedule & Details"
-msgstr "Tidsplan og detaljer"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -24485,16 +24824,6 @@ msgstr "Kursusdetaljer"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "Giv nyttige oplysninger om dit kursus"
-
-#: cms/templates/settings.html
-msgid ""
-"Identify the course language here. This is used to assist users find courses"
-" that are taught in a specific language. It is also used to localize the "
-"'From:' field in bulk emails."
-msgstr ""
-"Identificer kursussproget her. Dette bruges til at hjælpe brugere med at "
-"finde kurser, der undervises på et bestemt sprog. Det bruges også til at "
-"lokalisere feltet 'Fra:' i massemails."
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -24973,22 +25302,6 @@ msgstr ""
 "eksamener, og angive, hvor meget af en elevs karakter hver opgavetype er "
 "værd."
 
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Expand or Collapse"
-msgstr "Udvid eller Skjul"
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr "Få adgang til indstillinger"
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr "Indstil adgang"
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "This block contains multiple components."
-msgstr "Denne blok indeholder flere komponenter."
-
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr "Sider og ressourcer"
@@ -25030,10 +25343,6 @@ msgstr ""
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "Lær mere om lærebøger"
-
-#: cms/templates/videos_index.html cms/templates/widgets/header.html
-msgid "Video Uploads"
-msgstr "Videouploads"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -25333,50 +25642,6 @@ msgstr "Anmodning om tilgængelighed"
 #: cms/templates/widgets/footer.html
 msgid "LMS"
 msgstr "LMS"
-
-#: cms/templates/widgets/header.html
-msgid "Current Course:"
-msgstr "Nuværende kursus:"
-
-#: cms/templates/widgets/header.html
-msgid "Course Navigation"
-msgstr "Kursusnavigation"
-
-#: cms/templates/widgets/header.html
-msgid "Outline"
-msgstr "Omrids"
-
-#: cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr "Forlægger"
-
-#: cms/templates/widgets/header.html
-msgid "Import"
-msgstr "Importere"
-
-#: cms/templates/widgets/header.html
-msgid "Export"
-msgstr "Eksport"
-
-#: cms/templates/widgets/header.html
-msgid "Current Library:"
-msgstr "Nuværende bibliotek:"
-
-#: cms/templates/widgets/header.html
-msgid "Language preference"
-msgstr "Sprog præference"
-
-#: cms/templates/widgets/header.html
-msgid "Account Navigation"
-msgstr "Kontonavigation"
-
-#: cms/templates/widgets/header.html
-msgid "Contextual Online Help"
-msgstr "Kontekstuel onlinehjælp"
-
-#: cms/templates/widgets/header.html
-msgid "Sign Up"
-msgstr "Tilmelde"
 
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
