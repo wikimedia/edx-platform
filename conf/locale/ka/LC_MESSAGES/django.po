@@ -63,7 +63,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-02 19:04+0000\n"
+"POT-Creation-Date: 2025-10-02 19:33+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Georgian (https://app.transifex.com/open-edx/teams/6205/ka/)\n"
@@ -1309,6 +1309,10 @@ msgstr ""
 msgid "Enrollment activity report"
 msgstr ""
 
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Certificate of Achievement"
+msgstr ""
+
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Discussion' refers to the tab in the courseware that leads to
 #. the discussion forums
@@ -1401,14 +1405,9 @@ msgstr "ვიდეოს ID"
 #. yet reached the point in its processing by the servers where its
 #. duration is determined.
 #: cms/djangoapps/contentstore/views/videos.py
-#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: openedx/core/djangoapps/api_admin/models.py
 msgid "Pending"
 msgstr "მომლოდინე"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-msgid "Organization"
-msgstr "ორგანიზაცია"
 
 #: cms/envs/common.py lms/djangoapps/instructor/views/api.py
 #: lms/envs/common.py
@@ -1494,8 +1493,6 @@ msgstr "ჩარიცხული ხართ ღირსების კო
 #: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/static_templates/honor.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "ღირსების კოდექსი"
 
@@ -1636,7 +1633,6 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login_form.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "პაროლი"
 
@@ -3033,14 +3029,8 @@ msgstr "პრობლემა დაფიქსირდა პერსო�
 #. answers.
 #. Translators: Separator used in StringResponse to display multiple answers.
 #. Example: "Answer: Answer_1 or Answer_2 or Answer_3".
-#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
-#. Translators: this is the last choice of a number of choices of how to log
-#. in
-#. to the site.
 #: common/lib/capa/capa/responsetypes.py
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "ან"
 
@@ -3508,7 +3498,7 @@ msgstr ""
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/stanford-style/lms/templates/register-shib.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Submit"
 msgstr "გაგზავნა"
 
@@ -4460,7 +4450,7 @@ msgstr ""
 " იყოს სრულად კვალიფიცირებული. მაგ: http://www.edx.org/course/Introduction-"
 "to-MOOCs-ITM001"
 
-#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
+#: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Language"
 msgstr "კურსის ენა"
 
@@ -4795,7 +4785,6 @@ msgid "Any Type"
 msgstr "ნებისმიერი ტიპი"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
-#: cms/templates/widgets/header.html
 msgid "Library"
 msgstr "ბიბლიოთეკა"
 
@@ -5287,9 +5276,6 @@ msgstr ""
 "moocsupport@mathworks.com-ს."
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
 msgid "Group Configurations"
 msgstr "ჯგუფის კონფიგურაცია"
 
@@ -5658,6 +5644,9 @@ msgstr "მთავარი"
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "კურსი"
 
@@ -5669,9 +5658,6 @@ msgstr ""
 #: lms/templates/oauth2_provider/authorize.html
 #: openedx/core/djangoapps/user_api/admin.py
 #: openedx/features/wikimedia_features/messenger/views.py
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
-#: cms/templates/videos_index_pagination.html
 msgid "Cancel"
 msgstr "გაუქმება"
 
@@ -6094,12 +6080,12 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
+#: lms/templates/signup_modal.html
 msgid "Close"
 msgstr "დახურვა"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -6120,6 +6106,7 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr ""
 
@@ -6130,6 +6117,7 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -6147,6 +6135,7 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -6259,14 +6248,6 @@ msgid ""
 "this request, please contact us immediately. Contact information is listed "
 "at:"
 msgstr ""
-
-#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
-msgid ""
-"We keep a log of old e-mails, so if this request was unintentional, we can "
-"investigate."
-msgstr ""
-"ჩვენ ვაწარმოებთ ძველი ელ-ფოსტების ჟურნალს, ასე რომ თუ ეს მოულოდნელი მოთხოვნა"
-" იყო, შეგვიძლია გამოვიძიოთ."
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -6517,12 +6498,7 @@ msgstr ""
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Open edX' is a trademark, please keep this untranslated.
 #. See http://openedx.org for more information.
-#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
-#. Translators: 'Open edX' is a brand, please keep this untranslated. See
-#. http://openedx.org for more information.
-#: lms/djangoapps/branding/api.py cms/templates/widgets/footer.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
+#: lms/djangoapps/branding/api.py
 msgid "Powered by Open edX"
 msgstr "მუშაობს Open edX-ზე"
 
@@ -6530,9 +6506,7 @@ msgstr "მუშაობს Open edX-ზე"
 msgid "Blog"
 msgstr "ბლოგი"
 
-#: lms/djangoapps/branding/api.py cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
+#: lms/djangoapps/branding/api.py
 msgid "Contact Us"
 msgstr "დაგვიკავშირდით"
 
@@ -6551,9 +6525,8 @@ msgstr "შემოწირულობა"
 
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "შესახებ"
 
@@ -6563,19 +6536,14 @@ msgid "{platform_name} for Business"
 msgstr ""
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/contact.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "კონტაქტი"
 
 #: lms/djangoapps/branding/api.py
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Careers"
 msgstr "ვაკანსია"
 
-#: lms/djangoapps/branding/api.py themes/red-theme/lms/templates/footer.html
+#: lms/djangoapps/branding/api.py
 msgid "News"
 msgstr "სიახლე"
 
@@ -6589,10 +6557,7 @@ msgstr "მომსახურების პირობები & ღი�
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "Privacy Policy"
 msgstr "კონფიდენციალურობის პოლიტიკა"
 
@@ -6606,9 +6571,6 @@ msgstr "ხელმისაწვდომობის პოლიტიკ�
 #: lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "მომსახურების პირობები"
 
@@ -6922,7 +6884,6 @@ msgstr ""
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr "ყველა უფლება დაცულია"
 
@@ -7629,7 +7590,6 @@ msgstr ""
 #. Translators: 'Textbooks' refers to the tab in the course that leads to the
 #. course' textbooks
 #: lms/djangoapps/courseware/plugins.py lms/djangoapps/courseware/tabs.py
-#: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Textbooks"
 msgstr "სახელმძღვანელოები"
 
@@ -7790,7 +7750,7 @@ msgstr ""
 #: openedx/features/course_experience/views/course_home_messages.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "შესვლა"
 
@@ -8171,7 +8131,6 @@ msgstr ""
 #: lms/djangoapps/instructor/views/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "სქესი"
 
@@ -8180,7 +8139,6 @@ msgid "Level of Education"
 msgstr "განათლების დონე"
 
 #: lms/djangoapps/instructor/views/api.py
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Mailing Address"
 msgstr "საფოსტო მისამართი"
 
@@ -8224,13 +8182,11 @@ msgstr "გუნდი"
 #: openedx/core/djangoapps/user_api/accounts/settings_views.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "ქალაქი"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "ქვეყანა"
 
@@ -8626,8 +8582,7 @@ msgid "Special Exams"
 msgstr "სპეციალური გამოცდა"
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
-#: lms/djangoapps/support/views/index.py cms/templates/certificates.html
-#: cms/templates/export.html cms/templates/widgets/header.html
+#: lms/djangoapps/support/views/index.py
 msgid "Certificates"
 msgstr "სერტიფიკატები"
 
@@ -8751,8 +8706,6 @@ msgstr ""
 #: lms/djangoapps/instructor/views/tools.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "სრული სახელი"
 
@@ -9065,7 +9018,6 @@ msgstr " ({total}-დან)"
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "პროგრამები"
 
@@ -9855,6 +9807,8 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
+#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "მთავარ შინაარსზე გადასვლა"
 
@@ -10053,7 +10007,6 @@ msgstr "სტატიის წაშლა"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -10095,7 +10048,9 @@ msgstr "თქვენ შლით სტატიას. გთხოვთ �
 
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "რედაქტირება"
@@ -10121,8 +10076,6 @@ msgstr "ვიკის გადახედვა"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "ფანჯარა ღიაა"
 
@@ -10381,8 +10334,9 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "ძიება"
@@ -10486,54 +10440,53 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
-#: cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Sign In"
 msgstr "შესვლა"
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -10542,6 +10495,7 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -10608,7 +10562,7 @@ msgstr ""
 "მომხმარებლების მძიმით გამოყოფილი ჩამონათვალი, რომლებიც ამ კატალოგის ნახვას "
 "შეძლებენ."
 
-#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: openedx/core/djangoapps/api_admin/models.py
 msgid "Denied"
 msgstr "უარყოფილი"
 
@@ -10643,6 +10597,7 @@ msgstr ""
 
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "სანიშნე"
 
@@ -10774,11 +10729,6 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-msgid "Course Run"
-msgstr "კურსის გაშვება"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -11614,7 +11564,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -11624,7 +11573,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -11653,7 +11601,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -12159,8 +12106,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
-#: themes/stanford-style/lms/templates/register-form.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Register"
 msgstr "დარეგისტრირება"
 
@@ -12371,8 +12317,6 @@ msgid "This name will be used on any certificates that you earn."
 msgstr ""
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "მომხმარებლის საჯარო სახელი"
 
@@ -12736,6 +12680,7 @@ msgstr ""
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "განახლებები"
 
@@ -12924,6 +12869,8 @@ msgstr ""
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "კურსის სახელწოდება"
 
@@ -12933,7 +12880,9 @@ msgstr "კურსის სახელწოდება"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Courses"
 msgstr "კურსები"
 
@@ -12945,10 +12894,6 @@ msgstr "ანგარიშები"
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/edx_ace/threadcreationnotification/email/body.html
 #: lms/templates/course_modes/fbe.html
 msgid "Show more"
-msgstr ""
-
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
-msgid "Our mailing address is"
 msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
@@ -13871,11 +13816,17 @@ msgstr "გვერდი ვერ მოიძებნა"
 msgid "Page not found"
 msgstr "გვერდი ვერ მოიძებნა"
 
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Files & Uploads"
+msgstr ""
+
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "შინაარსი"
 
@@ -13884,6 +13835,7 @@ msgstr "შინაარსი"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
@@ -13896,38 +13848,91 @@ msgstr "პარამეტრები"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "მიმდინარეობს ჩატვირთვა"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr ""
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr ""
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "კურსის ნომერი"
+
+#: cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
 
 #: cms/templates/html_error.html lms/templates/module-error.html
 msgid "Error:"
 msgstr "შეცდომა:"
 
 #: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr ""
+
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "For example, MITx"
+msgstr ""
+
+#: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "ორგანიზაცია:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "კურსის ნომერი:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "კურსის მსვლელობა:"
 
-#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "example: username@domain.com"
-msgstr "მაგალითი : username@domain.com"
+#: cms/templates/index.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid "Archived Courses"
+msgstr ""
+
+#: cms/templates/settings.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -13938,8 +13943,19 @@ msgid "Requirements"
 msgstr "მოთხოვნები"
 
 #: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "დეტალები"
 
@@ -13947,6 +13963,7 @@ msgstr "დეტალები"
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "ნახვა"
@@ -13964,27 +13981,20 @@ msgid "Reset"
 msgstr "პარამეტრების ჩამოყრა"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "იურიდიული"
-
-#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
-#. not translate any of these trademarks and company names.
-#: cms/templates/widgets/footer.html
-#: themes/red-theme/lms/templates/footer.html
-msgid ""
-"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-"{link_start}edX Inc.{link_end}"
-msgstr ""
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "აირჩიეთ ენა"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "ანგარიში"
 
@@ -13993,7 +14003,8 @@ msgstr "ანგარიში"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "დახმარება"
@@ -14006,6 +14017,7 @@ msgstr "სახელი"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "გასვლა"
 
@@ -14154,14 +14166,17 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "შეიტყვეთ მეტი"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "იწყება"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "იწყება: {date}"
 
@@ -14171,19 +14186,19 @@ msgstr "ყველა კურსის ნახვა"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard"
 msgstr "მართვის დაფა"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "თქვენ ჯერ არ ჩარიცხულხართ არცერთ კურსში."
 
@@ -14191,7 +14206,6 @@ msgstr "თქვენ ჯერ არ ჩარიცხულხართ �
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr "გადახედეთ კურსებს"
 
@@ -14200,16 +14214,16 @@ msgstr "გადახედეთ კურსებს"
 msgid "Activate your account!"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr " შეცდომები კურსის ჩატვირთვისას"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "ეძიეთ თქვენი კურსები"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "საძიებო ველის გაწმენდა"
 
@@ -14217,7 +14231,7 @@ msgstr "საძიებო ველის გაწმენდა"
 msgid "Skip to list of announcements"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -14236,15 +14250,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "ელფოსტის პარამეტრები კურსისთვის: {course_number}"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "კურსის შეტყობინებების მიღება"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "პარამეტრების შენახვა"
 
@@ -14253,8 +14267,6 @@ msgstr "პარამეტრების შენახვა"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "ჩარიცხვის გაუქმება"
 
@@ -14404,6 +14416,7 @@ msgid "External Authentication failed"
 msgstr "გარე ავთენტიფიკაცია ვერ მოხერხდა"
 
 #: lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr ""
 
@@ -14425,8 +14438,6 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "საჭირო ინფორმაცია"
 
@@ -14471,7 +14482,8 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search for a course"
 msgstr "კურსის ძიება"
 
@@ -14719,8 +14731,6 @@ msgstr ""
 "მათი მომსახურების პირობებითა და კონფიდენციალურობის პოლიტიკით."
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "ელფოსტა"
 
@@ -14807,7 +14817,6 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr ""
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "შეიყვანეთ მომხმარებლის საჯარო სახელი:"
 
@@ -14824,19 +14833,14 @@ msgid "Goals in signing up for {platform_name}"
 msgstr " {platform_name}-ზე ჩაწერის მიზნები"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "ვეთანხმები {link_start}მომსახურების პირობებს{link_end}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "ვეთანხმები {link_start}ღირსების კოდექსს{link_end}"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "შექმენი ჩემი ანგარიში"
 
@@ -15013,6 +15017,7 @@ msgstr ""
 "გამოიწეროთ{link_end}."
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "მართვის დაფა:"
 
@@ -15026,6 +15031,7 @@ msgstr ""
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr ""
 
@@ -16253,7 +16259,6 @@ msgid "Download student grades"
 msgstr "სტუდენტის ნიშნების ჩამოტვირთვა"
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "თქვენი სერტიფიკატის ბეჭდვა ან გაზიარება:"
 
@@ -16267,7 +16272,6 @@ msgstr "დაპოსტეთ Facebook-ზე"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "გააზიარეთ Twitter-ზე"
 
@@ -16276,7 +16280,6 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "გამოაქვეყნეთ ეს წარმატება. გაიხსნება ამომხტარ ფანჯარაში."
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "LinkedIn პროფილზე დამატება"
 
@@ -16295,10 +16298,6 @@ msgstr "{platform_name}-ის მთავარი გვერდი"
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Noted by"
 msgstr "ჩანიშნულია:"
-
-#: lms/templates/certificates/_accomplishment-rendering.html
-msgid "Certificate of Achievement"
-msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
@@ -16376,40 +16375,31 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "მიიღეთ დამოწმებული სერტიფიკატი"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr "ჩაირიცხეთ {course_name}-ზე | აირჩიეთ თქვენი სწავლების მეთოდი"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "ვწუხვართ, თქვენი ჩარიცხვის დროს დაფიქსირდა შეცდომა"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "დამოწმებულ სერტიფიკატთან ერთად მოიპოვეთ აკადემიური კრედიტ ქულები"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -16422,12 +16412,10 @@ msgstr ""
 "სამსახურში მოსაწყობად."
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
@@ -16436,33 +16424,28 @@ msgstr ""
 "კრედიტი კურსის წარმატებით დასრულების შემდეგ"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "დამოწმებული სერტიფიკატის უპირატესობები"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -16471,14 +16454,12 @@ msgstr ""
 "სერტიფიკატი ინსტიტუტის ლოგოთი"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -16490,7 +16471,6 @@ msgstr ""
 "სასწავლებლის განაცხადებში."
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
@@ -16499,14 +16479,12 @@ msgstr ""
 "სერტიფიკატი ინსტიტუტის ლოგოთი"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
@@ -16515,12 +16493,10 @@ msgstr ""
 "დასამთავრებლად"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "ამ კურსზე თავისუფალ მსმენელად დასწრება"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
@@ -16529,12 +16505,10 @@ msgstr ""
 "კურსის ყველა სახის სასწავლო მასალაზე, აქტივობებზე, ტესტებსა და ფორუმებზე."
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "ამ კურსზე თავისუფალ მსმენელად დასწრება (სერტიფიკატის გარეშე)"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -16542,7 +16516,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -16550,7 +16523,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -16558,7 +16530,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -16656,6 +16627,7 @@ msgstr "{span_start}მიმდინარე მონაკვეთი{span
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "{date}-მდე"
 
@@ -16678,7 +16650,6 @@ msgstr "თქვენ ჩაირიცხეთ ამ კურსზე"
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "იხილეთ კურსი"
 
@@ -16733,7 +16704,6 @@ msgid "enroll"
 msgstr "ჩარიცხვა"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "გაუზიარეთ მეგობრებსა და ოჯახის წევრებს!"
 
@@ -16750,7 +16720,6 @@ msgid "Take a course with {platform} online"
 msgstr "აიღე ონლაინ კურსი {platform}-დან"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "დატვიტეთ თქვენი ამ კურსზე ჩარიცხვის შესახებ"
 
@@ -16760,12 +16729,12 @@ msgstr ""
 "დაპოსტეთ Facebook-ზე და შეატყობინეთ მეგობრებს კურსზე ჩარიცხვის შესახებ"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr ""
 "ელფოსტის საშუალებით ვინმეს შეატყობინეთ თქვენი ამ კურსზე ჩარიცხვის შესახებ"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr ""
 
@@ -16773,10 +16742,13 @@ msgstr ""
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "საჭიროა ყურადღების მიქცევა"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "კურსის მასალა"
 
@@ -16793,21 +16765,25 @@ msgid "Show Earlier Course Updates"
 msgstr "კურსის ძველი განახლებების ნახვა"
 
 #: lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr "კურსების სია"
 
 #: lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr "დააზუსტეთ თქვენი ძიება"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} კურსის შინაარსი"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "კურსის დამხმარე მასალა"
 
@@ -16823,14 +16799,17 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "კურსის ძებნა"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "ამ კურსში შინაარსი არ დამატებულა"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16838,6 +16817,7 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "თქვენი ქულაა {current_score}%. თქვენ ჩააბარეთ მისაღები გამოცდა."
 
@@ -16915,7 +16895,6 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "კურსზე დაბრუნება"
 
@@ -17055,10 +17034,12 @@ msgid "Starts on {}"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number} პროგრესი"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "შეფასებების სტუდიოში ნახვა"
 
@@ -17068,35 +17049,42 @@ msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "სერტიფიკატის ნახვა"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "გაიხსნება ბრაუზერის ახალ ფანჯარაში"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr " სერტიფიკატის მოთხოვნა"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "კურსის კრედიტის მიღების პირობები"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr ""
 "{student_name}, თქვენ აღარ გაქვთ ამ კურზე კრედიტ ქულების მიღების უფლება"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -17106,85 +17094,105 @@ msgstr ""
 "თქვენს მართვის დაფაზე{a_end}."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr ""
 "{student_name}, თქვენ ჯერ არ დაგიკმაყოფილებიათ კრედიტ ქულების მიღებასთან "
 "დაკავშირებული მოთხოვნები."
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "ინფორმაცია კურსის კრედიტის მოთხოვნების შესახებ"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "display_name"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "მონაცემები გაგზავნილია დასადასტურებლად"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "დადასტურება ვერ შესრულდა"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "დადასტურება უარყოფილია"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr "დასრულდა {date}"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "მოახლოებული"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "ნაკლები"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "დეტალები თითოეული თავისთვის"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "მიღებულია {earned} - {total} შესაძლო ქულიდან"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "პრობლემური ქულები:"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "პრაქტიკული ქულები:"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr ""
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "ამ სექციაში პრობლემური შეფასებები არ არის"
 
@@ -17448,7 +17456,6 @@ msgid "Share {course_name} on Facebook"
 msgstr ""
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "Facebook-ზე გაზიარება"
 
@@ -18310,9 +18317,6 @@ msgstr "მადლობა,"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
-#: themes/stanford-style/lms/templates/embargo/default_courseware.html
-#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
-#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "ეს კურსი მიუწვდომელია თქვენს ქვეყანაში"
 
@@ -18440,6 +18444,7 @@ msgid "{platform_name} Home Page"
 msgstr "{platform_name} მთავარი გვერდი"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr ""
 
@@ -18452,7 +18457,6 @@ msgstr ""
 "არ არის. ჩვენ გირჩევთ {chrome_link} ან  {ff_link} გამოყენებას."
 
 #: lms/templates/header/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr ""
 
@@ -18461,29 +18465,34 @@ msgid "{name} Dashboard"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "How it Works"
 msgstr "როგორ მუშაობს"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "სკოლები"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "პროფილი"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "შეკვეთების ისტორია"
 
@@ -19955,7 +19964,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "ჩემი კურსები"
 
@@ -20248,12 +20256,10 @@ msgid ""
 msgstr ""
 
 #: lms/templates/static_templates/faq.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "ხშირად დასმული კითხვები"
 
 #: lms/templates/static_templates/jobs.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "სამუშაოები"
 
@@ -20754,7 +20760,6 @@ msgid "You haven't earned any certificates yet."
 msgstr ""
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "ახალი კურსების გადათვალიერება"
 
@@ -20775,403 +20780,10 @@ msgstr ""
 msgid "An error occurred. Try loading the page again."
 msgstr "დაფიქსირდა შეცდომა. კიდევ სცადეთ  გვერდის ჩამოტვირთვა."
 
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid ""
-"Access Course Staff Support on the Partner Portal to submit or review "
-"support tickets"
-msgstr ""
-
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "edX Partner Portal"
-msgstr ""
-
-#: themes/edx.org/lms/templates/dashboard.html
-msgid ""
-"Browse recently launched courses and see what's new in your favorite "
-"subjects."
-msgstr ""
-
-#: themes/edx.org/lms/templates/dashboard.html
-msgid "Take advantage of free coaching!"
-msgstr ""
-
-#: themes/edx.org/lms/templates/dashboard.html
-msgid "Get Started"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "Page Footer"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "edX Home Page"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "Connect"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "© {year} edX Inc. All rights reserved."
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
-msgid "About edX Verified Certificates"
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
-msgid ""
-"An edX Verified Certificate signifies that the learner has agreed to abide "
-"by the edX honor code and completed all of the required tasks of this course"
-" under its guidelines, as well as having their photo ID checked to verify "
-"their identity."
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-edx.html
-msgid "About edX"
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-edx.html
-msgid ""
-"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
-"the world's best universities, including MIT, Harvard, Berkeley, University "
-"of Texas, and many others. edX is a mission driven initiative created by "
-"founding partners Harvard and MIT."
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Congratulations, {user_name}!"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid ""
-"You worked hard to earn your certificate from "
-"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
-"and family to get the word out about what you mastered in "
-"{accomplishment_course_title}."
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Share this certificate on Facebook (opens a new tab/window)"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Tweet this certificate (opens a new tab/window)"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Print"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Print this certificate"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-msgid "edX Inc."
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-msgid ""
-"All rights reserved except where noted. edX, Open edX and the edX and Open "
-"edX logos are registered trademarks of edX Inc."
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/course_modes/choose.html
-msgid ""
-"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
-"help fund affordable education to everyone globally."
-msgstr ""
-
-#: themes/edx.org/lms/templates/course_modes/choose.html
-msgid ""
-"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
-"certificates to help fund free education for everyone globally"
-msgstr ""
-
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
-msgid "Find Courses"
-msgstr ""
-
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
-msgid "Schools & Partners"
-msgstr ""
-
-#: themes/red-theme/lms/templates/footer.html
-msgid ""
-"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
-"Code{honor_link_end}"
-msgstr ""
-"{tos_link_start}მომსახურების პირობები{tos_link_end} და "
-"{honor_link_start}ღირსების კოდექსი{honor_link_end}"
-
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Copyright"
-msgstr "საავტორო უფლება"
-
-#: themes/stanford-style/lms/templates/footer.html
-msgid "Copyright {year}. All rights reserved."
-msgstr "საავტორო უფლება {year}. ყველა უფლება დაცულია."
-
-#: themes/stanford-style/lms/templates/index.html
-msgid "For anyone, anywhere, anytime"
-msgstr "ყველასთვის, ყველგან, ნებისმიერ დროს"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid ""
-"We're sorry, but this version of your browser is not supported. Try again "
-"using a different browser or a newer version of your browser."
-msgstr ""
-"ვწუხვართ, მაგრამ თქვენი ბრაუზერის ამ ვერსიის მხარდაჭერა არ გვაქვს. სცადეთ "
-"სხვა ბრაუზერის ან თქვენი ბრაუზერის უფრო ახალი ვერსიის გამოყენება."
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "The following errors occurred while processing your registration:"
-msgstr "თქვენი რეგისტრაციის დამუშავებისას დაფიქსირდა შემდეგი შეცდომები:"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Sign up with {provider_name}"
-msgstr "{provider_name}ით შესვლა"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Create your own {platform_name} account below"
-msgstr "შექმენით საკუთარი {platform_name} ანგარიში"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid ""
-"Required fields are noted by <strong class=\"indicator\">bold text and an "
-"asterisk (*)</strong>."
-msgstr ""
-"სავალდებულო ველები აღნიშნულია <strong class=\"indicator\">გამუქებული "
-"ტექსტითა და ვარსკვლავით (*)</strong>."
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "You've successfully signed in with {selected_provider}."
-msgstr "თქვენ წარმატებით შეხვედით {selected_provider}-ით."
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid ""
-"We just need a little more information before you start learning with "
-"{platform_name}."
-msgstr ""
-"{platform_name}-ით სწავლის დაწყებამდე, ჩვენ ცოტა მეტი ინფორმაცია გვჭირდება."
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Please complete the following fields to register for an account. "
-msgstr "ანგარიშის რეგისტრაციისთვის გთხოვთ შეავსოთ შემდეგი ველები."
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "example: Jane Doe"
-msgstr "მაგალითი: Jane Doe"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Your legal name, used for any certificates you earn."
-msgstr ""
-"თქვენი ოფიციალური სახელი, რომელიც გამოიყენება თქვენი ნებისმიერი  "
-"სერტიფიკატისთვის."
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "example: JaneDoe"
-msgstr "მაგალითი: JaneDoe"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Will be shown in any discussions or forums you participate in"
-msgstr ""
-"ნაჩვენები იქნება ნებისმიერი სახის დისკუსიაში ან ფორუმებში, რომლებშიც "
-"მონაწილეობას მიიღებთ"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "cannot be changed later"
-msgstr "მოგვიანებით შეცვლა შეუძლებელია"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Welcome {username}"
-msgstr "მოგესალმებით {username}"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Enter a Public Display Name:"
-msgstr "შეიყვანეთ საჯაროდ ხილული სახელი:"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Public Display Name"
-msgstr "საჯაროდ ხილული სახელი"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Additional Personal Information"
-msgstr "დამატებითი პირადი ინფორმაცია"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "example: New York"
-msgstr "მაგალითად: ნიუ-იორკი"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Highest Level of Education Completed"
-msgstr "დასრულებული განათლების უმაღლესი დონე"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Year of Birth"
-msgstr "დაბადების წელი"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Please share with us your reasons for registering with {platform_name}"
-msgstr ""
-"გთხოვთ გაგვიზიაროთ {platform_name}-ით დარეგისტრირების სუბიექტური მიზეზები"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Account Acknowledgements"
-msgstr "ანგარიშის თანხმობები"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Preferences for {platform_name}"
-msgstr " {platform_name}-ის პარამეტრები"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Update my {platform_name} Account"
-msgstr "ჩემი {platform_name} ანგარიშის განახლება"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Processing your account information"
-msgstr "თქვენი ანგარიშის ინფორმაციის დამუშავება"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Welcome {username}!  Please set your preferences below"
-msgstr "მოგესალმებით {username}! გთხოვთ, მიუთითეთ თქვენი არჩევანი ქვემოთ"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid ""
-"Required fields are noted by {strong_indicator}bold text and an asterisk "
-"(*).{strong_close}"
-msgstr ""
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Update My Account"
-msgstr "ჩემი ანგარიშის განახლება"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Registration Help"
-msgstr "დახმარება რეგისტრაციასთან დაკავშირებით"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Already registered?"
-msgstr "უკვე დარეგისტრირდით?"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "შესვლა"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Next Steps"
-msgstr "მომდევნო საფეხურები"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid ""
-"You will receive an activation email.  You must click on the activation link"
-" to complete the process.  Don't see the email?  Check your spam folder and "
-"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
-"able to receive email from your courses."
-msgstr ""
-"თქვენ მიიღებთ აქტივაციის შეტყობინებას. პროცესის დასასრულებლად უნდა "
-"დააწკაპუნოთ აქტივაციის ბმულზე. ვერ იპოვეთ შეტყობინება? შეამოწმეთ თქვენი "
-"სპამის საქაღალდე და class.stanford.edu-დან მოსული შეტყობინებები მონიშნეთ "
-"როგორც \"არა სპამი\", რათა შესაძლებლობა გქონდეთ მიიღოთ თქვენი კურსებისგან "
-"შეტყობინებები."
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Need Help?"
-msgstr "გჭირდებათ დახმარება?"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Need help in registering with {platform_name}?"
-msgstr "გესაჭიროებათ დახმარება {platform_name}-ით დასარეგისტრირებლად?"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "View our FAQs for answers to commonly asked questions."
-msgstr ""
-"პასუხების მოსაძიებლად, იხილეთ ჩვენი ხშირად დასმული შეკითხვების გვერდი."
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid ""
-"Once registered, most questions can be answered in the course specific "
-"discussion forums or through the FAQs."
-msgstr ""
-"რეგისტრაციის შემდეგ, შეკითხვების უმეტესობას პასუხი გაეცემა კურსის კონკრეტული"
-" განხილვის ფორუმებზე ან ხშირად დასმული შეკითხვების მეშვეობით."
-
-#: themes/stanford-style/lms/templates/emails/activation_email.txt
-msgid "Thank you for signing up for {platform_name}."
-msgstr ""
-
-#: themes/stanford-style/lms/templates/emails/activation_email.txt
-msgid ""
-"Change your life and start learning today by activating your {platform_name}"
-" account. Click on the link below or copy and paste it into your browser's "
-"address bar."
-msgstr ""
-
-#: themes/stanford-style/lms/templates/emails/activation_email.txt
-#: themes/stanford-style/lms/templates/emails/email_change.txt
-msgid ""
-"If you didn't request this, you don't need to do anything; you won't receive"
-" any more email from us. Please do not reply to this e-mail; if you require "
-"assistance, check the about section of the {platform_name} Courses web site."
-msgstr ""
-
-#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
-msgid ""
-"This is to confirm that you changed the e-mail associated with "
-"{platform_name} from {old_email} to {new_email}. If you did not make this "
-"request, please contact us at"
-msgstr ""
-
-#: themes/stanford-style/lms/templates/emails/email_change.txt
-msgid ""
-"We received a request to change the e-mail associated with your "
-"{platform_name} account from {old_email} to {new_email}. If this is correct,"
-" please confirm your new e-mail address by visiting:"
-msgstr ""
-"ჩვენ მივიღეთ მოთხოვნა შევცვალოთ თქვენი {platform_name}-ის ანგარიშთან "
-"დაკავშირებული ელ-ფოსტა {old_email}-დან {new_email}-ზე. თუ ეს სწორია, გთხოვთ "
-"დაადასტუროთ თქვენი ახალი ელფოსტის მისამართი ბმულზე გადასვლით:"
-
-#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
-msgid ""
-"We are sorry. Our course staff did not approve your request to change your "
-"name from {old_name} to {new_name}. If you need further assistance, please "
-"e-mail the tech support at {email}"
-msgstr ""
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Terms of Service here!"
-msgstr "განათავსეთ თქვენი მომსახურების პირობები აქ!"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Privacy Policy here!"
-msgstr "განათვასეთ თქვენი კონფიდენციალურობის პოლიტიკა აქ!"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Honor Code here!"
-msgstr "განათავსეთ თქვენი ღირსების კოდექსი აქ!"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Copyright Text here!"
-msgstr "განათავსეთ თქვენი საავტორო უფლების მქონე ტექსტი აქ!"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -21207,10 +20819,6 @@ msgstr ""
 
 #: cms/templates/accessibility.html
 msgid "Studio Accessibility Policy"
-msgstr ""
-
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-msgid "Files & Uploads"
 msgstr ""
 
 #: cms/templates/certificates.html
@@ -21295,70 +20903,13 @@ msgstr "გაიგეთ მეტი სერტიფიკატები�
 msgid "Details & Schedule"
 msgstr "დეტალები და განრიგი"
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Grading"
-msgstr "შეფასება"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/manage_users.html cms/templates/settings.html
-#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
-#: cms/templates/widgets/header.html
-msgid "Course Team"
-msgstr "კურსის გუნდი"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Advanced Settings"
-msgstr "დამატებითი პარამეტრები"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr ""
-
-#: cms/templates/checklists.html cms/templates/widgets/header.html
-msgid "Checklists"
-msgstr ""
-
-#: cms/templates/checklists.html cms/templates/export.html
-#: cms/templates/export_git.html cms/templates/import.html
-#: cms/templates/widgets/header.html
-msgid "Tools"
-msgstr "ხელსაწყოები"
-
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Duplicate"
-msgstr "ასლის შექმნა"
-
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "კომპონენტის ასლის შექმნა"
 
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Move"
-msgstr ""
-
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "კომპონენტის წაშლა"
-
-#: cms/templates/component.html cms/templates/edit-tabs.html
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Drag to reorder"
-msgstr "გადააჩოჩეთ დასახარისხებლად"
-
-#: cms/templates/container.html cms/templates/course-create-rerun.html
-#: cms/templates/course_info.html cms/templates/course_outline.html
-#: cms/templates/edit-tabs.html cms/templates/index.html
-#: cms/templates/library.html cms/templates/manage_users.html
-#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
-#: cms/templates/videos_index.html
-msgid "Page Actions"
-msgstr "გვერდის ოპერაციები"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -21446,148 +20997,6 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a Course Rerun of:"
-msgstr "არსებული კურსის საფუძველზე შექმნა ახალი:"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a re-run of a course"
-msgstr "კურსის ხელახალი გაშვების შექმნა"
-
-#: cms/templates/course-create-rerun.html
-msgid "You are creating a re-run from:"
-msgstr "თქვენ ქმნით ახალ გაშვებას არსებულის საფუძველზე:"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Provide identifying information for this re-run of the course. The original "
-"course is not affected in any way by a re-run."
-msgstr ""
-"მიუთითეთ კურსის ხელახალი გაშვების საიდენტიფიკაციო ინფორმაცია. ხელახალი "
-"გაშვება არ მოქმედებს კურსის ორიგინალურ ვერსიაზე. "
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Note: Together, the organization, course number, and course run must "
-"uniquely identify this new course instance."
-msgstr ""
-"შენიშვნა: ორგანიზაცია, კურსის ნომერი, კურსის გაშვება - ყველაფერი ერთად უნდა "
-"ახდენდეს კურსის ახალი ასლის იდენტიფიკაციას."
-
-#: cms/templates/course-create-rerun.html
-msgid "Required Information to Create a re-run of a course"
-msgstr "კურსის ხელახალი გაშვებისთვის აუცილებელი ინფორმაცია"
-
-#. Translators: This is an example name for a new course, seen when
-#. filling out the form to create a new course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. Introduction to Computer Science"
-msgstr "მაგ. კომპიუტერული მეცნიერების შესავალი"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The public display name for the new course. (This name is often the same as "
-"the original course name.)"
-msgstr ""
-"ახალი კურსის საჯაროდ ხილვადი სახელი. (ხშირად ის კურსის საწყის სახელს "
-"ემთხვევა.)"
-
-#. Translators: This is an example for the name of the organization sponsoring
-#. a course, seen when filling out the form to create a new course. The
-#. organization name cannot contain spaces.
-#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
-#. when user put no data into this field.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. UniversityX or OrganizationX"
-msgstr "მაგ. X უნივერსიტეტი ან X ორგანიზაცია"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The name of the organization sponsoring the new course. (This name is often "
-"the same as the original organization name.)"
-msgstr ""
-"ორგანიზაციის სახელი, რომელიც ასპონსორებს ახალ კურსს. (ხშირად ეს სახელი "
-"ემთხვევა ორგანიზაციის საწყის სახელს.)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Note: No spaces or special characters are allowed."
-msgstr "შენიშვნა: ჰარი ან სპეციალური სიმბოლოები ნებადართული არ არის."
-
-#. Translators: This is an example for the number used to identify a course,
-#. seen when filling out the form to create a new course. The number here is
-#. short for "Computer Science 101". It can contain letters but cannot contain
-#. spaces.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. CS101"
-msgstr "მაგ. CS101"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The unique number that identifies the new course within the organization.  "
-"(This number will be the same as the original course number and cannot be "
-"changed.)"
-msgstr ""
-
-#. Translators: This is an example for the "run" used to identify different
-#. instances of a course, seen when filling out the form to create a new
-#. course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. 2014_T1"
-msgstr "მაგ. 2014_T1"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The term in which the new course will run. (This value is often different "
-"than the original course run value.)"
-msgstr ""
-"ახალი კურსის გაშვების პირობები. (ხშირად, იგი განსხვავდება კურსის საწყისი "
-"გაშვების მნიშვნელობისგან.)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create Re-run"
-msgstr "ხელახლა გაშვების შექმნა"
-
-#: cms/templates/course-create-rerun.html
-msgid "When will my course re-run start?"
-msgstr "როდის დაიწყება ჩემი განახლებული კურსი?"
-
-#: cms/templates/course-create-rerun.html
-msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-msgstr ""
-"ახალი კურსის დაწყების თარიღი დანიშნულია 2030 წ. 1-ლი იანვრის შუაღამეს (UTC)."
-
-#: cms/templates/course-create-rerun.html
-msgid "What transfers from the original course?"
-msgstr "რა გადადის კურსის საწყისი ვერსიიდან?"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The new course has the same course outline and content as the original "
-"course. All problems, videos, announcements, and other files are duplicated "
-"to the new course."
-msgstr ""
-"ახალ კურსს იგივე სტრუქტურა და შინაარსი აქვს რაც კურსის საწყის ვერსიას. ახალი"
-" კურსისთვის შეიქმნა ყველა ამოცანის, ვიდეოს, განცხადებისა და სხვა ფაილების "
-"ასლები."
-
-#: cms/templates/course-create-rerun.html
-msgid "What does not transfer from the original course?"
-msgstr "რა არ გადადის კურსის საწყისი ვერსიიდან?"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"You are the only member of the new course's staff. No students are enrolled "
-"in the course, and there is no student data. There is no content in the "
-"discussion topics or wiki."
-msgstr ""
-"თქვენ ხართ ახალი კურსის ერთადერთი თანამშრომელი. კურსზე არ ჩარიცხულა არცერთი "
-"სტუდენტი. შესაბამისად, მათ შესახებ ინფორმაცია არ გვაქვს. განხილვები და ვიკი "
-"ცნობარი ამჟამად ცარიელია."
-
-#: cms/templates/course-create-rerun.html
-msgid "Learn more about Course Re-runs"
-msgstr "გაიგეთ მეტი კურსის ხელახალი გამოშვების შესახებ"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -21802,13 +21211,6 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "გაიგეთ მეტი შინაარსის ხილვადობის პარამეტრების შესახებ"
-
-#. Translators: Pages refer to the tabs that appear in the top navigation of
-#. each course.
-#: cms/templates/edit-tabs.html cms/templates/export.html
-#: cms/templates/widgets/header.html
-msgid "Pages"
-msgstr "გვერდები"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -22217,10 +21619,6 @@ msgstr "გაიგეთ მეტი კურსის ექსპორტ
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "კურსის Git-ში ექსპორტირება"
-
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr "Git-ში ექსპორტირება"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -22865,401 +22263,6 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "გაიგე მეტი კურსის იმპორტირების შესახებ"
 
-#: cms/templates/index.html
-msgid "New Course"
-msgstr "ახალი კურსი"
-
-#: cms/templates/index.html
-msgid "Email staff to create course"
-msgstr "გაუგზავნეთ თანამშრომლებს ელფოსტის შეტყობინება, რომ შექმნან კურსი"
-
-#: cms/templates/index.html
-msgid "New Library"
-msgstr "ახალი ბიბლიოთეკა"
-
-#: cms/templates/index.html
-msgid "Please correct the highlighted fields below."
-msgstr "გთხოვთ, ჩაასწოროთ ინფორმაცია ქვემოთ ამონათებულ ველებში"
-
-#: cms/templates/index.html
-msgid "Create a New Course"
-msgstr "ახალი კურსის შექმნა"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Course"
-msgstr "ახალი კურსის შესაქმნელად სავალდებულო ინფორმაცია"
-
-#: cms/templates/index.html
-msgid ""
-"The public display name for your course. This cannot be changed, but you can"
-" set a different display name in Advanced Settings later."
-msgstr ""
-"თქვენი კურსის საჯარო დასახელება. დასახელება შეცლას არ ექვემდებარება, თუმცა "
-"მოგვიანებით, დამატებითი პარამეტრებიდან შეძლებთ სხვა სახელის დარქმევას."
-
-#: cms/templates/index.html
-msgid ""
-"The name of the organization sponsoring the course. {strong_start}Note: The "
-"organization name is part of the course URL.{strong_end} This cannot be "
-"changed, but you can set a different display name in Advanced Settings "
-"later."
-msgstr ""
-"კურსის სპონსორი ორგანიზაციის დასახელება. {strong_start}შენიშვნა:ორგანიზაციის"
-" სახელი არის კურსის URL-ის ნაწილი.{strong_end} მის შეცვლა არ შეიძლება, "
-"მაგრამ მოგვიანებით შეგიძლიათ დამატებითი პარამეტრებიდან სხვა ხილვადი სახელის "
-"დაყენება."
-
-#: cms/templates/index.html
-msgid ""
-"The unique number that identifies your course within your organization. "
-"{strong_start}Note: This is part of your course URL, so no spaces or special"
-" characters are allowed and it cannot be changed.{strong_end}"
-msgstr ""
-"უნიკალური ნომერი, რომლის მიხედვითაც ხდება ორგანიზაციის ფარგლებში კურსის "
-"იდენტიფიცირება.  {strong_start}შენიშვნა: ეს თქვენი კურსის URL-ის ნაწილია, "
-"ასე რომ,  შორისების ან სპეციალური სიმბოლოების გამოყენება არ არის ნებადართული"
-" და მისი შეცვლა არ შეიძლება.{strong_end}"
-
-#: cms/templates/index.html
-msgid ""
-"The term in which your course will run. {strong_start}Note: This is part of "
-"your course URL, so no spaces or special characters are allowed and it "
-"cannot be changed.{strong_end}"
-msgstr ""
-"თქვენი კურსის მიმდინარეობის პირობა. {strong_start}შენიშვნა: ეს თქვენი კურსის"
-" URL მისამართის ნაწილია, დაშორებები ან სპეციალური სიმბოლოები ნებადართული არ "
-"არის და მისი მოგვიანებით შეცვლა ვერ მოხერხდება.{strong_end}"
-
-#: cms/templates/index.html
-msgid "Create"
-msgstr "შექმნა"
-
-#: cms/templates/index.html
-msgid "Create a New Library"
-msgstr "ახალი ბიბლიოთეკის შექმნა"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Library"
-msgstr "ახალი ბიბლიოთეკის შესაქმნელად აუცილებელი ინფორმაცია"
-
-#: cms/templates/index.html
-msgid "Library Name"
-msgstr "ბიბლიოთეკის დასახელება"
-
-#. Translators: This is an example name for a new content library, seen when
-#. filling out the form to create a new library.
-#. (A library is a collection of content or problems.)
-#: cms/templates/index.html
-msgid "e.g. Computer Science Problems"
-msgstr "მაგ. კომპიუტერული მეცნიერების ამოცანები"
-
-#: cms/templates/index.html
-msgid "The public display name for your library."
-msgstr "თქვენი ბიბლიოთეკის საჯარო სახელწოდება."
-
-#: cms/templates/index.html
-msgid "The public organization name for your library."
-msgstr "თქვენი ბიბლიოთეკის ორგანიზაციის საჯარო დასახელება."
-
-#: cms/templates/index.html
-msgid "This cannot be changed."
-msgstr "შეცვლას არ ექვემდებარება."
-
-#: cms/templates/index.html
-msgid "Library Code"
-msgstr "ბიბლიოთეკის კოდი"
-
-#. Translators: This is an example for the "code" used to identify a library,
-#. seen when filling out the form to create a new library. This example is
-#. short
-#. for "Computer Science Problems". The example number may contain letters
-#. but must not contain spaces.
-#: cms/templates/index.html
-msgid "e.g. CSPROB"
-msgstr "მაგ. CSPROB"
-
-#: cms/templates/index.html
-msgid ""
-"The unique code that identifies this library. {strong_start}Note: This is "
-"part of your library URL, so no spaces or special characters are "
-"allowed.{strong_end} This cannot be changed."
-msgstr ""
-"უნიკალური კოდი, რომლის მიხედვითაც ხდება ბიბლიოთეკის იდენტიფიცირება. "
-"{strong_start}შენიშვნა: ეს თქვენი ბიბლიოთეკის URL მისამართის ნაწილია, "
-"დაშორებები ან სპეციალური სიმბოლოები დაშვებული არ არის.{strong_end} ეს არ "
-"შეიცვლება."
-
-#: cms/templates/index.html
-msgid "Organization and Library Settings"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Show all courses in organization:"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "For example, MITx"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Courses Being Processed"
-msgstr "მიმდინარეობს კურსის დამუშავება"
-
-#: cms/templates/index.html
-msgid "This course run is currently being created."
-msgstr "მიმდინარეობს კურსის მსვლელობის შექმნა,"
-
-#. Translators: This is a status message, used to inform the user of
-#. what the system is doing. This status means that the user has
-#. requested to re-run an existing course, and the system is currently
-#. in the process of duplicating and configuring the existing course
-#. so that it can be re-run.
-#: cms/templates/index.html
-msgid "Configuring as re-run"
-msgstr "მიმდინარეობს ხელახლა გაშვების კონფიგურაცია"
-
-#: cms/templates/index.html
-msgid ""
-"The new course will be added to your course list in 5-10 minutes. Return to "
-"this page or {link_start}refresh it{link_end} to update the course list. The"
-" new course will need some manual configuration."
-msgstr ""
-"ახალი კურსი თქვენი კურსების სიას 5-10 წუთის განმავლობაში დაემატება. კურსის "
-"სიის გასაახლებლად დაბრუნდით ან {link_start}განაახლეთ{link_end} ეს გვერდი. "
-"ახალი კურსი საჭიროებს გარკვეული პარამეტრების ხელით დაყენებას."
-
-#. Translators: This is a status message for the course re-runs feature.
-#. When a course admin indicates that a course should be re-run, the system
-#. needs to process the request and prepare the new course. The status of
-#. the process will follow this text.
-#: cms/templates/index.html
-msgid "This re-run processing status:"
-msgstr "ხელახლა გაშვების დამუშავების სტატუსი:"
-
-#: cms/templates/index.html
-msgid "Configuration Error"
-msgstr "კონფიგურაციის შეცდომა"
-
-#: cms/templates/index.html
-msgid ""
-"A system error occurred while your course was being processed. Please go to "
-"the original course to try the re-run again, or contact your PM for "
-"assistance."
-msgstr ""
-"თქვენი კურსის დამუშავებისას დაფიქსირდა სისტემური შეცდომა. გთხოვთ, გადადით "
-"საწყის კურსზე და სცადეთ მისი ხელახლა გაშვება ან დახმარებისთვის დაუკავშირდით "
-"ტექნიკური მხარდაჭერის სერვისს."
-
-#: cms/templates/index.html
-msgid "Archived Courses"
-msgstr ""
-
-#: cms/templates/index.html
-msgid "Libraries"
-msgstr "ბიბლიოთეკები"
-
-#: cms/templates/index.html
-msgid "Are you staff on an existing {studio_name} course?"
-msgstr "{studio_name}-ის არსებული კურსის თანამშრომელი ბრძანდებით?"
-
-#: cms/templates/index.html
-msgid ""
-"The course creator must give you access to the course. Contact the course "
-"creator or administrator for the course you are helping to author."
-msgstr ""
-"კურსზე წვდომა კურსის შემქმნელმა უნდა მოგანიჭოთ. დაუკავშირდით შესაბამისი "
-"კურსის შემქმნელს ან ადმინისტრატორს."
-
-#: cms/templates/index.html
-msgid "Create Your First Course"
-msgstr "შექმენით თქვენი პირველი კურსი"
-
-#: cms/templates/index.html
-msgid "Your new course is just a click away!"
-msgstr "ერთი დაწკაპუნებაც და თქვენი ახალი კურსი შექმნილია!"
-
-#: cms/templates/index.html
-msgid "Becoming a Course Creator in {studio_name}"
-msgstr "შექმენით კურსი {studio_name}-ში"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team will evaluate your request and provide you feedback within 24 hours "
-"during the work week."
-msgstr ""
-"ჩვენი xConsortium-ის პარტნიორებისა და შერჩეული სტუმრებისთვის მართვის "
-"ძირითადი პლატფორმა {studio_name}-ია. კურსები, რომელთა გუნდის წევრიც ხართ, "
-"რედაქტირებისთვის ზედა ნაწილში გამოჩდება,ხოლო კურსის შემქმნელის პრივილეგიებს"
-"  {platform_name}-ი ანიჭებს. ჩვენი გუნდი შეაფასებს თქვენს მოთხოვნას და "
-"სამუშაო კვირაში, 24 საათის განმავლობაში გიპასუხებთ."
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status:"
-msgstr "კურსის ავტორობაზე თქვენი მოთხოვნის სტატუსი:"
-
-#: cms/templates/index.html
-msgid "Request the Ability to Create Courses"
-msgstr "მოთხოვნა კურსების შექმნის შესაძლებლობაზე"
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status"
-msgstr "კურსის ავტორობაზე თქვენი მოთხოვნის სტატუსი"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is has completed evaluating your request."
-msgstr ""
-"{studio_name} ჩვენი xConsortium პარტნიორებისა და სტუმართა ნაწილისთვის "
-"შექმნილი ონლაინ პროდუქტია. თქვენ შეგიძლიათ იმ კურსების რედაქტირება, რომელთა "
-"გუნდის წევრიც ხართ, კურსის შემქმნელის პრივილეგიებს  კი {platform_name}-ი "
-"ანიჭებს. ჩვენმა გუნდმა დაასრულა თქვენი მოთხოვნის განხილვა."
-
-#: cms/templates/index.html
-msgid "Your Course Creator request is:"
-msgstr "თქვენი კურსის შემქმნელის მოთხოვნაა:"
-
-#: cms/templates/index.html
-msgid ""
-"Your request did not meet the criteria/guidelines specified by "
-"{platform_name} Staff."
-msgstr ""
-"თქვენი მოთხოვნა არ აკმაყოფილებს {platform_name}-ის თანამშრომელთა მიერ "
-"გაწერილ კრიტერიუმებს/სახელმძღვანელოს."
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is currently  evaluating your request."
-msgstr ""
-"ჩვენი xConsortium-ის პარტნიორებისა და შერჩეული სტუმარებისთვის მართვის "
-"ძირითადი პლატფორმა {studio_name}-ია. კურსები, რომელთა გუნდის წევრიც ხართ, "
-"რედაქტირებისთვის ზედა ნაწილში გამოჩნდება, ხოლო, კურსის შემქმნელის "
-"პრივილეგიებს {platform_name}-ი ანიჭებს. ჩვენი გუნდი ამჟამად თქვენს "
-"მოთხოვნებს აფასებს."
-
-#: cms/templates/index.html
-msgid ""
-"Your request is currently being reviewed by {platform_name} staff and should"
-" be updated shortly."
-msgstr ""
-"ამჟამად თქვენს მოთხოვნას განიხილავენ {platform_name}-ის თანამშრომლები და "
-"მალე გიპასუხებენ."
-
-#: cms/templates/index.html
-msgid "Were you expecting to see a particular library here?"
-msgstr "თქვენ აქ კონკრეტული ბიბლიოთეკის ნახვას ელოდით?"
-
-#: cms/templates/index.html
-msgid ""
-"The library creator must give you access to the library. Contact the library"
-" creator or administrator for the library you are helping to author."
-msgstr ""
-"ბიბლიოთეკაზე წვდომა ბიბლიოთეკის შემქმნელმა უნდა მოგანიჭოთ. დაუკავშირდით "
-"შესაბამისი ბიბლიოთეკის შემქმნელს ან ადმინისტრატორს."
-
-#: cms/templates/index.html
-msgid "Create Your First Library"
-msgstr "თქვენი პირველი ბიბლიოთეკის შექმნა"
-
-#: cms/templates/index.html
-msgid ""
-"Libraries hold a pool of components that can be re-used across multiple "
-"courses. Create your first library with the click of a button!"
-msgstr ""
-"შესაძლოა ბიბლიოთეკების მთელი რიგი კომპონენტები სხვადასხვა კურსების მიერ "
-"იქნეს გამოყენებული. ღილაკზე დაწკაპუნებით შექმენით თქვენი პირველი ბიბლიოთეკა!"
-
-#: cms/templates/index.html
-msgid "New to {studio_name}?"
-msgstr "ახალი ხართ {studio_name}-ზე?"
-
-#: cms/templates/index.html
-msgid ""
-"Click Help in the upper-right corner to get more information about the "
-"{studio_name} page you are viewing. You can also use the links at the bottom"
-" of the page to access our continually updated documentation and other "
-"{studio_name} resources."
-msgstr ""
-"{studio_name}-ის გვერდის შესახებ მეტი ინფორმაციის მისაღებად დააწკაპუნეთ ზედა"
-" მარჯვენა კუთხეში დახმარებაზე. ასევე, გვერდის ქვემოთ განთავსებული ბმულების "
-"საშუალებით იხილეთ ჩვენი მუდმივად განახლებადი დოკუმენტები და {studio_name}-ის"
-" სხვა რესურსები."
-
-#: cms/templates/index.html
-msgid "Getting Started with {studio_name}"
-msgstr "ვიწყებთ {studio_name}-ში მუშაობას"
-
-#: cms/templates/index.html
-msgid "Can I create courses in {studio_name}?"
-msgstr "შემიძლია {studio_name}-ში კურსების შექმნა?"
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must {link_start}contact "
-"{platform_name} staff to help you create a course{link_end}."
-msgstr ""
-"{studio_name}-ში კურსების შექმნის მიზნით, უნდა "
-"{link_start}დაუკავშირდეთ{platform_name}-ის თანამშრომლებს, რომლებიც "
-"კურსის{link_end} შექმნაში დაგეხმარებიან."
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must have course creator "
-"privileges to create your own course."
-msgstr ""
-"{studio_name}-ში საკუთარი კურსის შესაქმნელად კურსის შემქმნელის პრივილეგიებით"
-" უნდა სარგებლობდეთ."
-
-#: cms/templates/index.html
-msgid ""
-"Your request to author courses in {studio_name} has been denied. Please "
-"{link_start}contact {platform_name} Staff with further questions{link_end}."
-msgstr ""
-"თქვენი მოთხოვნა, იყოთ კურსების ავტორი {studio_name}-ში, უარყოფილია. "
-"დამატებითი კითხვების შემთხვევაში {link_start}გთხოვთ დაუკავშირდეთ "
-"{platform_name}-ის თანამშრომლებს{link_end}."
-
-#: cms/templates/index.html
-msgid "Thanks for signing up, {name}!"
-msgstr "გმადლობთ რეგისტრაციისთვის, {name}!"
-
-#: cms/templates/index.html
-msgid "We need to verify your email address"
-msgstr "ჩვენ გვჭირდება თქვენი ელფოსტის მისამართის დადასტურება"
-
-#: cms/templates/index.html
-msgid ""
-"Almost there! In order to complete your sign up we need you to verify your "
-"email address ({email}). An activation message and next steps should be "
-"waiting for you there."
-msgstr ""
-"თითქმის მზადაა! რეგისტრაციის დასრულებისთვის უნდა დაადასტუროთ თქვენი ელფოსტის"
-" მისამართი ({email}), რომელზეც უკვე გელოდებათ შეტყობინება აქტივიზაციისა და "
-"შემდეგი საფეხურების შესახებ."
-
-#: cms/templates/index.html
-msgid "Need help?"
-msgstr "გჭირდებათ დახმარება?"
-
-#: cms/templates/index.html
-msgid ""
-"Please check your Junk or Spam folders in case our email isn't in your "
-"INBOX. Still can't find the verification email? Request help via the link "
-"below."
-msgstr ""
-"თუკი ჩვენგან გამოგზავნილი ელექტრონული წერილი არ ჩანს თქვენს შემომავალ "
-"საქაღალდეში, გთხოვთ შეამოწმოთ არასასურველი ფოსტა ან სპამის საქაღალდეები. "
-"მაინც ვერ ნახეთ დადასტურების შეტყობინება? მოითხოვეთ დახმარება ქვემოთ "
-"განთავსებული და ბმულის საშუალებით."
-
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "შინაარსის ბიბლიოთეკა"
@@ -23411,10 +22414,6 @@ msgstr ""
 msgid "Library User Access"
 msgstr "ბიბლიოთეკის მომხმარებლის წვდომა"
 
-#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
-msgid "User Access"
-msgstr "მომხმარებლის წვდომა"
-
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "ამ ბიბლიოთეკაზე წვდომის მინიჭება"
@@ -23479,10 +22478,6 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "განრიგი და დეტალების პარამეტრები"
-
-#: cms/templates/settings.html cms/templates/widgets/header.html
-msgid "Schedule & Details"
-msgstr "განრიგი და დეტალები"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -23743,13 +22738,6 @@ msgstr "კურსის დეტალები"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "მოგვაწოდეთ სასარგებლო ინფორმაცია თქვენი კურსის შესახებ"
-
-#: cms/templates/settings.html
-msgid ""
-"Identify the course language here. This is used to assist users find courses"
-" that are taught in a specific language. It is also used to localize the "
-"'From:' field in bulk emails."
-msgstr ""
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -24225,22 +23213,6 @@ msgstr ""
 "ლაბორატორიული სავარჯიშოები, ქვიზები, გამოცდები. ასევე, თითოეული ტიპის "
 "დავალებისთვის, შეგიძლიათ განსაზღვროთ სტუდენტის შეფასების ქულები."
 
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Expand or Collapse"
-msgstr "ჩამოშალე ან აკეცე"
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "This block contains multiple components."
-msgstr "ეს ბლოკი მრავალ კომპონენტს შეიცავს."
-
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr ""
@@ -24281,10 +23253,6 @@ msgstr ""
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "გაიგეთ მეტი სახელმძღვანელოების შესახებ"
-
-#: cms/templates/videos_index.html cms/templates/widgets/header.html
-msgid "Video Uploads"
-msgstr "ვიდეო ატვირთვები"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -24563,49 +23531,13 @@ msgstr ""
 msgid "LMS"
 msgstr ""
 
-#: cms/templates/widgets/header.html
-msgid "Current Course:"
-msgstr "მიმდინარე კურსი:"
-
-#: cms/templates/widgets/header.html
-msgid "Course Navigation"
-msgstr "კურსის ნავიგაცია"
-
-#: cms/templates/widgets/header.html
-msgid "Outline"
-msgstr "სტრუქტურა"
-
-#: cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr "გამომცემელი"
-
-#: cms/templates/widgets/header.html
-msgid "Import"
-msgstr "იმპორტირება"
-
-#: cms/templates/widgets/header.html
-msgid "Export"
-msgstr "ექსპორტირება"
-
-#: cms/templates/widgets/header.html
-msgid "Current Library:"
-msgstr "მიმდინარე ბიბლიოთეკა:"
-
-#: cms/templates/widgets/header.html
-msgid "Language preference"
-msgstr "ენის პარამეტრები"
-
-#: cms/templates/widgets/header.html
-msgid "Account Navigation"
-msgstr "ანგარიშის ნავიგაცია"
-
-#: cms/templates/widgets/header.html
-msgid "Contextual Online Help"
-msgstr "კონტექსტუალური ონლაინ დახმარება"
-
-#: cms/templates/widgets/header.html
-msgid "Sign Up"
-msgstr "რეგისტრაცია"
+#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
+#. not translate any of these trademarks and company names.
+#: cms/templates/widgets/footer.html
+msgid ""
+"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+"{link_start}edX Inc.{link_end}"
+msgstr ""
 
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
@@ -24659,6 +23591,26 @@ msgstr ""
 msgid "Label"
 msgstr "ლეიბლი"
 
+#: cms/templates/widgets/sock.html
+msgid "Looking for help with {studio_name}?"
+msgstr "გესაჭიროებათ დახმარება {studio_name}-სთან დაკავშირებით?"
+
+#: cms/templates/widgets/sock.html
+msgid "Hide {studio_name} Help"
+msgstr "{studio_name} დახმარების დამალვა"
+
+#: cms/templates/widgets/sock.html
+msgid "{studio_name} Documentation"
+msgstr "{studio_name} დოკუმენტაცია"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Access documentation on http://docs.edx.org"
+msgstr "დოკუმენტაცია ხელმისაწვდომია შემდეგ ბმულზე http://docs.edx.org"
+
+#: cms/templates/widgets/sock_links.html
+msgid "edX Documentation"
+msgstr "edX დოკუმენტაცია"
+
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "Open edX პორტალის გახსნა"
@@ -24666,6 +23618,26 @@ msgstr "Open edX პორტალის გახსნა"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "Open edX პორტალი"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in edX101: Overview of Creating an edX Course"
+msgstr "edX101-ში ჩარიცხვა: edX კურსის შექმნის მიმოხილვა"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in edX101"
+msgstr " edX101-ში ჩარიცხვა"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in StudioX: Creating a Course with edX Studio"
+msgstr "StudioX-ში ჩარიხცვა: edX Studio კურსის შექმნა"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in StudioX"
+msgstr "StudioX-ში ჩარიცხვა"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Send an email to {email}"
+msgstr "ელფოსტის გაგზავნა მისამართზე {email}"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -25845,6 +24817,20 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
 
+#~ msgid "Organization"
+#~ msgstr "ორგანიზაცია"
+
+#~ msgid ""
+#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
+#~ "investigate."
+#~ msgstr ""
+#~ "ჩვენ ვაწარმოებთ ძველი ელ-ფოსტების ჟურნალს, ასე რომ თუ ეს მოულოდნელი მოთხოვნა"
+#~ " იყო, შეგვიძლია გამოვიძიოთ."
+
+#~ msgid "Course Run"
+#~ msgstr "კურსის გაშვება"
+
+#, python-brace-format
 #~ msgid "{platform_name} offers interactive online classes and MOOCs."
 #~ msgstr "{platform_name}-ი გთავაზობთ ინტერაქტიულ ონლაინ კლასებსა და MOOCs."
 
@@ -25863,44 +24849,491 @@ msgstr ""
 #~ msgid "Allows hiding of the progress tab."
 #~ msgstr "უფლებას აძლევს პროგრესის ჩანართის დამალვას"
 
+#~ msgid "Grading"
+#~ msgstr "შეფასება"
+
+#~ msgid "Course Team"
+#~ msgstr "კურსის გუნდი"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "დამატებითი პარამეტრები"
+
+#~ msgid "Tools"
+#~ msgstr "ხელსაწყოები"
+
+#~ msgid "Duplicate"
+#~ msgstr "ასლის შექმნა"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "გადააჩოჩეთ დასახარისხებლად"
+
+#~ msgid "Page Actions"
+#~ msgstr "გვერდის ოპერაციები"
+
+#~ msgid "Create a Course Rerun of:"
+#~ msgstr "არსებული კურსის საფუძველზე შექმნა ახალი:"
+
+#~ msgid "Create a re-run of a course"
+#~ msgstr "კურსის ხელახალი გაშვების შექმნა"
+
+#~ msgid "You are creating a re-run from:"
+#~ msgstr "თქვენ ქმნით ახალ გაშვებას არსებულის საფუძველზე:"
+
+#~ msgid ""
+#~ "Provide identifying information for this re-run of the course. The original "
+#~ "course is not affected in any way by a re-run."
+#~ msgstr ""
+#~ "მიუთითეთ კურსის ხელახალი გაშვების საიდენტიფიკაციო ინფორმაცია. ხელახალი "
+#~ "გაშვება არ მოქმედებს კურსის ორიგინალურ ვერსიაზე. "
+
+#~ msgid ""
+#~ "Note: Together, the organization, course number, and course run must "
+#~ "uniquely identify this new course instance."
+#~ msgstr ""
+#~ "შენიშვნა: ორგანიზაცია, კურსის ნომერი, კურსის გაშვება - ყველაფერი ერთად უნდა "
+#~ "ახდენდეს კურსის ახალი ასლის იდენტიფიკაციას."
+
+#~ msgid "Required Information to Create a re-run of a course"
+#~ msgstr "კურსის ხელახალი გაშვებისთვის აუცილებელი ინფორმაცია"
+
+#~ msgid "e.g. Introduction to Computer Science"
+#~ msgstr "მაგ. კომპიუტერული მეცნიერების შესავალი"
+
+#~ msgid ""
+#~ "The public display name for the new course. (This name is often the same as "
+#~ "the original course name.)"
+#~ msgstr ""
+#~ "ახალი კურსის საჯაროდ ხილვადი სახელი. (ხშირად ის კურსის საწყის სახელს "
+#~ "ემთხვევა.)"
+
+#~ msgid "e.g. UniversityX or OrganizationX"
+#~ msgstr "მაგ. X უნივერსიტეტი ან X ორგანიზაცია"
+
+#~ msgid ""
+#~ "The name of the organization sponsoring the new course. (This name is often "
+#~ "the same as the original organization name.)"
+#~ msgstr ""
+#~ "ორგანიზაციის სახელი, რომელიც ასპონსორებს ახალ კურსს. (ხშირად ეს სახელი "
+#~ "ემთხვევა ორგანიზაციის საწყის სახელს.)"
+
+#~ msgid "Note: No spaces or special characters are allowed."
+#~ msgstr "შენიშვნა: ჰარი ან სპეციალური სიმბოლოები ნებადართული არ არის."
+
+#~ msgid "e.g. CS101"
+#~ msgstr "მაგ. CS101"
+
+#~ msgid "e.g. 2014_T1"
+#~ msgstr "მაგ. 2014_T1"
+
+#~ msgid ""
+#~ "The term in which the new course will run. (This value is often different "
+#~ "than the original course run value.)"
+#~ msgstr ""
+#~ "ახალი კურსის გაშვების პირობები. (ხშირად, იგი განსხვავდება კურსის საწყისი "
+#~ "გაშვების მნიშვნელობისგან.)"
+
+#~ msgid "Create Re-run"
+#~ msgstr "ხელახლა გაშვების შექმნა"
+
+#~ msgid "When will my course re-run start?"
+#~ msgstr "როდის დაიწყება ჩემი განახლებული კურსი?"
+
+#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+#~ msgstr ""
+#~ "ახალი კურსის დაწყების თარიღი დანიშნულია 2030 წ. 1-ლი იანვრის შუაღამეს (UTC)."
+
+#~ msgid "What transfers from the original course?"
+#~ msgstr "რა გადადის კურსის საწყისი ვერსიიდან?"
+
+#~ msgid ""
+#~ "The new course has the same course outline and content as the original "
+#~ "course. All problems, videos, announcements, and other files are duplicated "
+#~ "to the new course."
+#~ msgstr ""
+#~ "ახალ კურსს იგივე სტრუქტურა და შინაარსი აქვს რაც კურსის საწყის ვერსიას. ახალი"
+#~ " კურსისთვის შეიქმნა ყველა ამოცანის, ვიდეოს, განცხადებისა და სხვა ფაილების "
+#~ "ასლები."
+
+#~ msgid "What does not transfer from the original course?"
+#~ msgstr "რა არ გადადის კურსის საწყისი ვერსიიდან?"
+
+#~ msgid ""
+#~ "You are the only member of the new course's staff. No students are enrolled "
+#~ "in the course, and there is no student data. There is no content in the "
+#~ "discussion topics or wiki."
+#~ msgstr ""
+#~ "თქვენ ხართ ახალი კურსის ერთადერთი თანამშრომელი. კურსზე არ ჩარიცხულა არცერთი "
+#~ "სტუდენტი. შესაბამისად, მათ შესახებ ინფორმაცია არ გვაქვს. განხილვები და ვიკი "
+#~ "ცნობარი ამჟამად ცარიელია."
+
+#~ msgid "Learn more about Course Re-runs"
+#~ msgstr "გაიგეთ მეტი კურსის ხელახალი გამოშვების შესახებ"
+
 #~ msgid "Course Outline"
 #~ msgstr "კურსის სტრუქტურა"
 
 #~ msgid "Warning"
 #~ msgstr "გაფრთხილება"
 
+#~ msgid "Pages"
+#~ msgstr "გვერდები"
+
+#~ msgid "Export to Git"
+#~ msgstr "Git-ში ექსპორტირება"
+
 #~ msgid "{studio_name} Home"
 #~ msgstr "{studio_name} მთავარი გვერდი"
 
-#~ msgid "Looking for help with {studio_name}?"
-#~ msgstr "გესაჭიროებათ დახმარება {studio_name}-სთან დაკავშირებით?"
+#~ msgid "New Course"
+#~ msgstr "ახალი კურსი"
 
-#~ msgid "Hide {studio_name} Help"
-#~ msgstr "{studio_name} დახმარების დამალვა"
+#~ msgid "Email staff to create course"
+#~ msgstr "გაუგზავნეთ თანამშრომლებს ელფოსტის შეტყობინება, რომ შექმნან კურსი"
 
-#~ msgid "{studio_name} Documentation"
-#~ msgstr "{studio_name} დოკუმენტაცია"
+#~ msgid "New Library"
+#~ msgstr "ახალი ბიბლიოთეკა"
 
-#~ msgid "Access documentation on http://docs.edx.org"
-#~ msgstr "დოკუმენტაცია ხელმისაწვდომია შემდეგ ბმულზე http://docs.edx.org"
+#~ msgid "Please correct the highlighted fields below."
+#~ msgstr "გთხოვთ, ჩაასწოროთ ინფორმაცია ქვემოთ ამონათებულ ველებში"
 
-#~ msgid "edX Documentation"
-#~ msgstr "edX დოკუმენტაცია"
+#~ msgid "Create a New Course"
+#~ msgstr "ახალი კურსის შექმნა"
 
-#~ msgid "Enroll in edX101: Overview of Creating an edX Course"
-#~ msgstr "edX101-ში ჩარიცხვა: edX კურსის შექმნის მიმოხილვა"
+#~ msgid "Required Information to Create a New Course"
+#~ msgstr "ახალი კურსის შესაქმნელად სავალდებულო ინფორმაცია"
 
-#~ msgid "Enroll in edX101"
-#~ msgstr " edX101-ში ჩარიცხვა"
+#~ msgid ""
+#~ "The public display name for your course. This cannot be changed, but you can"
+#~ " set a different display name in Advanced Settings later."
+#~ msgstr ""
+#~ "თქვენი კურსის საჯარო დასახელება. დასახელება შეცლას არ ექვემდებარება, თუმცა "
+#~ "მოგვიანებით, დამატებითი პარამეტრებიდან შეძლებთ სხვა სახელის დარქმევას."
 
-#~ msgid "Enroll in StudioX: Creating a Course with edX Studio"
-#~ msgstr "StudioX-ში ჩარიხცვა: edX Studio კურსის შექმნა"
+#~ msgid ""
+#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
+#~ "organization name is part of the course URL.{strong_end} This cannot be "
+#~ "changed, but you can set a different display name in Advanced Settings "
+#~ "later."
+#~ msgstr ""
+#~ "კურსის სპონსორი ორგანიზაციის დასახელება. {strong_start}შენიშვნა:ორგანიზაციის"
+#~ " სახელი არის კურსის URL-ის ნაწილი.{strong_end} მის შეცვლა არ შეიძლება, "
+#~ "მაგრამ მოგვიანებით შეგიძლიათ დამატებითი პარამეტრებიდან სხვა ხილვადი სახელის "
+#~ "დაყენება."
 
-#~ msgid "Enroll in StudioX"
-#~ msgstr "StudioX-ში ჩარიცხვა"
+#~ msgid ""
+#~ "The unique number that identifies your course within your organization. "
+#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
+#~ " characters are allowed and it cannot be changed.{strong_end}"
+#~ msgstr ""
+#~ "უნიკალური ნომერი, რომლის მიხედვითაც ხდება ორგანიზაციის ფარგლებში კურსის "
+#~ "იდენტიფიცირება.  {strong_start}შენიშვნა: ეს თქვენი კურსის URL-ის ნაწილია, "
+#~ "ასე რომ,  შორისების ან სპეციალური სიმბოლოების გამოყენება არ არის ნებადართული"
+#~ " და მისი შეცვლა არ შეიძლება.{strong_end}"
 
-#~ msgid "Send an email to {email}"
-#~ msgstr "ელფოსტის გაგზავნა მისამართზე {email}"
+#~ msgid ""
+#~ "The term in which your course will run. {strong_start}Note: This is part of "
+#~ "your course URL, so no spaces or special characters are allowed and it "
+#~ "cannot be changed.{strong_end}"
+#~ msgstr ""
+#~ "თქვენი კურსის მიმდინარეობის პირობა. {strong_start}შენიშვნა: ეს თქვენი კურსის"
+#~ " URL მისამართის ნაწილია, დაშორებები ან სპეციალური სიმბოლოები ნებადართული არ "
+#~ "არის და მისი მოგვიანებით შეცვლა ვერ მოხერხდება.{strong_end}"
+
+#~ msgid "Create"
+#~ msgstr "შექმნა"
+
+#~ msgid "Create a New Library"
+#~ msgstr "ახალი ბიბლიოთეკის შექმნა"
+
+#~ msgid "Required Information to Create a New Library"
+#~ msgstr "ახალი ბიბლიოთეკის შესაქმნელად აუცილებელი ინფორმაცია"
+
+#~ msgid "Library Name"
+#~ msgstr "ბიბლიოთეკის დასახელება"
+
+#~ msgid "e.g. Computer Science Problems"
+#~ msgstr "მაგ. კომპიუტერული მეცნიერების ამოცანები"
+
+#~ msgid "The public display name for your library."
+#~ msgstr "თქვენი ბიბლიოთეკის საჯარო სახელწოდება."
+
+#~ msgid "The public organization name for your library."
+#~ msgstr "თქვენი ბიბლიოთეკის ორგანიზაციის საჯარო დასახელება."
+
+#~ msgid "This cannot be changed."
+#~ msgstr "შეცვლას არ ექვემდებარება."
+
+#~ msgid "Library Code"
+#~ msgstr "ბიბლიოთეკის კოდი"
+
+#~ msgid "e.g. CSPROB"
+#~ msgstr "მაგ. CSPROB"
+
+#~ msgid ""
+#~ "The unique code that identifies this library. {strong_start}Note: This is "
+#~ "part of your library URL, so no spaces or special characters are "
+#~ "allowed.{strong_end} This cannot be changed."
+#~ msgstr ""
+#~ "უნიკალური კოდი, რომლის მიხედვითაც ხდება ბიბლიოთეკის იდენტიფიცირება. "
+#~ "{strong_start}შენიშვნა: ეს თქვენი ბიბლიოთეკის URL მისამართის ნაწილია, "
+#~ "დაშორებები ან სპეციალური სიმბოლოები დაშვებული არ არის.{strong_end} ეს არ "
+#~ "შეიცვლება."
+
+#~ msgid "Courses Being Processed"
+#~ msgstr "მიმდინარეობს კურსის დამუშავება"
+
+#~ msgid "This course run is currently being created."
+#~ msgstr "მიმდინარეობს კურსის მსვლელობის შექმნა,"
+
+#~ msgid "Configuring as re-run"
+#~ msgstr "მიმდინარეობს ხელახლა გაშვების კონფიგურაცია"
+
+#~ msgid ""
+#~ "The new course will be added to your course list in 5-10 minutes. Return to "
+#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
+#~ " new course will need some manual configuration."
+#~ msgstr ""
+#~ "ახალი კურსი თქვენი კურსების სიას 5-10 წუთის განმავლობაში დაემატება. კურსის "
+#~ "სიის გასაახლებლად დაბრუნდით ან {link_start}განაახლეთ{link_end} ეს გვერდი. "
+#~ "ახალი კურსი საჭიროებს გარკვეული პარამეტრების ხელით დაყენებას."
+
+#~ msgid "This re-run processing status:"
+#~ msgstr "ხელახლა გაშვების დამუშავების სტატუსი:"
+
+#~ msgid "Configuration Error"
+#~ msgstr "კონფიგურაციის შეცდომა"
+
+#~ msgid ""
+#~ "A system error occurred while your course was being processed. Please go to "
+#~ "the original course to try the re-run again, or contact your PM for "
+#~ "assistance."
+#~ msgstr ""
+#~ "თქვენი კურსის დამუშავებისას დაფიქსირდა სისტემური შეცდომა. გთხოვთ, გადადით "
+#~ "საწყის კურსზე და სცადეთ მისი ხელახლა გაშვება ან დახმარებისთვის დაუკავშირდით "
+#~ "ტექნიკური მხარდაჭერის სერვისს."
+
+#~ msgid "Libraries"
+#~ msgstr "ბიბლიოთეკები"
+
+#~ msgid "Are you staff on an existing {studio_name} course?"
+#~ msgstr "{studio_name}-ის არსებული კურსის თანამშრომელი ბრძანდებით?"
+
+#~ msgid ""
+#~ "The course creator must give you access to the course. Contact the course "
+#~ "creator or administrator for the course you are helping to author."
+#~ msgstr ""
+#~ "კურსზე წვდომა კურსის შემქმნელმა უნდა მოგანიჭოთ. დაუკავშირდით შესაბამისი "
+#~ "კურსის შემქმნელს ან ადმინისტრატორს."
+
+#~ msgid "Create Your First Course"
+#~ msgstr "შექმენით თქვენი პირველი კურსი"
+
+#~ msgid "Your new course is just a click away!"
+#~ msgstr "ერთი დაწკაპუნებაც და თქვენი ახალი კურსი შექმნილია!"
+
+#~ msgid "Becoming a Course Creator in {studio_name}"
+#~ msgstr "შექმენით კურსი {studio_name}-ში"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team will evaluate your request and provide you feedback within 24 hours "
+#~ "during the work week."
+#~ msgstr ""
+#~ "ჩვენი xConsortium-ის პარტნიორებისა და შერჩეული სტუმრებისთვის მართვის "
+#~ "ძირითადი პლატფორმა {studio_name}-ია. კურსები, რომელთა გუნდის წევრიც ხართ, "
+#~ "რედაქტირებისთვის ზედა ნაწილში გამოჩდება,ხოლო კურსის შემქმნელის პრივილეგიებს"
+#~ "  {platform_name}-ი ანიჭებს. ჩვენი გუნდი შეაფასებს თქვენს მოთხოვნას და "
+#~ "სამუშაო კვირაში, 24 საათის განმავლობაში გიპასუხებთ."
+
+#~ msgid "Your Course Creator Request Status:"
+#~ msgstr "კურსის ავტორობაზე თქვენი მოთხოვნის სტატუსი:"
+
+#~ msgid "Request the Ability to Create Courses"
+#~ msgstr "მოთხოვნა კურსების შექმნის შესაძლებლობაზე"
+
+#~ msgid "Your Course Creator Request Status"
+#~ msgstr "კურსის ავტორობაზე თქვენი მოთხოვნის სტატუსი"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is has completed evaluating your request."
+#~ msgstr ""
+#~ "{studio_name} ჩვენი xConsortium პარტნიორებისა და სტუმართა ნაწილისთვის "
+#~ "შექმნილი ონლაინ პროდუქტია. თქვენ შეგიძლიათ იმ კურსების რედაქტირება, რომელთა "
+#~ "გუნდის წევრიც ხართ, კურსის შემქმნელის პრივილეგიებს  კი {platform_name}-ი "
+#~ "ანიჭებს. ჩვენმა გუნდმა დაასრულა თქვენი მოთხოვნის განხილვა."
+
+#~ msgid "Your Course Creator request is:"
+#~ msgstr "თქვენი კურსის შემქმნელის მოთხოვნაა:"
+
+#~ msgid ""
+#~ "Your request did not meet the criteria/guidelines specified by "
+#~ "{platform_name} Staff."
+#~ msgstr ""
+#~ "თქვენი მოთხოვნა არ აკმაყოფილებს {platform_name}-ის თანამშრომელთა მიერ "
+#~ "გაწერილ კრიტერიუმებს/სახელმძღვანელოს."
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is currently  evaluating your request."
+#~ msgstr ""
+#~ "ჩვენი xConsortium-ის პარტნიორებისა და შერჩეული სტუმარებისთვის მართვის "
+#~ "ძირითადი პლატფორმა {studio_name}-ია. კურსები, რომელთა გუნდის წევრიც ხართ, "
+#~ "რედაქტირებისთვის ზედა ნაწილში გამოჩნდება, ხოლო, კურსის შემქმნელის "
+#~ "პრივილეგიებს {platform_name}-ი ანიჭებს. ჩვენი გუნდი ამჟამად თქვენს "
+#~ "მოთხოვნებს აფასებს."
+
+#~ msgid ""
+#~ "Your request is currently being reviewed by {platform_name} staff and should"
+#~ " be updated shortly."
+#~ msgstr ""
+#~ "ამჟამად თქვენს მოთხოვნას განიხილავენ {platform_name}-ის თანამშრომლები და "
+#~ "მალე გიპასუხებენ."
+
+#~ msgid "Were you expecting to see a particular library here?"
+#~ msgstr "თქვენ აქ კონკრეტული ბიბლიოთეკის ნახვას ელოდით?"
+
+#~ msgid ""
+#~ "The library creator must give you access to the library. Contact the library"
+#~ " creator or administrator for the library you are helping to author."
+#~ msgstr ""
+#~ "ბიბლიოთეკაზე წვდომა ბიბლიოთეკის შემქმნელმა უნდა მოგანიჭოთ. დაუკავშირდით "
+#~ "შესაბამისი ბიბლიოთეკის შემქმნელს ან ადმინისტრატორს."
+
+#~ msgid "Create Your First Library"
+#~ msgstr "თქვენი პირველი ბიბლიოთეკის შექმნა"
+
+#~ msgid ""
+#~ "Libraries hold a pool of components that can be re-used across multiple "
+#~ "courses. Create your first library with the click of a button!"
+#~ msgstr ""
+#~ "შესაძლოა ბიბლიოთეკების მთელი რიგი კომპონენტები სხვადასხვა კურსების მიერ "
+#~ "იქნეს გამოყენებული. ღილაკზე დაწკაპუნებით შექმენით თქვენი პირველი ბიბლიოთეკა!"
+
+#~ msgid "New to {studio_name}?"
+#~ msgstr "ახალი ხართ {studio_name}-ზე?"
+
+#~ msgid ""
+#~ "Click Help in the upper-right corner to get more information about the "
+#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
+#~ " of the page to access our continually updated documentation and other "
+#~ "{studio_name} resources."
+#~ msgstr ""
+#~ "{studio_name}-ის გვერდის შესახებ მეტი ინფორმაციის მისაღებად დააწკაპუნეთ ზედა"
+#~ " მარჯვენა კუთხეში დახმარებაზე. ასევე, გვერდის ქვემოთ განთავსებული ბმულების "
+#~ "საშუალებით იხილეთ ჩვენი მუდმივად განახლებადი დოკუმენტები და {studio_name}-ის"
+#~ " სხვა რესურსები."
+
+#~ msgid "Getting Started with {studio_name}"
+#~ msgstr "ვიწყებთ {studio_name}-ში მუშაობას"
+
+#~ msgid "Can I create courses in {studio_name}?"
+#~ msgstr "შემიძლია {studio_name}-ში კურსების შექმნა?"
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must {link_start}contact "
+#~ "{platform_name} staff to help you create a course{link_end}."
+#~ msgstr ""
+#~ "{studio_name}-ში კურსების შექმნის მიზნით, უნდა "
+#~ "{link_start}დაუკავშირდეთ{platform_name}-ის თანამშრომლებს, რომლებიც "
+#~ "კურსის{link_end} შექმნაში დაგეხმარებიან."
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must have course creator "
+#~ "privileges to create your own course."
+#~ msgstr ""
+#~ "{studio_name}-ში საკუთარი კურსის შესაქმნელად კურსის შემქმნელის პრივილეგიებით"
+#~ " უნდა სარგებლობდეთ."
+
+#~ msgid ""
+#~ "Your request to author courses in {studio_name} has been denied. Please "
+#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
+#~ msgstr ""
+#~ "თქვენი მოთხოვნა, იყოთ კურსების ავტორი {studio_name}-ში, უარყოფილია. "
+#~ "დამატებითი კითხვების შემთხვევაში {link_start}გთხოვთ დაუკავშირდეთ "
+#~ "{platform_name}-ის თანამშრომლებს{link_end}."
+
+#~ msgid "Thanks for signing up, {name}!"
+#~ msgstr "გმადლობთ რეგისტრაციისთვის, {name}!"
+
+#~ msgid "We need to verify your email address"
+#~ msgstr "ჩვენ გვჭირდება თქვენი ელფოსტის მისამართის დადასტურება"
+
+#~ msgid ""
+#~ "Almost there! In order to complete your sign up we need you to verify your "
+#~ "email address ({email}). An activation message and next steps should be "
+#~ "waiting for you there."
+#~ msgstr ""
+#~ "თითქმის მზადაა! რეგისტრაციის დასრულებისთვის უნდა დაადასტუროთ თქვენი ელფოსტის"
+#~ " მისამართი ({email}), რომელზეც უკვე გელოდებათ შეტყობინება აქტივიზაციისა და "
+#~ "შემდეგი საფეხურების შესახებ."
+
+#~ msgid "Need help?"
+#~ msgstr "გჭირდებათ დახმარება?"
+
+#~ msgid ""
+#~ "Please check your Junk or Spam folders in case our email isn't in your "
+#~ "INBOX. Still can't find the verification email? Request help via the link "
+#~ "below."
+#~ msgstr ""
+#~ "თუკი ჩვენგან გამოგზავნილი ელექტრონული წერილი არ ჩანს თქვენს შემომავალ "
+#~ "საქაღალდეში, გთხოვთ შეამოწმოთ არასასურველი ფოსტა ან სპამის საქაღალდეები. "
+#~ "მაინც ვერ ნახეთ დადასტურების შეტყობინება? მოითხოვეთ დახმარება ქვემოთ "
+#~ "განთავსებული და ბმულის საშუალებით."
+
+#~ msgid "User Access"
+#~ msgstr "მომხმარებლის წვდომა"
+
+#~ msgid "Schedule & Details"
+#~ msgstr "განრიგი და დეტალები"
+
+#~ msgid "Expand or Collapse"
+#~ msgstr "ჩამოშალე ან აკეცე"
+
+#~ msgid "This block contains multiple components."
+#~ msgstr "ეს ბლოკი მრავალ კომპონენტს შეიცავს."
+
+#~ msgid "Video Uploads"
+#~ msgstr "ვიდეო ატვირთვები"
+
+#~ msgid "Current Course:"
+#~ msgstr "მიმდინარე კურსი:"
+
+#~ msgid "Course Navigation"
+#~ msgstr "კურსის ნავიგაცია"
+
+#~ msgid "Outline"
+#~ msgstr "სტრუქტურა"
+
+#~ msgid "Publisher"
+#~ msgstr "გამომცემელი"
+
+#~ msgid "Import"
+#~ msgstr "იმპორტირება"
+
+#~ msgid "Export"
+#~ msgstr "ექსპორტირება"
+
+#~ msgid "Current Library:"
+#~ msgstr "მიმდინარე ბიბლიოთეკა:"
+
+#~ msgid "Language preference"
+#~ msgstr "ენის პარამეტრები"
+
+#~ msgid "Account Navigation"
+#~ msgstr "ანგარიშის ნავიგაცია"
+
+#~ msgid "Contextual Online Help"
+#~ msgstr "კონტექსტუალური ონლაინ დახმარება"
+
+#~ msgid "Sign Up"
+#~ msgstr "რეგისტრაცია"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
@@ -25919,11 +25352,186 @@ msgstr ""
 #~ "დაემატოს. ყველა სტუდენტს დაენიშნება ამ სიიდან შემთხვევითობის პრინციპით "
 #~ "არჩეული {max_count} კომპონენტი. "
 
+#~ msgid "example: username@domain.com"
+#~ msgstr "მაგალითი : username@domain.com"
+
 #~ msgid "Copy"
 #~ msgstr "კოპირება"
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "მხარდაჭერილია შემდეგი ორგანიზაციების მიერ"
+
+#~ msgid ""
+#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+#~ "Code{honor_link_end}"
+#~ msgstr ""
+#~ "{tos_link_start}მომსახურების პირობები{tos_link_end} და "
+#~ "{honor_link_start}ღირსების კოდექსი{honor_link_end}"
+
+#~ msgid "Copyright"
+#~ msgstr "საავტორო უფლება"
+
+#~ msgid "Copyright {year}. All rights reserved."
+#~ msgstr "საავტორო უფლება {year}. ყველა უფლება დაცულია."
+
+#~ msgid "For anyone, anywhere, anytime"
+#~ msgstr "ყველასთვის, ყველგან, ნებისმიერ დროს"
+
+#~ msgid ""
+#~ "We're sorry, but this version of your browser is not supported. Try again "
+#~ "using a different browser or a newer version of your browser."
+#~ msgstr ""
+#~ "ვწუხვართ, მაგრამ თქვენი ბრაუზერის ამ ვერსიის მხარდაჭერა არ გვაქვს. სცადეთ "
+#~ "სხვა ბრაუზერის ან თქვენი ბრაუზერის უფრო ახალი ვერსიის გამოყენება."
+
+#~ msgid "The following errors occurred while processing your registration:"
+#~ msgstr "თქვენი რეგისტრაციის დამუშავებისას დაფიქსირდა შემდეგი შეცდომები:"
+
+#~ msgid "Sign up with {provider_name}"
+#~ msgstr "{provider_name}ით შესვლა"
+
+#~ msgid "Create your own {platform_name} account below"
+#~ msgstr "შექმენით საკუთარი {platform_name} ანგარიში"
+
+#~ msgid ""
+#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
+#~ "asterisk (*)</strong>."
+#~ msgstr ""
+#~ "სავალდებულო ველები აღნიშნულია <strong class=\"indicator\">გამუქებული "
+#~ "ტექსტითა და ვარსკვლავით (*)</strong>."
+
+#~ msgid "You've successfully signed in with {selected_provider}."
+#~ msgstr "თქვენ წარმატებით შეხვედით {selected_provider}-ით."
+
+#~ msgid ""
+#~ "We just need a little more information before you start learning with "
+#~ "{platform_name}."
+#~ msgstr ""
+#~ "{platform_name}-ით სწავლის დაწყებამდე, ჩვენ ცოტა მეტი ინფორმაცია გვჭირდება."
+
+#~ msgid "Please complete the following fields to register for an account. "
+#~ msgstr "ანგარიშის რეგისტრაციისთვის გთხოვთ შეავსოთ შემდეგი ველები."
+
+#~ msgid "example: Jane Doe"
+#~ msgstr "მაგალითი: Jane Doe"
+
+#~ msgid "Your legal name, used for any certificates you earn."
+#~ msgstr ""
+#~ "თქვენი ოფიციალური სახელი, რომელიც გამოიყენება თქვენი ნებისმიერი  "
+#~ "სერტიფიკატისთვის."
+
+#~ msgid "example: JaneDoe"
+#~ msgstr "მაგალითი: JaneDoe"
+
+#~ msgid "Will be shown in any discussions or forums you participate in"
+#~ msgstr ""
+#~ "ნაჩვენები იქნება ნებისმიერი სახის დისკუსიაში ან ფორუმებში, რომლებშიც "
+#~ "მონაწილეობას მიიღებთ"
+
+#~ msgid "cannot be changed later"
+#~ msgstr "მოგვიანებით შეცვლა შეუძლებელია"
+
+#~ msgid "Welcome {username}"
+#~ msgstr "მოგესალმებით {username}"
+
+#~ msgid "Enter a Public Display Name:"
+#~ msgstr "შეიყვანეთ საჯაროდ ხილული სახელი:"
+
+#~ msgid "Public Display Name"
+#~ msgstr "საჯაროდ ხილული სახელი"
+
+#~ msgid "Additional Personal Information"
+#~ msgstr "დამატებითი პირადი ინფორმაცია"
+
+#~ msgid "example: New York"
+#~ msgstr "მაგალითად: ნიუ-იორკი"
+
+#~ msgid "Highest Level of Education Completed"
+#~ msgstr "დასრულებული განათლების უმაღლესი დონე"
+
+#~ msgid "Year of Birth"
+#~ msgstr "დაბადების წელი"
+
+#~ msgid "Please share with us your reasons for registering with {platform_name}"
+#~ msgstr ""
+#~ "გთხოვთ გაგვიზიაროთ {platform_name}-ით დარეგისტრირების სუბიექტური მიზეზები"
+
+#~ msgid "Account Acknowledgements"
+#~ msgstr "ანგარიშის თანხმობები"
+
+#~ msgid "Preferences for {platform_name}"
+#~ msgstr " {platform_name}-ის პარამეტრები"
+
+#~ msgid "Update my {platform_name} Account"
+#~ msgstr "ჩემი {platform_name} ანგარიშის განახლება"
+
+#~ msgid "Processing your account information"
+#~ msgstr "თქვენი ანგარიშის ინფორმაციის დამუშავება"
+
+#~ msgid "Welcome {username}!  Please set your preferences below"
+#~ msgstr "მოგესალმებით {username}! გთხოვთ, მიუთითეთ თქვენი არჩევანი ქვემოთ"
+
+#~ msgid "Update My Account"
+#~ msgstr "ჩემი ანგარიშის განახლება"
+
+#~ msgid "Registration Help"
+#~ msgstr "დახმარება რეგისტრაციასთან დაკავშირებით"
+
+#~ msgid "Already registered?"
+#~ msgstr "უკვე დარეგისტრირდით?"
+
+#~ msgid "Next Steps"
+#~ msgstr "მომდევნო საფეხურები"
+
+#~ msgid ""
+#~ "You will receive an activation email.  You must click on the activation link"
+#~ " to complete the process.  Don't see the email?  Check your spam folder and "
+#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+#~ "able to receive email from your courses."
+#~ msgstr ""
+#~ "თქვენ მიიღებთ აქტივაციის შეტყობინებას. პროცესის დასასრულებლად უნდა "
+#~ "დააწკაპუნოთ აქტივაციის ბმულზე. ვერ იპოვეთ შეტყობინება? შეამოწმეთ თქვენი "
+#~ "სპამის საქაღალდე და class.stanford.edu-დან მოსული შეტყობინებები მონიშნეთ "
+#~ "როგორც \"არა სპამი\", რათა შესაძლებლობა გქონდეთ მიიღოთ თქვენი კურსებისგან "
+#~ "შეტყობინებები."
+
+#~ msgid "Need Help?"
+#~ msgstr "გჭირდებათ დახმარება?"
+
+#~ msgid "Need help in registering with {platform_name}?"
+#~ msgstr "გესაჭიროებათ დახმარება {platform_name}-ით დასარეგისტრირებლად?"
+
+#~ msgid "View our FAQs for answers to commonly asked questions."
+#~ msgstr ""
+#~ "პასუხების მოსაძიებლად, იხილეთ ჩვენი ხშირად დასმული შეკითხვების გვერდი."
+
+#~ msgid ""
+#~ "Once registered, most questions can be answered in the course specific "
+#~ "discussion forums or through the FAQs."
+#~ msgstr ""
+#~ "რეგისტრაციის შემდეგ, შეკითხვების უმეტესობას პასუხი გაეცემა კურსის კონკრეტული"
+#~ " განხილვის ფორუმებზე ან ხშირად დასმული შეკითხვების მეშვეობით."
+
+#~ msgid ""
+#~ "We received a request to change the e-mail associated with your "
+#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
+#~ " please confirm your new e-mail address by visiting:"
+#~ msgstr ""
+#~ "ჩვენ მივიღეთ მოთხოვნა შევცვალოთ თქვენი {platform_name}-ის ანგარიშთან "
+#~ "დაკავშირებული ელ-ფოსტა {old_email}-დან {new_email}-ზე. თუ ეს სწორია, გთხოვთ "
+#~ "დაადასტუროთ თქვენი ახალი ელფოსტის მისამართი ბმულზე გადასვლით:"
+
+#~ msgid "Put your Terms of Service here!"
+#~ msgstr "განათავსეთ თქვენი მომსახურების პირობები აქ!"
+
+#~ msgid "Put your Privacy Policy here!"
+#~ msgstr "განათვასეთ თქვენი კონფიდენციალურობის პოლიტიკა აქ!"
+
+#~ msgid "Put your Honor Code here!"
+#~ msgstr "განათავსეთ თქვენი ღირსების კოდექსი აქ!"
+
+#~ msgid "Put your Copyright Text here!"
+#~ msgstr "განათავსეთ თქვენი საავტორო უფლების მქონე ტექსტი აქ!"
 
 #~ msgid "Collapse All"
 #~ msgstr "ყველას აკეცვა"
