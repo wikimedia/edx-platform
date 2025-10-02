@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-01 07:16+0000\n"
+"POT-Creation-Date: 2025-10-02 17:51+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Andrew Lau <alau52@yahoo.com>, 2017\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/open-edx/edx-platform/language/zh_TW/)\n"
@@ -234,6 +234,7 @@ msgid "Course Blocks mapping"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
@@ -583,6 +584,7 @@ msgstr "儲存中"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "刪除"
 
@@ -6486,8 +6488,6 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "為此{item}發布所有未發布的變更嗎？"
 
 #: cms/static/js/views/modals/course_outline_modals.js
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "發佈"
 
@@ -7166,10 +7166,27 @@ msgid "Actions"
 msgstr "動作"
 
 #: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "未排程"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Section Highlights"
+msgstr ""
 
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
@@ -7934,15 +7951,18 @@ msgid ""
 msgstr "如收到信用的問題，在您選擇\"結束我的測驗\"之前，您必須為每個問題點擊\"提交\"按鈕。"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "學習更多"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "開始時間： %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "開始"
 
@@ -8649,6 +8669,7 @@ msgstr "建立一個帳號"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "登入"
 
@@ -8689,69 +8710,84 @@ msgid "Create an Account"
 msgstr "建立新帳號"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "第一次看到此畫面？"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "建立新帳號"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "登入"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
 msgstr "使用您的電子郵件地址和密碼登入，或使用下面列出的第三方登入"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr "使用你的email和密碼登入"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr "如果你還未有帳戶，請點擊下面按鈕進行註冊。"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "或登入用"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "使用%(providerName)s 登入"
@@ -9830,130 +9866,6 @@ msgstr "請添加教師的照片(注意：僅支援JPG或PNG格式)"
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "上傳照片"
-
-#: cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr "預備知識：%(prereq_display_name)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Contains staff only content"
-msgstr "包含僅限工作人員的內容"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr "內容尚未發佈上線"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr "未發佈的單元將不會被釋出"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to content that will release in the future"
-msgstr "未發佈更改之內容將會在未來被釋出"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr "訪問此單元僅限於：{selectedGroupsLabel}"
-
-#: cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr "訪問本單元中的某些內容僅限於特定一組的學習者"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr "未評分"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr "練習監考考試"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr "監考考試"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr "定時考試"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr "折疊/展開 %(xblock_type)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr "顯示名稱"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr "設定"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Duplicate"
-msgstr "重複"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Drag to reorder"
-msgstr "拖動以重新排序"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Release Status:"
-msgstr "發佈狀態:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "Released:"
-msgstr "已釋出："
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-msgid "Scheduled:"
-msgstr "時程表:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-msgid "Section Highlights"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Graded as:"
-msgstr "當前評分方式："
-
-#: cms/templates/js/course-outline.underscore
-msgid "Due:"
-msgstr "原因："
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr "小節在課程結束日期後隱藏"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr "小節在截止日期後隱藏"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "You haven't added any content to this course yet."
-msgstr "尚未向該課程新增任何內容。"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Click to add a new %(xblock_type)s"
-msgstr "點選以新增%(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11139,6 +11051,86 @@ msgstr "使用當前字幕"
 
 #~ msgid "Dismiss"
 #~ msgstr "解僱"
+
+#, python-format
+#~ msgid "Prerequisite: %(prereq_display_name)s"
+#~ msgstr "預備知識：%(prereq_display_name)s"
+
+#~ msgid "Contains staff only content"
+#~ msgstr "包含僅限工作人員的內容"
+
+#~ msgid "Unpublished changes to live content"
+#~ msgstr "內容尚未發佈上線"
+
+#~ msgid "Unpublished units will not be released"
+#~ msgstr "未發佈的單元將不會被釋出"
+
+#~ msgid "Unpublished changes to content that will release in the future"
+#~ msgstr "未發佈更改之內容將會在未來被釋出"
+
+#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+#~ msgstr "訪問此單元僅限於：{selectedGroupsLabel}"
+
+#~ msgid ""
+#~ "Access to some content in this unit is restricted to specific groups of "
+#~ "learners"
+#~ msgstr "訪問本單元中的某些內容僅限於特定一組的學習者"
+
+#~ msgid "Ungraded"
+#~ msgstr "未評分"
+
+#~ msgid "Practice proctored Exam"
+#~ msgstr "練習監考考試"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "監考考試"
+
+#~ msgid "Timed Exam"
+#~ msgstr "定時考試"
+
+#, python-format
+#~ msgid "Collapse/Expand this %(xblock_type)s"
+#~ msgstr "折疊/展開 %(xblock_type)s"
+
+#~ msgid "Display Name"
+#~ msgstr "顯示名稱"
+
+#~ msgid "Configure"
+#~ msgstr "設定"
+
+#~ msgid "Duplicate"
+#~ msgstr "重複"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "拖動以重新排序"
+
+#~ msgid "Release Status:"
+#~ msgstr "發佈狀態:"
+
+#~ msgid "Released:"
+#~ msgstr "已釋出："
+
+#~ msgid "Scheduled:"
+#~ msgstr "時程表:"
+
+#~ msgid "Graded as:"
+#~ msgstr "當前評分方式："
+
+#~ msgid "Due:"
+#~ msgstr "原因："
+
+#~ msgid "Subsection is hidden after course end date"
+#~ msgstr "小節在課程結束日期後隱藏"
+
+#~ msgid "Subsection is hidden after due date"
+#~ msgstr "小節在截止日期後隱藏"
+
+#~ msgid "You haven't added any content to this course yet."
+#~ msgstr "尚未向該課程新增任何內容。"
+
+#, python-format
+#~ msgid "Click to add a new %(xblock_type)s"
+#~ msgstr "點選以新增%(xblock_type)s"
 
 #~ msgid "Receive updates"
 #~ msgstr "接收更新"
