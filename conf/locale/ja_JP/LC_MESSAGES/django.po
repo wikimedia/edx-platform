@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-02 19:04+0000\n"
+"POT-Creation-Date: 2025-10-02 19:33+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Japanese (Japan) (https://app.transifex.com/open-edx/teams/6205/ja_JP/)\n"
@@ -1363,6 +1363,10 @@ msgstr ""
 msgid "Enrollment activity report"
 msgstr ""
 
+#: lms/templates/certificates/_accomplishment-rendering.html
+msgid "Certificate of Achievement"
+msgstr ""
+
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Discussion' refers to the tab in the courseware that leads to
 #. the discussion forums
@@ -1455,14 +1459,9 @@ msgstr "動画ID"
 #. yet reached the point in its processing by the servers where its
 #. duration is determined.
 #: cms/djangoapps/contentstore/views/videos.py
-#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: openedx/core/djangoapps/api_admin/models.py
 msgid "Pending"
 msgstr "保留中"
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-msgid "Organization"
-msgstr "機関"
 
 #: cms/envs/common.py lms/djangoapps/instructor/views/api.py
 #: lms/envs/common.py
@@ -1544,8 +1543,6 @@ msgstr "honor code受講者として受講登録されています"
 #: common/djangoapps/course_modes/helpers.py lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/static_templates/honor.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Honor Code"
 msgstr "Honor Code"
 
@@ -1680,7 +1677,6 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login_form.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Password"
 msgstr "パスワード"
 
@@ -3025,14 +3021,8 @@ msgstr "この問題のスタッフの解答に問題がありました: 空の�
 #. answers.
 #. Translators: Separator used in StringResponse to display multiple answers.
 #. Example: "Answer: Answer_1 or Answer_2 or Answer_3".
-#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
-#. Translators: this is the last choice of a number of choices of how to log
-#. in
-#. to the site.
 #: common/lib/capa/capa/responsetypes.py
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "or"
 msgstr "または"
 
@@ -3469,7 +3459,7 @@ msgstr ""
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/stanford-style/lms/templates/register-shib.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Submit"
 msgstr "提出"
 
@@ -4333,7 +4323,7 @@ msgstr ""
 "を公開してリンクすることができます。URLは省略してはいけません。例: http://www.edx.org/course/Introduction-"
 "to-MOOCs-ITM001"
 
-#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
+#: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Language"
 msgstr "講座の言語"
 
@@ -4643,7 +4633,6 @@ msgid "Any Type"
 msgstr "全タイプ"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
-#: cms/templates/widgets/header.html
 msgid "Library"
 msgstr "ライブラリ"
 
@@ -5077,9 +5066,6 @@ msgstr ""
 "MATLABのホスティングサービスにアクセスするため、MathWorks社から提供されたAPIキーを入力します。このキーはこの講座の期間中のみ限定的に利用できるものです。他の講座とAPIキーを共有しないでください。このキーが暴露されたり毀損されたと考えられる場合には、すぐにMathWorks社へお知らせください。あなたの講座でキーを入手したい場合もしくは問題を報告する場合は、moocsupport@mathworks.comへご連絡ください。"
 
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
 msgid "Group Configurations"
 msgstr "グループ設定"
 
@@ -5410,6 +5396,9 @@ msgstr "ホーム"
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "講座"
 
@@ -5421,9 +5410,6 @@ msgstr ""
 #: lms/templates/oauth2_provider/authorize.html
 #: openedx/core/djangoapps/user_api/admin.py
 #: openedx/features/wikimedia_features/messenger/views.py
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
-#: cms/templates/videos_index_pagination.html
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -5796,12 +5782,12 @@ msgstr ""
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: lms/templates/signup_modal.html themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
+#: lms/templates/signup_modal.html
 msgid "Close"
 msgstr "閉じる"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -5822,6 +5808,7 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr ""
 
@@ -5832,6 +5819,7 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -5849,6 +5837,7 @@ msgid ""
 msgstr ""
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
+#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -5959,12 +5948,6 @@ msgid ""
 "this request, please contact us immediately. Contact information is listed "
 "at:"
 msgstr ""
-
-#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
-msgid ""
-"We keep a log of old e-mails, so if this request was unintentional, we can "
-"investigate."
-msgstr "古いメールアドレスの履歴を保存していますので、意図したリクエストでない場合は調査することができます。"
 
 #: common/templates/student/edx_ace/proctoringrequirements/email/body.html
 #, python-format
@@ -6214,24 +6197,13 @@ msgstr ""
 #. #-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#
 #. Translators: 'Open edX' is a trademark, please keep this untranslated.
 #. See http://openedx.org for more information.
-#. #-#-#-#-#  mako.po (edx-platform)  #-#-#-#-#
-#. Translators: 'Open edX' is a brand, please keep this untranslated. See
-#. http://openedx.org for more information.
-#: lms/djangoapps/branding/api.py cms/templates/widgets/footer.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
+#: lms/djangoapps/branding/api.py
 msgid "Powered by Open edX"
 msgstr "Powered by Open edX"
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/blog.html
 msgid "Blog"
 msgstr "ブログ"
-
-#: cms/templates/widgets/sock_links.html
-#: themes/edx.org/cms/templates/widgets/sock.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
-msgid "Contact Us"
-msgstr "お問い合わせ"
 
 #: lms/djangoapps/branding/api.py
 msgid "Help Center"
@@ -6248,9 +6220,8 @@ msgstr "寄付金"
 
 #: lms/djangoapps/branding/api.py lms/templates/footer.html
 #: lms/templates/static_templates/about.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "概要"
 
@@ -6260,19 +6231,14 @@ msgid "{platform_name} for Business"
 msgstr "ビジネス用 {platform_name}"
 
 #: lms/djangoapps/branding/api.py lms/templates/static_templates/contact.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Contact"
 msgstr "問い合わせ"
 
 #: lms/djangoapps/branding/api.py
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/about.html
 msgid "Careers"
 msgstr "職歴"
 
-#: lms/djangoapps/branding/api.py themes/red-theme/lms/templates/footer.html
+#: lms/djangoapps/branding/api.py
 msgid "News"
 msgstr "ニュース"
 
@@ -6286,10 +6252,7 @@ msgstr "利用規約および倫理規定"
 #: lms/djangoapps/branding/api.py lms/djangoapps/certificates/views/webview.py
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
@@ -6303,9 +6266,6 @@ msgstr "アクセシビリティ方針"
 #: lms/djangoapps/branding/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: cms/templates/widgets/footer.html lms/templates/static_templates/tos.html
-#: themes/red-theme/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
 msgid "Terms of Service"
 msgstr "利用規約"
 
@@ -6600,7 +6560,6 @@ msgstr "{platform_name} は業績を称え、{platform_name}受講者の講座�
 #. protect published content
 #: lms/djangoapps/certificates/views/webview.py
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "All rights reserved"
 msgstr "All rights reserved"
 
@@ -7286,7 +7245,6 @@ msgstr ""
 #. Translators: 'Textbooks' refers to the tab in the course that leads to the
 #. course' textbooks
 #: lms/djangoapps/courseware/plugins.py lms/djangoapps/courseware/tabs.py
-#: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Textbooks"
 msgstr "教科書"
 
@@ -7440,7 +7398,7 @@ msgstr ""
 #: openedx/features/course_experience/views/course_home_messages.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "サインイン"
 
@@ -7809,7 +7767,6 @@ msgstr ""
 #: lms/djangoapps/instructor/views/api.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Gender"
 msgstr "性別"
 
@@ -7818,7 +7775,6 @@ msgid "Level of Education"
 msgstr "学歴"
 
 #: lms/djangoapps/instructor/views/api.py
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Mailing Address"
 msgstr "住所"
 
@@ -7862,13 +7818,11 @@ msgstr "チーム"
 #: openedx/core/djangoapps/user_api/accounts/settings_views.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "City"
 msgstr "都市"
 
 #: lms/djangoapps/instructor/views/api.py
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Country"
 msgstr "国"
 
@@ -8231,8 +8185,7 @@ msgid "Special Exams"
 msgstr "特別試験"
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
-#: lms/djangoapps/support/views/index.py cms/templates/certificates.html
-#: cms/templates/export.html cms/templates/widgets/header.html
+#: lms/djangoapps/support/views/index.py
 msgid "Certificates"
 msgstr "修了証"
 
@@ -8350,8 +8303,6 @@ msgstr "延長する期日は、元の期日以降でなければいけません
 #: lms/djangoapps/instructor/views/tools.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Full Name"
 msgstr "氏名"
 
@@ -8657,7 +8608,6 @@ msgstr " (合計{total}中)"
 #: lms/templates/learner_dashboard/programs.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Programs"
 msgstr "プログラム"
 
@@ -9435,6 +9385,8 @@ msgstr ""
 
 #: lms/templates/main_django.html cms/templates/base.html
 #: lms/templates/main.html
+#: themes/edx-platform/wikilearn/cms/templates/base.html
+#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "メインコンテンツへ"
 
@@ -9630,7 +9582,6 @@ msgstr "記事を削除する"
 
 #: lms/templates/wiki/delete.html
 #: lms/templates/wiki/plugins/attachments/index.html
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -9667,7 +9618,9 @@ msgstr "記事を削除しようとしています。よろしいですか？"
 
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+#: wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "編集"
@@ -9693,8 +9646,6 @@ msgstr "Wikiプレビュー"
 #: lms/templates/wiki/includes/cheatsheet.html lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/modal/_modal-settings-language.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "window open"
 msgstr "ウィンドウを開く"
 
@@ -9943,8 +9894,9 @@ msgstr "ファイルは別の記事からも再利用できます。これらの
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "検索"
@@ -10046,52 +9998,48 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr ""
 
-#: cms/templates/widgets/header.html
-msgid "Sign In"
-msgstr "サインイン"
-
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -10100,6 +10048,7 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -10163,7 +10112,7 @@ msgid ""
 "Comma-separated list of usernames which will be able to view this catalog."
 msgstr "コンマで区切られた本カタログを閲覧できるユーザー名のリスト。"
 
-#: openedx/core/djangoapps/api_admin/models.py cms/templates/index.html
+#: openedx/core/djangoapps/api_admin/models.py
 msgid "Denied"
 msgstr "否認"
 
@@ -10201,6 +10150,7 @@ msgstr ""
 #: openedx/features/course_bookmarks/views/course_bookmarks.py
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "ブックマーク"
 
@@ -10329,11 +10279,6 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
-
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-#: cms/templates/settings.html
-msgid "Course Run"
-msgstr "Course Run"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -11136,7 +11081,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s, and other courses on "
@@ -11146,7 +11090,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 #, python-format
 msgid ""
 "Remember when you enrolled in %(course_name)s on %(platform_name)s? We do, "
@@ -11175,7 +11118,6 @@ msgstr ""
 
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.html
 #: openedx/core/djangoapps/schedules/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
-#: themes/red-theme/lms/templates/schedules/edx_ace/recurringnudge_day3/email/body.txt
 msgid "Start learning now"
 msgstr ""
 
@@ -11668,8 +11610,7 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-not-authenticated.html
-#: themes/stanford-style/lms/templates/register-form.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Register"
 msgstr "登録"
 
@@ -11874,8 +11815,6 @@ msgstr "この名前は修了証に記載されます。"
 #. meant to hold the user's public username.
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Public Username"
 msgstr "ユーザー名"
 
@@ -12229,6 +12168,7 @@ msgstr ""
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "更新"
 
@@ -12416,6 +12356,8 @@ msgstr ""
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "講座名"
 
@@ -12425,7 +12367,9 @@ msgstr "講座名"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Courses"
 msgstr "講座"
 
@@ -12437,10 +12381,6 @@ msgstr "レポート"
 #: lms/templates/course_modes/fbe.html
 msgid "Show more"
 msgstr "詳しく見る"
-
-#: themes/red-theme/lms/templates/ace_common/edx_ace/common/base_body.html
-msgid "Our mailing address is"
-msgstr ""
 
 #: cms/djangoapps/api/v1/serializers/course_runs.py
 msgid "Course team user does not exist"
@@ -13334,11 +13274,17 @@ msgstr "ページが見つかりません"
 msgid "Page not found"
 msgstr "ページが見つかりません"
 
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Files & Uploads"
+msgstr ""
+
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "コンテンツ"
 
@@ -13347,6 +13293,7 @@ msgstr "コンテンツ"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
@@ -13359,11 +13306,21 @@ msgstr "設定"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "読込中"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr ""
+
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
+#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "講座番号"
 
@@ -13373,24 +13330,21 @@ msgstr "エラー: "
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "組織: "
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "講座番号: "
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
+#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "Course Run: "
-
-#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "example: username@domain.com"
-msgstr "例: username@domain.com"
 
 #: cms/templates/settings.html lms/templates/courseware/program_marketing.html
 msgid "Instructors"
@@ -13401,8 +13355,19 @@ msgid "Requirements"
 msgstr "必須事項"
 
 #: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "詳細"
 
@@ -13410,6 +13375,7 @@ msgstr "詳細"
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
+#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "見る"
@@ -13427,29 +13393,20 @@ msgid "Reset"
 msgstr "リセット"
 
 #: cms/templates/widgets/footer.html lms/templates/footer.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Legal"
 msgstr "法的な"
-
-#. Translators: 'edX' and 'Open edX' are trademarks of 'edX Inc.'. Please do
-#. not translate any of these trademarks and company names.
-#: cms/templates/widgets/footer.html
-#: themes/red-theme/lms/templates/footer.html
-msgid ""
-"edX, Open edX, and the edX and Open edX logos are registered trademarks of "
-"{link_start}edX Inc.{link_end}"
-msgstr ""
-"edX と Open edX、ならびに edX と Open edX のロゴは、{link_start}edX Inc.{link_end} "
-"の登録商標です"
 
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "言語を選択"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "アカウント"
 
@@ -13458,7 +13415,8 @@ msgstr "アカウント"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/static_templates/help.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
 #: wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "ヘルプ"
@@ -13471,6 +13429,7 @@ msgstr "名前"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "サインアウト"
 
@@ -13617,14 +13576,17 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "詳しく知る"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "開始"
 
 #: lms/templates/course.html
+#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "開始: {date}"
 
@@ -13634,19 +13596,19 @@ msgstr "すべての講座を見る"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "results successfully populated,"
 msgstr "成績が正常に登録されました。"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Click to load all enrolled courses"
 msgstr "全ての受講登録済講座を読み込むためにクリック"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "You are not enrolled in any courses yet."
 msgstr "まだどの講座にも受講登録していません。"
 
@@ -13654,7 +13616,6 @@ msgstr "まだどの講座にも受講登録していません。"
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore courses"
 msgstr "講座を探す"
 
@@ -13663,16 +13624,16 @@ msgstr "講座を探す"
 msgid "Activate your account!"
 msgstr "アカウントを有効化しよう！"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Course-loading errors"
 msgstr "講座読込エラー"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Search Your Courses"
 msgstr "講座を検索"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "検索をクリア"
 
@@ -13680,7 +13641,7 @@ msgstr "検索をクリア"
 msgid "Skip to list of announcements"
 msgstr "告知の一覧表示をスキップする"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Account Status Info"
 msgstr ""
 
@@ -13699,15 +13660,15 @@ msgstr ""
 msgid "Continue to {platform_name}"
 msgstr ""
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
 msgstr "{course_number}のメール設定"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Receive course emails"
 msgstr "講座からのメールを受け取る"
 
-#: lms/templates/dashboard.html themes/edx.org/lms/templates/dashboard.html
+#: lms/templates/dashboard.html
 msgid "Save Settings"
 msgstr "設定を保存"
 
@@ -13716,8 +13677,6 @@ msgstr "設定を保存"
 #: lms/templates/dashboard/_dashboard_entitlement_actions.html
 #: lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html
-#: themes/edx.org/lms/templates/dashboard.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_entitlement_unenrollment_modal.html
 msgid "Unenroll"
 msgstr "受講登録取消"
 
@@ -13865,6 +13824,7 @@ msgid "External Authentication failed"
 msgstr "外部認証失敗"
 
 #: lms/templates/footer.html
+#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr "事業組織のロゴ"
 
@@ -13884,8 +13844,6 @@ msgstr "パスワードを変更する方法を記載したメールを送信し
 #: lms/templates/instructor/instructor_dashboard_2/generate_registarion_codes_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/invalidate_registration_code_modal.html
 #: lms/templates/instructor/instructor_dashboard_2/set_course_mode_price_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Required Information"
 msgstr "必須情報"
 
@@ -13931,7 +13889,8 @@ msgstr ""
 "締切が過ぎていますので、この課題はもう有効ではありません。{line_break}すでにこの課題を完了している場合、成績は{link_start}進捗ページ{link_end}でご覧いただけます。"
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/stanford-style/lms/templates/index.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search for a course"
 msgstr "講座を探す"
 
@@ -14171,8 +14130,6 @@ msgstr ""
 "ユーザー名、メールアドレス、氏名は{destination}に送信されます。この情報収集や利用については利用規約およびプライバシーポリシーが適用されます。"
 
 #: lms/templates/provider_login.html lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "E-mail"
 msgstr "メール"
 
@@ -14259,7 +14216,6 @@ msgid "{start_li}Welcome{end_li} {name}"
 msgstr ""
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "Enter a public username:"
 msgstr "表示名を入力: "
 
@@ -14276,19 +14232,14 @@ msgid "Goals in signing up for {platform_name}"
 msgstr "{platform_name}への登録時の目標"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Terms of Service{link_end}"
 msgstr "{link_start}利用規約{link_end}に同意します"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
 msgid "I agree to the {link_start}Honor Code{link_end}"
 msgstr "{link_start}倫理規定{link_end}に同意します"
 
 #: lms/templates/signup_modal.html
-#: themes/stanford-style/lms/templates/register-form.html
 msgid "Create My Account"
 msgstr "アカウントを作成する"
 
@@ -14461,6 +14412,7 @@ msgstr ""
 "{dashboard_link_start}こちらから{link_end}戻ることができます。登録したい場合は、{undo_link_start}こちらから{link_end}再登録できます。"
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "ダッシュボード: "
 
@@ -14474,6 +14426,7 @@ msgstr "その他のオプション"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr "その他のオプション"
 
@@ -15586,7 +15539,6 @@ msgid "Download student grades"
 msgstr "受講者の成績をダウンロード"
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Print or share your certificate:"
 msgstr "修了証を印刷またはシェア: "
 
@@ -15600,7 +15552,6 @@ msgstr "フェースブックに投稿"
 
 #: lms/templates/certificates/_accomplishment-banner.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Twitter"
 msgstr "ツイッターで共有"
 
@@ -15609,7 +15560,6 @@ msgid "Tweet this Accomplishment. Pop up window."
 msgstr "この成果をツイートしましょう。ウィンドウをポップアップします。"
 
 #: lms/templates/certificates/_accomplishment-banner.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Add to LinkedIn Profile"
 msgstr "LinkedIn のプロフィールに追加"
 
@@ -15628,10 +15578,6 @@ msgstr "{platform_name} のホーム"
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Noted by"
 msgstr "注記"
-
-#: lms/templates/certificates/_accomplishment-rendering.html
-msgid "Certificate of Achievement"
-msgstr ""
 
 #: lms/templates/certificates/_accomplishment-rendering.html
 msgid "Awarded to:"
@@ -15702,40 +15648,31 @@ msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/_upgrade_button.html
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/_upgrade_button.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue a Verified Certificate"
 msgstr "認証付き修了証を獲得する"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Enroll In {course_name} | Choose Your Track"
 msgstr "{course_name}を受講登録する | トラックを選んでください"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Sorry, there was an error when trying to enroll you"
 msgstr "申し訳ありませんが、受講登録中にエラーが発生しました"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Pursue Academic Credit with a Verified Certificate"
 msgstr "認証付き修了証で単位を取得する"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Become eligible for academic credit and highlight your new skills and "
 "knowledge with a verified certificate. Use this valuable credential to "
@@ -15745,59 +15682,50 @@ msgstr ""
 "単位を獲得し、認証付き修了証で新たなスキルや知識をアピールしましょう。この証明書があれば、単位取得やキャリアアップができたり、受験の際の味方になったりします。"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of the Verified Track"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Eligible for credit:{b_end} Receive academic credit after "
 "successfully completing the course"
 msgstr "{b_start}単位認定資格: {b_end}講座修了後、単位を取得する"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Unlimited Course Access: {b_end}Learn at your own pace, and access "
 "materials anytime to brush up on what you've learned."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Graded Assignments: {b_end}Build your skills through graded "
 "assignments and projects."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily Sharable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn."
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Benefits of a Verified Certificate"
 msgstr "認証付き修了証の利点"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official:{b_end} Receive an instructor-signed certificate with the "
 "institution's logo"
 msgstr "{b_start}公認: {b_end}機関のロゴ付き講師の署名入り修了証を受け取る"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable:{b_end} Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Highlight your new knowledge and skills with a verified certificate. Use "
 "this valuable credential to improve your job prospects and advance your "
@@ -15806,45 +15734,38 @@ msgstr ""
 "認証付き修了証で、新たな知識やスキルをアピールしましょう。この証明書があれば、就職に有利になったり、キャリアを高めたり、受験の際に役立ったりします。"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Official: {b_end}Receive an instructor-signed certificate with the "
 "institution's logo"
 msgstr "{b_start}公認: {b_end}機関のロゴ付き講師の署名入り修了証を受け取る"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Easily shareable: {b_end}Add the certificate to your CV or resumé, "
 "or post it directly on LinkedIn"
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "{b_start}Motivating: {b_end}Give yourself an additional incentive to "
 "complete the course"
 msgstr "{b_start}モチベーションアップ: {b_end}講座を修了するために、更なるモチベーションを自らに与えましょう"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course"
 msgstr "この講座を聴講"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums."
 msgstr "この講座を無料で聴講。とはいうものの、教材、アクティビティ、テスト、ディスカッションへのアクセスに制約はありません。"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid "Audit This Course (No Certificate)"
 msgstr "この講座を聴講 (修了証なし)"
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded assignments,"
@@ -15852,7 +15773,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include graded "
@@ -15860,7 +15780,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have access to course materials and "
 "discussions forums. {b_start}This track does not include unlimited course "
@@ -15868,7 +15787,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/course_modes/choose.html
-#: themes/edx.org/lms/templates/course_modes/choose.html
 msgid ""
 "Audit this course for free and have complete access to all the course "
 "material, activities, tests, and forums.  {b_start}Please note that this "
@@ -15962,6 +15880,7 @@ msgstr "{span_start}現在のセクション{span_end}"
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "締切 {date}"
 
@@ -15984,7 +15903,6 @@ msgstr "この講座に登録されています"
 
 #: lms/templates/courseware/course_about.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "View Course"
 msgstr "講座画面へ"
 
@@ -16037,7 +15955,6 @@ msgid "enroll"
 msgstr "受講登録"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Share with friends and family!"
 msgstr "友人や家族とシェア！"
 
@@ -16054,7 +15971,6 @@ msgid "Take a course with {platform} online"
 msgstr "{platform}オンラインで受講する"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Tweet that you've enrolled in this course"
 msgstr "この講座に受講登録したことをツィートする"
 
@@ -16063,11 +15979,11 @@ msgid "Post a Facebook message to say you've enrolled in this course"
 msgstr "この講座に受講登録したことをFacebookに投稿する"
 
 #: lms/templates/courseware/course_about_sidebar_header.html
-#: themes/stanford-style/lms/templates/courseware/course_about_sidebar_header.html
 msgid "Email someone to say you've enrolled in this course"
 msgstr "この講座に受講登録したことをメールする"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr "現在位置"
 
@@ -16075,10 +15991,13 @@ msgstr "現在位置"
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "注意が必要"
 
 #: lms/templates/courseware/course_navigation.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "講座教材"
 
@@ -16095,21 +16014,25 @@ msgid "Show Earlier Course Updates"
 msgstr "以前の講座更新情報を表示"
 
 #: lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr "講座の一覧"
 
 #: lms/templates/courseware/courses.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr "詳細検索"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} コースウェア"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "コースユーティリティー"
 
@@ -16125,14 +16048,17 @@ msgid ""
 msgstr ""
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "講座検索"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "この講座にはコンテンツがありません"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16141,6 +16067,7 @@ msgstr ""
 "教材にアクセスするためには、この試験で{required_score}%以上獲得しなければなりません。あなたの現在の得点は{current_score}%です。"
 
 #: lms/templates/courseware/courseware.html
+#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr "あなたの得点は{current_score}%です。受講前試験に合格しました。"
 
@@ -16218,7 +16145,6 @@ msgstr ""
 #: lms/templates/courseware/info.html
 #: lms/templates/dashboard/_dashboard_course_resume.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
-#: themes/edx.org/lms/templates/dashboard/_dashboard_course_resume.html
 msgid "Resume Course"
 msgstr "講座再開"
 
@@ -16358,10 +16284,12 @@ msgid "Starts on {}"
 msgstr "{} で開始"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number}の進捗"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "Studioで採点を見る"
 
@@ -16371,34 +16299,41 @@ msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "修了書を見る"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "新しいウィンドウで開く"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "修了証発行"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "単位認定条件"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr "{student_name}さん、あなたはこの講座の単位認定対象ではなくなりました。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -16406,83 +16341,103 @@ msgstr ""
 "{student_name}さん、あなたは本講座の単位認定条件を満たしています。{a_start}ダッシュボードへ行って{a_end}、単位を購入しましょう。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr "{student_name}さん、あなたはまだ単位認定条件を満たしていません。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "単位認定条件についての情報"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "表示名"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "認証提出済"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "認証失敗"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "認証拒否"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr " {date}までに完了"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "開講予定"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "少ない"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "各チャプターの詳細"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{total}点満点中 {earned}点"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr "監督付き試験のレビューの際、疑わしい行為がありました。0点になります。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr "セクションの成績が無効になりました。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "問題の点数: "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "練習問題の点数: "
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr "問題の点数は締切日まで非表示です。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr "練習問題の点数は締切日まで非表示です。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr "問題の点数は非表示です。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr "練習問題の点数は非表示です。"
 
 #: lms/templates/courseware/progress.html
+#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "このセクションに問題の点数なし"
 
@@ -16733,7 +16688,6 @@ msgid "Share {course_name} on Facebook"
 msgstr "Facebookで{course_name}をシェア"
 
 #: lms/templates/dashboard/_dashboard_course_listing.html
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
 msgid "Share on Facebook"
 msgstr "Facebookでシェア"
 
@@ -17547,9 +17501,6 @@ msgstr "ありがとうございます。"
 #: lms/templates/embargo/default_courseware.html
 #: lms/templates/embargo/default_enrollment.html
 #: lms/templates/static_templates/embargo.html
-#: themes/stanford-style/lms/templates/embargo/default_courseware.html
-#: themes/stanford-style/lms/templates/embargo/default_enrollment.html
-#: themes/stanford-style/lms/templates/static_templates/embargo.html
 msgid "This Course Unavailable In Your Country"
 msgstr "あなたの国ではこの講座は受講不可です。"
 
@@ -17662,6 +17613,7 @@ msgid "{platform_name} Home Page"
 msgstr "{platform_name} ホームページ"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr "オプションのメニュー"
 
@@ -17674,7 +17626,6 @@ msgstr ""
 "{chrome_link}または{ff_link}をお使いいただくことを強くお勧めします。"
 
 #: lms/templates/header/navbar-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
 msgid "Discover New"
 msgstr "新しいものを見つける"
 
@@ -17683,29 +17634,34 @@ msgid "{name} Dashboard"
 msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr "補足のリンク"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "How it Works"
 msgstr "どのように機能するか"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
+#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "学校"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "プロフィール"
 
 #: lms/templates/header/user_dropdown.html
+#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "注文履歴"
 
@@ -19068,7 +19024,6 @@ msgid ""
 msgstr ""
 
 #: lms/templates/learner_dashboard/_dashboard_navigation_courses.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "My Courses"
 msgstr "受講登録した講座"
 
@@ -19339,12 +19294,10 @@ msgid ""
 msgstr ""
 
 #: lms/templates/static_templates/faq.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "FAQ"
 msgstr "よくある質問"
 
 #: lms/templates/static_templates/jobs.html
-#: themes/red-theme/lms/templates/footer.html
 msgid "Jobs"
 msgstr "ジョブ"
 
@@ -19833,7 +19786,6 @@ msgid "You haven't earned any certificates yet."
 msgstr "まだ修了証を取得していません。"
 
 #: openedx/features/learner_profile/templates/learner_profile/learner-achievements-fragment.html
-#: themes/edx.org/lms/templates/dashboard.html
 msgid "Explore New Courses"
 msgstr "新規講座を探す"
 
@@ -19854,392 +19806,10 @@ msgstr " {platform_name}でプロフィールを作成してください。"
 msgid "An error occurred. Try loading the page again."
 msgstr "エラーが発生しました。画面を再読込してください。"
 
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid ""
-"Access Course Staff Support on the Partner Portal to submit or review "
-"support tickets"
-msgstr ""
-
-#: themes/edx.org/cms/templates/widgets/sock.html
-msgid "edX Partner Portal"
-msgstr ""
-
-#: themes/edx.org/lms/templates/dashboard.html
-msgid ""
-"Browse recently launched courses and see what's new in your favorite "
-"subjects."
-msgstr ""
-
-#: themes/edx.org/lms/templates/dashboard.html
-msgid "Take advantage of free coaching!"
-msgstr ""
-
-#: themes/edx.org/lms/templates/dashboard.html
-msgid "Get Started"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "Page Footer"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "edX Home Page"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "Connect"
-msgstr ""
-
-#: themes/edx.org/lms/templates/footer.html
-msgid "© {year} edX Inc. All rights reserved."
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
-msgid "About edX Verified Certificates"
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-accomplishments.html
-msgid ""
-"An edX Verified Certificate signifies that the learner has agreed to abide "
-"by the edX honor code and completed all of the required tasks of this course"
-" under its guidelines, as well as having their photo ID checked to verify "
-"their identity."
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-edx.html
-msgid "About edX"
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/certificates/_about-edx.html
-msgid ""
-"{link_start}edX{link_end} offers interactive online classes and MOOCs from "
-"the world's best universities, including MIT, Harvard, Berkeley, University "
-"of Texas, and many others. edX is a mission driven initiative created by "
-"founding partners Harvard and MIT."
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Congratulations, {user_name}!"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid ""
-"You worked hard to earn your certificate from "
-"{accomplishment_copy_course_org} {dash} share it with colleagues, friends, "
-"and family to get the word out about what you mastered in "
-"{accomplishment_course_title}."
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Share this certificate on Facebook (opens a new tab/window)"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Tweet this certificate (opens a new tab/window)"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Add this certificate to your LinkedIn profile (opens a new tab/window)"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Print"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-banner.html
-msgid "Print this certificate"
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-msgid "edX Inc."
-msgstr ""
-
-#: themes/edx.org/lms/templates/certificates/_accomplishment-footer.html
-msgid ""
-"All rights reserved except where noted. edX, Open edX and the edX and Open "
-"edX logos are registered trademarks of edX Inc."
-msgstr ""
-
-#. Translators: This string will not be used in Open edX installations.
-#: themes/edx.org/lms/templates/course_modes/choose.html
-msgid ""
-"{b_start}Support our Mission: {b_end}EdX relies on verified certificates to "
-"help fund affordable education to everyone globally."
-msgstr ""
-
-#: themes/edx.org/lms/templates/course_modes/choose.html
-msgid ""
-"{b_start}Support our Mission: {b_end} EdX, a non-profit, relies on verified "
-"certificates to help fund free education for everyone globally"
-msgstr ""
-
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
-msgid "Find Courses"
-msgstr ""
-
-#: themes/edx.org/lms/templates/header/navbar-authenticated.html
-msgid "Schools & Partners"
-msgstr ""
-
-#: themes/red-theme/lms/templates/footer.html
-msgid ""
-"{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
-"Code{honor_link_end}"
-msgstr ""
-"{tos_link_start}利用規約{tos_link_end}および{honor_link_start}倫理規定{honor_link_end}"
-
-#: themes/stanford-style/lms/templates/footer.html
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Copyright"
-msgstr "著作権"
-
-#: themes/stanford-style/lms/templates/footer.html
-msgid "Copyright {year}. All rights reserved."
-msgstr "Copyright {year}. All rights reserved. "
-
-#: themes/stanford-style/lms/templates/index.html
-msgid "For anyone, anywhere, anytime"
-msgstr "いつでも、どこでも、誰にでも"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid ""
-"We're sorry, but this version of your browser is not supported. Try again "
-"using a different browser or a newer version of your browser."
-msgstr ""
-"申し訳ありませんが、このバージョンのブラウザはサポートされていません。別のブラウザまたは新しいバージョンのブラウザを使って再試行してください。"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "The following errors occurred while processing your registration:"
-msgstr "登録処理をする際にエラーが発生しました: "
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Sign up with {provider_name}"
-msgstr "{provider_name}で新規登録する"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Create your own {platform_name} account below"
-msgstr "{platform_name}アカウントを作成する"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid ""
-"Required fields are noted by <strong class=\"indicator\">bold text and an "
-"asterisk (*)</strong>."
-msgstr "<strong class=\"indicator\">(*)付きの太字の項目</strong>は必須です。"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "You've successfully signed in with {selected_provider}."
-msgstr "{selected_provider}でのサインインが完了しました。"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid ""
-"We just need a little more information before you start learning with "
-"{platform_name}."
-msgstr "{platform_name}での学習を始めるにあたって、あと少し情報が必要です。"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Please complete the following fields to register for an account. "
-msgstr "アカウント登録をするには下記項目の入力をお願いします。"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "example: Jane Doe"
-msgstr "例: 学校 太郎"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Your legal name, used for any certificates you earn."
-msgstr "実名、修了証に使用します。"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "example: JaneDoe"
-msgstr "例: gacco"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Will be shown in any discussions or forums you participate in"
-msgstr "ディスカッションやフォーラム参加中に表示されます"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "cannot be changed later"
-msgstr "後から変更できません"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Welcome {username}"
-msgstr "ようこそ、{username}さん"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Enter a Public Display Name:"
-msgstr "表示名を入力: "
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Public Display Name"
-msgstr "表示名"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Additional Personal Information"
-msgstr "追加の個人情報"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "example: New York"
-msgstr "例: ニューヨーク"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Highest Level of Education Completed"
-msgstr "最終学歴"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Year of Birth"
-msgstr "誕生年"
-
-#: themes/stanford-style/lms/templates/register-form.html
-msgid "Please share with us your reasons for registering with {platform_name}"
-msgstr "{platform_name}への登録理由を教えてください"
-
-#: themes/stanford-style/lms/templates/register-form.html
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Account Acknowledgements"
-msgstr "アカウント認証"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Preferences for {platform_name}"
-msgstr "{platform_name}の設定"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Update my {platform_name} Account"
-msgstr "{platform_name}アカウントを更新"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Processing your account information"
-msgstr "アカウント情報を処理中"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Welcome {username}!  Please set your preferences below"
-msgstr "ようこそ、{username}さん！以下の設定をお願いします"
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid ""
-"Required fields are noted by {strong_indicator}bold text and an asterisk "
-"(*).{strong_close}"
-msgstr ""
-
-#: themes/stanford-style/lms/templates/register-shib.html
-msgid "Update My Account"
-msgstr "アカウントを更新"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Registration Help"
-msgstr "登録に関するヘルプ"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Already registered?"
-msgstr "登録済ですか？"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
 #: wiki/templates/wiki/accounts/login.html
 #: wiki/templates/wiki/accounts/signup.html wiki/templates/wiki/base.html
 msgid "Log in"
 msgstr "ログイン"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Next Steps"
-msgstr "次の手順"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid ""
-"You will receive an activation email.  You must click on the activation link"
-" to complete the process.  Don't see the email?  Check your spam folder and "
-"mark emails from class.stanford.edu as 'not spam', since you'll want to be "
-"able to receive email from your courses."
-msgstr ""
-"まもなくユーザー登録確認メールが届きます。リンクをクリックして登録を完了させましょう。メールが見当たらない場合は迷惑メールフォルダをご確認ください。class.stanford.eduからのメールを'迷惑メールではない'に設定して、講座からのメールを受け取れるようにしてください。"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Need Help?"
-msgstr "ヘルプが必要ですか？"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "Need help in registering with {platform_name}?"
-msgstr "{platform_name}への登録に関してヘルプが必要ですか？"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid "View our FAQs for answers to commonly asked questions."
-msgstr "よくある質問への回答を見る。"
-
-#: themes/stanford-style/lms/templates/register-sidebar.html
-msgid ""
-"Once registered, most questions can be answered in the course specific "
-"discussion forums or through the FAQs."
-msgstr ""
-"講座内容についての質問は、各講座内に設置されるディスカッションで講師・スタッフに問いかけましょう。サービス全般についての質問は「よくある質問」をご確認ください。"
-
-#: themes/stanford-style/lms/templates/emails/activation_email.txt
-msgid "Thank you for signing up for {platform_name}."
-msgstr "{platform_name}にご登録いただき、ありがとうございます。"
-
-#: themes/stanford-style/lms/templates/emails/activation_email.txt
-msgid ""
-"Change your life and start learning today by activating your {platform_name}"
-" account. Click on the link below or copy and paste it into your browser's "
-"address bar."
-msgstr ""
-"{platform_name}アカウントを有効化して、今日から生活を変え、学習を始めましょう。下のリンクをクリックまたはブラウザーのアドレスバーにコピー＆ペーストしてください。"
-
-#: themes/stanford-style/lms/templates/emails/activation_email.txt
-#: themes/stanford-style/lms/templates/emails/email_change.txt
-msgid ""
-"If you didn't request this, you don't need to do anything; you won't receive"
-" any more email from us. Please do not reply to this e-mail; if you require "
-"assistance, check the about section of the {platform_name} Courses web site."
-msgstr ""
-"リクエストした覚えがない場合は、何もする必要はありません。これ以上メールは届きませんので、このメールには返信しないでください。ヘルプが必要であれば、{platform_name}"
-" のウェブサイトをご参照ください。"
-
-#: themes/stanford-style/lms/templates/emails/confirm_email_change.txt
-msgid ""
-"This is to confirm that you changed the e-mail associated with "
-"{platform_name} from {old_email} to {new_email}. If you did not make this "
-"request, please contact us at"
-msgstr ""
-"これは{platform_name}に登録するメールアドレスを{old_email}から{new_email}へ変更したことを確認するものです。このリクエストを行っていない場合は、以下にお問い合わせください"
-
-#: themes/stanford-style/lms/templates/emails/email_change.txt
-msgid ""
-"We received a request to change the e-mail associated with your "
-"{platform_name} account from {old_email} to {new_email}. If this is correct,"
-" please confirm your new e-mail address by visiting:"
-msgstr ""
-"{platform_name}アカウントへの登録メールを{old_email}から{new_email}へ変更するリクエストを受け取りました。これが正しい場合は、次にアクセスして新しいメールアドレスを確認してください:"
-" "
-
-#: themes/stanford-style/lms/templates/emails/reject_name_change.txt
-msgid ""
-"We are sorry. Our course staff did not approve your request to change your "
-"name from {old_name} to {new_name}. If you need further assistance, please "
-"e-mail the tech support at {email}"
-msgstr ""
-"申し訳ありませんが、{old_name} から {new_name} "
-"への名前の変更が承認されませんでした。詳しいヘルプが必要な場合は、テクニカルサポート{email}へメールしてください。"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Terms of Service here!"
-msgstr "利用規約はこちらへ！"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Privacy Policy here!"
-msgstr "プライバシーポリシーはこちらへ！"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Honor Code here!"
-msgstr "倫理規定はこちらへ！"
-
-#: themes/stanford-style/lms/templates/static_templates/tos.html
-msgid "Put your Copyright Text here!"
-msgstr "著作権に関してはこちらへ！"
 
 #: cms/templates/404.html
 msgid "The page that you were looking for was not found."
@@ -20272,10 +19842,6 @@ msgstr "我々スタッフはエラーを記録し、できるだけ早く解決
 #: cms/templates/accessibility.html
 msgid "Studio Accessibility Policy"
 msgstr "Studio のアクセシビリティ・ポリシー"
-
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
 
 #: cms/templates/certificates.html
 msgid "Course Certificates"
@@ -20350,70 +19916,13 @@ msgstr "修了証について詳しく知る"
 msgid "Details & Schedule"
 msgstr "詳細＆日程"
 
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Grading"
-msgstr "採点"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/manage_users.html cms/templates/settings.html
-#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
-#: cms/templates/widgets/header.html
-msgid "Course Team"
-msgstr "講座チーム"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Advanced Settings"
-msgstr "詳細設定"
-
-#: cms/templates/certificates.html cms/templates/group_configurations.html
-#: cms/templates/settings.html cms/templates/settings_advanced.html
-#: cms/templates/settings_graders.html cms/templates/widgets/header.html
-msgid "Proctored Exam Settings"
-msgstr ""
-
-#: cms/templates/checklists.html cms/templates/widgets/header.html
-msgid "Checklists"
-msgstr "チェックリスト"
-
-#: cms/templates/checklists.html cms/templates/export.html
-#: cms/templates/export_git.html cms/templates/import.html
-#: cms/templates/widgets/header.html
-msgid "Tools"
-msgstr "ツール"
-
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Duplicate"
-msgstr "複製"
-
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "このコンポーネントを複製"
 
-#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
-msgid "Move"
-msgstr "移動"
-
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "このコンポーネントを削除"
-
-#: cms/templates/component.html cms/templates/edit-tabs.html
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Drag to reorder"
-msgstr "ドラッグして並び替え"
-
-#: cms/templates/container.html cms/templates/course-create-rerun.html
-#: cms/templates/course_info.html cms/templates/course_outline.html
-#: cms/templates/edit-tabs.html cms/templates/index.html
-#: cms/templates/library.html cms/templates/manage_users.html
-#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
-#: cms/templates/videos_index.html
-msgid "Page Actions"
-msgstr "画面操作"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -20494,132 +20003,6 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a Course Rerun of:"
-msgstr "次のCourse Rerunを作成: "
-
-#: cms/templates/course-create-rerun.html
-msgid "Create a re-run of a course"
-msgstr "コースのre-runを作成"
-
-#: cms/templates/course-create-rerun.html
-msgid "You are creating a re-run from:"
-msgstr "次からre-runを作成中: "
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Provide identifying information for this re-run of the course. The original "
-"course is not affected in any way by a re-run."
-msgstr "このコースのre-runを特定する情報を入力してください。re-runによって元のコースに影響はありません。"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"Note: Together, the organization, course number, and course run must "
-"uniquely identify this new course instance."
-msgstr "注: 組織、講座番号およびcourse runはこの新たなcourse instanceを特定できなければいけません。"
-
-#: cms/templates/course-create-rerun.html
-msgid "Required Information to Create a re-run of a course"
-msgstr "コースのre-run作成に必要な情報"
-
-#. Translators: This is an example name for a new course, seen when
-#. filling out the form to create a new course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. Introduction to Computer Science"
-msgstr "例. コンピュータサイエンス入門"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The public display name for the new course. (This name is often the same as "
-"the original course name.)"
-msgstr "新しい講座の公開表示名。(この名前は元の講座名と同じ場合が多いです。)"
-
-#. Translators: This is an example for the name of the organization sponsoring
-#. a course, seen when filling out the form to create a new course. The
-#. organization name cannot contain spaces.
-#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
-#. when user put no data into this field.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. UniversityX or OrganizationX"
-msgstr "例. UniversityX または OrganizationX"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The name of the organization sponsoring the new course. (This name is often "
-"the same as the original organization name.)"
-msgstr "新しい講座を提供する機関名。(この名前は元の組織名と同じ場合が多いです。)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Note: No spaces or special characters are allowed."
-msgstr "注: スペースおよび特殊文字は使えません。"
-
-#. Translators: This is an example for the number used to identify a course,
-#. seen when filling out the form to create a new course. The number here is
-#. short for "Computer Science 101". It can contain letters but cannot contain
-#. spaces.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. CS101"
-msgstr "例. CS101"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The unique number that identifies the new course within the organization.  "
-"(This number will be the same as the original course number and cannot be "
-"changed.)"
-msgstr "組織内の新規講座を識別するための固有の番号。(この番号は元の講座と同じ番号になるはずです。変更できません。)"
-
-#. Translators: This is an example for the "run" used to identify different
-#. instances of a course, seen when filling out the form to create a new
-#. course.
-#: cms/templates/course-create-rerun.html cms/templates/index.html
-msgid "e.g. 2014_T1"
-msgstr "例. 2014_T1"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The term in which the new course will run. (This value is often different "
-"than the original course run value.)"
-msgstr "新規講座の開講期間。(元のcourse runと異なる場合が多いです。)"
-
-#: cms/templates/course-create-rerun.html
-msgid "Create Re-run"
-msgstr "Re-run作成"
-
-#: cms/templates/course-create-rerun.html
-msgid "When will my course re-run start?"
-msgstr "再開講はいつ始まりますか？"
-
-#: cms/templates/course-create-rerun.html
-msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-msgstr "新しい講座は2030年1月1日午前0時(UTC)に開始予定です。"
-
-#: cms/templates/course-create-rerun.html
-msgid "What transfers from the original course?"
-msgstr "元の講座から転送されるものは？"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"The new course has the same course outline and content as the original "
-"course. All problems, videos, announcements, and other files are duplicated "
-"to the new course."
-msgstr "新しい講座は元の講座と同じ講座アウトラインとコンテンツです。すべての問題、動画、お知らせ、その他のファイルは新しい講座に複製されます。"
-
-#: cms/templates/course-create-rerun.html
-msgid "What does not transfer from the original course?"
-msgstr "元の講座から転送されないものは？"
-
-#: cms/templates/course-create-rerun.html
-msgid ""
-"You are the only member of the new course's staff. No students are enrolled "
-"in the course, and there is no student data. There is no content in the "
-"discussion topics or wiki."
-msgstr ""
-"あなたが唯一の講座スタッフメンバーです。受講者は登録されていませんし、受講者情報もありません。ディスカッショントピックやWikiにもコンテンツはありません。"
-
-#: cms/templates/course-create-rerun.html
-msgid "Learn more about Course Re-runs"
-msgstr "講座の再開講について詳しく知る"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -20810,13 +20193,6 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "コンテンツの表示設定について詳しく知る"
-
-#. Translators: Pages refer to the tabs that appear in the top navigation of
-#. each course.
-#: cms/templates/edit-tabs.html cms/templates/export.html
-#: cms/templates/widgets/header.html
-msgid "Pages"
-msgstr "ページ"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -21199,10 +20575,6 @@ msgstr "コースのエクスポートについて詳しく知る"
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "Gitにコースをエクスポート"
-
-#: cms/templates/export_git.html cms/templates/widgets/header.html
-msgid "Export to Git"
-msgstr "Gitにエクスポート"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -21772,353 +21144,6 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "講座のインポートについて詳しく知る"
 
-#: cms/templates/index.html
-msgid "New Course"
-msgstr "新規講座"
-
-#: cms/templates/index.html
-msgid "Email staff to create course"
-msgstr "開講希望の方はスタッフへメールをしてください"
-
-#: cms/templates/index.html
-msgid "New Library"
-msgstr "新規ライブラリ"
-
-#: cms/templates/index.html
-msgid "Please correct the highlighted fields below."
-msgstr "以下のハイライトされている欄を訂正してください。"
-
-#: cms/templates/index.html
-msgid "Create a New Course"
-msgstr "新規講座を作成する"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Course"
-msgstr "講座作成に必要な情報"
-
-#: cms/templates/index.html
-msgid ""
-"The public display name for your course. This cannot be changed, but you can"
-" set a different display name in Advanced Settings later."
-msgstr "この講座の表示名。これは変更することはできませんが、詳細設定にて別の表示名を設定することができます。"
-
-#: cms/templates/index.html
-msgid ""
-"The name of the organization sponsoring the course. {strong_start}Note: The "
-"organization name is part of the course URL.{strong_end} This cannot be "
-"changed, but you can set a different display name in Advanced Settings "
-"later."
-msgstr ""
-"講座を提供している組織名。 {strong_start} 注: "
-"組織名は講座URLの一部分になっています。{strong_end}これを変更することはできませんが、後ほど詳細設定で別の表示名を設定することができます。"
-
-#: cms/templates/index.html
-msgid ""
-"The unique number that identifies your course within your organization. "
-"{strong_start}Note: This is part of your course URL, so no spaces or special"
-" characters are allowed and it cannot be changed.{strong_end}"
-msgstr ""
-"あなたの組織の講座を特定する固有の数字。{strong_start}注: "
-"これは講座URLの一部になっており、スペースや特殊記号は使用不可で、変更もできません。{strong_end}"
-
-#: cms/templates/index.html
-msgid ""
-"The term in which your course will run. {strong_start}Note: This is part of "
-"your course URL, so no spaces or special characters are allowed and it "
-"cannot be changed.{strong_end}"
-msgstr ""
-"講座の開講期間。{strong_start}注: "
-"これは講座URLの一部になっており、スペースや特殊記号は使用不可で、変更もできません。{strong_end}"
-
-#: cms/templates/index.html
-msgid "Create"
-msgstr "作成"
-
-#: cms/templates/index.html
-msgid "Create a New Library"
-msgstr "新規ライブラリを作成"
-
-#: cms/templates/index.html
-msgid "Required Information to Create a New Library"
-msgstr "新規ライブラリ作成に必要な情報"
-
-#: cms/templates/index.html
-msgid "Library Name"
-msgstr "ライブラリ名"
-
-#. Translators: This is an example name for a new content library, seen when
-#. filling out the form to create a new library.
-#. (A library is a collection of content or problems.)
-#: cms/templates/index.html
-msgid "e.g. Computer Science Problems"
-msgstr "例. コンピュータサイエンス問題"
-
-#: cms/templates/index.html
-msgid "The public display name for your library."
-msgstr "公開するライブラリ名。"
-
-#: cms/templates/index.html
-msgid "The public organization name for your library."
-msgstr "公開するライブラリの組織名。"
-
-#: cms/templates/index.html
-msgid "This cannot be changed."
-msgstr "これは変更できません。"
-
-#: cms/templates/index.html
-msgid "Library Code"
-msgstr "ライブラリコード"
-
-#. Translators: This is an example for the "code" used to identify a library,
-#. seen when filling out the form to create a new library. This example is
-#. short
-#. for "Computer Science Problems". The example number may contain letters
-#. but must not contain spaces.
-#: cms/templates/index.html
-msgid "e.g. CSPROB"
-msgstr "例. CSPROB"
-
-#: cms/templates/index.html
-msgid ""
-"The unique code that identifies this library. {strong_start}Note: This is "
-"part of your library URL, so no spaces or special characters are "
-"allowed.{strong_end} This cannot be changed."
-msgstr ""
-"このライブラリを特定する固有コード。{strong_start}注: これはライブラリURL "
-"の一部で、スペースや特殊記号は使用できません。{strong_end}変更はできません。 "
-
-#: cms/templates/index.html
-msgid "Organization and Library Settings"
-msgstr "組織およびライブラリ設定"
-
-#: cms/templates/index.html
-msgid "Show all courses in organization:"
-msgstr "組織内の全講座を表示: "
-
-#: cms/templates/index.html
-msgid "For example, MITx"
-msgstr "例えば、MITx"
-
-#: cms/templates/index.html
-msgid "Courses Being Processed"
-msgstr "手続中の講座"
-
-#: cms/templates/index.html
-msgid "This course run is currently being created."
-msgstr "このcourse runは現在作成中です。"
-
-#. Translators: This is a status message, used to inform the user of
-#. what the system is doing. This status means that the user has
-#. requested to re-run an existing course, and the system is currently
-#. in the process of duplicating and configuring the existing course
-#. so that it can be re-run.
-#: cms/templates/index.html
-msgid "Configuring as re-run"
-msgstr "re-runとして設定中"
-
-#: cms/templates/index.html
-msgid ""
-"The new course will be added to your course list in 5-10 minutes. Return to "
-"this page or {link_start}refresh it{link_end} to update the course list. The"
-" new course will need some manual configuration."
-msgstr ""
-"新規講座は講座リストに5-10分で追加されます。講座リストを更新するにはこのページに戻ってくるか{link_start}再読込{link_end}してください。新規講座はいくつか手動設定が必要です。"
-
-#. Translators: This is a status message for the course re-runs feature.
-#. When a course admin indicates that a course should be re-run, the system
-#. needs to process the request and prepare the new course. The status of
-#. the process will follow this text.
-#: cms/templates/index.html
-msgid "This re-run processing status:"
-msgstr "このre-run手続のステータス: "
-
-#: cms/templates/index.html
-msgid "Configuration Error"
-msgstr "設定エラー"
-
-#: cms/templates/index.html
-msgid ""
-"A system error occurred while your course was being processed. Please go to "
-"the original course to try the re-run again, or contact your PM for "
-"assistance."
-msgstr "コースの手続中にシステムエラーが発生しました。元のコースに行ってもう一度re-runを試すか、PMまでお問い合わせください。"
-
-#: cms/templates/index.html
-msgid "Archived Courses"
-msgstr "アーカイブ済の講座"
-
-#: cms/templates/index.html
-msgid "Libraries"
-msgstr "ライブラリ"
-
-#: cms/templates/index.html
-msgid "Are you staff on an existing {studio_name} course?"
-msgstr "あなたは既存の{studio_name}講座のスタッフですか？"
-
-#: cms/templates/index.html
-msgid ""
-"The course creator must give you access to the course. Contact the course "
-"creator or administrator for the course you are helping to author."
-msgstr "講座製作者があなたにアクセス権を与えなければなりません。講座制作者または管理者にお問い合わせください。"
-
-#: cms/templates/index.html
-msgid "Create Your First Course"
-msgstr "最初の講座を作成する"
-
-#: cms/templates/index.html
-msgid "Your new course is just a click away!"
-msgstr "クリックするだけで新しい講座が！"
-
-#: cms/templates/index.html
-msgid "Becoming a Course Creator in {studio_name}"
-msgstr "{studio_name}の講座制作者になる"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team will evaluate your request and provide you feedback within 24 hours "
-"during the work week."
-msgstr ""
-"{studio_name}はxConsortiumのパートナーと選ばれしゲストに提供されるものです。講座制作者の特権を{platform_name}から与えられている間は、あなたがチームメンバーである講座が上部に表示され、編集できます。我々はあなたからのリクエストを査定し、営業日の24時間以内にフィードバックします。"
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status:"
-msgstr "講座制作者リクエストのステータス: "
-
-#: cms/templates/index.html
-msgid "Request the Ability to Create Courses"
-msgstr "講座を作成する権限をリクエストする"
-
-#: cms/templates/index.html
-msgid "Your Course Creator Request Status"
-msgstr "講座作成権限リクエストのステータス"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is has completed evaluating your request."
-msgstr ""
-"{studio_name}はxConsortiumのパートナーと選ばれしゲストに提供されるものです。講座制作者の特権を{platform_name}から与えられている間は、あなたがチームメンバーである講座が上部に表示され、編集できます。我々はあなたからのリクエストの査定を完了しました。"
-
-#: cms/templates/index.html
-msgid "Your Course Creator request is:"
-msgstr "講座制作者のリクエスト: "
-
-#: cms/templates/index.html
-msgid ""
-"Your request did not meet the criteria/guidelines specified by "
-"{platform_name} Staff."
-msgstr "あなたのリクエストは{platform_name}スタッフに指定されている規準/ガイドラインを満たしませんでした。"
-
-#: cms/templates/index.html
-msgid ""
-"{studio_name} is a hosted solution for our xConsortium partners and selected"
-" guests. Courses for which you are a team member appear above for you to "
-"edit, while course creator privileges are granted by {platform_name}. Our "
-"team is currently  evaluating your request."
-msgstr ""
-"{studio_name}はxConsortiumのパートナーと選ばれしゲストに提供されるものです。講座制作者の特権を{platform_name}から与えられている間は、あなたがチームメンバーである講座が上部に表示され、編集できます。我々は現在あなたからのリクエストを査定中です。"
-
-#: cms/templates/index.html
-msgid ""
-"Your request is currently being reviewed by {platform_name} staff and should"
-" be updated shortly."
-msgstr "あなたのリクエストは現在{platform_name}スタッフによりレビュー中で、まもなくアップデートされます。"
-
-#: cms/templates/index.html
-msgid "Were you expecting to see a particular library here?"
-msgstr "特定のライブラリがここに表示されることを期待していましたか？"
-
-#: cms/templates/index.html
-msgid ""
-"The library creator must give you access to the library. Contact the library"
-" creator or administrator for the library you are helping to author."
-msgstr "ライブラリ制作者からアクセス権をもらわなければいけません。ライブラリ制作者または管理者に問い合わせてください。"
-
-#: cms/templates/index.html
-msgid "Create Your First Library"
-msgstr "最初のライブラリを作成"
-
-#: cms/templates/index.html
-msgid ""
-"Libraries hold a pool of components that can be re-used across multiple "
-"courses. Create your first library with the click of a button!"
-msgstr "ライブラリは複数の講座で再利用可能なコンポーネントを保持します。ボタンをクリックして最初のライブラリを作りましょう！"
-
-#: cms/templates/index.html
-msgid "New to {studio_name}?"
-msgstr "{studio_name}は初めてですか？"
-
-#: cms/templates/index.html
-msgid ""
-"Click Help in the upper-right corner to get more information about the "
-"{studio_name} page you are viewing. You can also use the links at the bottom"
-" of the page to access our continually updated documentation and other "
-"{studio_name} resources."
-msgstr ""
-"今見ている{studio_name}画面についての情報を入手するには、右上のヘルプをクリックしてください。随時アップデートされているドキュメントやその他の{studio_name}リソースにアクセスするには、画面下部のリンクもお使いいただけます。"
-
-#: cms/templates/index.html
-msgid "Getting Started with {studio_name}"
-msgstr "{studio_name}を始める"
-
-#: cms/templates/index.html
-msgid "Can I create courses in {studio_name}?"
-msgstr "私は{studio_name}で講座を作成してよいですか？"
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must {link_start}contact "
-"{platform_name} staff to help you create a course{link_end}."
-msgstr ""
-"{studio_name}で講座を作成する際は、{link_start}{platform_name}スタッフに必ずご連絡ください{link_end}。"
-
-#: cms/templates/index.html
-msgid ""
-"In order to create courses in {studio_name}, you must have course creator "
-"privileges to create your own course."
-msgstr "{studio_name}で講座を作成するには、自分の講座を作成する講座制作者の権限を得ている必要があります。"
-
-#: cms/templates/index.html
-msgid ""
-"Your request to author courses in {studio_name} has been denied. Please "
-"{link_start}contact {platform_name} Staff with further questions{link_end}."
-msgstr ""
-"あなたの{studio_name}の講座制作者のリクエストは拒否されました。詳細は{link_start}{platform_name}スタッフ{link_end}までお問い合わせください。"
-
-#: cms/templates/index.html
-msgid "Thanks for signing up, {name}!"
-msgstr "{name} さん、ご登録ありがとうございます！"
-
-#: cms/templates/index.html
-msgid "We need to verify your email address"
-msgstr "メールアドレスを確認する必要があります。"
-
-#: cms/templates/index.html
-msgid ""
-"Almost there! In order to complete your sign up we need you to verify your "
-"email address ({email}). An activation message and next steps should be "
-"waiting for you there."
-msgstr ""
-"あと少しです！登録を完了するためには、あなたのメールアドレス ({email}) "
-"を認証する必要があります。その後、有効化に関するメッセージと次のステップをお知らせします。"
-
-#: cms/templates/index.html
-msgid "Need help?"
-msgstr "ヘルプが必要ですか？"
-
-#: cms/templates/index.html
-msgid ""
-"Please check your Junk or Spam folders in case our email isn't in your "
-"INBOX. Still can't find the verification email? Request help via the link "
-"below."
-msgstr ""
-"受信フォルダにメールがない場合は、迷惑メールフォルダを確認してください。それでもメールが見つからない場合には、次のリンクからお問い合わせください。"
-
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "コンテンツライブラリ"
@@ -22246,10 +21271,6 @@ msgstr ""
 msgid "Library User Access"
 msgstr "ライブラリユーザーアクセス"
 
-#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
-msgid "User Access"
-msgstr "ユーザーアクセス"
-
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "このライブラリへのアクセス権限を与える"
@@ -22305,10 +21326,6 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "スケジュール＆詳細設定"
-
-#: cms/templates/settings.html cms/templates/widgets/header.html
-msgid "Schedule & Details"
-msgstr "スケジュール＆詳細"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -22565,15 +21582,6 @@ msgstr "講座詳細"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "講座について役立つ情報を提供する"
-
-#: cms/templates/settings.html
-msgid ""
-"Identify the course language here. This is used to assist users find courses"
-" that are taught in a specific language. It is also used to localize the "
-"'From:' field in bulk emails."
-msgstr ""
-"ここで講座の言語を特定します。特定の言語を使用している講座をユーザーが探す際に使われます。また、バルクメールの 'From:' "
-"欄をローカライズするためにも使われます。"
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -23009,22 +22017,6 @@ msgid ""
 "worth."
 msgstr "宿題、実習、小テスト、試験などの課題タイプを作成することができ、それぞれの課題タイプの配点を設定できます。"
 
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Expand or Collapse"
-msgstr "開くまたは閉じる"
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-msgid "This block contains multiple components."
-msgstr "このブロックは複数のコンポーネントを含みます。"
-
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr ""
@@ -23060,10 +22052,6 @@ msgstr "もし、教科書がチャプターに分かれていない場合は、
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "教科書について詳しく知る"
-
-#: cms/templates/videos_index.html cms/templates/widgets/header.html
-msgid "Video Uploads"
-msgstr "動画アップロード"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -23335,50 +22323,6 @@ msgstr "アクセシビリティの便宜の要求"
 msgid "LMS"
 msgstr ""
 
-#: cms/templates/widgets/header.html
-msgid "Current Course:"
-msgstr "受講中の講座: "
-
-#: cms/templates/widgets/header.html
-msgid "Course Navigation"
-msgstr "講座ナビゲーション"
-
-#: cms/templates/widgets/header.html
-msgid "Outline"
-msgstr "アウトライン"
-
-#: cms/templates/widgets/header.html
-msgid "Publisher"
-msgstr "Publisher"
-
-#: cms/templates/widgets/header.html
-msgid "Import"
-msgstr "インポート"
-
-#: cms/templates/widgets/header.html
-msgid "Export"
-msgstr "エクスポート"
-
-#: cms/templates/widgets/header.html
-msgid "Current Library:"
-msgstr "現在のライブラリ: "
-
-#: cms/templates/widgets/header.html
-msgid "Language preference"
-msgstr "希望言語"
-
-#: cms/templates/widgets/header.html
-msgid "Account Navigation"
-msgstr "アカウント・ナビゲーション"
-
-#: cms/templates/widgets/header.html
-msgid "Contextual Online Help"
-msgstr "コンテキストによるオンラインヘルプ"
-
-#: cms/templates/widgets/header.html
-msgid "Sign Up"
-msgstr "登録"
-
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
 msgstr "Latexソースコンパイラを起動する"
@@ -23431,6 +22375,26 @@ msgstr ""
 msgid "Label"
 msgstr "ラベル"
 
+#: cms/templates/widgets/sock.html
+msgid "Looking for help with {studio_name}?"
+msgstr "{studio_name}用ヘルプを探していますか？"
+
+#: cms/templates/widgets/sock.html
+msgid "Hide {studio_name} Help"
+msgstr "{studio_name}のヘルプを非表示"
+
+#: cms/templates/widgets/sock.html
+msgid "{studio_name} Documentation"
+msgstr "{studio_name}ドキュメント"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Access documentation on http://docs.edx.org"
+msgstr "http://docs.edx.org のドキュメントにアクセス"
+
+#: cms/templates/widgets/sock_links.html
+msgid "edX Documentation"
+msgstr "edX ドキュメント"
+
 #: cms/templates/widgets/sock_links.html
 msgid "Access the Open edX Portal"
 msgstr "Open edX Portal へアクセス"
@@ -23438,6 +22402,26 @@ msgstr "Open edX Portal へアクセス"
 #: cms/templates/widgets/sock_links.html
 msgid "Open edX Portal"
 msgstr "Open edX Portal"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in edX101: Overview of Creating an edX Course"
+msgstr "edX101 に受講登録する: edX の講座制作の概要"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in edX101"
+msgstr "edX101に受講登録する"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in StudioX: Creating a Course with edX Studio"
+msgstr "StudioX に受講登録する: edX Studio での講座制作"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Enroll in StudioX"
+msgstr "StudioXに受講登録する"
+
+#: cms/templates/widgets/sock_links.html
+msgid "Send an email to {email}"
+msgstr "{email} にメールを送る"
 
 #: cms/templates/widgets/user_dropdown.html
 msgid "Currently signed in as:"
@@ -24592,9 +23576,27 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
 
+#~ msgid "Organization"
+#~ msgstr "機関"
+
+#~ msgid ""
+#~ "We keep a log of old e-mails, so if this request was unintentional, we can "
+#~ "investigate."
+#~ msgstr "古いメールアドレスの履歴を保存していますので、意図したリクエストでない場合は調査することができます。"
+
+#~ msgid "Contact Us"
+#~ msgstr "お問い合わせ"
+
+#~ msgid "Sign In"
+#~ msgstr "サインイン"
+
+#~ msgid "Course Run"
+#~ msgstr "Course Run"
+
 #~ msgid "Dismiss"
 #~ msgstr "閉じる"
 
+#, python-brace-format
 #~ msgid "{platform_name} offers interactive online classes and MOOCs."
 #~ msgstr "{platform_name} はオンライン講義やMOOCを提供しています。"
 
@@ -24620,44 +23622,459 @@ msgstr ""
 #~ msgid "Drag and Drop"
 #~ msgstr "ドラッグアンドドロップ"
 
+#~ msgid "Grading"
+#~ msgstr "採点"
+
+#~ msgid "Course Team"
+#~ msgstr "講座チーム"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "詳細設定"
+
+#~ msgid "Checklists"
+#~ msgstr "チェックリスト"
+
+#~ msgid "Tools"
+#~ msgstr "ツール"
+
+#~ msgid "Duplicate"
+#~ msgstr "複製"
+
+#~ msgid "Move"
+#~ msgstr "移動"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "ドラッグして並び替え"
+
+#~ msgid "Page Actions"
+#~ msgstr "画面操作"
+
+#~ msgid "Create a Course Rerun of:"
+#~ msgstr "次のCourse Rerunを作成: "
+
+#~ msgid "Create a re-run of a course"
+#~ msgstr "コースのre-runを作成"
+
+#~ msgid "You are creating a re-run from:"
+#~ msgstr "次からre-runを作成中: "
+
+#~ msgid ""
+#~ "Provide identifying information for this re-run of the course. The original "
+#~ "course is not affected in any way by a re-run."
+#~ msgstr "このコースのre-runを特定する情報を入力してください。re-runによって元のコースに影響はありません。"
+
+#~ msgid ""
+#~ "Note: Together, the organization, course number, and course run must "
+#~ "uniquely identify this new course instance."
+#~ msgstr "注: 組織、講座番号およびcourse runはこの新たなcourse instanceを特定できなければいけません。"
+
+#~ msgid "Required Information to Create a re-run of a course"
+#~ msgstr "コースのre-run作成に必要な情報"
+
+#~ msgid "e.g. Introduction to Computer Science"
+#~ msgstr "例. コンピュータサイエンス入門"
+
+#~ msgid ""
+#~ "The public display name for the new course. (This name is often the same as "
+#~ "the original course name.)"
+#~ msgstr "新しい講座の公開表示名。(この名前は元の講座名と同じ場合が多いです。)"
+
+#~ msgid "e.g. UniversityX or OrganizationX"
+#~ msgstr "例. UniversityX または OrganizationX"
+
+#~ msgid ""
+#~ "The name of the organization sponsoring the new course. (This name is often "
+#~ "the same as the original organization name.)"
+#~ msgstr "新しい講座を提供する機関名。(この名前は元の組織名と同じ場合が多いです。)"
+
+#~ msgid "Note: No spaces or special characters are allowed."
+#~ msgstr "注: スペースおよび特殊文字は使えません。"
+
+#~ msgid "e.g. CS101"
+#~ msgstr "例. CS101"
+
+#~ msgid ""
+#~ "The unique number that identifies the new course within the organization.  "
+#~ "(This number will be the same as the original course number and cannot be "
+#~ "changed.)"
+#~ msgstr "組織内の新規講座を識別するための固有の番号。(この番号は元の講座と同じ番号になるはずです。変更できません。)"
+
+#~ msgid "e.g. 2014_T1"
+#~ msgstr "例. 2014_T1"
+
+#~ msgid ""
+#~ "The term in which the new course will run. (This value is often different "
+#~ "than the original course run value.)"
+#~ msgstr "新規講座の開講期間。(元のcourse runと異なる場合が多いです。)"
+
+#~ msgid "Create Re-run"
+#~ msgstr "Re-run作成"
+
+#~ msgid "When will my course re-run start?"
+#~ msgstr "再開講はいつ始まりますか？"
+
+#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+#~ msgstr "新しい講座は2030年1月1日午前0時(UTC)に開始予定です。"
+
+#~ msgid "What transfers from the original course?"
+#~ msgstr "元の講座から転送されるものは？"
+
+#~ msgid ""
+#~ "The new course has the same course outline and content as the original "
+#~ "course. All problems, videos, announcements, and other files are duplicated "
+#~ "to the new course."
+#~ msgstr "新しい講座は元の講座と同じ講座アウトラインとコンテンツです。すべての問題、動画、お知らせ、その他のファイルは新しい講座に複製されます。"
+
+#~ msgid "What does not transfer from the original course?"
+#~ msgstr "元の講座から転送されないものは？"
+
+#~ msgid ""
+#~ "You are the only member of the new course's staff. No students are enrolled "
+#~ "in the course, and there is no student data. There is no content in the "
+#~ "discussion topics or wiki."
+#~ msgstr ""
+#~ "あなたが唯一の講座スタッフメンバーです。受講者は登録されていませんし、受講者情報もありません。ディスカッショントピックやWikiにもコンテンツはありません。"
+
+#~ msgid "Learn more about Course Re-runs"
+#~ msgstr "講座の再開講について詳しく知る"
+
 #~ msgid "Course Outline"
 #~ msgstr "講座アウトライン"
 
 #~ msgid "Warning"
 #~ msgstr "警告"
 
+#~ msgid "Pages"
+#~ msgstr "ページ"
+
+#~ msgid "Export to Git"
+#~ msgstr "Gitにエクスポート"
+
 #~ msgid "{studio_name} Home"
 #~ msgstr "{studio_name} ホーム"
 
-#~ msgid "Looking for help with {studio_name}?"
-#~ msgstr "{studio_name}用ヘルプを探していますか？"
+#~ msgid "New Course"
+#~ msgstr "新規講座"
 
-#~ msgid "Hide {studio_name} Help"
-#~ msgstr "{studio_name}のヘルプを非表示"
+#~ msgid "Email staff to create course"
+#~ msgstr "開講希望の方はスタッフへメールをしてください"
 
-#~ msgid "{studio_name} Documentation"
-#~ msgstr "{studio_name}ドキュメント"
+#~ msgid "New Library"
+#~ msgstr "新規ライブラリ"
 
-#~ msgid "Access documentation on http://docs.edx.org"
-#~ msgstr "http://docs.edx.org のドキュメントにアクセス"
+#~ msgid "Please correct the highlighted fields below."
+#~ msgstr "以下のハイライトされている欄を訂正してください。"
 
-#~ msgid "edX Documentation"
-#~ msgstr "edX ドキュメント"
+#~ msgid "Create a New Course"
+#~ msgstr "新規講座を作成する"
 
-#~ msgid "Enroll in edX101: Overview of Creating an edX Course"
-#~ msgstr "edX101 に受講登録する: edX の講座制作の概要"
+#~ msgid "Required Information to Create a New Course"
+#~ msgstr "講座作成に必要な情報"
 
-#~ msgid "Enroll in edX101"
-#~ msgstr "edX101に受講登録する"
+#~ msgid ""
+#~ "The public display name for your course. This cannot be changed, but you can"
+#~ " set a different display name in Advanced Settings later."
+#~ msgstr "この講座の表示名。これは変更することはできませんが、詳細設定にて別の表示名を設定することができます。"
 
-#~ msgid "Enroll in StudioX: Creating a Course with edX Studio"
-#~ msgstr "StudioX に受講登録する: edX Studio での講座制作"
+#~ msgid ""
+#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
+#~ "organization name is part of the course URL.{strong_end} This cannot be "
+#~ "changed, but you can set a different display name in Advanced Settings "
+#~ "later."
+#~ msgstr ""
+#~ "講座を提供している組織名。 {strong_start} 注: "
+#~ "組織名は講座URLの一部分になっています。{strong_end}これを変更することはできませんが、後ほど詳細設定で別の表示名を設定することができます。"
 
-#~ msgid "Enroll in StudioX"
-#~ msgstr "StudioXに受講登録する"
+#~ msgid ""
+#~ "The unique number that identifies your course within your organization. "
+#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
+#~ " characters are allowed and it cannot be changed.{strong_end}"
+#~ msgstr ""
+#~ "あなたの組織の講座を特定する固有の数字。{strong_start}注: "
+#~ "これは講座URLの一部になっており、スペースや特殊記号は使用不可で、変更もできません。{strong_end}"
 
-#~ msgid "Send an email to {email}"
-#~ msgstr "{email} にメールを送る"
+#~ msgid ""
+#~ "The term in which your course will run. {strong_start}Note: This is part of "
+#~ "your course URL, so no spaces or special characters are allowed and it "
+#~ "cannot be changed.{strong_end}"
+#~ msgstr ""
+#~ "講座の開講期間。{strong_start}注: "
+#~ "これは講座URLの一部になっており、スペースや特殊記号は使用不可で、変更もできません。{strong_end}"
+
+#~ msgid "Create"
+#~ msgstr "作成"
+
+#~ msgid "Create a New Library"
+#~ msgstr "新規ライブラリを作成"
+
+#~ msgid "Required Information to Create a New Library"
+#~ msgstr "新規ライブラリ作成に必要な情報"
+
+#~ msgid "Library Name"
+#~ msgstr "ライブラリ名"
+
+#~ msgid "e.g. Computer Science Problems"
+#~ msgstr "例. コンピュータサイエンス問題"
+
+#~ msgid "The public display name for your library."
+#~ msgstr "公開するライブラリ名。"
+
+#~ msgid "The public organization name for your library."
+#~ msgstr "公開するライブラリの組織名。"
+
+#~ msgid "This cannot be changed."
+#~ msgstr "これは変更できません。"
+
+#~ msgid "Library Code"
+#~ msgstr "ライブラリコード"
+
+#~ msgid "e.g. CSPROB"
+#~ msgstr "例. CSPROB"
+
+#~ msgid ""
+#~ "The unique code that identifies this library. {strong_start}Note: This is "
+#~ "part of your library URL, so no spaces or special characters are "
+#~ "allowed.{strong_end} This cannot be changed."
+#~ msgstr ""
+#~ "このライブラリを特定する固有コード。{strong_start}注: これはライブラリURL "
+#~ "の一部で、スペースや特殊記号は使用できません。{strong_end}変更はできません。 "
+
+#~ msgid "Organization and Library Settings"
+#~ msgstr "組織およびライブラリ設定"
+
+#~ msgid "Show all courses in organization:"
+#~ msgstr "組織内の全講座を表示: "
+
+#~ msgid "For example, MITx"
+#~ msgstr "例えば、MITx"
+
+#~ msgid "Courses Being Processed"
+#~ msgstr "手続中の講座"
+
+#~ msgid "This course run is currently being created."
+#~ msgstr "このcourse runは現在作成中です。"
+
+#~ msgid "Configuring as re-run"
+#~ msgstr "re-runとして設定中"
+
+#~ msgid ""
+#~ "The new course will be added to your course list in 5-10 minutes. Return to "
+#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
+#~ " new course will need some manual configuration."
+#~ msgstr ""
+#~ "新規講座は講座リストに5-10分で追加されます。講座リストを更新するにはこのページに戻ってくるか{link_start}再読込{link_end}してください。新規講座はいくつか手動設定が必要です。"
+
+#~ msgid "This re-run processing status:"
+#~ msgstr "このre-run手続のステータス: "
+
+#~ msgid "Configuration Error"
+#~ msgstr "設定エラー"
+
+#~ msgid ""
+#~ "A system error occurred while your course was being processed. Please go to "
+#~ "the original course to try the re-run again, or contact your PM for "
+#~ "assistance."
+#~ msgstr "コースの手続中にシステムエラーが発生しました。元のコースに行ってもう一度re-runを試すか、PMまでお問い合わせください。"
+
+#~ msgid "Archived Courses"
+#~ msgstr "アーカイブ済の講座"
+
+#~ msgid "Libraries"
+#~ msgstr "ライブラリ"
+
+#~ msgid "Are you staff on an existing {studio_name} course?"
+#~ msgstr "あなたは既存の{studio_name}講座のスタッフですか？"
+
+#~ msgid ""
+#~ "The course creator must give you access to the course. Contact the course "
+#~ "creator or administrator for the course you are helping to author."
+#~ msgstr "講座製作者があなたにアクセス権を与えなければなりません。講座制作者または管理者にお問い合わせください。"
+
+#~ msgid "Create Your First Course"
+#~ msgstr "最初の講座を作成する"
+
+#~ msgid "Your new course is just a click away!"
+#~ msgstr "クリックするだけで新しい講座が！"
+
+#~ msgid "Becoming a Course Creator in {studio_name}"
+#~ msgstr "{studio_name}の講座制作者になる"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team will evaluate your request and provide you feedback within 24 hours "
+#~ "during the work week."
+#~ msgstr ""
+#~ "{studio_name}はxConsortiumのパートナーと選ばれしゲストに提供されるものです。講座制作者の特権を{platform_name}から与えられている間は、あなたがチームメンバーである講座が上部に表示され、編集できます。我々はあなたからのリクエストを査定し、営業日の24時間以内にフィードバックします。"
+
+#~ msgid "Your Course Creator Request Status:"
+#~ msgstr "講座制作者リクエストのステータス: "
+
+#~ msgid "Request the Ability to Create Courses"
+#~ msgstr "講座を作成する権限をリクエストする"
+
+#~ msgid "Your Course Creator Request Status"
+#~ msgstr "講座作成権限リクエストのステータス"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is has completed evaluating your request."
+#~ msgstr ""
+#~ "{studio_name}はxConsortiumのパートナーと選ばれしゲストに提供されるものです。講座制作者の特権を{platform_name}から与えられている間は、あなたがチームメンバーである講座が上部に表示され、編集できます。我々はあなたからのリクエストの査定を完了しました。"
+
+#~ msgid "Your Course Creator request is:"
+#~ msgstr "講座制作者のリクエスト: "
+
+#~ msgid ""
+#~ "Your request did not meet the criteria/guidelines specified by "
+#~ "{platform_name} Staff."
+#~ msgstr "あなたのリクエストは{platform_name}スタッフに指定されている規準/ガイドラインを満たしませんでした。"
+
+#~ msgid ""
+#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
+#~ " guests. Courses for which you are a team member appear above for you to "
+#~ "edit, while course creator privileges are granted by {platform_name}. Our "
+#~ "team is currently  evaluating your request."
+#~ msgstr ""
+#~ "{studio_name}はxConsortiumのパートナーと選ばれしゲストに提供されるものです。講座制作者の特権を{platform_name}から与えられている間は、あなたがチームメンバーである講座が上部に表示され、編集できます。我々は現在あなたからのリクエストを査定中です。"
+
+#~ msgid ""
+#~ "Your request is currently being reviewed by {platform_name} staff and should"
+#~ " be updated shortly."
+#~ msgstr "あなたのリクエストは現在{platform_name}スタッフによりレビュー中で、まもなくアップデートされます。"
+
+#~ msgid "Were you expecting to see a particular library here?"
+#~ msgstr "特定のライブラリがここに表示されることを期待していましたか？"
+
+#~ msgid ""
+#~ "The library creator must give you access to the library. Contact the library"
+#~ " creator or administrator for the library you are helping to author."
+#~ msgstr "ライブラリ制作者からアクセス権をもらわなければいけません。ライブラリ制作者または管理者に問い合わせてください。"
+
+#~ msgid "Create Your First Library"
+#~ msgstr "最初のライブラリを作成"
+
+#~ msgid ""
+#~ "Libraries hold a pool of components that can be re-used across multiple "
+#~ "courses. Create your first library with the click of a button!"
+#~ msgstr "ライブラリは複数の講座で再利用可能なコンポーネントを保持します。ボタンをクリックして最初のライブラリを作りましょう！"
+
+#~ msgid "New to {studio_name}?"
+#~ msgstr "{studio_name}は初めてですか？"
+
+#~ msgid ""
+#~ "Click Help in the upper-right corner to get more information about the "
+#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
+#~ " of the page to access our continually updated documentation and other "
+#~ "{studio_name} resources."
+#~ msgstr ""
+#~ "今見ている{studio_name}画面についての情報を入手するには、右上のヘルプをクリックしてください。随時アップデートされているドキュメントやその他の{studio_name}リソースにアクセスするには、画面下部のリンクもお使いいただけます。"
+
+#~ msgid "Getting Started with {studio_name}"
+#~ msgstr "{studio_name}を始める"
+
+#~ msgid "Can I create courses in {studio_name}?"
+#~ msgstr "私は{studio_name}で講座を作成してよいですか？"
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must {link_start}contact "
+#~ "{platform_name} staff to help you create a course{link_end}."
+#~ msgstr ""
+#~ "{studio_name}で講座を作成する際は、{link_start}{platform_name}スタッフに必ずご連絡ください{link_end}。"
+
+#~ msgid ""
+#~ "In order to create courses in {studio_name}, you must have course creator "
+#~ "privileges to create your own course."
+#~ msgstr "{studio_name}で講座を作成するには、自分の講座を作成する講座制作者の権限を得ている必要があります。"
+
+#~ msgid ""
+#~ "Your request to author courses in {studio_name} has been denied. Please "
+#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
+#~ msgstr ""
+#~ "あなたの{studio_name}の講座制作者のリクエストは拒否されました。詳細は{link_start}{platform_name}スタッフ{link_end}までお問い合わせください。"
+
+#~ msgid "Thanks for signing up, {name}!"
+#~ msgstr "{name} さん、ご登録ありがとうございます！"
+
+#~ msgid "We need to verify your email address"
+#~ msgstr "メールアドレスを確認する必要があります。"
+
+#~ msgid ""
+#~ "Almost there! In order to complete your sign up we need you to verify your "
+#~ "email address ({email}). An activation message and next steps should be "
+#~ "waiting for you there."
+#~ msgstr ""
+#~ "あと少しです！登録を完了するためには、あなたのメールアドレス ({email}) "
+#~ "を認証する必要があります。その後、有効化に関するメッセージと次のステップをお知らせします。"
+
+#~ msgid "Need help?"
+#~ msgstr "ヘルプが必要ですか？"
+
+#~ msgid ""
+#~ "Please check your Junk or Spam folders in case our email isn't in your "
+#~ "INBOX. Still can't find the verification email? Request help via the link "
+#~ "below."
+#~ msgstr ""
+#~ "受信フォルダにメールがない場合は、迷惑メールフォルダを確認してください。それでもメールが見つからない場合には、次のリンクからお問い合わせください。"
+
+#~ msgid "User Access"
+#~ msgstr "ユーザーアクセス"
+
+#~ msgid "Schedule & Details"
+#~ msgstr "スケジュール＆詳細"
+
+#~ msgid ""
+#~ "Identify the course language here. This is used to assist users find courses"
+#~ " that are taught in a specific language. It is also used to localize the "
+#~ "'From:' field in bulk emails."
+#~ msgstr ""
+#~ "ここで講座の言語を特定します。特定の言語を使用している講座をユーザーが探す際に使われます。また、バルクメールの 'From:' "
+#~ "欄をローカライズするためにも使われます。"
+
+#~ msgid "Expand or Collapse"
+#~ msgstr "開くまたは閉じる"
+
+#~ msgid "This block contains multiple components."
+#~ msgstr "このブロックは複数のコンポーネントを含みます。"
+
+#~ msgid "Video Uploads"
+#~ msgstr "動画アップロード"
+
+#~ msgid "Current Course:"
+#~ msgstr "受講中の講座: "
+
+#~ msgid "Course Navigation"
+#~ msgstr "講座ナビゲーション"
+
+#~ msgid "Outline"
+#~ msgstr "アウトライン"
+
+#~ msgid "Publisher"
+#~ msgstr "Publisher"
+
+#~ msgid "Import"
+#~ msgstr "インポート"
+
+#~ msgid "Export"
+#~ msgstr "エクスポート"
+
+#~ msgid "Current Library:"
+#~ msgstr "現在のライブラリ: "
+
+#~ msgid "Language preference"
+#~ msgstr "希望言語"
+
+#~ msgid "Account Navigation"
+#~ msgstr "アカウント・ナビゲーション"
+
+#~ msgid "Contextual Online Help"
+#~ msgstr "コンテキストによるオンラインヘルプ"
+
+#~ msgid "Sign Up"
+#~ msgstr "登録"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
@@ -24670,6 +24087,16 @@ msgstr ""
 #~ msgstr[0] ""
 #~ "{display_name}に追加される条件を満たすすべてのコンテンツを表示しています。各受講者にはリストからランダムに選ばれた{max_count}個のコンポーネントが割り当てられます。"
 
+#~ msgid "example: username@domain.com"
+#~ msgstr "例: username@domain.com"
+
+#~ msgid ""
+#~ "edX, Open edX, and the edX and Open edX logos are registered trademarks of "
+#~ "{link_start}edX Inc.{link_end}"
+#~ msgstr ""
+#~ "edX と Open edX、ならびに edX と Open edX のロゴは、{link_start}edX Inc.{link_end} "
+#~ "の登録商標です"
+
 #~ msgid "New Unit"
 #~ msgstr "新しい単元"
 
@@ -24678,6 +24105,194 @@ msgstr ""
 
 #~ msgid "Supported by the following organizations"
 #~ msgstr "以下の組織から支援されています"
+
+#~ msgid ""
+#~ "{tos_link_start}Terms of Service{tos_link_end} and {honor_link_start}Honor "
+#~ "Code{honor_link_end}"
+#~ msgstr ""
+#~ "{tos_link_start}利用規約{tos_link_end}および{honor_link_start}倫理規定{honor_link_end}"
+
+#~ msgid "Copyright"
+#~ msgstr "著作権"
+
+#~ msgid "Copyright {year}. All rights reserved."
+#~ msgstr "Copyright {year}. All rights reserved. "
+
+#~ msgid "For anyone, anywhere, anytime"
+#~ msgstr "いつでも、どこでも、誰にでも"
+
+#~ msgid ""
+#~ "We're sorry, but this version of your browser is not supported. Try again "
+#~ "using a different browser or a newer version of your browser."
+#~ msgstr ""
+#~ "申し訳ありませんが、このバージョンのブラウザはサポートされていません。別のブラウザまたは新しいバージョンのブラウザを使って再試行してください。"
+
+#~ msgid "The following errors occurred while processing your registration:"
+#~ msgstr "登録処理をする際にエラーが発生しました: "
+
+#~ msgid "Sign up with {provider_name}"
+#~ msgstr "{provider_name}で新規登録する"
+
+#~ msgid "Create your own {platform_name} account below"
+#~ msgstr "{platform_name}アカウントを作成する"
+
+#~ msgid ""
+#~ "Required fields are noted by <strong class=\"indicator\">bold text and an "
+#~ "asterisk (*)</strong>."
+#~ msgstr "<strong class=\"indicator\">(*)付きの太字の項目</strong>は必須です。"
+
+#~ msgid "You've successfully signed in with {selected_provider}."
+#~ msgstr "{selected_provider}でのサインインが完了しました。"
+
+#~ msgid ""
+#~ "We just need a little more information before you start learning with "
+#~ "{platform_name}."
+#~ msgstr "{platform_name}での学習を始めるにあたって、あと少し情報が必要です。"
+
+#~ msgid "Please complete the following fields to register for an account. "
+#~ msgstr "アカウント登録をするには下記項目の入力をお願いします。"
+
+#~ msgid "example: Jane Doe"
+#~ msgstr "例: 学校 太郎"
+
+#~ msgid "Your legal name, used for any certificates you earn."
+#~ msgstr "実名、修了証に使用します。"
+
+#~ msgid "example: JaneDoe"
+#~ msgstr "例: gacco"
+
+#~ msgid "Will be shown in any discussions or forums you participate in"
+#~ msgstr "ディスカッションやフォーラム参加中に表示されます"
+
+#~ msgid "cannot be changed later"
+#~ msgstr "後から変更できません"
+
+#~ msgid "Welcome {username}"
+#~ msgstr "ようこそ、{username}さん"
+
+#~ msgid "Enter a Public Display Name:"
+#~ msgstr "表示名を入力: "
+
+#~ msgid "Public Display Name"
+#~ msgstr "表示名"
+
+#~ msgid "Additional Personal Information"
+#~ msgstr "追加の個人情報"
+
+#~ msgid "example: New York"
+#~ msgstr "例: ニューヨーク"
+
+#~ msgid "Highest Level of Education Completed"
+#~ msgstr "最終学歴"
+
+#~ msgid "Year of Birth"
+#~ msgstr "誕生年"
+
+#~ msgid "Please share with us your reasons for registering with {platform_name}"
+#~ msgstr "{platform_name}への登録理由を教えてください"
+
+#~ msgid "Account Acknowledgements"
+#~ msgstr "アカウント認証"
+
+#~ msgid "Preferences for {platform_name}"
+#~ msgstr "{platform_name}の設定"
+
+#~ msgid "Update my {platform_name} Account"
+#~ msgstr "{platform_name}アカウントを更新"
+
+#~ msgid "Processing your account information"
+#~ msgstr "アカウント情報を処理中"
+
+#~ msgid "Welcome {username}!  Please set your preferences below"
+#~ msgstr "ようこそ、{username}さん！以下の設定をお願いします"
+
+#~ msgid "Update My Account"
+#~ msgstr "アカウントを更新"
+
+#~ msgid "Registration Help"
+#~ msgstr "登録に関するヘルプ"
+
+#~ msgid "Already registered?"
+#~ msgstr "登録済ですか？"
+
+#~ msgid "Next Steps"
+#~ msgstr "次の手順"
+
+#~ msgid ""
+#~ "You will receive an activation email.  You must click on the activation link"
+#~ " to complete the process.  Don't see the email?  Check your spam folder and "
+#~ "mark emails from class.stanford.edu as 'not spam', since you'll want to be "
+#~ "able to receive email from your courses."
+#~ msgstr ""
+#~ "まもなくユーザー登録確認メールが届きます。リンクをクリックして登録を完了させましょう。メールが見当たらない場合は迷惑メールフォルダをご確認ください。class.stanford.eduからのメールを'迷惑メールではない'に設定して、講座からのメールを受け取れるようにしてください。"
+
+#~ msgid "Need Help?"
+#~ msgstr "ヘルプが必要ですか？"
+
+#~ msgid "Need help in registering with {platform_name}?"
+#~ msgstr "{platform_name}への登録に関してヘルプが必要ですか？"
+
+#~ msgid "View our FAQs for answers to commonly asked questions."
+#~ msgstr "よくある質問への回答を見る。"
+
+#~ msgid ""
+#~ "Once registered, most questions can be answered in the course specific "
+#~ "discussion forums or through the FAQs."
+#~ msgstr ""
+#~ "講座内容についての質問は、各講座内に設置されるディスカッションで講師・スタッフに問いかけましょう。サービス全般についての質問は「よくある質問」をご確認ください。"
+
+#~ msgid "Thank you for signing up for {platform_name}."
+#~ msgstr "{platform_name}にご登録いただき、ありがとうございます。"
+
+#~ msgid ""
+#~ "Change your life and start learning today by activating your {platform_name}"
+#~ " account. Click on the link below or copy and paste it into your browser's "
+#~ "address bar."
+#~ msgstr ""
+#~ "{platform_name}アカウントを有効化して、今日から生活を変え、学習を始めましょう。下のリンクをクリックまたはブラウザーのアドレスバーにコピー＆ペーストしてください。"
+
+#~ msgid ""
+#~ "If you didn't request this, you don't need to do anything; you won't receive"
+#~ " any more email from us. Please do not reply to this e-mail; if you require "
+#~ "assistance, check the about section of the {platform_name} Courses web site."
+#~ msgstr ""
+#~ "リクエストした覚えがない場合は、何もする必要はありません。これ以上メールは届きませんので、このメールには返信しないでください。ヘルプが必要であれば、{platform_name}"
+#~ " のウェブサイトをご参照ください。"
+
+#~ msgid ""
+#~ "This is to confirm that you changed the e-mail associated with "
+#~ "{platform_name} from {old_email} to {new_email}. If you did not make this "
+#~ "request, please contact us at"
+#~ msgstr ""
+#~ "これは{platform_name}に登録するメールアドレスを{old_email}から{new_email}へ変更したことを確認するものです。このリクエストを行っていない場合は、以下にお問い合わせください"
+
+#~ msgid ""
+#~ "We received a request to change the e-mail associated with your "
+#~ "{platform_name} account from {old_email} to {new_email}. If this is correct,"
+#~ " please confirm your new e-mail address by visiting:"
+#~ msgstr ""
+#~ "{platform_name}アカウントへの登録メールを{old_email}から{new_email}へ変更するリクエストを受け取りました。これが正しい場合は、次にアクセスして新しいメールアドレスを確認してください:"
+#~ " "
+
+#~ msgid ""
+#~ "We are sorry. Our course staff did not approve your request to change your "
+#~ "name from {old_name} to {new_name}. If you need further assistance, please "
+#~ "e-mail the tech support at {email}"
+#~ msgstr ""
+#~ "申し訳ありませんが、{old_name} から {new_name} "
+#~ "への名前の変更が承認されませんでした。詳しいヘルプが必要な場合は、テクニカルサポート{email}へメールしてください。"
+
+#~ msgid "Put your Terms of Service here!"
+#~ msgstr "利用規約はこちらへ！"
+
+#~ msgid "Put your Privacy Policy here!"
+#~ msgstr "プライバシーポリシーはこちらへ！"
+
+#~ msgid "Put your Honor Code here!"
+#~ msgstr "倫理規定はこちらへ！"
+
+#~ msgid "Put your Copyright Text here!"
+#~ msgstr "著作権に関してはこちらへ！"
 
 #~ msgid "Collapse All"
 #~ msgstr "すべてを閉じる"
