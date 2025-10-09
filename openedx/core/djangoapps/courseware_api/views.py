@@ -6,6 +6,7 @@ from completion.exceptions import UnavailableCompletionData
 from completion.utilities import get_key_to_last_completed_block
 from django.urls import reverse
 from django.utils.translation import gettext as _
+from django.db import IntegrityError
 from edx_django_utils.cache import TieredCache
 from edx_rest_framework_extensions.auth.jwt.authentication import JwtAuthentication
 from edx_rest_framework_extensions.auth.session.authentication import SessionAuthenticationAllowInactiveUser
@@ -478,12 +479,21 @@ class CoursewareInformation(RetrieveAPIView):
         browser_timezone = self.request.query_params.get('browser_timezone', None)
         cached_value = TieredCache.get_cached_response(cache_key)
         if not cached_value.is_found:
-            if browser_timezone:
-                TieredCache.set_all_tiers(cache_key, str(browser_timezone), 86400)  # Refresh the cache daily
+            return
+
+        if browser_timezone:
+            TieredCache.set_all_tiers(cache_key, str(browser_timezone), 86400)  # Refresh the cache daily
+            try:    
                 LastSeenCoursewareTimezone.objects.update_or_create(
                     user=user,
                     last_seen_courseware_timezone=browser_timezone,
                 )
+            except IntegrityError:
+            # Race condition: record already exists, just update it
+                obj = LastSeenCoursewareTimezone.objects.get(user=user)
+                obj.last_seen_courseware_timezone = browser_timezone
+                obj.save()
+
 
     def get_object(self):
         """
