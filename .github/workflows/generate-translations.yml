@@ -12,7 +12,7 @@ on:
         required: false
         default: 'develop'
       auto_merge:
-        description: 'Create PR and merge to develop'
+        description: 'Merge to develop'
         required: false
         type: boolean
         default: false
@@ -42,6 +42,7 @@ jobs:
         run: |
           sudo apt-get update --fix-missing
           sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl gettext
+          rm -f tx
           curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
       
       - name: Check TX Version
