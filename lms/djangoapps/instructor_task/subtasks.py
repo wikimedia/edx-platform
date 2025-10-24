@@ -17,6 +17,7 @@ from django.db import DatabaseError, transaction
 
 
 from common.djangoapps.util.db import outer_atomic
+from openedx_wikilearn_features.wikimedia_general.djangoapps_patches.instructor_task.utils import update_task_dict
 
 from .exceptions import DuplicateTaskException
 from .models import PROGRESS, QUEUING, InstructorTask
@@ -249,7 +250,7 @@ def initialize_subtask_info(entry, action_name, total_num, subtask_id_list):
         'duration_ms': int(0),
         'start_time': time()
     }
-    entry.task_output = InstructorTask.create_output_for_success(task_progress)
+    entry.task_output = InstructorTask.create_output_for_success(update_task_dict(task_progress))
     entry.task_state = PROGRESS
 
     # Write out the subtasks information.
@@ -263,7 +264,7 @@ def initialize_subtask_info(entry, action_name, total_num, subtask_id_list):
         'failed': 0,
         'status': subtask_status
     }
-    entry.subtasks = json.dumps(subtask_dict)
+    entry.subtasks = json.dumps(update_task_dict(subtask_dict))
 
     # and save the entry immediately, before any subtasks actually start work:
     entry.save_now()
@@ -549,7 +550,7 @@ def _update_subtask_status(entry_id, current_task_id, new_subtask_status):
         # retry.
         new_state = new_subtask_status.state
         if new_subtask_status is not None and new_state in READY_STATES:
-            for statname in ['attempted', 'succeeded', 'failed', 'skipped']:
+            for statname in ['attempted', 'succeeded', 'failed', 'skipped', 'skip_details', 'failure_details']:
                 task_progress[statname] += getattr(new_subtask_status, statname)
 
         # Figure out if we're actually done (i.e. this is the last task to complete).

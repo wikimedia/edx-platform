@@ -9,6 +9,7 @@ from django.utils.translation import gettext as _
 
 from lms.djangoapps.instructor_task.api_helper import get_status_from_instructor_task, get_updated_instructor_task
 from lms.djangoapps.instructor_task.models import PROGRESS
+from openedx_wikilearn_features.wikimedia_general.djangoapps_patches.instructor_task.utils import get_detailed_message
 
 log = logging.getLogger(__name__)
 
@@ -228,5 +229,5 @@ def get_task_completion_info(instructor_task):  # lint-amnesty, pylint: disable=
         total=num_total,
         skipped=num_skipped,
         student=student
-    )
+    ) + "\n" + get_detailed_message(task_output)
     return (succeeded, message)
