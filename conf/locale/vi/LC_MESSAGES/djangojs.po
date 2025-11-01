@@ -113,7 +113,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-09 09:42+0000\n"
+"POT-Creation-Date: 2025-11-01 07:15+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Le Minh Tri <trilm@hihexa.com>, 2020\n"
 "Language-Team: Vietnamese (http://app.transifex.com/open-edx/edx-platform/language/vi/)\n"
@@ -160,7 +160,6 @@ msgstr "Đang lưu"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Xóa"
 
@@ -6437,6 +6436,8 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "Công bố tất cả những thay đổi chưa chưa công bố cho {item}?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Xuất bản"
 
@@ -7241,7 +7242,6 @@ msgstr "Hoạt động"
 #: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Chưa có lịch học"
 
@@ -8045,18 +8045,15 @@ msgstr ""
 "trước khi bạn chọn \"Kết thúc Bài kiểm tra Của tôi\"."
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "Tìm hiểu thêm"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "Bắt đầu: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "bắt đầu"
 
@@ -8803,7 +8800,6 @@ msgstr "Tạo một tài khoản"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "Đăng nhập"
 
@@ -8844,33 +8840,27 @@ msgid "Create an Account"
 msgstr "Tạo Tài khoản"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "Lần đầu tiên ở đây?"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "Tạo Tài khoản."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr "Đăng nhập và tiếp tục học bằng {email}"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr "Đăng nhập để tiếp tục học"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr "Bạn đã có một tài khoản edX sử dụng email của {enterprise_name} "
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
@@ -8879,7 +8869,6 @@ msgstr ""
 "{enterprise_name}."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
@@ -8888,17 +8877,14 @@ msgstr ""
 "nào trong phần Cài đặt Tài khoản"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr "Để tiếp tục học bằng tài khoản này, đăng nhập dưới đây"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "Đăng nhập"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
@@ -8907,34 +8893,28 @@ msgstr ""
 "sử dụng một trong các nhà cung cấp được liệt kê dưới đây."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr ""
 "Đăng nhập tại đây bằng cách sử dụng địa chỉ email và mật khẩu của bạn."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr "Nếu bạn chưa có tài khoản, sử dụng nút dưới đây để đăng ký."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr "Sử dụng thông tin từ trường của tôi"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "hoặc đăng nhập bằng"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "Đăng nhập với %(providerName)s"
@@ -9685,14 +9665,6 @@ msgid ""
 "backpack."
 msgstr ""
 
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
-msgid "Learn More >"
-msgstr ""
-
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
-msgid "sign in with"
-msgstr ""
-
 #: cms/templates/js/access-editor.underscore
 msgid "Limit Access"
 msgstr "Giới hạn truy cập"
@@ -10139,6 +10111,133 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "Tải Ảnh lên"
+
+#: cms/templates/js/course-outline.underscore
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr "Điều kiện bắt buộc: %(prereq_display_name)s"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Contains staff only content"
+msgstr "Chỉ chứa nội dung nhân viên"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to live content"
+msgstr "Những thay đổi chưa xuất bản tới nội dung đang chạy"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished units will not be released"
+msgstr "Những đơn vị chưa xuất bản sẽ không phát hành"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+"Những thay đổi chưa xuất bản tới nội dung sẽ phát hành trong tương lai"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr "Truy cập vào đơn vị này được giới hạn ở: {selectedGroupsLabel}"
+
+#: cms/templates/js/course-outline.underscore
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+"Truy cập vào một số nội dung trong đơn vị này bị hạn chế đối với một số nhóm"
+" người học cụ thể"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Ungraded"
+msgstr "Chưa phân loại"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr "Bài thi đầu vào "
+
+#: cms/templates/js/course-outline.underscore
+msgid "Practice proctored Exam"
+msgstr "Thi thực hành có giám sát"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctored Exam"
+msgstr "Thi có giám sát"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Timed Exam"
+msgstr "Bài thi Khống chế thời gian"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr "Thu gọn/Mở rộng %(xblock_type)s này"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr "Cài đặt giám thị"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Configure"
+msgstr "Cấu hình"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Duplicate"
+msgstr "Bản sao"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Drag to reorder"
+msgstr "Kéo để sắp xếp lại"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Release Status:"
+msgstr "Trạng thái Phát hành:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "Released:"
+msgstr "Phát hành:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+msgid "Scheduled:"
+msgstr "Lên kế hoạch:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+msgid "Section Highlights"
+msgstr "Tâm điểm phần"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Graded as:"
+msgstr "Phân loại:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Due:"
+msgstr "Hạn chót:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after course end date"
+msgstr "Phần con được ẩn sau ngày kết thúc khóa học"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after due date"
+msgstr "Phần con được ẩn sau ngày đáo hạn"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "You haven't added any content to this course yet."
+msgstr "Bạn chưa thêm bất cứ tài nguyên nào cho khóa học này."
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr "Bấm để thêm mới %(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11439,98 +11538,6 @@ msgstr "Sử dụng phụ đề hiện tại"
 
 #~ msgid "Dismiss"
 #~ msgstr "Hủy"
-
-#, python-format
-#~ msgid "Prerequisite: %(prereq_display_name)s"
-#~ msgstr "Điều kiện bắt buộc: %(prereq_display_name)s"
-
-#~ msgid "Contains staff only content"
-#~ msgstr "Chỉ chứa nội dung nhân viên"
-
-#~ msgid "Unpublished changes to live content"
-#~ msgstr "Những thay đổi chưa xuất bản tới nội dung đang chạy"
-
-#~ msgid "Unpublished units will not be released"
-#~ msgstr "Những đơn vị chưa xuất bản sẽ không phát hành"
-
-#~ msgid "Unpublished changes to content that will release in the future"
-#~ msgstr ""
-#~ "Những thay đổi chưa xuất bản tới nội dung sẽ phát hành trong tương lai"
-
-#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-#~ msgstr "Truy cập vào đơn vị này được giới hạn ở: {selectedGroupsLabel}"
-
-#~ msgid ""
-#~ "Access to some content in this unit is restricted to specific groups of "
-#~ "learners"
-#~ msgstr ""
-#~ "Truy cập vào một số nội dung trong đơn vị này bị hạn chế đối với một số nhóm"
-#~ " người học cụ thể"
-
-#~ msgid "Ungraded"
-#~ msgstr "Chưa phân loại"
-
-#~ msgid "Onboarding Exam"
-#~ msgstr "Bài thi đầu vào "
-
-#~ msgid "Practice proctored Exam"
-#~ msgstr "Thi thực hành có giám sát"
-
-#~ msgid "Proctored Exam"
-#~ msgstr "Thi có giám sát"
-
-#~ msgid "Timed Exam"
-#~ msgstr "Bài thi Khống chế thời gian"
-
-#, python-format
-#~ msgid "Collapse/Expand this %(xblock_type)s"
-#~ msgstr "Thu gọn/Mở rộng %(xblock_type)s này"
-
-#~ msgid "Display Name"
-#~ msgstr "Tên hiển thị"
-
-#~ msgid "Proctoring Settings"
-#~ msgstr "Cài đặt giám thị"
-
-#~ msgid "Configure"
-#~ msgstr "Cấu hình"
-
-#~ msgid "Duplicate"
-#~ msgstr "Bản sao"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Kéo để sắp xếp lại"
-
-#~ msgid "Release Status:"
-#~ msgstr "Trạng thái Phát hành:"
-
-#~ msgid "Released:"
-#~ msgstr "Phát hành:"
-
-#~ msgid "Scheduled:"
-#~ msgstr "Lên kế hoạch:"
-
-#~ msgid "Section Highlights"
-#~ msgstr "Tâm điểm phần"
-
-#~ msgid "Graded as:"
-#~ msgstr "Phân loại:"
-
-#~ msgid "Due:"
-#~ msgstr "Hạn chót:"
-
-#~ msgid "Subsection is hidden after course end date"
-#~ msgstr "Phần con được ẩn sau ngày kết thúc khóa học"
-
-#~ msgid "Subsection is hidden after due date"
-#~ msgstr "Phần con được ẩn sau ngày đáo hạn"
-
-#~ msgid "You haven't added any content to this course yet."
-#~ msgstr "Bạn chưa thêm bất cứ tài nguyên nào cho khóa học này."
-
-#, python-format
-#~ msgid "Click to add a new %(xblock_type)s"
-#~ msgstr "Bấm để thêm mới %(xblock_type)s"
 
 #~ msgid "Receive updates"
 #~ msgstr "Nhận thông báo khi có bài đăng mới"

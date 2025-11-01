@@ -67,7 +67,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-09 09:42+0000\n"
+"POT-Creation-Date: 2025-11-01 07:15+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Emil Örberg <emil.orberg@live.se>, 2023\n"
 "Language-Team: Swedish (http://app.transifex.com/open-edx/edx-platform/language/sv/)\n"
@@ -77,8 +77,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: MediaWiki 1.45.0-alpha; Translate 2025-07-31\n"
-"X-POT-Import-Date: 2025-10-06 10:30:30+0000\n"
+"X-Generator: MediaWiki 1.46.0-alpha; Translate 2025-07-31\n"
+"X-POT-Import-Date: 2025-10-09 10:30:30+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -524,7 +524,6 @@ msgstr "Sparar"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Radera"
 
@@ -6847,6 +6846,8 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "Vill du publicera alla opublicerade ändringar för denna {item}?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Publicera"
 
@@ -7575,7 +7576,6 @@ msgstr "Handlingar"
 #: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Ej schemalagd"
 
@@ -8362,18 +8362,15 @@ msgstr ""
 "innan du väljer \"Avsluta min tentamen\"."
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "LÄS MER"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "Startar: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "Startar"
 
@@ -9118,7 +9115,6 @@ msgstr "Skapa ett konto"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "Logga in"
 
@@ -9159,34 +9155,28 @@ msgid "Create an Account"
 msgstr "Skapa ett konto"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "Första gången här?"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "Skapa ett konto."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr "Logga in för att fortsätta lära dig som {email}"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr "Logga in för att fortsätta lära dig"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
 "Du har redan ett edX-konto med din e-postadress för {enterprise_name}."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
@@ -9195,7 +9185,6 @@ msgstr ""
 "{enterprise_name}."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
@@ -9204,17 +9193,14 @@ msgstr ""
 "som helst i dina kontoinställningar."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr "Logga in nedan om du vill fortsätta lära dig med det här kontot."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "Logga in"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
@@ -9223,28 +9209,23 @@ msgstr ""
 "leverantörerna nedan."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr "Logga in här med din e-postadress och ditt lösenord."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr ""
 "Om du inte har ett konto ännu, använd knappen nedan för att registrera dig."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr "Använd min universitetsinformation"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "eller logga in med"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "Logga in med %(providerName)s"
@@ -10441,6 +10422,133 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "Ladda upp foto"
+
+#: cms/templates/js/course-outline.underscore
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr "Förutsättning: %(prereq_display_name)s"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Contains staff only content"
+msgstr "Innehåller endast personalinnehåll"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to live content"
+msgstr "Opublicerade ändringar av liveinnehåll"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished units will not be released"
+msgstr "Opublicerade enheter kommer inte att släppas"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to content that will release in the future"
+msgstr "Opublicerade ändringar av innehåll som kommer att släppas i framtiden"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+"Åtkomsten till den här enheten är begränsad till: {selectedGroupsLabel}"
+
+#: cms/templates/js/course-outline.underscore
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+"Tillgång till visst innehåll i denna enhet är begränsad till specifika "
+"grupper av elever"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Ungraded"
+msgstr "Ej betygsatt"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr "Introduktionsprov"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Practice proctored Exam"
+msgstr "Öva proctored examen"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctored Exam"
+msgstr "Proctored examen"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Timed Exam"
+msgstr "Tidsbestämd examen"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr "Dölj/expandera denna %(xblock_type)s"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Display Name"
+msgstr "Visas som"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr "Proctoring-inställningar"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Configure"
+msgstr "Konfigurera"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Duplicate"
+msgstr "Duplicera"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Drag to reorder"
+msgstr "Dra för att sortera om"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Release Status:"
+msgstr "Releasestatus:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "Released:"
+msgstr "Släppte:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+msgid "Scheduled:"
+msgstr "Schemalagd:"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+msgid "Section Highlights"
+msgstr "Avsnittets höjdpunkter"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Graded as:"
+msgstr "Betygsatt som:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Due:"
+msgstr "På grund av:"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after course end date"
+msgstr "Underavsnitt är dold efter kursens slutdatum"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after due date"
+msgstr "Underavsnitt är dolt efter förfallodatum"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "You haven't added any content to this course yet."
+msgstr "Du har inte lagt till något innehåll till den här kursen än."
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr "Klicka för att lägga till en ny %(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11801,98 +11909,6 @@ msgstr "Använd aktuell transkription"
 
 #~ msgid "Dismiss"
 #~ msgstr "Avfärda"
-
-#, python-format
-#~ msgid "Prerequisite: %(prereq_display_name)s"
-#~ msgstr "Förutsättning: %(prereq_display_name)s"
-
-#~ msgid "Contains staff only content"
-#~ msgstr "Innehåller endast personalinnehåll"
-
-#~ msgid "Unpublished changes to live content"
-#~ msgstr "Opublicerade ändringar av liveinnehåll"
-
-#~ msgid "Unpublished units will not be released"
-#~ msgstr "Opublicerade enheter kommer inte att släppas"
-
-#~ msgid "Unpublished changes to content that will release in the future"
-#~ msgstr "Opublicerade ändringar av innehåll som kommer att släppas i framtiden"
-
-#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-#~ msgstr ""
-#~ "Åtkomsten till den här enheten är begränsad till: {selectedGroupsLabel}"
-
-#~ msgid ""
-#~ "Access to some content in this unit is restricted to specific groups of "
-#~ "learners"
-#~ msgstr ""
-#~ "Tillgång till visst innehåll i denna enhet är begränsad till specifika "
-#~ "grupper av elever"
-
-#~ msgid "Ungraded"
-#~ msgstr "Ej betygsatt"
-
-#~ msgid "Onboarding Exam"
-#~ msgstr "Introduktionsprov"
-
-#~ msgid "Practice proctored Exam"
-#~ msgstr "Öva proctored examen"
-
-#~ msgid "Proctored Exam"
-#~ msgstr "Proctored examen"
-
-#~ msgid "Timed Exam"
-#~ msgstr "Tidsbestämd examen"
-
-#, python-format
-#~ msgid "Collapse/Expand this %(xblock_type)s"
-#~ msgstr "Dölj/expandera denna %(xblock_type)s"
-
-#~ msgid "Display Name"
-#~ msgstr "Visas som"
-
-#~ msgid "Proctoring Settings"
-#~ msgstr "Proctoring-inställningar"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurera"
-
-#~ msgid "Duplicate"
-#~ msgstr "Duplicera"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Dra för att sortera om"
-
-#~ msgid "Release Status:"
-#~ msgstr "Releasestatus:"
-
-#~ msgid "Released:"
-#~ msgstr "Släppte:"
-
-#~ msgid "Scheduled:"
-#~ msgstr "Schemalagd:"
-
-#~ msgid "Section Highlights"
-#~ msgstr "Avsnittets höjdpunkter"
-
-#~ msgid "Graded as:"
-#~ msgstr "Betygsatt som:"
-
-#~ msgid "Due:"
-#~ msgstr "På grund av:"
-
-#~ msgid "Subsection is hidden after course end date"
-#~ msgstr "Underavsnitt är dold efter kursens slutdatum"
-
-#~ msgid "Subsection is hidden after due date"
-#~ msgstr "Underavsnitt är dolt efter förfallodatum"
-
-#~ msgid "You haven't added any content to this course yet."
-#~ msgstr "Du har inte lagt till något innehåll till den här kursen än."
-
-#, python-format
-#~ msgid "Click to add a new %(xblock_type)s"
-#~ msgstr "Klicka för att lägga till en ny %(xblock_type)s"
 
 #~ msgid "Receive updates"
 #~ msgstr "Ta emot uppdateringar"

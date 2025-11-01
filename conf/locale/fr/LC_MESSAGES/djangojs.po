@@ -236,7 +236,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2025-10-09 09:42+0000\n"
+"POT-Creation-Date: 2025-11-01 07:15+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Pierre Mailhot <pierre.mailhot@gmail.com>, 2023\n"
 "Language-Team: French (http://app.transifex.com/open-edx/edx-platform/language/fr/)\n"
@@ -246,8 +246,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Generator: MediaWiki 1.45.0-alpha; Translate 2025-07-31\n"
-"X-POT-Import-Date: 2025-10-06 10:30:30+0000\n"
+"X-Generator: MediaWiki 1.46.0-alpha; Translate 2025-07-31\n"
+"X-POT-Import-Date: 2025-10-09 10:30:30+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  djangojs-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -716,7 +716,6 @@ msgstr "Enregistrement en cours"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -7199,6 +7198,8 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "Publier toutes les modifications non publiées pour cet {item} ?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Publier"
 
@@ -7931,7 +7932,6 @@ msgstr "Actions"
 #: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
-#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "Non programmé"
 
@@ -8724,18 +8724,15 @@ msgstr ""
 "pour chaque exercice avant de sélectionner « Terminer mon examen »."
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "EN SAVOIR PLUS"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "Début: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
-#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "Début"
 
@@ -9499,7 +9496,6 @@ msgstr "Créer un compte"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "Connexion"
 
@@ -9540,27 +9536,22 @@ msgid "Create an Account"
 msgstr "Créer un compte"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "C'est votre première visite ?"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "Créer un compte."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr "Connectez-vous pour continuer votre apprentissage en tant que {email}"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr "Connectez-vous pour continuer votre apprentissage"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
@@ -9568,7 +9559,6 @@ msgstr ""
 "{enterprise_name}."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
@@ -9577,7 +9567,6 @@ msgstr ""
 "{enterprise_name}."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
@@ -9586,17 +9575,14 @@ msgstr ""
 "{enterprise_name} à tout moment dans vos Paramètres de compte."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr "Pour continuer à apprendre avec ce compte, connectez-vous en bas."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "Se Connecter"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
@@ -9605,29 +9591,24 @@ msgstr ""
 "fournisseurs ci-dessous."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr "Connectez-vous ici avec votre adresse email et mot de passe."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr ""
 "Si vous n'avez pas encore de compte, utilisez le bouton ci-dessous pour vous"
 " inscrire."
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr "Utiliser mes informations d'université"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "ou se connecter avec"
 
 #: lms/templates/student_account/login.underscore
-#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "Se connecter avec %(providerName)s"
@@ -10856,6 +10837,134 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "Envoyer la photo"
+
+#: cms/templates/js/course-outline.underscore
+#, python-format
+msgid "Prerequisite: %(prereq_display_name)s"
+msgstr "Conditions prealables: %(prereq_display_name)s"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Contains staff only content"
+msgstr "Contient du contenu réservé aux membres de l'équipe enseignante"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to live content"
+msgstr "Modifications non publiées dans les contenus actifs"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished units will not be released"
+msgstr "Les unités non publiées ne seront pas diffusées."
+
+#: cms/templates/js/course-outline.underscore
+msgid "Unpublished changes to content that will release in the future"
+msgstr ""
+"Modifications non publiées dans les contenus qui seront diffusées "
+"ultérieurement"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr "L'accès à cette unité est limité à : {selectedGroupsLabel}"
+
+#: cms/templates/js/course-outline.underscore
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+"L'accès à une partie du contenu de cette unité est restreint à un groupe "
+"d'étudiants spécifique."
+
+#: cms/templates/js/course-outline.underscore
+msgid "Ungraded"
+msgstr "Non noté"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr "Examen d'accueil"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Practice proctored Exam"
+msgstr "Pratiquer l'examen surveillé"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctored Exam"
+msgstr "Examen surveillé"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Timed Exam"
+msgstr "Examen minuté"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Collapse/Expand this %(xblock_type)s"
+msgstr "Déplier/Replier ce %(xblock_type)s"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr "Paramètres surveillance"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Configure"
+msgstr "Configurer"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Drag to reorder"
+msgstr "Glissez pour modifier l'ordre"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Release Status:"
+msgstr "Statut de la diffusion :"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "Released:"
+msgstr "Diffusé :"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/publish-xblock.underscore
+msgid "Scheduled:"
+msgstr "Programmé :"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+msgid "Section Highlights"
+msgstr "Points clés de la section"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Graded as:"
+msgstr "Noté comme :"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Due:"
+msgstr "A rendre pour le :"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after course end date"
+msgstr "La sous-section est masquée après la date de fin du cours"
+
+#: cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after due date"
+msgstr "La sous-section est masquée après l'échéance"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+msgid "You haven't added any content to this course yet."
+msgstr "Vous n'avez pas encore ajouté de contenu à ce cours."
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/xblock-outline.underscore
+#, python-format
+msgid "Click to add a new %(xblock_type)s"
+msgstr "Cliquer pour ajouter un nouveau %(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -12236,99 +12345,6 @@ msgstr "Utiliser la transcription courante"
 
 #~ msgid "Dismiss"
 #~ msgstr "Renvoyer"
-
-#, python-format
-#~ msgid "Prerequisite: %(prereq_display_name)s"
-#~ msgstr "Conditions prealables: %(prereq_display_name)s"
-
-#~ msgid "Contains staff only content"
-#~ msgstr "Contient du contenu réservé aux membres de l'équipe enseignante"
-
-#~ msgid "Unpublished changes to live content"
-#~ msgstr "Modifications non publiées dans les contenus actifs"
-
-#~ msgid "Unpublished units will not be released"
-#~ msgstr "Les unités non publiées ne seront pas diffusées."
-
-#~ msgid "Unpublished changes to content that will release in the future"
-#~ msgstr ""
-#~ "Modifications non publiées dans les contenus qui seront diffusées "
-#~ "ultérieurement"
-
-#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-#~ msgstr "L'accès à cette unité est limité à : {selectedGroupsLabel}"
-
-#~ msgid ""
-#~ "Access to some content in this unit is restricted to specific groups of "
-#~ "learners"
-#~ msgstr ""
-#~ "L'accès à une partie du contenu de cette unité est restreint à un groupe "
-#~ "d'étudiants spécifique."
-
-#~ msgid "Ungraded"
-#~ msgstr "Non noté"
-
-#~ msgid "Onboarding Exam"
-#~ msgstr "Examen d'accueil"
-
-#~ msgid "Practice proctored Exam"
-#~ msgstr "Pratiquer l'examen surveillé"
-
-#~ msgid "Proctored Exam"
-#~ msgstr "Examen surveillé"
-
-#~ msgid "Timed Exam"
-#~ msgstr "Examen minuté"
-
-#, python-format
-#~ msgid "Collapse/Expand this %(xblock_type)s"
-#~ msgstr "Déplier/Replier ce %(xblock_type)s"
-
-#~ msgid "Display Name"
-#~ msgstr "Nom d'affichage"
-
-#~ msgid "Proctoring Settings"
-#~ msgstr "Paramètres surveillance"
-
-#~ msgid "Configure"
-#~ msgstr "Configurer"
-
-#~ msgid "Duplicate"
-#~ msgstr "Dupliquer"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Glissez pour modifier l'ordre"
-
-#~ msgid "Release Status:"
-#~ msgstr "Statut de la diffusion :"
-
-#~ msgid "Released:"
-#~ msgstr "Diffusé :"
-
-#~ msgid "Scheduled:"
-#~ msgstr "Programmé :"
-
-#~ msgid "Section Highlights"
-#~ msgstr "Points clés de la section"
-
-#~ msgid "Graded as:"
-#~ msgstr "Noté comme :"
-
-#~ msgid "Due:"
-#~ msgstr "A rendre pour le :"
-
-#~ msgid "Subsection is hidden after course end date"
-#~ msgstr "La sous-section est masquée après la date de fin du cours"
-
-#~ msgid "Subsection is hidden after due date"
-#~ msgstr "La sous-section est masquée après l'échéance"
-
-#~ msgid "You haven't added any content to this course yet."
-#~ msgstr "Vous n'avez pas encore ajouté de contenu à ce cours."
-
-#, python-format
-#~ msgid "Click to add a new %(xblock_type)s"
-#~ msgstr "Cliquer pour ajouter un nouveau %(xblock_type)s"
 
 #~ msgid "Receive updates"
 #~ msgstr "Recevoir les mises à jour"
