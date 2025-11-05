@@ -29,6 +29,7 @@ from openedx.core.djangoapps.embargo.models import GlobalRestrictedCountry
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core.djangoapps.user_api import accounts
 from openedx.core.djangoapps.user_api.helpers import FormDescription
+from openedx.core.djangoapps.user_authn.toggles import is_require_third_party_auth_enabled
 from openedx.core.djangoapps.user_authn.utils import check_pwned_password
 from openedx.core.djangoapps.user_authn.utils import is_registration_api_v1 as is_api_v1
 from openedx.core.djangoapps.user_authn.views.utils import remove_disabled_country_from_list
@@ -590,7 +591,7 @@ class RegistrationFormFactory:
             "username",
             label=username_label,
             instructions=username_instructions,
-            restrictions={
+            restrictions={"readonly":  "readonly"} if is_require_third_party_auth_enabled() else {
                 "min_length": accounts.USERNAME_MIN_LENGTH,
                 "max_length": accounts.USERNAME_MAX_LENGTH,
             },
