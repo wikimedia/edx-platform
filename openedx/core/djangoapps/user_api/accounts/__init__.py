@@ -40,7 +40,7 @@ VISIBILITY_PREFIX = 'visibility.'
 # It is shown to users who attempt to create a new account using invalid characters
 # in the username.
 USERNAME_INVALID_CHARS_ASCII = _(
-    "Usernames can only contain letters (A-Z, a-z), numerals (0-9), underscores (_), and hyphens (-)."
+    "Usernames must not contain the following symbols: #, <, >, [, ], |, {, }, /, \, :, @"
 )
 
 # Translators: This message is shown only when the Unicode usernames are allowed.
