@@ -149,6 +149,7 @@ from openedx.features.course_experience.url_helpers import (
 from openedx.features.course_experience.utils import dates_banner_should_display
 from openedx.features.course_experience.waffle import ENABLE_COURSE_ABOUT_SIDEBAR_HTML
 from openedx.features.enterprise_support.api import data_sharing_consent_required
+from openedx_wikilearn_features.wikimedia_general.utils import get_follow_up_courses
 
 from ..block_render import get_block, get_block_by_usage_id, get_block_for_descriptor
 from ..tabs import _get_dynamic_tabs
@@ -316,6 +317,7 @@ def courses(request):
             'course_discovery_meanings': course_discovery_meanings,
             'set_default_filter': set_default_filter,
             'programs_list': programs_list,
+            'follow_up_courses': get_follow_up_courses(request.user),
         }
     )
 
