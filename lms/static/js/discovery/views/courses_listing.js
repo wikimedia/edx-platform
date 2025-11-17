@@ -11,7 +11,7 @@
 
         return Backbone.View.extend({
 
-            el: 'div.courses',
+            el: 'div.all-courses',
             $window: $(window),
             $document: $(document),
 
