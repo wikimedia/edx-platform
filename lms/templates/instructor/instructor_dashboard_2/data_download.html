@@ -29,6 +29,31 @@ from openedx.core.djangolib.markup import HTML, Text
 
     <p>${_("Please be patient and do not click these buttons multiple times. Clicking these buttons multiple times will significantly slow the generation process.")}</p>
 
+    %if settings.FEATURES.get('ALLOW_COURSE_STAFF_GRADE_DOWNLOADS') or section_data['access']['admin']:
+    <p>${_("Click to generate a CSV grade report for all currently enrolled students.")}</p>
+    <p>
+      <input type="button" name="calculate-grades-csv" class="async-report-btn" value="${_("Generate Grade Report")}" data-endpoint="${ section_data['calculate_grades_csv_url'] }"/>
+      <input type="button" name="problem-grade-report" class="async-report-btn" value="${_("Generate Problem Grade Report")}" data-endpoint="${ section_data['problem_grade_report_url'] }"/>
+      <input type="button" name="export-ora2-data" class="async-report-btn" value="${_("Generate ORA Data Report")}" data-endpoint="${ section_data['export_ora2_data_url'] }"/>
+      <input type="button" name="export-ora2-summary" class="async-report-btn" value="${_("Generate ORA Summary Report")}" data-endpoint="${ section_data['export_ora2_summary_url'] }"/>
+    </p>
+
+    <p>${_("Click to generate a ZIP file that contains all submission texts and attachments.")}</p>
+
+    <p><input type="button" name="export-ora2-data" class="async-report-btn" value="${_("Generate Submission Files Archive")}" data-endpoint="${ section_data['export_ora2_submission_files_url'] }"/></p>
+
+  %endif
+  <div class="issued_certificates">
+    <p>${_("Click to list certificates that are issued for this course:")}</p>
+    <p>
+      <input type="button" name="issued-certificates-list" value="${_("View Certificates Issued")}" data-csv="false" data-endpoint="${ section_data['get_issued_certificates_url'] }">
+      <input type="button" name="issued-certificates-csv" value="${_("Download CSV of Certificates Issued")}" data-csv="true" data-endpoint="${ section_data['get_issued_certificates_url'] }">
+    </p>
+    <div class="data-display-table certificate-data-display-table" id="data-issued-certificates-table"></div>
+    <div class="issued-certificates-error request-response-error msg msg-error copy"></div>
+  </div>
+
+
     <p>${_("Click to generate a CSV file of all students enrolled in this course, along with profile information such as email address and username:")}</p>
 
     <p><input type="button" name="list-profiles-csv" value="${_("Download profile information as a CSV")}" data-endpoint="${ section_data['get_students_features_url'] }" data-csv="true"></p>
@@ -76,36 +101,11 @@ from openedx.core.djangolib.markup import HTML, Text
         )}
     </div>
 
-    <div class="issued_certificates">
-      <p>${_("Click to list certificates that are issued for this course:")}</p>
-      <p>
-        <input type="button" name="issued-certificates-list" value="${_("View Certificates Issued")}" data-csv="false" data-endpoint="${ section_data['get_issued_certificates_url'] }">
-        <input type="button" name="issued-certificates-csv" value="${_("Download CSV of Certificates Issued")}" data-csv="true" data-endpoint="${ section_data['get_issued_certificates_url'] }">
-      </p>
-      <div class="data-display-table certificate-data-display-table" id="data-issued-certificates-table"></div>
-      <div class="issued-certificates-error request-response-error msg msg-error copy"></div>
-    </div>
-
   % if not disable_buttons:
     <p>${_("For smaller courses, click to list profile information for enrolled students directly on this page:")}</p>
     <p><input type="button" name="list-profiles" value="${_("List enrolled students' profile information")}" data-endpoint="${ section_data['get_students_features_url'] }"></p>
   %endif
   <div class="data-display-table profile-data-display-table" id="data-student-profiles-table"></div>
-
-  %if settings.FEATURES.get('ALLOW_COURSE_STAFF_GRADE_DOWNLOADS') or section_data['access']['admin']:
-    <p>${_("Click to generate a CSV grade report for all currently enrolled students.")}</p>
-    <p>
-      <input type="button" name="calculate-grades-csv" class="async-report-btn" value="${_("Generate Grade Report")}" data-endpoint="${ section_data['calculate_grades_csv_url'] }"/>
-      <input type="button" name="problem-grade-report" class="async-report-btn" value="${_("Generate Problem Grade Report")}" data-endpoint="${ section_data['problem_grade_report_url'] }"/>
-      <input type="button" name="export-ora2-data" class="async-report-btn" value="${_("Generate ORA Data Report")}" data-endpoint="${ section_data['export_ora2_data_url'] }"/>
-      <input type="button" name="export-ora2-summary" class="async-report-btn" value="${_("Generate ORA Summary Report")}" data-endpoint="${ section_data['export_ora2_summary_url'] }"/>
-    </p>
-
-    <p>${_("Click to generate a ZIP file that contains all submission texts and attachments.")}</p>
-
-    <p><input type="button" name="export-ora2-data" class="async-report-btn" value="${_("Generate Submission Files Archive")}" data-endpoint="${ section_data['export_ora2_submission_files_url'] }"/></p>
-
-  %endif
 
     <div class="request-response msg msg-confirm copy" id="report-request-response"></div>
     <div class="request-response-error msg msg-error copy" id="report-request-response-error"></div>
