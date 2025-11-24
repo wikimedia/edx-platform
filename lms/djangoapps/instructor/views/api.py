@@ -1417,14 +1417,15 @@ class GetIssuedCertificates(APIView):
         course_key = CourseKey.from_string(course_id)
         csv_required = request.GET.get('csv', 'false')
 
-        query_features = ['course_id', 'mode', 'total_issued_certificate', 'report_run_date', 'download_url']
+        query_features = ['course_id', 'mode', 'total_issued_certificate', 'report_run_date']
         query_features_names = [
             ('course_id', _('CourseID')),
             ('mode', _('Certificate Type')),
             ('total_issued_certificate', _('Total Certificates Issued')),
-            ('report_run_date', _('Date Report Run')),
-            ('download_url', _('Certificate link'))
+            ('report_run_date', _('Date Report Run'))
         ]
+        query_features += ['download_url']
+        query_features_names += [('download_url', _('Certificate link'))]
         certificates_data = instructor_analytics_basic.issued_certificates(course_key, query_features)
         if csv_required.lower() == 'true':
             __, data_rows = instructor_analytics_csvs.format_dictlist(certificates_data, query_features)

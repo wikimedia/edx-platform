@@ -605,7 +605,7 @@ def _section_student_admin(course, access):
         'spoc_gradebook_url': reverse('spoc_gradebook', kwargs={'course_id': str(course_key)}),
         'calculate_grades_csv_url': reverse('calculate_grades_csv', kwargs={'course_id': str(course_key)}),
         'list_report_downloads_url': reverse(
-            'list_report_downloads_student_admin', kwargs={'course_id': str(course_key)}
+            'wikimedia_general:list_report_downloads_student_admin', kwargs={'course_id': str(course_key)}
         ),
     }
     if is_writable_gradebook_enabled(course_key) and settings.WRITABLE_GRADEBOOK_URL:

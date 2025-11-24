@@ -7,9 +7,6 @@ from django.urls import path, re_path
 
 from lms.djangoapps.instructor.views import api, gradebook_api
 from openedx.core.constants import COURSE_ID_PATTERN
-from openedx_wikilearn_features.wikimedia_general.djangoapps_patches.instructor.views.utils import (
-    list_report_downloads_student_admin
-)
 
 # These endpoints are exposing existing views in a way that can be used by MFEs
 # or other API clients. They are currently versioned at `v1` since they have
@@ -64,8 +61,6 @@ urlpatterns = [
 
     # Grade downloads...
     path('list_report_downloads', api.ListReportDownloads.as_view(), name='list_report_downloads'),
-    path('list_report_downloads_student_admin',
-         list_report_downloads_student_admin, name='list_report_downloads_student_admin'),
     path('calculate_grades_csv', api.calculate_grades_csv, name='calculate_grades_csv'),
     path('problem_grade_report', api.ProblemGradeReport.as_view(), name='problem_grade_report'),
 
