@@ -46,6 +46,7 @@ from openedx.core.lib.courses import get_course_by_id
 from xmodule.modulestore.django import modulestore  # lint-amnesty, pylint: disable=wrong-import-order
 from xmodule.partitions.partitions_service import PartitionService  # lint-amnesty, pylint: disable=wrong-import-order
 from xmodule.split_test_block import get_split_user_partitions  # lint-amnesty, pylint: disable=wrong-import-order
+from xmodule.util.misc import get_default_short_labeler
 
 from .runner import TaskProgress
 from .utils import upload_csv_to_report_store, upload_csv_file_to_report_store
@@ -131,10 +132,8 @@ class _CourseGradeReportContext:
             graded_subsections_map = OrderedDict()
             for subsection_index, subsection_info in enumerate(subsection_infos, start=1):
                 subsection = subsection_info['subsection_block']
-                header_name = "{assignment_type} {subsection_index}: {subsection_name}".format(
-                    assignment_type=assignment_type_name,
-                    subsection_index=subsection_index,
-                    subsection_name=subsection.display_name,
+                header_name = "{short_label}".format(
+                    short_label=get_default_short_labeler(self.course)(subsection.format)
                 )
                 graded_subsections_map[subsection.location] = header_name
 
@@ -533,10 +532,7 @@ class CourseGradeReport(GradeReportBase):
             self._grades_header() +
             (['Cohort Name'] if self.context.cohorts_enabled else []) +
             [f'Experiment Group ({partition.name})' for partition in self.context.course_experiments] +
-            (['Team Name'] if self.context.teams_enabled else []) +
-            ['Enrollment Track', 'Verification Status'] +
-            ['Certificate Eligible', 'Certificate Delivered', 'Certificate Type'] +
-            ['Enrollment Status']
+            (['Team Name'] if self.context.teams_enabled else [])
         )
 
     def _error_headers(self):
