@@ -1052,6 +1052,18 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         scope=Scope.settings,
     )
 
+    course_font_family = String(
+        display_name=_("Select Course Font Family"),
+        help=_(
+            """
+            Select course family in which you want to display your course.
+            Available options are "font-trebuchet", "font-open-sans", "font-noto-kufi-arabic", "font-montserrat", and "font-source-sans-pro".
+            If value is invalid or empty the default font-family will be "Helvetica Neue".
+            """
+        ),
+        scope=Scope.settings, default='font-trebuchet'
+    )
+
     other_course_settings = Dict(
         display_name=_("Other Course Settings"),
         help=_(
