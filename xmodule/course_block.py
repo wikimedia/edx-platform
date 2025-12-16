@@ -1064,6 +1064,15 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         scope=Scope.settings, default='font-trebuchet'
     )
 
+    issue_badges = Boolean(
+        display_name=_("Issue Open Badges"),
+        help=_(
+            "Issue Open Badges badges for this course. Badges are generated when certificates are created."
+        ),
+        scope=Scope.settings,
+        default=True
+    )
+
     other_course_settings = Dict(
         display_name=_("Other Course Settings"),
         help=_(
