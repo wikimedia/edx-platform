@@ -21,6 +21,7 @@ class CourseSettingsSerializer(serializers.Serializer):
     is_entrance_exams_enabled = serializers.BooleanField()
     is_prerequisite_courses_enabled = serializers.BooleanField()
     language_options = serializers.ListField(child=serializers.ListField(child=serializers.CharField()))
+    topic_options = serializers.ListField(child=serializers.CharField())
     lms_link_for_about_page = serializers.URLField()
     licensing_enabled = serializers.BooleanField()
     marketing_enabled = serializers.BooleanField()

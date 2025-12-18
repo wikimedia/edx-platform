@@ -103,7 +103,12 @@ class CourseDetailsView(DeveloperErrorViewMixin, APIView):
 
         course_details = CourseDetails.fetch(course_key)
         serializer = CourseDetailsSerializer(course_details)
-        return Response(serializer.data)
+        
+        course_block = modulestore().get_course(course_key)
+        # Create a mutable copy and add the field
+        data = dict(serializer.data)
+        data['topic'] = course_block.other_course_settings.get('topic')
+        return Response(data)
 
     @apidocs.schema(
         body=CourseDetailsSerializer,
