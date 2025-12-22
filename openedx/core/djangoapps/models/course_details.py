@@ -315,6 +315,9 @@ class CourseDetails:
 
         cls.update_about_video(block, jsondict['intro_video'], user.id)
 
+        # Lazy import to avoid circular import
+        from openedx_wikilearn_features.wikimedia_general.utils import update_other_course_settings #pylint: disable=import-outside-toplevel
+        update_other_course_settings({'topic': jsondict['topic']}, block, user)
         # Could just return jsondict w/o doing any db reads, but I put
         # the reads in as a means to confirm it persisted correctly
         return CourseDetails.fetch(course_key)
