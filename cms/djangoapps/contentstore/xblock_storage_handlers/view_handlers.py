@@ -94,6 +94,13 @@ from ..helpers import (
     xblock_type_display_name,
 )
 
+from openedx_wikilearn_features.meta_translations.models import CourseTranslation
+from openedx_wikilearn_features.meta_translations.utils import (
+    handle_base_course_block_deletion,
+    add_translation_metadata,
+)
+from openedx_wikilearn_features.meta_translations.wiki_components import COMPONENTS_CLASS_MAPPING
+
 log = logging.getLogger(__name__)
 
 CREATE_IF_NOT_FOUND = ["course_info"]
@@ -200,6 +207,8 @@ def handle_xblock(request, usage_key_string=None):
                 return HttpResponse(status=406)
 
         elif request.method == "DELETE":
+            if CourseTranslation.is_base_course(str(usage_key.course_key)):
+                handle_base_course_block_deletion(usage_key)
             _delete_item(usage_key, request.user)
             return JsonResponse()
         else:  # Since we have a usage_key, we are updating an existing xblock.
@@ -282,9 +291,15 @@ def handle_xblock(request, usage_key_string=None):
 
 def modify_xblock(usage_key, request):
     request_data = request.json
+    xblock = get_xblock(usage_key, request.user)
+    # For base courses, check if content is updated then set content_updated to True in related CourseBlockData
+    course_id = xblock.course_id
+    if CourseTranslation.is_base_course(course_id) and xblock.category in COMPONENTS_CLASS_MAPPING:
+        COMPONENTS_CLASS_MAPPING[xblock.category]().check_and_sync_base_block_data(xblock, request.json)
+
     return _save_xblock(
         request.user,
-        get_xblock(usage_key, request.user),
+        xblock,
         data=request_data.get("data"),
         children_strings=request_data.get("children"),
         metadata=request_data.get("metadata"),
@@ -1111,6 +1126,7 @@ def create_xblock_info(  # lint-amnesty, pylint: disable=too-many-statements
         "category": xblock.category,
         "has_children": xblock.has_children,
     }
+    add_translation_metadata(xblock_info, xblock)
 
     if course is not None and PUBLIC_VIDEO_SHARE.is_enabled(xblock.location.course_key):
         xblock_info.update(

@@ -117,6 +117,14 @@ from xmodule.services import ConfigurationService, SettingsService, TeamsConfigu
 
 from .models import ComponentLink, ContainerLink
 
+# wikimedia imports
+from openedx_wikilearn_features.meta_translations.models import CourseTranslation
+from openedx_wikilearn_features.meta_translations.utils import (
+    get_show_meta_api_buttons,
+    is_destination_course,
+    update_course_to_source,
+)
+
 IMPORTABLE_FILE_TYPES = ('.tar.gz', '.zip')
 log = logging.getLogger(__name__)
 
@@ -1332,6 +1340,10 @@ def update_course_details(request, course_key, payload, course_block):
     """
 
     from .views.entrance_exam import create_entrance_exam, delete_entrance_exam, update_entrance_exam
+    
+    # check if course was destination course and now it's value is updated in json
+    if is_destination_course(course_key) and request.json.get('is_destination_course') in ['false', False]:
+        update_course_to_source(course_key)
 
     # if pre-requisite course feature is enabled set pre-requisite course
     if is_prerequisite_courses_enabled():
@@ -1463,6 +1475,8 @@ def get_course_settings(request, course_key, course_block):
         'enable_extended_course_details': enable_extended_course_details,
         'upgrade_deadline': upgrade_deadline,
         'mfe_proctored_exam_settings_url': get_proctored_exam_settings_url(course_block.id),
+        'is_destination_course': is_destination_course(course_key),
+        'is_mapped_course': bool(CourseTranslation.is_base_or_translated_course(course_key))
     }
     if is_prerequisite_courses_enabled():
         courses, in_process_course_actions = get_courses_accessible_to_user(request)
@@ -1754,6 +1768,9 @@ def get_home_context(request, no_course=False):
         'allowed_organizations_for_libraries': get_allowed_organizations_for_libraries(user),
         'can_create_organizations': user_can_create_organizations(user),
         'can_access_advanced_settings': auth.has_studio_advanced_settings_access(user),
+        'language_options': settings.ALL_LANGUAGES,
+        'course_blocks_send_fetch_url': reverse("meta_translations:course_blocks_api_send_fetch"),
+        'show_meta_api_buttons': get_show_meta_api_buttons(user),
     }
 
     return home_context
@@ -1772,7 +1789,9 @@ def get_course_rerun_context(course_key, course_block, user):
         'display_name': course_block.display_name,
         'user': user,
         'course_creator_status': _get_course_creator_status(user),
-        'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False)
+        'allow_unicode_course_id': settings.FEATURES.get('ALLOW_UNICODE_COURSE_ID', False),
+        'language_options': settings.ALL_LANGUAGES,
+        'is_translated_rerun': CourseTranslation.is_base_or_translated_course(course_key).upper() == "TRANSLATED"
     }
 
     return course_rerun_context
@@ -1957,6 +1976,8 @@ def _get_course_index_context(request, course_key, course_block):
         'advance_settings_url': reverse_course_url('advanced_settings_handler', course_block.id),
         'proctoring_errors': proctoring_errors,
         'taxonomy_tags_widget_url': get_taxonomy_tags_widget_url(course_block.id),
+        'course_blocks_mapping_url': reverse("meta_translations:course_blocks_mapping"),
+        'is_translated_or_base_course': CourseTranslation.is_base_or_translated_course(course_key)
     }
 
     return course_index_context
@@ -2084,6 +2105,7 @@ def get_container_handler_context(request, usage_key, course, xblock):  # pylint
         'is_fullwidth_content': is_library_xblock,
         'course_sequence_ids': course_sequence_ids,
         'library_content_picker_url': get_library_content_picker_url(course.id),
+        'is_translated_or_base_course': CourseTranslation.is_base_or_translated_course(course.id),
     }
     return context
 

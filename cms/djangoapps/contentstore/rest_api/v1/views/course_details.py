@@ -15,6 +15,7 @@ from xmodule.modulestore.django import modulestore
 from ..serializers import CourseDetailsSerializer
 from ....utils import update_course_details
 
+from openedx_wikilearn_features.meta_translations.utils import is_destination_course
 
 @view_auth_classes(is_authenticated=True)
 class CourseDetailsView(DeveloperErrorViewMixin, APIView):
@@ -108,6 +109,11 @@ class CourseDetailsView(DeveloperErrorViewMixin, APIView):
         # Create a mutable copy and add the field
         data = dict(serializer.data)
         data['topic'] = course_block.other_course_settings.get('topic')
+        data.update(
+            {
+                "is_destination_course": is_destination_course(course_key),
+            }
+        )
         return Response(data)
 
     @apidocs.schema(

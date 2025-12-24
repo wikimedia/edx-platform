@@ -90,6 +90,8 @@ from .outlines_regenerate import CourseOutlineRegenerate
 from .toggles import bypass_olx_failure_enabled
 from .utils import course_import_olx_validation_is_enabled
 
+from openedx_wikilearn_features.meta_translations.utils import rerun_course_translated
+
 User = get_user_model()
 
 LOGGER = get_task_logger(__name__)
@@ -143,6 +145,11 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
     source_course_key = CourseKey.from_string(source_course_key_string)
     destination_course_key = CourseKey.from_string(destination_course_key_string)
     try:
+        # extract translation fields
+        field_json = fields and json.loads(fields)
+        is_translated_rerun = field_json and field_json.get('is_translated_rerun', False)
+        language = field_json and field_json.get('language')
+
         # deserialize the payload
         fields = deserialize_fields(fields) if fields else None
 
@@ -177,9 +184,9 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
             new_restricted_course = clone_instance(restricted_course, {'course_key': destination_course_key})
             for country_access_rule in country_access_rules:
                 clone_instance(country_access_rule, {'restricted_course': new_restricted_course})
-
         org_data = ensure_organization(source_course_key.org)
         add_organization_course(org_data, destination_course_key)
+        rerun_course_translated(source_course_key, destination_course_key, user_id, is_translated_rerun, language)
         return "succeeded"
 
     except DuplicateCourseError:
@@ -206,6 +213,7 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
 
 def deserialize_fields(json_fields):
     fields = json.loads(json_fields)
+    fields.pop("is_translated_rerun", False)
     for field_name, value in fields.items():
         fields[field_name] = getattr(CourseFields, field_name).from_json(value)
     return fields
