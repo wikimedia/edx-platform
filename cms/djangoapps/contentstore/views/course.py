@@ -124,7 +124,6 @@ from .component import ADVANCED_COMPONENT_TYPES
 
 from openedx_wikilearn_features.meta_translations.models import CourseTranslation
 from openedx_wikilearn_features.meta_translations.utils import validate_translated_rerun
-from openedx_wikilearn_features.wikimedia_general.utils import get_enrollment_type
 
 log = logging.getLogger(__name__)
 User = get_user_model()
@@ -785,7 +784,6 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
         """
         Return a dict of the data which the view requires for each course
         """
-        course_details = CourseDetails.fetch(course_key=course.location.course_key)
         course_context = {
             'display_name': course.display_name,
             'course_key': str(course.location.course_key),
@@ -796,8 +794,6 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
             'number': course.display_number_with_default,
             'run': course.location.run,
             'translation_info': _(CourseTranslation.is_base_or_translated_course(course.id)),
-            'language': course_details.language,
-            'enrollment_type': get_enrollment_type(course_details.enrollment_start),
         }
         if course.id.deprecated:
             course_context.update({
@@ -894,7 +890,7 @@ def _create_or_rerun_course(request):
                 )
         # meta-translation feature, to identify type of rerun
         language = request.json.get('language')
-        is_translated_rerun = request.json.get('translated_rerun')
+        is_translated_rerun = request.json.get('is_translated_rerun')
         source_course_key = request.json.get('source_course_key')
         error_response = validate_translated_rerun(is_translated_rerun, source_course_key, language)
         if error_response:
