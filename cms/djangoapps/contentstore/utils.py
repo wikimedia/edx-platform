@@ -1340,9 +1340,8 @@ def update_course_details(request, course_key, payload, course_block):
     """
 
     from .views.entrance_exam import create_entrance_exam, delete_entrance_exam, update_entrance_exam
-    
-    # check if course was destination course and now it's value is updated in json
-    if is_destination_course(course_key) and request.json.get('is_destination_course') in ['false', False]:
+    # check if course was destination course and now it's value is updated
+    if is_destination_course(course_key) and payload.get('is_destination_course') in ['false', False]:
         update_course_to_source(course_key)
 
     # if pre-requisite course feature is enabled set pre-requisite course
