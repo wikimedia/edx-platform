@@ -77,3 +77,5 @@ class StudioHomeSerializer(serializers.Serializer):
     tech_support_email = serializers.CharField()
     platform_name = serializers.CharField()
     user_is_active = serializers.BooleanField()
+    course_blocks_send_fetch_url = serializers.CharField()
+    show_meta_api_buttons = serializers.BooleanField()
