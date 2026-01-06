@@ -11,6 +11,7 @@ from cms.djangoapps.contentstore.helpers import (
 )
 from openedx.core.djangoapps.content_tagging.toggles import is_tagging_feature_disabled
 
+from openedx_wikilearn_features.meta_translations.utils import is_destination_block
 
 class MessageValidation(serializers.Serializer):
     """
@@ -131,6 +132,13 @@ class ChildVerticalContainerSerializer(serializers.Serializer):
     actions = serializers.SerializerMethodField()
     validation_messages = MessageValidation(many=True)
     render_error = serializers.CharField()
+    is_destination_block = serializers.SerializerMethodField()
+
+    def get_is_destination_block(self, obj):
+        """
+        Method to get whether the block is a destination block.
+        """
+        return is_destination_block(obj["xblock"].location)
 
     def get_actions(self, obj):  # pylint: disable=unused-argument
         """
