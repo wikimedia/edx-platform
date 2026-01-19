@@ -79,3 +79,7 @@ class StudioHomeSerializer(serializers.Serializer):
     user_is_active = serializers.BooleanField()
     course_blocks_send_fetch_url = serializers.CharField()
     show_meta_api_buttons = serializers.BooleanField()
+    language_options = serializers.ListSerializer(
+        child=serializers.ListField(child=serializers.CharField()),
+        allow_empty=True
+    )
