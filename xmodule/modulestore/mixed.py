@@ -23,7 +23,7 @@ from openedx_events.content_authoring.signals import (
 
 from django.utils.timezone import datetime, timezone
 from xmodule.assetstore import AssetMetadata
-
+from organizations.models import OrganizationCourse
 from . import XMODULE_FIELDS_WITH_USAGE_KEYS, ModuleStoreWriteBase
 from .draft_and_published import ModuleStoreDraftAndPublished
 from .exceptions import DuplicateCourseError, ItemNotFoundError
@@ -453,7 +453,8 @@ class MixedModuleStore(ModuleStoreDraftAndPublished, ModuleStoreWriteBase):
         """
         assert isinstance(course_key, CourseKey)
         from openedx_wikilearn_features.meta_translations.models import CourseTranslation
-        CourseTranslation.delete_base_or_translated_course(course_key)       
+        CourseTranslation.delete_base_or_translated_course(course_key)   
+        OrganizationCourse.objects.filter(course_id=str(course_key)).delete()    
         store = self._get_modulestore_for_courselike(course_key)
         return store.delete_course(course_key, user_id)
 
