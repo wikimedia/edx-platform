@@ -17,6 +17,7 @@ class CourseCommonSerializer(serializers.Serializer):
     rerun_link = serializers.CharField()
     run = serializers.CharField()
     url = serializers.CharField()
+    translation_info = serializers.CharField()
 
 
 class StrictSerializer(serializers.Serializer):

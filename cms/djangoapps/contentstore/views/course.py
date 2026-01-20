@@ -122,6 +122,9 @@ from ..utils import (
 )
 from .component import ADVANCED_COMPONENT_TYPES
 
+from openedx_wikilearn_features.meta_translations.models import CourseTranslation
+from openedx_wikilearn_features.meta_translations.utils import validate_translated_rerun
+
 log = logging.getLogger(__name__)
 User = get_user_model()
 
@@ -789,7 +792,8 @@ def _process_courses_list(courses_iter, in_process_course_actions, split_archive
             'rerun_link': _get_rerun_link_for_item(course.id),
             'org': course.display_org_with_default,
             'number': course.display_number_with_default,
-            'run': course.location.run
+            'run': course.location.run,
+            'translation_info': _(CourseTranslation.is_base_or_translated_course(course.id)),
         }
         if course.id.deprecated:
             course_context.update({
@@ -884,10 +888,20 @@ def _create_or_rerun_course(request):
                     {'error': _('Special characters not allowed in organization, course number, and course run.')},
                     status=400
                 )
+        # meta-translation feature, to identify type of rerun
+        language = request.json.get('language')
+        is_translated_rerun = request.json.get('is_translated_rerun')
+        source_course_key = request.json.get('source_course_key')
+        error_response = validate_translated_rerun(is_translated_rerun, source_course_key, language)
+        if error_response:
+            return error_response
 
         fields = {'start': start, 'end': end}
         if display_name is not None:
             fields['display_name'] = display_name
+        if language is not None:
+            fields['language'] = language
+
 
         # Set a unique wiki_slug for newly created courses. To maintain active wiki_slugs for
         # existing xml courses this cannot be changed in CourseBlock.
@@ -897,9 +911,9 @@ def _create_or_rerun_course(request):
         definition_data = {'wiki_slug': wiki_slug}
         fields.update(definition_data)
 
-        source_course_key = request.json.get('source_course_key')
         if source_course_key:
             source_course_key = CourseKey.from_string(source_course_key)
+            fields['is_translated_rerun'] = is_translated_rerun
             destination_course_key = rerun_course(request.user, source_course_key, org, course, run, fields)
             return JsonResponse({
                 'url': reverse_url('course_handler'),
@@ -980,10 +994,13 @@ def create_new_course_in_store(store, user, org, number, run, fields):
     Create course in store w/ handling instructor enrollment, permissions, and defaulting the wiki slug.
     Separated out b/c command line course creation uses this as well as the web interface.
     """
-
+    # only set course language if not already set for translated courses
+    if 'language' not in fields:
+        fields.update({
+            'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
+        })
     # Set default language from settings and enable web certs
     fields.update({
-        'language': getattr(settings, 'DEFAULT_COURSE_LANGUAGE', 'en'),
         'cert_html_view_enabled': True,
     })
 

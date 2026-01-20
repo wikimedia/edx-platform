@@ -32,3 +32,4 @@ class CourseSettingsSerializer(serializers.Serializer):
     show_min_grade_warning = serializers.BooleanField()
     sidebar_html_enabled = serializers.BooleanField()
     upgrade_deadline = serializers.DateTimeField(allow_null=True)
+    is_destination_course = serializers.BooleanField()

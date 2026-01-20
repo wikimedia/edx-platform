@@ -8,6 +8,9 @@ from cms.djangoapps.contentstore.utils import get_lms_link_for_item, reverse_cou
 from cms.djangoapps.contentstore.views.course import _get_rerun_link_for_item
 from openedx.core.lib.api.serializers import CourseKeyField
 
+from openedx_wikilearn_features.meta_translations.models import CourseTranslation
+from django.utils.translation import gettext as _
+
 
 class UnsucceededCourseSerializerV2(serializers.Serializer):
     """Serializer for unsucceeded course."""
@@ -35,6 +38,7 @@ class CourseCommonSerializerV2(serializers.Serializer):
     run = serializers.CharField(source='id.run')
     url = serializers.SerializerMethodField()
     is_active = serializers.SerializerMethodField()
+    translation_info = serializers.SerializerMethodField()
 
     def get_lms_link(self, obj):
         """Get LMS link for course."""
@@ -55,6 +59,10 @@ class CourseCommonSerializerV2(serializers.Serializer):
     def get_is_active(self, obj):
         """Get whether the course is active or not."""
         return not obj.has_ended()
+
+    def get_translation_info(self, obj):
+        """Get whether the course is translated or base."""
+        return _(CourseTranslation.is_base_or_translated_course(obj.id))
 
 
 class CourseHomeTabSerializerV2(serializers.Serializer):

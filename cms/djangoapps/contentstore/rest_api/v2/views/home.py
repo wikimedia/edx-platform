@@ -119,7 +119,8 @@ class HomePageCoursesViewV2(APIView):
                     "rerun_link": "/course_rerun/course-v1:edX+E2E-101+course",
                     "run": "course",
                     "url": "/course/course-v1:edX+E2E-101+course",
-                    "is_active": true
+                    "is_active": true,
+                    "translation_info": "Translated"
                 },
             ],
             "in_process_course_actions": [],

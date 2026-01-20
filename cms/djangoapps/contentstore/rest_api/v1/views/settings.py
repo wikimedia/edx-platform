@@ -100,6 +100,7 @@ class CourseSettingsView(DeveloperErrorViewMixin, APIView):
         """
         # Lazy import to avoid circular import
         from openedx_wikilearn_features.wikimedia_general.utils import get_topics #pylint: disable=import-outside-toplevel
+        from openedx_wikilearn_features.meta_translations.utils import is_destination_course #pylint: disable=import-outside-toplevel
         course_key = CourseKey.from_string(course_id)
         if not has_studio_read_access(request.user, course_key):
             self.permission_denied(request)
@@ -114,6 +115,7 @@ class CourseSettingsView(DeveloperErrorViewMixin, APIView):
                 'platform_name': settings.PLATFORM_NAME,
                 'licensing_enabled': settings.FEATURES.get("LICENSING", False),
                 'topic_options': get_topics(),
+                'is_destination_course': is_destination_course(course_key),
             })
 
             serializer = CourseSettingsSerializer(settings_context)

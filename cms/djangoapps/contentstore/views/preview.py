@@ -51,6 +51,8 @@ from ..utils import StudioPermissionsService, get_visibility_partition_info
 from .access import get_user_role
 from .session_kv_store import SessionKeyValueStore
 
+from openedx_wikilearn_features.meta_translations.utils import get_translation_context
+
 __all__ = ['preview_handler']
 
 log = logging.getLogger(__name__)
@@ -341,7 +343,7 @@ def _studio_wrap_xblock(xblock, view, frag, context, display_name_only=False):
             'is_course': is_course,
             'tags_count': tags_count,
         }
-
+        template_context.update(get_translation_context(xblock))
         add_webpack_js_to_fragment(frag, "js/factories/xblock_validation")
 
         html = render_to_string('studio_xblock_wrapper.html', template_context)
