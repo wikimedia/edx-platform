@@ -49,7 +49,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2026-01-01 07:16+0000\n"
+"POT-Creation-Date: 2026-01-22 08:40+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Waheed Ahmed <waheed@edx.org>, 2019\n"
 "Language-Team: Catalan (http://app.transifex.com/open-edx/edx-platform/language/ca/)\n"
@@ -96,6 +96,7 @@ msgstr "Guardant"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "Esborrar"
 
@@ -6107,8 +6108,6 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "Publica tots els canvis no publicats per a aquest {item}?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "Publica"
 
@@ -6905,8 +6904,19 @@ msgid "Actions"
 msgstr "Accions"
 
 #: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "No planificat"
 
@@ -7713,15 +7723,18 @@ msgstr ""
 "problema abans de seleccionar \"Finalitza el meu examen\"."
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "APRENDRE MÉS"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "Inicia: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "Inici"
 
@@ -8475,6 +8488,7 @@ msgstr "Crear un compte"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "Accedeix"
 
@@ -8515,22 +8529,27 @@ msgid "Create an Account"
 msgstr "Crear un compte"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "La primera vegada aquí?"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "Crear un compte."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr "Inicia la sessió per continuar aprenent com a {email}"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr "Inicia la sessió per continuar aprenent"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
@@ -8538,6 +8557,7 @@ msgstr ""
 "{enterprise_name}"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
@@ -8546,6 +8566,7 @@ msgstr ""
 "per {enterprise_name}."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
@@ -8554,15 +8575,18 @@ msgstr ""
 " qualsevol moment a la configuració del vostre compte."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr ""
 "Per continuar aprenent amb aquest compte, inicieu la sessió a continuació."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "Accedeix"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
@@ -8571,29 +8595,35 @@ msgstr ""
 "contrasenya, o utilitzeu un dels proveïdors que s'enumeren a continuació."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr ""
 "Inicieu sessió aquí amb la vostra adreça de correu electrònic i contrasenya."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr ""
 "Si encara no teniu un compte, utilitzeu el botó següent per registrar-se."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "o inicieu la sessió"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "Inicieu sessió amb %(providerName)s"
@@ -9316,6 +9346,14 @@ msgid ""
 "backpack."
 msgstr ""
 
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
+msgid "Learn More >"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
+msgid "sign in with"
+msgstr ""
+
 #: cms/templates/js/access-editor.underscore
 msgid "Limit Access"
 msgstr "Limitar l'accés"
@@ -9766,132 +9804,6 @@ msgstr "Afegiu una foto de l'instructor (Nota: només s'admeten JPEG o PNG)"
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "Puja una fotografia"
-
-#: cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr "Requisit previ: %(prereq_display_name)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Contains staff only content"
-msgstr "Conté només contingut del personal"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr "Canvis no publicats al contingut en directe"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr "No es publicaran unitats no publicades"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to content that will release in the future"
-msgstr "Canvis no publicats al contingut que es publicaran en el futur"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr "L'accés a aquesta unitat està restringit a: {selectedGroupsLabel}"
-
-#: cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr ""
-"L'accés a algun contingut d'aquesta unitat està restringit a grups "
-"específics d'estudiants"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr "Sense calificar"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr "Pràctica exàmens supervisats"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr "Exàmen supervisat"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr "Examen temporal"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr "Contraure / Expandir això %(xblock_type)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr "Mostra el Nom"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr "Configura"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Duplicate"
-msgstr "Duplicar"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Drag to reorder"
-msgstr "Arrossegueu per reordenar"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Release Status:"
-msgstr "Estat de publicació:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "Released:"
-msgstr "Publicat:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-msgid "Scheduled:"
-msgstr "Programat:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-msgid "Section Highlights"
-msgstr "Secció destacada"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Graded as:"
-msgstr "Qualificats com:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Due:"
-msgstr "Venciment:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr "La subsecció està oculta després de la data de finalització del curs"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr "La subsecció està oculta després de la data de venciment"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "You haven't added any content to this course yet."
-msgstr "Encara no heu afegit cap contingut a aquest curs."
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Click to add a new %(xblock_type)s"
-msgstr "Feu clic per afegir-ne un de nou %(xblock_type)s"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11165,6 +11077,91 @@ msgstr "Utilitzeu l'actual Transcripció"
 
 #~ msgid "Dismiss"
 #~ msgstr "Esborrar"
+
+#, python-format
+#~ msgid "Prerequisite: %(prereq_display_name)s"
+#~ msgstr "Requisit previ: %(prereq_display_name)s"
+
+#~ msgid "Contains staff only content"
+#~ msgstr "Conté només contingut del personal"
+
+#~ msgid "Unpublished changes to live content"
+#~ msgstr "Canvis no publicats al contingut en directe"
+
+#~ msgid "Unpublished units will not be released"
+#~ msgstr "No es publicaran unitats no publicades"
+
+#~ msgid "Unpublished changes to content that will release in the future"
+#~ msgstr "Canvis no publicats al contingut que es publicaran en el futur"
+
+#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+#~ msgstr "L'accés a aquesta unitat està restringit a: {selectedGroupsLabel}"
+
+#~ msgid ""
+#~ "Access to some content in this unit is restricted to specific groups of "
+#~ "learners"
+#~ msgstr ""
+#~ "L'accés a algun contingut d'aquesta unitat està restringit a grups "
+#~ "específics d'estudiants"
+
+#~ msgid "Ungraded"
+#~ msgstr "Sense calificar"
+
+#~ msgid "Practice proctored Exam"
+#~ msgstr "Pràctica exàmens supervisats"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "Exàmen supervisat"
+
+#~ msgid "Timed Exam"
+#~ msgstr "Examen temporal"
+
+#, python-format
+#~ msgid "Collapse/Expand this %(xblock_type)s"
+#~ msgstr "Contraure / Expandir això %(xblock_type)s"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostra el Nom"
+
+#~ msgid "Configure"
+#~ msgstr "Configura"
+
+#~ msgid "Duplicate"
+#~ msgstr "Duplicar"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "Arrossegueu per reordenar"
+
+#~ msgid "Release Status:"
+#~ msgstr "Estat de publicació:"
+
+#~ msgid "Released:"
+#~ msgstr "Publicat:"
+
+#~ msgid "Scheduled:"
+#~ msgstr "Programat:"
+
+#~ msgid "Section Highlights"
+#~ msgstr "Secció destacada"
+
+#~ msgid "Graded as:"
+#~ msgstr "Qualificats com:"
+
+#~ msgid "Due:"
+#~ msgstr "Venciment:"
+
+#~ msgid "Subsection is hidden after course end date"
+#~ msgstr "La subsecció està oculta després de la data de finalització del curs"
+
+#~ msgid "Subsection is hidden after due date"
+#~ msgstr "La subsecció està oculta després de la data de venciment"
+
+#~ msgid "You haven't added any content to this course yet."
+#~ msgstr "Encara no heu afegit cap contingut a aquest curs."
+
+#, python-format
+#~ msgid "Click to add a new %(xblock_type)s"
+#~ msgstr "Feu clic per afegir-ne un de nou %(xblock_type)s"
 
 #~ msgid "Receive updates"
 #~ msgstr "Rebeu actualitzacions"

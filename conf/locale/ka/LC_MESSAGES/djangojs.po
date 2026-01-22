@@ -57,7 +57,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2026-01-01 07:16+0000\n"
+"POT-Creation-Date: 2026-01-22 08:40+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Lasha Kokilashvili, 2018\n"
 "Language-Team: Georgian (http://app.transifex.com/open-edx/edx-platform/language/ka/)\n"
@@ -104,6 +104,7 @@ msgstr "შენახვა"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "წაშლა"
 
@@ -6322,8 +6323,6 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "გსურთ {item}-ის გამოუქვეყნებელი ცვლილებების გამოქვეყნება?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "გამოქვეყნება"
 
@@ -7104,10 +7103,44 @@ msgid "Actions"
 msgstr "მოქმედებები"
 
 #: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid ""
+"Access to some content in this unit is restricted to specific groups of "
+"learners"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "გაშვების თარიღი მითითებული არაა"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Section Highlights"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Subsection is hidden after course end date"
+msgstr ""
 
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
@@ -7905,15 +7938,18 @@ msgstr ""
 " ვიდრე „ჩემი გამოცდის დასრულებას“ აირჩევთ."
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "შეიტყვეთ მეტი"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "დაწყება: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "იწყება"
 
@@ -8647,6 +8683,7 @@ msgstr "ანგარიშის შექმნა"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "შესვლა"
 
@@ -8688,47 +8725,57 @@ msgid "Create an Account"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "შესვლა"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
@@ -8737,29 +8784,35 @@ msgstr ""
 "გამოყენებით."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr "შედით სისტემაში თქვენი ელფოსტის მისამართისა და პაროლის გამოყენებით."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr ""
 "თუ თქვენ ანგარიში არ გაქვთ, რეგისტრაციისთვის გამოიყენეთ ქვემოთ მოცემული "
 "ღილაკი."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "ან სისტემაში შედით"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "სისტემაში შესვლა %(providerName)s გამოყენებით"
@@ -9482,6 +9535,14 @@ msgid ""
 "backpack."
 msgstr ""
 
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
+msgid "Learn More >"
+msgstr ""
+
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
+msgid "sign in with"
+msgstr ""
+
 #: cms/templates/js/access-editor.underscore
 msgid "Limit Access"
 msgstr "წვდომის შეზღუდვა"
@@ -9920,130 +9981,6 @@ msgstr ""
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "ფოტოს ატვირთვა"
-
-#: cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr "სავალდებულო:  %(prereq_display_name)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Contains staff only content"
-msgstr "შეიცავს ინფორმაციას მხოლოდ თანამშრომელთათვის"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr "აქტიური ვერსიაში შეტანილი გამოუქვეყნებელი ცვლილებები"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr "გამოუქვეყნებელი ბლოკები არ გაეშვება"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to content that will release in the future"
-msgstr "შინაარსის გამოუქვეყნებელი ცვლილებები, რომლებიც მომავალში გაეშვება"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr "შეფასების გარეშე"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr "დაკვირვების ქვეშ გამოცდის პრაქტიკის გავლა"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr "გამოცდა დაკვირვების ქვეშ"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr "დროში შეზღუდული გამოცდა"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr "%(xblock_type)s-ის გახსნა/დახურვა"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr "სახელი"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr "კონფიგურაცია"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Duplicate"
-msgstr "ასლის შექმნა"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Drag to reorder"
-msgstr "გადააჩოჩეთ დასახარისხებლად"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Release Status:"
-msgstr "გაშვების სტატუსი:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "Released:"
-msgstr "გაშვებულია:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-msgid "Scheduled:"
-msgstr "დაგეგმილი:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-msgid "Section Highlights"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Graded as:"
-msgstr "შეფასებულია როგორც:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Due:"
-msgstr "მდე:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr "ქვეთავი დამალულია დათქმული თარიღის შემდეგ"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "You haven't added any content to this course yet."
-msgstr "ამ კურსისთვის მასალები ჯერ არ დაგიმატებიათ."
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Click to add a new %(xblock_type)s"
-msgstr "დააწკაპუნეთ ახალი %(xblock_type)s-ის დასამატებლად"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11279,6 +11216,75 @@ msgstr "არსებული სუბტიტრების გამო�
 
 #~ msgid "Dismiss"
 #~ msgstr "უგულებელყავი"
+
+#, python-format
+#~ msgid "Prerequisite: %(prereq_display_name)s"
+#~ msgstr "სავალდებულო:  %(prereq_display_name)s"
+
+#~ msgid "Contains staff only content"
+#~ msgstr "შეიცავს ინფორმაციას მხოლოდ თანამშრომელთათვის"
+
+#~ msgid "Unpublished changes to live content"
+#~ msgstr "აქტიური ვერსიაში შეტანილი გამოუქვეყნებელი ცვლილებები"
+
+#~ msgid "Unpublished units will not be released"
+#~ msgstr "გამოუქვეყნებელი ბლოკები არ გაეშვება"
+
+#~ msgid "Unpublished changes to content that will release in the future"
+#~ msgstr "შინაარსის გამოუქვეყნებელი ცვლილებები, რომლებიც მომავალში გაეშვება"
+
+#~ msgid "Ungraded"
+#~ msgstr "შეფასების გარეშე"
+
+#~ msgid "Practice proctored Exam"
+#~ msgstr "დაკვირვების ქვეშ გამოცდის პრაქტიკის გავლა"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "გამოცდა დაკვირვების ქვეშ"
+
+#~ msgid "Timed Exam"
+#~ msgstr "დროში შეზღუდული გამოცდა"
+
+#, python-format
+#~ msgid "Collapse/Expand this %(xblock_type)s"
+#~ msgstr "%(xblock_type)s-ის გახსნა/დახურვა"
+
+#~ msgid "Display Name"
+#~ msgstr "სახელი"
+
+#~ msgid "Configure"
+#~ msgstr "კონფიგურაცია"
+
+#~ msgid "Duplicate"
+#~ msgstr "ასლის შექმნა"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "გადააჩოჩეთ დასახარისხებლად"
+
+#~ msgid "Release Status:"
+#~ msgstr "გაშვების სტატუსი:"
+
+#~ msgid "Released:"
+#~ msgstr "გაშვებულია:"
+
+#~ msgid "Scheduled:"
+#~ msgstr "დაგეგმილი:"
+
+#~ msgid "Graded as:"
+#~ msgstr "შეფასებულია როგორც:"
+
+#~ msgid "Due:"
+#~ msgstr "მდე:"
+
+#~ msgid "Subsection is hidden after due date"
+#~ msgstr "ქვეთავი დამალულია დათქმული თარიღის შემდეგ"
+
+#~ msgid "You haven't added any content to this course yet."
+#~ msgstr "ამ კურსისთვის მასალები ჯერ არ დაგიმატებიათ."
+
+#, python-format
+#~ msgid "Click to add a new %(xblock_type)s"
+#~ msgstr "დააწკაპუნეთ ახალი %(xblock_type)s-ის დასამატებლად"
 
 #~ msgid "Receive updates"
 #~ msgstr "განახლებების მიღება"
