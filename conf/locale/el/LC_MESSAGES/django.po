@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1a\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2026-01-22 08:41+0000\n"
+"POT-Creation-Date: 2026-02-01 07:26+0000\n"
 "PO-Revision-Date: 2019-01-20 20:43+0000\n"
 "Last-Translator: Transifex Bot <>, 2024\n"
 "Language-Team: Greek (https://app.transifex.com/open-edx/teams/6205/el/)\n"
@@ -122,7 +122,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
 "X-Generator: MediaWiki 1.46.0-alpha; Translate 2025-07-31\n"
-"X-POT-Import-Date: 2026-01-01 08:30:38+0000\n"
+"X-POT-Import-Date: 2026-01-22 10:30:27+0000\n"
 "X-Translation-Project: translatewiki.net <https://translatewiki.net>\n"
 "#-#-#-#-#  django-partial.po (edx-platform)  #-#-#-#-#\n"
 
@@ -1444,6 +1444,15 @@ msgstr "Όνομα"
 #: common/lib/xmodule/xmodule/video_module/video_xfields.py
 msgid "Video ID"
 msgstr ""
+
+#: cms/templates/index.html
+msgid "Pending"
+msgstr "Σε αναμονή"
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Organization"
+msgstr "Οργανισμός"
 
 #: cms/envs/common.py lms/djangoapps/instructor/views/api.py
 #: lms/envs/common.py
@@ -3478,7 +3487,6 @@ msgstr "Σωστή Απάντηση"
 #: lms/templates/widgets/footer-language-selector.html
 #: openedx/core/djangoapps/dark_lang/templates/dark_lang/preview-language-fragment.html
 #: openedx/core/djangoapps/theming/templates/theming/theming-admin-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Submit"
 msgstr "Υποβολή"
 
@@ -4328,7 +4336,7 @@ msgid ""
 "http://www.edx.org/course/Introduction-to-MOOCs-ITM001"
 msgstr ""
 
-#: common/lib/xmodule/xmodule/course_module.py
+#: common/lib/xmodule/xmodule/course_module.py cms/templates/settings.html
 msgid "Course Language"
 msgstr "Γλώσσα του μαθήματος"
 
@@ -4628,6 +4636,10 @@ msgstr ""
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Any Type"
 msgstr ""
+
+#: cms/templates/widgets/header.html
+msgid "Library"
+msgstr "Βιβλιοθήκη"
 
 #: common/lib/xmodule/xmodule/library_content_module.py
 msgid "Select the library from which you want to draw content."
@@ -5051,6 +5063,12 @@ msgid ""
 "moocsupport@mathworks.com"
 msgstr ""
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Group Configurations"
+msgstr "Ρυθμίσεις ομάδων"
+
 #: common/lib/xmodule/xmodule/modulestore/inheritance.py
 msgid ""
 "Enter the configurations that govern how students are grouped together."
@@ -5373,15 +5391,18 @@ msgstr ""
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/courseware.html
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course"
 msgstr "Υλικό Μαθήματος"
 
 #: common/lib/xmodule/xmodule/templates/library-sourced-block-studio-view.html
 msgid "Save and Import"
 msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/manage_users.html cms/templates/manage_users_lib.html
+#: cms/templates/videos_index_pagination.html
+msgid "Cancel"
+msgstr "Ακύρωση"
 
 #: common/lib/xmodule/xmodule/video_module/transcripts_utils.py
 #, python-brace-format
@@ -5745,7 +5766,6 @@ msgid "Close"
 msgstr "Κλείσιμο"
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format
 msgid ""
 "This is a routed Account Activation email for %(routed_user)s "
@@ -5771,7 +5791,6 @@ msgstr ""
 "ενεργοποιήσετε πρώτα."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 msgid "Activate your account"
 msgstr "Ενεργοποιήστε τον λογαριασμό σας"
 
@@ -5782,7 +5801,6 @@ msgid "Enjoy learning with %(platform_name)s."
 msgstr "Απολαύστε τη μάθηση στο  %(platform_name)s."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.html
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.html
 #, python-format, python-brace-format
 msgid ""
 "If you need help, please use our web form at "
@@ -5806,7 +5824,6 @@ msgstr ""
 "τη συγκεκριμένη διεύθυνση ηλεκτρονικού ταχυδρομείου."
 
 #: common/templates/student/edx_ace/accountactivation/email/body.txt
-#: themes/edx-platform/wikilearn/lms/templates/student/edx_ace/accountactivation/email/body.txt
 #, python-format
 msgid ""
 "If you need help, please use our web form at %(support_url)s or email "
@@ -6194,8 +6211,6 @@ msgid "Donate"
 msgstr "Συνεισφέρετε"
 
 #: lms/templates/footer.html lms/templates/static_templates/about.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/static_templates/about.html
 msgid "About"
 msgstr "Σχετικά με"
 
@@ -6214,7 +6229,6 @@ msgstr "Όροι χρήσης και Κώδικας τιμής"
 
 #: cms/templates/widgets/footer.html
 #: lms/templates/static_templates/privacy.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "Privacy Policy"
 msgstr "Πολιτική προστασίας δεδομένων"
 
@@ -7196,6 +7210,10 @@ msgstr "Πρόοδος"
 msgid "Keep learners engaged and on track throughout the course."
 msgstr ""
 
+#: cms/templates/textbooks.html cms/templates/widgets/header.html
+msgid "Textbooks"
+msgstr "Εγχειρίδια μαθήματος"
+
 #: lms/djangoapps/courseware/plugins.py
 msgid ""
 "Create and manage a library of course readings, textbooks, and chapters."
@@ -7344,7 +7362,6 @@ msgstr ""
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Sign in"
 msgstr "Σύνδεση"
 
@@ -8115,6 +8132,11 @@ msgstr ""
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
 msgid "Special Exams"
 msgstr ""
+
+#: cms/templates/certificates.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+msgid "Certificates"
+msgstr "Βεβαιώσεις"
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
 msgid "Please Enter the numeric value for the course price"
@@ -9302,8 +9324,6 @@ msgid ""
 msgstr ""
 
 #: cms/templates/base.html lms/templates/main.html
-#: themes/edx-platform/wikilearn/cms/templates/base.html
-#: themes/edx-platform/wikilearn/lms/templates/main.html
 msgid "Skip to main content"
 msgstr "Παράλειψη σε κυρίως περιεχόμενο."
 
@@ -9492,6 +9512,7 @@ msgstr "Πίσω"
 msgid "Delete article"
 msgstr "Διαγραφή του άρθρου"
 
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/delete.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 #: wiki/templates/wiki/delete.html
@@ -9534,9 +9555,7 @@ msgstr ""
 
 #: lms/templates/wiki/edit.html cms/templates/component.html
 #: cms/templates/container.html cms/templates/studio_xblock_wrapper.html
-#: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-#: wiki/templates/wiki/edit.html
+#: lms/templates/wiki/includes/article_menu.html wiki/templates/wiki/edit.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "Edit"
 msgstr "Επεξεργασία"
@@ -9813,9 +9832,6 @@ msgstr ""
 #: lms/templates/ux/reference/bootstrap/course-skeleton.html
 #: openedx/features/course_experience/templates/course_experience/course-home-fragment.html
 #: openedx/features/course_search/templates/course_search/course-search-fragment.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
 #: wiki/plugins/attachments/templates/wiki/plugins/attachments/index.html
 msgid "Search"
 msgstr "Αναζήτηση"
@@ -9909,48 +9925,44 @@ msgid "ACE Common"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "Go to %(platform_name)s Home Page"
 msgstr "Πηγαίνετε στην Αρχική Σελίδα του %(platform_name)s"
 
+#: cms/templates/widgets/header.html
+msgid "Sign In"
+msgstr "Σύνδεση"
+
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on LinkedIn"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Twitter"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Facebook"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Google Plus"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 #, python-format
 msgid "%(platform_name)s on Reddit"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the iOS app on the Apple Store"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Download the Android app on the Google Play Store"
 msgstr ""
 
@@ -9959,7 +9971,6 @@ msgid "Our mailing address is:"
 msgstr ""
 
 #: openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
-#: themes/edx-platform/wikilearn/lms/templates/ace_common/edx_ace/common/base_body.html
 msgid "Unsubscribe from these emails."
 msgstr ""
 
@@ -10022,6 +10033,10 @@ msgid ""
 "Comma-separated list of usernames which will be able to view this catalog."
 msgstr ""
 
+#: cms/templates/index.html
+msgid "Denied"
+msgstr "Απορριφθέν"
+
 #: openedx/core/djangoapps/api_admin/models.py
 #: openedx/features/wikimedia_features/meta_translations/views.py
 msgid "Approved"
@@ -10053,7 +10068,6 @@ msgstr ""
 
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Bookmarks"
 msgstr "Σελιδοδείκτες"
 
@@ -10184,6 +10198,11 @@ msgid ""
 "Configure values for all course runs associated with this course. This is "
 "should be formatted as 'org+course' (i.e. MITx+6.002x, HarvardX+CS50)."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+#: cms/templates/settings.html
+msgid "Course Run"
+msgstr "Περίοδος Μαθήματος"
 
 #: openedx/core/djangoapps/config_model_utils/models.py
 msgid ""
@@ -11522,7 +11541,6 @@ msgstr ""
 #: openedx/core/djangoapps/user_authn/views/login.py
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Register"
 msgstr "Εγγραφείτε"
 
@@ -11917,7 +11935,6 @@ msgid ""
 msgstr ""
 
 #: openedx/core/lib/xblock_builtin/xblock_discussion/xblock_discussion/__init__.py
-#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Category"
 msgstr ""
 
@@ -12110,7 +12127,6 @@ msgstr ""
 #: cms/templates/widgets/header.html
 #: lms/templates/api_admin/terms_of_service.html
 #: openedx/features/course_experience/templates/course_experience/course-updates-fragment.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Updates"
 msgstr "Ενημερώσεις"
 
@@ -12303,8 +12319,6 @@ msgstr ""
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: lms/templates/support/feature_based_enrollments.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Name"
 msgstr "Τίτλος Μαθήματος"
 
@@ -12314,9 +12328,6 @@ msgstr "Τίτλος Μαθήματος"
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Courses"
 msgstr "Μαθήματα"
 
@@ -13279,17 +13290,11 @@ msgstr "Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ"
 msgid "Page not found"
 msgstr "Η ΣΕΛΙΔΑ ΔΕΝ ΒΡΕΘΗΚΕ"
 
-#: cms/templates/asset_index.html cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-msgid "Files & Uploads"
-msgstr ""
-
 #: cms/templates/asset_index.html cms/templates/course_info.html
 #: cms/templates/course_outline.html cms/templates/edit-tabs.html
 #: cms/templates/textbooks.html cms/templates/videos_index.html
 #: cms/templates/widgets/header.html lms/templates/static_htmlbook.html
 #: lms/templates/static_pdfbook.html lms/templates/staticbook.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Content"
 msgstr "Περιεχόμενο"
 
@@ -13298,7 +13303,6 @@ msgstr "Περιεχόμενο"
 #: cms/templates/settings.html cms/templates/settings_advanced.html
 #: cms/templates/settings_graders.html cms/templates/widgets/header.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 #: wiki/templates/wiki/includes/article_menu.html
 #: wiki/templates/wiki/settings.html
 msgid "Settings"
@@ -13311,14 +13315,11 @@ msgstr "Ρυθμίσεις"
 #: lms/templates/edxnotes/edxnotes.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: openedx/features/learner_profile/templates/learner_profile/learner_profile.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Loading"
 msgstr "Φόρτωση"
 
 #: cms/templates/course-create-rerun.html cms/templates/index.html
 #: cms/templates/settings.html lms/templates/courseware/course_about.html
-#: themes/edx-platform/wikilearn/cms/templates/course-create-rerun.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number"
 msgstr "Κωδικός Μαθήματος"
 
@@ -13328,19 +13329,16 @@ msgstr "Σφάλμα:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Organization:"
 msgstr "Οργανισμός:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Number:"
 msgstr "Κωδικός Μαθήματος:"
 
 #: cms/templates/index.html
 #: lms/templates/instructor/instructor_dashboard_2/course_info.html
-#: themes/edx-platform/wikilearn/cms/templates/index.html
 msgid "Course Run:"
 msgstr "Εκτέλεση μαθήματος:"
 
@@ -13353,19 +13351,8 @@ msgid "Requirements"
 msgstr "Απαιτήσεις"
 
 #: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Access Settings"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
-msgid "Set Access"
-msgstr ""
-
-#: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/instructor/instructor_dashboard_2/certificates.html
 #: lms/templates/module-error.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 msgid "Details"
 msgstr "Λεπτομέρειες"
 
@@ -13373,7 +13360,6 @@ msgstr "Λεπτομέρειες"
 #. Translators: this is a verb describing the action of viewing more details
 #: cms/templates/studio_xblock_wrapper.html
 #: lms/templates/wiki/includes/article_menu.html
-#: themes/edx-platform/wikilearn/cms/templates/studio_xblock_wrapper.html
 #: wiki/templates/wiki/includes/article_menu.html
 msgid "View"
 msgstr "Προβολή"
@@ -13397,14 +13383,11 @@ msgstr "Νομικά"
 #: cms/templates/widgets/header.html lms/templates/header/header.html
 #: lms/templates/navigation/navigation.html
 #: lms/templates/widgets/footer-language-selector.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
 msgid "Choose Language"
 msgstr "Επέλεξε Γλώσσα"
 
 #: cms/templates/widgets/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Account"
 msgstr "Λογαριασμός"
 
@@ -13412,10 +13395,7 @@ msgstr "Λογαριασμός"
 #: lms/templates/header/navbar-authenticated.html
 #: lms/templates/navigation/bootstrap/navbar-authenticated.html
 #: lms/templates/navigation/navbar-authenticated.html
-#: lms/templates/static_templates/help.html
-#: themes/edx-platform/wikilearn/cms/templates/widgets/header.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-authenticated.html
-#: wiki/plugins/help/wiki_plugin.py
+#: lms/templates/static_templates/help.html wiki/plugins/help/wiki_plugin.py
 msgid "Help"
 msgstr "Βοήθεια"
 
@@ -13427,7 +13407,6 @@ msgstr "όνομα"
 
 #: cms/templates/widgets/user_dropdown.html
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Sign Out"
 msgstr "Αποσύνδεση"
 
@@ -13586,17 +13565,14 @@ msgid "You do not have access to this dependency module."
 msgstr ""
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "LEARN MORE"
 msgstr "Μάθετε περισσότερα"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts"
 msgstr "Έναρξη"
 
 #: lms/templates/course.html
-#: themes/edx-platform/wikilearn/lms/templates/course.html
 msgid "Starts: {date}"
 msgstr "Έναρξη: {date}"
 
@@ -13606,7 +13582,6 @@ msgstr "Δείτε όλα τα μαθήματα"
 
 #: lms/templates/dashboard.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard"
 msgstr "Μαθήματα"
 
@@ -13643,7 +13618,6 @@ msgid "Search Your Courses"
 msgstr "Αναζήτηση στα μαθήματά σας"
 
 #: lms/templates/courseware/courseware.html lms/templates/dashboard.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Clear search"
 msgstr "Εκκαθάριση αναζήτησης"
 
@@ -13843,7 +13817,6 @@ msgid "External Authentication failed"
 msgstr "Απέτυχε εξωτερική επαλήθευση ταυτότητας"
 
 #: lms/templates/footer.html
-#: themes/edx-platform/wikilearn/lms/templates/footer.html
 msgid "organization logo"
 msgstr "Οργανισμός logo"
 
@@ -13914,8 +13887,6 @@ msgstr ""
 "δείτε τον βαθμό σας στην {link_start}σελίδα της προόδου{link_end} σας."
 
 #: lms/templates/courseware/courses.html lms/templates/index.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/index.html
 msgid "Search for a course"
 msgstr "Αναζήτηση μαθήματος"
 
@@ -14467,7 +14438,6 @@ msgstr ""
 " να {undo_link_start}επανεγγραφείτε{link_end}."
 
 #: lms/templates/header/user_dropdown.html lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Dashboard for:"
 msgstr "Πίνακας ελέγχου για:"
 
@@ -14481,7 +14451,6 @@ msgstr "Περισσότερες επιλογές"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
 #: lms/templates/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "More Options"
 msgstr "Περισσότερες επιλογές"
 
@@ -16374,7 +16343,6 @@ msgstr "{span_start}τρέχον τμήμα{span_end}"
 #: lms/templates/courseware/accordion.html
 #: lms/templates/courseware/progress.html
 #: openedx/features/course_experience/templates/course_experience/course-outline-fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "due {date}"
 msgstr "Υποβολή μέχρι {date}"
 
@@ -16483,7 +16451,6 @@ msgstr ""
 " το μάθημα"
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "current location"
 msgstr "τρέχουσα τοποθεσία"
 
@@ -16491,13 +16458,10 @@ msgstr "τρέχουσα τοποθεσία"
 #. notification image that indicates the tab "needs attention".
 #: lms/templates/courseware/course_navigation.html
 #: lms/templates/courseware/tabs.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/tabs.html
 msgid "needs attention"
 msgstr "χρειάζεται προσοχή"
 
 #: lms/templates/courseware/course_navigation.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/course_navigation.html
 msgid "Course Material"
 msgstr "Υλικό μαθήματος"
 
@@ -16514,25 +16478,21 @@ msgid "Show Earlier Course Updates"
 msgstr "Δείτε παλαιότερες ανακοινώσεις"
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "List of Courses"
 msgstr "Κατάλογος μαθημάτων"
 
 #: lms/templates/courseware/courses.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courses.html
 msgid "Refine Your Search"
 msgstr "Εξειδικεύστε την αναζήτησή σας"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
 #: openedx/features/course_bookmarks/templates/course_bookmarks/course-bookmarks.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "{course_number} Courseware"
 msgstr "{course_number} - Υλικό Μαθήματος"
 
 #: lms/templates/courseware/courseware-chromeless.html
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Utilities"
 msgstr "Βοηθητικά προγράμματα μαθημάτων"
 
@@ -16550,17 +16510,14 @@ msgstr ""
 "ομάδα μας προσπαθεί να επιδιορθώσει το σφάλμα το συντομότερo δυνατόν. "
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Course Search"
 msgstr "Αναζήτηση μαθημάτων"
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "No content has been added to this course"
 msgstr "Δεν έχει προστεθεί περιεχόμενο σε αυτό το μάθημα"
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 #, python-format
 msgid ""
 "To access course materials, you must score {required_score}% or higher on "
@@ -16571,7 +16528,6 @@ msgstr ""
 "τρέχουσα βαθμολογία σας είναι {current_score}%."
 
 #: lms/templates/courseware/courseware.html
-#: themes/edx-platform/wikilearn/lms/templates/courseware/courseware.html
 msgid "Your score is {current_score}%. You have passed the entrance exam."
 msgstr ""
 "Η βαθμολογία σας είναι {current_score}%. Έχετε περάσει τις εισαγωγικές "
@@ -16792,12 +16748,10 @@ msgid "Starts on {}"
 msgstr "Ξεκινά στις {}"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{course_number} Progress"
 msgstr "{course_number} - Πρόοδος"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Grading in studio"
 msgstr "Εμφανίστε τη «Βαθμολογία» στο Στούντιο"
 
@@ -16807,43 +16761,36 @@ msgstr "Πρόοδος Μαθήματος για τον σπουδαστή '{use
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "View Certificate"
 msgstr "Δείτε τη Βεβαίωση"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Opens in a new browser window"
 msgstr "Ανοίγει σε νέο παράθυρο προγράμματος περιήγησης"
 
 #: lms/templates/courseware/progress.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Download Your Certificate"
 msgstr ""
 
 #: lms/templates/courseware/progress.html
 #: lms/templates/dashboard/_dashboard_certificate_information.html
 #: openedx/features/wikimedia_features/wikimedia_general/templates/wikimedia_general/wikimedia_progress_fragment.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Request Certificate"
 msgstr "Αίτημα πιστοποιητικού"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Requirements for Course Credit"
 msgstr "Απαιτήσεις για πίστωση μαθήματος"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you are no longer eligible for credit in this course."
 msgstr ""
 "{student_name}, δεν πληροίτε πλέον τα κριτήρια για αναγνώριση σε αυτό το "
 "μάθημα."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "{student_name}, you have met the requirements for credit in this course. "
 "{a_start}Go to your dashboard{a_end} to purchase course credit."
@@ -16853,62 +16800,50 @@ msgstr ""
 " να αγοράσετε ακαδ. μονάδες."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{student_name}, you have not yet met the requirements for credit."
 msgstr "{student_name}, δεν πληροίτε ακόμη τις προϋποθέσεις για πίστωση."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Information about course credit requirements"
 msgstr "Πληροφορίες σχετικά με τις απαιτήσεις ακαδημαϊκών μονάδων μαθημάτων"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "display_name"
 msgstr "εμφανιζόμενο_όνομα"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Submitted"
 msgstr "Η επαλήθευση υποβλήθηκε"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Failed"
 msgstr "Η επαλήθευση απέτυχε"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Verification Declined"
 msgstr "Η επαλήθευση απορρίφθηκε"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Completed by {date}"
 msgstr "Ολοκληρώθηκε την {date}"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Upcoming"
 msgstr "Επερχόμενο"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Less"
 msgstr "Λιγότερα"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Details for each chapter"
 msgstr "Λεπτομέρειες για κάθε κεφάλαιο"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "{earned} of {total} possible points"
 msgstr "{earned} από {total} μονάδες"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid ""
 "Suspicious activity detected during proctored exam review. Exam score 0."
 msgstr ""
@@ -16916,42 +16851,34 @@ msgstr ""
 "εξετάσεων 0."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Section grade has been overridden."
 msgstr "Ο βαθμός ενότητας έχει παρακαμφθεί."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem Scores: "
 msgstr "Επίδοση"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice Scores: "
 msgstr "Επιδόσεις"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden until the due date."
 msgstr "Η βαθμολογία σας δεν εμφανίζεται μέχρι την ημερομηνία λήξης του τεστ."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden until the due date."
 msgstr "Οι βαθμολογίες της εξάσκησης είναι κρυφές μέχρι την ημερομηνία λήξης."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Problem scores are hidden."
 msgstr "Η βαθμολογία σας δεν εμφανίζεται."
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "Practice scores are hidden."
 msgstr "Η βαθμολογία εξάσκησης είναι κρυμμένη"
 
 #: lms/templates/courseware/progress.html
-#: themes/edx-platform/wikilearn/lms/lms/templates/courseware/progress.html
 msgid "No problem scores in this section"
 msgstr "Δεν υπάρχουν ασκήσεις σε αυτό το μέρος"
 
@@ -18275,7 +18202,6 @@ msgid "{platform_name} Home Page"
 msgstr "Αρχική σελίδα {platform_name}"
 
 #: lms/templates/header/header.html lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Options Menu"
 msgstr "Μενού επιλογών"
 
@@ -18297,34 +18223,28 @@ msgid "{name} Dashboard"
 msgstr "{name} Μαθήματα"
 
 #: lms/templates/header/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Supplemental Links"
 msgstr "Συμπληρωματικοί σύνδεσμοι"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "How it Works"
 msgstr "Πως δουλεύει"
 
 #: lms/templates/header/navbar-not-authenticated.html
 #: lms/templates/navigation/navbar-not-authenticated.html
-#: themes/edx-platform/wikilearn/lms/templates/header/navbar-not-authenticated.html
 msgid "Schools"
 msgstr "Σχολεία"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Resume your last course"
 msgstr ""
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Profile"
 msgstr "Προσωπική σελίδα"
 
 #: lms/templates/header/user_dropdown.html
-#: themes/edx-platform/wikilearn/lms/templates/header/user_dropdown.html
 msgid "Order History"
 msgstr "Ιστορικό παραγγελιών"
 
@@ -20831,6 +20751,10 @@ msgstr ""
 msgid "Studio Accessibility Policy"
 msgstr "Πολιτική προσβασιμότητας στούντιο"
 
+#: cms/templates/asset_index.html cms/templates/widgets/header.html
+msgid "Files & Uploads"
+msgstr ""
+
 #: cms/templates/certificates.html
 msgid "Course Certificates"
 msgstr "Βεβαιώσεις μαθημάτων"
@@ -20917,13 +20841,70 @@ msgstr "Μάθετε περισσότερα για τις βεβαιώσεις"
 msgid "Details & Schedule"
 msgstr "Λεπτομέρειες & Πρόγραμμα"
 
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Grading"
+msgstr "Βαθμολογία"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/manage_users.html cms/templates/settings.html
+#: cms/templates/settings_advanced.html cms/templates/settings_graders.html
+#: cms/templates/widgets/header.html
+msgid "Course Team"
+msgstr "Ομάδα μαθήματος"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Advanced Settings"
+msgstr "Προχωρημένες ρυθμίσεις"
+
+#: cms/templates/certificates.html cms/templates/group_configurations.html
+#: cms/templates/settings.html cms/templates/settings_advanced.html
+#: cms/templates/settings_graders.html cms/templates/widgets/header.html
+msgid "Proctored Exam Settings"
+msgstr "Προστατευμένες ρυθμίσεις εξετάσεων"
+
+#: cms/templates/checklists.html cms/templates/widgets/header.html
+msgid "Checklists"
+msgstr "Λίστες ελέγχου"
+
+#: cms/templates/checklists.html cms/templates/export.html
+#: cms/templates/export_git.html cms/templates/import.html
+#: cms/templates/widgets/header.html
+msgid "Tools"
+msgstr "Εργαλεία"
+
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Duplicate"
+msgstr "Αντιγραφή"
+
 #: cms/templates/component.html
 msgid "Duplicate this component"
 msgstr "Αντιγράψτε αυτό το στοιχείο"
 
+#: cms/templates/component.html cms/templates/studio_xblock_wrapper.html
+msgid "Move"
+msgstr "Μετακίνηση"
+
 #: cms/templates/component.html
 msgid "Delete this component"
 msgstr "Διαγράψτε αυτό το στοιχείο"
+
+#: cms/templates/component.html cms/templates/edit-tabs.html
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Drag to reorder"
+msgstr "Σύρετε για αναδιάταξη"
+
+#: cms/templates/container.html cms/templates/course-create-rerun.html
+#: cms/templates/course_info.html cms/templates/course_outline.html
+#: cms/templates/edit-tabs.html cms/templates/index.html
+#: cms/templates/library.html cms/templates/manage_users.html
+#: cms/templates/manage_users_lib.html cms/templates/textbooks.html
+#: cms/templates/videos_index.html
+msgid "Page Actions"
+msgstr "Ενέργειες σελίδας"
 
 #: cms/templates/container.html
 msgid "Open the courseware in the LMS"
@@ -21011,6 +20992,153 @@ msgid ""
 "To create a link to this unit from an HTML component in this course, enter "
 "\"/jump_to_id/<location ID>\" as the URL value."
 msgstr ""
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a Course Rerun of:"
+msgstr "Δημιουργία επανεκτέλεσης μαθήματος από:"
+
+#: cms/templates/course-create-rerun.html
+msgid "Create a re-run of a course"
+msgstr "Δημιουργήστε μια επανεκτέλεση ενός μαθήματος"
+
+#: cms/templates/course-create-rerun.html
+msgid "You are creating a re-run from:"
+msgstr "Δημιουργείτε μια επανάληψη από:"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Provide identifying information for this re-run of the course. The original "
+"course is not affected in any way by a re-run."
+msgstr ""
+"Παρέχετε πληροφορίες αναγνώρισης για αυτήν την επανεκτέλεση του μαθήματος. "
+"Το αρχικό μάθημα δεν επηρεάζεται με κανέναν τρόπο από μια επανεκτέλεση."
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"Note: Together, the organization, course number, and course run must "
+"uniquely identify this new course instance."
+msgstr ""
+"Σημείωση: Μαζί, ο οργανισμός, ο αριθμός μαθήματος και η εκτέλεση του "
+"μαθήματος πρέπει να προσδιορίζουν μοναδικά αυτό τη νέα υπόσταση μαθήματος."
+
+#: cms/templates/course-create-rerun.html
+msgid "Required Information to Create a re-run of a course"
+msgstr ""
+"Απαιτούμενες πληροφορίες για τη δημιουργία επανεκτέλεσης ενός μαθήματος"
+
+#. Translators: This is an example name for a new course, seen when
+#. filling out the form to create a new course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. Introduction to Computer Science"
+msgstr "π.χ. Εισαγωγή στην επιστήμη των υπολογιστών"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The public display name for the new course. (This name is often the same as "
+"the original course name.)"
+msgstr ""
+"Το δημόσια εμφανιζόμενο όνομα για το νέο μάθημα. (Αυτό το όνομα είναι συχνά "
+"το ίδιο με το αρχικό όνομα του μαθήματος.)"
+
+#. Translators: This is an example for the name of the organization sponsoring
+#. a course, seen when filling out the form to create a new course. The
+#. organization name cannot contain spaces.
+#. Translators: "e.g. UniversityX or OrganizationX" is a placeholder displayed
+#. when user put no data into this field.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. UniversityX or OrganizationX"
+msgstr "π.χ. ΠανεπιστήμιοX ή ΟργανισμόςΧ"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The name of the organization sponsoring the new course. (This name is often "
+"the same as the original organization name.)"
+msgstr ""
+"Το όνομα του οργανισμού που χορηγεί το νέο μάθημα. (Αυτό το όνομα είναι "
+"συχνά το ίδιο με το αρχικό όνομα του οργανισμού.)"
+
+#: cms/templates/course-create-rerun.html
+msgid "Note: No spaces or special characters are allowed."
+msgstr "Σημείωση: Δεν επιτρέπονται κενά ή ειδικοί χαρακτήρες."
+
+#. Translators: This is an example for the number used to identify a course,
+#. seen when filling out the form to create a new course. The number here is
+#. short for "Computer Science 101". It can contain letters but cannot contain
+#. spaces.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. CS101"
+msgstr "π.χ CS101"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The unique number that identifies the new course within the organization.  "
+"(This number will be the same as the original course number and cannot be "
+"changed.)"
+msgstr ""
+"Ο μοναδικός αριθμός που προσδιορίζει το νέο μάθημα εντός του οργανισμού. "
+"(Αυτός ο αριθμός θα είναι ίδιος με τον αρχικό αριθμό μαθήματος και δεν "
+"μπορεί να αλλάξει.)"
+
+#. Translators: This is an example for the "run" used to identify different
+#. instances of a course, seen when filling out the form to create a new
+#. course.
+#: cms/templates/course-create-rerun.html cms/templates/index.html
+msgid "e.g. 2014_T1"
+msgstr "π.χ 2014_Τ1"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The term in which the new course will run. (This value is often different "
+"than the original course run value.)"
+msgstr ""
+"Ο όρος μέσα στον οποίο θα τρέξει το νέο μάθημα. (Αυτή η τιμή είναι συχνά "
+"διαφορετική από την αρχική τιμή εκτέλεσης του μαθήματος.)"
+
+#: cms/templates/course-create-rerun.html
+msgid "Create Re-run"
+msgstr "Δημιουργία επανεκτέλεσης"
+
+#: cms/templates/course-create-rerun.html
+msgid "When will my course re-run start?"
+msgstr "Πότε θα ξεκινήσει η επανεκτέλεση των μαθημάτων μου;"
+
+#: cms/templates/course-create-rerun.html
+msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
+msgstr ""
+"Το νέο μάθημα έχει οριστεί να ξεκινήσει την 1η Ιανουαρίου 2030 τα μεσάνυχτα "
+"(UTC)."
+
+#: cms/templates/course-create-rerun.html
+msgid "What transfers from the original course?"
+msgstr "Τι μεταφέρεται από το αρχικό μάθημα;"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"The new course has the same course outline and content as the original "
+"course. All problems, videos, announcements, and other files are duplicated "
+"to the new course."
+msgstr ""
+"Το νέο μάθημα έχει το ίδιο σχεδιάγραμμα και περιεχόμενο με το αρχικό μάθημα."
+" Όλα τα προβλήματα, τα βίντεο, οι ανακοινώσεις και άλλα αρχεία αντιγράφονται"
+" στο νέο μάθημα."
+
+#: cms/templates/course-create-rerun.html
+msgid "What does not transfer from the original course?"
+msgstr "Τι δεν μεταφέρεται από το αρχικό μάθημα;"
+
+#: cms/templates/course-create-rerun.html
+msgid ""
+"You are the only member of the new course's staff. No students are enrolled "
+"in the course, and there is no student data. There is no content in the "
+"discussion topics or wiki."
+msgstr ""
+"Είστε το μόνο μέλος του προσωπικού του νέου μαθήματος. Δεν έχουν εγγραφεί "
+"σπουδαστές στο μάθημα και δεν υπάρχουν στοιχεία σπουδαστών. Δεν υπάρχει "
+"περιεχόμενο στα θέματα συζήτησης ή στο wiki."
+
+#: cms/templates/course-create-rerun.html
+msgid "Learn more about Course Re-runs"
+msgstr "Μάθετε περισσότερα για τις επανεκτελέσεις μαθημάτων"
 
 #: cms/templates/course_info.html
 msgid "Course Updates"
@@ -21237,6 +21365,13 @@ msgstr ""
 #: cms/templates/course_outline.html
 msgid "Learn more about content visibility settings"
 msgstr "Μάθετε περισσότερα σχετικά με τις ρυθμίσεις ορατότητας περιεχομένου"
+
+#. Translators: Pages refer to the tabs that appear in the top navigation of
+#. each course.
+#: cms/templates/edit-tabs.html cms/templates/export.html
+#: cms/templates/widgets/header.html
+msgid "Pages"
+msgstr "Σελίδες"
 
 #: cms/templates/edit-tabs.html
 msgid "New Page"
@@ -21662,6 +21797,10 @@ msgstr "Μάθετε περισσότερα σχετικά με την εξαγ�
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
 msgstr "Εξαγωγή μαθήματος στο Git"
+
+#: cms/templates/export_git.html cms/templates/widgets/header.html
+msgid "Export to Git"
+msgstr "Εξαγωγή στο Git"
 
 #: cms/templates/export_git.html
 msgid "About Export to Git"
@@ -22346,6 +22485,407 @@ msgstr ""
 msgid "Learn more about importing a course"
 msgstr "Μάθετε περισσότερα σχετικά με την εισαγωγή ενός μαθήματος"
 
+#: cms/templates/index.html
+msgid "New Course"
+msgstr "Νέο Μάθημα"
+
+#: cms/templates/index.html
+msgid "Email staff to create course"
+msgstr "Στείλτε email στο προσωπικό για τη δημιουργία μαθημάτων"
+
+#: cms/templates/index.html
+msgid "New Library"
+msgstr "Νέα βιβλιοθήκη"
+
+#: cms/templates/index.html
+msgid "Please correct the highlighted fields below."
+msgstr "Διορθώστε τα επισημασμένα πεδία παρακάτω."
+
+#: cms/templates/index.html
+msgid "Create a New Course"
+msgstr "Δημιουργία Μαθήματος"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Course"
+msgstr "Απαιτούμενες πληροφορίες για τη δημιουργία νέου μαθήματος"
+
+#: cms/templates/index.html
+msgid ""
+"The public display name for your course. This cannot be changed, but you can"
+" set a different display name in Advanced Settings later."
+msgstr ""
+"Δηλώστε το εμφανιζόμενο όνομα του μαθήματός σας. Δεν μπορεί να αλλαχτεί παρά"
+" μόνο μέσω της επιλογής Advanced Settings."
+
+#: cms/templates/index.html
+msgid ""
+"The name of the organization sponsoring the course. {strong_start}Note: The "
+"organization name is part of the course URL.{strong_end} This cannot be "
+"changed, but you can set a different display name in Advanced Settings "
+"later."
+msgstr ""
+"Το όνομα του οργανισμού που χορηγεί το μάθημα. {strong_start}Σημείωση: Το "
+"όνομα του οργανισμού αποτελεί μέρος της διεύθυνσης URL του "
+"μαθήματος.{strong_end} Αυτό δεν μπορεί να αλλάξει, αλλά μπορείτε να ορίσετε "
+"ένα διαφορετικό εμφανιζόμενο όνομα αργότερα στις Σύνθετες ρυθμίσεις."
+
+#: cms/templates/index.html
+msgid ""
+"The unique number that identifies your course within your organization. "
+"{strong_start}Note: This is part of your course URL, so no spaces or special"
+" characters are allowed and it cannot be changed.{strong_end}"
+msgstr ""
+"Ο μοναδικός αριθμός που προσδιορίζει το μάθημά σας στον οργανισμό σας. "
+"{strong_start}Σημείωση: Αυτό είναι μέρος της διεύθυνσης URL του μαθήματος "
+"σας, επομένως δεν επιτρέπονται κενά ή ειδικοί χαρακτήρες και δεν είναι "
+"δυνατή η αλλαγή.{strong_end}"
+
+#: cms/templates/index.html
+msgid ""
+"The term in which your course will run. {strong_start}Note: This is part of "
+"your course URL, so no spaces or special characters are allowed and it "
+"cannot be changed.{strong_end}"
+msgstr ""
+"Ο όρος κατά τον οποίο θα τρέξει το μάθημά σας. {strong_start}Σημείωση: Αυτό "
+"είναι μέρος της διεύθυνσης URL του μαθήματος σας, επομένως δεν επιτρέπονται "
+"κενά ή ειδικοί χαρακτήρες και δεν είναι δυνατή η αλλαγή.{strong_end}"
+
+#: cms/templates/index.html
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: cms/templates/index.html
+msgid "Create a New Library"
+msgstr "Δημιουργία νέας βιβλιοθήκης"
+
+#: cms/templates/index.html
+msgid "Required Information to Create a New Library"
+msgstr "Απαιτούμενες πληροφορίες για τη δημιουργία νέας βιβλιοθήκης"
+
+#: cms/templates/index.html
+msgid "Library Name"
+msgstr "Όνομα βιβλιοθήκης"
+
+#. Translators: This is an example name for a new content library, seen when
+#. filling out the form to create a new library.
+#. (A library is a collection of content or problems.)
+#: cms/templates/index.html
+msgid "e.g. Computer Science Problems"
+msgstr "π.χ. Προβλήματα επιστήμης της Πληροφορικής"
+
+#: cms/templates/index.html
+msgid "The public display name for your library."
+msgstr "Το δημόσια εμφανιζόμενο όνομα για τη βιβλιοθήκη σας."
+
+#: cms/templates/index.html
+msgid "The public organization name for your library."
+msgstr "Το δημόσιο όνομα οργανισμού για τη βιβλιοθήκη σας."
+
+#: cms/templates/index.html
+msgid "This cannot be changed."
+msgstr "Αυτό δεν μπορεί να αλλάξει."
+
+#: cms/templates/index.html
+msgid "Library Code"
+msgstr "Κωδικός βιβλιοθήκης"
+
+#. Translators: This is an example for the "code" used to identify a library,
+#. seen when filling out the form to create a new library. This example is
+#. short
+#. for "Computer Science Problems". The example number may contain letters
+#. but must not contain spaces.
+#: cms/templates/index.html
+msgid "e.g. CSPROB"
+msgstr "π.χ. CSPROB"
+
+#: cms/templates/index.html
+msgid ""
+"The unique code that identifies this library. {strong_start}Note: This is "
+"part of your library URL, so no spaces or special characters are "
+"allowed.{strong_end} This cannot be changed."
+msgstr ""
+"Ο μοναδικός κωδικός που προσδιορίζει αυτήν τη βιβλιοθήκη. "
+"{strong_start}Σημείωση: Αυτό είναι μέρος της διεύθυνσης URL της βιβλιοθήκης "
+"σας, επομένως δεν επιτρέπονται κενά ή ειδικοί χαρακτήρες.{strong_end} Αυτό "
+"δεν μπορεί να αλλάξει."
+
+#: cms/templates/index.html
+msgid "Organization and Library Settings"
+msgstr "Ρυθμίσεις Οργανισμού και Βιβλιοθήκης"
+
+#: cms/templates/index.html
+msgid "Show all courses in organization:"
+msgstr "Εμφάνιση όλων των μαθημάτων στον οργανισμό:"
+
+#: cms/templates/index.html
+msgid "For example, MITx"
+msgstr "Για παράδειγμα, MITx"
+
+#: cms/templates/index.html
+msgid "Courses Being Processed"
+msgstr "Μαθήματα υπό επεξεργασία"
+
+#: cms/templates/index.html
+msgid "This course run is currently being created."
+msgstr "Αυτή η σειρά μαθημάτων δημιουργείται αυτήν τη στιγμή."
+
+#. Translators: This is a status message, used to inform the user of
+#. what the system is doing. This status means that the user has
+#. requested to re-run an existing course, and the system is currently
+#. in the process of duplicating and configuring the existing course
+#. so that it can be re-run.
+#: cms/templates/index.html
+msgid "Configuring as re-run"
+msgstr "Διαμόρφωση ως επανεκτέλεση"
+
+#: cms/templates/index.html
+msgid ""
+"The new course will be added to your course list in 5-10 minutes. Return to "
+"this page or {link_start}refresh it{link_end} to update the course list. The"
+" new course will need some manual configuration."
+msgstr ""
+"Το νέο μάθημα θα προστεθεί στη λίστα μαθημάτων σας σε 5-10 λεπτά. Επιστρέψτε"
+" σε αυτήν τη σελίδα ή {link_start}ανανεώστε την{link_end} για να ενημερώσετε"
+" τη λίστα μαθημάτων. Το νέο μάθημα θα χρειαστεί κάποια χειροκίνητη "
+"διαμόρφωση."
+
+#. Translators: This is a status message for the course re-runs feature.
+#. When a course admin indicates that a course should be re-run, the system
+#. needs to process the request and prepare the new course. The status of
+#. the process will follow this text.
+#: cms/templates/index.html
+msgid "This re-run processing status:"
+msgstr "Η κατάσταση επεξεργασίας αυτής της επανεκτέλεσης:"
+
+#: cms/templates/index.html
+msgid "Configuration Error"
+msgstr "Σφάλμα διαμόρφωσης"
+
+#: cms/templates/index.html
+msgid ""
+"A system error occurred while your course was being processed. Please go to "
+"the original course to try the re-run again, or contact your PM for "
+"assistance."
+msgstr ""
+"Παρουσιάστηκε σφάλμα συστήματος κατά την επεξεργασία του μαθήματός σας. "
+"Πηγαίνετε στο αρχικό μάθημα για να δοκιμάσετε ξανά την επανεκτέλεση ή "
+"επικοινωνήστε με το PM σας για βοήθεια."
+
+#: cms/templates/index.html
+msgid "Archived Courses"
+msgstr "Αρχειοθετημένα μαθήματα"
+
+#: cms/templates/index.html
+msgid "Libraries"
+msgstr "Βιβλιοθήκες"
+
+#: cms/templates/index.html
+msgid "Are you staff on an existing {studio_name} course?"
+msgstr "Είστε προσωπικό σε ένα υπάρχον μάθημα {studio_name};"
+
+#: cms/templates/index.html
+msgid ""
+"The course creator must give you access to the course. Contact the course "
+"creator or administrator for the course you are helping to author."
+msgstr ""
+"Ο δημιουργός του μαθήματος πρέπει να σας παραχωρήσει πρόσβαση στο μάθημα. "
+"Επικοινωνήστε με τον δημιουργό ή τον διαχειριστή του μαθήματος που βοηθάτε "
+"να δημιουργηθεί."
+
+#: cms/templates/index.html
+msgid "Create Your First Course"
+msgstr "Δημιουργήστε το πρώτο σας μάθημα"
+
+#: cms/templates/index.html
+msgid "Your new course is just a click away!"
+msgstr "Το νέο σας μάθημα απλώς με ένα κλίκ! "
+
+#: cms/templates/index.html
+msgid "Becoming a Course Creator in {studio_name}"
+msgstr "Γίνετε δημιουργός μαθημάτων στο {studio_name}"
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team will evaluate your request and provide you feedback within 24 hours "
+"during the work week."
+msgstr ""
+"Το {studio_name} είναι μια φιλοξενούμενη λύση για τους συνεργάτες μας "
+"xConsortium και επιλεγμένους επισκέπτες. Τα μαθήματα για τα οποία είστε "
+"μέλος εμφανίζονται παραπάνω για επεξεργασία, ενώ τα δικαιώματα δημιουργού "
+"μαθημάτων εκχωρούνται από το {platform_name}. Η ομάδα μας θα αξιολογήσει το "
+"αίτημά σας και θα σας παράσχει σχόλια εντός 24 ωρών κατά τη διάρκεια της "
+"εβδομάδας εργασίας."
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status:"
+msgstr "Κατάσταση αιτήματος δημιουργού μαθημάτων:"
+
+#: cms/templates/index.html
+msgid "Request the Ability to Create Courses"
+msgstr "Ζητήστε τη δυνατότητα δημιουργίας μαθημάτων"
+
+#: cms/templates/index.html
+msgid "Your Course Creator Request Status"
+msgstr "Κατάσταση αιτήματος δημιουργού μαθημάτων"
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is has completed evaluating your request."
+msgstr ""
+"Το {studio_name} είναι μια φιλοξενούμενη λύση για τους συνεργάτες μας "
+"xConsortium και επιλεγμένους επισκέπτες. Τα μαθήματα για τα οποία είστε "
+"μέλος εμφανίζονται παραπάνω για επεξεργασία, ενώ τα δικαιώματα δημιουργού "
+"μαθημάτων εκχωρούνται από το {platform_name}. Η ομάδα μας έχει ολοκληρώσει "
+"την αξιολόγηση του αιτήματός σας."
+
+#: cms/templates/index.html
+msgid "Your Course Creator request is:"
+msgstr "Το αίτημά σας για τη δημιουργία μαθημάτων είναι:"
+
+#: cms/templates/index.html
+msgid ""
+"Your request did not meet the criteria/guidelines specified by "
+"{platform_name} Staff."
+msgstr ""
+"Το αίτημά σας δεν πληρούσε τα κριτήρια/οδηγίες που καθορίζονται από το "
+"προσωπικό του {platform_name}."
+
+#: cms/templates/index.html
+msgid ""
+"{studio_name} is a hosted solution for our xConsortium partners and selected"
+" guests. Courses for which you are a team member appear above for you to "
+"edit, while course creator privileges are granted by {platform_name}. Our "
+"team is currently  evaluating your request."
+msgstr ""
+"Το {studio_name} είναι μια φιλοξενούμενη λύση για τους συνεργάτες μας "
+"xConsortium και επιλεγμένους επισκέπτες. Τα μαθήματα για τα οποία είστε "
+"μέλος εμφανίζονται παραπάνω για επεξεργασία, ενώ τα δικαιώματα δημιουργού "
+"μαθημάτων εκχωρούνται από το {platform_name}. Η ομάδα μας αξιολογεί επί του "
+"παρόντος το αίτημά σας."
+
+#: cms/templates/index.html
+msgid ""
+"Your request is currently being reviewed by {platform_name} staff and should"
+" be updated shortly."
+msgstr ""
+"Το αίτημά σας εξετάζεται αυτήν τη στιγμή από το προσωπικό του "
+"{platform_name} και θα πρέπει να ενημερωθεί σύντομα."
+
+#: cms/templates/index.html
+msgid "Were you expecting to see a particular library here?"
+msgstr "Περιμένατε να δείτε μια συγκεκριμένη βιβλιοθήκη εδώ;"
+
+#: cms/templates/index.html
+msgid ""
+"The library creator must give you access to the library. Contact the library"
+" creator or administrator for the library you are helping to author."
+msgstr ""
+"Ο δημιουργός της βιβλιοθήκης πρέπει να σας παραχωρήσει πρόσβαση στη "
+"βιβλιοθήκη. Επικοινωνήστε με τον δημιουργό ή τον διαχειριστή της βιβλιοθήκης"
+" που βοηθάτε να δημιουργηθεί."
+
+#: cms/templates/index.html
+msgid "Create Your First Library"
+msgstr "Δημιουργήστε την πρώτη σας βιβλιοθήκη"
+
+#: cms/templates/index.html
+msgid ""
+"Libraries hold a pool of components that can be re-used across multiple "
+"courses. Create your first library with the click of a button!"
+msgstr ""
+"Οι βιβλιοθήκες διαθέτουν μια ομάδα στοιχείων που μπορούν να "
+"επαναχρησιμοποιηθούν σε πολλαπλά μαθήματα. Δημιουργήστε την πρώτη σας "
+"βιβλιοθήκη με το πάτημα ενός κουμπιού!"
+
+#: cms/templates/index.html
+msgid "New to {studio_name}?"
+msgstr "Νέος/α στο {studio_name}; "
+
+#: cms/templates/index.html
+msgid ""
+"Click Help in the upper-right corner to get more information about the "
+"{studio_name} page you are viewing. You can also use the links at the bottom"
+" of the page to access our continually updated documentation and other "
+"{studio_name} resources."
+msgstr ""
+"Κάντε κλικ στη «Βοήθεια» στην επάνω δεξιά γωνία για να λάβετε περισσότερες "
+"πληροφορίες σχετικά με τη σελίδα {studio_name} που προβάλλετε. Μπορείτε "
+"επίσης να χρησιμοποιήσετε τους συνδέσμους στο κάτω μέρος της σελίδας για να "
+"αποκτήσετε πρόσβαση στην τεκμηρίωσή μας που ενημερώνεται συνεχώς, καθώς και "
+"σε άλλους πόρους του {studio_name}."
+
+#: cms/templates/index.html
+msgid "Getting Started with {studio_name}"
+msgstr "Ξεκινώντας με το {studio_name}"
+
+#: cms/templates/index.html
+msgid "Can I create courses in {studio_name}?"
+msgstr "Μπορώ να δημιουργήσω μαθήματα στο {studio_name};"
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must {link_start}contact "
+"{platform_name} staff to help you create a course{link_end}."
+msgstr ""
+"Για να δημιουργήσετε μαθήματα στο {studio_name}, πρέπει να "
+"{link_start}επικοινωνήσετε με το προσωπικό του {platform_name} για να σας "
+"βοηθήσει να δημιουργήσετε ένα μάθημα{link_end}."
+
+#: cms/templates/index.html
+msgid ""
+"In order to create courses in {studio_name}, you must have course creator "
+"privileges to create your own course."
+msgstr ""
+"Για να δημιουργήσετε μαθήματα στο {studio_name}, πρέπει να έχετε δικαιώματα "
+"δημιουργού μαθημάτων για να δημιουργήσετε το δικό σας μάθημα."
+
+#: cms/templates/index.html
+msgid ""
+"Your request to author courses in {studio_name} has been denied. Please "
+"{link_start}contact {platform_name} Staff with further questions{link_end}."
+msgstr ""
+"Το αίτημά σας για συγγραφή μαθημάτων στο {studio_name} απορρίφθηκε. "
+"{link_start}Επικοινωνήστε με το προσωπικό του {platform_name} για περαιτέρω "
+"ερωτήσεις{link_end}."
+
+#: cms/templates/index.html
+msgid "Thanks for signing up, {name}!"
+msgstr "Ευχαριστούμε για την εγγραφή σας, {name}!"
+
+#: cms/templates/index.html
+msgid "We need to verify your email address"
+msgstr "Πρέπει να επαληθεύσουμε τη διεύθυνση email σας"
+
+#: cms/templates/index.html
+msgid ""
+"Almost there! In order to complete your sign up we need you to verify your "
+"email address ({email}). An activation message and next steps should be "
+"waiting for you there."
+msgstr ""
+"Σχεδόν έτοιμο! Για να ολοκληρώσετε την εγγραφή σας, πρέπει να επαληθεύσετε "
+"τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας ({email}). Ένα μήνυμα "
+"ενεργοποίησης και τα επόμενα βήματα θα πρέπει να σας περιμένουν εκεί."
+
+#: cms/templates/index.html
+msgid "Need help?"
+msgstr "Χρειάζεστε βοήθεια;"
+
+#: cms/templates/index.html
+msgid ""
+"Please check your Junk or Spam folders in case our email isn't in your "
+"INBOX. Still can't find the verification email? Request help via the link "
+"below."
+msgstr ""
+"Ελέγξτε τους φακέλους ανεπιθύμητων μηνυμάτων σε περίπτωση που το email μας "
+"δε βρίσκεται στα Εισερχόμενα σας. Ακόμα δεν μπορείτε να βρείτε το email "
+"επαλήθευσης; Ζητήστε βοήθεια μέσω του παρακάτω συνδέσμου."
+
 #: cms/templates/library.html
 msgid "Content Library"
 msgstr "Βιβλιοθήκη περιεχομένου"
@@ -22499,6 +23039,10 @@ msgstr ""
 msgid "Library User Access"
 msgstr "Πρόσβαση χρήστη βιβλιοθήκης"
 
+#: cms/templates/manage_users_lib.html cms/templates/widgets/header.html
+msgid "User Access"
+msgstr "Πρόσβαση χρήστη"
+
 #: cms/templates/manage_users_lib.html
 msgid "Grant Access to This Library"
 msgstr "Παραχωρήστε πρόσβαση σε αυτήν τη βιβλιοθήκη"
@@ -22564,6 +23108,10 @@ msgstr ""
 #: cms/templates/settings.html
 msgid "Schedule & Details Settings"
 msgstr "Ρυθμίσεις χρονοδιαγράμματος και λεπτομερειών"
+
+#: cms/templates/settings.html cms/templates/widgets/header.html
+msgid "Schedule & Details"
+msgstr "Χρονοδιάγραμμα & Λεπτομέρειες"
 
 #: cms/templates/settings.html
 msgid "Basic Information"
@@ -22851,6 +23399,17 @@ msgstr "Λεπτομέρειες μαθήματος"
 #: cms/templates/settings.html
 msgid "Provide useful information about your course"
 msgstr "Παρέχετε χρήσιμες πληροφορίες για το μάθημά σας"
+
+#: cms/templates/settings.html
+msgid ""
+"Identify the course language here. This is used to assist users find courses"
+" that are taught in a specific language. It is also used to localize the "
+"'From:' field in bulk emails."
+msgstr ""
+"Προσδιορίστε τη γλώσσα του μαθήματος εδώ. Αυτό χρησιμοποιείται για να "
+"βοηθήσει τους χρήστες να βρουν μαθήματα που διδάσκονται σε μια συγκεκριμένη "
+"γλώσσα. Χρησιμοποιείται επίσης για τον εντοπισμό του πεδίου «Από:» σε μαζικά"
+" μηνύματα ηλεκτρονικού ταχυδρομείου."
 
 #: cms/templates/settings.html
 msgid "Introducing Your Course"
@@ -23352,6 +23911,22 @@ msgstr ""
 "εξετάσεις και να προσδιορίσετε τη βαρύτητα του κάθε τύπου εργασίας, ως προς "
 "τη συνολική βαθμολογία του φοιτητή."
 
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Expand or Collapse"
+msgstr "Ανάπτυξη ή Σύμπτυξη"
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Access Settings"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "Set Access"
+msgstr ""
+
+#: cms/templates/studio_xblock_wrapper.html
+msgid "This block contains multiple components."
+msgstr "Αυτή η συστοιχία περιέχει πολλαπλά στοιχεία."
+
 #: cms/templates/textbooks.html cms/templates/widgets/header.html
 msgid "Pages & Resources"
 msgstr "Σελίδες &amp; Πόροι"
@@ -23393,6 +23968,10 @@ msgstr ""
 #: cms/templates/textbooks.html
 msgid "Learn more about textbooks"
 msgstr "Μάθετε περισσότερα για τα εγχειρίδια μαθημάτων"
+
+#: cms/templates/videos_index.html cms/templates/widgets/header.html
+msgid "Video Uploads"
+msgstr "Μεταφορτώσεις βίντεο"
 
 #: cms/templates/videos_index.html
 msgid "Course Video Settings"
@@ -23700,6 +24279,50 @@ msgstr "Αίτημα διευκόλυνσης πρόσβασης"
 #: cms/templates/widgets/footer.html
 msgid "LMS"
 msgstr "LMS"
+
+#: cms/templates/widgets/header.html
+msgid "Current Course:"
+msgstr "Τρέχον Μάθημα:"
+
+#: cms/templates/widgets/header.html
+msgid "Course Navigation"
+msgstr "Πλοήγηση μαθήματος"
+
+#: cms/templates/widgets/header.html
+msgid "Outline"
+msgstr "Σχεδιάγραμμα"
+
+#: cms/templates/widgets/header.html
+msgid "Publisher"
+msgstr "Εκδότης"
+
+#: cms/templates/widgets/header.html
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: cms/templates/widgets/header.html
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: cms/templates/widgets/header.html
+msgid "Current Library:"
+msgstr "Τρέχουσα βιβλιοθήκη:"
+
+#: cms/templates/widgets/header.html
+msgid "Language preference"
+msgstr "Προτίμηση γλώσσας"
+
+#: cms/templates/widgets/header.html
+msgid "Account Navigation"
+msgstr "Πλοήγηση λογαριασμού"
+
+#: cms/templates/widgets/header.html
+msgid "Contextual Online Help"
+msgstr "Ηλεκτρονική βοήθεια με βάση τα συμφραζόμενα"
+
+#: cms/templates/widgets/header.html
+msgid "Sign Up"
+msgstr "Εγγραφή"
 
 #: cms/templates/widgets/metadata-edit.html
 msgid "Launch Latex Source Compiler"
@@ -25025,21 +25648,6 @@ msgstr ""
 msgid "Click on the \"Start Proctored Exam\" button below to continue."
 msgstr ""
 
-#~ msgid "Pending"
-#~ msgstr "Σε αναμονή"
-
-#~ msgid "Organization"
-#~ msgstr "Οργανισμός"
-
-#~ msgid "Library"
-#~ msgstr "Βιβλιοθήκη"
-
-#~ msgid "Group Configurations"
-#~ msgstr "Ρυθμίσεις ομάδων"
-
-#~ msgid "Cancel"
-#~ msgstr "Ακύρωση"
-
 #~ msgid ""
 #~ "We keep a log of old e-mails, so if this request was unintentional, we can "
 #~ "investigate."
@@ -25059,23 +25667,8 @@ msgstr ""
 #~ msgid "News"
 #~ msgstr "Νέα"
 
-#~ msgid "Textbooks"
-#~ msgstr "Εγχειρίδια μαθήματος"
-
 #~ msgid "Mailing Address"
 #~ msgstr "Ταχυδρομική διεύθυνση"
-
-#~ msgid "Certificates"
-#~ msgstr "Βεβαιώσεις"
-
-#~ msgid "Sign In"
-#~ msgstr "Σύνδεση"
-
-#~ msgid "Denied"
-#~ msgstr "Απορριφθέν"
-
-#~ msgid "Course Run"
-#~ msgstr "Περίοδος Μαθήματος"
 
 #~ msgid "Dismiss"
 #~ msgstr "Απόρριψη"
@@ -25102,539 +25695,14 @@ msgstr ""
 #~ msgid "Our mailing address is"
 #~ msgstr "Η διεύθυνση του ηλεκτρονικού ταχυδρομείου μας είναι"
 
-#~ msgid "Grading"
-#~ msgstr "Βαθμολογία"
-
-#~ msgid "Course Team"
-#~ msgstr "Ομάδα μαθήματος"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Προχωρημένες ρυθμίσεις"
-
-#~ msgid "Proctored Exam Settings"
-#~ msgstr "Προστατευμένες ρυθμίσεις εξετάσεων"
-
-#~ msgid "Checklists"
-#~ msgstr "Λίστες ελέγχου"
-
-#~ msgid "Tools"
-#~ msgstr "Εργαλεία"
-
-#~ msgid "Duplicate"
-#~ msgstr "Αντιγραφή"
-
-#~ msgid "Move"
-#~ msgstr "Μετακίνηση"
-
-#~ msgid "Drag to reorder"
-#~ msgstr "Σύρετε για αναδιάταξη"
-
-#~ msgid "Page Actions"
-#~ msgstr "Ενέργειες σελίδας"
-
-#~ msgid "Create a Course Rerun of:"
-#~ msgstr "Δημιουργία επανεκτέλεσης μαθήματος από:"
-
-#~ msgid "Create a re-run of a course"
-#~ msgstr "Δημιουργήστε μια επανεκτέλεση ενός μαθήματος"
-
-#~ msgid "You are creating a re-run from:"
-#~ msgstr "Δημιουργείτε μια επανάληψη από:"
-
-#~ msgid ""
-#~ "Provide identifying information for this re-run of the course. The original "
-#~ "course is not affected in any way by a re-run."
-#~ msgstr ""
-#~ "Παρέχετε πληροφορίες αναγνώρισης για αυτήν την επανεκτέλεση του μαθήματος. "
-#~ "Το αρχικό μάθημα δεν επηρεάζεται με κανέναν τρόπο από μια επανεκτέλεση."
-
-#~ msgid ""
-#~ "Note: Together, the organization, course number, and course run must "
-#~ "uniquely identify this new course instance."
-#~ msgstr ""
-#~ "Σημείωση: Μαζί, ο οργανισμός, ο αριθμός μαθήματος και η εκτέλεση του "
-#~ "μαθήματος πρέπει να προσδιορίζουν μοναδικά αυτό τη νέα υπόσταση μαθήματος."
-
-#~ msgid "Required Information to Create a re-run of a course"
-#~ msgstr ""
-#~ "Απαιτούμενες πληροφορίες για τη δημιουργία επανεκτέλεσης ενός μαθήματος"
-
-#~ msgid "e.g. Introduction to Computer Science"
-#~ msgstr "π.χ. Εισαγωγή στην επιστήμη των υπολογιστών"
-
-#~ msgid ""
-#~ "The public display name for the new course. (This name is often the same as "
-#~ "the original course name.)"
-#~ msgstr ""
-#~ "Το δημόσια εμφανιζόμενο όνομα για το νέο μάθημα. (Αυτό το όνομα είναι συχνά "
-#~ "το ίδιο με το αρχικό όνομα του μαθήματος.)"
-
-#~ msgid "e.g. UniversityX or OrganizationX"
-#~ msgstr "π.χ. ΠανεπιστήμιοX ή ΟργανισμόςΧ"
-
-#~ msgid ""
-#~ "The name of the organization sponsoring the new course. (This name is often "
-#~ "the same as the original organization name.)"
-#~ msgstr ""
-#~ "Το όνομα του οργανισμού που χορηγεί το νέο μάθημα. (Αυτό το όνομα είναι "
-#~ "συχνά το ίδιο με το αρχικό όνομα του οργανισμού.)"
-
-#~ msgid "Note: No spaces or special characters are allowed."
-#~ msgstr "Σημείωση: Δεν επιτρέπονται κενά ή ειδικοί χαρακτήρες."
-
-#~ msgid "e.g. CS101"
-#~ msgstr "π.χ CS101"
-
-#~ msgid ""
-#~ "The unique number that identifies the new course within the organization.  "
-#~ "(This number will be the same as the original course number and cannot be "
-#~ "changed.)"
-#~ msgstr ""
-#~ "Ο μοναδικός αριθμός που προσδιορίζει το νέο μάθημα εντός του οργανισμού. "
-#~ "(Αυτός ο αριθμός θα είναι ίδιος με τον αρχικό αριθμό μαθήματος και δεν "
-#~ "μπορεί να αλλάξει.)"
-
-#~ msgid "e.g. 2014_T1"
-#~ msgstr "π.χ 2014_Τ1"
-
-#~ msgid ""
-#~ "The term in which the new course will run. (This value is often different "
-#~ "than the original course run value.)"
-#~ msgstr ""
-#~ "Ο όρος μέσα στον οποίο θα τρέξει το νέο μάθημα. (Αυτή η τιμή είναι συχνά "
-#~ "διαφορετική από την αρχική τιμή εκτέλεσης του μαθήματος.)"
-
-#~ msgid "Create Re-run"
-#~ msgstr "Δημιουργία επανεκτέλεσης"
-
-#~ msgid "When will my course re-run start?"
-#~ msgstr "Πότε θα ξεκινήσει η επανεκτέλεση των μαθημάτων μου;"
-
-#~ msgid "The new course is set to start on January 1, 2030 at midnight (UTC)."
-#~ msgstr ""
-#~ "Το νέο μάθημα έχει οριστεί να ξεκινήσει την 1η Ιανουαρίου 2030 τα μεσάνυχτα "
-#~ "(UTC)."
-
-#~ msgid "What transfers from the original course?"
-#~ msgstr "Τι μεταφέρεται από το αρχικό μάθημα;"
-
-#~ msgid ""
-#~ "The new course has the same course outline and content as the original "
-#~ "course. All problems, videos, announcements, and other files are duplicated "
-#~ "to the new course."
-#~ msgstr ""
-#~ "Το νέο μάθημα έχει το ίδιο σχεδιάγραμμα και περιεχόμενο με το αρχικό μάθημα."
-#~ " Όλα τα προβλήματα, τα βίντεο, οι ανακοινώσεις και άλλα αρχεία αντιγράφονται"
-#~ " στο νέο μάθημα."
-
-#~ msgid "What does not transfer from the original course?"
-#~ msgstr "Τι δεν μεταφέρεται από το αρχικό μάθημα;"
-
-#~ msgid ""
-#~ "You are the only member of the new course's staff. No students are enrolled "
-#~ "in the course, and there is no student data. There is no content in the "
-#~ "discussion topics or wiki."
-#~ msgstr ""
-#~ "Είστε το μόνο μέλος του προσωπικού του νέου μαθήματος. Δεν έχουν εγγραφεί "
-#~ "σπουδαστές στο μάθημα και δεν υπάρχουν στοιχεία σπουδαστών. Δεν υπάρχει "
-#~ "περιεχόμενο στα θέματα συζήτησης ή στο wiki."
-
-#~ msgid "Learn more about Course Re-runs"
-#~ msgstr "Μάθετε περισσότερα για τις επανεκτελέσεις μαθημάτων"
-
 #~ msgid "Course Outline"
 #~ msgstr "Υλικό μαθήματος"
 
 #~ msgid "Warning"
 #~ msgstr "Προειδοποίηση"
 
-#~ msgid "Pages"
-#~ msgstr "Σελίδες"
-
-#~ msgid "Export to Git"
-#~ msgstr "Εξαγωγή στο Git"
-
 #~ msgid "{studio_name} Home"
 #~ msgstr "Αρχική σελίδα {studio_name}"
-
-#~ msgid "New Course"
-#~ msgstr "Νέο Μάθημα"
-
-#~ msgid "Email staff to create course"
-#~ msgstr "Στείλτε email στο προσωπικό για τη δημιουργία μαθημάτων"
-
-#~ msgid "New Library"
-#~ msgstr "Νέα βιβλιοθήκη"
-
-#~ msgid "Please correct the highlighted fields below."
-#~ msgstr "Διορθώστε τα επισημασμένα πεδία παρακάτω."
-
-#~ msgid "Create a New Course"
-#~ msgstr "Δημιουργία Μαθήματος"
-
-#~ msgid "Required Information to Create a New Course"
-#~ msgstr "Απαιτούμενες πληροφορίες για τη δημιουργία νέου μαθήματος"
-
-#~ msgid ""
-#~ "The public display name for your course. This cannot be changed, but you can"
-#~ " set a different display name in Advanced Settings later."
-#~ msgstr ""
-#~ "Δηλώστε το εμφανιζόμενο όνομα του μαθήματός σας. Δεν μπορεί να αλλαχτεί παρά"
-#~ " μόνο μέσω της επιλογής Advanced Settings."
-
-#~ msgid ""
-#~ "The name of the organization sponsoring the course. {strong_start}Note: The "
-#~ "organization name is part of the course URL.{strong_end} This cannot be "
-#~ "changed, but you can set a different display name in Advanced Settings "
-#~ "later."
-#~ msgstr ""
-#~ "Το όνομα του οργανισμού που χορηγεί το μάθημα. {strong_start}Σημείωση: Το "
-#~ "όνομα του οργανισμού αποτελεί μέρος της διεύθυνσης URL του "
-#~ "μαθήματος.{strong_end} Αυτό δεν μπορεί να αλλάξει, αλλά μπορείτε να ορίσετε "
-#~ "ένα διαφορετικό εμφανιζόμενο όνομα αργότερα στις Σύνθετες ρυθμίσεις."
-
-#~ msgid ""
-#~ "The unique number that identifies your course within your organization. "
-#~ "{strong_start}Note: This is part of your course URL, so no spaces or special"
-#~ " characters are allowed and it cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "Ο μοναδικός αριθμός που προσδιορίζει το μάθημά σας στον οργανισμό σας. "
-#~ "{strong_start}Σημείωση: Αυτό είναι μέρος της διεύθυνσης URL του μαθήματος "
-#~ "σας, επομένως δεν επιτρέπονται κενά ή ειδικοί χαρακτήρες και δεν είναι "
-#~ "δυνατή η αλλαγή.{strong_end}"
-
-#~ msgid ""
-#~ "The term in which your course will run. {strong_start}Note: This is part of "
-#~ "your course URL, so no spaces or special characters are allowed and it "
-#~ "cannot be changed.{strong_end}"
-#~ msgstr ""
-#~ "Ο όρος κατά τον οποίο θα τρέξει το μάθημά σας. {strong_start}Σημείωση: Αυτό "
-#~ "είναι μέρος της διεύθυνσης URL του μαθήματος σας, επομένως δεν επιτρέπονται "
-#~ "κενά ή ειδικοί χαρακτήρες και δεν είναι δυνατή η αλλαγή.{strong_end}"
-
-#~ msgid "Create"
-#~ msgstr "Δημιουργία"
-
-#~ msgid "Create a New Library"
-#~ msgstr "Δημιουργία νέας βιβλιοθήκης"
-
-#~ msgid "Required Information to Create a New Library"
-#~ msgstr "Απαιτούμενες πληροφορίες για τη δημιουργία νέας βιβλιοθήκης"
-
-#~ msgid "Library Name"
-#~ msgstr "Όνομα βιβλιοθήκης"
-
-#~ msgid "e.g. Computer Science Problems"
-#~ msgstr "π.χ. Προβλήματα επιστήμης της Πληροφορικής"
-
-#~ msgid "The public display name for your library."
-#~ msgstr "Το δημόσια εμφανιζόμενο όνομα για τη βιβλιοθήκη σας."
-
-#~ msgid "The public organization name for your library."
-#~ msgstr "Το δημόσιο όνομα οργανισμού για τη βιβλιοθήκη σας."
-
-#~ msgid "This cannot be changed."
-#~ msgstr "Αυτό δεν μπορεί να αλλάξει."
-
-#~ msgid "Library Code"
-#~ msgstr "Κωδικός βιβλιοθήκης"
-
-#~ msgid "e.g. CSPROB"
-#~ msgstr "π.χ. CSPROB"
-
-#~ msgid ""
-#~ "The unique code that identifies this library. {strong_start}Note: This is "
-#~ "part of your library URL, so no spaces or special characters are "
-#~ "allowed.{strong_end} This cannot be changed."
-#~ msgstr ""
-#~ "Ο μοναδικός κωδικός που προσδιορίζει αυτήν τη βιβλιοθήκη. "
-#~ "{strong_start}Σημείωση: Αυτό είναι μέρος της διεύθυνσης URL της βιβλιοθήκης "
-#~ "σας, επομένως δεν επιτρέπονται κενά ή ειδικοί χαρακτήρες.{strong_end} Αυτό "
-#~ "δεν μπορεί να αλλάξει."
-
-#~ msgid "Organization and Library Settings"
-#~ msgstr "Ρυθμίσεις Οργανισμού και Βιβλιοθήκης"
-
-#~ msgid "Show all courses in organization:"
-#~ msgstr "Εμφάνιση όλων των μαθημάτων στον οργανισμό:"
-
-#~ msgid "For example, MITx"
-#~ msgstr "Για παράδειγμα, MITx"
-
-#~ msgid "Courses Being Processed"
-#~ msgstr "Μαθήματα υπό επεξεργασία"
-
-#~ msgid "This course run is currently being created."
-#~ msgstr "Αυτή η σειρά μαθημάτων δημιουργείται αυτήν τη στιγμή."
-
-#~ msgid "Configuring as re-run"
-#~ msgstr "Διαμόρφωση ως επανεκτέλεση"
-
-#~ msgid ""
-#~ "The new course will be added to your course list in 5-10 minutes. Return to "
-#~ "this page or {link_start}refresh it{link_end} to update the course list. The"
-#~ " new course will need some manual configuration."
-#~ msgstr ""
-#~ "Το νέο μάθημα θα προστεθεί στη λίστα μαθημάτων σας σε 5-10 λεπτά. Επιστρέψτε"
-#~ " σε αυτήν τη σελίδα ή {link_start}ανανεώστε την{link_end} για να ενημερώσετε"
-#~ " τη λίστα μαθημάτων. Το νέο μάθημα θα χρειαστεί κάποια χειροκίνητη "
-#~ "διαμόρφωση."
-
-#~ msgid "This re-run processing status:"
-#~ msgstr "Η κατάσταση επεξεργασίας αυτής της επανεκτέλεσης:"
-
-#~ msgid "Configuration Error"
-#~ msgstr "Σφάλμα διαμόρφωσης"
-
-#~ msgid ""
-#~ "A system error occurred while your course was being processed. Please go to "
-#~ "the original course to try the re-run again, or contact your PM for "
-#~ "assistance."
-#~ msgstr ""
-#~ "Παρουσιάστηκε σφάλμα συστήματος κατά την επεξεργασία του μαθήματός σας. "
-#~ "Πηγαίνετε στο αρχικό μάθημα για να δοκιμάσετε ξανά την επανεκτέλεση ή "
-#~ "επικοινωνήστε με το PM σας για βοήθεια."
-
-#~ msgid "Archived Courses"
-#~ msgstr "Αρχειοθετημένα μαθήματα"
-
-#~ msgid "Libraries"
-#~ msgstr "Βιβλιοθήκες"
-
-#~ msgid "Are you staff on an existing {studio_name} course?"
-#~ msgstr "Είστε προσωπικό σε ένα υπάρχον μάθημα {studio_name};"
-
-#~ msgid ""
-#~ "The course creator must give you access to the course. Contact the course "
-#~ "creator or administrator for the course you are helping to author."
-#~ msgstr ""
-#~ "Ο δημιουργός του μαθήματος πρέπει να σας παραχωρήσει πρόσβαση στο μάθημα. "
-#~ "Επικοινωνήστε με τον δημιουργό ή τον διαχειριστή του μαθήματος που βοηθάτε "
-#~ "να δημιουργηθεί."
-
-#~ msgid "Create Your First Course"
-#~ msgstr "Δημιουργήστε το πρώτο σας μάθημα"
-
-#~ msgid "Your new course is just a click away!"
-#~ msgstr "Το νέο σας μάθημα απλώς με ένα κλίκ! "
-
-#~ msgid "Becoming a Course Creator in {studio_name}"
-#~ msgstr "Γίνετε δημιουργός μαθημάτων στο {studio_name}"
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team will evaluate your request and provide you feedback within 24 hours "
-#~ "during the work week."
-#~ msgstr ""
-#~ "Το {studio_name} είναι μια φιλοξενούμενη λύση για τους συνεργάτες μας "
-#~ "xConsortium και επιλεγμένους επισκέπτες. Τα μαθήματα για τα οποία είστε "
-#~ "μέλος εμφανίζονται παραπάνω για επεξεργασία, ενώ τα δικαιώματα δημιουργού "
-#~ "μαθημάτων εκχωρούνται από το {platform_name}. Η ομάδα μας θα αξιολογήσει το "
-#~ "αίτημά σας και θα σας παράσχει σχόλια εντός 24 ωρών κατά τη διάρκεια της "
-#~ "εβδομάδας εργασίας."
-
-#~ msgid "Your Course Creator Request Status:"
-#~ msgstr "Κατάσταση αιτήματος δημιουργού μαθημάτων:"
-
-#~ msgid "Request the Ability to Create Courses"
-#~ msgstr "Ζητήστε τη δυνατότητα δημιουργίας μαθημάτων"
-
-#~ msgid "Your Course Creator Request Status"
-#~ msgstr "Κατάσταση αιτήματος δημιουργού μαθημάτων"
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team is has completed evaluating your request."
-#~ msgstr ""
-#~ "Το {studio_name} είναι μια φιλοξενούμενη λύση για τους συνεργάτες μας "
-#~ "xConsortium και επιλεγμένους επισκέπτες. Τα μαθήματα για τα οποία είστε "
-#~ "μέλος εμφανίζονται παραπάνω για επεξεργασία, ενώ τα δικαιώματα δημιουργού "
-#~ "μαθημάτων εκχωρούνται από το {platform_name}. Η ομάδα μας έχει ολοκληρώσει "
-#~ "την αξιολόγηση του αιτήματός σας."
-
-#~ msgid "Your Course Creator request is:"
-#~ msgstr "Το αίτημά σας για τη δημιουργία μαθημάτων είναι:"
-
-#~ msgid ""
-#~ "Your request did not meet the criteria/guidelines specified by "
-#~ "{platform_name} Staff."
-#~ msgstr ""
-#~ "Το αίτημά σας δεν πληρούσε τα κριτήρια/οδηγίες που καθορίζονται από το "
-#~ "προσωπικό του {platform_name}."
-
-#~ msgid ""
-#~ "{studio_name} is a hosted solution for our xConsortium partners and selected"
-#~ " guests. Courses for which you are a team member appear above for you to "
-#~ "edit, while course creator privileges are granted by {platform_name}. Our "
-#~ "team is currently  evaluating your request."
-#~ msgstr ""
-#~ "Το {studio_name} είναι μια φιλοξενούμενη λύση για τους συνεργάτες μας "
-#~ "xConsortium και επιλεγμένους επισκέπτες. Τα μαθήματα για τα οποία είστε "
-#~ "μέλος εμφανίζονται παραπάνω για επεξεργασία, ενώ τα δικαιώματα δημιουργού "
-#~ "μαθημάτων εκχωρούνται από το {platform_name}. Η ομάδα μας αξιολογεί επί του "
-#~ "παρόντος το αίτημά σας."
-
-#~ msgid ""
-#~ "Your request is currently being reviewed by {platform_name} staff and should"
-#~ " be updated shortly."
-#~ msgstr ""
-#~ "Το αίτημά σας εξετάζεται αυτήν τη στιγμή από το προσωπικό του "
-#~ "{platform_name} και θα πρέπει να ενημερωθεί σύντομα."
-
-#~ msgid "Were you expecting to see a particular library here?"
-#~ msgstr "Περιμένατε να δείτε μια συγκεκριμένη βιβλιοθήκη εδώ;"
-
-#~ msgid ""
-#~ "The library creator must give you access to the library. Contact the library"
-#~ " creator or administrator for the library you are helping to author."
-#~ msgstr ""
-#~ "Ο δημιουργός της βιβλιοθήκης πρέπει να σας παραχωρήσει πρόσβαση στη "
-#~ "βιβλιοθήκη. Επικοινωνήστε με τον δημιουργό ή τον διαχειριστή της βιβλιοθήκης"
-#~ " που βοηθάτε να δημιουργηθεί."
-
-#~ msgid "Create Your First Library"
-#~ msgstr "Δημιουργήστε την πρώτη σας βιβλιοθήκη"
-
-#~ msgid ""
-#~ "Libraries hold a pool of components that can be re-used across multiple "
-#~ "courses. Create your first library with the click of a button!"
-#~ msgstr ""
-#~ "Οι βιβλιοθήκες διαθέτουν μια ομάδα στοιχείων που μπορούν να "
-#~ "επαναχρησιμοποιηθούν σε πολλαπλά μαθήματα. Δημιουργήστε την πρώτη σας "
-#~ "βιβλιοθήκη με το πάτημα ενός κουμπιού!"
-
-#~ msgid "New to {studio_name}?"
-#~ msgstr "Νέος/α στο {studio_name}; "
-
-#~ msgid ""
-#~ "Click Help in the upper-right corner to get more information about the "
-#~ "{studio_name} page you are viewing. You can also use the links at the bottom"
-#~ " of the page to access our continually updated documentation and other "
-#~ "{studio_name} resources."
-#~ msgstr ""
-#~ "Κάντε κλικ στη «Βοήθεια» στην επάνω δεξιά γωνία για να λάβετε περισσότερες "
-#~ "πληροφορίες σχετικά με τη σελίδα {studio_name} που προβάλλετε. Μπορείτε "
-#~ "επίσης να χρησιμοποιήσετε τους συνδέσμους στο κάτω μέρος της σελίδας για να "
-#~ "αποκτήσετε πρόσβαση στην τεκμηρίωσή μας που ενημερώνεται συνεχώς, καθώς και "
-#~ "σε άλλους πόρους του {studio_name}."
-
-#~ msgid "Getting Started with {studio_name}"
-#~ msgstr "Ξεκινώντας με το {studio_name}"
-
-#~ msgid "Can I create courses in {studio_name}?"
-#~ msgstr "Μπορώ να δημιουργήσω μαθήματα στο {studio_name};"
-
-#~ msgid ""
-#~ "In order to create courses in {studio_name}, you must {link_start}contact "
-#~ "{platform_name} staff to help you create a course{link_end}."
-#~ msgstr ""
-#~ "Για να δημιουργήσετε μαθήματα στο {studio_name}, πρέπει να "
-#~ "{link_start}επικοινωνήσετε με το προσωπικό του {platform_name} για να σας "
-#~ "βοηθήσει να δημιουργήσετε ένα μάθημα{link_end}."
-
-#~ msgid ""
-#~ "In order to create courses in {studio_name}, you must have course creator "
-#~ "privileges to create your own course."
-#~ msgstr ""
-#~ "Για να δημιουργήσετε μαθήματα στο {studio_name}, πρέπει να έχετε δικαιώματα "
-#~ "δημιουργού μαθημάτων για να δημιουργήσετε το δικό σας μάθημα."
-
-#~ msgid ""
-#~ "Your request to author courses in {studio_name} has been denied. Please "
-#~ "{link_start}contact {platform_name} Staff with further questions{link_end}."
-#~ msgstr ""
-#~ "Το αίτημά σας για συγγραφή μαθημάτων στο {studio_name} απορρίφθηκε. "
-#~ "{link_start}Επικοινωνήστε με το προσωπικό του {platform_name} για περαιτέρω "
-#~ "ερωτήσεις{link_end}."
-
-#~ msgid "Thanks for signing up, {name}!"
-#~ msgstr "Ευχαριστούμε για την εγγραφή σας, {name}!"
-
-#~ msgid "We need to verify your email address"
-#~ msgstr "Πρέπει να επαληθεύσουμε τη διεύθυνση email σας"
-
-#~ msgid ""
-#~ "Almost there! In order to complete your sign up we need you to verify your "
-#~ "email address ({email}). An activation message and next steps should be "
-#~ "waiting for you there."
-#~ msgstr ""
-#~ "Σχεδόν έτοιμο! Για να ολοκληρώσετε την εγγραφή σας, πρέπει να επαληθεύσετε "
-#~ "τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας ({email}). Ένα μήνυμα "
-#~ "ενεργοποίησης και τα επόμενα βήματα θα πρέπει να σας περιμένουν εκεί."
-
-#~ msgid "Need help?"
-#~ msgstr "Χρειάζεστε βοήθεια;"
-
-#~ msgid ""
-#~ "Please check your Junk or Spam folders in case our email isn't in your "
-#~ "INBOX. Still can't find the verification email? Request help via the link "
-#~ "below."
-#~ msgstr ""
-#~ "Ελέγξτε τους φακέλους ανεπιθύμητων μηνυμάτων σε περίπτωση που το email μας "
-#~ "δε βρίσκεται στα Εισερχόμενα σας. Ακόμα δεν μπορείτε να βρείτε το email "
-#~ "επαλήθευσης; Ζητήστε βοήθεια μέσω του παρακάτω συνδέσμου."
-
-#~ msgid "User Access"
-#~ msgstr "Πρόσβαση χρήστη"
-
-#~ msgid "Schedule & Details"
-#~ msgstr "Χρονοδιάγραμμα & Λεπτομέρειες"
-
-#~ msgid ""
-#~ "Identify the course language here. This is used to assist users find courses"
-#~ " that are taught in a specific language. It is also used to localize the "
-#~ "'From:' field in bulk emails."
-#~ msgstr ""
-#~ "Προσδιορίστε τη γλώσσα του μαθήματος εδώ. Αυτό χρησιμοποιείται για να "
-#~ "βοηθήσει τους χρήστες να βρουν μαθήματα που διδάσκονται σε μια συγκεκριμένη "
-#~ "γλώσσα. Χρησιμοποιείται επίσης για τον εντοπισμό του πεδίου «Από:» σε μαζικά"
-#~ " μηνύματα ηλεκτρονικού ταχυδρομείου."
-
-#~ msgid "Expand or Collapse"
-#~ msgstr "Ανάπτυξη ή Σύμπτυξη"
-
-#~ msgid "This block contains multiple components."
-#~ msgstr "Αυτή η συστοιχία περιέχει πολλαπλά στοιχεία."
-
-#~ msgid "Video Uploads"
-#~ msgstr "Μεταφορτώσεις βίντεο"
-
-#~ msgid "Current Course:"
-#~ msgstr "Τρέχον Μάθημα:"
-
-#~ msgid "Course Navigation"
-#~ msgstr "Πλοήγηση μαθήματος"
-
-#~ msgid "Outline"
-#~ msgstr "Σχεδιάγραμμα"
-
-#~ msgid "Publisher"
-#~ msgstr "Εκδότης"
-
-#~ msgid "Import"
-#~ msgstr "Εισαγωγή"
-
-#~ msgid "Export"
-#~ msgstr "Εξαγωγή"
-
-#~ msgid "Current Library:"
-#~ msgstr "Τρέχουσα βιβλιοθήκη:"
-
-#~ msgid "Language preference"
-#~ msgstr "Προτίμηση γλώσσας"
-
-#~ msgid "Account Navigation"
-#~ msgstr "Πλοήγηση λογαριασμού"
-
-#~ msgid "Contextual Online Help"
-#~ msgstr "Ηλεκτρονική βοήθεια με βάση τα συμφραζόμενα"
-
-#~ msgid "Sign Up"
-#~ msgstr "Εγγραφή"
 
 #~ msgid ""
 #~ "Showing all matching content eligible to be added into {display_name}. Each "
