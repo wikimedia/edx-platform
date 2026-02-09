@@ -4,14 +4,14 @@ from django.dispatch import receiver
 from lms.djangoapps.instructor_task.models import InstructorTask
 from openedx.features.wikimedia_features.admin_dashboard.models import AdminReportTask
 from openedx.features.wikimedia_features.admin_dashboard.tasks import send_report_ready_email_task
-from openedx.features.wikimedia_features.admin_dashboard.utils import get_report_tab_link
+from openedx.features.wikimedia_features.admin_dashboard.utils import get_report_tab_link, get_instructor_tab_link
 from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
 
 from celery.states import SUCCESS
 
 from opaque_keys import InvalidKeyError
 
-def send_report_ready_email(instance):
+def send_report_ready_email(instance, report_link ):
     """Send email to the user who requesed the report
 
     Args:
@@ -44,7 +44,7 @@ def send_report_ready_email(instance):
 
     email_msg = 'The "{}" report you requested for {} is ready.'.format(report_type, course_msg)
     data = {
-        "report_link": get_report_tab_link(),
+        "report_link": report_link,
         "email_msg": email_msg
     }
     send_report_ready_email_task.delay("report_ready", data, "", [email])
@@ -55,7 +55,7 @@ def send_report_ready_email(instance):
 def send_email_when_report_ready(sender, instance, created, **kwargs):
 
     if instance.task_state ==  SUCCESS:
-        send_report_ready_email(instance)
+        send_report_ready_email(instance, get_report_tab_link() )
 
 
 @receiver(post_save, sender=InstructorTask)
@@ -69,4 +69,4 @@ def send_email_when_report_ready_instructor(sender, instance, created, **kwargs)
         ]
 
     if instance.task_state ==  SUCCESS and instance.task_type in admin_report_task_types:
-        send_report_ready_email(instance)
+        send_report_ready_email(instance, get_instructor_tab_link(instance.course_id))
