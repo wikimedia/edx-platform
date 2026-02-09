@@ -60,3 +60,19 @@ def list_report_downloads_links(course_id="all_courses", report_name=None):
 def get_report_tab_link():
     lms_root_url = settings.LMS_ROOT_URL
     return urljoin(lms_root_url, reverse('admin_dashboard:course_reports'))
+
+def get_instructor_tab_link(course_id):
+    """
+    Build Instructor → Data Download tab link for a course.
+
+    course_id: CourseLocator
+    """
+    locator = course_id
+
+    course_key_url = (
+        f"course-v1:{locator.org}+{locator.course}+{locator.run}"
+    )
+
+    path = f"/courses/{course_key_url}/instructor#view-data_download"
+
+    return urljoin(settings.LMS_ROOT_URL, path)
