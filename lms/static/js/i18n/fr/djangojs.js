@@ -1363,7 +1363,7 @@
     "Onboarding Expired": "L'int\u00e9gration a expir\u00e9",
     "Onboarding Failed": "L'int\u00e9gration a \u00e9chou\u00e9",
     "Onboarding Missing": "Int\u00e9gration manquante",
-    "Onboarding Opens": "Prises en compte ouvertes",
+    "Onboarding Opens": "Accueil des participants",
     "Onboarding Past Due": "Int\u00e9gration en retard",
     "Onboarding Pending": "Int\u00e9gration en attente",
     "Onboarding Status": "\u00c9tat de prise en compte",
