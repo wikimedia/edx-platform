@@ -1,5 +1,5 @@
 """
-Django admin command to send untranslated data to Meta Wiki.
+Django admin command to fetch translated data to edX from Meta.
 """
 import os
 import asyncio
@@ -27,7 +27,7 @@ os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 class Command(BaseCommand):
     """
-    This command will check and send updated block strings to meta server for translations.
+    This command will check and fetch updated block strings from meta server for translations.
 
         $ ./manage.py cms sync_translated_strings_to_edx_from_meta
         It will only show all blocks that are ready to fetched from meta.
@@ -325,9 +325,11 @@ class Command(BaseCommand):
         ]
         """
         self._UPDATED_TRANSLATIONS = []
+        failed_count = 0
         for response in responses:
             if not response:
-                continue;
+                failed_count += 1
+                continue
 
             response_source_block = response.get('response_source_block')
             target_language_code = response.get('mclanguage')
@@ -336,16 +338,18 @@ class Command(BaseCommand):
                 target_language_code
             )
 
-            if not response_source_block or not response_source_block or not response_source_block or not target_block_id:
-                log.error("Error in updating translations in db due to invalid response or data_dict.")
+            if not response_source_block or not target_language_code or not response_data or not target_block_id:
                 log.error(
-                    "Response details => response_source_block: {}, target_language_code: {}, response_data: {}".format(
-                        response_source_block, response_source_block, response_source_block
-                    )
+                    "Error in updating translations in db due to invalid response or data_dict. "
+                    "response_source_block: %s, target_language_code: %s, target_block_id: %s, has_response_data: %s",
+                    response_source_block, target_language_code, target_block_id, bool(response_data),
                 )
-                continue;
+                continue
 
             self._check_and_update_translations(response_data, target_block_id, target_language_code)
+
+        if failed_count:
+            log.warning("%d block(s) returned no response from Meta (rate limited or API error) and will be retried on next run.", failed_count)
 
     def _get_tasks_to_fetch_data_from_wiki_meta(self, data_dict, meta_client, session):
         """
