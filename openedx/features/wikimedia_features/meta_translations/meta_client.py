@@ -1,6 +1,7 @@
 """
 Client to handle WikiMetaClient requests.
 """
+import asyncio
 import json
 import logging
 import requests
@@ -8,6 +9,9 @@ import aiohttp
 import urllib.parse
 from django.conf import settings
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+
+_RATE_LIMIT_MAX_RETRIES = 3
+_RATE_LIMIT_BACKOFF_BASE = 5  # seconds; retry after 5s, 10s, 20s
 
 logger = logging.getLogger(__name__)
 
@@ -169,33 +173,52 @@ class WikiMetaClient(object):
         except (aiohttp.ContentTypeError, ValueError, aiohttp.ClientError) as e:
             logger.error("Unable to extract json data from Meta response.")
             logger.error(f"Error type: {type(e).__name__}, Error: {e}")
-            error_text = await response.text()
-            logger.error(f"Response content: {error_text}")
             data = None
 
-        logger.info("For Meta request with data: {}, params: {}.".format(request_data, request_params))
+        logger.info("For Meta request with params: %s, status: %s.", request_params, response.status)
         if data is not None and response.status in [200, 201]:
             if data.get('error'):
                 logger.error("Meta API returned error code in response: %s.", json.dumps(data))
                 return False, data
 
-            logger.info("Meta API returned success response: %s.", json.dumps(data))
+            mcgroup = request_params.get('mcgroup', '') if request_params else ''
+            mclanguage = request_params.get('mclanguage', '') if request_params else ''
+            msg_count = len(data.get('query', {}).get('messagecollection', []))
+            logger.info(
+                "Meta API success: mcgroup=%s, language=%s, messages=%d.",
+                mcgroup, mclanguage, msg_count,
+            )
             return True, data
 
         else:
             logger.error("Meta API return response with status code: %s.", response.status)
-            logger.error("Meta API return Error response: %s.", json.dumps(data))
             return False, data
 
 
     async def handle_request(self, request_call, params=None, data=None):
         """
-        Handles all Meta API calls.
+        Handles all Meta API calls. Retries on HTTP 429 with exponential backoff.
         """
         headers = {'User-Agent': self.wikimedia_user_agent}
-        response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data, headers=headers)
-        logger.info("Sending Meta request with data: {}, params: {}, headers: {}.".format(data, params, headers))
-        return await self.parse_response(params, data, response)
+        logger.info("Sending Meta request with params: %s.", params)
+        for attempt in range(_RATE_LIMIT_MAX_RETRIES + 1):
+            response = await request_call(url=self._BASE_API_END_POINT, params=params, data=data, headers=headers)
+            if response.status == 429:
+                if attempt < _RATE_LIMIT_MAX_RETRIES:
+                    wait = _RATE_LIMIT_BACKOFF_BASE * (2 ** attempt)
+                    logger.warning(
+                        "Meta API rate limited (429). Attempt %d/%d. Retrying in %ds. params=%s",
+                        attempt + 1, _RATE_LIMIT_MAX_RETRIES, wait, params,
+                    )
+                    await asyncio.sleep(wait)
+                    continue
+                else:
+                    logger.error(
+                        "Meta API rate limited (429) after %d retries. Giving up. params=%s",
+                        _RATE_LIMIT_MAX_RETRIES, params,
+                    )
+                    return False, None
+            return await self.parse_response(params, data, response)
 
 
     async def fetch_login_token(self, session):
@@ -307,3 +330,9 @@ class WikiMetaClient(object):
                 'mclanguage': mclanguage,
                 'response_data': response_data_dict
             }
+        else:
+            logger.error(
+                "Failed to fetch translations for mcgroup=%s, language=%s. Block will be retried on next run.",
+                mcgroup, mclanguage,
+            )
+            return None
