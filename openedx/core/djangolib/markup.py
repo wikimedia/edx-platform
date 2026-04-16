@@ -46,7 +46,7 @@ class HTMLCleaner(Cleaner):
         if is_url:
             return link
         return super()._remove_javascript_link(link)
-        
+
 
 def HTML(html):                                 # pylint: disable=invalid-name
     """
@@ -102,8 +102,8 @@ def clean_dangerous_html(html):
         %>
         ${course_details.overview | n, clean_dangerous_html}
     """
-    if not html:
-        return html
+    if not html or not html.strip():
+        return HTML('')
     cleaner = HTMLCleaner(style=True, inline_style=False, safe_attrs_only=False)
     html = cleaner.clean_html(html)
     return HTML(html)
