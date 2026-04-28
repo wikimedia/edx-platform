@@ -1,6 +1,6 @@
 name: Dispatch - Generate Transifex and Translatewiki translations
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       localization_branch:
@@ -31,7 +31,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.localization_branch || 'wm/localization' }}
+          ref: develop
+          fetch-depth: 0
+
+      - name: Bring in wm/localization files
+        run: |
+          git fetch origin ${{ inputs.localization_branch || 'wm/localization' }}
+          git checkout origin/${{ inputs.localization_branch || 'wm/localization' }} -- .
 
       - name: Set up python
         uses: actions/setup-python@v2
@@ -44,7 +50,7 @@ jobs:
           sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl gettext
           rm -f tx
           curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
-      
+
       - name: Check TX Version
         run: |
           export PATH="$PWD:$PATH"
@@ -108,7 +114,7 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Merge translations from translatewiki & manual files
         id: merge-translations-translatewiki
         run: |
@@ -121,7 +127,7 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Delete qqq folder if exists
         id: delete-qqq-files
         run: rm -r conf/locale/qqq
@@ -134,7 +140,7 @@ jobs:
           msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-django.po -o conf/locale/en/LC_MESSAGES/wm-django.po
           msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-djangojs.po -o conf/locale/en/LC_MESSAGES/wm-djangojs.po
         continue-on-error: true
-      
+
       - name: Check errors
         run: |
           export NO_PREREQ_INSTALL='true'
@@ -177,11 +183,11 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Restore qqq files
         run: git restore conf/locale/qqq/
         continue-on-error: true
-      
+
       - name: Create Pull Request and commit changed translation files
         id: cpr
         uses: peter-evans/create-pull-request@v4
