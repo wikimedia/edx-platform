@@ -84,7 +84,7 @@ jobs:
       - name: Pull latest translations from Transifex
         id: pull-latest-translations-from-transifex
         env:
-          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+          TX_TOKEN: ${{ secrets.TX_TOKEN_TEMP }}
           TX_HOSTNAME: https://rest.api.transifex.com
         run: |
           export PATH="$PWD:$PATH"
@@ -100,7 +100,7 @@ jobs:
       - name: Generate translations for changed source
         id: generate-new-translations
         env:
-          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+          TX_TOKEN: ${{ secrets.TX_TOKEN_TEMP }}
         run: make extract_translations
 
       - name: Merge all the translations
@@ -171,7 +171,7 @@ jobs:
       - name: Genereate custom strings
         id: generate-custom-strings
         env:
-          TX_TOKEN: ${{ secrets.TX_TOKEN }}
+          TX_TOKEN: ${{ secrets.TX_TOKEN_TEMP }}
           TX_HOSTNAME: https://rest.api.transifex.com
         run: |
           export PATH="$PWD:$PATH"
