@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2026-04-01 07:44+0000\n"
+"POT-Creation-Date: 2026-04-28 11:48+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: Kyoto University <edxkyotoux@gmail.com>, 2017\n"
 "Language-Team: Japanese (Japan) (http://app.transifex.com/open-edx/edx-platform/language/ja_JP/)\n"
@@ -181,6 +181,7 @@ msgid "Course Blocks mapping"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
@@ -530,6 +531,7 @@ msgstr "保存中"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "削除"
 
@@ -6458,8 +6460,6 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "{item} の未公開の変更をすべて公開しますか？"
 
 #: cms/static/js/views/modals/course_outline_modals.js
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "公開"
 
@@ -7138,10 +7138,27 @@ msgid "Actions"
 msgstr "操作"
 
 #: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Proctoring Settings"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "未定"
+
+#: cms/templates/js/course-outline.underscore
+#: cms/templates/js/highlights-editor.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Section Highlights"
+msgstr ""
 
 #: cms/templates/js/paging-header.underscore
 #: common/static/common/templates/components/paging-footer.underscore
@@ -7907,15 +7924,18 @@ msgid ""
 msgstr "単位を獲得するには、\"試験を終了する\"を選択する前に各問題で\"提出\"を選択しなければいけません。"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "詳しく知る"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "開始: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "開始"
 
@@ -8626,6 +8646,7 @@ msgstr "アカウントを作成する"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "サインイン"
 
@@ -8666,69 +8687,84 @@ msgid "Create an Account"
 msgstr "アカウントを作成"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "ここは初めてですか？"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "アカウントを作成してください。"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "サインイン"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
 msgstr "メールアドレスとパスワードを使うか、以下のプロバイダのいずれかを使ってサインインしてください。"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr "メールアドレスとパスワードを使ってサインインしてください。"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr "まだアカウントを登録していないのであれば、下のボタンを使って登録してください。"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr "大学情報を使用"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "または次でサインインする"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "%(providerName)sでサインイン"
@@ -9805,130 +9841,6 @@ msgstr "講師の写真を入力してください (注: JPEG または PNG フ�
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "写真をアップロード"
-
-#: cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr "履習要件: %(prereq_display_name)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Contains staff only content"
-msgstr "スタッフのみに表示されるコンテンツを含む"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr "現状コンテンツに対する未公開の変更"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr "未公開のユニットは公開されません"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to content that will release in the future"
-msgstr "将来的に公開するコンテンツへの未公開の変更"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr "このユニットへのアクセスは制限されています: {selectedGroupsLabel}"
-
-#: cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr "このユニットのコンテンツへのアクセスは特定のグループの受講生に制限されています"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr "未採点"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr "監督付き試験を練習する"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr "監督付き試験"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr "時間制限付き試験"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr "この%(xblock_type)sを閉じる/開く"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr "表示名"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr "設定"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Duplicate"
-msgstr "複製"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Drag to reorder"
-msgstr "ドラッグして並び替え"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Release Status:"
-msgstr "公開ステータス: "
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "Released:"
-msgstr "公開日: "
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-msgid "Scheduled:"
-msgstr "予定済: "
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-msgid "Section Highlights"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Graded as:"
-msgstr "採点済: "
-
-#: cms/templates/js/course-outline.underscore
-msgid "Due:"
-msgstr "締切: "
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr "講座終了日以降サブセクションは非表示になります"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr "締切日以降サブセクションは非表示になります"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "You haven't added any content to this course yet."
-msgstr "この講座にはまだコンテンツが入力されていません。"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Click to add a new %(xblock_type)s"
-msgstr "クリックして新しい%(xblock_type)sを追加"
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11113,6 +11025,86 @@ msgstr "現在の字幕を使用する"
 
 #~ msgid "Dismiss"
 #~ msgstr "解散"
+
+#, python-format
+#~ msgid "Prerequisite: %(prereq_display_name)s"
+#~ msgstr "履習要件: %(prereq_display_name)s"
+
+#~ msgid "Contains staff only content"
+#~ msgstr "スタッフのみに表示されるコンテンツを含む"
+
+#~ msgid "Unpublished changes to live content"
+#~ msgstr "現状コンテンツに対する未公開の変更"
+
+#~ msgid "Unpublished units will not be released"
+#~ msgstr "未公開のユニットは公開されません"
+
+#~ msgid "Unpublished changes to content that will release in the future"
+#~ msgstr "将来的に公開するコンテンツへの未公開の変更"
+
+#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+#~ msgstr "このユニットへのアクセスは制限されています: {selectedGroupsLabel}"
+
+#~ msgid ""
+#~ "Access to some content in this unit is restricted to specific groups of "
+#~ "learners"
+#~ msgstr "このユニットのコンテンツへのアクセスは特定のグループの受講生に制限されています"
+
+#~ msgid "Ungraded"
+#~ msgstr "未採点"
+
+#~ msgid "Practice proctored Exam"
+#~ msgstr "監督付き試験を練習する"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "監督付き試験"
+
+#~ msgid "Timed Exam"
+#~ msgstr "時間制限付き試験"
+
+#, python-format
+#~ msgid "Collapse/Expand this %(xblock_type)s"
+#~ msgstr "この%(xblock_type)sを閉じる/開く"
+
+#~ msgid "Display Name"
+#~ msgstr "表示名"
+
+#~ msgid "Configure"
+#~ msgstr "設定"
+
+#~ msgid "Duplicate"
+#~ msgstr "複製"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "ドラッグして並び替え"
+
+#~ msgid "Release Status:"
+#~ msgstr "公開ステータス: "
+
+#~ msgid "Released:"
+#~ msgstr "公開日: "
+
+#~ msgid "Scheduled:"
+#~ msgstr "予定済: "
+
+#~ msgid "Graded as:"
+#~ msgstr "採点済: "
+
+#~ msgid "Due:"
+#~ msgstr "締切: "
+
+#~ msgid "Subsection is hidden after course end date"
+#~ msgstr "講座終了日以降サブセクションは非表示になります"
+
+#~ msgid "Subsection is hidden after due date"
+#~ msgstr "締切日以降サブセクションは非表示になります"
+
+#~ msgid "You haven't added any content to this course yet."
+#~ msgstr "この講座にはまだコンテンツが入力されていません。"
+
+#, python-format
+#~ msgid "Click to add a new %(xblock_type)s"
+#~ msgstr "クリックして新しい%(xblock_type)sを追加"
 
 #~ msgid "Receive updates"
 #~ msgstr "更新情報を受け取る"

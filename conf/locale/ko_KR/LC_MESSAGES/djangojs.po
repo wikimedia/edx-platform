@@ -86,7 +86,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: openedx-translation@googlegroups.com\n"
-"POT-Creation-Date: 2026-04-01 07:44+0000\n"
+"POT-Creation-Date: 2026-04-28 11:48+0000\n"
 "PO-Revision-Date: 2014-06-11 15:18+0000\n"
 "Last-Translator: 김수연 <amelia9981@ajou.ac.kr>, 2020\n"
 "Language-Team: Korean (Korea) (http://app.transifex.com/open-edx/edx-platform/language/ko_KR/)\n"
@@ -186,6 +186,7 @@ msgid "Course Blocks mapping"
 msgstr ""
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "%(providerName)s account"
 msgstr ""
@@ -530,6 +531,7 @@ msgstr "저장중"
 #: cms/templates/js/video-transcripts.underscore
 #: cms/templates/js/xblock-outline.underscore
 #: common/static/common/templates/discussion/templates.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Delete"
 msgstr "삭제"
 
@@ -6517,8 +6519,6 @@ msgid "Publish all unpublished changes for this {item}?"
 msgstr "{item} 에 대한 공개되지 않은 변경 사항을 공개하겠습니까?"
 
 #: cms/static/js/views/modals/course_outline_modals.js
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
 msgid "Publish"
 msgstr "게시"
 
@@ -7211,8 +7211,14 @@ msgid "Actions"
 msgstr "액션"
 
 #: cms/templates/js/course-outline.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
+msgid "Onboarding Exam"
+msgstr ""
+
+#: cms/templates/js/course-outline.underscore
 #: cms/templates/js/publish-xblock.underscore
 #: lms/templates/ccx/schedule.underscore
+#: themes/edx-platform/wikilearn/cms/templates/js/course-outline.underscore
 msgid "Unscheduled"
 msgstr "지정되지 않음"
 
@@ -7981,15 +7987,18 @@ msgid ""
 msgstr "문제에 대한 학점을 획득하기 위해 \"End My Exam\" 를 클릭하기 전에 각 문제에 대해 \"Submit\" 을 클릭해야 합니다."
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "LEARN MORE"
 msgstr "자세히 알아보기"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 #, python-format
 msgid "Starts: %(start_date)s"
 msgstr "시작: %(start_date)s"
 
 #: lms/templates/discovery/course_card.underscore
+#: themes/edx-platform/wikilearn/lms/templates/discovery/course_card.underscore
 msgid "Starts"
 msgstr "개강일"
 
@@ -8705,6 +8714,7 @@ msgstr "가입하기"
 
 #: lms/templates/student_account/hinted_login.underscore
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in"
 msgstr "로그인"
 
@@ -8745,69 +8755,84 @@ msgid "Create an Account"
 msgstr "계정 만들기"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "First time here?"
 msgstr "이곳은 처음인가요?"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Create an Account."
 msgstr "계정 생성"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning as {email}"
 msgstr "{email}을 사용하여 학습하려면 로그인하세요"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in to continue learning"
 msgstr "계속 학습하려면 로그인 하세요"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You already have an edX account with your {enterprise_name} email address."
 msgstr "{enterprise_name} 이메일 주소를 갖는 edX계정이 이미 있습니다."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Going forward, your account information will be updated and maintained by "
 "{enterprise_name}."
 msgstr "계정 정보가 {enterprise_name}에 의해 업데이트, 관리 됩니다."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "You can view your information or unlink from {enterprise_name} anytime in "
 "your Account Settings."
 msgstr "계정 설정을 통해 정보를 확인하거나 {enterprise_name} 연동을 언제든지 취소할 수 있습니다."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "To continue learning with this account, sign in below."
 msgstr "이 계정으로 계속 학습하시려면, 로그인 해주세요."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign In"
 msgstr "로그인"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid ""
 "Sign in here using your email address and password, or use one of the "
 "providers listed below."
 msgstr "메일 주소와 비밀번호를 입력하거나, 아래에 있는 방법으로 로그인하세요. "
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Sign in here using your email address and password."
 msgstr "메일 주소와 비밀번호를 입력해 로그인합니다."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "If you do not yet have an account, use the button below to register."
 msgstr "계정이 아직 없다면, 아래의 버튼을 눌러 가입하세요. "
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "Use my university info"
 msgstr "나의 대학교 정보 사용하기"
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 msgid "or sign in with"
 msgstr "다음 계정을 통해서도 간편하게 로그인 가능합니다."
 
 #: lms/templates/student_account/login.underscore
+#: themes/edx-platform/wikilearn/lms/templates/student_account/login.underscore
 #, python-format
 msgid "Sign in with %(providerName)s"
 msgstr "%(providerName)s로 로그인 "
@@ -9904,130 +9929,6 @@ msgstr "교수자의 사진을 추가해주세요 (주: JPEG 및 PNG 형식만 �
 #: cms/templates/js/course-instructor-details.underscore
 msgid "Upload Photo"
 msgstr "사진 업로드"
-
-#: cms/templates/js/course-outline.underscore
-#, python-format
-msgid "Prerequisite: %(prereq_display_name)s"
-msgstr "선수 강좌: %(prereq_display_name)s"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Contains staff only content"
-msgstr "운영팀만 볼 수 있습니다."
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to live content"
-msgstr "게시하지 않은 수정안"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished units will not be released"
-msgstr "게시하지 않은 학습활동으로, 공개되지 않을 것입니다."
-
-#: cms/templates/js/course-outline.underscore
-msgid "Unpublished changes to content that will release in the future"
-msgstr "게시하지 않은 수정안"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
-msgstr "다음 대상에게 학습활동에 대한 접근이 제한됩니다: {selectedGroupsLabel}"
-
-#: cms/templates/js/course-outline.underscore
-msgid ""
-"Access to some content in this unit is restricted to specific groups of "
-"learners"
-msgstr "이 학습활동의 몉몉 콘텐츠는 특정한 학습자 집단에게 제한됩니다."
-
-#: cms/templates/js/course-outline.underscore
-msgid "Ungraded"
-msgstr "성적 미반영"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Onboarding Exam"
-msgstr ""
-
-#: cms/templates/js/course-outline.underscore
-msgid "Practice proctored Exam"
-msgstr "연습 프록터 시험"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctored Exam"
-msgstr "시험감독 평가"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Timed Exam"
-msgstr "제한된 시간의 시험"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Collapse/Expand this %(xblock_type)s"
-msgstr "%(xblock_type)s 접기/펼치기"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Display Name"
-msgstr "표시될 이름"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Proctoring Settings"
-msgstr "감독 설정"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Configure"
-msgstr "설정"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Duplicate"
-msgstr "복사"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Drag to reorder"
-msgstr "재배열 위한 이동"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Release Status:"
-msgstr "공개 상태:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "Released:"
-msgstr "공개일시:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/publish-xblock.underscore
-msgid "Scheduled:"
-msgstr "예정됨:"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/highlights-editor.underscore
-msgid "Section Highlights"
-msgstr "이 주제의 하이라이트"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Graded as:"
-msgstr "과제 유형"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Due:"
-msgstr "마감:"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after course end date"
-msgstr "종강일 이후 소주제 숨기기"
-
-#: cms/templates/js/course-outline.underscore
-msgid "Subsection is hidden after due date"
-msgstr "기한 경과 되 이 소주제는 감춰집니다"
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-msgid "You haven't added any content to this course yet."
-msgstr "강좌 콘텐츠가 없습니다."
-
-#: cms/templates/js/course-outline.underscore
-#: cms/templates/js/xblock-outline.underscore
-#, python-format
-msgid "Click to add a new %(xblock_type)s"
-msgstr "새로운 %(xblock_type)s 을 추가하기 위해 클릭하세요."
 
 #: cms/templates/js/course-settings-learning-fields.underscore
 msgid "Learning Outcome"
@@ -11268,6 +11169,92 @@ msgstr "지금 자막 쓰기"
 
 #~ msgid "Dismiss"
 #~ msgstr "수업 끝"
+
+#, python-format
+#~ msgid "Prerequisite: %(prereq_display_name)s"
+#~ msgstr "선수 강좌: %(prereq_display_name)s"
+
+#~ msgid "Contains staff only content"
+#~ msgstr "운영팀만 볼 수 있습니다."
+
+#~ msgid "Unpublished changes to live content"
+#~ msgstr "게시하지 않은 수정안"
+
+#~ msgid "Unpublished units will not be released"
+#~ msgstr "게시하지 않은 학습활동으로, 공개되지 않을 것입니다."
+
+#~ msgid "Unpublished changes to content that will release in the future"
+#~ msgstr "게시하지 않은 수정안"
+
+#~ msgid "Access to this unit is restricted to: {selectedGroupsLabel}"
+#~ msgstr "다음 대상에게 학습활동에 대한 접근이 제한됩니다: {selectedGroupsLabel}"
+
+#~ msgid ""
+#~ "Access to some content in this unit is restricted to specific groups of "
+#~ "learners"
+#~ msgstr "이 학습활동의 몉몉 콘텐츠는 특정한 학습자 집단에게 제한됩니다."
+
+#~ msgid "Ungraded"
+#~ msgstr "성적 미반영"
+
+#~ msgid "Practice proctored Exam"
+#~ msgstr "연습 프록터 시험"
+
+#~ msgid "Proctored Exam"
+#~ msgstr "시험감독 평가"
+
+#~ msgid "Timed Exam"
+#~ msgstr "제한된 시간의 시험"
+
+#, python-format
+#~ msgid "Collapse/Expand this %(xblock_type)s"
+#~ msgstr "%(xblock_type)s 접기/펼치기"
+
+#~ msgid "Display Name"
+#~ msgstr "표시될 이름"
+
+#~ msgid "Proctoring Settings"
+#~ msgstr "감독 설정"
+
+#~ msgid "Configure"
+#~ msgstr "설정"
+
+#~ msgid "Duplicate"
+#~ msgstr "복사"
+
+#~ msgid "Drag to reorder"
+#~ msgstr "재배열 위한 이동"
+
+#~ msgid "Release Status:"
+#~ msgstr "공개 상태:"
+
+#~ msgid "Released:"
+#~ msgstr "공개일시:"
+
+#~ msgid "Scheduled:"
+#~ msgstr "예정됨:"
+
+#~ msgid "Section Highlights"
+#~ msgstr "이 주제의 하이라이트"
+
+#~ msgid "Graded as:"
+#~ msgstr "과제 유형"
+
+#~ msgid "Due:"
+#~ msgstr "마감:"
+
+#~ msgid "Subsection is hidden after course end date"
+#~ msgstr "종강일 이후 소주제 숨기기"
+
+#~ msgid "Subsection is hidden after due date"
+#~ msgstr "기한 경과 되 이 소주제는 감춰집니다"
+
+#~ msgid "You haven't added any content to this course yet."
+#~ msgstr "강좌 콘텐츠가 없습니다."
+
+#, python-format
+#~ msgid "Click to add a new %(xblock_type)s"
+#~ msgstr "새로운 %(xblock_type)s 을 추가하기 위해 클릭하세요."
 
 #~ msgid "Receive updates"
 #~ msgstr "업데이트를 받으세요"
