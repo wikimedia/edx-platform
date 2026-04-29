@@ -210,3 +210,30 @@ jobs:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
         if: (github.event_name == 'schedule' || inputs.auto_merge == true) && steps.cpr.outputs.pull-request-operation == 'created'
+
+      - name: Comment and close wm/localization PR
+        if: steps.merge-changes.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        run: |
+          pr_number=$(gh pr list \
+            --repo wikimedia/edx-platform \
+            --head ${{ inputs.localization_branch || 'wm/localization' }} \
+            --base develop \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -z "$pr_number" ]; then
+            echo "No open PR found for wm/localization, skipping"
+            exit 0
+          fi
+
+          echo "Found PR #$pr_number, commenting and closing"
+
+          gh pr comment $pr_number \
+            --repo wikimedia/edx-platform \
+            --body "This month's translations from this PR have been successfully picked up, processed and automatically merged into \`develop\` by our workflow. This PR is being closed automatically. A new PR will be opened by translatewiki with next month's translations."
+
+          gh pr close $pr_number \
+            --repo wikimedia/edx-platform
