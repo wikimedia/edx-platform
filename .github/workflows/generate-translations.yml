@@ -1,6 +1,6 @@
 name: Dispatch - Generate Transifex and Translatewiki translations
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       localization_branch:
@@ -31,7 +31,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.localization_branch || 'wm/localization' }}
+          ref: develop
+          fetch-depth: 0
+
+      - name: Bring in wm/localization files
+        run: |
+          git fetch origin ${{ inputs.localization_branch || 'wm/localization' }}
+          git checkout origin/${{ inputs.localization_branch || 'wm/localization' }} -- .
 
       - name: Set up python
         uses: actions/setup-python@v2
@@ -44,7 +50,7 @@ jobs:
           sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl gettext
           rm -f tx
           curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
-      
+
       - name: Check TX Version
         run: |
           export PATH="$PWD:$PATH"
@@ -108,7 +114,7 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Merge translations from translatewiki & manual files
         id: merge-translations-translatewiki
         run: |
@@ -121,7 +127,7 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Delete qqq folder if exists
         id: delete-qqq-files
         run: rm -r conf/locale/qqq
@@ -134,8 +140,9 @@ jobs:
           msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-django.po -o conf/locale/en/LC_MESSAGES/wm-django.po
           msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-djangojs.po -o conf/locale/en/LC_MESSAGES/wm-djangojs.po
         continue-on-error: true
-      
+
       - name: Check errors
+        id: check-errors
         run: |
           export NO_PREREQ_INSTALL='true'
           export LMS_CFG=$(pwd)/lms/devstack.yml
@@ -149,6 +156,28 @@ jobs:
 
           exit 1
         if: steps.generate-i18n-files.outcome != 'success'
+
+      - name: Comment on wm/localization PR on translation errors
+        if: steps.check-errors.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        run: |
+          pr_number=$(gh pr list \
+            --repo wikimedia/edx-platform \
+            --head ${{ inputs.localization_branch || 'wm/localization' }} \
+            --base develop \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -z "$pr_number" ]; then
+            echo "No open PR found for wm/localization, skipping"
+            exit 0
+          fi
+
+          gh pr comment $pr_number \
+            --repo wikimedia/edx-platform \
+            --body "The automated translations workflow failed this month due to errors found in the translation files. Translations have not been merged into \`develop\`. Please review the translation files in this PR for any invalid or malformed strings. Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
       - name: Compile JS translations
         id: compile-js-i18n-files
@@ -177,11 +206,11 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Restore qqq files
         run: git restore conf/locale/qqq/
         continue-on-error: true
-      
+
       - name: Create Pull Request and commit changed translation files
         id: cpr
         uses: peter-evans/create-pull-request@v4
