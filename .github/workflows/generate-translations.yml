@@ -240,6 +240,39 @@ jobs:
           merge-method: squash
         if: (github.event_name == 'schedule' || inputs.auto_merge == true) && steps.cpr.outputs.pull-request-operation == 'created'
 
+      - name: Bump minor version and create release
+        id: create-release
+        if: steps.merge-changes.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        run: |
+          # Get the latest tag
+          latest_tag=$(gh release list \
+            --repo wikimedia/edx-platform \
+            --limit 1 \
+            --json tagName \
+            --jq '.[0].tagName')
+
+          echo "Latest tag: $latest_tag"
+
+          # Strip the 'v' prefix, split into parts
+          version=${latest_tag#v}
+          major=$(echo $version | cut -d. -f1)
+          minor=$(echo $version | cut -d. -f2)
+
+          # Bump minor, reset patch
+          new_minor=$((minor + 1))
+          new_tag="v${major}.${new_minor}.0"
+
+          echo "New tag: $new_tag"
+
+          # Create the release with auto-generated changelog
+          gh release create $new_tag \
+            --repo wikimedia/edx-platform \
+            --target develop \
+            --title "$new_tag" \
+            --generate-notes
+
       - name: Comment and close wm/localization PR
         if: steps.merge-changes.outcome == 'success'
         env:
