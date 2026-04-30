@@ -1,6 +1,6 @@
 name: Dispatch - Generate Transifex and Translatewiki translations
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       localization_branch:
@@ -31,7 +31,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.localization_branch || 'wm/localization' }}
+          ref: develop
+          fetch-depth: 0
+
+      - name: Bring in wm/localization files
+        run: |
+          git fetch origin ${{ inputs.localization_branch || 'wm/localization' }}
+          git checkout origin/${{ inputs.localization_branch || 'wm/localization' }} -- .
 
       - name: Set up python
         uses: actions/setup-python@v2
@@ -44,7 +50,7 @@ jobs:
           sudo apt-get install pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl gettext
           rm -f tx
           curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
-      
+
       - name: Check TX Version
         run: |
           export PATH="$PWD:$PATH"
@@ -108,7 +114,7 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Merge translations from translatewiki & manual files
         id: merge-translations-translatewiki
         run: |
@@ -121,7 +127,7 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Delete qqq folder if exists
         id: delete-qqq-files
         run: rm -r conf/locale/qqq
@@ -134,8 +140,9 @@ jobs:
           msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-django.po -o conf/locale/en/LC_MESSAGES/wm-django.po
           msgattrib --no-obsolete --set-fuzzy conf/locale/en/LC_MESSAGES/wm-djangojs.po -o conf/locale/en/LC_MESSAGES/wm-djangojs.po
         continue-on-error: true
-      
+
       - name: Check errors
+        id: check-errors
         run: |
           export NO_PREREQ_INSTALL='true'
           export LMS_CFG=$(pwd)/lms/devstack.yml
@@ -149,6 +156,28 @@ jobs:
 
           exit 1
         if: steps.generate-i18n-files.outcome != 'success'
+
+      - name: Comment on wm/localization PR on translation errors
+        if: steps.check-errors.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        run: |
+          pr_number=$(gh pr list \
+            --repo wikimedia/edx-platform \
+            --head ${{ inputs.localization_branch || 'wm/localization' }} \
+            --base develop \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -z "$pr_number" ]; then
+            echo "No open PR found for wm/localization, skipping"
+            exit 0
+          fi
+
+          gh pr comment $pr_number \
+            --repo wikimedia/edx-platform \
+            --body "The automated translations workflow failed this month due to errors found in the translation files. Translations have not been merged into \`develop\`. Please review the translation files in this PR for any invalid or malformed strings. Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
       - name: Compile JS translations
         id: compile-js-i18n-files
@@ -177,11 +206,11 @@ jobs:
 
           unset LMS_CFG
           unset STUDIO_CFG
-      
+
       - name: Restore qqq files
         run: git restore conf/locale/qqq/
         continue-on-error: true
-      
+
       - name: Create Pull Request and commit changed translation files
         id: cpr
         uses: peter-evans/create-pull-request@v4
@@ -210,3 +239,63 @@ jobs:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
         if: (github.event_name == 'schedule' || inputs.auto_merge == true) && steps.cpr.outputs.pull-request-operation == 'created'
+
+      - name: Bump minor version and create release
+        id: create-release
+        if: steps.merge-changes.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        run: |
+          # Get the latest tag
+          latest_tag=$(gh release list \
+            --repo wikimedia/edx-platform \
+            --limit 1 \
+            --json tagName \
+            --jq '.[0].tagName')
+
+          echo "Latest tag: $latest_tag"
+
+          # Strip the 'v' prefix, split into parts
+          version=${latest_tag#v}
+          major=$(echo $version | cut -d. -f1)
+          minor=$(echo $version | cut -d. -f2)
+
+          # Bump minor, reset patch
+          new_minor=$((minor + 1))
+          new_tag="v${major}.${new_minor}.0"
+
+          echo "New tag: $new_tag"
+
+          # Create the release with auto-generated changelog
+          gh release create $new_tag \
+            --repo wikimedia/edx-platform \
+            --target develop \
+            --title "$new_tag" \
+            --generate-notes
+
+      - name: Comment and close wm/localization PR
+        if: steps.merge-changes.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.EDX_PLATFORM_ACCESS_TOKEN }}
+        run: |
+          pr_number=$(gh pr list \
+            --repo wikimedia/edx-platform \
+            --head ${{ inputs.localization_branch || 'wm/localization' }} \
+            --base develop \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -z "$pr_number" ]; then
+            echo "No open PR found for wm/localization, skipping"
+            exit 0
+          fi
+
+          echo "Found PR #$pr_number, commenting and closing"
+
+          gh pr comment $pr_number \
+            --repo wikimedia/edx-platform \
+            --body "This month's translations from this PR have been successfully picked up, processed and automatically merged into \`develop\` by our workflow. This PR is being closed automatically. A new PR will be opened by translatewiki with next month's translations."
+
+          gh pr close $pr_number \
+            --repo wikimedia/edx-platform
