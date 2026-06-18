@@ -32,6 +32,9 @@
 
             dispatcher.listenTo(form, 'search', function(query) {
                 form.showLoadingIndicator();
+                if (!query || query.trim() === '') {
+                    filters.remove('search_query');
+                }
                 search.performSearch(query, filters.getTerms());
             });
 
