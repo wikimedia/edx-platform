@@ -7,9 +7,6 @@ from django.urls import path, re_path
 
 from lms.djangoapps.instructor.views import api, gradebook_api
 from openedx.core.constants import COURSE_ID_PATTERN
-from openedx_wikilearn_features.wikimedia_general.djangoapps_patches.instructor.views.certificates import (
-    get_issued_certificates as wikilearn_get_issued_certificates,
-)
 
 # These endpoints are exposing existing views in a way that can be used by MFEs
 # or other API clients. They are currently versioned at `v1` since they have
@@ -30,7 +27,7 @@ urlpatterns = [
     path('modify_access', api.ModifyAccess.as_view(), name='modify_access'),
     path('bulk_beta_modify_access', api.BulkBetaModifyAccess.as_view(), name='bulk_beta_modify_access'),
     path('get_problem_responses', api.get_problem_responses, name='get_problem_responses'),
-    path('get_issued_certificates/', wikilearn_get_issued_certificates, name='get_issued_certificates'),
+    path('get_issued_certificates/', api.GetIssuedCertificates.as_view(), name='get_issued_certificates'),
     re_path(r'^get_students_features(?P<csv>/csv)?$', api.GetStudentsFeatures.as_view(), name='get_students_features'),
     path('get_grading_config', api.GetGradingConfig.as_view(), name='get_grading_config'),
     path('get_students_who_may_enroll', api.GetStudentsWhoMayEnroll.as_view(), name='get_students_who_may_enroll'),
