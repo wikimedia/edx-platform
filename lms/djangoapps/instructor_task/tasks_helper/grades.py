@@ -576,10 +576,7 @@ class CourseGradeReport(GradeReportBase):
                         self._user_grades(course_grade) +
                         self._user_cohort_group_names(user) +
                         self._user_experiment_group_names(user) +
-                        self._user_team_names(user, bulk_context.teams) +
-                        self._user_verification_mode(user, bulk_context.enrollments) +
-                        self._user_certificate_info(user, course_grade, bulk_context.certs) +
-                        [_user_enrollment_status(user, self.context.course_id)]
+                        self._user_team_names(user, bulk_context.teams)
                     )
             return success_rows, error_rows
 
