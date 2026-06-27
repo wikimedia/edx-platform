@@ -5,7 +5,7 @@ import os
 import re
 import uuid
 from io import BytesIO
-from urllib.parse import parse_qsl, quote_plus, urlencode, urlparse, urlunparse
+from urllib.parse import parse_qsl, quote_plus, unquote, urlencode, urlparse, urlunparse
 
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import AssetKey, CourseKey
@@ -239,6 +239,22 @@ class StaticContent:  # lint-amnesty, pylint: disable=missing-class-docstring
 
         # Break down the input path.
         _, _, relative_path, params, query_string, _ = urlparse(path)
+
+        # Fully decode any percent-encoding in the path so that canonicalization
+        # is idempotent: an already-canonicalized path must resolve to the same
+        # asset and produce the same output. quote_plus (below) does not treat
+        # '%' as a safe character, so without this a non-ASCII filename like
+        # "Día" (whose 'í' is UTF-8 %C3%AD) would gain a "%25" layer on every
+        # Studio load/save cycle -- get_block_info -> replace_static_urls re-runs
+        # this over its own output -- degrading into %25C3%25AD, %2525C3%2525AD,
+        # ... and leaving broken <img> links. Decoding here also lets the asset
+        # lookup below find the real file (and thus apply lock/digest/CDN
+        # correctly) instead of a key that still contains literal '%' chars. Use
+        # unquote (not unquote_plus) so legitimate '+' separators are preserved.
+        prev_path = None
+        while prev_path != relative_path:
+            prev_path = relative_path
+            relative_path = unquote(relative_path)
 
         # Convert our path to an asset key if it isn't one already.
         asset_key = StaticContent.get_asset_key_from_path(course_key, relative_path)
