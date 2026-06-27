@@ -1,18 +1,27 @@
 """
-Management command to repair multiply percent-encoded static asset URLs in
-course block content.
+Management command to repair corrupted static asset URLs in course block content.
 
-A non-idempotent call to ``StaticContent.get_canonicalized_asset_path`` used to
-re-encode already-encoded asset paths on every Studio load/save cycle. This
-degraded non-ASCII asset filenames, e.g. a file named "Día.jpg" (whose ``í`` is
-UTF-8 ``%C3%AD``) would turn into ``%25C3%25AD``, then ``%2525C3%2525AD`` and so
-on, leaving broken <img> links in unit HTML.
+It heals two distinct, related corruptions of non-ASCII asset filenames:
 
-This command scans the data-bearing blocks of one or more courses, fully decodes
-the percent-encoding of any static/asset URLs it finds, and rewrites absolute
-asset links (asset-v1:/c4x/versioned) belonging to the course back to the
-portable ``/static/<filename>`` form. The platform fix makes canonicalization
-idempotent going forward; this command heals content already stored corrupted.
+1. Multiply percent-encoded links. A non-idempotent call to
+   ``StaticContent.get_canonicalized_asset_path`` used to re-encode already-encoded
+   asset paths on every Studio load/save cycle, so a file named "Día.jpg" (whose
+   ``í`` is UTF-8 ``%C3%AD``) degraded into ``%25C3%25AD``, then ``%2525C3%2525AD``,
+   and so on. These are recoverable by fully decoding the percent-encoding.
+
+2. Dropped-character links. In some content (typically from an older import) the
+   non-ASCII character was stripped entirely rather than encoded, e.g.
+   "climática" became "climtica", so the link points at a filename that does not
+   exist while the real asset still carries the accent. These are recovered by
+   matching the broken reference against the course's real assets: the asset
+   whose name, with non-ASCII characters removed, equals the broken reference is
+   the intended target.
+
+For every data-bearing block the command fully decodes any static/asset URL,
+rewrites absolute asset links (asset-v1:/c4x/versioned) belonging to the course
+back to the portable ``/static/<filename>`` form, and -- when the decoded target
+does not exist in the course -- repoints it at the matching real asset. Broken
+references with no unique match are reported but left untouched for manual review.
 
 Run from the command line, e.g.:
 
@@ -32,6 +41,7 @@ from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import AssetKey, CourseKey
 
 from xmodule.contentstore.content import StaticContent
+from xmodule.contentstore.django import contentstore
 from xmodule.modulestore import ModuleStoreEnum
 from xmodule.modulestore.django import modulestore
 
@@ -45,6 +55,8 @@ ASSET_URL_RE = re.compile(
     re.IGNORECASE | re.VERBOSE,
 )
 
+STATIC_PREFIX = '/static/'
+
 
 def fully_unquote(value):
     """Percent-decode ``value`` repeatedly until it stops changing."""
@@ -55,26 +67,69 @@ def fully_unquote(value):
     return value
 
 
-def normalize_asset_url(url, course_key):
-    """
-    Return the repaired form of a single asset ``url``.
+def ascii_fold(name):
+    """Return ``name`` with all non-ASCII characters removed.
 
-    The percent-encoding is fully stripped. Absolute asset links that belong to
-    ``course_key`` are converted back to the portable ``/static/<filename>``
-    form; everything else is returned fully decoded but otherwise untouched.
+    This mirrors the corruption that dropped accented characters from asset
+    references, so folding a real asset name reproduces its broken reference.
     """
-    decoded = fully_unquote(url)
+    return name.encode('ascii', 'ignore').decode('ascii')
 
-    # Already portable: nothing to convert, just keep it fully decoded.
-    static_marker = '/static/'
+
+class AssetIndex:
+    """Lookup over a course's real asset filenames (asset key block_ids)."""
+
+    def __init__(self, block_ids):
+        self.names = set(block_ids)
+        # Map the ASCII-folded form of each real name to the set of real names
+        # that fold to it, so a dropped-character reference can be matched back.
+        self.by_ascii = {}
+        for name in self.names:
+            self.by_ascii.setdefault(ascii_fold(name), set()).add(name)
+
+    @classmethod
+    def for_course(cls, course_key):
+        """Build an index from the course's contentstore assets."""
+        assets, __ = contentstore().get_all_content_for_course(course_key)
+        return cls(asset['asset_key'].block_id for asset in assets)
+
+    def resolve(self, filename):
+        """
+        Resolve a referenced ``filename`` against the real assets.
+
+        Returns a ``(status, realname)`` tuple:
+          * ('ok', filename)        the asset exists as referenced
+          * ('matched', realname)   a single asset matches once accents are
+                                    dropped -- the intended target
+          * ('ambiguous', None)     more than one asset matches; needs review
+          * ('unmatched', None)     no asset matches; needs review
+        """
+        if filename in self.names:
+            return ('ok', filename)
+        candidates = {name for name in self.by_ascii.get(ascii_fold(filename), set()) if name != filename}
+        if len(candidates) == 1:
+            return ('matched', next(iter(candidates)))
+        if len(candidates) > 1:
+            return ('ambiguous', None)
+        return ('unmatched', None)
+
+
+def _to_portable(decoded, course_key):
+    """
+    Reduce a decoded asset URL to its portable ``/static/<filename>`` form.
+
+    Returns the portable path for /static/ links and for absolute asset links
+    that belong to ``course_key``; returns ``None`` for anything that should be
+    left as-is (links to other courses, unparseable links).
+    """
     lowered = decoded.lower()
-    if lowered.startswith('/static/') or lowered.startswith('static/'):
-        idx = lowered.find(static_marker)
-        return static_marker + decoded[idx + len(static_marker):] if idx != -1 \
-            else '/static/' + decoded.split('static/', 1)[1]
+    if lowered.startswith('/static/'):
+        return STATIC_PREFIX + decoded[len('/static/'):]
+    if lowered.startswith('static/'):
+        return STATIC_PREFIX + decoded[len('static/'):]
 
-    # Absolute asset link: try to parse it back into an AssetKey so we can emit
-    # a portable path. The serving form uses "block/"; AssetKey wants "block@".
+    # Absolute asset link: try to parse it back into an AssetKey. The serving
+    # form uses "block/"; AssetKey wants "block@".
     candidate = decoded.lstrip('/')
     if StaticContent.is_versioned_asset_path('/' + candidate):
         _, candidate = StaticContent.parse_versioned_asset_path('/' + candidate)
@@ -84,43 +139,72 @@ def normalize_asset_url(url, course_key):
     try:
         asset_key = AssetKey.from_string(candidate)
     except InvalidKeyError:
-        # Couldn't understand it; leave it fully decoded but don't reshape it.
-        return decoded
+        return None
 
-    # Only portablize assets that actually belong to this course.
     if asset_key.course_key.for_branch(None) != course_key.for_branch(None):
-        return decoded
+        return None
 
     return StaticContent.get_static_path_from_location(asset_key)
 
 
-def repair_text(data, course_key):
+def normalize_asset_url(url, course_key, asset_index=None):
+    """
+    Return ``(new_url, status)`` for a single asset ``url``.
+
+    The percent-encoding is fully decoded and course-owned absolute links are
+    reduced to the portable ``/static/<filename>`` form. When ``asset_index`` is
+    provided and the decoded target is missing, the link is repointed at the
+    matching real asset. ``status`` is one of ``None`` (no asset check / target
+    exists), ``'matched'``, ``'ambiguous'`` or ``'unmatched'``.
+    """
+    decoded = fully_unquote(url)
+    portable = _to_portable(decoded, course_key)
+    if portable is None:
+        # Link to another course or unparseable: keep it decoded, untouched.
+        return decoded, None
+    if asset_index is None:
+        return portable, None
+
+    filename = portable[len(STATIC_PREFIX):]
+    status, realname = asset_index.resolve(filename)
+    if status == 'matched':
+        return STATIC_PREFIX + realname, 'matched'
+    if status in ('ambiguous', 'unmatched'):
+        return portable, status
+    return portable, None
+
+
+def repair_text(data, course_key, asset_index=None):
     """
     Repair all asset URLs in ``data``.
 
-    Returns a ``(new_data, replacements)`` tuple where ``replacements`` is a
-    list of ``(old, new)`` pairs for the URLs that actually changed.
+    Returns ``(new_data, replacements, warnings)`` where ``replacements`` is a
+    list of ``(old, new)`` pairs that changed and ``warnings`` is a list of
+    ``(url, status)`` pairs for broken references with no unique match.
     """
     replacements = []
+    warnings = []
 
     def _replace(match):
         quote = match.group('quote')
         url = match.group('url')
-        new_url = normalize_asset_url(url, course_key)
+        new_url, status = normalize_asset_url(url, course_key, asset_index)
+        if status in ('ambiguous', 'unmatched'):
+            warnings.append((url, status))
         if new_url != url:
             replacements.append((url, new_url))
         return quote + new_url + quote
 
     new_data = ASSET_URL_RE.sub(_replace, data)
-    return new_data, replacements
+    return new_data, replacements, warnings
 
 
 class Command(BaseCommand):
-    """Repair multiply percent-encoded static asset URLs in course content."""
+    """Repair corrupted static asset URLs in course content."""
 
     help = (
-        "Fully decode and re-portablize over-encoded static asset URLs in "
-        "course block content. Runs as a dry run unless --commit is given."
+        "Decode over-encoded static asset URLs and repoint dropped-character "
+        "links at their real assets. Runs as a dry run unless --commit is given."
     )
 
     def add_arguments(self, parser):
@@ -159,47 +243,54 @@ class Command(BaseCommand):
                     raise CommandError(f"Invalid course key: {raw_key}") from err
 
         commit = options['commit']
-        total_blocks = 0
-        total_urls = 0
+        totals = {'blocks': 0, 'urls': 0, 'unresolved': 0}
 
         for course_key in course_keys:
             self.stdout.write(f"Scanning {course_key} ...")
             with store.bulk_operations(course_key):
-                blocks_changed, urls_changed = self._repair_course(course_key, commit)
-            total_blocks += blocks_changed
-            total_urls += urls_changed
+                self._repair_course(course_key, commit, totals)
 
         verb = "Repaired" if commit else "Would repair"
         self.stdout.write(
-            f"\n{verb} {total_urls} URL(s) across {total_blocks} block(s)."
+            f"\n{verb} {totals['urls']} URL(s) across {totals['blocks']} block(s)."
         )
-        if not commit and total_urls:
+        if totals['unresolved']:
+            self.stdout.write(
+                f"{totals['unresolved']} broken reference(s) had no unique match "
+                "and were left untouched (see WARN lines above)."
+            )
+        if not commit and (totals['urls'] or totals['unresolved']):
             self.stdout.write("Dry run only. Re-run with --commit to apply.")
 
-    def _repair_course(self, course_key, commit):
+    def _repair_course(self, course_key, commit, totals):
         """Repair every data-bearing block in a single course."""
         store = modulestore()
         user_id = ModuleStoreEnum.UserID.mgmt_command
-        blocks_changed = 0
-        urls_changed = 0
+        asset_index = AssetIndex.for_course(course_key)
 
         for block in store.get_items(course_key):
             data = getattr(block, 'data', None)
             if not isinstance(data, str) or not data:
                 continue
 
-            new_data, replacements = repair_text(data, course_key)
-            if not replacements:
+            new_data, replacements, warnings = repair_text(data, course_key, asset_index)
+            if not replacements and not warnings:
                 continue
 
-            blocks_changed += 1
-            urls_changed += len(replacements)
-            self.stdout.write(f"  {block.location}")
+            if replacements or warnings:
+                self.stdout.write(f"  {block.location}")
             for old, new in replacements:
                 self.stdout.write(f"    - {old}")
                 self.stdout.write(f"    + {new}")
+            for url, status in warnings:
+                self.stdout.write(f"    ! WARN ({status}, no fix applied): {url}")
 
-            if commit:
+            totals['urls'] += len(replacements)
+            totals['unresolved'] += len(warnings)
+            if replacements:
+                totals['blocks'] += 1
+
+            if commit and replacements:
                 block.data = new_data
                 store.update_item(block, user_id)
                 # Push the repaired draft to the published branch so the LMS
@@ -209,5 +300,3 @@ class Command(BaseCommand):
                     store.publish(block.location, user_id)
                 except Exception as err:  # lint-amnesty, pylint: disable=broad-except
                     self.stderr.write(f"    ! could not publish {block.location}: {err}")
-
-        return blocks_changed, urls_changed
