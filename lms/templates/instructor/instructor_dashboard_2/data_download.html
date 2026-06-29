@@ -1,6 +1,7 @@
 <%page args="section_data" expression_filter="h"/>
 <%namespace name='static' file='/static_content.html'/>
 <%!
+from django.urls import reverse
 from django.utils.translation import gettext as _
 from openedx.core.djangolib.markup import HTML, Text
 %>
@@ -43,11 +44,16 @@ from openedx.core.djangolib.markup import HTML, Text
     <p><input type="button" name="export-ora2-data" class="async-report-btn" value="${_("Generate Submission Files Archive")}" data-endpoint="${ section_data['export_ora2_submission_files_url'] }"/></p>
 
   %endif
+  ## WikiLearn: point the issued-certificates report at our custom plugin endpoint
+  ## (openedx-wikilearn-features) — a per-learner report with a populated certificate
+  ## link. Only the data-endpoint changes; the stock get_issued_certificates route is
+  ## left intact for any other caller.
+  <% issued_certificates_url = reverse('wikimedia_general:general_api_v0:get_issued_certificates', kwargs={'course_key_string': str(course.id)}) %>
   <div class="issued_certificates">
     <p>${_("Click to list certificates that are issued for this course:")}</p>
     <p>
-      <input type="button" name="issued-certificates-list" value="${_("View Certificates Issued")}" data-csv="false" data-endpoint="${ section_data['get_issued_certificates_url'] }">
-      <input type="button" name="issued-certificates-csv" value="${_("Download CSV of Certificates Issued")}" data-csv="true" data-endpoint="${ section_data['get_issued_certificates_url'] }">
+      <input type="button" name="issued-certificates-list" value="${_("View Certificates Issued")}" data-csv="false" data-endpoint="${ issued_certificates_url }">
+      <input type="button" name="issued-certificates-csv" value="${_("Download CSV of Certificates Issued")}" data-csv="true" data-endpoint="${ issued_certificates_url }">
     </p>
     <div class="data-display-table certificate-data-display-table" id="data-issued-certificates-table"></div>
     <div class="issued-certificates-error request-response-error msg msg-error copy"></div>
