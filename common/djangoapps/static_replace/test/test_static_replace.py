@@ -602,6 +602,32 @@ class CanonicalContentTest(SharedModuleStoreTestCase):
             asset_path = StaticContent.get_canonicalized_asset_path(self.courses[prefix].id, start, base_url, exts)
             assert re.match(expected, asset_path) is not None
 
+    def test_canonical_asset_path_is_idempotent_for_encoded_paths(self):
+        """
+        A path that is already percent-encoded (because canonicalization ran over
+        it before, e.g. on a previous Studio load/save cycle) must canonicalize
+        to the same thing as the raw path, with exactly one layer of encoding.
+        This guards against the historical bug where non-ASCII asset filenames
+        gained a "%25" layer on every cycle (%C3%AD -> %25C3%25AD -> ...).
+        """
+        prefix = 'split'
+        course_key = self.courses[prefix].id
+        exts = ['.html', '.tm']
+
+        # 'ünlöck' -> UTF-8: ü=%C3%BC, ö=%C3%B6. This asset exists in setUpClass.
+        raw = f'/static/{prefix}_ünlöck.png'
+        once_encoded = f'/static/{prefix}_%C3%BCnl%C3%B6ck.png'
+        twice_encoded = f'/static/{prefix}_%25C3%25BCnl%25C3%25B6ck.png'
+
+        expected = StaticContent.get_canonicalized_asset_path(course_key, raw, '', exts)
+
+        assert StaticContent.get_canonicalized_asset_path(course_key, once_encoded, '', exts) == expected
+        assert StaticContent.get_canonicalized_asset_path(course_key, twice_encoded, '', exts) == expected
+
+        # The result is encoded exactly once: it contains %C3%BC, never %25.
+        assert '%C3%BC' in expected
+        assert '%25' not in expected
+
 
 class ReplaceURLServiceTest(SharedModuleStoreTestCase):
     """
