@@ -206,7 +206,11 @@ class User(models.Model):
                 params["count_flagged"] = str_to_bool(count_flagged)
             if not params.get("course_id"):
                 params["course_id"] = str(course_key)
-            response = forum_api.get_user_threads(**params)
+
+            user_id = params.pop("user_id", None)
+            if "text" in params:
+                params.pop("text")
+            response = forum_api.get_user_subscriptions(user_id, str(course_key), utils.clean_forum_params(params))
         else:
             response = utils.perform_request(
                 'get',
@@ -243,21 +247,17 @@ class User(models.Model):
         if is_forum_v2_enabled(course_key):
             group_ids = [retrieve_params['group_id']] if 'group_id' in retrieve_params else []
             is_complete = retrieve_params['complete']
+            params = utils.clean_forum_params({
+                "user_id": self.attributes["id"],
+                "group_ids": group_ids,
+                "course_id": course_id,
+                "complete": is_complete
+            })
             try:
-                response = forum_api.get_user(
-                    self.attributes["id"],
-                    group_ids=group_ids,
-                    course_id=course_id,
-                    complete=is_complete
-                )
+                response = forum_api.get_user(**params)
             except ForumV2RequestError as e:
                 self.save({"course_id": course_id})
-                response = forum_api.get_user(
-                    self.attributes["id"],
-                    group_ids=group_ids,
-                    course_id=course_id,
-                    complete=is_complete
-                )
+                response = forum_api.get_user(**params)
         else:
             try:
                 response = utils.perform_request(
