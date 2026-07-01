@@ -33,10 +33,14 @@ link:
   or a commentable whose XBlock no longer exists) is registered as a course-level
   topic so the threads remain reachable, and is reported rather than clobbered.
 
-It then recomputes per-course user stats so the "Learners" tab populates. It performs
-only Django-model writes (``DiscussionsConfiguration`` / ``DiscussionTopicLink``) plus
-the stats recompute -- no modulestore/content writes and no forum-store writes -- so
-it is reversible.
+For **every** course that has threads -- whether or not any topics needed reconnecting
+-- it also seeds ``ForumUser`` records for enrolled users and recomputes per-course user
+stats, so the "Learners" tab populates. (The Mongo->MySQL migration brings threads but
+not ``ForumUser`` records, and the stats read does ``ForumUser.objects.get()`` per
+stat-bearing user, so a missing record otherwise makes the endpoint fail.) It performs
+only Django-model writes (``DiscussionsConfiguration`` / ``DiscussionTopicLink`` /
+``ForumUser``) plus the stats recompute -- no modulestore/content writes and no
+forum thread/comment writes -- so it is reversible.
 
 Invoke with (dry-run by default)::
 
@@ -172,8 +176,6 @@ class Command(BaseCommand):
         links = list(DiscussionTopicLink.objects.filter(context_key=course_key, provider_id=PROVIDER))
         linked_external_ids = {link.external_id for link in links}
         orphans = active - linked_external_ids
-        if not orphans:
-            return {"course": str(course_key), "status": "healthy", "threads": len(active)}
 
         xmap = self._build_xblock_map(course_key)
         links_by_unit = {link.usage_key: link for link in links if link.usage_key}
@@ -217,7 +219,8 @@ class Command(BaseCommand):
 
         if not self.apply:
             self.stdout.write("  (dry-run: no changes written)")
-            return {"course": str(course_key), "status": "would-fix", "actions": len(plan)}
+            status = "would-fix" if plan else "would-refresh-stats"
+            return {"course": str(course_key), "status": status, "actions": len(plan)}
 
         if need_graded and not config.enable_graded_units:
             config.enable_graded_units = True
@@ -251,7 +254,8 @@ class Command(BaseCommand):
         seeded = self._seed_forum_users(course_key)
         update_course_users_stats(course_key)
         self.stdout.write(f"  -> applied; seeded {seeded} forum users; user stats recomputed")
-        return {"course": str(course_key), "status": "fixed", "actions": len(plan), "seeded_users": seeded}
+        status = "fixed" if plan else "stats-refreshed"
+        return {"course": str(course_key), "status": status, "actions": len(plan), "seeded_users": seeded}
 
     def _seed_forum_users(self, course_key):
         """
