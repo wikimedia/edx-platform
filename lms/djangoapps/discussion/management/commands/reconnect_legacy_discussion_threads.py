@@ -46,10 +46,13 @@ Invoke with (dry-run by default)::
 """
 import logging
 
+from django.contrib.auth.models import User
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from opaque_keys.edx.keys import CourseKey
 
+import openedx.core.djangoapps.django_comment_common.comment_client as cc
+from common.djangoapps.student.models import CourseEnrollment
 from openedx.core.djangoapps.discussions.models import DiscussionsConfiguration, DiscussionTopicLink
 from openedx.core.djangoapps.django_comment_common.comment_client.course import (
     get_course_commentable_counts,
@@ -245,6 +248,30 @@ class Command(BaseCommand):
                 )
                 next_order += 1
 
+        seeded = self._seed_forum_users(course_key)
         update_course_users_stats(course_key)
-        self.stdout.write("  -> applied; user stats recomputed")
-        return {"course": str(course_key), "status": "fixed", "actions": len(plan)}
+        self.stdout.write(f"  -> applied; seeded {seeded} forum users; user stats recomputed")
+        return {"course": str(course_key), "status": "fixed", "actions": len(plan), "seeded_users": seeded}
+
+    def _seed_forum_users(self, course_key):
+        """
+        Ensure every enrolled user has a ForumUser record.
+
+        The Mongo->MySQL migration brings threads but not user records, and the forum's
+        per-course stats read does ``ForumUser.objects.get(...)`` for each stat-bearing
+        user -- a single missing record makes the Learners endpoint fail. Seeding here
+        keeps ``update_course_users_stats`` (called next) from producing stats that the
+        read path then chokes on.
+        """
+        users = User.objects.filter(
+            courseenrollment__course_id=course_key,
+            courseenrollment__is_active=True,
+        ).distinct()
+        seeded = 0
+        for user in users:
+            try:
+                cc.User.from_django_user(user).save()
+                seeded += 1
+            except Exception as exc:  # pylint: disable=broad-except
+                log.warning("Failed to seed forum user %s: %s", user.username, exc)
+        return seeded
