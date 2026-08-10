@@ -159,7 +159,16 @@ def rerun_course(source_course_key_string, destination_course_key_string, user_i
         with store.default_store('split'):
             store.clone_course(source_course_key, destination_course_key, user_id, fields=fields)
 
-        update_unit_discussion_state_from_discussion_blocks(destination_course_key, user_id)
+        # Never let this step fail the rerun: the course has already been cloned
+        # successfully at this point, and discarding it (see the cleanup in the
+        # except block below) loses the whole rerun over an optional migration.
+        try:
+            update_unit_discussion_state_from_discussion_blocks(destination_course_key, user_id)
+        except Exception:  # pylint: disable=broad-except
+            LOGGER.exception(
+                'Rerun %s: failed to migrate unit discussion state; continuing',
+                destination_course_key,
+            )
 
         # set initial permissions for the user to access the course.
         initialize_permissions(destination_course_key, User.objects.get(id=user_id))
