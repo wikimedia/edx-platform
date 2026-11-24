@@ -40,5 +40,10 @@ jobs:
       - name: Install python dependencies
         run: make dev-requirements
 
+      # cms imports openedx_wikilearn_features at startup, and mypy's django plugin
+      # loads the cms settings, so the plugin must be importable.
+      - name: Install openedx-wikilearn-features
+        run: pip install --no-deps "git+https://github.com/wikimedia/openedx-wikilearn-features.git@1.0.6"
+
       - name: Static code analysis
         run: make check-types

@@ -90,7 +90,12 @@ jobs:
           npm run build
 
       - name: Install Full Python Deps for Collection
+        env:
+          # loremipsum (via ora2) is built from source and needs pkg_resources, which
+          # recent setuptools dropped; build it with our pinned setuptools instead.
+          PIP_CONSTRAINT: requirements/pip.txt
         run: |
+          pip install -r requirements/pip.txt
           pip install -r requirements/edx/base.txt -e .
 
       - name: Check Assets Collection
