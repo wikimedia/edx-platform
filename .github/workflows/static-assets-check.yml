@@ -45,7 +45,7 @@ jobs:
       - name: Install system Packages
         run: |
           sudo apt-get update
-          sudo apt-get install libxmlsec1-dev pkg-config
+          sudo apt-get install -y libxmlsec1-dev pkg-config libmysqlclient-dev
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -64,7 +64,9 @@ jobs:
         id: cache-dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ steps.pip-cache-dir.outputs.dir }}
+          # Only cache downloads: wheels built locally (e.g. mysqlclient) link against
+          # system libraries that differ between runner images.
+          path: ${{ steps.pip-cache-dir.outputs.dir }}/http-v2
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements/edx/development.txt') }}
           restore-keys: ${{ runner.os }}-pip-
 
